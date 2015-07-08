@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -10,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="resources/autolinx/images/favicon.ico">
 <title>Automotive Car Dealership &amp; Business HTML Template</title>
 <!-- Bootstrap core CSS -->
 <link href="resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
@@ -110,7 +111,7 @@ $(document).ready(function()
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="logo" href="#"><img src="images/autolinxwhite11.png" alt></a> </div>
+            <a class="logo" href="#"><img src="resources/autolinx/images/autolinxwhite11.png" alt></a> </div>
           
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -138,10 +139,12 @@ $(document).ready(function()
         <div class="tp-banner-container">
             <div class="tp-banner" >
                 <ul>
+                
                     <!-- SLIDE  -->
+                    <c:forEach var="row" items="${sliderImages}">
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
                         <!-- MAIN IMAGE --> 
-                        <img src="images/banner/banner1.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        <img src="/glivrImg/images${row}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
                         
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -201,11 +204,12 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6">qualified vehicle shoppers </div>
                     </li>
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        <!-- MAIN IMAGE --> 
-                        <img src="images/banner/banner2.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                    </c:forEach>
+                    <!-- <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
+                        MAIN IMAGE 
+                        <img src="/glivrImg/images/336920057/SliderImages/Slider2.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
                         
-                        <!-- LAYERS -->
+                        LAYERS
                         <div class="tp-caption mediumlarge_light_white_center invest start"
 						data-x="543"
 						data-hoffset="0"
@@ -216,7 +220,7 @@ $(document).ready(function()
 						data-easing="Back.easeInQuart"
 						data-endspeed="300">Time to invest in a website built to </div>
                         
-                        <!-- LAYER NR. 1 -->
+                        LAYER NR. 1
                         <div class="tp-caption move mediumlarge_light_white_center fade"
 						data-x="480"
 						data-y="230"
@@ -227,7 +231,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; letter-spacing: -3px;">MOVE </div>
-                        <!-- LAYER NR. 2 -->
+                        LAYER NR. 2
                         <div class="tp-caption light_brown mediumlarge_light_white_center sfl"
 						data-x="615"
 						data-y="230"
@@ -238,7 +242,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; top: 371px; ">YOUR </div>
-                        <!-- LAYER NR. 3 -->
+                        LAYER NR. 3
                         <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
 						data-x="735"
 						data-y="230"
@@ -249,7 +253,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; left:186px;">INVENTORY </div>
-                        <!-- LAYER NR. 4 -->
+                        LAYER NR. 4
                         <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
 						data-x="960"
 						data-y="230"
@@ -260,7 +264,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6">FASTER </div>
-                        <!-- LAYER NR. 5 -->
+                        LAYER NR. 5
                         <div class="tp-caption brown_line skewfromright"
 						data-x="482"
 						data-y="261"
@@ -273,10 +277,10 @@ $(document).ready(function()
 						style="z-index: 6"><img src="http://demo.themesuite.com/automotive/images/brown_line.jpg" alt="underline"> </div>
                     </li>
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        <!-- MAIN IMAGE --> 
-                        <img src="images/banner/banner3.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        MAIN IMAGE 
+                        <img src="/glivrImg/images/336920057/SliderImages/Slider3.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
                         
-                        <!-- LAYERS -->
+                        LAYERS
                         <div class="tp-caption customin customout start green"
 						data-x="40"
 						data-hoffset="0"
@@ -289,7 +293,7 @@ $(document).ready(function()
 						data-easing="Back.easeInOut"
 						data-endspeed="300">Wow Factor?</div>
                         
-                        <!-- LAYER NR. 1 -->
+                        LAYER NR. 1
                         <div class="tp-caption big_white fade"
 						data-x="40"
 						data-y="560"
@@ -302,10 +306,10 @@ $(document).ready(function()
 						style="z-index: 6;">STANDARD. </div>
                     </li>
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        <!-- MAIN IMAGE --> 
-                        <img src="images/banner/banner4.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        MAIN IMAGE 
+                        <img src="/glivrImg/images/336920057/SliderImages/Slider4.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
                         
-                        <!-- LAYERS -->
+                        LAYERS
                         <div class="tp-caption customin customout start big_white"
 						data-x="0"
 						data-hoffset="0"
@@ -318,7 +322,7 @@ $(document).ready(function()
 						data-easing="Back.easeInOut"
 						data-endspeed="300">UNLOCK</div>
                         
-                        <!-- LAYER NR. 1 -->
+                        LAYER NR. 1
                         <div class="tp-caption thin_red fade"
 						data-x="300"
 						data-y="235"
@@ -330,7 +334,7 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6;">THE POTENTIAL</div>
                         
-                        <!-- LAYER NR. 2 -->
+                        LAYER NR. 2
                         <div class="tp-caption thin_white skewfromright"
 						data-x="0"
 						data-y="510"
@@ -342,7 +346,7 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6;">business from your</div>
                         
-                        <!-- LAYER NR. 3 -->
+                        LAYER NR. 3
                         <div class="tp-caption cursive skewfromright"
 						data-x="400"
 						data-y="570"
@@ -354,12 +358,12 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6;">website</div>
                     </li>
-                    <!-- SLIDE  -->
+                    SLIDE 
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        <!-- MAIN IMAGE --> 
-                        <img src="images/banner/banner5.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        MAIN IMAGE 
+                        <img src="/glivrImg/images/336920057/SliderImages/Slider5.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
                         
-                        <!-- LAYERS -->
+                        LAYERS
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
 						data-x="0"
 						data-hoffset="0"
@@ -372,7 +376,7 @@ $(document).ready(function()
 						data-easing="Back.easeInOut"
 						data-endspeed="300">REALITY </div>
                         
-                        <!-- LAYER NR. 1 -->
+                        LAYER NR. 1
                         <div class="tp-caption thin_dark_blue fade"
 						data-x="270"
 						data-y="210"
@@ -383,7 +387,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; letter-spacing: 0;">IS JUST</div>
-                        <!-- LAYER NR. 2 -->
+                        LAYER NR. 2
                         <div class="tp-caption thinner_white sfl"
 						data-x="05"
 						data-y="270"
@@ -394,7 +398,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; top: 371px; ">your perception</div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -438,19 +442,19 @@ $(document).ready(function()
 	  		<div class="boxIn">
             	<ul>
                 	<li>
-                    	<img src="images/image-m-1.jpg" alt="">
+                    	<img src="resources/autolinx/images/image-m-1.jpg" alt="">
                         <a href="#"><span>Inventory</span></a>
                     </li>
                     <li>
-                    	<img src="images/image-m-2.jpg" alt="">
+                    	<img src="resources/autolinx/images/image-m-2.jpg" alt="">
                         <a href="#"><span>New Arrivals</span></a>
                     </li>
                      <li>
-                    	<img src="images/image-m-3.jpg" alt="">
+                    	<img src="resources/autolinx/images/image-m-3.jpg" alt="">
                         <a href="#"><span>Directions</span></a>
                     </li>
                      <li>
-                    	<img src="images/image-m-4.jpg" alt="">
+                    	<img src="resources/autolinx/images/image-m-4.jpg" alt="">
                         <a href="#"><span>About Us</span></a>
                     </li>
                 </ul>
@@ -470,10 +474,10 @@ $(document).ready(function()
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip margin-bottom-30">
                 <div class="card">
-                  <div class="face front"><img class="img-responsive" src="images/3.jpg" alt=""></div>
+                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[0]}" alt=""></div>
                   <div class="face back">
                     <div class='hover_title'>New Arrivals</div>
-                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="images/car1-lrg.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
+                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car1-lrg.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
                 </div>
               </div>
               <h4><a href="#">New Arrivals</a></h4>
@@ -481,10 +485,10 @@ $(document).ready(function()
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip horizontal margin-bottom-30">
                 <div class="card">
-                  <div class="face front"><img class="img-responsive" src="images/eco.jpg" alt=""></div>
+                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[1]}" alt=""></div>
                   <div class="face back">
                     <div class='hover_title'>Hybrids Collection</div>
-                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
+                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
                 </div>
               </div>
               <h4><a href="#">ECO Friendly</a></h4>
@@ -492,10 +496,10 @@ $(document).ready(function()
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip margin-bottom-30">
                 <div class="card">
-                  <div class="face front"><img class="img-responsive" src="images/2.jpg" alt=""></div>
+                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[2]}" alt=""></div>
                   <div class="face back">
                     <div class='hover_title'>Aston Martin DBS</div>
-                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="images/car3.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
+                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car3.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
                 </div>
               </div>
               <h4><a href="#">Luxury Chic</a></h4>
@@ -506,7 +510,7 @@ $(document).ready(function()
       
       <!--car-block-wrap ends-->
       <div class="row parallax_parent design_2 margin-bottom-40 margin-top-30">
-        <div class="parallax_scroll clearfix" data-velocity="-.5" data-offset="-200" data-image="images/parallax1.jpg">
+        <div class="parallax_scroll clearfix" data-velocity="-.5" data-offset="-200" data-image="resources/autolinx/images/parallax1.jpg">
           <div class="overlay">
             <div class="container">
               <div class="row">
@@ -547,7 +551,7 @@ $(document).ready(function()
             <div class="carasouel-slider3">
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz E350 Bluetech</strong></h6>
                     <h6></h6>
@@ -557,7 +561,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW B7 Alpina</strong></h6>
                     <h6></h6>
@@ -567,7 +571,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Jaguar XF Portfolio</strong></h6>
                     <h6></h6>
@@ -577,7 +581,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lexus GS350</strong></h6>
                     <h6></h6>
@@ -587,7 +591,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -597,7 +601,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -607,7 +611,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz ML 350</strong></h6>
                     <h6></h6>
@@ -616,7 +620,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mini Cooper Hardtop Base</strong></h6>
                     <h6></h6>
@@ -626,7 +630,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -636,7 +640,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -646,7 +650,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -656,7 +660,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -666,7 +670,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz ML 350</strong></h6>
                     <h6></h6>
@@ -676,7 +680,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-s-550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/130-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-s-550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/130-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz S 550</strong></h6>
                     <h6></h6>
@@ -686,7 +690,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mini-cooper-countryman/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mini-cooper-countryman/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mini Cooper Countryman</strong></h6>
                     <h6></h6>
@@ -696,7 +700,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/118-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/118-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -706,7 +710,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-e-350-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/129-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-e-350-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/129-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz E 350 Luxury</strong></h6>
                     <h6></h6>
@@ -716,7 +720,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6131/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6131/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW X5 xDrive50i</strong></h6>
                     <h6></h6>
@@ -726,7 +730,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6130/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/114-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6130/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/114-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 550i</strong></h6>
                     <h6></h6>
@@ -736,7 +740,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6129/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/112-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6129/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/112-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 535i</strong></h6>
                     <h6></h6>
@@ -746,7 +750,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6128/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6128/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 535i xDrive</strong></h6>
                     <h6></h6>
@@ -756,7 +760,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6126/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/116-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6126/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/116-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 535i xDrive Gran Turismo</strong></h6>
                     <h6></h6>
@@ -766,7 +770,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6124/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/110-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6124/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/110-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 528i xDrive</strong></h6>
                     <h6></h6>
@@ -776,7 +780,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6122/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0832-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6122/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0832-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Land Rover Range Rover Sport HSE</strong></h6>
                     <h6></h6>
@@ -785,7 +789,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6092/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0985-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6092/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0985-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2007 Land Rover Range Rover Supercharged</strong></h6>
                     <h6></h6>
@@ -795,7 +799,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6059/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0746-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6059/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0746-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Infiniti G 37 Sport</strong></h6>
                     <h6></h6>
@@ -805,7 +809,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6029/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0132-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6029/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0132-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti G 37 Sport</strong></h6>
                     <h6></h6>
@@ -815,7 +819,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5997/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0459-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5997/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0459-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti FX 35</strong></h6>
                     <h6></h6>
@@ -825,7 +829,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5974/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0647-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5974/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0647-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 GMC Yukon</strong></h6>
                     <h6></h6>
@@ -835,7 +839,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0951-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0951-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Audi A8 L</strong></h6>
                     <h6></h6>
@@ -845,7 +849,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5894/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0006-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5894/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0006-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A8 L</strong></h6>
                     <h6></h6>
@@ -855,7 +859,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5879/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0219-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5879/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0219-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A7 Premium Plus</strong></h6>
                     <h6></h6>
@@ -865,7 +869,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5839/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0274-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5839/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0274-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Audi A6</strong></h6>
                     <h6></h6>
@@ -875,7 +879,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5628/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0406-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5628/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0406-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz ML350</strong></h6>
                     <h6></h6>
@@ -885,7 +889,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-550i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00041-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-550i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00041-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 550i</strong></h6>
                     <h6></h6>
@@ -895,7 +899,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/used-2004-lamborghini-gallardo/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/lambo-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/used-2004-lamborghini-gallardo/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/lambo-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2007 Lamborghini Gallardo</strong></h6>
                     <h6></h6>
@@ -905,7 +909,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4938/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_10-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4938/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_10-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Volkswagen GTI</strong></h6>
                     <h6></h6>
@@ -915,7 +919,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz CLS 63 AMG</strong></h6>
                     <h6></h6>
@@ -925,7 +929,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4930/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_109-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4930/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_109-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lincoln Navigator</strong></h6>
                     <h6></h6>
@@ -935,7 +939,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/12-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-Infinity-M37_1-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/12-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-Infinity-M37_1-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti M37</strong></h6>
                     <h6></h6>
@@ -945,7 +949,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-328i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-BMW-335i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-328i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-BMW-335i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 328i xDrive</strong></h6>
                     <h6></h6>
@@ -955,7 +959,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2005-bmw-645ci/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/11-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2005-bmw-645ci/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/11-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2005 BMW 645CI</strong></h6>
                     <h6></h6>
@@ -965,7 +969,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4817/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_95-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4817/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_95-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW Alpina B7</strong></h6>
                     <h6></h6>
@@ -975,7 +979,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4815/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0187-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4815/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0187-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 Mercedes-Benz CLA 250</strong></h6>
                     <h6></h6>
@@ -985,7 +989,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-jaguar-xf-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-jaguar-xf-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Jaguar XF Supercharged</strong></h6>
                     <h6></h6>
@@ -995,7 +999,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4613/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/Audi-Q71-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4613/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/Audi-Q71-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Cadillac SRX Luxury</strong></h6>
                     <h6></h6>
@@ -1005,7 +1009,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4604/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4604/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2009 Mercedes-Benz ML550</strong></h6>
                     <h6></h6>
@@ -1015,7 +1019,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0451-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0451-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A7</strong></h6>
                     <h6></h6>
@@ -1025,7 +1029,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/12-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/12-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/12-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/12-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A7</strong></h6>
                     <h6></h6>
@@ -1035,7 +1039,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/audi-q7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/Audi-Q7-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/audi-q7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/Audi-Q7-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi Q7 S</strong></h6>
                     <h6></h6>
@@ -1045,7 +1049,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-audi-q5/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2013-Audi-Q5-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-audi-q5/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2013-Audi-Q5-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Audi Q5 Premium</strong></h6>
                     <h6></h6>
@@ -1055,7 +1059,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-sl-class-sl550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_28-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-sl-class-sl550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_28-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz SL550</strong></h6>
                     <h6></h6>
@@ -1065,7 +1069,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-Infinity-M37_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-Infinity-M37_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti M37</strong></h6>
                     <h6></h6>
@@ -1075,7 +1079,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-x6-m/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0139-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-x6-m/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0139-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW X6M</strong></h6>
                     <h6></h6>
@@ -1085,7 +1089,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2003-bmw-3-series-335i-convertible/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2008-BMW-3-series-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2003-bmw-3-series-335i-convertible/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2008-BMW-3-series-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2008 BMW 335i Convertible</strong></h6>
                     <h6></h6>
@@ -1095,7 +1099,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-audi-s5-prestige/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2010-Audi-S5-convertible-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-audi-s5-prestige/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2010-Audi-S5-convertible-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Audi S5 Prestige</strong></h6>
                     <h6></h6>
@@ -1105,7 +1109,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-mercedes-benz-s-class-s550-sports/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-mercedes-benz-s-class-s550-sports/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Mercedes-Benz S-Class S550 Sports</strong></h6>
                     <h6></h6>
@@ -1115,7 +1119,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2009-suzuki-gsx1300r-hayabusa/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2009-Suzuki-GSX1300R-1-549b54c9c248a-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2009-suzuki-gsx1300r-hayabusa/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2009-Suzuki-GSX1300R-1-549b54c9c248a-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2009 Suzuki GSX1300R Hayabusa</strong></h6>
                     <h6></h6>
@@ -1125,7 +1129,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2005-vespa-px150-scooter/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_04731-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2005-vespa-px150-scooter/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_04731-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2005 Vespa PX150 Scooter</strong></h6>
                     <h6></h6>
@@ -1135,7 +1139,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-s65-amg/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00043-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-s65-amg/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00043-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz S65 AMG</strong></h6>
                     <h6></h6>
@@ -1145,7 +1149,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-cls550-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-CLS550-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-cls550-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-CLS550-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz CLS550 Sport</strong></h6>
                     <h6></h6>
@@ -1155,7 +1159,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-lexus-is-f/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/213-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-lexus-is-f/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/213-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Lexus IS F</strong></h6>
                     <h6></h6>
@@ -1165,7 +1169,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-lexus-is-250c-f-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_08932-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-lexus-is-250c-f-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_08932-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lexus IS 250C F Sport</strong></h6>
                     <h6></h6>
@@ -1175,7 +1179,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-lexus-hs250-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2010-Lexus-250H-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-lexus-hs250-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2010-Lexus-250H-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Lexus HS250 Hybrid</strong></h6>
                     <h6></h6>
@@ -1185,7 +1189,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2008-lexus-gs-450-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2008-Lexus-GS450h-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2008-lexus-gs-450-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2008-Lexus-GS450h-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2008 Lexus GS 450 Hybrid</strong></h6>
                     <h6></h6>
@@ -1195,7 +1199,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-land-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-land-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Land Rover Sport Supercharged</strong></h6>
                     <h6></h6>
@@ -1205,7 +1209,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2009-land-rover-range-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2009-land-rover-range-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2009 Land Rover Range Rover Sport Supercharged</strong></h6>
                     <h6></h6>
@@ -1215,7 +1219,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-land-rover-range-rover-hse-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Land-Rover-Blue-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-land-rover-range-rover-hse-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Land-Rover-Blue-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Land Rover Range Rover HSE Luxury</strong></h6>
                     <h6></h6>
@@ -1225,7 +1229,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2014-infiniti-q50-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2014-Infinity-Q50s-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2014-infiniti-q50-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2014-Infinity-Q50s-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 Infiniti Q50 Premium</strong></h6>
                     <h6></h6>
@@ -1235,7 +1239,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-infiniti-m35-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-Infinity-M35-Hybrid-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-infiniti-m35-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-Infinity-M35-Hybrid-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti M35 Hybrid</strong></h6>
                     <h6></h6>
@@ -1245,7 +1249,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-infiniti-g37-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Infinity-G37-Sedan-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-infiniti-g37-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Infinity-G37-Sedan-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Infiniti G37 Sport</strong></h6>
                     <h6></h6>
@@ -1255,7 +1259,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2005-hummer-h2-suv/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/Hammer-H2-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2005-hummer-h2-suv/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/Hammer-H2-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2005 Hummer H2</strong></h6>
                     <h6></h6>
@@ -1265,7 +1269,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-750i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0203-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-750i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0203-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 750i Active Hybrid</strong></h6>
                     <h6></h6>
@@ -1275,7 +1279,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/11-jaguar-xjl/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_07881-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/11-jaguar-xjl/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_07881-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Jaguar XJ XJL</strong></h6>
                     <h6></h6>
@@ -1285,7 +1289,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/3293/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_04091-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/3293/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_04091-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Lexus LS 460</strong></h6>
                     <h6></h6>
@@ -1295,7 +1299,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-x5-xdrive35i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/BMW-X5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-x5-xdrive35i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/BMW-X5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW X5 xDrive35i</strong></h6>
                     <h6></h6>
@@ -1305,7 +1309,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-6-series-650i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_06261-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-6-series-650i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_06261-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 650 GranCoupe</strong></h6>
                     <h6></h6>
@@ -1315,7 +1319,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-5-series-535i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-BMW-535i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-5-series-535i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-BMW-535i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 535i</strong></h6>
                     <h6></h6>
@@ -1325,7 +1329,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-5-series-528i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_09083-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-5-series-528i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_09083-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 528i xDrive</strong></h6>
                     <h6></h6>
@@ -1335,7 +1339,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-3-series-335i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-BMW-335i-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-3-series-335i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-BMW-335i-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 335i</strong></h6>
                     <h6></h6>
@@ -1345,7 +1349,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-3-series-328i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2013-BMW-328i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-3-series-328i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2013-BMW-328i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 328i</strong></h6>
                     <h6></h6>
@@ -1355,7 +1359,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-audi-a5-2-0t-quattro-tiptronic/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2010-Audi-A5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-audi-a5-2-0t-quattro-tiptronic/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2010-Audi-A5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Audi A5 2.0T Quattro Tiptronic</strong></h6>
                     <h6></h6>
@@ -1365,7 +1369,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2876/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0956-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2876/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0956-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 MINI Clubman S</strong></h6>
                     <h6></h6>
@@ -1375,7 +1379,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2820/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_05723-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2820/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_05723-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 BMW 335i xDrive</strong></h6>
                     <h6></h6>
@@ -1385,7 +1389,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2749/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_02382-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2749/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_02382-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 328i xDrive</strong></h6>
                     <h6></h6>
@@ -1395,7 +1399,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2704/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_04201-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2704/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_04201-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz CLS550</strong></h6>
                     <h6></h6>
@@ -1405,7 +1409,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-jaguar-xf-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0275_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-jaguar-xf-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0275_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Jaguar XF Premium</strong></h6>
                     <h6></h6>
@@ -1415,7 +1419,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2595/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_05902-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2595/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_05902-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 640i Coupe</strong></h6>
                     <h6></h6>
@@ -1425,7 +1429,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2584/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/aston-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2584/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/aston-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Aston Martin DBS</strong></h6>
                     <h6></h6>
@@ -1435,7 +1439,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-640i-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_02833-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-640i-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_02833-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 640 GranCoupe</strong></h6>
                     <h6></h6>
@@ -1445,7 +1449,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-ml350-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00031-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-ml350-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00031-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz ML350</strong></h6>
                     <h6></h6>
@@ -1455,7 +1459,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0737-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0737-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz E350</strong></h6>
                     <h6></h6>
@@ -1465,7 +1469,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2014-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0794-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2014-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0794-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 Mercedes-Benz E350</strong></h6>
                     <h6></h6>
@@ -1475,7 +1479,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz S550</strong></h6>
                     <h6></h6>
@@ -1485,7 +1489,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-c250-coupe-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0645-copy-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-c250-coupe-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0645-copy-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz C250 Coupe</strong></h6>
                     <h6></h6>
@@ -1495,7 +1499,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-750-li/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0485-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-750-li/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0485-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 750 Li</strong></h6>
                     <h6></h6>
@@ -1505,7 +1509,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz E350</strong></h6>
                     <h6></h6>
@@ -1515,7 +1519,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0597-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0597-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C250</strong></h6>
                     <h6></h6>
@@ -1525,7 +1529,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0767-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0767-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz S550</strong></h6>
                     <h6></h6>
@@ -1535,7 +1539,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/mercedes-cls550-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0581-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/mercedes-cls550-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0581-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz CLS550 Sport</strong></h6>
                     <h6></h6>
@@ -1545,7 +1549,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-i650/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/BMW-650i-silver-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-i650/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/BMW-650i-silver-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 650i</strong></h6>
                     <h6></h6>
@@ -1555,7 +1559,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/maserati/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0739-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/maserati/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0739-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2008 Maserati Quattroporte Executive GT</strong></h6>
                     <h6></h6>
@@ -1565,7 +1569,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/lexus-rx350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0959-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/lexus-rx350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0959-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Lexus RX350</strong></h6>
                     <h6></h6>
@@ -1575,7 +1579,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_01901-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_01901-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz E350 Bluetech</strong></h6>
                     <h6></h6>
@@ -1585,7 +1589,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW B7 Alpina</strong></h6>
                     <h6></h6>
@@ -1595,7 +1599,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_02441-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_02441-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Jaguar XF Portfolio</strong></h6>
                     <h6></h6>
@@ -1605,7 +1609,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lexus GS350</strong></h6>
                     <h6></h6>
@@ -1615,7 +1619,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -1625,7 +1629,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_05411-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_05411-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -1635,7 +1639,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/pixel.gif" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/pixel.gif" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz ML 350</strong></h6>
                     <h6></h6>
@@ -1644,7 +1648,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mini Cooper Hardtop Base</strong></h6>
                     <h6></h6>
@@ -1654,7 +1658,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -1664,7 +1668,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -1674,7 +1678,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -1684,7 +1688,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -1930,7 +1934,7 @@ $(document).ready(function()
             <div class="carasouel-slider3">
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz E350 Bluetech</strong></h6>
                     <h6></h6>
@@ -1940,7 +1944,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW B7 Alpina</strong></h6>
                     <h6></h6>
@@ -1950,7 +1954,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Jaguar XF Portfolio</strong></h6>
                     <h6></h6>
@@ -1960,7 +1964,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lexus GS350</strong></h6>
                     <h6></h6>
@@ -1970,7 +1974,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -1980,7 +1984,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -1990,7 +1994,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz ML 350</strong></h6>
                     <h6></h6>
@@ -1999,7 +2003,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mini Cooper Hardtop Base</strong></h6>
                     <h6></h6>
@@ -2009,7 +2013,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -2019,7 +2023,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -2029,7 +2033,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -2039,7 +2043,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -2049,7 +2053,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz ML 350</strong></h6>
                     <h6></h6>
@@ -2059,7 +2063,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-s-550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/130-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-s-550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/130-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz S 550</strong></h6>
                     <h6></h6>
@@ -2069,7 +2073,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mini-cooper-countryman/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mini-cooper-countryman/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mini Cooper Countryman</strong></h6>
                     <h6></h6>
@@ -2079,7 +2083,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/118-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/118-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -2089,7 +2093,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-e-350-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/129-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-e-350-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/129-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz E 350 Luxury</strong></h6>
                     <h6></h6>
@@ -2099,7 +2103,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6131/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6131/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW X5 xDrive50i</strong></h6>
                     <h6></h6>
@@ -2109,7 +2113,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6130/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/114-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6130/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/114-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 550i</strong></h6>
                     <h6></h6>
@@ -2119,7 +2123,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6129/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/112-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6129/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/112-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 535i</strong></h6>
                     <h6></h6>
@@ -2129,7 +2133,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6128/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6128/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 535i xDrive</strong></h6>
                     <h6></h6>
@@ -2139,7 +2143,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6126/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/116-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6126/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/116-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 535i xDrive Gran Turismo</strong></h6>
                     <h6></h6>
@@ -2149,7 +2153,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6124/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/110-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6124/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/110-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 5 Series 528i xDrive</strong></h6>
                     <h6></h6>
@@ -2159,7 +2163,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6122/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0832-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6122/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0832-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Land Rover Range Rover Sport HSE</strong></h6>
                     <h6></h6>
@@ -2168,7 +2172,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6092/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0985-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6092/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0985-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2007 Land Rover Range Rover Supercharged</strong></h6>
                     <h6></h6>
@@ -2178,7 +2182,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6059/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0746-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6059/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0746-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Infiniti G 37 Sport</strong></h6>
                     <h6></h6>
@@ -2188,7 +2192,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/6029/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0132-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/6029/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0132-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti G 37 Sport</strong></h6>
                     <h6></h6>
@@ -2198,7 +2202,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5997/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0459-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5997/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0459-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti FX 35</strong></h6>
                     <h6></h6>
@@ -2208,7 +2212,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5974/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0647-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5974/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0647-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 GMC Yukon</strong></h6>
                     <h6></h6>
@@ -2218,7 +2222,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0951-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0951-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Audi A8 L</strong></h6>
                     <h6></h6>
@@ -2228,7 +2232,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5894/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0006-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5894/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0006-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A8 L</strong></h6>
                     <h6></h6>
@@ -2238,7 +2242,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5879/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0219-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5879/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0219-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A7 Premium Plus</strong></h6>
                     <h6></h6>
@@ -2248,7 +2252,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5839/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0274-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5839/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0274-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Audi A6</strong></h6>
                     <h6></h6>
@@ -2258,7 +2262,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/5628/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0406-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/5628/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0406-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz ML350</strong></h6>
                     <h6></h6>
@@ -2268,7 +2272,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-550i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00041-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-550i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00041-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 550i</strong></h6>
                     <h6></h6>
@@ -2278,7 +2282,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/used-2004-lamborghini-gallardo/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/lambo-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/used-2004-lamborghini-gallardo/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/lambo-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2007 Lamborghini Gallardo</strong></h6>
                     <h6></h6>
@@ -2288,7 +2292,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4938/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_10-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4938/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_10-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Volkswagen GTI</strong></h6>
                     <h6></h6>
@@ -2298,7 +2302,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4933/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0004-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz CLS 63 AMG</strong></h6>
                     <h6></h6>
@@ -2308,7 +2312,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4930/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_109-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4930/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_109-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lincoln Navigator</strong></h6>
                     <h6></h6>
@@ -2318,7 +2322,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/12-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-Infinity-M37_1-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/12-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-Infinity-M37_1-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti M37</strong></h6>
                     <h6></h6>
@@ -2328,7 +2332,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-328i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-BMW-335i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-328i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-BMW-335i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 328i xDrive</strong></h6>
                     <h6></h6>
@@ -2338,7 +2342,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2005-bmw-645ci/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/11-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2005-bmw-645ci/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/11-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2005 BMW 645CI</strong></h6>
                     <h6></h6>
@@ -2348,7 +2352,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4817/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_95-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4817/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_95-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW Alpina B7</strong></h6>
                     <h6></h6>
@@ -2358,7 +2362,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4815/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0187-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4815/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0187-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 Mercedes-Benz CLA 250</strong></h6>
                     <h6></h6>
@@ -2368,7 +2372,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-jaguar-xf-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-jaguar-xf-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Jaguar XF Supercharged</strong></h6>
                     <h6></h6>
@@ -2378,7 +2382,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4613/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/Audi-Q71-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4613/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/Audi-Q71-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Cadillac SRX Luxury</strong></h6>
                     <h6></h6>
@@ -2388,7 +2392,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/4604/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/4604/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0002-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2009 Mercedes-Benz ML550</strong></h6>
                     <h6></h6>
@@ -2398,7 +2402,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0451-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0451-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A7</strong></h6>
                     <h6></h6>
@@ -2408,7 +2412,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/12-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/12-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/12-audi-a7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/12-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi A7</strong></h6>
                     <h6></h6>
@@ -2418,7 +2422,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/audi-q7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/Audi-Q7-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/audi-q7/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/Audi-Q7-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Audi Q7 S</strong></h6>
                     <h6></h6>
@@ -2428,7 +2432,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-audi-q5/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2013-Audi-Q5-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-audi-q5/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2013-Audi-Q5-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Audi Q5 Premium</strong></h6>
                     <h6></h6>
@@ -2438,7 +2442,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-sl-class-sl550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/1_28-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-sl-class-sl550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/1_28-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz SL550</strong></h6>
                     <h6></h6>
@@ -2448,7 +2452,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-Infinity-M37_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-infiniti-m37/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-Infinity-M37_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti M37</strong></h6>
                     <h6></h6>
@@ -2458,7 +2462,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-x6-m/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0139-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-x6-m/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0139-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW X6M</strong></h6>
                     <h6></h6>
@@ -2468,7 +2472,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2003-bmw-3-series-335i-convertible/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2008-BMW-3-series-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2003-bmw-3-series-335i-convertible/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2008-BMW-3-series-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2008 BMW 335i Convertible</strong></h6>
                     <h6></h6>
@@ -2478,7 +2482,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-audi-s5-prestige/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2010-Audi-S5-convertible-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-audi-s5-prestige/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2010-Audi-S5-convertible-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Audi S5 Prestige</strong></h6>
                     <h6></h6>
@@ -2488,7 +2492,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-mercedes-benz-s-class-s550-sports/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-mercedes-benz-s-class-s550-sports/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00712-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Mercedes-Benz S-Class S550 Sports</strong></h6>
                     <h6></h6>
@@ -2498,7 +2502,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2009-suzuki-gsx1300r-hayabusa/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2009-Suzuki-GSX1300R-1-549b54c9c248a-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2009-suzuki-gsx1300r-hayabusa/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2009-Suzuki-GSX1300R-1-549b54c9c248a-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2009 Suzuki GSX1300R Hayabusa</strong></h6>
                     <h6></h6>
@@ -2508,7 +2512,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2005-vespa-px150-scooter/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_04731-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2005-vespa-px150-scooter/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_04731-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2005 Vespa PX150 Scooter</strong></h6>
                     <h6></h6>
@@ -2518,7 +2522,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-s65-amg/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00043-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-s65-amg/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00043-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz S65 AMG</strong></h6>
                     <h6></h6>
@@ -2528,7 +2532,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-cls550-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-CLS550-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-cls550-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-CLS550-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz CLS550 Sport</strong></h6>
                     <h6></h6>
@@ -2538,7 +2542,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-lexus-is-f/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/213-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-lexus-is-f/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/213-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Lexus IS F</strong></h6>
                     <h6></h6>
@@ -2548,7 +2552,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-lexus-is-250c-f-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_08932-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-lexus-is-250c-f-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_08932-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lexus IS 250C F Sport</strong></h6>
                     <h6></h6>
@@ -2558,7 +2562,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-lexus-hs250-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2010-Lexus-250H-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-lexus-hs250-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2010-Lexus-250H-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Lexus HS250 Hybrid</strong></h6>
                     <h6></h6>
@@ -2568,7 +2572,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2008-lexus-gs-450-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2008-Lexus-GS450h-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2008-lexus-gs-450-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2008-Lexus-GS450h-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2008 Lexus GS 450 Hybrid</strong></h6>
                     <h6></h6>
@@ -2578,7 +2582,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-land-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-land-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Land Rover Sport Supercharged</strong></h6>
                     <h6></h6>
@@ -2588,7 +2592,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2009-land-rover-range-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2009-land-rover-range-rover-sport-supercharged/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Land-Rover-Range-Rover-Sport-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2009 Land Rover Range Rover Sport Supercharged</strong></h6>
                     <h6></h6>
@@ -2598,7 +2602,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-land-rover-range-rover-hse-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Land-Rover-Blue-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-land-rover-range-rover-hse-luxury/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Land-Rover-Blue-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Land Rover Range Rover HSE Luxury</strong></h6>
                     <h6></h6>
@@ -2608,7 +2612,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2014-infiniti-q50-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2014-Infinity-Q50s-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2014-infiniti-q50-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2014-Infinity-Q50s-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 Infiniti Q50 Premium</strong></h6>
                     <h6></h6>
@@ -2618,7 +2622,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-infiniti-m35-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-Infinity-M35-Hybrid-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-infiniti-m35-hybrid/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-Infinity-M35-Hybrid-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Infiniti M35 Hybrid</strong></h6>
                     <h6></h6>
@@ -2628,7 +2632,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-infiniti-g37-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-Infinity-G37-Sedan-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-infiniti-g37-sport/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-Infinity-G37-Sedan-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Infiniti G37 Sport</strong></h6>
                     <h6></h6>
@@ -2638,7 +2642,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2005-hummer-h2-suv/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/Hammer-H2-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2005-hummer-h2-suv/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/Hammer-H2-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2005 Hummer H2</strong></h6>
                     <h6></h6>
@@ -2648,7 +2652,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-750i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0203-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-750i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0203-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 750i Active Hybrid</strong></h6>
                     <h6></h6>
@@ -2658,7 +2662,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/11-jaguar-xjl/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_07881-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/11-jaguar-xjl/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_07881-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Jaguar XJ XJL</strong></h6>
                     <h6></h6>
@@ -2668,7 +2672,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/3293/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_04091-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/3293/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_04091-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Lexus LS 460</strong></h6>
                     <h6></h6>
@@ -2678,7 +2682,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-x5-xdrive35i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/BMW-X5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-x5-xdrive35i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/BMW-X5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW X5 xDrive35i</strong></h6>
                     <h6></h6>
@@ -2688,7 +2692,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-6-series-650i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_06261-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-6-series-650i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_06261-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 650 GranCoupe</strong></h6>
                     <h6></h6>
@@ -2698,7 +2702,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-5-series-535i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2012-BMW-535i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-5-series-535i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2012-BMW-535i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 535i</strong></h6>
                     <h6></h6>
@@ -2708,7 +2712,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-bmw-5-series-528i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_09083-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-bmw-5-series-528i-xdrive/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_09083-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 528i xDrive</strong></h6>
                     <h6></h6>
@@ -2718,7 +2722,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-bmw-3-series-335i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2011-BMW-335i-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-bmw-3-series-335i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2011-BMW-335i-167x119_002-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 335i</strong></h6>
                     <h6></h6>
@@ -2728,7 +2732,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-3-series-328i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2013-BMW-328i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-3-series-328i/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2013-BMW-328i-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 328i</strong></h6>
                     <h6></h6>
@@ -2738,7 +2742,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2010-audi-a5-2-0t-quattro-tiptronic/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/2010-Audi-A5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2010-audi-a5-2-0t-quattro-tiptronic/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/2010-Audi-A5-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2010 Audi A5 2.0T Quattro Tiptronic</strong></h6>
                     <h6></h6>
@@ -2748,7 +2752,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2876/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0956-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2876/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0956-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 MINI Clubman S</strong></h6>
                     <h6></h6>
@@ -2758,7 +2762,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2820/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_05723-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2820/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_05723-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 BMW 335i xDrive</strong></h6>
                     <h6></h6>
@@ -2768,7 +2772,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2749/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_02382-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2749/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_02382-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW 328i xDrive</strong></h6>
                     <h6></h6>
@@ -2778,7 +2782,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2704/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_04201-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2704/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_04201-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz CLS550</strong></h6>
                     <h6></h6>
@@ -2788,7 +2792,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-jaguar-xf-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0275_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-jaguar-xf-premium/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0275_1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Jaguar XF Premium</strong></h6>
                     <h6></h6>
@@ -2798,7 +2802,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2595/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_05902-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2595/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_05902-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 640i Coupe</strong></h6>
                     <h6></h6>
@@ -2808,7 +2812,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2584/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/aston-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2584/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/aston-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Aston Martin DBS</strong></h6>
                     <h6></h6>
@@ -2818,7 +2822,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-640i-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_02833-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-640i-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_02833-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 640 GranCoupe</strong></h6>
                     <h6></h6>
@@ -2828,7 +2832,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-ml350-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00031-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-ml350-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00031-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz ML350</strong></h6>
                     <h6></h6>
@@ -2838,7 +2842,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0737-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0737-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz E350</strong></h6>
                     <h6></h6>
@@ -2848,7 +2852,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2014-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0794-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2014-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0794-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2014 Mercedes-Benz E350</strong></h6>
                     <h6></h6>
@@ -2858,7 +2862,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz S550</strong></h6>
                     <h6></h6>
@@ -2868,7 +2872,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-c250-coupe-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0645-copy-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-c250-coupe-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0645-copy-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz C250 Coupe</strong></h6>
                     <h6></h6>
@@ -2878,7 +2882,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-bmw-750-li/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0485-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-bmw-750-li/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0485-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 BMW 750 Li</strong></h6>
                     <h6></h6>
@@ -2888,7 +2892,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0419-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz E350</strong></h6>
                     <h6></h6>
@@ -2898,7 +2902,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0597-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0597-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C250</strong></h6>
                     <h6></h6>
@@ -2908,7 +2912,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2011-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0767-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2011-mercedes-benz-s550/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0767-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 Mercedes-Benz S550</strong></h6>
                     <h6></h6>
@@ -2918,7 +2922,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/mercedes-cls550-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0581-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/mercedes-cls550-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0581-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz CLS550 Sport</strong></h6>
                     <h6></h6>
@@ -2928,7 +2932,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-i650/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/BMW-650i-silver-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-i650/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/BMW-650i-silver-opt-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 BMW 650i</strong></h6>
                     <h6></h6>
@@ -2938,7 +2942,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/maserati/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0739-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/maserati/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0739-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2008 Maserati Quattroporte Executive GT</strong></h6>
                     <h6></h6>
@@ -2948,7 +2952,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/lexus-rx350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0959-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/lexus-rx350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0959-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Lexus RX350</strong></h6>
                     <h6></h6>
@@ -2958,7 +2962,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_01901-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_01901-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz E350 Bluetech</strong></h6>
                     <h6></h6>
@@ -2968,7 +2972,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-b7-alpha/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0810-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW B7 Alpina</strong></h6>
                     <h6></h6>
@@ -2978,7 +2982,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_02441-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-jaguar-xf/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_02441-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Jaguar XF Portfolio</strong></h6>
                     <h6></h6>
@@ -2988,7 +2992,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-lexus-gs350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_00221-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Lexus GS350</strong></h6>
                     <h6></h6>
@@ -2998,7 +3002,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-white/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0544-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -3008,7 +3012,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_05411-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/bmw-m3-black/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_05411-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2011 BMW M3</strong></h6>
                     <h6></h6>
@@ -3018,7 +3022,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/pixel.gif" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-ml-350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/pixel.gif" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz ML 350</strong></h6>
                     <h6></h6>
@@ -3027,7 +3031,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mini-cooper-hardtop-base/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/DSC_0721-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mini Cooper Hardtop Base</strong></h6>
                     <h6></h6>
@@ -3037,7 +3041,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -3047,7 +3051,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-3/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/120-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -3057,7 +3061,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2013-mercedes-benz-c-250/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/127-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2013 Mercedes-Benz C 250</strong></h6>
                     <h6></h6>
@@ -3067,7 +3071,7 @@ $(document).ready(function()
               </div>
               <div class="slide">
                 <div class="car-block">
-                  <div class="img-flex"><a href="images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="resources/autolinx/images/2012-mercedes-benz-c-250-sport-2/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="resources/autolinx/images/no-image1-167x119.jpg" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>2012 Mercedes-Benz C 250 Sport</strong></h6>
                     <h6></h6>
@@ -3245,7 +3249,7 @@ $(document).ready(function()
 <!--welcome-wrap ends-->
 
 <div class="row parallax_parent margin-top-30">
-  <div class="parallax_scroll clearfix" data-velocity="-.5" data-offset="-300" data-no-repeat="true" data-image="images/parallax2.jpg">
+  <div class="parallax_scroll clearfix" data-velocity="-.5" data-offset="-300" data-no-repeat="true" data-image="resources/autolinx/images/parallax2.jpg">
     <div class="overlay">
       <div class="container">
         <div class="row">
@@ -3345,7 +3349,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="images/autolinxwhite11.png" alt></a> </div>
+        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="resources/autolinx/images/autolinxwhite11.png" alt></a> </div>
         <p>Website developed by <a href="#">Glider, LLC</a> with partnership of Vivid Concept, Inc.</p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
