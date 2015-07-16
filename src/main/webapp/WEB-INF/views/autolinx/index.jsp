@@ -40,6 +40,9 @@
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/wow.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key&amp;sensor=false"></script>
+<script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() 
@@ -116,8 +119,8 @@ $(document).ready(function()
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
-              <li class="active"><a href="index.html">Home</a></li>
-              <li><a href="inventory-wide-fullwidth.html">Inventory</a></li>
+              <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
+              <li><a href="inventory">Inventory</a></li>
               <li><a href="warranty.html">Warranty</a></li>
               <li><a href="about.html">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
