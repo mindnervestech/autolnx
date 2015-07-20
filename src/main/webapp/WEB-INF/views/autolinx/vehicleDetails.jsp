@@ -89,7 +89,7 @@
 
           }
           else {
-              alert("Geocode was not successful for the following reason: " + status);
+              //alert("Geocode was not successful for the following reason: " + status);
           }
       });
     }
@@ -419,10 +419,7 @@ $(document).ready(function()
 	                                <div class="features-holder">
 <h4>Style and Comfort Features</h4>
 <ul>
-<c:set var="styles" value="${fn:split(vehicle.styleFeatures,',')}"/>
-<c:forEach var="row" items="${styles}">
-     <li>${row}</li>
-</c:forEach>
+
 </ul>
 </div>
 
@@ -430,19 +427,13 @@ $(document).ready(function()
 <div class="features-holder">
 <h4>Safety Features</h4>
 <ul>
-<c:set var="safety" value="${fn:split(vehicle.safetyFeatures,',')}"/>
-<c:forEach var="row" items="${safety}">
-     <li>${row}</li>
-</c:forEach>
+
 </ul>
 </div>
 <div class="features-holder">
 <h4>Audio and Navigation Features</h4>
 <ul>
-<c:set var="audioNav" value="${fn:split(vehicle.audioNavFeatures,',')}"/>
-<c:forEach var="row" items="${audioNav}">
-     <li>${row}</li>
-</c:forEach>
+
 </ul>
 </div>
 
@@ -450,10 +441,7 @@ $(document).ready(function()
 <div class="features-holder">
 <h4>Performance Features</h4>
 <ul>
-<c:set var="performance" value="${fn:split(vehicle.performanceFeatures,',')}"/>
-<c:forEach var="row" items="${performance}">
-     <li>${row}</li>
-</c:forEach>
+
 </ul>
 </div>
 
@@ -461,10 +449,7 @@ $(document).ready(function()
 <div class="features-holder">
 <h4>Other Car Features</h4>
 <ul>
-<c:set var="other" value="${fn:split(vehicle.otherCarFeatures,',')}"/>
-<c:forEach var="row" items="${other}">
-     <li>${row}</li>
-</c:forEach>
+
 </ul>
 </div>
 
@@ -560,7 +545,7 @@ $(document).ready(function()
 	                        <div class="table-responsive">
 	                            <table class="table">
 	                                <tbody>
-	                                	<tr><td>Year: </td><td>${vehicle.year}</td></tr><tr><td>Make: </td><td>${vehicle.make}</td></tr><tr><td>Model: </td><td>${vehicle.model}</td></tr><tr><td>Body Style: </td><td>${vehicle.bodyStyle}</td></tr><tr><td>Mileage: </td><td>${vehicle.mileage}</td></tr><tr><td>Transmission: </td><td>${vehicle.transmission}</td></tr><tr><td>Condition: </td><td>${vehicle.condition}</td></tr><tr><td>Location:</td><td>${vehicle.location}</td></tr><tr><td>Price: </td><td>${vehicle.price}</td></tr><tr><td>Drivetrain: </td><td>${vehicle.drivetrain}</td></tr><tr><td>Engine: </td><td>${vehicle.engine}</td></tr><tr><td>Exterior Color: </td><td>${vehicle.extColor}</td></tr><tr><td>Interior Color: </td><td>${vehicle.intColor}</td></tr><tr><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr><tr><td>VIN Number: </td><td>${vehicle.vin}</td></tr>	                                </tbody>
+	                                	<tr><td>Year: </td><td>${vehicle.year}</td></tr><tr><td>Make: </td><td>${vehicle.make}</td></tr><tr><td>Model: </td><td>${vehicle.model}</td></tr><tr><td>Body Style: </td><td>${vehicle.bodyStyle}</td></tr><tr><td>Mileage: </td><td>${vehicle.mileage}</td></tr><tr><td>Doors: </td><td>${vehicle.doors}</td></tr><tr><td>Seats: </td><td>${vehicle.seats}</td></tr><tr><td>Drivetrain: </td><td>${vehicle.drivetrain}</td></tr><tr><td>Engine: </td><td>${vehicle.engine}</td></tr><tr><td>Transmission: </td><td>${vehicle.transmission}</td></tr><tr><td>Brakes: </td><td>${vehicle.brakes}</td></tr><tr><td>Horse Power: </td><td>${vehicle.horsePower}</td></tr><tr><td>Acceleration: </td><td>${vehicle.acceleration}</td></tr><tr><td>Exterior Color: </td><td>${vehicle.extColor}</td></tr><tr><td>Interior Color: </td><td>${vehicle.intColor}</td></tr><tr><td>Location:</td><td>${vehicle.location}</td></tr><tr><td>Price: </td><td>${vehicle.price}</td></tr><tr><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr><tr><td>VIN Number: </td><td>${vehicle.vin}</td></tr>	                                </tbody>
 	                            </table>
 	                        </div>
 	                    </div>
