@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -83,8 +84,8 @@ $(document).ready(function()
 </script>
 
 </head>
-
-<body ng-controller="InventoryController">
+  
+<body ng-controller="InventoryController" ng-init='initFunction(${vehicle.year},"${vehicle.make}","${vehicle.model}","${vehicle.bodyStyle}","${vehicle.fuelType}")'>
 <!--Header Start-->
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
   <section class="toolbar">
@@ -120,7 +121,7 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li class="active"><a href="inventory">Inventory</a></li>
+              <li class="active"><a href=findVehicle1>Inventory</a></li>
               <li><a href="warranty.html">Warranty</a></li>
               <li><a href="about.html">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
@@ -167,7 +168,7 @@ $(document).ready(function()
       <div class="listing-view margin-bottom-20">
         <div class="row">   
         	
-          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 padding-none"> <span class="ribbon"><strong>103 Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span> </div>
+          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 padding-none"> <span class="ribbon"><strong>{{VehiclesCount}} Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span> </div>
           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-none pull-right select_view"> <span class="align-right">Select View:</span>
             <ul class="page-view nav nav-tabs">
               <li><a ng-click="showListView()"><i class="fa fa-align-left"></i></a></li>
@@ -184,263 +185,91 @@ $(document).ready(function()
       <form method="post" action="#" class="listing_sort">
         <div class="select-wrapper listing_select clearfix margin-top-none margin-bottom-15">
           <div class="my-dropdown years-dropdown">
-            <select name="year" class="css-dropdowns" tabindex="1" >
+         <select name="year" class="css-dropdowns" ng-model="year" ng-change="selectYear()" tabindex="1" >
               <option value="">All Years</option>
-              <option>1977</option>
-              <option>2004</option>
-              <option>2005</option>
-              <option>2007</option>
-              <option>2008</option>
-              <option>2009</option>
-              <option>2010</option>
-              <option>2011</option>
-              <option>2012</option>
-              <option>2013</option>
-              <option>2014</option>
-              <option>2015</option>
+              <option value="1977">1977</option>
+              <option value="2004">2004</option>
+              <option value="2005">2005</option>
+              <option value="2007">2007</option>
+              <option value="2008">2008</option>
+              <option value="2009">2009</option>
+              <option value="2010">2010</option>
+              <option value="2011">2011</option>
+              <option value="2012">2012</option>
+              <option value="2013">2013</option>
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
             </select>
           </div>
+        
           <div class="my-dropdown makers-dropdown">
-            <select name="make" class="css-dropdowns" tabindex="1" >
-              <option value="">All Makes</option>
-              <option>Aston Martin</option>
-              <option>Audi</option>
-              <option>BMW</option>
-              <option>Cadillac</option>
-              <option>Chevrolet</option>
-              <option>Ferrari</option>
-              <option>Ford</option>
-              <option>GMC</option>
-              <option>Honda</option>
-              <option>Hummer</option>
-              <option>Infiniti</option>
-              <option>Jaguar</option>
-              <option>Lamborghini</option>
-              <option>Land Rover</option>
-              <option>Lexus</option>
-              <option>Lincoln</option>
-              <option>MINI</option>
-              <option>Maserati</option>
-              <option>Mazda</option>
-              <option>Mercedes-Benz</option>
-              <option>Mitsubishi</option>
-              <option>Nissan</option>
-              <option>Porsche</option>
-              <option>Suzuki</option>
-              <option>Toyota</option>
-              <option>Vespa</option>
-              <option>Volkswagen</option>
-            </select>
-          </div>
+                    <select name="make" ng-model="make" ng-change="selectMake()" class="css-dropdowns" tabindex="1" >
+                    	<option value="">All Makes</option>
+                        <c:forEach var="option" items='${vehicleListMake}'>
+								<option value='${option}'>${option}</option>
+						</c:forEach>
+                     
+                    </select>
+                  </div>
+      
           <div class="my-dropdown models-dropdown">
-            <select name="model" class="css-dropdowns" tabindex="1" >
-              <option value="">All Models</option>
-              <option>1-Series 128i </option>
-              <option>128i</option>
-              <option>3 Touring</option>
-              <option>328i</option>
-              <option>328i xDrive</option>
-              <option>335i</option>
-              <option>335i xDrive</option>
-              <option>5-series 528i xDrive</option>
-              <option>528i</option>
-              <option>535i</option>
-              <option>535i xDrive</option>
-              <option>550i</option>
-              <option>640i</option>
-              <option>645Ci</option>
-              <option>650i</option>
-              <option>740i</option>
-              <option>750Li</option>
-              <option>750i</option>
-              <option>A5</option>
-              <option>A5 2.0T Quattro Tiptronic</option>
-              <option>A6</option>
-              <option>A6 3.0T Quattro Prestige</option>
-              <option>A7</option>
-              <option>A8</option>
-              <option>ALPINA B7</option>
-              <option>AMG S65</option>
-              <option>Accord</option>
-              <option>Accord EX-L V-6</option>
-              <option>ActiveHybrid 7</option>
-              <option>Alpina B7</option>
-              <option>Boxster</option>
-              <option>C-Class C250</option>
-              <option>C250 Sport</option>
-              <option>CLA250</option>
-              <option>CLS -Class CLS550</option>
-              <option>CLS550</option>
-              <option>CLS63 AMG</option>
-              <option>Camaro</option>
-              <option>Carrera</option>
-              <option>Cayenne</option>
-              <option>Clubman S</option>
-              <option>Cooper Clubman</option>
-              <option>Cooper Countryman</option>
-              <option>Cooper Coupe</option>
-              <option>Cooper Hardtop Base</option>
-              <option>Corvette Stingray</option>
-              <option>Corvette Z16</option>
-              <option>Coupe John Cooper Works</option>
-              <option>DBS Convertible</option>
-              <option>E-Class E350</option>
-              <option>E350</option>
-              <option>E350 BlueTEC Diesel</option>
-              <option>F355 Spider</option>
-              <option>FJ Cruiser</option>
-              <option>FX35 Limited Edition</option>
-              <option>Fusion</option>
-              <option>Fusion I4 S</option>
-              <option>G37</option>
-              <option>G37 Journey</option>
-              <option>G37 Sport</option>
-              <option>G37X</option>
-              <option>GL-Class GL450</option>
-              <option>GS 350</option>
-              <option>GS 450</option>
-              <option>GS 450H</option>
-              <option>GSX1300R Hayabusa</option>
-              <option>GT-R Premium</option>
-              <option>GTI</option>
-              <option>GTS</option>
-              <option>Gallardo</option>
-              <option>Gallardo Coupe</option>
-              <option>H2</option>
-              <option>H2 SUV</option>
-              <option>H3 Sport Utility</option>
-              <option>HS 250h</option>
-              <option>HSE </option>
-              <option>IS 250</option>
-              <option>IS 250c</option>
-              <option>IS F</option>
-              <option>IS250C F Sport</option>
-              <option>LS 460</option>
-              <option>Lancer Evolution MR</option>
-              <option>M Class ML350</option>
-              <option>M Hybrid</option>
-              <option>M3</option>
-              <option>M35 Hybrid</option>
-              <option>M37</option>
-              <option>ML350</option>
-              <option>ML350 4MATIC</option>
-              <option>ML550</option>
-              <option>Macan</option>
-              <option>Murano AWD SL</option>
-              <option>Murano SL</option>
-              <option>Mustang Saleen</option>
-              <option>Mustang Saleen S281</option>
-              <option>Navigator</option>
-              <option>PX150</option>
-              <option>Panamera S</option>
-              <option>Q5</option>
-              <option>Q50</option>
-              <option>Q50 Premium</option>
-              <option>Q7</option>
-              <option>Quattroporte Executive GT</option>
-              <option>RX 350</option>
-              <option>Range Rover</option>
-              <option>Range Rover HSE</option>
-              <option>Range Rover Sport</option>
-              <option>Range Rover Sport HSE</option>
-              <option>Range Rover Sport Supercharged</option>
-              <option>S-Class S550</option>
-              <option>S5</option>
-              <option>S5 4.2 Premium Plus</option>
-              <option>S65 AMG</option>
-              <option>SL-Class SL550</option>
-              <option>SRX</option>
-              <option>Supercharged</option>
-              <option>Volante</option>
-              <option>WMWZB3C53CWM03656</option>
-              <option>X5</option>
-              <option>X6</option>
-              <option>X6 M</option>
-              <option>XF</option>
-              <option>XF</option>
-              <option>XJ</option>
-              <option>XJL</option>
-              <option>Yukon</option>
+            <select name="model" class="css-dropdowns" ng-model="model" ng-change="selectModel()">
+               <option value="">All Model</option>
+                        <c:forEach var="option" items='${vehicleListModel}'>
+							<option value='${option}'>${option}</option>
+						</c:forEach> 
             </select>
           </div>
           <div class="my-dropdown fuel-dropdown">
-            <select name="fuel" class="css-dropdowns" tabindex="1" >
+            <select name="fuel" ng-model="fuel" ng-change="selectFuel()"  class="css-dropdowns" tabindex="1" >
               <option value="">All Fuel Type</option>
-              <option>All Fuel Type</option>
-              <option>Eco-Friendly</option>
-              <option>Electric</option>
-              <option>Flexible-Fuel</option>
-              <option>Gas</option>
-              <option>Hybrid</option>
-              <option>premium unleaded (required)</option>
+              <option value="Eco-Friendly">Eco-Friendly</option>
+              <option value="Electric">Electric</option>
+              <option value="Flexible-Fuel">Flexible-Fuel</option>
+              <option value="Gas">Gas</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="premium unleaded (required)">premium unleaded (required)</option>
             </select>
           </div>
           <div class="my-dropdown body-styles-dropdown">
-            <select name="body_style" class="css-dropdowns" tabindex="1" >
+            <select name="bodyStyle" ng-model="bodyStyle" ng-change="selectBodyStyle()" class="css-dropdowns" tabindex="1" >
               <option value="">All Body Styles</option>
-              <option>2dr Hatchback</option>
-              <option>4dr Hatchback</option>
-              <option>Convertible</option>
-              <option> Coupe</option>
-              <option>Hatchback</option>
-              <option>SUV</option>
-              <option>Sedan</option>
-              <option>Sports Utility Vehicle</option>
+              <option value="2dr Hatchback">2dr Hatchback</option>
+              <option value="4dr Hatchback">4dr Hatchback</option>
+              <option value="Convertible">Convertible</option>
+              <option value="Coupe">Coupe</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="SUV">SUV</option>
+              <option value="Sedan">Sedan</option>
+              <option value="Sports Utility Vehicle">Sports Utility Vehicle</option>
             </select>
           </div>
           <div class="my-dropdown mileage-dropdown">
-            <select name="mileage" class="css-dropdowns" tabindex="1" >
+            <select name="mileage" ng-model="mileage" ng-change="selectMileage()" class="css-dropdowns" tabindex="1" >
               <option value="">All Mileage</option>
-              <option>&lt; 10000</option>
-              <option>&lt; 20000</option>
-              <option>&lt; 30000</option>
-              <option>&lt; 40000</option>
-              <option>&lt; 50000</option>
-              <option>&lt; 60000</option>
-              <option>&lt; 70000</option>
-              <option>&lt; 80000</option>
-              <option>&lt; 90000</option>
-              <option> &lt; 100000</option>
+              <option value="10000">&lt; 10000</option>
+              <option value="20000">&lt; 20000</option>
+              <option value="30000">&lt; 30000</option>
+              <option value="40000">&lt; 40000</option>
+              <option value="50000">&lt; 50000</option>
+              <option value="60000">&lt; 60000</option>
+              <option value="70000">&lt; 70000</option>
+              <option value="80000">&lt; 80000</option>
+              <option value="90000">&lt; 90000</option>
+              <option value="100000"> &lt; 100000</option>
             </select>
           </div>
-          <div class="my-dropdown transmissions-dropdown">
-            <select name="transmission" class="css-dropdowns" tabindex="1" >
-              <option value="">All Transmissions</option>
-              <option>4-Speed Automatic</option>
-              <option>4-Speed Manual</option>
-              <option>5-Speed Automatic</option>
-              <option>5-Speed Manual</option>
-              <option> 6</option>
-              <option>6-Speed Automatic</option>
-              <option>6-Speed Manual</option>
-              <option>6-Speed Semi-Auto</option>
-              <option> 7-Speed Automatic</option>
-              <option> 7-Speed Manual</option>
-              <option> 7-Speed PDK</option>
-              <option>8-Speed Automatic</option>
-              <option> 8-Speed Tiptronic</option>
-              <option> AUTOMATIC</option>
-              <option> CVT</option>
-              <option> MANUAL</option>
-              <option>Manual</option>
-              <option>SMG</option>
+      	  <div class="my-dropdown prices-dropdown" style="width: 96px !important;">
+            <div> <span><strong>Sort By Price:</strong></span></div>
+         </div> 
+          <div class="my-dropdown prices-dropdown" style="width: 100px !important;">
+            <select name="price" ng-model="price" ng-change="selectPrice()" class="css-dropdowns" tabindex="1" >
+			  <option value="lowToHigh">Low To High</option>
+              <option value="highToLow">High To Low</option>
             </select>
           </div>
-          <div class="my-dropdown conditions-dropdown">
-            <select name="conditions" class="css-dropdowns" tabindex="1" >
-              <option value="">All Conditions</option>
-              <option>Brand New</option>
-              <option>Slightly Used</option>
-              <option>USED</option>
-            </select>
-          </div>
-          <div class="my-dropdown location-dropdown">
-            <select name="location" class="css-dropdowns" tabindex="1" >
-              <option value="">All Locations</option>
-              <option>Vallejo</option>
-            </select>
-          </div>
-          <div class="my-dropdown prices-dropdown">
+         
+          <!-- <div class="my-dropdown prices-dropdown">
             <select name="price" class="css-dropdowns" tabindex="1" >
               <option value="">All Prices</option>
               <option>&lt; $10000</option>
@@ -454,14 +283,14 @@ $(document).ready(function()
               <option>&lt; $90000</option>
               <option> &lt; $100000</option>
             </select>
-          </div>
-          <div class="my-dropdown conditions-dropdown">
+          </div> -->
+         <!--  <div class="my-dropdown conditions-dropdown">
             <select name="price" class="css-dropdowns" tabindex="1" >
               <option value="">Car Status</option>
               <option>Must Go!</option>
               <option>New Arrivals</option>
             </select>
-          </div>
+          </div> -->
         </div>
         <div class="select-wrapper pagination clearfix margin-top-none margin-bottom-15">
           <div class="row">
@@ -471,14 +300,13 @@ $(document).ready(function()
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
               <ul class="form-links top_buttons">
-                <li><a href="#" class="gradient_button">Reset Filters</a></li>
+                <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
               </ul>
             </div>
           </div>
         </div>
       </form>
       <div class="clearfix"></div>
-      
       <div class="row" ng-show="listView">
         <div class="inventory-wide-sidebar-left">
           <div class="inventory-wide-sidebar-left col-md-12  car_listings">

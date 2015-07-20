@@ -1,13 +1,21 @@
 package com.mnt.glivr;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.mnt.views.SiteContentVM;
 import com.mnt.views.VehicleImage;
 import com.mnt.views.VehicleVM;
 
@@ -29,7 +37,7 @@ public class ClientService {
 		}
 		return sliderUrls;
 	}
-
+	
 	public List<String> getFeaturedImages() {
 		int userId = 336920057;
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where user_id = '"+userId+"' ");
@@ -41,10 +49,88 @@ public class ClientService {
 		return featuredUrls;
 	}
 	
-	public List<VehicleVM> getVehicles(int start) {
+	public Map getAllMakes() {
+		int userId = 336920057;
+		List<String> vehicleListMake = new ArrayList<String>();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where user_id = '"+userId+"'");
+			
+		for(Map map : rows) {
+		
+			vehicleListMake.add((String) map.get("make"));
+		}
+		
+		List<String> vehicleListModel = new ArrayList<String>();
+		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT model FROM vehicle where user_id = '"+userId+"'");
+		
+		for(Map map : rows1) {
+			vehicleListModel.add((String) map.get("model"));
+		}
+		
+		Map<String, Object> mapAll = new HashMap<String, Object>();
+		mapAll.put("make", vehicleListMake);
+		mapAll.put("model", vehicleListModel);
+		
+		return mapAll;
+	}
+	
+	public List<String> getAllVehicleMakes() {
+		int userId = 336920057;
+		List<String> vehicleListMake = new ArrayList<String>();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where user_id = '"+userId+"'");
+			
+		for(Map map : rows) {
+		
+			vehicleListMake.add((String) map.get("make"));
+		}
+		return vehicleListMake;
+	}
+	
+	
+	public SiteContentVM getSitContent() {
+		int userId = 336920057;
+		SiteContentVM sContentVM = new SiteContentVM();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM site_content where user_id = '"+userId+"'");
+		for(Map map : rows) {
+			sContentVM.id = (Long) map.get("id");
+			sContentVM.heading = (String) map.get("heading");
+			String[] head = sContentVM.heading.split(" ");
+			sContentVM.heading1 = head[0];
+			sContentVM.heading2	= head[1] + " " + head[2];	
+			sContentVM.desc_heading = (String) map.get("desc_heading");
+			String[] desc = sContentVM.desc_heading.split(" ");
+			sContentVM.desc_heading1 = desc[0];
+			sContentVM.desc_heading2 = desc[1] + " " + desc[2];
+			String descript = (String) map.get("description");
+			String firstLetter = descript.substring(0,1);
+			sContentVM.descriptionFirstChar = firstLetter;
+			sContentVM.description = descript.substring(1, descript.length() - 1);
+			
+			sContentVM.userId = userId;
+		}
+		return sContentVM;
+		
+	}
+	
+	public List<String> getAllVehicleModel() {
+		int userId = 336920057;
+		List<String> vehicleListModel = new ArrayList<String>();
+		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT model FROM vehicle where user_id = '"+userId+"'");
+		
+		for(Map map : rows1) {
+			vehicleListModel.add((String) map.get("model"));
+		}
+		return vehicleListModel;
+	}
+	
+	public List<VehicleVM> getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort) {
 		int userId = 336920057;
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' limit "+start+",16 ");
+		List<Map<String, Object>> rows = null;
+		if(priceSort.equals("lowToHigh")){
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') ORDER BY price asc limit "+start+",16 ");  
+		}else{
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') ORDER BY price desc limit "+start+",16 ");
+		}
 		for(Map map : rows) {
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
@@ -71,7 +157,39 @@ public class ClientService {
 		
 		return vehicleList;
 	}
-	
+	public List<VehicleVM> getSimilarVehicleDetails(String vin) {
+		int userId = 336920057;
+		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
+		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and vin= '"+vin+"' ");
+		
+ 		List<Map<String, Object>> similarData = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and year= '"+(String) row.get(0).get("year")+"' and make='"+(String) row.get(0).get("make")+"' and body_style = '"+(String) row.get(0).get("body_style")+"'");
+ 		for(Map map : similarData) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+vm.vin+"' and default_image = true");
+			vm.path = (String) vehiclePath.get(0).get("path");
+			
+			vehicleList.add(vm);
+		}
+ 		
+ 		return vehicleList;
+		
+	}	
 	public VehicleVM getVehicleDetails(String vin) {
 		int userId = 336920057;
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and vin= '"+vin+"' ");
@@ -178,5 +296,63 @@ public class ClientService {
 		return vehicleVM;
 		
 	}	
+	
+	
+	public VehicleVM getVehicleInfo(HttpServletRequest request){
+		
+		System.out.println(request.getParameter("model"));
+		VehicleVM vm = new VehicleVM();
+		vm.setModel(request.getParameter("model"));
+		vm.setMake(request.getParameter("make"));
+		vm.setYear(request.getParameter("year"));
+		vm.setBodyStyle(request.getParameter("bodyStyle"));
+		vm.setFuelType(request.getParameter("fuelType"));
+		
+		return vm;
+		
+	}
+	
+	public List<VehicleVM> getRecentVehicles(){
+		
+		int userId = 336920057;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, -30);
+		Date dateBefore30Days = cal.getTime();
+		
+		System.out.println(dateFormat.format(dateBefore30Days));
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and posted_date > '"+dateFormat.format(dateBefore30Days)+"'  ORDER BY price asc");
+		
+		for(Map map : rows) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.model = (String) map.get("model");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+vm.vin+"' and default_image = true");
+			vm.path = (String) vehiclePath.get(0).get("path");
+			
+			vehicleList.add(vm);
+		}
+		
+		return vehicleList;
+		
+	}
 	
 }
