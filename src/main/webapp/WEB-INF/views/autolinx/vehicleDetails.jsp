@@ -418,41 +418,74 @@ $(document).ready(function()
 	                    <div class="tab-content margin-top-15 margin-bottom-20" id="myTabContent">
 	                        <div id="vehicle" class="tab-pane fade in active">                                    
 	                                <div class="features-holder">
-<h4>Style and Comfort Features</h4>
+<h4>Vehicle Overview</h4>
 <ul>
-
+<li><b>Drive Type:</b> ${vehicle.drivetrain}</li>
+<li><b>Fuel Type:</b> ${vehicle.fuelType}</li>
+<li><b>Fuel Tank:</b> ${vehicle.fuelTank}</li>
+<li><b>HeadLights:</b> ${vehicle.headlights}</li>
+<li><b>Mirrors:</b> ${vehicle.mirrors}</li>
+<li><b>Ground Clearance:</b> ${vehicle.groundClearance}</li>
+<li><b>Roof:</b> ${vehicle.roof}</li>
+<li><b>Height:</b> ${vehicle.height}</li>
+<li><b>Length:</b> ${vehicle.length}</li>
+<li><b>Width:</b> ${vehicle.width}</li>
+<li><b>Acceleration:</b> ${vehicle.acceleration}</li>
+<li><b>Seats:</b> ${vehicle.seats}</li>
 </ul>
 </div>
 
 
 <div class="features-holder">
-<h4>Safety Features</h4>
+<h4>Engine, Transmission & Brakes</h4>
 <ul>
-
+<li><b>Engine Type:</b> ${vehicle.engineType}</li>
+<li><b>Cylinders:</b> ${vehicle.cylinders}</li>
+<li><b>Displacement:</b> ${vehicle.displacement}</li>
+<li><b>Cam Type:</b> ${vehicle.camType}</li>
+<li><b>Valves:</b> ${vehicle.valves}</li>
+<li><b>Fuel Type:</b> ${vehicle.fuelType}</li>
+<li><b>Fuel Quality:</b> ${vehicle.fuelQuality}</li>
+<li><b>Max. Horse Power:</b> ${vehicle.horsePower}</li>
+<li><b>Transmission:</b> ${vehicle.transmission}</li>
+<li><b>Gears:</b> ${vehicle.gears}</li>
+<li><b>Brakes:</b> ${vehicle.brakes}</li>
+<li><b>Front Brake Diameter:</b> ${vehicle.frontBrakeDiameter}</li>
+<li><b>Front Brake Type:</b> ${vehicle.frontBrakeType}</li>
+<li><b>Rear Brake Diameter:</b> ${vehicle.rearBrakeDiameter}</li>
+<li><b>Rear Brake Type:</b> ${vehicle.rearBrakeType}</li>
 </ul>
 </div>
 <div class="features-holder">
-<h4>Audio and Navigation Features</h4>
+<h4>Safety</h4>
 <ul>
-
+<li><b>Active Head Restraints:</b> ${vehicle.activeHeadRestraints}</li>
+<li><b>Body Side Reinforcement:</b> ${vehicle.bodySideReinforcements}</li>
+<li><b>Crumple Zones:</b> ${vehicle.crumpleZones}</li>
+<li><b>Impact Absorbing Bumpers:</b> ${vehicle.impactAbsorbingBumpers}</li>
+<li><b>Impact Sensors:</b> ${vehicle.impactSensors}</li>
+<li><b>Parking Sensors:</b> ${vehicle.parkingSensors}</li>
+<li><b>Seatbealts:</b> ${vehicle.seatbelts}</li>
+<li><b>Audi Side Assist:</b> ${vehicle.audiSideAssist}</li>
 </ul>
 </div>
 
 
 <div class="features-holder">
-<h4>Performance Features</h4>
+<h4>Interior & Comfort</h4>
 <ul>
-
+<li><b>Interior Color:</b> ${vehicle.intColor}</li>
+<li><b>Comfort Features:</b> ${vehicle.comfortFeatures}</li>
+<li><b>Power Outlet(s):</b> ${vehicle.powerOutlets}</li>
+<li><b>Power Steering:</b> ${vehicle.powerSteering}</li>
+<li><b>Rear View Camera:</b> ${vehicle.rearViewCamera}</li>
+<li><b>Rear View Monitor:</b> ${vehicle.rearViewMonitor}</li>
+<li><b>Remote Trunk Release:</b> ${vehicle.remoteTrunkRelease}</li>
+<li><b>Steering Wheel:</b> ${vehicle.steeringWheel}</li>
+<li><b>Steering Wheel Mounted Controls:</b> ${vehicle.steeringWheelControls}</li>
 </ul>
 </div>
 
-
-<div class="features-holder">
-<h4>Other Car Features</h4>
-<ul>
-
-</ul>
-</div>
 
 <p>&nbsp;</p>
 	                        </div>
