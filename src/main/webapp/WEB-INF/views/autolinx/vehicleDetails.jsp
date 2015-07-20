@@ -1,11 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en">
+<html lang="en" ng-app="gliderApp">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -265,15 +264,41 @@ $(document).ready(function()
 	                                
 	                	<li class="prev1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.prevVehicle}">Prev Vehicle</a></li>
 	                	                
-	                	                	<li class="request gradient_button"><a class="fancybox_div" href="#request_fancybox_form">Request More Info</a></li>
+	                	           <!--   <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      Modal content
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+</div>    -->
 	                	                
-	                	                	<li class="schedule gradient_button"><a class="fancybox_div" href="#schedule_fancybox_form">Schedule Test Drive</a></li>
+	                	                
+	                	                
+	                	                
+	                	                	<li class="request gradient_button"><a  data-toggle="modal" data-target="#myModal" >Request More Info</a></li>
+	                	                
+	                	                	<li class="schedule gradient_button"><a  data-toggle="modal" data-target="#scheduleTest">Schedule Test Drive</a></li>
 	                	                
 	                	                	<!-- <li class="offer gradient_button"><a class="fancybox_div" href="#offer_fancybox_form">Make an Offer</a></li> -->
 	                	                
 	                	                	<li class="trade gradient_button"><a class="fancybox_div" href="#trade_fancybox_form">Trade-In Appraisal</a></li>
 	                	                
-	                	                	<li class="pdf gradient_button"><a class="generate_pdf" href="">PDF Brochure</a></li>
+	                	                	<li class="pdf gradient_button"><a class="generate_pdf" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0">Carfax Report</a></li>
 	                	                
 	                	                
 	                	                
@@ -828,6 +853,134 @@ $(document).ready(function()
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.selectbox-0.2.js" type="text/javascript"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.mousewheel.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.easing.js"></script>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+     <form name="fome1" action="${pageContext.request.contextPath}/requestMore" method="post">
+      <div class="modal-content" style="width: 367px;margin-left: 182px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Request More Info</h4>
+        </div>
+        <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+        <div class="modal-body">
+           <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="name" style="width: 98px !important;">
+        	 </div>
+        	</div>
+        	 <div class="row"> 
+        	  <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Preferred Contact:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="radio" name="preferred" value="email">Email
+				<input type="radio" name="preferred" value="phone">Phone
+        	 </div> 
+        	 </div>
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="email" style="width: 98px !important;">
+        	 </div>
+        	 </div>
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Phone:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="phone" style="width: 98px !important;">
+        	 </div>
+        	 </div>
+        </div>
+       
+        <div class="modal-footer">
+           <input type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  
+   
+   
+<div class="modal fade" id="scheduleTest" role="dialog">
+    <div class="modal-dialog">
+     <form method="post"  action="${pageContext.request.contextPath}/scheduleTest">
+      <div class="modal-content" style="width: 367px;margin-left: 182px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Request More Info</h4>
+        </div>
+           <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+        <div class="modal-body">
+           <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="name" class="customBorder" style="width: 98px !important;">
+        	 </div>
+        	</div>
+        	 <div class="row"> 
+        	  <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Preferred Contact:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="radio" name="preferred" value="email">Email
+				<input type="radio" name="preferred" value="phone">Phone
+        	 </div> 
+        	 </div>
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="email" style="width: 98px !important;">
+        	 </div>
+        	 </div>
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Phone:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="phone" style="width: 98px !important;">
+        	 </div>
+        	 </div>
+        	 <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Best Day:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="bestDay" style="width: 98px !important;">
+        	 </div>
+        	 </div>
+        	 <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Best Time:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="bestTime" style="width: 98px !important;">
+        	 </div>
+        	 </div>
+        </div>
+       
+        <div class="modal-footer">
+           <input type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+
+
+
 </body>
 </html>
 
@@ -836,4 +989,12 @@ $(document).ready(function()
         width: 765px;
         height: 284px;
       }
+      input[type="radio"], input[type="checkbox"] {
+ 		 position: inherit;
+ 		 left: 0;
+		}
+		 input[type="text"], textarea, textarea[name="msg"], select, div.custom-select, input[type="file"], input[type="email"]{
+  			  border: 1px solid rgb(200, 195, 195) !important;
+  		} 	
+  		  		
     </style>

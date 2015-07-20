@@ -560,7 +560,7 @@ $(document).ready(function()
                 <div class="col-md-6">
                   <div class="my-dropdown make-dropdown">
                       <select name="year" ng-model="year" class="css-dropdowns" tabindex="1" >
-                        <option value="">Min Year</option>
+                        <option value="">Year</option>
                         <option value="2015">2015</option>
                         <option value="2014">2014</option>
                         <option value="2013">2013</option>
@@ -576,9 +576,10 @@ $(document).ready(function()
                       </select>
                      </div>
                 </div> 
-                <div class="my-dropdown fuel-dropdown">
+                <div class="col-md-6">
+                <div class="my-dropdown">
                       <select name="fuelType" ng-model="fuelType" class="css-dropdowns" tabindex="1" >
-                       <option value="">All Fuel Type</option>
+                       <option value="">Fuel Type</option>
             		   <option value="Eco-Friendly">Eco-Friendly</option>
               		   <option value="Electric">Electric</option>
               		   <option value="Flexible-Fuel">Flexible-Fuel</option>
@@ -587,9 +588,10 @@ $(document).ready(function()
               		   <option value="premium unleaded (required)">premium unleaded (required)</option>
                       </select>
                      </div>
+                     </div>
                 </div>
               
-              <div class="select-wrapper clearfix">
+             <!--  <div class="select-wrapper clearfix">
                 <div class="col-md-6">
                   <div class="my-dropdown body-styles-dropdownn">
                     <select name="bodyStyle" ng-model="bodyStyle" class="css-dropdowns" tabindex="1" >
@@ -606,15 +608,30 @@ $(document).ready(function()
                   </div>
                 </div>
                
-              </div>
+              </div> -->
               <div class="select-wrapper clearfix">
                 <div class="col-md-6">
                   <div class="my-dropdown model-dropdown">
                     <select name="model" ng-model="model" class="css-dropdowns" tabindex="1" >
-                    	   <option value="">All Model</option>
+                    	   <option value="">Model</option>
                         <c:forEach var="option" items='${vehicleListModel}'>
 							<option value='${option}'>${option}</option>
 						</c:forEach> 
+                    </select>
+                  </div>
+                </div>
+                 <div class="col-md-6">
+                  <div class="my-dropdown body-styles-dropdownn">
+                    <select name="bodyStyle" ng-model="bodyStyle" class="css-dropdowns" tabindex="1" >
+           	            <option value="">Body Styles</option>
+           			    <option value="2dr Hatchback">2dr Hatchback</option>
+         			    <option value="4dr Hatchback">4dr Hatchback</option>
+      			        <option value="Convertible">Convertible</option>
+      			        <option value="Coupe">Coupe</option>
+       				    <option value="Hatchback">Hatchback</option>
+    				    <option value="SUV">SUV</option>
+    			        <option value="Sedan">Sedan</option>
+     			        <option value="Sports Utility Vehicle">Sports Utility Vehicle</option>
                     </select>
                   </div>
                 </div>
@@ -624,7 +641,7 @@ $(document).ready(function()
                 <div class="col-md-6">
                   <div class="my-dropdown make-dropdown">
                     <select name="make" ng-model="make" class="css-dropdowns" tabindex="1" >
-                    	<option value="">All Makes</option>
+                    	<option value="">Makes</option>
                         <c:forEach var="option" items='${vehicleListMake}'>
 											<option value='${option}'>${option}</option>
 						</c:forEach>
@@ -632,11 +649,11 @@ $(document).ready(function()
                     </select>
                   </div>
                 </div>
-                <div class="col-md-6">
+              <!--   <div class="col-md-6">
                   <div class="my-dropdown">
                     <input class="full-width" type="search" value="" placeholder="Refine with keywords">
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="clear"></div>
               <div class="select-wrapper clearfix">

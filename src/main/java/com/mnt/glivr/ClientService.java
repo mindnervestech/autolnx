@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.mnt.views.RequestMore;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.VehicleImage;
 import com.mnt.views.VehicleVM;
@@ -297,6 +298,25 @@ public class ClientService {
 		
 	}	
 	
+	
+	public String getRequestMore(HttpServletRequest request){
+		int userId = 336920057;
+		
+		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+request.getParameter("vin")+"','"+userId+"')");
+				
+		return request.getParameter("vin");
+		
+	}
+	
+	
+	public String getScheduleTest(HttpServletRequest request){
+		int userId = 336920057;
+
+		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+request.getParameter("bestDay")+"','"+request.getParameter("bestTime")+"','"+request.getParameter("vin")+"','"+userId+"')");
+				
+		return request.getParameter("vin");
+		
+	}
 	
 	public VehicleVM getVehicleInfo(HttpServletRequest request){
 		

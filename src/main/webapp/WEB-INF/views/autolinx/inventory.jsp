@@ -160,15 +160,26 @@ $(document).ready(function()
 <div class="container">
 	
 </div>
-
-
+ 
 <section class="content mainBoxIn1">
   <div class="container">
     <div class="inner-page row">
       <div class="listing-view margin-bottom-20">
         <div class="row">   
         	
-          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 padding-none"> <span class="ribbon"><strong>{{VehiclesCount}} Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span> </div>
+          <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 padding-none"> <span class="ribbon"><strong>{{VehiclesCount}} Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span> </div>
+          <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 padding-none"> 
+          	<div class="my-dropdown prices-dropdown" style="width: 96px !important;">
+            <div> <span>Sort By Price:</span></div>
+         </div> 
+          <div class="my-dropdown prices-dropdown" style="width: 121px !important;margin-left: 12px;">
+            <select name="price" ng-model="price" ng-change="selectPrice()" class="css-dropdowns" tabindex="1" >
+			  <option value="lowToHigh">Low To High</option>
+              <option value="highToLow">High To Low</option>
+            </select>
+          </div>
+          
+          </div>
           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-none pull-right select_view"> <span class="align-right">Select View:</span>
             <ul class="page-view nav nav-tabs">
               <li><a ng-click="showListView()"><i class="fa fa-align-left"></i></a></li>
@@ -259,7 +270,7 @@ $(document).ready(function()
               <option value="100000"> &lt; 100000</option>
             </select>
           </div>
-      	  <div class="my-dropdown prices-dropdown" style="width: 96px !important;">
+      	 <!--  <div class="my-dropdown prices-dropdown" style="width: 96px !important;">
             <div> <span><strong>Sort By Price:</strong></span></div>
          </div> 
           <div class="my-dropdown prices-dropdown" style="width: 100px !important;">
@@ -267,7 +278,7 @@ $(document).ready(function()
 			  <option value="lowToHigh">Low To High</option>
               <option value="highToLow">High To Low</option>
             </select>
-          </div>
+          </div> -->
          
           <!-- <div class="my-dropdown prices-dropdown">
             <select name="price" class="css-dropdowns" tabindex="1" >
@@ -291,6 +302,11 @@ $(document).ready(function()
               <option>New Arrivals</option>
             </select>
           </div> -->
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+              <ul class="form-links top_buttons">
+                <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
+              </ul>
+            </div>
         </div>
         <div class="select-wrapper pagination clearfix margin-top-none margin-bottom-15">
           <div class="row">
@@ -298,11 +314,11 @@ $(document).ready(function()
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-lg-offset-1">
               <!-- <div class="controls full"> <a href="#" class="left-arrow"><i class="fa fa-angle-left"></i></a> <span>Page 1 of 4</span> <a href="#" class="right-arrow"><i class="fa fa-angle-right"></i></a> </div> -->
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
               <ul class="form-links top_buttons">
                 <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </form>
@@ -370,7 +386,7 @@ $(document).ready(function()
                   </div>
                   <div class="tax">Plus Sales Tax</div>
                 </div>
-                <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=WBSDX9C56BE783980&amp;partner=AAG_0"> <img class="carfax" alt="CarFax Report" src="resources/autolinx/images/Carfax-logo-1.png"> </a> </div>
+                <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0"> <img class="carfax" alt="CarFax Report" src="resources/autolinx/images/Carfax-logo-1.png"></a> </div>
             
               </div>
               </div>
@@ -592,3 +608,8 @@ $(document).ready(function()
 <script type="text/javascript" src="resources/autolinx/js/jquery.easing.js"></script>
 </body>
 </html>
+<style>
+	.car_listings .carfax {
+  display: block !important;
+}
+</style>

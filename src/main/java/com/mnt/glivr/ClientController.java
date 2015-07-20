@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mnt.views.RequestMore;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.VehicleVM;
 
@@ -108,6 +109,24 @@ public class ClientController {
 		return "autolinx/vehicleDetails";
 	}
 	
+   @RequestMapping(value="/requestMore",method=RequestMethod.POST)
+	public String requestMore(Locale locale, Model model,HttpServletRequest request) {
+		
+		String requestVm = clientService.getRequestMore(request);
+		return "redirect:" + "/vehicleDetails/"+requestVm;
+		
+	}
+   
+   @RequestMapping(value="/scheduleTest",method=RequestMethod.POST)
+  	public String scheduleTest(Locale locale, Model model,HttpServletRequest request) {
+  		
+	   String scheduleVm = clientService.getScheduleTest(request);
+  		return "redirect:" + "/vehicleDetails/"+scheduleVm;
+  		
+  	}
+   
+   
+	
 	@RequestMapping(value="/findVehicle1",method=RequestMethod.GET)
 	public String findVehicle1(Locale locale, Model model,HttpServletRequest request) {
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
@@ -120,7 +139,6 @@ public class ClientController {
 		model.addAttribute("vehicle",vehicleVM);
 		return "autolinx/inventory";
 	}
-	/*,@ModelAttribute("useform") VehicleVM vM*/
 	@RequestMapping(value="/findVehicle",method=RequestMethod.POST)
 	public String findVehicle(Locale locale, Model model,HttpServletRequest request) {
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
