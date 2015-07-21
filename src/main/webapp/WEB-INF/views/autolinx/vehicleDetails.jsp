@@ -43,6 +43,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/wow.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/social-likes.min.js"></script>
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -194,7 +195,7 @@ $(document).ready(function()
             <div class="col-lg-4 col-md-4 col-sm-6 ">
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li>2011 BMW M3</li>
+                    <li>${vehicle.year} ${vehicle.make} ${vehicle.model}</li>
                 </ul>
             </div>
         </div>
@@ -629,16 +630,11 @@ $(document).ready(function()
 	                    </div>
 	                    
 												<div class="mainBoxIn1">
-	                    	                    <ul data-title="2011 BMW M3" data-url="listings/bmw-m3-black/" class="social-likes pull-right listing_share social-likes_visible social-likes_ready ">
-	                        <li title="Share link on Facebook" class="social-likes__widget social-likes__widget_facebook"><span class="social-likes__button social-likes__button_facebook" href="#"
-  									onclick="window.open(
-     								 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-  								    'facebook-share-dialog', 
-   								   'width=626,height=436'); 
-   									 return false;"><span class="social-likes__icon social-likes__icon_facebook"></span></span><span class="social-likes__counter social-likes__counter_facebook">0</span></li>
-	                        <li title="Share link on Google+" class="social-likes__widget social-likes__widget_plusone"><span class="social-likes__button social-likes__button_plusone"><span class="social-likes__icon social-likes__icon_plusone"></span></span><span class="social-likes__counter social-likes__counter_plusone">0</span></li>
-	                        <li title="Share image on Pinterest" class="social-likes__widget social-likes__widget_pinterest"><span class="social-likes__button social-likes__button_pinterest"><span class="social-likes__icon social-likes__icon_pinterest"></span></span><span class="social-likes__counter social-likes__counter_pinterest">0</span></li>
-	                        <li title="Share link on Twitter" class="social-likes__widget social-likes__widget_twitter"><span class="social-likes__button social-likes__button_twitter"><span class="social-likes__icon social-likes__icon_twitter"></span></span><span class="social-likes__counter social-likes__counter_twitter">0</span></li>
+	                    	                    <ul data-title="${vehicle.year} ${vehicle.make} ${vehicle.model}" data-url="${pageContext.request.contextPath}/vehicleDetail/${vehicle.vin}" class="social-likes pull-right listing_share social-likes_visible social-likes_ready ">
+	                        <li title="Share link on Facebook" class="facebook"></li>
+	                        <li title="Share link on Google+" class="plusone"></li>
+	                        <li title="Share image on Pinterest" class="pinterest"></li>
+	                        <li title="Share link on Twitter" class="twitter"></li>
 	                    </ul>
 	                    </div>	                    
 	                    <div class="clearfix"></div>

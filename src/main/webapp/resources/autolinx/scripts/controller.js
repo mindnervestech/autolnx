@@ -57,12 +57,12 @@ app.controller("InventoryController", function($scope,$http) {
 		if ($scope.noMore) return;
 		$http({method:'GET',url:'getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price}})
 		.success(function(data) {
-			if(data.length == 0) {
+			if(data.vehicleList.length == 0) {
 				$scope.noMore = true;
 			}
-			$scope.VehiclesCount = data.length;
-			for (var i = 0; i < data.length; i++) {
-				$scope.vehicleList.push(data[i]);
+			$scope.VehiclesCount = data.count;
+			for (var i = 0; i < data.vehicleList.length; i++) {
+				$scope.vehicleList.push(data.vehicleList[i]);
 			}
 		});
 		

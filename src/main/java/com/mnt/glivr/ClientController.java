@@ -76,9 +76,9 @@ public class ClientController {
 	
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
-	public List<VehicleVM> getVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price) {
+	public Map getVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price) {
 		
-		List<VehicleVM> vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price);
+		Map vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price);
 		
 		
 		return vehicleList;
