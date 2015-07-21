@@ -126,9 +126,19 @@ public class ClientController {
   	}
    
    
+   @RequestMapping(value="/tradeInApp",method=RequestMethod.POST)
+ 	public String tradeInApp(Locale locale, Model model,HttpServletRequest request) {
+ 		
+	   String scheduleVm = clientService.getTradeInApp(request);
+	   
+	   return "redirect:" + "/vehicleDetails/"+request.getParameter("vin");
+ 		
+ 	}
+   
+   
 	
-	@RequestMapping(value="/findVehicle1",method=RequestMethod.GET)
-	public String findVehicle1(Locale locale, Model model,HttpServletRequest request) {
+	@RequestMapping(value="/findVehicles",method=RequestMethod.GET)
+	public String findVehicles(Locale locale, Model model,HttpServletRequest request) {
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes();
 		List<String> vehicleListModel = clientService.getAllVehicleModel();

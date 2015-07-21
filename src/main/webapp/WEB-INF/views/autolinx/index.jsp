@@ -121,7 +121,7 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
               <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li><a href="findVehicle1">Inventory</a></li>
+              <li><a href="findVehicles">Inventory</a></li>
               <li><a href="warranty.html">Warranty</a></li>
               <li><a href="about.html">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
@@ -682,7 +682,7 @@ $(document).ready(function()
                 <div class="car-block">
                 
                  <!-- <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview">    <img src="resources/autolinx/images/DSC_0002-167x119.jpg"-->
-                  <div class="img-flex"><a href="resources/autolinx/images/mercedes-e350/"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="vehicleDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>{{recent.year}} {{recent.make}} {{recent.model}}</strong></h6>
                     <h6></h6>

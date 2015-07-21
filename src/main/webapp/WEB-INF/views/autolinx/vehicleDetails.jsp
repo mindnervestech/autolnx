@@ -168,7 +168,7 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li class="active"><a href="inventory">Inventory</a></li>
+              <li class="active"><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
               <li><a href="warranty.html">Warranty</a></li>
               <li><a href="about.html">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
@@ -296,7 +296,7 @@ $(document).ready(function()
 	                	                
 	                	                	<!-- <li class="offer gradient_button"><a class="fancybox_div" href="#offer_fancybox_form">Make an Offer</a></li> -->
 	                	                
-	                	                	<li class="trade gradient_button"><a class="fancybox_div" href="#trade_fancybox_form">Trade-In Appraisal</a></li>
+	                	                	<li class="trade gradient_button"><a data-toggle="modal" data-target="#tradeInApp">Trade-In Appraisal</a></li>
 	                	                
 	                	                	<li class="pdf gradient_button"><a class="generate_pdf" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0">Carfax Report</a></li>
 	                	                
@@ -621,7 +621,12 @@ $(document).ready(function()
 	                    
 												<div class="mainBoxIn1">
 	                    	                    <ul data-title="2011 BMW M3" data-url="listings/bmw-m3-black/" class="social-likes pull-right listing_share social-likes_visible social-likes_ready ">
-	                        <li title="Share link on Facebook" class="social-likes__widget social-likes__widget_facebook"><span class="social-likes__button social-likes__button_facebook"><span class="social-likes__icon social-likes__icon_facebook"></span></span><span class="social-likes__counter social-likes__counter_facebook">0</span></li>
+	                        <li title="Share link on Facebook" class="social-likes__widget social-likes__widget_facebook"><span class="social-likes__button social-likes__button_facebook" href="#"
+  									onclick="window.open(
+     								 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+  								    'facebook-share-dialog', 
+   								   'width=626,height=436'); 
+   									 return false;"><span class="social-likes__icon social-likes__icon_facebook"></span></span><span class="social-likes__counter social-likes__counter_facebook">0</span></li>
 	                        <li title="Share link on Google+" class="social-likes__widget social-likes__widget_plusone"><span class="social-likes__button social-likes__button_plusone"><span class="social-likes__icon social-likes__icon_plusone"></span></span><span class="social-likes__counter social-likes__counter_plusone">0</span></li>
 	                        <li title="Share image on Pinterest" class="social-likes__widget social-likes__widget_pinterest"><span class="social-likes__button social-likes__button_pinterest"><span class="social-likes__icon social-likes__icon_pinterest"></span></span><span class="social-likes__counter social-likes__counter_pinterest">0</span></li>
 	                        <li title="Share link on Twitter" class="social-likes__widget social-likes__widget_twitter"><span class="social-likes__button social-likes__button_twitter"><span class="social-likes__icon social-likes__icon_twitter"></span></span><span class="social-likes__counter social-likes__counter_twitter">0</span></li>
@@ -653,7 +658,7 @@ $(document).ready(function()
                 <div class="bi_weekly clearfix">
                     <div class="pull-left">Frequency of Payments:</div>
                                         <div class="styled pull-right">
-                        <select class="frequency css-dropdowns" sb="99557124" style="display: none;">
+                        <select class="frequency css-dropdowns" style="display: none;">
 						    <option value="0">Monthly</option>
                             <option value="1">Bi-Weekly</option>
                             <option value="2">Weekly</option>
@@ -699,7 +704,7 @@ $(document).ready(function()
                         <c:forEach var="option" items='${similarVehicle}'>
                         <div class="slide">
                                 <div class="car-block">
-                                    <div class="img-flex"> <a href="inventory-listing.html"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="/glivrImg/images${option.path}" alt="" class="img-responsive"> </div>
+                                    <div class="img-flex"> <a href="${pageContext.request.contextPath}/vehicleDetails/${option.vin}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="/glivrImg/images${option.path}" alt="" class="img-responsive"> </div>
                                     <div class="car-block-bottom">
                                         <h6><strong>${option.year} ${option.make}</strong></h6>
                                         <h6>${option.mileage}</h6>
@@ -858,7 +863,7 @@ $(document).ready(function()
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
      <form name="fome1" action="${pageContext.request.contextPath}/requestMore" method="post">
-      <div class="modal-content" style="width: 367px;margin-left: 182px;">
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Request More Info</h4>
@@ -870,7 +875,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="name" style="width: 98px !important;">
+        	 	<input type="text" name="name" style="width: 220px !important;" required>
         	 </div>
         	</div>
         	 <div class="row"> 
@@ -879,7 +884,7 @@ $(document).ready(function()
         	 </div>
         	 <div class="col-md-6">
         	 	<input type="radio" name="preferred" value="email">Email
-				<input type="radio" name="preferred" value="phone">Phone
+				<input type="radio" name="preferred" value="phone" style="margin-left: 37px;">Phone
         	 </div> 
         	 </div>
         	  <div class="row">
@@ -887,7 +892,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="email" style="width: 98px !important;">
+        	 	<input type="email" name="email" style="width: 220px !important;">
         	 </div>
         	 </div>
         	  <div class="row">
@@ -895,7 +900,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Phone:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="phone" style="width: 98px !important;">
+        	 	<input type="text" name="phone" pattern="\d*" title="Please enter numbers" style="width: 220px !important;">
         	 </div>
         	 </div>
         </div>
@@ -913,7 +918,7 @@ $(document).ready(function()
 <div class="modal fade" id="scheduleTest" role="dialog">
     <div class="modal-dialog">
      <form method="post"  action="${pageContext.request.contextPath}/scheduleTest">
-      <div class="modal-content" style="width: 367px;margin-left: 182px;">
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Request More Info</h4>
@@ -925,7 +930,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="name" class="customBorder" style="width: 98px !important;">
+        	 	<input type="text" name="name" class="customBorder" style="width: 220px !important;" required>
         	 </div>
         	</div>
         	 <div class="row"> 
@@ -934,7 +939,7 @@ $(document).ready(function()
         	 </div>
         	 <div class="col-md-6">
         	 	<input type="radio" name="preferred" value="email">Email
-				<input type="radio" name="preferred" value="phone">Phone
+				<input type="radio" name="preferred" value="phone" pattern="\d*" title="Please enter numbers" style="margin-left: 37px;">Phone
         	 </div> 
         	 </div>
         	  <div class="row">
@@ -942,7 +947,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="email" style="width: 98px !important;">
+        	 	<input type="email" name="email" style="width: 220px !important;">
         	 </div>
         	 </div>
         	  <div class="row">
@@ -950,7 +955,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Phone:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="phone" style="width: 98px !important;">
+        	 	<input type="text" name="phone" style="width: 220px !important;">
         	 </div>
         	 </div>
         	 <div class="row">
@@ -958,7 +963,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Best Day:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="bestDay" style="width: 98px !important;">
+        	 	<input type="text" name="bestDay" style="width: 220px !important;">
         	 </div>
         	 </div>
         	 <div class="row">
@@ -966,7 +971,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Best Time:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="bestTime" style="width: 98px !important;">
+        	 	<input type="text" name="bestTime" style="width: 220px !important;">
         	 </div>
         	 </div>
         </div>
@@ -980,6 +985,311 @@ $(document).ready(function()
   </div>
 
 
+<div class="modal fade" id="tradeInApp" role="dialog">
+    <div class="modal-dialog" style="width: 961px">
+     <form method="post"  action="${pageContext.request.contextPath}/tradeInApp">
+      <div class="modal-content" style="width: 996px;height: 620px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Trade-In</h4>
+        </div>
+           <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+        <div class="modal-body">
+          	<div class="fancybox-outer"><div class="fancybox-inner" style="overflow: auto; width: 970px; height: 430px;"><div id="trade_fancybox_form" class="" style="">
+
+		            <table class="left_table">
+		                <tbody><tr>
+		                    <td colspan="2"><h4>Contact Information</h4></td>
+		                </tr>
+		                <tr>
+		                    <td>First Name<br><input type="text" name="first_name"></td>
+		                    <td>Last Name<br><input type="text" name="last_name"></td>
+		                </tr>
+		                <tr>
+		                    <td>Work Phone<br><input type="text" name="work_phone"></td>
+		                    <td>Phone<br><input type="text" pattern="\d*" title="Please enter numbers" name="phone"></td>
+		                </tr>
+		                <tr>
+		                    <td>Email<br><input type="email" name="email"></td>
+		                    <td>Preferred Contact<br>  
+		                    	<input type="radio" name="preferred" value="email" id="email" style="width: 14%;"> Email  
+		                    	<input type="radio" name="preferred" value="phone" id="phone" style="width: 14%;"> Phone </td>
+		                </tr>
+		                <tr>
+		                    <td colspan="2">Comments<br><textarea name="comments" style="width: 89%;" rows="5"></textarea></td>
+		                </tr>
+		            </tbody></table>
+		            
+		            <table class="right_table">
+		                <tbody><tr>
+		                    <td colspan="2"><h4>Options</h4></td>
+		                </tr>
+
+		                		                <tr>
+		                	<td><select name="options" multiple style="height: 200px;"> 
+			                	<option value="Adaptive Cruise Control">Adaptive Cruise Control</option>
+			                	<option value="Airbags">Airbags</option>
+			                	<option value="Air Conditioning">Air Conditioning</option>
+			                	<option value="Alarm System">Alarm System</option>
+			                	<option value="Anti-theft Protection">Anti-theft Protection</option>
+			                	<option value="Audio Interface">Audio Interface</option>
+			                	<option value="Automatic Climate Control">Automatic Climate Control</option>
+			                	<option value="Automatic Headlights">Automatic Headlights</option>
+			                	<option value="Auto Start/Stop">Auto Start/Stop</option>
+			                	<option value="Bi-Xenon Headlights">Bi-Xenon Headlights</option>
+			                	<option value="Bluetooth Handset">Bluetooth Handset</option>
+			                	<option value="BOSE Surround Sound">BOSE Surround Sound</option>
+			                	<option value="Burmester Surround Sound">Burmester Surround Sound</option>
+			                	<option value="CD/DVD Autochanger">CD/DVD Autochanger</option>
+			                	<option value="CDR Audio">CDR Audio</option>
+			                	<option value="Cruise Control">Cruise Control</option>
+			                	<option value="Direct Fuel Injection">Direct Fuel Injection</option>
+			                	<option value="Electric Parking Brake">Electric Parking Brake</option>
+			                	<option value="Floor Mats">Floor Mats</option>
+			                	<option value="Garage Door Opener">Garage Door Opener</option>
+			                	<option value="Leather Package">Leather Package</option>
+			                	<option value="Locking Rear Differential">Locking Rear Differential</option>
+			                	<option value="Luggage Compartments">Luggage Compartments</option>
+			                	<option value="Manual Transmission">Manual Transmission</option>
+			                	<option value="Navigation Module">Navigation Module</option>
+			                	<option value="Online Services">Online Services</option>
+			                	<option value="ParkAssist">ParkAssist</option>
+			                	<option value="Porsche Communication">Porsche Communication</option>
+			                	<option value="Power Steering">Power Steering</option>
+			                	<option value="Reversing Camera">Reversing Camera</option>
+			                	<option value="Roll-over Protection">Roll-over Protection</option>
+			                	<option value="Seat Heating">Seat Heating</option>
+			                	<option value="Seat Ventilation">Seat Ventilation</option>
+			                	<option value="Sound Package Plus">Sound Package Plus</option>
+			                	<option value="Sport Chrono Package">Sport Chrono Package</option>
+			                	<option value="Steering Wheel Heating">Steering Wheel Heating</option>
+			                	<option value="Tire Pressure Monitoring">Tire Pressure Monitoring</option>
+			                	<option value="Universal Audio Interface">Universal Audio Interface</option>
+			                	<option value="Voice Control System">Voice Control System</option>
+			                	<option value="Wind Deflector">Wind Deflector</option>		
+			             	</select></td>
+
+		        		</tr>
+		            </tbody></table>
+		            
+		            <div style="clear:both;"></div>
+		            
+		            <table class="left_table">    
+		                <tbody><tr><td colspan="2"><h4>Vehicle Information</h4></td></tr>
+		                
+		                <tr>
+		                    <td>Year<br><input type="text" name="year"></td>
+		                    <td>Make<br><input type="text" name="make"></td>
+		                </tr>
+		                <tr>
+		                    <td>Model<br><input type="text" name="model"></td>
+		                    <td>Exterior Colour<br><input type="text" name="exterior_colour"></td>
+		                </tr>
+		                <tr>
+		                    <td>VIN<br><input type="text" name="vin"></td>
+		                    <td>Kilometres<br><input type="text" name="kilometres"></td>
+		                </tr>
+		                <tr>
+		                    <td>Engine<br><input type="text" name="engine"></td>
+		                    <td>Doors<br>
+		                    	<select name="doors" class="css-dropdowns" style="display: none;">
+		                    		<option value="2">2</option>
+		                    		<option value="3">3</option>
+		                    		<option value="4">4</option>
+		                    		<option value="5">5</option>
+		                    	</select></td>
+		                </tr>
+		                <tr>
+		                    <td>Transmission<br>
+		                    	<select name="transmission" class="css-dropdowns" style="display: none;">
+		                    		<option value="Automatic">Automatic</option>
+		                    		<option value="Manual">Manual</option>
+		                    	</select></td>
+		                    <td>Drivetrain<br>
+		                    	<select name="drivetrain" class="css-dropdowns" style="display: none;">
+		                    		<option value="2WD">2WD</option>
+		                    		<option value="4WD">4WD</option>
+		                    		<option value="AWD">AWD</option>
+		                    	</select></td>
+		                </tr>
+		            
+		            </tbody></table>
+		               
+		            <table class="right_table">
+		                <tbody><tr><td colspan="2"><h4>Vehicle Rating</h4></td></tr>
+		                
+		                <tr>
+		                    <td>Body (dents, dings, rust, rot, damage)<br>
+		                    	<select name="body_rating" class="css-dropdowns" style="display: none;">
+		                    			<option value="10">10 - best</option>
+		                    			<option value="9">9</option>
+		                    			<option value="8">8</option>
+		                    			<option value="7">7</option>
+		                    			<option value="6">6</option>
+		                    			<option value="5">5</option>
+		                    			<option value="4">4</option>
+		                    			<option value="3">3</option>
+		                    			<option value="2">2</option>
+		                    			<option value="1">1 - worst</option>
+		                    	</select></td>
+		                    <td>Tires ( tread  wear , mismatched )  <br>
+		                    		<select name="tire_rating" class="css-dropdowns" style="display: none;">
+		                    				<option value="10">10 - best</option>
+		                    				<option value="9">9</option>
+		                    				<option value="8">8</option>
+		                    				<option value="7">7</option>
+		                    				<option value="6">6</option>
+		                    				<option value="5">5</option>
+		                    				<option value="4">4</option>
+		                    				<option value="3">3</option>
+		                    				<option value="2">2</option>
+		                    				<option value="1">1 - worst</option>
+		                    		</select></td>
+		                </tr>
+		                <tr>
+		                    <td>Engine (running condition, burns oil, knocking)<br>
+		                    		<select name="engine_rating" class="css-dropdowns" style="display: none;">
+		                    			<option value="10">10 - best</option>
+		                    			<option value="9">9</option>
+		                    			<option value="8">8</option>
+		                    			<option value="7">7</option>
+		                    			<option value="6">6</option>
+		                    			<option value="5">5</option>
+		                    			<option value="4">4</option>
+		                    			<option value="3">3</option>
+		                    			<option value="2">2</option>
+		                    			<option value="1">1 - worst</option>
+		                    			</select></td>
+		                    <td>Transmission / Clutch (slipping, hard shift, grinds)<br>
+		                    	   <select name="transmission_rating" class="css-dropdowns" style="display: none;">
+		                    	   		<option value="10">10 - best</option>
+		                    	   		<option value="9">9</option>
+		                    	   		<option value="8">8</option>
+		                    	   		<option value="7">7</option>
+		                    	   		<option value="6">6</option>
+		                    	   		<option value="5">5</option>
+		                    	   		<option value="4">4</option>
+		                    	   		<option value="3">3</option>
+		                    	   		<option value="2">2</option>
+		                    	   		<option value="1">1 - worst</option>
+		                    	   	</select></td>
+		                </tr>
+		                <tr>
+		                    <td>Glass (chips, scratches, cracks, pitted)<br>
+		                    	<select name="glass_rating" class="css-dropdowns" style="display: none;">
+		                    			<option value="10">10 - best</option>
+		                    			<option value="9">9</option>
+		                    			<option value="8">8</option>
+		                    			<option value="7">7</option>
+		                    			<option value="6">6</option>
+		                    			<option value="5">5</option>
+		                    			<option value="4">4</option>
+		                    			<option value="3">3</option>
+		                    			<option value="2">2</option>
+		                    			<option value="1">1 - worst</option>
+		                    	</select></td>
+		                    <td>Interior (rips, tears, burns, faded/worn, stains)<br>
+		                    	<select name="interior_rating" class="css-dropdowns" style="display: none;">
+		                    		<option value="10">10 - best</option>
+		                    		<option value="9">9</option>
+		                    		<option value="8">8</option>
+		                    		<option value="7">7</option>
+		                    		<option value="6">6</option>
+		                    		<option value="5">5</option>
+		                    		<option value="4">4</option>
+		                    		<option value="3">3</option>
+		                    		<option value="2">2</option>
+		                    		<option value="1">1 - worst</option>
+		                    	</select></td>
+		                </tr>
+		                <tr>
+		                    <td colspan="2">Exhaust (rusted, leaking, noisy)<br>
+		                    	<select name="exhaust_rating" class="css-dropdowns" style="display: none;">
+		                    		<option value="10">10 - best</option>
+		                    		<option value="9">9</option>
+		                    		<option value="8">8</option>
+		                    		<option value="7">7</option>
+		                    		<option value="6">6</option>
+		                    		<option value="5">5</option>
+		                    		<option value="4">4</option>
+		                    		<option value="3">3</option>
+		                    		<option value="2">2</option>
+		                    		<option value="1">1 - worst</option>
+		                    	</select></td>
+		                </tr>
+		            </tbody></table>
+		            
+		            <div style="clear:both;"></div>
+		            
+		            <table class="left_table">
+		                <tbody><tr><td><h4>Vehicle History</h4></td></tr>
+		                
+		                <tr>
+		                    <td>Was it ever a lease or rental return? <br>
+		                    	<select name="rental_return" class="css-dropdowns" style="display: none;">
+		                    		<option value="Yes">Yes</option>
+		                    		<option value="No">No</option>
+		                    	</select></td>
+		                </tr>
+		                <tr>
+		                    <td>Is the odometer operational and accurate? <br>
+		                    	<select name="odometer_accurate" class="css-dropdowns"  style="display: none;">
+		                    		<option value="Yes">Yes</option>
+		                    		<option value="No">No</option>
+		                    	</select></td>
+		                </tr>
+		                <tr>
+		                    <td>Detailed service records available? <br>
+		                    	<select name="service_records" class="css-dropdowns" style="display: none;">
+		                    		<option value="Yes">Yes</option>
+		                    		<option value="No">No</option>
+		                    	</select></td>
+		                </tr>
+		            </tbody></table>
+		            
+		            <table class="right_table">
+		                <tbody><tr>
+		                    <td><h4>Title History</h4></td>
+		                </tr>
+		                
+		                <tr>
+		                    <td>Is there a lienholder? <br><input type="text" name="lienholder"></td>
+		                </tr>
+		                <tr>
+		                    <td>Who holds this title? <br><input type="text" name="titleholder"></td>
+		                </tr>
+		            </tbody></table>
+		            
+		            <div style="clear:both;"></div>
+		                   
+		            <table style="width: 100%;">
+		                <tbody><tr><td colspan="2"><h4>Vehicle Assessment</h4></td></tr>
+		                
+		                <tr>
+		                    <td>Does all equipment and accessories work correctly?<br><textarea name="equipment" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Did you buy the vehicle new?<br><textarea name="vehiclenew" rows="5" style="width: 89%;"></textarea></td>
+		                </tr>
+		                <tr>
+		                    <td>Has the vehicle ever been in any accidents? Cost of repairs?<br><textarea name="accidents" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Is there existing damage on the vehicle? Where?<br><textarea name="damage" rows="5" style="width: 89%;"></textarea></td>
+		                </tr>
+		                <tr>
+		                    <td>Has the vehicle ever had paint work performed?<br><textarea name="paint" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Is the title designated 'Salvage' or 'Reconstructed'? Any other?<br><textarea name="salvage" rows="5" style="width: 89%;"></textarea></td>
+		                </tr>
+<!-- 		                		                <tr><td colspan="2"><input type="submit" value="Submit"> <i class="fa fa-refresh fa-spin loading_icon_form"></i></td></tr> -->
+		            </tbody></table>
+		                
+					</div></div></div>
+        </div>
+       
+        <div class="modal-footer">
+           <input type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>

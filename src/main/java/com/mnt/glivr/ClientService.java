@@ -312,7 +312,20 @@ public class ClientService {
 	public String getScheduleTest(HttpServletRequest request){
 		int userId = 336920057;
 
+		
 		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+request.getParameter("bestDay")+"','"+request.getParameter("bestTime")+"','"+request.getParameter("vin")+"','"+userId+"')");
+				
+		return request.getParameter("vin");
+		
+	}
+	
+	public String getTradeInApp(HttpServletRequest request){
+		int userId = 336920057;
+
+/*		System.out.println(request.getParameter("options"));
+		String supplierValues[] = request.getParameterValues("options");
+		System.out.println(supplierValues.toString());
+*/		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,vin,user_id) VALUES('"+request.getParameter("first_name")+"','"+request.getParameter("last_name")+"','"+request.getParameter("work_phone")+"','"+request.getParameter("phone")+"','"+request.getParameter("email")+"','"+request.getParameter("preferred")+"','"+request.getParameter("vin")+"','"+userId+"')");
 				
 		return request.getParameter("vin");
 		

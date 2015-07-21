@@ -121,7 +121,7 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li class="active"><a href=findVehicle1>Inventory</a></li>
+              <li class="active"><a href=findVehicles>Inventory</a></li>
               <li><a href="warranty.html">Warranty</a></li>
               <li><a href="about.html">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
@@ -167,7 +167,7 @@ $(document).ready(function()
       <div class="listing-view margin-bottom-20">
         <div class="row">   
         	
-          <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 padding-none"> <span class="ribbon"><strong>{{VehiclesCount}} Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span> </div>
+          <div class="col-lg-7 col-md-5 col-sm-5 col-xs-12 padding-none"> <span class="ribbon"><strong>{{VehiclesCount}} Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span> </div>
           <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 padding-none"> 
           	<div class="my-dropdown prices-dropdown" style="width: 96px !important;">
             <div> <span>Sort By Price:</span></div>
@@ -180,7 +180,7 @@ $(document).ready(function()
           </div>
           
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-none pull-right select_view"> <span class="align-right">Select View:</span>
+          <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 padding-none pull-right select_view"> <span class="align-right" style="padding: 0px;">Select View:</span>
             <ul class="page-view nav nav-tabs">
               <li><a ng-click="showListView()"><i class="fa fa-align-left"></i></a></li>
               <!-- <li class="active"><a href="#list-left-sidebar" data-toggle="tab"><i class="fa"></i></a></li>
