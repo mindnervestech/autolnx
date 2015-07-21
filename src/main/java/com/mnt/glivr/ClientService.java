@@ -29,7 +29,7 @@ public class ClientService {
 	JdbcTemplate jdbcTemplate;
 	
 	public List<String> getSliderImages() {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"'");
 		List<String> sliderUrls = new ArrayList<String>();
 		for(Map map : rows) {
@@ -40,7 +40,7 @@ public class ClientService {
 	}
 	
 	public List<String> getFeaturedImages() {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where user_id = '"+userId+"' ");
 		List<String> featuredUrls = new ArrayList<String>();
 		for(Map map : rows) {
@@ -51,7 +51,7 @@ public class ClientService {
 	}
 	
 	public Map getAllMakes() {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<String> vehicleListMake = new ArrayList<String>();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where user_id = '"+userId+"'");
 			
@@ -75,7 +75,7 @@ public class ClientService {
 	}
 	
 	public List<String> getAllVehicleMakes() {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<String> vehicleListMake = new ArrayList<String>();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where user_id = '"+userId+"'");
 			
@@ -88,7 +88,7 @@ public class ClientService {
 	
 	
 	public SiteContentVM getSitContent() {
-		int userId = 336920057;
+		int userId = -1361609913;
 		SiteContentVM sContentVM = new SiteContentVM();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM site_content where user_id = '"+userId+"'");
 		for(Map map : rows) {
@@ -113,7 +113,7 @@ public class ClientService {
 	}
 	
 	public List<String> getAllVehicleModel() {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<String> vehicleListModel = new ArrayList<String>();
 		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT model FROM vehicle where user_id = '"+userId+"'");
 		
@@ -124,7 +124,7 @@ public class ClientService {
 	}
 	
 	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort) {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> rows = null;
 		Integer count = 0;
@@ -175,7 +175,7 @@ public class ClientService {
 		return mapData;
 	}
 	public List<VehicleVM> getSimilarVehicleDetails(String vin) {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and vin= '"+vin+"' ");
 		
@@ -216,7 +216,7 @@ public class ClientService {
 		
 	}	
 	public VehicleVM getVehicleDetails(String vin) {
-		int userId = 336920057;
+		int userId = -1361609913;
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and vin= '"+vin+"' ");
 		VehicleVM vehicleVM = new VehicleVM();
 		List<Map<String, Object>> videoUrl = jdbcTemplate.queryForList("select desktop_url from virtual_tour where user_id= '"+userId+"' and vin= '"+vin+"' ");
@@ -340,7 +340,7 @@ public class ClientService {
 	
 	
 	public String getRequestMore(HttpServletRequest request){
-		int userId = 336920057;
+		int userId = -1361609913;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		
@@ -352,7 +352,7 @@ public class ClientService {
 	
 	
 	public String getScheduleTest(HttpServletRequest request){
-		int userId = 336920057;
+		int userId = -1361609913;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 
@@ -364,7 +364,7 @@ public class ClientService {
 	}
 	
 	public String getTradeInApp(HttpServletRequest request){
-		int userId = 336920057;
+		int userId = -1361609913;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 
@@ -393,7 +393,7 @@ public class ClientService {
 	
 	public List<VehicleVM> getRecentVehicles(){
 		
-		int userId = 336920057;
+		int userId = -1361609913;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
