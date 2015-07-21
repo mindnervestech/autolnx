@@ -256,7 +256,16 @@ $(document).ready(function()
 
             <div class="content-nav margin-bottom-30">
                    <p>
-                   <iframe width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
+                   <c:choose>
+				    <c:when test="${vehicle.videoUrl==''}">
+				       <img alt="" src="/glivrImg/images/360_COMING_SOON.jpg">
+				    </c:when>    
+				    <c:otherwise>
+				        <iframe width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
+				        <br />
+				    </c:otherwise>
+				</c:choose>
+                   
                    </p>
 
 	            <ul class="mainBoxIn1">

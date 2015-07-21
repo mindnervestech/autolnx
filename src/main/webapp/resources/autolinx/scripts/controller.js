@@ -5,11 +5,15 @@ app.controller("InventoryController", function($scope,$http) {
 	$scope.showListView = function() {
 		$scope.listView = true;
 		$scope.gridView = false;
+		$('#listView').addClass('active');
+		$('#gridView').removeClass('active');
 	}
 	
 	$scope.showGridView = function() {
 		$scope.listView = false;
 		$scope.gridView = true;
+		$('#gridView').addClass('active');
+		$('#listView').removeClass('active');
 	}
 	
 	

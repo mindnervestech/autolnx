@@ -151,7 +151,15 @@ public class ClientService {
 			vm.year = (String) map.get("year");
 			
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+vm.vin+"' and default_image = true");
-			vm.path = (String) vehiclePath.get(0).get("path");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
 			
 			vehicleList.add(vm);
 		}
@@ -183,7 +191,15 @@ public class ClientService {
 			vm.year = (String) map.get("year");
 			
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+vm.vin+"' and default_image = true");
-			vm.path = (String) vehiclePath.get(0).get("path");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
 			
 			vehicleList.add(vm);
 		}
@@ -196,7 +212,15 @@ public class ClientService {
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and vin= '"+vin+"' ");
 		VehicleVM vehicleVM = new VehicleVM();
 		List<Map<String, Object>> videoUrl = jdbcTemplate.queryForList("select desktop_url from virtual_tour where user_id= '"+userId+"' and vin= '"+vin+"' ");
-		vehicleVM.videoUrl = (String) videoUrl.get(0).get("desktop_url");
+		if(videoUrl.isEmpty()) {
+			vehicleVM.videoUrl = "";
+		} else {
+			if(videoUrl.get(0).get("desktop_url") == null) {
+				vehicleVM.videoUrl = "";
+			} else {
+				vehicleVM.videoUrl = (String) videoUrl.get(0).get("desktop_url");
+			}
+		}
 		
 		List<Map<String, Object>> audioUrl = jdbcTemplate.queryForList("select path from vehicle_audio where user_id= '"+userId+"' and vin= '"+vin+"' ");
 		vehicleVM.audioUrl = (String) audioUrl.get(0).get("path");
@@ -284,6 +308,14 @@ public class ClientService {
  		}
  		List<Map<String, Object>> imagerows = jdbcTemplate.queryForList("select path,default_image,thumb_path from vehicle_image where user_id = '"+userId+"' and vin= '"+vin+"' ");
  		List<VehicleImage> imageList = new ArrayList<VehicleImage>();
+ 		
+ 		if(imagerows.isEmpty()) {
+ 			VehicleImage vehicleImage = new VehicleImage();
+ 			vehicleImage.path = "/no-image1-762x456.jpg";
+ 			vehicleImage.isDefault = true; 
+ 			vehicleImage.thumbPath = "/no-image.jpg";
+ 			imageList.add(vehicleImage);
+ 		}
  		
  		for(Map map : imagerows) {
  			VehicleImage vehicleImage = new VehicleImage();
@@ -385,7 +417,15 @@ public class ClientService {
 			vm.year = (String) map.get("year");
 			
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+vm.vin+"' and default_image = true");
-			vm.path = (String) vehiclePath.get(0).get("path");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
 			
 			vehicleList.add(vm);
 		}

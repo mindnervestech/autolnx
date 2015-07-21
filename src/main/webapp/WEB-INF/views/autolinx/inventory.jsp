@@ -182,12 +182,12 @@ $(document).ready(function()
           </div>
           <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 padding-none pull-right select_view"> <span class="align-right" style="padding: 0px;">Select View:</span>
             <ul class="page-view nav nav-tabs">
-              <li><a ng-click="showListView()"><i class="fa fa-align-left"></i></a></li>
-              <!-- <li class="active"><a href="#list-left-sidebar" data-toggle="tab"><i class="fa"></i></a></li>
-              <li><a href="inventory-wide-sidebar-right.html"><i class="fa"></i></a></li> -->
-              <li><a ng-click="showGridView()"><i class="fa"></i></a></li>
-              <!-- <li><a href="inventory-boxed-sidebar-left.html"><i class="fa"></i></a></li>
-              <li><a href="inventory-boxed-sidebar-right.html"><i class="fa"></i></a></li> -->
+              <li class="active" id="listView"><a ng-click="showListView()"><i class="fa fa-align-left"></i></a></li>
+              <li style="display: none;"><a href="#list-left-sidebar" data-toggle="tab"><i class="fa"></i></a></li>
+              <li style="display: none;"><a href="inventory-wide-sidebar-right.html"><i class="fa"></i></a></li>
+              <li id="gridView"><a ng-click="showGridView()"><i class="fa"></i></a></li>
+              <li style="display: none;"><a href="inventory-boxed-sidebar-left.html"><i class="fa"></i></a></li>
+              <li style="display: none;"><a href="inventory-boxed-sidebar-right.html"><i class="fa"></i></a></li>
             </ul>
           </div>
         </div>
