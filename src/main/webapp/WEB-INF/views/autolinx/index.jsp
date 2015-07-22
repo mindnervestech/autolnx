@@ -442,7 +442,7 @@ $(document).ready(function()
     <div class="row">
       <h2 class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;">${siteContent.heading1}</strong> ${siteContent.heading2} </h2>
       <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 "> 
-      	<a class="default-btn pull-right action_button lg-button mainBoxIn1" href="#">Schedule a Test Drive</a>
+      	<!-- <a class="default-btn pull-right action_button lg-button mainBoxIn1" href="#">Schedule a Test Drive</a> -->
 	  		<div class="boxIn">
             	<ul>
                 	<li>

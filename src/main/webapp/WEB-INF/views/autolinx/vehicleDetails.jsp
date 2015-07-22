@@ -194,7 +194,7 @@ $(document).ready(function()
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 ">
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}">Home</a></li>
                     <li>${vehicle.year} ${vehicle.make} ${vehicle.model}</li>
                 </ul>
             </div>

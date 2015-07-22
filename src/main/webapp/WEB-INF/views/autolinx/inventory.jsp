@@ -147,7 +147,7 @@ $(document).ready(function()
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <ul class="breadcrumb">
-          <li><a href="#">Home</a></li>
+          <li><a href="${pageContext.request.contextPath}">Home</a></li>
           <li>Inventory</li>
         </ul>
       </div>
@@ -167,7 +167,7 @@ $(document).ready(function()
       <div class="listing-view margin-bottom-20">
         <div class="row">   
         	
-          <div class="col-lg-7 col-md-5 col-sm-5 col-xs-12 padding-none"> <span class="ribbon"><strong>{{VehiclesCount}} Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span> </div>
+          <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 padding-none"> <span class="ribbon"><strong>{{VehiclesCount}} Vehicles Matching:</strong></span> <span class="ribbon-item">All Listings</span></div>
           <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 padding-none"> 
           	<div class="my-dropdown prices-dropdown" style="width: 96px !important;">
             <div> <span>Sort By Price:</span></div>
