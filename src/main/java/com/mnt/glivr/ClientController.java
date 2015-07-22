@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,8 +31,11 @@ import com.mnt.views.VehicleVM;
  * Handles requests for the application home page.
  */
 @Controller
+@PropertySource("classpath:conf/db.properties")
 public class ClientController {
 	
+	@Value("${hostname}")
+	String hostUrl;
 	private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 	
 	@Autowired
@@ -105,7 +110,7 @@ public class ClientController {
 		model.addAttribute("siteContent", siteContent);
 		model.addAttribute("similarVehicle",similarVehicleVm);
 		model.addAttribute("vehicle",vehicleVM);
-		
+		model.addAttribute("hostname", hostUrl);
 		return "autolinx/vehicleDetails";
 	}
 	

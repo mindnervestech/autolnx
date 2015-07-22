@@ -630,7 +630,7 @@ $(document).ready(function()
 	                    </div>
 	                    
 												<div class="mainBoxIn1">
-	                    	                    <ul data-title="${vehicle.year} ${vehicle.make} ${vehicle.model}" data-url="${pageContext.request.contextPath}/vehicleDetail/${vehicle.vin}" class="social-likes pull-right listing_share social-likes_visible social-likes_ready ">
+	                    	                    <ul data-title="${vehicle.year} ${vehicle.make} ${vehicle.model}" data-url="${hostname}/${vehicle.vin}" class="social-likes pull-right listing_share social-likes_visible social-likes_ready ">  
 	                        <li title="Share link on Facebook" class="facebook"></li>
 	                        <li title="Share link on Google+" class="plusone"></li>
 	                        <li title="Share image on Pinterest" class="pinterest"></li>
