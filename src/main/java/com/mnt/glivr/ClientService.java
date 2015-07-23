@@ -30,7 +30,7 @@ public class ClientService {
 	
 	public List<String> getSliderImages() {
 		
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
 		List<String> sliderUrls = new ArrayList<String>();
 		for(Map map : rows) {
 			String url = (String) map.get("path");
@@ -41,7 +41,7 @@ public class ClientService {
 	
 	public List<String> getFeaturedImages() {
 		
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where user_id = '"+userId+"' ");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where user_id = '"+userId+"' order by featured_image.`row`,featured_image.col");
 		List<String> featuredUrls = new ArrayList<String>();
 		for(Map map : rows) {
 			String url = (String) map.get("path");
@@ -91,17 +91,53 @@ public class ClientService {
 		for(Map map : rows) {
 			sContentVM.id = (Long) map.get("id");
 			sContentVM.heading = (String) map.get("heading");
-			String[] head = sContentVM.heading.split(" ");
-			sContentVM.heading1 = head[0];
-			sContentVM.heading2	= head[1] + " " + head[2];	
+			
+			int i = 0;
+			if(sContentVM.heading != null) {
+				for(i=0;i<sContentVM.heading.length();i++) {
+					if(sContentVM.heading.charAt(i) == ' ') {
+						sContentVM.heading1 = sContentVM.heading.substring(0, i);
+						sContentVM.heading2 = sContentVM.heading.substring(i, sContentVM.heading.length()-1);
+						break;
+					}
+				}
+				if(i == sContentVM.heading.length()) {
+					sContentVM.heading1 = sContentVM.heading;
+					sContentVM.heading2 = "";
+				}
+			} else {
+				sContentVM.heading1 = "";
+				sContentVM.heading2 = "";
+			}
+				
+			
 			sContentVM.desc_heading = (String) map.get("desc_heading");
-			String[] desc = sContentVM.desc_heading.split(" ");
-			sContentVM.desc_heading1 = desc[0];
-			sContentVM.desc_heading2 = desc[1] + " " + desc[2];
+			if(sContentVM.desc_heading != null) {
+				for(i=0;i<sContentVM.desc_heading.length();i++) {
+					if(sContentVM.desc_heading.charAt(i) == ' ') {
+						sContentVM.desc_heading1 = sContentVM.desc_heading.substring(0, i);
+						sContentVM.desc_heading2 = sContentVM.desc_heading.substring(i, sContentVM.desc_heading.length()-1);
+						break;
+					}
+				}
+				if(i == sContentVM.desc_heading.length()) {
+					sContentVM.desc_heading1 = sContentVM.desc_heading;
+					sContentVM.desc_heading2 = "";
+				}
+			} else {
+				sContentVM.desc_heading1 = "";
+				sContentVM.desc_heading2 = "";
+			}
+			
 			String descript = (String) map.get("description");
-			String firstLetter = descript.substring(0,1);
-			sContentVM.descriptionFirstChar = firstLetter;
-			sContentVM.description = descript.substring(1, descript.length() - 1);
+			if(descript != null) {
+				String firstLetter = descript.substring(0,1);
+				sContentVM.descriptionFirstChar = firstLetter;
+				sContentVM.description = descript.substring(1, descript.length() - 1);
+			} else {
+				sContentVM.descriptionFirstChar = "";
+				sContentVM.description = "";
+			}
 			
 			sContentVM.userId = userId;
 		}
