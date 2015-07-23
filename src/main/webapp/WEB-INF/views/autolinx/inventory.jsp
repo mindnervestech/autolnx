@@ -174,8 +174,22 @@ $(document).ready(function()
          </div> 
           <div class="my-dropdown prices-dropdown" style="width: 121px !important;margin-left: 12px;">
             <select name="price" ng-model="price" ng-change="selectPrice()" class="css-dropdowns" tabindex="1" >
+			   <option value="">Select</option>
 			  <option value="lowToHigh">Low To High</option>
               <option value="highToLow">High To Low</option>
+            </select>
+          </div>
+          
+          </div>
+          <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 padding-none"> 
+          	<div class="my-dropdown prices-dropdown" style="width: 122px !important;">
+            <div> <span>Sort By Alphabet:</span></div>
+         </div> 
+          <div class="my-dropdown prices-dropdown" style="width: 121px !important;margin-left: 12px;">
+            <select name="alphbet" ng-model="alphbet" ng-change="selectAlphbet()" class="css-dropdowns" tabindex="1" >
+			   <option value="">Select</option>
+			  <option value="a_z">A-Z</option>
+              <option value="z_a">Z-A</option>
             </select>
           </div>
           
@@ -198,18 +212,9 @@ $(document).ready(function()
           <div class="my-dropdown years-dropdown">
          <select name="year" class="css-dropdowns" ng-model="year" ng-change="selectYear()" tabindex="1" >
               <option value="">All Years</option>
-              <option value="1977">1977</option>
-              <option value="2004">2004</option>
-              <option value="2005">2005</option>
-              <option value="2007">2007</option>
-              <option value="2008">2008</option>
-              <option value="2009">2009</option>
-              <option value="2010">2010</option>
-              <option value="2011">2011</option>
-              <option value="2012">2012</option>
-              <option value="2013">2013</option>
-              <option value="2014">2014</option>
-              <option value="2015">2015</option>
+             <c:forEach var="option" items='${vehicleListYear}'>
+							<option value='${option}'>${option}</option>
+						</c:forEach> 
             </select>
           </div>
         
@@ -328,7 +333,7 @@ $(document).ready(function()
           <div class="inventory-wide-sidebar-left col-md-12  car_listings">
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='2'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="vehicleDetails/{{vehicle.vin}}" class="inventory">
-                <div class="title">{{vehicle.year}} {{vehicle.make}}</div>
+                <div class="title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
                 <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview">
                 <table class="options-primary">
                   <tbody>

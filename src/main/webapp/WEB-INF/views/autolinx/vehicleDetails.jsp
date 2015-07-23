@@ -8,6 +8,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -36,6 +37,7 @@
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/animate.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/print.css" rel="stylesheet" type="text/css" media="print">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/datepicker.css" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap.min.js"></script>
@@ -43,6 +45,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/wow.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/social-likes.min.js"></script>
 
 <!-- Twitter Feed Scripts 
@@ -308,11 +311,10 @@ $(document).ready(function()
 	                	                
 	                	                	<li class="trade gradient_button"><a data-toggle="modal" data-target="#tradeInApp">Trade-In Appraisal</a></li>
 	                	                
-	                	                	<li class="pdf gradient_button"><a class="generate_pdf" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0">Carfax Report</a></li>
-	                	                
-	                	                
-	                	                
+	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
+	                	                <li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo">Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
+	                	                	
 	                	                
 	            </ul> 
 	        </div>
@@ -643,7 +645,7 @@ $(document).ready(function()
                         <tbody>
                             <tr>
                                 <td>Cost of Vehicle ($):</td>
-                                <td><input type="text" value="114800" class="number cost"></td>
+                                <td><input type="text" value="${vehicle.onlyPrice}" class="number cost"></td>
                             </tr>
                             <tr>
                                 <td>Down Payment ($):</td>
@@ -679,11 +681,11 @@ $(document).ready(function()
                         <table>
                             <tbody><tr>
                                 <td><strong>NUMBER OF PAYMENTS:</strong></td>
-                                <td><strong class="payments">60</strong></td>
+                                <td><strong class="payments">00</strong></td>
                             </tr>
                             <tr>
                                 <td><strong>PAYMENT AMOUNT:</strong></td>
-                                <td><strong class="payment_amount">$2,253</strong></td>
+                                <td><strong class="payment_amount">$0,000</strong></td>
                             </tr>
                         </tbody></table>
                     </div>
@@ -968,7 +970,11 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Best Day:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="bestDay" style="width: 220px !important;">
+<!--         	 	<input type="text" name="bestDay" style="width: 220px !important;"> -->
+        	 	<input name="bestDay"
+										class="input-filter form-control meal-font-text-size"
+										data-provide="datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy" style="width: 220px !important;" required>
+        	 	
         	 </div>
         	 </div>
         	 <div class="row">
@@ -1295,6 +1301,62 @@ $(document).ready(function()
       </form>
     </div>
   </div>
+  
+  <div class="modal fade" id="otherInfo" role="dialog">
+    <div class="modal-dialog">
+     <form method="post"  action="${pageContext.request.contextPath}/otherInfo">
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">More Info</h4>
+        </div>
+           <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+        <div class="modal-body">
+           <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="name" class="customBorder" style="width: 220px !important;" required>
+        	 </div>
+        	</div>
+        	
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="email" name="email" style="width: 220px !important;">
+        	 </div>
+        	 </div>
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Friend Name:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="fname" style="width: 220px !important;">
+        	 </div>
+        	 </div>
+        	 <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Friend Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="email" name="femail" style="width: 220px !important;">
+        	 </div>
+        	 </div>
+        	
+        </div>
+       
+        <div class="modal-footer">
+           <input type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  
+  
 
 </body>
 </html>

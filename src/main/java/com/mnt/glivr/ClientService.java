@@ -1,5 +1,9 @@
 package com.mnt.glivr;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringWriter;
+import javax.mail.PasswordAuthentication;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,12 +12,30 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 
+import javax.mail.Session;
+
+import org.apache.tomcat.jni.File;
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import javax.mail.Transport;
 
 import com.mnt.views.RequestMore;
 import com.mnt.views.SiteContentVM;
@@ -155,17 +177,27 @@ public class ClientService {
 		return vehicleListModel;
 	}
 	
-	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort) {
+	public List<String> getAllVehicleYear() {
+		List<String> vehicleListYear = new ArrayList<String>();
+		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where user_id = '"+userId+"'");
+		
+		for(Map map : rows1) {
+			vehicleListYear.add((String) map.get("year"));
+		}
+		return vehicleListYear;
+	}
+	
+	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> rows = null;
 		Integer count = 0;
-		if(priceSort.equals("lowToHigh")){
-			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY price asc limit "+start+",16 ");
-			count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '')");
-		}else{
-			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY price desc limit "+start+",16 ");
-			count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '')");
+		if(!priceSort.equals("")){
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+		}else if(!alphbet.equals("")){
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN price END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN price END DESC limit "+start+",16 ");
 		}
+		count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '')");
+		
 		for(Map map : rows) {
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
@@ -176,6 +208,7 @@ public class ClientService {
 			vm.extColor = (String) map.get("exterior_color");
 			vm.intColor = (String) map.get("interior_color");
 			vm.make = (String) map.get("make");
+			vm.model = (String) map.get("model");
 			vm.mileage = (String) map.get("mileage");
 			Integer price = (Integer) map.get("price");
 			vm.price = "$"+price.toString();
@@ -287,6 +320,7 @@ public class ClientService {
  		vehicleVM.highwayMileage = (String) row.get(0).get("highway_mileage");
  		vehicleVM.location = (String) row.get(0).get("location");
  		Integer price = (Integer) row.get(0).get("price");
+ 		vehicleVM.onlyPrice = price;
  		vehicleVM.price = "$"+price.toString();
  		vehicleVM.stock = (String) row.get(0).get("stock");
  		
@@ -377,8 +411,64 @@ public class ClientService {
 		Date date = new Date();
 		
 		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
-				
+		
+		/*final String username = "mindnervesdemo@gmail.com";
+		final String password = "mindnervesadmin";
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("mindnervesdemo@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse("yogesh_337@yahoo.com"));
+			message.setSubject("Password Recovery");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+		
+			
+	        Template t = ve.getTemplate("com/mnt/views/template.vm");
+	        VelocityContext context = new VelocityContext();
+	        context.put("name", "Amit");
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
+		*/
+		
+		
+		
+		
+		
 		return request.getParameter("vin");
+		
+		
+		
+		
 		
 	}
 	
@@ -389,6 +479,16 @@ public class ClientService {
 
 		
 		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+request.getParameter("bestDay")+"','"+request.getParameter("bestTime")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
+				
+		return request.getParameter("vin");
+		
+	}
+	
+	public String getOtherInfo(HttpServletRequest request){
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		
+		jdbcTemplate.update("INSERT INTO other_user_info(name, email,fname,femail,date_info,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("fname")+"','"+request.getParameter("femail")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
 				
 		return request.getParameter("vin");
 		

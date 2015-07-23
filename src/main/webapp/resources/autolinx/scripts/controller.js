@@ -32,6 +32,7 @@ app.controller("InventoryController", function($scope,$http) {
 	$scope.fuel = "";
 	$scope.mileage = "";
 	$scope.VehiclesCount = "";
+	$scope.alphbet = "";
 	$scope.price = "lowToHigh";
 	
 	$scope.initFunction = function(year,make,model,bodyStyle,fuel){
@@ -53,9 +54,9 @@ app.controller("InventoryController", function($scope,$http) {
 	 var start = 0;
 	$scope.loadMore = function() {
 		
-		console.log($scope.bodyStyle);
+		console.log($scope.alphbet);
 		if ($scope.noMore) return;
-		$http({method:'GET',url:'getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price}})
+		$http({method:'GET',url:'getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
 		.success(function(data) {
 			if(data.vehicleList.length == 0) {
 				$scope.noMore = true;
@@ -128,6 +129,15 @@ app.controller("InventoryController", function($scope,$http) {
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
+			$scope.alphbet = ""; 
+			$scope.loadMore();
+		}
+		
+		$scope.selectAlphbet = function(){
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.price = "";
 			$scope.loadMore();
 		}
 		

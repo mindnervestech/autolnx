@@ -54,9 +54,11 @@ public class ClientController {
 		
 		List<String> vehicleListMake = clientService.getAllVehicleMakes();
 		List<String> vehicleListModel = clientService.getAllVehicleModel();
+		List<String> vehicleListYear = clientService.getAllVehicleYear();
 		SiteContentVM siteContent = clientService.getSitContent();
 		
 		model.addAttribute("siteContent", siteContent);
+		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake);
 		model.addAttribute("vehicleListModel", vehicleListModel);
 		model.addAttribute("serverTime", formattedDate);
@@ -81,9 +83,9 @@ public class ClientController {
 	
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
-	public Map getVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price) {
+	public Map getVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
 		
-		Map vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price);
+		Map vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet);
 		
 		
 		return vehicleList;
@@ -131,6 +133,14 @@ public class ClientController {
   	}
    
    
+   @RequestMapping(value="/otherInfo",method=RequestMethod.POST)
+ 	public String otherInfo(Locale locale, Model model,HttpServletRequest request) {
+ 		
+	   String otherInfoVm = clientService.getOtherInfo(request);
+ 		return "redirect:" + "/vehicleDetails/"+otherInfoVm;
+ 		
+ 	}
+   
    @RequestMapping(value="/tradeInApp",method=RequestMethod.POST)
  	public String tradeInApp(Locale locale, Model model,HttpServletRequest request) {
  		
@@ -147,8 +157,9 @@ public class ClientController {
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes();
 		List<String> vehicleListModel = clientService.getAllVehicleModel();
+		List<String> vehicleListYear = clientService.getAllVehicleYear();
 		
-		
+		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
@@ -159,8 +170,9 @@ public class ClientController {
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes();
 		List<String> vehicleListModel = clientService.getAllVehicleModel();
+		List<String> vehicleListYear = clientService.getAllVehicleYear();
 		
-		
+		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);

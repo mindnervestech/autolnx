@@ -24,6 +24,7 @@ public class VehicleVM {
 	public String highwayMileage;
 	public String location;
 	public String price;
+	public Integer onlyPrice;
 	public String stock;
 	
 	
@@ -459,6 +460,13 @@ public class VehicleVM {
 	public void setSteeringWheelControls(String steeringWheelControls) {
 		this.steeringWheelControls = steeringWheelControls;
 	}
+	public Integer getOnlyPrice() {
+		return onlyPrice;
+	}
+	public void setOnlyPrice(Integer onlyPrice) {
+		this.onlyPrice = onlyPrice;
+	}
+	
 	
 	
 }
