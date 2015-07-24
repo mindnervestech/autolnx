@@ -133,7 +133,7 @@ public class ClientController {
    @RequestMapping(value="/otherInfo",method=RequestMethod.POST)
  	public String otherInfo(Locale locale, Model model,HttpServletRequest request) {
  		
-	   String otherInfoVm = clientService.getOtherInfo(request);
+	   String otherInfoVm = clientService.getOtherInfo(request, hostUrl);
  		return "redirect:" + "/vehicleDetails/"+otherInfoVm;
  		
  	}

@@ -436,7 +436,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("mindnervesdemo@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("yogeshpatil424@gmail.com"));
+					InternetAddress.parse(request.getParameter("email")));
 			message.setSubject("Password Recovery");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -501,12 +501,96 @@ public class ClientService {
 		
 	}
 	
-	public String getOtherInfo(HttpServletRequest request){
+	public String getOtherInfo(HttpServletRequest request, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
+		String path = "";
 		
 		jdbcTemplate.update("INSERT INTO other_user_info(name, email,fname,femail,date_info,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("fname")+"','"+request.getParameter("femail")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
-				
+		
+		
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
+ 				
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		if(vehiclePath.isEmpty()) {
+			path = "/no-image.jpg";
+		} else {
+			if(vehiclePath.get(0).get("path").toString() == "") {
+				path = "/no-image.jpg";
+			} else {
+				path = (String) vehiclePath.get(0).get("path");
+			}
+		}
+		
+		final String username = "mindnervesdemo@gmail.com";
+		final String password = "mindnervesadmin";
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("mindnervesdemo@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(request.getParameter("femail")));
+			message.setSubject("Password Recovery");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+			
+	        Template t = ve.getTemplate("com/mnt/views/templateForFriend.vm");
+	        VelocityContext context = new VelocityContext();
+	        context.put("name", request.getParameter("name"));
+	        context.put("fname", request.getParameter("fname"));
+	        context.put("email", request.getParameter("email"));
+	        context.put("phone", request.getParameter("phone"));
+	        context.put("year", (String) oneRow.get(0).get("year"));
+	        context.put("make", (String) oneRow.get(0).get("make"));
+	        context.put("model", (String) oneRow.get(0).get("model"));
+	        context.put("price", (Integer) oneRow.get(0).get("price"));
+	        context.put("vin", (String) oneRow.get(0).get("vin"));
+	        context.put("stock", (String) oneRow.get(0).get("stock"));
+	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        context.put("engine", (String) oneRow.get(0).get("engine"));
+	        context.put("exterior_color", (String) oneRow.get(0).get("exterior_color"));
+	        context.put("interior_color", (String) oneRow.get(0).get("interior_color"));
+	        context.put("city_mileage", (String) oneRow.get(0).get("city_mileage"));
+	        context.put("highway_mileage", (String) oneRow.get(0).get("highway_mileage"));
+	        
+	        
+	        context.put("path", path);
+	        context.put("urlLink", hostUrl);
+	        
+	        
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
+
+		
 		return request.getParameter("vin");
 		
 	}
@@ -514,12 +598,26 @@ public class ClientService {
 	public String getTradeInApp(HttpServletRequest request){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
-
-/*		System.out.println(request.getParameter("options"));
-		String supplierValues[] = request.getParameterValues("options");
-		System.out.println(supplierValues.toString());
-*/		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,vin,user_id) VALUES('"+request.getParameter("first_name")+"','"+request.getParameter("last_name")+"','"+request.getParameter("work_phone")+"','"+request.getParameter("phone")+"','"+request.getParameter("email")+"','"+request.getParameter("preferred")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
-				
+		String optionValue = "";
+		int i = 0;
+		
+		System.out.println(request.getParameter("options"));
+		String opValues[] = request.getParameterValues("options");
+		System.out.println(opValues.toString());
+	
+		for(String str:opValues){
+			if(i == 0){
+				optionValue = optionValue + str;
+				i++;
+			}else{
+				optionValue = optionValue + "," + str;
+			}
+		}
+	
+		
+		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,user_id) VALUES('"+request.getParameter("first_name")+"','"+request.getParameter("last_name")+"','"+request.getParameter("work_phone")+"','"+request.getParameter("phone")+"','"+request.getParameter("email")+"','"+request.getParameter("preferred")+"','"+dateFormat.format(date)+"','"+request.getParameter("comments")+"','"+request.getParameter("year")+"','"+request.getParameter("make")+"','"+request.getParameter("model")+"','"+request.getParameter("exterior_colour")+"','"+request.getParameter("kilometres")+"','"+request.getParameter("engine")+"'" +
+				",'"+request.getParameter("doors")+"','"+request.getParameter("transmission")+"','"+request.getParameter("drivetrain")+"','"+request.getParameter("body_rating")+"','"+request.getParameter("tire_rating")+"','"+request.getParameter("engine_rating")+"','"+request.getParameter("transmission_rating")+"','"+request.getParameter("glass_rating")+"','"+request.getParameter("interior_rating")+"','"+request.getParameter("exhaust_rating")+"','"+request.getParameter("rental_return")+"','"+request.getParameter("odometer_accurate")+"','"+request.getParameter("service_records")+"','"+request.getParameter("lienholder")+"','"+request.getParameter("titleholder")+"','"+request.getParameter("equipment")+"','"+request.getParameter("vehiclenew")+"','"+request.getParameter("accidents")+"','"+request.getParameter("damage")+"','"+request.getParameter("paint")+"','"+request.getParameter("salvage")+"','"+optionValue+"','"+request.getParameter("vin")+"','"+userId+"')");
+		
 		return request.getParameter("vin");
 		
 	}
