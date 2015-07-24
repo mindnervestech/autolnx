@@ -11,8 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="resources/autolinx/images/favicon.ico">
-<title>Automotive Car Dealership &amp; Business HTML Template</title>
+<link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
+<title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
 <link href="resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
 
@@ -115,7 +115,7 @@ $(document).ready(function()
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="logo" href="#"><img src="resources/autolinx/images/autolinxwhite11.png" alt></a> </div>
+            <a class="logo" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" alt></a> </div>
           
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -148,7 +148,7 @@ $(document).ready(function()
                     <c:forEach var="row" items="${sliderImages}">
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
                         <!-- MAIN IMAGE --> 
-                        <img src="/glivrImg/images${row}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        <img src="/glivrImg/images${row.url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
                         
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -161,10 +161,10 @@ $(document).ready(function()
 						data-speed="1000"
 						data-start="500"
 						data-easing="Back.easeInOut"
-						data-endspeed="300">DOMINATE </div>
+						data-endspeed="300">${row.description} </div>
                         
                         <!-- LAYER NR. 1 -->
-                        <div class="tp-caption internet  fade"
+                        <!-- <div class="tp-caption internet  fade"
 						data-x="0"
 						data-y="282"
 						data-speed="500"
@@ -174,7 +174,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; letter-spacing: -3px;">THE INTERNET </div>
-                        <!-- LAYER NR. 2 -->
+                        LAYER NR. 2
                         <div class="tp-caption attract sfl"
 						data-x="0"
 						data-y="369"
@@ -185,7 +185,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; top: 371px; ">Attract, Engage, &amp; Convert </div>
-                        <!-- LAYER NR. 3 -->
+                        LAYER NR. 3
                         <div class="tp-caption more skewfromright "
 						data-x="100"
 						data-y="425"
@@ -196,7 +196,7 @@ $(document).ready(function()
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
 						style="z-index: 6; left:186px;">more </div>
-                        <!-- LAYER NR. 4 -->
+                        LAYER NR. 4
                         <div class="tp-caption qualified skewfromright"
 						data-x="0"
 						data-y="476"
@@ -206,7 +206,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6">qualified vehicle shoppers </div>
+						style="z-index: 6">qualified vehicle shoppers </div> -->
                     </li>
                     </c:forEach>
                     <!-- <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
@@ -478,35 +478,35 @@ $(document).ready(function()
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip margin-bottom-30">
                 <div class="card">
-                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[0]}" alt=""></div>
+                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[0].url}" alt=""></div>
                   <div class="face back">
                     <div class='hover_title'>New Arrivals</div>
                     <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car1-lrg.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
                 </div>
               </div>
-              <h4><a href="#">New Arrivals</a></h4>
+              <h4><a href="#">${featuredImages[0].description}</a></h4>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip horizontal margin-bottom-30">
                 <div class="card">
-                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[1]}" alt=""></div>
+                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[1].url}" alt=""></div>
                   <div class="face back">
                     <div class='hover_title'>Hybrids Collection</div>
                     <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
                 </div>
               </div>
-              <h4><a href="#">ECO Friendly</a></h4>
+              <h4><a href="#">${featuredImages[1].description}</a></h4>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip margin-bottom-30">
                 <div class="card">
-                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[2]}" alt=""></div>
+                  <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[2].url}" alt=""></div>
                   <div class="face back">
                     <div class='hover_title'>Aston Martin DBS</div>
                     <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car3.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
                 </div>
               </div>
-              <h4><a href="#">Luxury Chic</a></h4>
+              <h4><a href="#">${featuredImages[2].description}</a></h4>
             </div>
           </div>
         </div>
@@ -955,7 +955,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="resources/autolinx/images/autolinxwhite11.png" alt></a> </div>
+        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" alt></a> </div>
         <p>Powered by <a href="#">GLIDER-AUTOS</a> with partnership of Vivid Concept, Inc.</p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">

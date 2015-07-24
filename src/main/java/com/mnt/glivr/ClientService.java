@@ -32,7 +32,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.mnt.views.FeaturedVM;
 import com.mnt.views.SiteContentVM;
+import com.mnt.views.SiteLogoVM;
+import com.mnt.views.SliderVM;
 import com.mnt.views.VehicleImage;
 import com.mnt.views.VehicleVM;
 
@@ -44,24 +47,28 @@ public class ClientService {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	public List<String> getSliderImages() {
+	public List<SliderVM> getSliderImages() {
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
-		List<String> sliderUrls = new ArrayList<String>();
+		List<SliderVM> sliderUrls = new ArrayList<SliderVM>();
 		for(Map map : rows) {
-			String url = (String) map.get("path");
-			sliderUrls.add(url);
+			SliderVM vm = new SliderVM();
+			vm.url = (String) map.get("path");
+			vm.description = (String) map.get("description");
+			sliderUrls.add(vm);
 		}
 		return sliderUrls;
 	}
 	
-	public List<String> getFeaturedImages() {
+	public List<FeaturedVM> getFeaturedImages() {
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where user_id = '"+userId+"' order by featured_image.`row`,featured_image.col");
-		List<String> featuredUrls = new ArrayList<String>();
+		List<FeaturedVM> featuredUrls = new ArrayList<FeaturedVM>();
 		for(Map map : rows) {
-			String url = (String) map.get("path");
-			featuredUrls.add(url);
+			FeaturedVM vm = new FeaturedVM();
+			vm.url = (String) map.get("path");
+			vm.description = (String) map.get("description");;
+			featuredUrls.add(vm);
 		}
 		return featuredUrls;
 	}
@@ -682,6 +689,19 @@ public class ClientService {
 		
 		return vehicleList;
 		
+	}
+	
+	public SiteLogoVM getLogoData() {
+		SiteLogoVM logo = new SiteLogoVM();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		
+		for(Map map : rows) {
+			logo.logoPath = (String) map.get("logo_image_path");
+			logo.faviconPath = (String) map.get("favicon_image_path");
+			logo.tabText = (String) map.get("tab_text");
+		}
+		
+		return logo;
 	}
 	
 }

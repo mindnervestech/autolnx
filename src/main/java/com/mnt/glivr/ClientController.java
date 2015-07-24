@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mnt.views.FeaturedVM;
 import com.mnt.views.SiteContentVM;
+import com.mnt.views.SiteLogoVM;
+import com.mnt.views.SliderVM;
 import com.mnt.views.VehicleVM;
 
 /**
@@ -43,8 +46,8 @@ public class ClientController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		List<String> sliderImages = clientService.getSliderImages();
-		List<String> featuredImages = clientService.getFeaturedImages();
+		List<SliderVM> sliderImages = clientService.getSliderImages();
+		List<FeaturedVM> featuredImages = clientService.getFeaturedImages();
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
@@ -53,7 +56,7 @@ public class ClientController {
 		List<String> vehicleListModel = clientService.getAllVehicleModel();
 		List<String> vehicleListYear = clientService.getAllVehicleYear();
 		SiteContentVM siteContent = clientService.getSitContent();
-		
+		SiteLogoVM siteLogo = clientService.getLogoData();
 		model.addAttribute("siteContent", siteContent);
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake);
@@ -61,6 +64,7 @@ public class ClientController {
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("sliderImages",sliderImages);
 		model.addAttribute("featuredImages",featuredImages);
+		model.addAttribute("siteLogo",siteLogo);
 		
 		return "autolinx/index";
 	}
@@ -70,10 +74,11 @@ public class ClientController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+		SiteLogoVM siteLogo = clientService.getLogoData();
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
 		
 		return "autolinx/inventory";
 	}
@@ -105,11 +110,13 @@ public class ClientController {
 		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
 		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin);
 		SiteContentVM siteContent = clientService.getSitContent();
+		SiteLogoVM siteLogo = clientService.getLogoData();
 		
 		model.addAttribute("siteContent", siteContent);
 		model.addAttribute("similarVehicle",similarVehicleVm);
 		model.addAttribute("vehicle",vehicleVM);
 		model.addAttribute("hostname", hostUrl);
+		model.addAttribute("siteLogo",siteLogo);
 		return "autolinx/vehicleDetails";
 	}
 	
@@ -155,11 +162,13 @@ public class ClientController {
 		List<String> vehicleListMake = clientService.getAllVehicleMakes();
 		List<String> vehicleListModel = clientService.getAllVehicleModel();
 		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		SiteLogoVM siteLogo = clientService.getLogoData();
 		
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
+		model.addAttribute("siteLogo",siteLogo);
 		return "autolinx/inventory";
 	}
 	@RequestMapping(value="/findVehicle",method=RequestMethod.POST)
@@ -168,11 +177,13 @@ public class ClientController {
 		List<String> vehicleListMake = clientService.getAllVehicleMakes();
 		List<String> vehicleListModel = clientService.getAllVehicleModel();
 		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		SiteLogoVM siteLogo = clientService.getLogoData();
 		
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
+		model.addAttribute("siteLogo",siteLogo);
 		return "autolinx/inventory";
 	}
 	

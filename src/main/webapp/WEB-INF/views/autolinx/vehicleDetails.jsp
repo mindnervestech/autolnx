@@ -12,8 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/autolinx/images/favicon.ico">
-<title>Automotive Car Dealership &amp; Business HTML Template</title>
+<link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
+<title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
 
@@ -166,7 +166,7 @@ $(document).ready(function()
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="logo" href="#"><img src="${pageContext.request.contextPath}/resources/autolinx/images/autolinxwhite11.png" alt></a> </div>
+            <a class="logo" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" alt></a> </div>
           
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -829,7 +829,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="${pageContext.request.contextPath}/resources/autolinx/images/autolinxwhite11.png" alt></a> </div>
+        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" alt></a> </div>
         <p>Powered by <a href="#">GLIDER-AUTOS</a> with partnership of Vivid Concept, Inc.</p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
