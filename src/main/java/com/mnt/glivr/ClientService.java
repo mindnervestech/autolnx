@@ -1,5 +1,6 @@
 package com.mnt.glivr;
 
+import java.io.StringWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,9 +9,25 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -171,7 +188,7 @@ public class ClientService {
 		if(!priceSort.equals("")){
 			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
 		}else if(!alphbet.equals("")){
-			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN price END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN price END DESC limit "+start+",16 ");
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
 		}
 		count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '')");
 		
@@ -383,13 +400,26 @@ public class ClientService {
 	}	
 	
 	
-	public String getRequestMore(HttpServletRequest request){
+	public String getRequestMore(HttpServletRequest request, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
-		
+		String path = "";
 		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
 		
-		/*final String username = "mindnervesdemo@gmail.com";
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
+ 				
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		if(vehiclePath.isEmpty()) {
+			path = "/no-image.jpg";
+		} else {
+			if(vehiclePath.get(0).get("path").toString() == "") {
+				path = "/no-image.jpg";
+			} else {
+				path = (String) vehiclePath.get(0).get("path");
+			}
+		}
+		
+		final String username = "mindnervesdemo@gmail.com";
 		final String password = "mindnervesadmin";
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -406,7 +436,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("mindnervesdemo@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("yogesh_337@yahoo.com"));
+					InternetAddress.parse("yogeshpatil424@gmail.com"));
 			message.setSubject("Password Recovery");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -420,7 +450,21 @@ public class ClientService {
 			
 	        Template t = ve.getTemplate("com/mnt/views/template.vm");
 	        VelocityContext context = new VelocityContext();
-	        context.put("name", "Amit");
+	        context.put("name", request.getParameter("name"));
+	        context.put("email", request.getParameter("email"));
+	        context.put("phone", request.getParameter("phone"));
+	        context.put("year", (String) oneRow.get(0).get("year"));
+	        context.put("make", (String) oneRow.get(0).get("make"));
+	        context.put("model", (String) oneRow.get(0).get("model"));
+	        context.put("price", (Integer) oneRow.get(0).get("price"));
+	        context.put("vin", (String) oneRow.get(0).get("vin"));
+	        context.put("stock", (String) oneRow.get(0).get("stock"));
+	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        context.put("path", path);
+	        context.put("urlLink", hostUrl);
+	        
+	        
+	        
 	        StringWriter writer = new StringWriter();
 	        t.merge( context, writer );
 	        String content = writer.toString(); 
@@ -435,10 +479,6 @@ public class ClientService {
 		{
 			e.printStackTrace();
 		} 
-		*/
-		
-		
-		
 		
 		
 		return request.getParameter("vin");

@@ -116,7 +116,7 @@ public class ClientController {
    @RequestMapping(value="/requestMore",method=RequestMethod.POST)
 	public String requestMore(Locale locale, Model model,HttpServletRequest request) {
 		
-		String requestVm = clientService.getRequestMore(request);
+		String requestVm = clientService.getRequestMore(request, hostUrl);
 		return "redirect:" + "/vehicleDetails/"+requestVm;
 		
 	}
