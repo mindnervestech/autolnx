@@ -43,7 +43,7 @@ import com.mnt.views.VehicleVM;
 @Service
 public class ClientService {
 	
-	static int userId = 336920057; //Hardcode for now
+	static int userId = -1361609913; //Hardcode for now
 	@Value("${emailusername}")
 	String emailusername;
 	
