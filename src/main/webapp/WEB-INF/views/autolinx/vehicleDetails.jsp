@@ -1373,5 +1373,9 @@ $(document).ready(function()
 		 input[type="text"], textarea, textarea[name="msg"], select, div.custom-select, input[type="file"], input[type="email"]{
   			  border: 1px solid rgb(200, 195, 195) !important;
   		} 	
+  		
+  		.sbHolder{
+  			width: 80% !important;
+  		}
   		  		
     </style>

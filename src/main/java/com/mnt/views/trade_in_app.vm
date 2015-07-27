@@ -72,12 +72,12 @@
 <body  offset="0" class="body" style="padding:0; margin:0; display:block; background:#eeebeb; -webkit-text-size-adjust:none" bgcolor="#eeebeb">
   <table align="center" cellpadding="0" cellspacing="0" width="100%" height="100%" >
     <tr>
-      <td align="center" valign="top" style="background:#00989a;" width="100%">
+      <td align="center" valign="top" style="background:#5882FA;" width="100%">
         <center style="text-align:-webkit-center !important;">
           <table style="margin:0 auto;" cellspacing="0" height="60" cellpadding="0" width="100%">
             <tr>
               <td style="text-align: center;">
-                <a href="#"><img width="91" height="28" src="http://www.genivi.org/sites/default/files/GENIVI_Black_Logo-white_background.jpg" alt="company logo" /></a>
+                <a href="#"><img width="91" height="28" src="http://li664-78.members.linode.com:8081/glivrImg/images$sitelogo.logoPath" alt="company logo" /></a>                    
               </td>
             </tr>
           </table>
@@ -91,7 +91,7 @@
                         <tr>
                           <td style="font-size:24px; font-weight: 600; color: #121212; text-align:center;" class="mobile-spacing">
                             <div class="mobile-br">&nbsp;</div>
-                            <span319db5>Hi $fname, $name</span>
+                            <span319db5>“Trade-In” form has been submitte</span>
                             <br>
                           </td>
                         </tr>
@@ -104,7 +104,7 @@
                       <table cellspacing="0" cellpadding="0" width="100%" style="background-color:#121212;">
                         <tr>
                           <td>
-                            <img src="http://li664-78.members.linode.com:8081/glivrImg/images$path" style="max-width:100%; display:block;">
+                            <img src="http://li664-78.members.linode.com:8081/glivrImg/images/ZHWGU12T37LA04353--1361609913/DSC_0286-762x456.jpg" style="max-width:100%; display:block;">
                           </td>
                         </tr>
                       </table>
@@ -119,18 +119,64 @@
                         <table style="margin: 0 auto;width:80% !important;" cellpadding="0" cellspacing="0" class="force-width-80">
                           <tr>
                             <td class="mobile-resize" style="color:#00989a; font-size: 22px; font-weight: 600; text-align: left; vertical-align: top;">
-                              <span319db5>$year  $make $model $price</span>
+                              <span319db5>Contact Information</span>
                             </td>
                           </tr>
                         </table>
                         <table style="margin: 0 auto;width:80% !important;" cellspacing="0" cellpadding="0" class="force-width-80">
-                          <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Stock  : $stock</td></tr>
-                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">VIN   : $vin</td></tr>
-                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Milage  : $mileage</td></tr>
+                          <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">First Name  : $first_name</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Last Name   : $last_name</td></tr>
+                             <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Work Phone   : $work_phone</td></tr>
+                            
+                        </table>
+                         <table style="margin: 0 auto;width:80% !important;" cellpadding="0" cellspacing="0" class="force-width-80">
+                          <tr>
+                            <td class="mobile-resize" style="color:#00989a; font-size: 22px; font-weight: 600; text-align: left; vertical-align: top;">
+                              <span319db5>Vehicle Information</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <table style="margin: 0 auto;width:80% !important;" cellspacing="0" cellpadding="0" class="force-width-80">
+                          <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Year  : $year</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Make   : $make</td></tr>
+                             <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">model  : $model</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Exterior Colour   : $exterior_colour</td></tr>
+                             <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Kilometres  : $kilometres</td></tr>
                             <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Engine   : $engine</td></tr>
-                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Exterior Color : $exterior_color</td></tr>
-                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Interior Color: $interior_color</td></tr>
-                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">MPG : </td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Doors   : $doors</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Transmission   : $transmission</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Drivetrain   : $drivetrain</td></tr>
+                            
+                        </table>
+                         <table style="margin: 0 auto;width:80% !important;" cellpadding="0" cellspacing="0" class="force-width-80">
+                          <tr>
+                            <td class="mobile-resize" style="color:#00989a; font-size: 22px; font-weight: 600; text-align: left; vertical-align: top;">
+                              <span319db5>Vehicle Rating</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <table style="margin: 0 auto;width:80% !important;" cellspacing="0" cellpadding="0" class="force-width-80">
+                          <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Body  : $body_rating</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Tires   : $tire_rating</td></tr>
+                             <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Engine  : $engine_rating</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Transmission   : $transmission_rating</td></tr>
+                             <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">glass  : $glass_rating</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Interior    : $interior_rating </td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Exhaust   : $exhaust_rating</td></tr>
+                            
+                        </table>
+                         <table style="margin: 0 auto;width:80% !important;" cellpadding="0" cellspacing="0" class="force-width-80">
+                          <tr>
+                            <td class="mobile-resize" style="color:#00989a; font-size: 22px; font-weight: 600; text-align: left; vertical-align: top;">
+                              <span319db5>Vehicle History</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <table style="margin: 0 auto;width:80% !important;" cellspacing="0" cellpadding="0" class="force-width-80">
+                          <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Was it ever a lease or rental return?  : $lease_or_rental</td></tr>
+                            <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Is the odometer operational and accurate?  : $operational_and_accurate</td></tr>
+                             <tr style="text-align:left; color: #6f6f6f;"><td style="text-align:left;">Detailed service records available?  : $service_record</td></tr>
+                            
                         </table>
                       </center>
                       <table style="margin:0 auto;" cellspacing="0" cellpadding="10" width="100%">
@@ -143,12 +189,9 @@
                                 <w:anchorlock/>
                                 <center>
                                   <![endif]-->
-                                 <form action="http://maps.google.com/maps" method="get" target="_blank">
-  										<!--  <input type="hidden" type="text" name="saddr" value="swargate,pune"/> -->
-   										<input type="hidden" name="daddr" value="3300 SONOMA BLVD., VALLEJO, CALIFORNIA 9459" />
-                                  <input type="submit" value="Get directions"  style="background-color:#00989a;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:180px;-webkit-text-size-adjust:none;
-                                    -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;">
-                                   </form>
+                                <a class="btn" href="$urlLink/$vin"
+                                    style="background-color:#5882fa;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:180px;-webkit-text-size-adjust:none;
+                                    -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;">See Vehicale's Profile </a>
                                   <!--[if mso]>
                                 </center>
                               </v:rect>
@@ -159,7 +202,7 @@
                         </tr>
                       </table>
                       <table cellspacing="0" cellpadding="0" class="force-full-80 bg bg1" style="background-color:#fff;width:80%;border-top:1px solid #EEEEEE;margin:auto">
-                        <tr>or call us now: (707) 552-546
+                        <tr>
                          <!--  <td style="text-align:center;">
                             <br>
                             <img width="62" height="56" img src="images/google-black.png">
@@ -185,22 +228,7 @@
                       &nbsp;
                   </tr>
                   <tr>
-                    <td style="color:#D2D2D2;;color:rgba(255,255,255,0.7); font-size: 14px;padding-bottom:4px;">
-                      <table border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="force-width-50 w100p">
-                        <tr>
-                          <td style="text-decoration:underline;height:30px;text-align:left" class="mobile-center">
-                            <span319db5>Update subscription preferences</span>
-                          </td>
-                        </tr>
-                      </table>
-                      <table border="0" align="right" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="force-width-50 w100p">
-                        <tr>
-                          <td style="text-decoration:underline;height:30px;text-align:right" class="mobile-center">
-                            <span319db5>Unsubscribe from this list</span>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
+                   
                   </tr>
                 </table>
                 <table cellspacing="0" cellpadding="0" class="force-full-80" style="width:80%;margin:auto">
@@ -213,7 +241,7 @@
                       <table border="0" align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="force-width-50">
                         <tr>
                           <td style="height:21px;text-align:center;font-size:12px;" class="mobile-center">
-                            <span319db5>Copyright © 2015 Your Company, All Right Reserved.</span>
+                            <span319db5>Copyright Â© 2015 Your Company, All Right Reserved.</span>
                           </td>
                         </tr>
                         <tr>

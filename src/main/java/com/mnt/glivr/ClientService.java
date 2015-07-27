@@ -29,6 +29,7 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,13 @@ import com.mnt.views.VehicleVM;
 @Service
 public class ClientService {
 	
-	static int userId = -1361609913; //Hardcode for now
+	static int userId = 336920057; //Hardcode for now
+	@Value("${emailusername}")
+	String emailusername;
+	
+	@Value("${emailpassword}")
+	String emailpassword;
+	
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -411,6 +418,7 @@ public class ClientService {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String path = "";
+		
 		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
 		
 		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
@@ -426,8 +434,17 @@ public class ClientService {
 			}
 		}
 		
-		final String username = "mindnervesdemo@gmail.com";
-		final String password = "mindnervesadmin";
+		SiteLogoVM logo = new SiteLogoVM();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		
+		for(Map map : rows) {
+			logo.logoPath = (String) map.get("logo_image_path");
+			logo.faviconPath = (String) map.get("favicon_image_path");
+			logo.tabText = (String) map.get("tab_text");
+		}
+		
+		final String username = emailusername;
+		final String password = emailpassword;
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -441,7 +458,7 @@ public class ClientService {
 		try
 		{
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("mindnervesdemo@gmail.com"));
+			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(request.getParameter("email")));
 			message.setSubject("Password Recovery");
@@ -467,6 +484,7 @@ public class ClientService {
 	        context.put("vin", (String) oneRow.get(0).get("vin"));
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
 	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
 	        
@@ -529,8 +547,17 @@ public class ClientService {
 			}
 		}
 		
-		final String username = "mindnervesdemo@gmail.com";
-		final String password = "mindnervesadmin";
+		SiteLogoVM logo = new SiteLogoVM();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		
+		for(Map map : rows) {
+			logo.logoPath = (String) map.get("logo_image_path");
+			logo.faviconPath = (String) map.get("favicon_image_path");
+			logo.tabText = (String) map.get("tab_text");
+		}
+		
+		final String username = emailusername;
+		final String password = emailpassword;
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -544,7 +571,7 @@ public class ClientService {
 		try
 		{
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("mindnervesdemo@gmail.com"));
+			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(request.getParameter("femail")));
 			message.setSubject("Password Recovery");
@@ -576,7 +603,7 @@ public class ClientService {
 	        context.put("city_mileage", (String) oneRow.get(0).get("city_mileage"));
 	        context.put("highway_mileage", (String) oneRow.get(0).get("highway_mileage"));
 	        
-	        
+	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
 	        
@@ -602,28 +629,147 @@ public class ClientService {
 		
 	}
 	
-	public String getTradeInApp(HttpServletRequest request){
+	public String getTradeInApp(HttpServletRequest request, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String optionValue = "";
+		String path = "";
 		int i = 0;
 		
 		System.out.println(request.getParameter("options"));
-		String opValues[] = request.getParameterValues("options");
-		System.out.println(opValues.toString());
-	
-		for(String str:opValues){
-			if(i == 0){
-				optionValue = optionValue + str;
-				i++;
-			}else{
-				optionValue = optionValue + "," + str;
+		if(request.getParameter("options") != null){
+			String opValues[] = request.getParameterValues("options");
+		
+			for(String str:opValues){
+				if(i == 0){
+					optionValue = optionValue + str;
+					i++;
+				}else{
+					optionValue = optionValue + "," + str;
+				}
 			}
 		}
 	
 		
 		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,user_id) VALUES('"+request.getParameter("first_name")+"','"+request.getParameter("last_name")+"','"+request.getParameter("work_phone")+"','"+request.getParameter("phone")+"','"+request.getParameter("email")+"','"+request.getParameter("preferred")+"','"+dateFormat.format(date)+"','"+request.getParameter("comments")+"','"+request.getParameter("year")+"','"+request.getParameter("make")+"','"+request.getParameter("model")+"','"+request.getParameter("exterior_colour")+"','"+request.getParameter("kilometres")+"','"+request.getParameter("engine")+"'" +
 				",'"+request.getParameter("doors")+"','"+request.getParameter("transmission")+"','"+request.getParameter("drivetrain")+"','"+request.getParameter("body_rating")+"','"+request.getParameter("tire_rating")+"','"+request.getParameter("engine_rating")+"','"+request.getParameter("transmission_rating")+"','"+request.getParameter("glass_rating")+"','"+request.getParameter("interior_rating")+"','"+request.getParameter("exhaust_rating")+"','"+request.getParameter("rental_return")+"','"+request.getParameter("odometer_accurate")+"','"+request.getParameter("service_records")+"','"+request.getParameter("lienholder")+"','"+request.getParameter("titleholder")+"','"+request.getParameter("equipment")+"','"+request.getParameter("vehiclenew")+"','"+request.getParameter("accidents")+"','"+request.getParameter("damage")+"','"+request.getParameter("paint")+"','"+request.getParameter("salvage")+"','"+optionValue+"','"+request.getParameter("vin")+"','"+userId+"')");
+		
+		
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
+			
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		//List<Map<String, Object>> trade_in = jdbcTemplate.queryForList("select * from trade_in where vin = '"+request.getParameter("vin")+"'");
+		
+		if(vehiclePath.isEmpty()) {
+			path = "/no-image.jpg";
+		} else {
+			if(vehiclePath.get(0).get("path").toString() == "") {
+				path = "/no-image.jpg";
+			} else {
+				path = (String) vehiclePath.get(0).get("path");
+			}
+		}
+		
+		SiteLogoVM logo = new SiteLogoVM();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		
+		for(Map map : rows) {
+			logo.logoPath = (String) map.get("logo_image_path");
+			logo.faviconPath = (String) map.get("favicon_image_path");
+			logo.tabText = (String) map.get("tab_text");
+		}
+		
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailusername));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(request.getParameter("email")));
+			message.setSubject("Password Recovery");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+			
+	        Template t = ve.getTemplate("com/mnt/views/trade_in_app.vm");
+	        VelocityContext context = new VelocityContext();
+	      	        
+	        /*---------Trad in info---------------*/
+	        
+	        /*contact info*/
+	        context.put("first_name", request.getParameter("first_name"));
+	        context.put("last_name", request.getParameter("last_name"));
+	        context.put("work_phone",request.getParameter("work_phone"));
+	       
+	        /*vehicale info*/
+	        
+	        context.put("year", request.getParameter("year"));
+	        context.put("make", request.getParameter("make"));
+	        context.put("model", request.getParameter("model"));
+	        context.put("exterior_colour", request.getParameter("exterior_colour"));
+	        context.put("kilometres", request.getParameter("kilometres"));
+	        context.put("engine", request.getParameter("engine"));
+	        context.put("doors", request.getParameter("doors"));
+	        context.put("transmission", request.getParameter("transmission"));
+	        context.put("drivetrain", request.getParameter("drivetrain"));
+	        
+	        /*vehicale rating*/
+	        
+	        context.put("body_rating", request.getParameter("body_rating"));
+	        context.put("tire_rating", request.getParameter("tire_rating"));
+	        context.put("engine_rating", request.getParameter("engine_rating"));
+	        context.put("transmission_rating", request.getParameter("transmission_rating"));
+	        context.put("glass_rating", request.getParameter("glass_rating"));
+	        context.put("interior_rating", request.getParameter("interior_rating"));
+	        context.put("exhaust_rating", request.getParameter("exhaust_rating"));
+	        
+	        /*vehicale History*/
+	        
+	        context.put("lease_or_rental", request.getParameter("rental_return"));
+	        context.put("operational_and_accurate", request.getParameter("odometer_accurate"));
+	        context.put("service_record", request.getParameter("service_records"));
+	        
+	        /*title History*/
+	        
+	        context.put("lienholder", request.getParameter("lienholder"));
+	        context.put("holds_this_title", request.getParameter("holds_this_title"));
+	        
+	        context.put("sitelogo", logo);
+	        context.put("path", path);
+	        context.put("urlLink", hostUrl);
+	        
+	        
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
 		
 		return request.getParameter("vin");
 		

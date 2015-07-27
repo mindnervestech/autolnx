@@ -148,7 +148,7 @@ public class ClientController {
    @RequestMapping(value="/tradeInApp",method=RequestMethod.POST)
  	public String tradeInApp(Locale locale, Model model,HttpServletRequest request) {
  		
-	   String scheduleVm = clientService.getTradeInApp(request);
+	   String scheduleVm = clientService.getTradeInApp(request, hostUrl);
 	   
 	   return "redirect:" + "/vehicleDetails/"+request.getParameter("vin");
  		
