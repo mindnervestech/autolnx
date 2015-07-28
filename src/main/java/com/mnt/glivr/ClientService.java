@@ -127,7 +127,7 @@ public class ClientService {
 				for(i=0;i<sContentVM.heading.length();i++) {
 					if(sContentVM.heading.charAt(i) == ' ') {
 						sContentVM.heading1 = sContentVM.heading.substring(0, i);
-						sContentVM.heading2 = sContentVM.heading.substring(i, sContentVM.heading.length()-1);
+						sContentVM.heading2 = sContentVM.heading.substring(i, sContentVM.heading.length());
 						break;
 					}
 				}
@@ -146,7 +146,7 @@ public class ClientService {
 				for(i=0;i<sContentVM.desc_heading.length();i++) {
 					if(sContentVM.desc_heading.charAt(i) == ' ') {
 						sContentVM.desc_heading1 = sContentVM.desc_heading.substring(0, i);
-						sContentVM.desc_heading2 = sContentVM.desc_heading.substring(i, sContentVM.desc_heading.length()-1);
+						sContentVM.desc_heading2 = sContentVM.desc_heading.substring(i, sContentVM.desc_heading.length());
 						break;
 					}
 				}
@@ -163,7 +163,7 @@ public class ClientService {
 			if(descript != null) {
 				String firstLetter = descript.substring(0,1);
 				sContentVM.descriptionFirstChar = firstLetter;
-				sContentVM.description = descript.substring(1, descript.length() - 1);
+				sContentVM.description = descript.substring(1, descript.length());
 			} else {
 				sContentVM.descriptionFirstChar = "";
 				sContentVM.description = "";
