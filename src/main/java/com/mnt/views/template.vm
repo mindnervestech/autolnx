@@ -97,14 +97,14 @@
                         </tr>
                         <tr>
                           <td style="font-size:17px; text-align:center; padding: 10px 75px 0; color:#6E6E6E;" class="w320 mobile-spacing mobile-padding">
-                            <span319db5>Come check out my stuff on Themes Lab!</span><br><br>
+                            <span319db5>has been submitted</span><br><br>
                           </td>
                         </tr>
                       </table>
                       <table cellspacing="0" cellpadding="0" width="100%" style="background-color:#121212;">
                         <tr>
                           <td>
-                            <img src="http://li664-78.members.linode.com:8081/glivrImg/images$path" style="max-width:100%; display:block;">
+                             <a href="$urlLink/$vin"><img src="http://li664-78.members.linode.com:8081/glivrImg/images$path" style="max-width:100%; display:block;"></a>
                           </td>
                         </tr>
                       </table>
@@ -182,20 +182,7 @@
                   </tr>
                   <tr>
                     <td style="color:#D2D2D2;;color:rgba(255,255,255,0.7); font-size: 14px;padding-bottom:4px;">
-                      <table border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="force-width-50 w100p">
-                        <tr>
-                          <td style="text-decoration:underline;height:30px;text-align:left" class="mobile-center">
-                            <span319db5>Update subscription preferences</span>
-                          </td>
-                        </tr>
-                      </table>
-                      <table border="0" align="right" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="force-width-50 w100p">
-                        <tr>
-                          <td style="text-decoration:underline;height:30px;text-align:right" class="mobile-center">
-                            <span319db5>Unsubscribe from this list</span>
-                          </td>
-                        </tr>
-                      </table>
+                     
                     </td>
                   </tr>
                 </table>

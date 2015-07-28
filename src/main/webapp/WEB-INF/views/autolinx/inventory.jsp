@@ -174,7 +174,6 @@ $(document).ready(function()
          </div> 
           <div class="my-dropdown prices-dropdown" style="width: 121px !important;margin-left: 12px;">
             <select name="price" ng-model="price" ng-change="selectPrice()" class="css-dropdowns" tabindex="1" >
-			   <option value="">Select</option>
 			  <option value="lowToHigh">Low To High</option>
               <option value="highToLow">High To Low</option>
             </select>
@@ -187,7 +186,6 @@ $(document).ready(function()
          </div> 
           <div class="my-dropdown prices-dropdown" style="width: 121px !important;margin-left: 12px;">
             <select name="alphbet" ng-model="alphbet" ng-change="selectAlphbet()" class="css-dropdowns" tabindex="1" >
-			   <option value="">Select</option>
 			  <option value="a_z">A-Z</option>
               <option value="z_a">Z-A</option>
             </select>
@@ -563,8 +561,8 @@ $(document).ready(function()
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" alt style="height:100px;"></a> </div>
-            <p>Website developed by <a href="#">Glider, LLC</a> with partnership of Vivid Concept, Inc.</p>
+            <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" alt></a> </div>
+            <p>Website developed by <a href="#">Glider, LLC</a></p>
           </div>
           <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
             <ul class="social clearfix">
