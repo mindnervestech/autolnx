@@ -176,6 +176,14 @@ public class ClientController {
 		
 	}
    
+   @RequestMapping(value="/mobile/requestMore",method=RequestMethod.POST)
+	public String requestMoreMobile(Locale locale, Model model,HttpServletRequest request) {
+		
+		String requestVm = clientService.getRequestMore(request, hostUrl);
+		return "redirect:" + "/mobile/viewDetails/"+requestVm;
+		
+	}
+   
    @RequestMapping(value="/scheduleTest",method=RequestMethod.POST)
   	public String scheduleTest(Locale locale, Model model,HttpServletRequest request) {
   		
@@ -183,6 +191,14 @@ public class ClientController {
   		return "redirect:" + "/vehicleDetails/"+scheduleVm;
   		
   	}
+   
+   @RequestMapping(value="/mobile/scheduleTest",method=RequestMethod.POST)
+ 	public String scheduleTestMobile(Locale locale, Model model,HttpServletRequest request) {
+ 		
+	   String scheduleVm = clientService.getScheduleTest(request);
+ 		return "redirect:" + "/mobile/viewDetails/"+scheduleVm;
+ 		
+ 	}
    
    
    @RequestMapping(value="/otherInfo",method=RequestMethod.POST)
@@ -192,6 +208,14 @@ public class ClientController {
  		return "redirect:" + "/vehicleDetails/"+otherInfoVm;
  		
  	}
+   
+   @RequestMapping(value="/mobile/otherInfo",method=RequestMethod.POST)
+	public String otherInfoMobile(Locale locale, Model model,HttpServletRequest request) {
+		
+	   String otherInfoVm = clientService.getOtherInfo(request, hostUrl);
+		return "redirect:" + "/mobile/viewDetails/"+otherInfoVm;
+		
+	}
    
    @RequestMapping(value="/tradeInApp",method=RequestMethod.POST)
  	public String tradeInApp(Locale locale, Model model,HttpServletRequest request) {
