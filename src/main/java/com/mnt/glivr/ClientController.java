@@ -69,6 +69,24 @@ public class ClientController {
 		return "autolinx/index";
 	}
 	
+	@RequestMapping(value = "/mobile/home", method = RequestMethod.GET)
+	public String mobileHome(Locale locale, Model model) {
+		
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		SiteContentVM siteContent = clientService.getSitContent();
+		List<String> vehicleListMake = clientService.getAllVehicleMakes();
+		List<String> vehicleListModel = clientService.getAllVehicleModel();
+		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		
+		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("siteContent", siteContent);
+		model.addAttribute("vehicleListYear", vehicleListYear);
+		model.addAttribute("vehicleListMake", vehicleListMake);
+		model.addAttribute("vehicleListModel", vehicleListModel);
+		
+		return "autolinx/mobile/mobileIndex";
+	}
+	
 	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
 	public String inventory(Locale locale, Model model) {
 		
@@ -81,6 +99,20 @@ public class ClientController {
 		model.addAttribute("siteLogo",siteLogo);
 		
 		return "autolinx/inventory";
+	}
+	
+	@RequestMapping(value = "/mobile/inventory", method = RequestMethod.GET)
+	public String mobileInventory(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
+		
+		return "autolinx/mobile/mobileInventory";
 	}
 	
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
@@ -118,6 +150,22 @@ public class ClientController {
 		model.addAttribute("hostname", hostUrl);
 		model.addAttribute("siteLogo",siteLogo);
 		return "autolinx/vehicleDetails";
+	}
+	
+	@RequestMapping(value = "/mobile/viewDetails/{vin}", method = RequestMethod.GET)
+	public String viewMobileVehicle(Locale locale, Model model,@PathVariable("vin") String vin) {
+		
+		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
+		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin);
+		SiteContentVM siteContent = clientService.getSitContent();
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		
+		model.addAttribute("siteContent", siteContent);
+		model.addAttribute("similarVehicle",similarVehicleVm);
+		model.addAttribute("vehicle",vehicleVM);
+		model.addAttribute("hostname", hostUrl);
+		model.addAttribute("siteLogo",siteLogo);
+		return "autolinx/mobile/mobileViewDetails";
 	}
 	
    @RequestMapping(value="/requestMore",method=RequestMethod.POST)

@@ -164,3 +164,87 @@ app.controller("HomeController", function($scope,$http) {
 app.controller("VehicleDetailsController", function($scope,$http) {
 	console.log("vehicle details");
 });
+
+app.controller("MobileHomeController", function($scope,$http) {
+	
+	var contextPath = $('#contextpath').val();
+	
+	$http({method:'GET',url:contextPath+'/getAllMakes'})
+	.success(function(data) {
+		console.log(data);
+		$scope.allMakes = data;
+		
+	});
+	
+	$http({method:'GET',url:contextPath+'/getRecentVehicles'})
+	.success(function(data) {
+		console.log(data);
+		$scope.recentVehicles = data;
+		
+	});
+});
+
+app.controller("MobileInventoryController", function($scope,$http) {
+	
+	$scope.vehicleList = [];
+	$scope.year = "";
+	$scope.make = "";
+	$scope.model = "";
+	$scope.bodyStyle = "";
+	$scope.fuel = "";
+	$scope.mileage = "";
+	$scope.VehiclesCount = "";
+	$scope.alphbet = "";
+	$scope.price = "lowToHigh";
+	var contextPath = $('#contextpath').val();
+	$scope.initFunction = function(){
+		
+		$scope.loadMore();
+	}
+	
+	 $scope.noMore = false;
+	 var start = 0;
+	$scope.loadMore = function() {
+		
+		if ($scope.noMore) return;
+		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
+		.success(function(data) {
+			console.log(data);
+			if(data.vehicleList.length == 0) {
+				$scope.noMore = true;
+			}
+			$scope.VehiclesCount = data.count;
+			for (var i = 0; i < data.vehicleList.length; i++) {
+				$scope.vehicleList.push(data.vehicleList[i]);
+			}
+		});
+		
+		start = start + 16;
+	}
+	
+		$scope.selectYear = function(){
+		
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		}
+		
+		$scope.resetFilters = function(){
+			$scope.year = "";
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		}		
+		
+		
+		$scope.selectAlphbet = function(){
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		}
+	
+});
+

@@ -148,8 +148,9 @@ $(document).ready(function()
                     <c:forEach var="row" items="${sliderImages}">
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
                         <!-- MAIN IMAGE --> 
+                        <a href="${row.link}">
                         <img src="/glivrImg/images${row.url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
-                        
+                        </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
 						data-x="0"
@@ -209,200 +210,7 @@ $(document).ready(function()
 						style="z-index: 6">qualified vehicle shoppers </div> -->
                     </li>
                     </c:forEach>
-                    <!-- <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        MAIN IMAGE 
-                        <img src="/glivrImg/images/336920057/SliderImages/Slider2.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
-                        
-                        LAYERS
-                        <div class="tp-caption mediumlarge_light_white_center invest start"
-						data-x="543"
-						data-hoffset="0"
-						data-y="160"
-                        
-						data-speed="1000"
-						data-start="500"
-						data-easing="Back.easeInQuart"
-						data-endspeed="300">Time to invest in a website built to </div>
-                        
-                        LAYER NR. 1
-                        <div class="tp-caption move mediumlarge_light_white_center fade"
-						data-x="480"
-						data-y="230"
-						data-speed="500"
-						data-start="800"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; letter-spacing: -3px;">MOVE </div>
-                        LAYER NR. 2
-                        <div class="tp-caption light_brown mediumlarge_light_white_center sfl"
-						data-x="615"
-						data-y="230"
-						data-speed="500"
-						data-start="1200"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; top: 371px; ">YOUR </div>
-                        LAYER NR. 3
-                        <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
-						data-x="735"
-						data-y="230"
-						data-speed="800"
-						data-start="1900"
-						data-easing="Elastic.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; left:186px;">INVENTORY </div>
-                        LAYER NR. 4
-                        <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
-						data-x="960"
-						data-y="230"
-						data-speed="800"
-						data-start="2600"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6">FASTER </div>
-                        LAYER NR. 5
-                        <div class="tp-caption brown_line skewfromright"
-						data-x="482"
-						data-y="261"
-						data-speed="800"
-						data-start="2600"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6"><img src="http://demo.themesuite.com/automotive/images/brown_line.jpg" alt="underline"> </div>
-                    </li>
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        MAIN IMAGE 
-                        <img src="/glivrImg/images/336920057/SliderImages/Slider3.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
-                        
-                        LAYERS
-                        <div class="tp-caption customin customout start green"
-						data-x="40"
-						data-hoffset="0"
-						data-y="510"
-					
-						data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-						data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-						data-speed="1000"
-						data-start="500"
-						data-easing="Back.easeInOut"
-						data-endspeed="300">Wow Factor?</div>
-                        
-                        LAYER NR. 1
-                        <div class="tp-caption big_white fade"
-						data-x="40"
-						data-y="560"
-						data-speed="500"
-						data-start="800"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6;">STANDARD. </div>
-                    </li>
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        MAIN IMAGE 
-                        <img src="/glivrImg/images/336920057/SliderImages/Slider4.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
-                        
-                        LAYERS
-                        <div class="tp-caption customin customout start big_white"
-						data-x="0"
-						data-hoffset="0"
-						data-y="235"
-
-						data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-						data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-						data-speed="1000"
-						data-start="500"
-						data-easing="Back.easeInOut"
-						data-endspeed="300">UNLOCK</div>
-                        
-                        LAYER NR. 1
-                        <div class="tp-caption thin_red fade"
-						data-x="300"
-						data-y="235"
-						data-speed="500"
-						data-start="800"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6;">THE POTENTIAL</div>
-                        
-                        LAYER NR. 2
-                        <div class="tp-caption thin_white skewfromright"
-						data-x="0"
-						data-y="510"
-						data-speed="500"
-						data-start="800"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6;">business from your</div>
-                        
-                        LAYER NR. 3
-                        <div class="tp-caption cursive skewfromright"
-						data-x="400"
-						data-y="570"
-						data-speed="500"
-						data-start="800"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6;">website</div>
-                    </li>
-                    SLIDE 
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
-                        MAIN IMAGE 
-                        <img src="/glivrImg/images/336920057/SliderImages/Slider5.jpg"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
-                        
-                        LAYERS
-                        <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
-						data-x="0"
-						data-hoffset="0"
-						data-y="199"
-
-						data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-						data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-						data-speed="1000"
-						data-start="500"
-						data-easing="Back.easeInOut"
-						data-endspeed="300">REALITY </div>
-                        
-                        LAYER NR. 1
-                        <div class="tp-caption thin_dark_blue fade"
-						data-x="270"
-						data-y="210"
-						data-speed="500"
-						data-start="800"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; letter-spacing: 0;">IS JUST</div>
-                        LAYER NR. 2
-                        <div class="tp-caption thinner_white sfl"
-						data-x="05"
-						data-y="270"
-						data-speed="500"
-						data-start="1200"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; top: 371px; ">your perception</div>
-                    </li> -->
+                    
                 </ul>
             </div>
         </div>
@@ -480,33 +288,33 @@ $(document).ready(function()
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[0].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title'>New Arrivals</div>
-                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car1-lrg.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
+                    <div class='hover_title'><a href="${featuredImages[0].link}" style="color:white;">${featuredImages[0].description}</a></div>
+                    <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car1-lrg.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
-              <h4><a href="#">${featuredImages[0].description}</a></h4>
+              <h4><a href="${featuredImages[0].link}">${featuredImages[0].description}</a></h4>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip horizontal margin-bottom-30">
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[1].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title'>Hybrids Collection</div>
-                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
+                    <div class='hover_title'><a href="${featuredImages[1].link}" style="color:white;">${featuredImages[1].description}</a></div>
+                    <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
-              <h4><a href="#">${featuredImages[1].description}</a></h4>
+              <h4><a href="${featuredImages[1].link}">${featuredImages[1].description}</a></h4>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip margin-bottom-30">
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[2].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title'>Aston Martin DBS</div>
-                    <a href="inventory-listing.html"><i class="fa fa-link button_icon"></i></a> <a href="resources/autolinx/images/car3.jpg" class="fancybox"><i class="fa fa-arrows-alt button_icon"></i></a> </div>
+                    <div class='hover_title'><a href="${featuredImages[2].link}" style="color:white;">${featuredImages[2].description}</a></div>
+                    <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car3.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
-              <h4><a href="#">${featuredImages[2].description}</a></h4>
+              <h4><a href="${featuredImages[2].link}">${featuredImages[2].description}</a></h4>
             </div>
           </div>
         </div>

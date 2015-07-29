@@ -68,6 +68,7 @@ public class VehicleVM {
 	
 	
 	public String videoUrl;
+	public String mobileUrl;
 	public String audioUrl;
 	public String path;
 	
@@ -466,7 +467,11 @@ public class VehicleVM {
 	public void setOnlyPrice(Integer onlyPrice) {
 		this.onlyPrice = onlyPrice;
 	}
-	
-	
+	public String getMobileUrl() {
+		return mobileUrl;
+	}
+	public void setMobileUrl(String mobileUrl) {
+		this.mobileUrl = mobileUrl;
+	}
 	
 }

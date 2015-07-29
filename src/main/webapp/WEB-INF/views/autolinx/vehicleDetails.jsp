@@ -345,48 +345,6 @@ $(document).ready(function()
                                     <c:forEach var="row" items="${vehicle.images}">
                                     <li data-thumb="/glivrImg/images${row.path}"> <img data-full-image="/glivrImg/images${row.path}" alt="" src="/glivrImg/images${row.path}" draggable="false"> </li>
                                      </c:forEach>
-                                    <%-- <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster5_slide.jpg"> <img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0820-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0820-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster8_slide.jpg"> <img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0815-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0815-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0809-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0809-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <!-- full -->
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0785-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0785-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0766-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0589-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0755-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0755-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0589-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0589-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0634-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0634-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0675-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0675-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0680-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0680-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0584-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0584-762x456.jpg" draggable="false"> </li>
-                                    
-                                    
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0011-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0011-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0286-762x456.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0286-762x456.jpg" draggable="false"> </li>
-                                    
-                                    <li data-thumb="${pageContext.request.contextPath}/resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0865.jpg" alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/lamborghini/DSC_0865.jpg" draggable="false"> </li>
-                                    
-                             
-                                    
-                                     <li data-thumb="resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="resources/autolinx/images/lamborghini/DSC_0807-762x456.jpg" alt="" src="resources/autolinx/images/lamborghini/DSC_0807-762x456.jpg" draggable="false"> </li>
-                                     
-                                     <li data-thumb="resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="resources/autolinx/images/lamborghini/DSC_0792-762x456.jpg" alt="" src="resources/autolinx/images/lamborghini/DSC_0792-762x456.jpg" draggable="false"> </li>
-                                     
-                                     <li data-thumb="resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="resources/autolinx/images/lamborghini/DSC_0714-762x456.jpg" alt="" src="resources/autolinx/images/lamborghini/DSC_0714-762x456.jpg" draggable="false"> </li>
-                                     
-                                     <li data-thumb="resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="resources/autolinx/images/lamborghini/DSC_0708-762x456.jpg" alt="" src="resources/autolinx/images/lamborghini/DSC_0708-762x456.jpg" draggable="false"> </li>
-                                     
-                                     <li data-thumb="resources/autolinx/images/boxster10_slide.jpg"><img data-full-image="resources/autolinx/images/lamborghini/DSC_0696-762x456.jpg" alt="" src="resources/autolinx/images/lamborghini/DSC_0696-762x456.jpg" draggable="false"> </li> --%>
                                     
                                 </ul>
                             </div>
@@ -397,47 +355,6 @@ $(document).ready(function()
                                 <c:forEach var="row" items="${vehicle.images}">
                                     <li data-thumb="/glivrImg/images/${row.thumbPath}"> <a href="#"><img alt="" src="/glivrImg/images/${row.path}" draggable="false"></a> </li>
                                  </c:forEach>   
-                                    <!-- <li data-thumb="resources/autolinx/images/thumbnail2.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0735-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail3.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0820-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail4.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0815-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0809-167x119.jpg" draggable="false"></a> </li>
-                                    full
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0785-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0766-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0755-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0589-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0634-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0675-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail5.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0680-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0584-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0011-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0286-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0865-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0807-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0792-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0714-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0708-167x119.jpg" draggable="false"></a> </li>
-                                    
-                                    <li data-thumb="resources/autolinx/images/thumbnail1.jpg"> <a href="#"><img alt="" src="resources/autolinx/images/lamborghini/DSC_0696-167x119.jpg" draggable="false"></a> </li>
-                                   
-                                     -->
                                     
                                 </ul>
                             </div>
@@ -601,7 +518,7 @@ $(document).ready(function()
                                 <li>
                                 	<div class="sc_player_container1"><div class="sc_player_container1">
                                     <a onclick='playpause_audio();' href="javascript:void(0);">
-                                    <img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/start_engine_hover.png" id="start_engine"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/start_engine_pressed.png" id="stop_engine" style="display:none;"></a></div></div>
+                                    <img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-idle.png" id="start_engine"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-pressed.png" id="stop_engine" style="display:none;"></a></div></div>
 </div>
                                 </li>
                                 <audio controls preload="none" class='audioDemo' style='display:none;'>

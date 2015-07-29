@@ -4,6 +4,7 @@ public class FeaturedVM {
 
 	public String url;
 	public String description;
+	public String link;
 	
 	public String getUrl() {
 		return url;
@@ -16,6 +17,12 @@ public class FeaturedVM {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 }

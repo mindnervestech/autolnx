@@ -1,0 +1,948 @@
+
+
+@media screen and (max-width: 1280px) {
+.cs-skin-underline ul span {
+    margin-left: 15px !important;
+}
+
+
+/*==============17-6-15==========================*/
+.testimonial {
+    margin: 0 0 30px;
+}
+.mbanner_Row2 > img {
+    width: 100%;
+}
+.mbanner_Row2 {
+    height: auto;
+}
+}
+
+
+
+@media screen and (max-width: 1250px) {
+.mbanner_topsec {
+	width: 65%;
+}
+.main_Lsec {
+	margin: 0 0 30px;
+	padding: 0;
+}
+.right-info-home {
+	margin: 0;
+	padding: 0;
+}
+.logo {
+	margin: 10px;
+	text-align: center;
+}
+.top_Rsec {
+	display: table;
+	float: none;
+	margin: 45px auto 0;
+}
+.right-form h2 {
+	float: left;
+	width: 100%;
+}
+.doller-input {
+	margin: 0 0 10px;
+}
+.rent {
+	width: 20%;
+}
+.doller-input2 {
+	width: 76%;
+}
+
+body {
+	background-size: contain;
+}
+.form_field img {
+	float: left;
+	width: 72%;
+}
+.mbanner_topsec h1 {
+    float: right;
+    font-size: 24px;
+    margin: 0 18px 0 0;
+    padding: 25px 0 10px;
+}
+.mbanner_toptext h1 strong {
+    font-size: 22px;
+}
+.entermont_sec {
+    float: right;
+    margin: 25px 85px 0 0;
+    text-align: left;
+}
+.entermont_sec h5 {
+	font-size: 15px;
+}
+.income-input {
+	width: 200px;
+}
+.entermont_sec p {
+	padding: 0;
+}
+.mbanner_toptext img {
+	width: 70%;
+}
+.mbanner_toptext {
+	margin: 0;
+}
+.mbanner_toptext span {
+    right: -19px;
+    top: 87px;
+}
+.mbanner_toptext img {
+	width: 61%;
+}
+.m-income {
+	margin: 0 92px 0 0;
+}
+.text1 h1 {
+    margin: 0 30px;
+}
+.text1 {
+	margin: 0 -26px 0 0;
+}
+.rent {
+	width: 82%;
+}
+.doller-input2 {
+	width: 52%;
+}
+.bottom-info {
+    margin: 0;
+    padding: 0 20px;
+}
+.red-txt {
+    font-size: 25px;
+}
+}
+/*==============16-6-15==========================*/
+@media screen and (max-width: 1024px) {
+.calc_btm_line {
+    font-size: 21px !important;
+}
+.nav > li > a {
+    width: 138.9px !important;
+}
+.control-label {
+    width: 25% !important;
+}
+.form-group {
+    margin-left: 8% !important;
+}
+.needLoan {
+    min-width: auto !important;
+}
+.cs-skin-underline ul span {
+    margin-left: 13px !important;
+}
+.points ul li {
+    padding: 0 17px;
+}
+.f-nav ul li a {
+    padding: 0 7px;
+}
+.home-bottom {
+  margin: 30px 0 0 0px;
+}
+.spine h1 {
+    font-size: 30px !important;
+}
+.tab-content h1 {
+    font: 800 22px Arial,Helvetica,sans-serif !important;
+}
+}
+@media screen and (max-width: 1000px) {
+.detail_page {
+	margin: 0;
+	padding: 0 20px;
+}
+.detail_fields1 ul li {
+	width: 24%;
+}
+.detail_fields2 ul li {
+	width: 32.4%;
+}
+.detail_fields3 ul li {
+	width: 33%;
+}
+.detail_fields3 ul li label {
+	font-size: 13px;
+}
+.detail_fields5 ul li {
+	width: 32.4%;
+}
+.top_Rsec {
+	display: table;
+	float: none;
+	margin: 44px auto 0;
+}
+.detail_fields6 h5 {
+	display: table;
+	float: none;
+	margin: 0 0 22px;
+}
+.last_field {
+	text-align: center;
+}
+.detail_fields6 h5 span {
+	text-align: left;
+}
+.detail_fields6 h5 a {
+	line-height: 29px;
+}
+.rent {
+	width: 21%;
+}
+.doller-input2 {
+	width: 75%;
+}
+
+/*==============16-6-15==========================*/
+.points ul li a {
+    font-size: 16px;
+}
+.points ul li:first-child {
+    border: medium none;
+    padding: 0 0 15px;
+    width: 100%;
+}
+.points ul li {
+    width: 50%;
+}
+.nav > li > a {
+    width: 124.4px !important;
+}
+.control-label {
+    width: 30% !important;
+}
+.form-group {
+    margin-left: 6% !important;
+}
+.cs-skin-underline ul span {
+    margin-left: 10px !important;
+}
+.calc_heading {
+    font-size: 26px !important;
+}
+.calc_btm_line {
+    font-size: 19px !important;
+}
+.home-bottom {
+    margin: 30px 0 0;
+}
+.footer {
+    padding: 0 30px;
+}
+.logo {
+    margin: 20px 0 0;
+}
+.right-info-home {
+    clear:both;
+}
+.footer {
+    padding: 0 10px;
+}
+.spine h1 {
+    font-size: 26px !important;
+}
+.key {
+	display:none;
+}
+}
+@media screen and (max-width: 767px) {
+body {
+	background-size: contain;
+}
+.top_Rsec {
+	display: inline;
+	float: right;
+	width: 100%;
+	margin: 0;
+}
+.mbanner_toptext span {
+	right: 74px;
+	top: 105px;
+}
+.topsec {
+	border: none;
+}
+.main-menu {
+	float: none;
+	width: 100%;
+}
+.main-menu ul li {
+	float: none;
+}
+.navbar-collapse.collapse.in {
+	background: #f7f7f7;
+}
+.main-menu ul {
+	margin: 0;
+	padding: 15px 0;
+}
+.main-menu li {
+	margin: 0 0 10px 0;
+}
+.mbanner_Row2 {
+	background: rgba(0, 0, 0, 0) url("../images/about-bg12.png") no-repeat;
+	background-size: 100%;
+}
+.main-menu li a {
+	margin: 0 0px 0 0;
+	border-radius: 0px;
+}
+.left-side {
+	float: left;
+	width: 100%;
+}
+.right-side {
+	float: left;
+	width: 100%;
+	margin: 25px 0 0 0;
+}
+.right-side ul {
+	display: table;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+.footer {
+	padding: 15px 0;
+}
+.footer p {
+	top: 0;
+}
+.right-form h2 {
+	float: left;
+	width: 100%;
+}
+.doller-input {
+	margin: 0 0 10px;
+}
+.rent {
+	width: 48%;
+}
+.doller-input2 {
+	width: 55%;
+}
+.insurance {
+	margin: 0;
+	padding: 0 10px;
+}
+.mbanner_topsec {
+    float: right;
+    margin: 30% 0 0;
+    text-align: center;
+    width: 100%;
+}
+.entermont_sec {
+	width: 100%;
+	margin: 0 auto;
+	display: table;
+	float: none;
+	text-align: center;
+}
+.mbanner_topsec h1 {
+    font-size: 30px;
+    padding: 22px 0 10px;
+}
+.entermont_sec p {
+	text-align: center;
+}
+.red-txt {
+  font-size: 30px;
+}
+.step1 span {
+	padding: 0 11px;
+}
+.step1 {
+	font-size: 30px;
+}
+.terms {
+	margin: 0;
+	padding: 0 20px;
+}
+.faq {
+	margin: 0;
+	padding: 0;
+}
+.contact {
+	margin: 0;
+	padding: 0 0 0 0px;
+}
+.form_field label {
+	width: 100%;
+}
+.form_field textarea {
+	width: 100%;
+}
+.form_field input[type="text"] {
+	width: 100%;
+}
+.cont_form {
+	padding: 0;
+	border: none;
+}
+.detail_fields1 ul li {
+    margin: 0 5px 13px 0;
+    width: 49%;
+}
+.detail_fields1 ul li:nth-child(2) {
+  margin: 0px 0px 13px 0;
+  width: 49%;
+}
+.detail_fields2 ul li {
+    margin: 0 5px 12px;
+    width: 48.6%;
+}
+.detail_fields2 ul li:nth-child(2) {
+  margin: 0px 0px 12px;
+  width: 48.6%;
+}
+.detail_fields3 ul li {
+	margin: 0 0 10px;
+	width: 100%;
+}
+.detail_fields3 ul li label {
+	font-size: 14px;
+}
+.mbanner_toptext {
+	text-align: center;
+	margin: 0 auto;
+	display: table;
+}
+.mbanner_topsec h1 {
+	margin: 0;
+}
+.mbanner_Row1 {
+	background: rgba(0, 0, 0, 0) url("../images/bannerbg12.png") no-repeat scroll 0 0 / 100% auto;
+	height: auto;
+}
+
+
+/*==============16-6-15==========================*/
+
+.form-group {
+    margin-left: 0 !important;
+}
+.points ul li {
+    border: none;
+    width: 100%;
+}
+.control-label {
+    height: auto !important;
+    padding: 5px !important;
+    width: 100% !important;
+}
+.a_demo_four {
+    font-size: 25px !important;
+}
+.cs-skin-underline ul span {
+    margin-left: 20px !important;
+}
+#main-container header {
+    background: #1a7dc0 url("../images/main-bg_02.png") no-repeat scroll center center;
+    float: left;
+    height: auto;
+}
+.tab-content h1 {
+    margin: 0 0 10px;
+}
+.calc_btm_line {
+    font-size: 18px !important;
+}
+.points ul li {
+    padding: 0 0 10px;
+}
+.points ul li:first-child {
+    border: medium none;
+    padding: 0 0 10px;
+    width: 100%;
+}
+.test-main {
+    border-right: none;
+}
+.testimonial {
+    margin: 0 15px 30px;
+}
+.footer {
+    margin: 0 10px;
+}
+.f-logo {
+    padding: 0;
+}
+.f-nav ul {
+    margin: 15px auto;
+}
+.f-logo-2 {
+    padding: 15px 0 !important;
+}
+.last_line {
+    margin: 15px 40px 0;
+}
+.points {
+    padding: 15px 0;
+}
+.spine h1 {
+    font-size: 24px !important;
+}
+.points ul li:last-child {
+    padding: 0;
+}
+.test-main {
+    margin: 30px 0 0;
+    padding: 10px 0;
+}
+.foot_space {
+    margin: 0;
+}
+.spine h1 {
+    font-size: 21px !important;
+}
+#main-container header {
+    margin: 0 1.2% !important;
+    width: 97.7% !important;
+}
+}
+@media screen and (max-width:736px) {
+.rent {
+	width: 22%;
+}
+.doller-input2 {
+	width: 74%;
+}
+.mbanner_toptext span {
+    right: 100px;
+    top: 70px;
+}
+.bottom-info {
+    padding: 35px 20px 0;
+}
+}
+@media screen and (max-width:667px) {
+.rent {
+	width: 24%;
+}
+.doller-input2 {
+	width: 73%;
+}
+.mbanner_toptext span {
+    right: 80px;
+    top: 75px;
+}
+/*==============16-6-15==========================*/
+.tab-content h1 {
+    font-size: 22px !important;
+}
+.spine h1 {
+    font-size: 24px !important;
+}
+.calc_btm_line {
+    font-size: 16px !important;
+}
+.spine h1 {
+  font-size: 20px !important;
+}
+}
+@media screen and (max-width: 660px) {
+.big-txt {
+    display:none;
+}
+.in-btn {
+    display:none;
+}
+.ins-btn {
+   display:block;
+   cursor:pointer;
+   text-align:center;
+}
+}
+@media screen and (max-width: 640px) {
+.mbanner_topsec {
+    float: right;
+    margin: 30% 4% 0;
+    width: 92%;
+}
+.entermont_sec {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+.mbanner_topsec h1 {
+	text-align: center;
+}
+.entermont_sec p {
+	padding: 0;
+}
+.mbanner_Row1 {
+	background: rgba(0, 0, 0, 0) url("../images/bannerbg12.png") no-repeat scroll 0 0 / 100% auto;
+	height: auto;
+}
+.f-nav ul li a {
+	padding: 0 4px;
+}
+.rent {
+	width: 32%;
+}
+.doller-input2 {
+	width: 62%;
+}
+.mbanner_topsec h1 {
+	padding: 20px 0 10px;
+	font-size: 30px;
+}
+}
+
+
+
+
+
+
+@media screen and (max-width:568px) {
+.rent {
+	width: 28%;
+}
+.doller-input2 {
+	width: 68%;
+}
+.mbanner_toptext span {
+	right: 25px;
+	top: 79px;
+}
+/*==============16-6-15==========================*/
+.cs-skin-underline ul span {
+    margin-left: 13px !important;
+}
+.spine h1 {
+    font-size: 17px !important;
+}
+.calc_heading strong {
+    font-size: 26px !important;
+}
+.calc_btm_line {
+    font-size: 15px !important;
+}
+.tab-content h1 {
+  font: 800 16px Arial, Helvetica, sans-serif !important;
+}
+
+.in-quote {
+    padding: 19px 0 19px 20px;
+}
+.in-btn > .click {
+  padding: 6px 18px;
+  right: -9px;
+  top: 9px;
+}
+
+
+.credit_img {
+	display:none;
+}
+.credit_img1 {
+	display:block;
+	margin:20px 0 0;
+}
+}
+@media screen and (max-width:480px) {
+.detail_fields6 h5 span {
+	text-align: left;
+	width: 93%;
+}
+.detail_fields6 h5 {
+	padding: 0 10px;
+}
+.rent {
+	width: 35%;
+}
+.doller-input2 {
+	width: 60%;
+}
+.mbanner_topsec h1 {
+    font-size: 25px;
+}
+.mbanner_toptext span {
+    right: -16px;
+    top: 59px;
+}
+/*==============16-6-15==========================*/
+.tab-content h1 {
+    font-size: 18px !important;
+}
+.spine h1 {
+    font-size: 17px !important;
+}
+.calc_btm_line {
+    font-size: 15px !important;
+}
+.calc_heading strong {
+    font-size: 22px !important;
+}
+.home-bottom h1 {
+    line-height: 24px;
+}
+
+.in-quote {
+    font-size: 16px;
+    padding: 13px 13px 13px 20px;
+}
+.in-btn > .click {
+    padding: 1px 10px;
+    right: -2px;
+    top: 3px;
+}
+.in-btn > .click span a {
+    font-size: 11px;
+}
+
+.abc {
+    margin: 0 auto;
+    width: 56%;
+}
+
+
+}
+@media screen and (max-width: 414px) {
+.rent {
+	width: 43%;
+}
+.detail_fields1 ul li {
+	margin: 0 0 13px;
+	width: 100%;
+}
+.detail_fields2 ul li {
+	margin: 0 0 13px;
+	width: 100%;
+}
+.mbanner_toptext span {
+	display: none;
+}
+.entermont_sec {
+	width: 100%;
+}
+.entermont_sec p {
+	padding: 0;
+	text-align: center;
+}
+.detail_fields3 ul li {
+	margin: 0 0 13px;
+	width: 100% !important;
+}
+.detail_fields4 ul li {
+	width: 100%;
+}
+.detail_fields5 ul li {
+	margin: 0 0 13px !important;
+	width: 100%;
+}
+.detail_fields5 ul {
+	margin: 0 auto !important;
+}
+.detail_fields6 h5 span {
+	text-align: left;
+	width: 89%;
+}
+.detail_fields6 h5 {
+	padding: 0 10px;
+}
+.test-main p strong {
+	float: none;
+}
+.red-txt {
+  font-size: 23px;
+}
+/*==============16-6-15==========================*/
+.spine h1 {
+    font-size: 18px !important;
+}
+.tab-content h1 {
+    font-size: 15px !important;
+}
+.a_demo_four {
+    font-size: 20px !important;
+}
+.cs-skin-underline ul span {
+    margin-left: 11px !important;
+}
+.form-control {
+    font-size: 12px !important;
+}
+.calc_btm_line {
+    line-height: 23px !important;
+}
+
+
+.in-quote {
+    font-size: 15px;
+    padding: 13px 13px 13px 20px !important;
+}
+.in-btn > .click {
+    padding: 4px 11px;
+    right: -2px;
+    top: 0;
+}
+.big-input {
+    padding: 20px 10px !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .in-quote {
+    font-size: 15px;
+    padding: 13px 13px 13px 20px !important;
+}
+.in-btn > .click {
+  padding: 4px 9px;
+  right: -2px;
+  top: 0px;
+}
+}
+
+
+
+}
+@media screen and (max-width: 375px) {
+.rent {
+	width: 46%;
+}
+.mission_point li {
+    font-size: 16px;
+}
+.mbanner_topsec h1 {
+    font-size: 20px;
+}
+.mbanner_toptext h1 strong {
+    font-size: 18px;
+}
+.apply-btn {
+    margin: 5px auto 0;
+}
+/*==============16-6-15==========================*/
+.cs-skin-underline ul span {
+    margin-left: 10px !important;
+}
+.tab-grid {
+    width: 100% !important;
+}
+
+.in-quote {
+    font-size: 13px;
+    padding: 12px 12px 12px 20px !important;
+}
+.in-btn > .click {
+    padding: 1px 11px;
+    right: 1px;
+    top: 0;
+}
+.in-btn > .click span a {
+    font-size: 9px;
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+.in-btn > .click {
+  padding: 1px 9px;
+  right: 1px;
+  top: 0px;
+}
+.in-quote {
+  font-size: 13px;
+  padding: 12px 15px 12px 20px !important;
+}
+
+
+
+
+}
+@media screen and (max-width: 320px) {
+.rent {
+	width: 57%;
+}
+.red-txt {
+  font-size: 19px;
+  margin: 0 0 15px 0;
+}
+.mbanner_topsec h1 {
+    font-size: 23px;
+}
+.mbanner_toptext h1 strong {
+    font-size: 17px;
+}
+/*==============16-6-15==========================*/
+.spine h1 {
+    font-size: 15px !important;
+	line-height: 23px !important;
+}
+.tab-cont {
+    padding: 20px 0 !important;
+}
+.cs-skin-underline ul span {
+    margin-left: 8px !important;
+}
+.tab-content h1 {
+    padding: 0 !important;
+}
+.tab-cont {
+    padding: 0 !important;
+}
+.f-nav ul li a {
+    font-size: 13px;
+    padding: 0 2px;
+}
+.detail_fields6 h5 span {
+    width: 85%;
+}
+.f-nav ul li a {
+    font-size: 12px;
+    padding: 0 2px;
+}
+.footer p a {
+    font-size: 11px;
+}
+.big_btn {
+    font-size: 11px;
+    padding: 24.8px 11px;
+}
+.form-control {
+    font-size: 11px !important;
+}
+.calc_btm_line {
+    font-size: 14px !important;
+}
+.insurance {
+    margin: 0;
+    padding: 0;
+}
+
+.in-quote {
+    font-size: 11px;
+    padding: 12px 18px 9px 20px !important;
+}
+.in-btn > .click {
+    padding: 1px 10px;
+    right: 1px;
+    top: -1px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+.in-btn > .click {
+  padding: 1px 9px;
+  right: 1px;
+  top: 0px;
+}
+.in-quote {
+  font-size: 11px;
+  padding: 13px 14px 13px 20px !important;
+}
+.click-btn {
+  width: 15.3%;
+}
+
+}

@@ -1,0 +1,87 @@
+@media screen and (max-width:767px) {
+.wrapperIn{
+	width:98%;
+	margin:0 1%;
+}
+.boxInLeft img{
+	width:100%;
+}
+}
+@media screen and (max-width:600px) {
+.f-nav li{
+	width:100%;
+	display:block;
+	line-height:30px;
+}
+}
+@media screen and (max-width:480px) {
+.message-wrap h2{
+	font-size:30px;
+}
+.title{
+	font-size:11px;
+	font-weight:bold;
+}
+}
+@media screen and (max-width:414px) {
+.imageBoxIn{
+	text-align:center;
+	float:none;
+}
+.options-primary{
+	text-align:left;
+	margin:10px 0 0 0;
+}
+.leftBox{
+	text-align:center;
+	margin:0;
+}
+.headingRow h2{
+	font-size:20px;
+}
+.headingRow em{
+	font-size:12px;
+}
+.playerBox ul li{
+	width:47%;
+}
+.playerBox ul li img{
+	width:100%;
+}
+}
+@media screen and (max-width:375px) {
+.tableBox table.table{
+	width:153px;
+	font-size:12px;
+}
+.tableBox h5 {
+	font-size:15px;
+}
+
+}
+@media screen and (max-width:320px) {
+.recent-vehicles p{
+	font-size:12px;
+	line-height:20px;
+}
+.slideWidth{
+	width:150px !important;
+	margin-right:10px !important;
+}	
+.car-block h6 strong{
+	font-size:9px;
+}
+.car-block .car-block-bottom h6{
+	font-size:10px;
+}
+.tableBox table.table{
+	width:153px;
+	font-size:12px;
+}
+.tableBox h5 {
+	font-size:15px;
+}
+.topBannerText{
+	top:10%;
+}
+}

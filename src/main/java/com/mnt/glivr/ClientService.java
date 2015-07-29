@@ -62,6 +62,7 @@ public class ClientService {
 			SliderVM vm = new SliderVM();
 			vm.url = (String) map.get("path");
 			vm.description = (String) map.get("description");
+			vm.link = (String) map.get("link");
 			sliderUrls.add(vm);
 		}
 		return sliderUrls;
@@ -74,7 +75,8 @@ public class ClientService {
 		for(Map map : rows) {
 			FeaturedVM vm = new FeaturedVM();
 			vm.url = (String) map.get("path");
-			vm.description = (String) map.get("description");;
+			vm.description = (String) map.get("description");
+			vm.link = (String) map.get("link");
 			featuredUrls.add(vm);
 		}
 		return featuredUrls;
@@ -289,7 +291,7 @@ public class ClientService {
 	public VehicleVM getVehicleDetails(String vin) {
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and vin= '"+vin+"' ");
 		VehicleVM vehicleVM = new VehicleVM();
-		List<Map<String, Object>> videoUrl = jdbcTemplate.queryForList("select desktop_url from virtual_tour where user_id= '"+userId+"' and vin= '"+vin+"' ");
+		List<Map<String, Object>> videoUrl = jdbcTemplate.queryForList("select desktop_url,mobile_url from virtual_tour where user_id= '"+userId+"' and vin= '"+vin+"' ");
 		if(videoUrl.isEmpty()) {
 			vehicleVM.videoUrl = "";
 		} else {
@@ -297,6 +299,11 @@ public class ClientService {
 				vehicleVM.videoUrl = "";
 			} else {
 				vehicleVM.videoUrl = (String) videoUrl.get(0).get("desktop_url");
+			}
+			if(videoUrl.get(0).get("mobile_url") == null) {
+				vehicleVM.mobileUrl = "";
+			} else {
+				vehicleVM.mobileUrl = (String) videoUrl.get(0).get("mobile_url");
 			}
 		}
 		
