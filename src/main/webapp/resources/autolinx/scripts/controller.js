@@ -248,3 +248,14 @@ app.controller("MobileInventoryController", function($scope,$http) {
 	
 });
 
+app.controller("MobileNewArrivalController", function($scope,$http) {
+	
+	$http({method:'GET',url:'getMobileRecentVehicles'})
+	.success(function(data) {
+		console.log(data);
+		$scope.vehicleList = data;
+		
+	});
+	
+});
+

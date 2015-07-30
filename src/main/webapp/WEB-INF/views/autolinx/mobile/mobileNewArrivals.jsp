@@ -50,7 +50,7 @@
 
 </head>
 
-<body ng-controller="MobileInventoryController">
+<body ng-controller="MobileNewArrivalController">
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <div class="wrapperIn">
 <header>
@@ -67,7 +67,7 @@
 </header>
     <div class="topBanner">
     	<img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/dynamic-header-1.jpg" alt="">
-        <h1 class="topBannerText">Our Inventory</h1>
+        <h1 class="topBannerText">New Arrivals</h1>
     </div>
     <div class="message-shadow1"></div>
     <div class="topBottomBox">

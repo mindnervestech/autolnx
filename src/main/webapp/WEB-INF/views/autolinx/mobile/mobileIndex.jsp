@@ -86,7 +86,7 @@
         <div class="boxInLeft">
         	<img src="${pageContext.request.contextPath}/resources/autolinx/images/new_arrivals_mobile.jpg" alt="">
              <p class="boxInText">
-            	<a href="#">New Arrivals</a>
+            	<a href="${pageContext.request.contextPath}/mobile/newArrivals">New Arrivals</a>
             </p>
         </div>
         

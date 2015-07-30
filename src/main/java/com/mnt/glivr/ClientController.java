@@ -268,5 +268,28 @@ public class ClientController {
 		
 		return vehicleList;
 	}
+	
+	@RequestMapping(value = "/mobile/getMobileRecentVehicles", method = RequestMethod.GET)
+	@ResponseBody
+	public List<VehicleVM> getMobileRecentVehicles(Locale locale, Model model) {
 		
+		List<VehicleVM> vehicleList = clientService.getRecentVehicles();
+		
+		return vehicleList;
+	}
+	
+	@RequestMapping(value = "/mobile/newArrivals", method = RequestMethod.GET)
+	public String mobileNewArrivals(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
+		
+		return "autolinx/mobile/mobileNewArrivals";
+	}
+	
 }
