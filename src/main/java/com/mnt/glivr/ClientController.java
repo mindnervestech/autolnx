@@ -125,6 +125,15 @@ public class ClientController {
 		return vehicleList;
 	}
 	
+	@RequestMapping(value = "/getMobileVehicleInfo", method = RequestMethod.GET)
+	@ResponseBody
+	public Map getMobileVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
+		
+		Map vehicleList = clientService.getMobileVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet);
+		
+		
+		return vehicleList;
+	}
 	
 	@RequestMapping(value = "/getAllMakes", method = RequestMethod.GET)
 	@ResponseBody
@@ -271,9 +280,9 @@ public class ClientController {
 	
 	@RequestMapping(value = "/mobile/getMobileRecentVehicles", method = RequestMethod.GET)
 	@ResponseBody
-	public List<VehicleVM> getMobileRecentVehicles(Locale locale, Model model) {
+	public Map getMobileRecentVehicles(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("alphabet") String alphabet) {
 		
-		List<VehicleVM> vehicleList = clientService.getRecentVehicles();
+		Map vehicleList = clientService.getRecentMobileVehicles(start,year,alphabet);
 		
 		return vehicleList;
 	}

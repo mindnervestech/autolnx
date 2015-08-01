@@ -325,6 +325,7 @@ $(document).ready(function()
           </div>
         </div>
       </form>
+      <p ng-show="VehiclesCount == 0" style="margin-left:40%;"><b>No vehicle found!</b></p>
       <div class="clearfix"></div>
       <div class="row" ng-show="listView">
         <div class="inventory-wide-sidebar-left">

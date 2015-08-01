@@ -203,10 +203,11 @@ public class ClientService {
 		Integer count = 0;
 		if(!priceSort.equals("")){
 			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold'");
 		}else if(!alphbet.equals("")){
 			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold'");
 		}
-		count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '')");
 		
 		for(Map map : rows) {
 			VehicleVM vm = new VehicleVM();
@@ -248,6 +249,62 @@ public class ClientService {
 		
 		return mapData;
 	}
+	
+	public Map getMobileVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet) {
+		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
+		List<Map<String, Object>> rows = null;
+		Integer count = 0;
+		if(!priceSort.equals("")){
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold'");
+		}else if(!alphbet.equals("")){
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' and make LIKE '"+alphbet+"%' limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' and make LIKE '"+alphbet+"%'");
+		}
+		
+		
+		for(Map map : rows) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.model = (String) map.get("model");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			
+			vehicleList.add(vm);
+		}
+		
+	
+		Map<String, Object> mapData = new HashMap<String, Object>();
+		mapData.put("vehicleList", vehicleList);
+		mapData.put("count", count);
+		
+		return mapData;
+	}
+	
+	
 	public List<VehicleVM> getSimilarVehicleDetails(String vin) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and vin= '"+vin+"' ");
@@ -625,6 +682,66 @@ public class ClientService {
 		}
 		
 		return vehicleList;
+		
+	}
+	
+public Map getRecentMobileVehicles(Integer start,String year,String alphabet){
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		List<Map<String, Object>> rows = null;
+		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, -30);
+		Date dateBefore30Days = cal.getTime();
+		Integer count = 0;
+		if(!year.equals("")) {
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and posted_date > '"+dateFormat.format(dateBefore30Days)+"' and status != 'Sold' and (year = '"+year+"' or '"+year+"' = '')  ORDER BY price asc limit "+start+",16 ");
+			count = jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and posted_date > '"+dateFormat.format(dateBefore30Days)+"' and status != 'Sold' and (year = '"+year+"' or '"+year+"' = '')");
+		} else {
+			rows = jdbcTemplate.queryForList("select * from vehicle where user_id = '"+userId+"' and posted_date > '"+dateFormat.format(dateBefore30Days)+"' and status != 'Sold' and (year = '"+year+"' or '"+year+"' = '')  and make LIKE '"+alphabet+"%' ORDER BY price asc limit "+start+",16 ");
+			count = jdbcTemplate.queryForInt("select count(*) from vehicle where user_id = '"+userId+"' and posted_date > '"+dateFormat.format(dateBefore30Days)+"' and status != 'Sold' and make LIKE '"+alphabet+"%'");
+		}
+		for(Map map : rows) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.model = (String) map.get("model");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			
+			vehicleList.add(vm);
+		}
+		
+	
+		Map<String, Object> mapData = new HashMap<String, Object>();
+		mapData.put("vehicleList", vehicleList);
+		mapData.put("count", count);
+		
+		return mapData;
 		
 	}
 	

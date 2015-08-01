@@ -80,13 +80,13 @@
                 </li>
             </ul>
         </div>
-        <div class="select-dropdown2">
+       <div class="select-dropdown2">
                     
                     <span class="my-dropdown">Sort By:</span>
                     <div class="min-dropdown">
                    
-                      <select name="max-price" class="css-dropdowns" tabindex="1" >
-                        <option value="">Year</option>
+                      <select name="max-price" class="css-dropdowns" tabindex="1" ng-model="year" ng-change="selectYear()">
+                        <option value="">All Years</option>
                         <option>2015</option>
                         <option>2014</option>
                         <option>2013</option>
@@ -107,35 +107,36 @@
         <div class="clearClass"></div>
         <div class="alfaList">
             <ul>
-                <li><a class="active" href="#">A</a></li>
-                <li><a href="#">B</a></li>
-                <li><a href="#">C</a></li>
-                <li><a href="#">D</a></li>
-                <li><a href="#">E</a></li>
-                <li><a href="#">F</a></li>
-                <li><a href="#">G</a></li>
-                <li><a href="#">H</a></li>
-                <li><a href="#">I</a></li>
-                <li><a href="#">J</a></li>
-                <li><a href="#">K</a></li>
-                <li><a href="#">L</a></li>
-                <li><a href="#">M</a></li>
-                <li><a href="#">N</a></li>
-                <li><a href="#">O</a></li>
-                <li><a href="#">P</a></li>
-                <li><a href="#">Q</a></li>
-                <li><a href="#">R</a></li>
-                <li><a href="#">S</a></li>
-                <li><a href="#">T</a></li>
-                <li><a href="#">V</a></li>
+                <li><a ng-click="setAlphabet('A')" style="cursor: pointer;">A</a></li>
+                <li><a ng-click="setAlphabet('B')" style="cursor: pointer;">B</a></li>
+                <li><a ng-click="setAlphabet('C')" style="cursor: pointer;">C</a></li>
+                <li><a ng-click="setAlphabet('D')" style="cursor: pointer;">D</a></li>
+                <li><a ng-click="setAlphabet('E')" style="cursor: pointer;">E</a></li>
+                <li><a ng-click="setAlphabet('F')" style="cursor: pointer;">F</a></li>
+                <li><a ng-click="setAlphabet('G')" style="cursor: pointer;">G</a></li>
+                <li><a ng-click="setAlphabet('H')" style="cursor: pointer;">H</a></li>
+                <li><a ng-click="setAlphabet('I')" style="cursor: pointer;">I</a></li>
+                <li><a ng-click="setAlphabet('J')" style="cursor: pointer;">J</a></li>
+                <li><a ng-click="setAlphabet('K')" style="cursor: pointer;">K</a></li>
+                <li><a ng-click="setAlphabet('L')" style="cursor: pointer;">L</a></li>
+                <li><a ng-click="setAlphabet('M')" style="cursor: pointer;">M</a></li>
+                <li><a ng-click="setAlphabet('N')" style="cursor: pointer;">N</a></li>
+                <li><a ng-click="setAlphabet('O')" style="cursor: pointer;">O</a></li>
+                <li><a ng-click="setAlphabet('P')" style="cursor: pointer;">P</a></li>
+                <li><a ng-click="setAlphabet('Q')" style="cursor: pointer;">Q</a></li>
+                <li><a ng-click="setAlphabet('R')" style="cursor: pointer;">R</a></li>
+                <li><a ng-click="setAlphabet('S')" style="cursor: pointer;">S</a></li>
+                <li><a ng-click="setAlphabet('T')" style="cursor: pointer;">T</a></li>
+                <li><a ng-click="setAlphabet('V')" style="cursor: pointer;">V</a></li>
             </ul>
         </div>
         
 	</div>
-
+		<p ng-show="VehiclesCount == 0" style="margin-left:40%;"><b>No vehicle found!</b></p>
 	<div class="mainBox" infinite-scroll='loadMore()' infinite-scroll-distance='2'>
     
-    	<div class="inventoryBox" ng-repeat="vehicle in vehicleList">        	
+    	<div class="inventoryBox" ng-repeat="vehicle in vehicleList">  
+    	
                 <div class="title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
                 <div class="imageBoxIn">
                 <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="/glivrImg/images{{vehicle.path}}" class="preview" alt="preview" style="width:200px;height:150px;"></a>              

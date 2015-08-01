@@ -149,7 +149,7 @@ $(document).ready(function()
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
                         <!-- MAIN IMAGE --> 
                         <a href="${row.link}">
-                        <img src="/glivrImg/images${row.url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        <img src="/glivrImg/images${row.url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -292,7 +292,7 @@ $(document).ready(function()
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car1-lrg.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
-              <h4><a href="${featuredImages[0].link}">${featuredImages[0].description}</a></h4>
+              <%-- <h4><a href="${featuredImages[0].link}">${featuredImages[0].description}</a></h4> --%>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip horizontal margin-bottom-30">
@@ -303,7 +303,7 @@ $(document).ready(function()
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
-              <h4><a href="${featuredImages[1].link}">${featuredImages[1].description}</a></h4>
+              <%-- <h4><a href="${featuredImages[1].link}">${featuredImages[1].description}</a></h4> --%>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
               <div class="flip margin-bottom-30">
@@ -314,7 +314,7 @@ $(document).ready(function()
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car3.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
-              <h4><a href="${featuredImages[2].link}">${featuredImages[2].description}</a></h4>
+              <%-- <h4><a href="${featuredImages[2].link}">${featuredImages[2].description}</a></h4> --%>
             </div>
           </div>
         </div>

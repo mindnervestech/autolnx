@@ -207,7 +207,7 @@ app.controller("MobileInventoryController", function($scope,$http) {
 	$scope.loadMore = function() {
 		
 		if ($scope.noMore) return;
-		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
+		$http({method:'GET',url:contextPath+'/getMobileVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
 		.success(function(data) {
 			console.log(data);
 			if(data.vehicleList.length == 0) {
@@ -225,6 +225,8 @@ app.controller("MobileInventoryController", function($scope,$http) {
 		$scope.selectYear = function(){
 		
 			$scope.vehicleList = [];
+			$scope.alphbet = "";
+			$scope.price = "lowToHigh";
 			start = 0;
 			$scope.noMore = false;
 			$scope.loadMore();
@@ -239,7 +241,11 @@ app.controller("MobileInventoryController", function($scope,$http) {
 		}		
 		
 		
-		$scope.selectAlphbet = function(){
+		$scope.setAlphabet = function(alphabate) {
+			console.log(alphabate);
+			$scope.alphbet = alphabate;
+			$scope.price = "";
+			$scope.year = "";
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -250,12 +256,63 @@ app.controller("MobileInventoryController", function($scope,$http) {
 
 app.controller("MobileNewArrivalController", function($scope,$http) {
 	
-	$http({method:'GET',url:'getMobileRecentVehicles'})
-	.success(function(data) {
-		console.log(data);
-		$scope.vehicleList = data;
+	$scope.vehicleList = [];
+	$scope.year = "";
+	$scope.VehiclesCount = "";
+	$scope.alphbet = "";
+	var contextPath = $('#contextpath').val();
+	$scope.initFunction = function(){
 		
-	});
+		$scope.loadMore();
+	}
+	
+	 $scope.noMore = false;
+	 var start = 0;
+	$scope.loadMore = function() {
+		
+		if ($scope.noMore) return;
+		$http({method:'GET',url:contextPath+'/mobile/getMobileRecentVehicles',params:{start:start,year:$scope.year,alphabet:$scope.alphbet}})
+		.success(function(data) {
+			console.log(data);
+			if(data.vehicleList.length == 0) {
+				$scope.noMore = true;
+			}
+			$scope.VehiclesCount = data.count;
+			for (var i = 0; i < data.vehicleList.length; i++) {
+				$scope.vehicleList.push(data.vehicleList[i]);
+			}
+		});
+		
+		start = start + 16;
+	}
+	
+		$scope.selectYear = function(){
+		
+			$scope.vehicleList = [];
+			$scope.alphbet = "";
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		}
+		
+		$scope.resetFilters = function(){
+			$scope.year = "";
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		}		
+		
+		
+		$scope.setAlphabet = function(alphabate) {
+			console.log(alphabate);
+			$scope.alphbet = alphabate;
+			$scope.year = "";
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		}
 	
 });
 
