@@ -115,6 +115,48 @@ public class ClientController {
 		return "autolinx/mobile/mobileInventory";
 	}
 	
+	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
+	public String aboutUs(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
+		
+		return "autolinx/about-us";
+	}
+	
+	@RequestMapping(value = "/mobile/aboutUs", method = RequestMethod.GET)
+	public String mobileAboutUs(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
+		
+		return "autolinx/mobile/mobileAboutUs";
+	}
+	
+	@RequestMapping(value = "/warranty", method = RequestMethod.GET)
+	public String warranty(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
+		
+		return "autolinx/warranty";
+	}
+	
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {

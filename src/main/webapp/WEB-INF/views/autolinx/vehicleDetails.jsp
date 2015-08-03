@@ -173,8 +173,8 @@ $(document).ready(function()
             <ul class="nav navbar-nav pull-right">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
               <li class="active"><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
-              <li><a href="warranty.html">Warranty</a></li>
-              <li><a href="about.html">About Us</a></li>
+              <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
+              <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
               <li><a href="contact.html">Contact Us</a></li>
             </ul>
@@ -746,7 +746,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" alt></a> </div>
+        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
         <p>Powered by <a href="#">GLIDER-AUTOS</a></p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
@@ -760,10 +760,10 @@ $(document).ready(function()
         </ul>
         <div class="clear"></div>
         <ul class="f-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="demo.html">Inventory</a></li>
-          <li><a href="services.html"> Warranty</a></li>
-          <li><a href="our-team.html"> About Us</a></li>
+          <li><a href="${pageContext.request.contextPath}">Home</a></li>
+          <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
+          <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
+          <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>

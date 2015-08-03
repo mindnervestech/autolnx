@@ -99,7 +99,7 @@
         <div class="boxInLeft">
         	<img src="${pageContext.request.contextPath}/resources/autolinx/images/about_us_mobile.jpg" alt="">
             <p class="boxInText">
-            	<a href="about-us.html">About Us</a>
+            	<a href="${pageContext.request.contextPath}/mobile/aboutUs">About Us</a>
             </p>
         </div>      
     </div>
@@ -353,7 +353,7 @@
           <li><a href="${pageContext.request.contextPath}/mobile/home">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a></li>
           <li><a href="#"> Warranty</a></li>
-          <li><a href="about-us.html"> About Us</a></li>
+          <li><a href="${pageContext.request.contextPath}/mobile/aboutUs"> About Us</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Contact</a></li>
         </ul>

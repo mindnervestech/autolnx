@@ -122,8 +122,8 @@ $(document).ready(function()
             <ul class="nav navbar-nav pull-right">
               <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
               <li><a href="findVehicles">Inventory</a></li>
-              <li><a href="warranty.html">Warranty</a></li>
-              <li><a href="about.html">About Us</a></li>
+              <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
+              <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
               <li><a href="contact.html">Contact Us</a></li>
             </ul>
@@ -145,11 +145,11 @@ $(document).ready(function()
                 <ul>
                 
                     <!-- SLIDE  -->
-                    <c:forEach var="row" items="${sliderImages}">
+                   <%--  <c:forEach var="row" items="${sliderImages}"> --%>
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
                         <!-- MAIN IMAGE --> 
-                        <a href="${row.link}">
-                        <img src="/glivrImg/images${row.url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
+                        <a href="${sliderImages[0].link}">
+                        <img src="/glivrImg/images${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -162,10 +162,10 @@ $(document).ready(function()
 						data-speed="1000"
 						data-start="500"
 						data-easing="Back.easeInOut"
-						data-endspeed="300">${row.description} </div>
+						data-endspeed="300">${sliderImages[0].slider11} </div>
                         
                         <!-- LAYER NR. 1 -->
-                        <!-- <div class="tp-caption internet  fade"
+                        <div class="tp-caption internet  fade"
 						data-x="0"
 						data-y="282"
 						data-speed="500"
@@ -174,7 +174,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; letter-spacing: -3px;">THE INTERNET </div>
+						style="z-index: 6; letter-spacing: -3px;">${sliderImages[0].slider12} </div>
                         LAYER NR. 2
                         <div class="tp-caption attract sfl"
 						data-x="0"
@@ -185,7 +185,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; top: 371px; ">Attract, Engage, &amp; Convert </div>
+						style="z-index: 6; top: 371px; ">${sliderImages[0].slider13}</div>
                         LAYER NR. 3
                         <div class="tp-caption more skewfromright "
 						data-x="100"
@@ -196,7 +196,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; left:186px;">more </div>
+						style="z-index: 6; left:186px;">${sliderImages[0].slider14} </div>
                         LAYER NR. 4
                         <div class="tp-caption qualified skewfromright"
 						data-x="0"
@@ -207,9 +207,109 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6">qualified vehicle shoppers </div> -->
+						style="z-index: 6">${sliderImages[0].slider15}</div>
                     </li>
-                    </c:forEach>
+                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
+                        <a href="${sliderImages[1].link}">
+                        <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        </a>
+                        <!-- LAYERS -->
+                        <!-- <div class="tp-caption mediumlarge_light_white_center invest start"
+						data-x="543"
+						data-hoffset="0"
+						data-y="160"
+                        
+						data-speed="1000"
+						data-start="500"
+						data-easing="Back.easeInQuart"
+						data-endspeed="300">Time to invest in a website built to </div> -->
+                        
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption move mediumlarge_light_white_center fade"
+						data-x="480"
+						data-y="230"
+						data-speed="500"
+						data-start="800"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6; letter-spacing: -3px;">${sliderImages[1].slider21} </div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption light_brown mediumlarge_light_white_center sfl"
+						data-x="615"
+						data-y="230"
+						data-speed="500"
+						data-start="1200"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6; top: 371px; ">${sliderImages[1].slider22} </div>
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
+						data-x="735"
+						data-y="230"
+						data-speed="800"
+						data-start="1900"
+						data-easing="Elastic.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6; left:186px;">${sliderImages[1].slider23} </div>
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
+						data-x="960"
+						data-y="230"
+						data-speed="800"
+						data-start="2600"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6">${sliderImages[1].slider24} </div>
+                        <!-- LAYER NR. 5 -->
+                        <div class="tp-caption brown_line skewfromright"
+						data-x="482"
+						data-y="261"
+						data-speed="800"
+						data-start="2600"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6"><img src="http://demo.themesuite.com/automotive/images/brown_line.jpg" alt="underline"> </div>
+                    </li>
+                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
+                        <a href="${sliderImages[2].link}">
+                        <img src="/glivrImg/images${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        </a>
+                        <!-- LAYERS -->
+                        <div class="tp-caption customin customout start green"
+						data-x="40"
+						data-hoffset="0"
+						data-y="510"
+					
+						data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+						data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+						data-speed="1000"
+						data-start="500"
+						data-easing="Back.easeInOut"
+						data-endspeed="300">${sliderImages[2].slider31}</div>
+                        
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption big_white fade"
+						data-x="40"
+						data-y="560"
+						data-speed="500"
+						data-start="800"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6;">${sliderImages[2].slider32} </div>
+                    </li>
+                    <%-- </c:forEach> --%>
                     
                 </ul>
             </div>
@@ -763,7 +863,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
+        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
         <p>Powered by <a href="#">GLIDER-AUTOS</a></p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
@@ -779,8 +879,8 @@ $(document).ready(function()
         <ul class="f-nav">
           <li><a href="${pageContext.request.contextPath}">Home</a></li>
           <li><a href="findVehicles">Inventory</a></li>
-          <li><a href="services.html"> Warranty</a></li>
-          <li><a href="our-team.html"> About Us</a></li>
+          <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
+          <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>

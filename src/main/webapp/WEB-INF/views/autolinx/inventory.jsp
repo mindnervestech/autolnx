@@ -115,15 +115,15 @@ $(document).ready(function()
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="logo" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" alt style="height:100px;"></a> </div>
+            <a class="logo" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
           
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li class="active"><a href=findVehicles>Inventory</a></li>
-              <li><a href="warranty.html">Warranty</a></li>
-              <li><a href="about.html">About Us</a></li>
+              <li class="active"><a href=${pageContext.request.contextPath}/findVehicles>Inventory</a></li>
+              <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
+              <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
               <li><a href="contact.html">Contact Us</a></li>
             </ul>
@@ -576,10 +576,10 @@ $(document).ready(function()
             </ul>
             <div class="clear"></div>
             <ul class="f-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="demo.html">Inventory</a></li>
-              <li><a href="services.html"> Warranty</a></li>
-              <li><a href="our-team.html"> About Us</a></li>
+              <li><a href="${pageContext.request.contextPath}">Home</a></li>
+              <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
+              <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
+              <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>

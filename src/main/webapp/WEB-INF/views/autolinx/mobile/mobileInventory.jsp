@@ -223,7 +223,7 @@
            <li><a href="${pageContext.request.contextPath}/mobile/home">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a></li>
           <li><a href="#"> Warranty</a></li>
-          <li><a href="about-us.html"> About Us</a></li>
+          <li><a href="${pageContext.request.contextPath}/mobile/aboutUs"> About Us</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
