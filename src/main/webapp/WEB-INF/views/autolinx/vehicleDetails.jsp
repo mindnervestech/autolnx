@@ -126,7 +126,7 @@ $(document).ready(function()
 			}
 		};
 		if(isMobile.any() ) {
-				window.location.href="http://glivr.com/mobile/";
+				window.location.href="http://glider-autos.com/glivr/mobile/home";
 				return false;
 		}
 	
@@ -138,6 +138,7 @@ $(document).ready(function()
 
 <body ng-controller="VehicleDetailsController">
 <!--Header Start-->
+<input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
   <section class="toolbar">
     <div class="container">

@@ -2,6 +2,7 @@
 app.controller("InventoryController", function($scope,$http) {
 	$scope.listView = true;
 	$scope.gridView = false;
+	var contextPath = $('#contextpath').val();
 	$scope.showListView = function() {
 		$scope.listView = true;
 		$scope.gridView = false;
@@ -17,7 +18,7 @@ app.controller("InventoryController", function($scope,$http) {
 	}
 	
 	
-	$http({method:'GET',url:'getAllMakes'})
+	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
 		console.log(data);
 		$scope.allMakes = data;
@@ -56,7 +57,7 @@ app.controller("InventoryController", function($scope,$http) {
 		
 		console.log($scope.alphbet);
 		if ($scope.noMore) return;
-		$http({method:'GET',url:'getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
+		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
 		.success(function(data) {
 			if(data.vehicleList.length == 0) {
 				$scope.noMore = true;
@@ -144,15 +145,15 @@ app.controller("InventoryController", function($scope,$http) {
 });
 
 app.controller("HomeController", function($scope,$http) {
-	
-	$http({method:'GET',url:'getAllMakes'})
+	var contextPath = $('#contextpath').val();
+	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
 		console.log(data);
 		$scope.allMakes = data;
 		
 	});
 	
-	$http({method:'GET',url:'getRecentVehicles'})
+	$http({method:'GET',url:contextPath+'/getRecentVehicles'})
 	.success(function(data) {
 		console.log(data);
 		$scope.recentVehicles = data;

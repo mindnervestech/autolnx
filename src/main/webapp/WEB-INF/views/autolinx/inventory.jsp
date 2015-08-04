@@ -75,7 +75,7 @@ $(document).ready(function()
 			}
 		};
 		if(isMobile.any() ) {
-				window.location.href="http://glivr.com/mobile/";
+				window.location.href="http://glider-autos.com/glivr/mobile/home";
 				return false;
 		}
 	
@@ -87,6 +87,7 @@ $(document).ready(function()
   
 <body ng-controller="InventoryController" ng-init='initFunction(${vehicle.year},"${vehicle.make}","${vehicle.model}","${vehicle.bodyStyle}","${vehicle.fuelType}")'>
 <!--Header Start-->
+<input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
   <section class="toolbar">
     <div class="container">
@@ -121,7 +122,7 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li class="active"><a href=${pageContext.request.contextPath}/findVehicles>Inventory</a></li>
+              <li class="active"><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
               <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>

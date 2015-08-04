@@ -69,7 +69,7 @@ $(document).ready(function()
 			}
 		};
 		if(isMobile.any() ) {
-				window.location.href="http://glivr.com/mobile/";
+				window.location.href="http://glider-autos.com/glivr/mobile/home";
 				return false;
 		}
 	

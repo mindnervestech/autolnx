@@ -69,7 +69,7 @@ $(document).ready(function()
 			}
 		};
 		if(isMobile.any() ) {
-				window.location.href="http://glivr.com/mobile/";
+				window.location.href="http://glider-autos.com/glivr/mobile/home";
 				return false;
 		}
 	
@@ -86,6 +86,7 @@ $(document).ready(function()
 </head>
 
 <body ng-controller="HomeController">
+<input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <!--Header Start-->
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-home" no_resize="">
   <section class="toolbar">
@@ -121,7 +122,7 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
               <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li><a href="findVehicles">Inventory</a></li>
+              <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
               <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="blog.html">Blog</a></li>
@@ -878,7 +879,7 @@ $(document).ready(function()
         <div class="clear"></div>
         <ul class="f-nav">
           <li><a href="${pageContext.request.contextPath}">Home</a></li>
-          <li><a href="findVehicles">Inventory</a></li>
+          <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
           <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
           <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
           <li><a href="blog.html">Blog</a></li>
