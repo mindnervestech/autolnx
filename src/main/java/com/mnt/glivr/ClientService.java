@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.mnt.views.BlogVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.SiteLogoVM;
@@ -966,7 +967,32 @@ public class ClientService {
 		
 	}
 	
-public Map getRecentMobileVehicles(Integer start,String year,String alphabet){
+	public Map getBlogsOfUser(Integer start) {
+		Map<String, Object> mapData = new HashMap<String, Object>();
+		DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+		List<BlogVM> blogVMList = new ArrayList<BlogVM>();
+		Integer count = 0;
+		List<Map<String, Object>> rows = null;
+		rows = jdbcTemplate.queryForList("select * from blog where user_id = '"+userId+"' ORDER BY posted_date desc limit "+start+",3");
+		count = jdbcTemplate.queryForInt("select count(*) from blog where user_id = '"+userId+"'");
+		
+		for(Map map : rows) {
+			BlogVM vm = new BlogVM();
+			vm.title = (String) map.get("title");
+			vm.description = (String) map.get("description");
+			vm.postedBy = (String) map.get("posted_by");
+			Date date = (Date) map.get("posted_date");
+			vm.postedDate = dateFormat.format(date);
+			blogVMList.add(vm);
+		}	
+		
+		mapData.put("blogList", blogVMList);
+		mapData.put("count", count);
+		
+		return mapData;
+	}
+	
+	public Map getRecentMobileVehicles(Integer start,String year,String alphabet){
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();

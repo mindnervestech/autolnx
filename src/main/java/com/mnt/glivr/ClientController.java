@@ -157,6 +157,20 @@ public class ClientController {
 		return "autolinx/warranty";
 	}
 	
+	@RequestMapping(value = "/blog", method = RequestMethod.GET)
+	public String blog(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
+		
+		return "autolinx/blog";
+	}
+	
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
@@ -318,6 +332,15 @@ public class ClientController {
 		List<VehicleVM> vehicleList = clientService.getRecentVehicles();
 		
 		return vehicleList;
+	}
+	
+	@RequestMapping(value = "/getAllBlogs", method = RequestMethod.GET)
+	@ResponseBody
+	public Map getAllBlogs(Locale locale, Model model,@RequestParam("start") Integer start) {
+		
+		Map blogList = clientService.getBlogsOfUser(start);
+		
+		return blogList;
 	}
 	
 	@RequestMapping(value = "/mobile/getMobileRecentVehicles", method = RequestMethod.GET)

@@ -3,7 +3,7 @@
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en">
+<html lang="en" ng-app="gliderApp">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -38,12 +38,17 @@
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/wow.min.js"></script>
+<script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/autolinx/js/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 
 <script type="text/javascript" src="resources/autolinx/js/twitter/jquery.tweet.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/twitter/twitter_feed.js"></script> -->
+
 
 <script type="text/javascript">
 $(document).ready(function() 
@@ -79,7 +84,8 @@ $(document).ready(function()
 
 </head>
 
-<body>
+<body ng-controller="BlogController">
+<input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <!--Header Start-->
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner" no_resize="">
   <section class="toolbar">
@@ -94,7 +100,7 @@ $(document).ready(function()
         </div>
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
-            <li><a href="tel:18005670123"><i class="fa fa-phone"></i> (707) 552-5469  , (707) 552-LINX</a></li>
+            <li><a href="tel:18005670123"><i class="fa fa-phone"></i> (707) 552-5469</a></li>
             <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>3300 Sonoma Blvd Vallejo, California 94590 </a></li>
           </ul>
         </div>
@@ -109,15 +115,15 @@ $(document).ready(function()
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="logo" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" alt style="height:100px;"></a> </div>
+            <a class="logo" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
           
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
-              <li><a href="${pageContext.request.contextPath}">Home</a></li>
+             <li><a href="${pageContext.request.contextPath}">Home</a></li>
               <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
-              <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
-              <li class="active"><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
+              <li class="active"><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
+              <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
               <li><a href="">Contact Us</a></li>
             </ul>
@@ -131,19 +137,18 @@ $(document).ready(function()
   </div>
 </header>
 <!--Header End-->
-
 <div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-3"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-4"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>About Us</h2>
-        <h4>Located on Sonoma Boulevard in Vallejo, CA - in the heart of beautiful and historic Solano County.</h4>
+        <h2>AutoLinx Blog</h2>
+        <h4>Latest Industry News</h4>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <div class="col-lg-4 col-md-4 col-sm-6 ">
         <ul class="breadcrumb">
           <li><a href="#">Home</a></li>
-          <li>About Us</li>
+          <li>AutoLinx Blog</li>
         </ul>
       </div>
     </div>
@@ -152,141 +157,48 @@ $(document).ready(function()
 <!--#secondary-banner ends-->
 <div class="message-shadow"></div>
 <div class="clearfix"></div>
-<section class="content">
+<section class="content" ng-init="init()">
   <div class="container">
-    <div class="inner-page about-us row">
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-left-none padding-bottom-40 xs-padding-left-none xs-padding-right-none">
-        <h3 class="margin-bottom-25">OUR MISSION IS SIMPLE</h3>
-        <p><span class="firstcharacter">T</span>he Autolinx Inc. team has over 30 years of combined experience in the areas of automotive and online sales and strives to provide you with the greatest experience possible when purchasing your new pre-owned vehicle. Our experienced advisors are handpicked for their courtesy, knowledge and enthusiasm. They will make every effort to procure the best selection of quality, pre-owned vehicles on the market. Autolinx offers an upscale car buying experience, supported behind the scenes by some of the industry’s most innovative technology solutions to bring our customers the best quality vehicles at the most competitive prices.</p>
-        <p><img class="alignleft margin-top-10 margin-bottom-20 margin-right-25 margin-left-none" src="resources/autolinx/images/DSC_0656.jpg" alt="automotive">Our Mission is to offer a unique and upscale vehicle buying experience to every customer, every time, by combining our collective passions for cars, technology and customer service</p>
-        <p>Visit our showroom today and drive away with your new pre-owned quality car. Contact us via phone or email to set up a time convenient for you, or simply drop by for a great cup of coffee.
-        <p>
-        <p>Sincerely, 
-          The Autolinx Team</p>
-        <p>3300 Sonoma Blvd<br>
-          Vallejo, California 94590<br>
-          (707) 552-5469 <br>
-          (707) 552-LINX <br>
-          <a href="#">info@autolinxinc.com</a><br>
-        </p>
-        <h3>Directions</h3>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 padding-right-none padding-bottom-40 xs-padding-left-none xs-padding-right-none">
-        <div class="right-container">
-          <h3 class="margin-bottom-25">WHAT WE SPECIALIZE IN</h3>
-          <div class="progressbar">
-            <div class="bs-example">
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="100">Mercedes</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="90">BMW</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="80">Audi</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="70">Jaguar</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="60">Land Rover</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="50">Lamborghini</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="40">Ferrari</div>
-              </div>
+    <div class="inner-page blog-container row">
+      <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12 padding-left-none padding-right-15" infinite-scroll='loadMore()' infinite-scroll-distance='3'>
+        <div class="blog-content margin-bottom-40" ng-repeat="blog in blogList">
+          <div class="blog-title">
+            <h2 class="margin-bottom-25"><a href="http://www.autolinxinc.com/ask-your-dealer-should-i-buy-or-finance-my-used-luxury-car/">{{blog.title}}</a></h2>
+          </div>
+          <ul class="margin-top-10 margin-bottom-15">
+            <li class="fa fa-calendar"><a href="#">{{blog.postedDate}}</a></li>
+            <li class="fa fa-folder-open"> <a href="http://www.autolinxinc.com/category/uncategorized/">Uncategorized</a> </li>
+            <li class="fa fa-user"><span class="theme_font">Posted by</span> <a rel="author" title="Posts by Glider LLC" href="http://www.autolinxinc.com/author/glider/">{{blog.postedBy}}</a></li>
+            <li class="fa fa-comments"><a title="Comment on Ask Your Dealer &ndash;  Should I Buy or Finance My Used Luxury Car" href="http://www.autolinxinc.com/ask-your-dealer-should-i-buy-or-finance-my-used-luxury-car/#respond">No comments yet</a></li>
+          </ul>
+          <div class="post-entry clearfix">
+            <div compile="{{blog.description}}"></div>
+            <div class="clearfix"></div>
+            <div class="blog-end margin-top-20">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 read-more"><a href="">Read More...</a></div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right post-tags"><span class="fa fa-tags tags"> </span></div>
+              <div class="clearfix"></div>
             </div>
           </div>
         </div>
+        
+        <div class="clearfix"></div>
+        
       </div>
       <div class="clearfix"></div>
-	  <div class="margin-top-30 xs-margin-top-none padding-bottom-40">
-          
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 xs-padding-bottom-40 xs-padding-left-none xs-padding-right-none sm-padding-bottom-40 testimonials scroll_effect fadeInUp padding-left-none" data-wow-delay=".2s">
-                    <h3 class="margin-bottom-25">TESTIMONIALS</h3>
-                    <div class="testimonial">
-                        <ul class="testimonial_slider">
-                            <li>
-                                <blockquote class="style1"><span>Let me try and list all the reasons I am giving a five star review to these guys. &nbsp;First of all they have a large selection of amazing cars and good prices. &nbsp;They also have a genuine desire to create a great buying experience. &nbsp;Their level of service and attention to the details of removing stress focusing on fun is obvious in the first 10 minutes you are there. &nbsp;They let me drive 5 cars which were all great and pricing seemed to be very approachable. &nbsp;There was no pressure at all. &nbsp;After the fifth drive Nick asked which car I liked. &nbsp;I selected the very low miles lexus. &nbsp;We sat down and had some lunch then Ed asked what I wanted. &nbsp;I had a trade and told him the deal I was looking for. &nbsp;I asked him if I had made it clear and he said yes. &nbsp;Two minutes later we show hands and I had the most awesome car at thousands less than the Lexus dealer had offered. &nbsp;I want to buy three more now. &nbsp;THESE GUYS ROCK.</span><strong>Charles H.</strong></blockquote>
-                            </li>
-                            <li>
-                                <blockquote class="style1"><span>I can’t say enough good things about this dealership. I’ve purchased two cars (BMW most recently) and have recommended many friends &ndash; all with great results. Ed and his team are straight shooters, very professional and knowledgable. They only have low mileage, gorgeous cars at very competitive prices &ndash; my biggest issue was which car to buy. If you’re looking for low mileage, honest cars at a great price, make sure to put Autolinx on your list of dealerships to visit.</span><strong>Marco M.</strong> </blockquote>
-                            </li>
-                            <li>
-                                <blockquote class="style1"><span>What can I say: one of the best used car dealership I have ever walked into. Professional service and they really understand cars. Very knowledgeable people. Keep more cars coming!</span><strong>VP.</strong> </blockquote>
-                            </li>
-							
-							<li>
-                                <blockquote class="style1"><span>What can I say: one of the best used car dealership I have ever walked into. Professional service and they really understand cars. Very knowledgeable people. Keep more cars coming!</span><strong>VP.</strong> </blockquote>
-                            </li>
-							
-                        </ul>
-
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 latest-news margin-padding-none xs-padding-bottom-40 xs-padding-left-none xs-padding-right-none sm-margin-bottom-none scroll_effect fadeInUp" data-wow-delay=".4s">
-                    <h3 class="margin-bottom-25">LATEST AUTOMOTIVE NEWS</h3>
-                    <div class="arrow1 pull-right blog_post_controls"></div>
-                    <ul class="recent_blog_posts">
-                        <li>
-                            <div class="blog-list">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-info padding-bottom-15 padding-horizontal-5">
-                                    <h4>Ask Your Dealer -  Should I Buy or Finance My Used Luxury Car</h4>
-                                    <span>May 26, 2015 /</span> <span class="text-red">0 Comments</span>
-                                    <p>You have finally decided to buy that BMW, Lexus, Mercedes, you always dreamed about, however buying a luxury ca<a href="#">[...]</a></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <li>
-                            <div class="blog-list">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-info padding-bottom-15 padding-horizontal-5">
-                                    <h4>Autolinx Celebrity Profile - Paul Newman</h4>
-                                    <span>May 22, 2015  /</span> <span class="text-red">7 Comments</span>
-                                    <p>[caption id="attachment_5761" align="aligncenter" width="493"] Paul was just another guy swept up in the dirt, guts<a href="#">[...]</a></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <li>
-                            <div class="blog-list">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-info padding-bottom-15 padding-horizontal-5">
-                                    <h4>Ask Your Dealer -  Should I Buy or Finance My Used Luxury Car</h4>
-                                    <span>May 26, 2015 /</span> <span class="text-red">0 Comments</span>
-                                    <p>You have finally decided to buy that BMW, Lexus, Mercedes, you always dreamed about, however buying a luxury ca<a href="#">[...]</a></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="clearfix"></div>
-            </div>
     </div>
-	
-	
-	
-	
   </div>
   <!--container ends--> 
 </section>
-
-<!-- Footer Map -->
-<div id='google-map-listing' data-longitude='-79.38' data-latitude='43.65' data-zoom='8' style='height: 390px;' data-scroll='false' data-style='[{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"stylers":[{"hue":"#F0F0F0"},{"saturation":-100},{"gamma":2.15},{"lightness":12}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"lightness":24}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":57}]}]'></div>
-
-<!--Footer Start-->
-
-
 <!--content ends-->
 <div class="clearfix"></div>
+
+<!--footer Start-->
 <footer class="design_2">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padding-left-none md-padding-left-none sm-padding-left-15 xs-padding-left-15">
-        <h4>Subscribe to the official AutoLinx newsletter - Vehi-Linx</h4>
+        <h4>Subscribe to the official AutoLinx newsletter – Vehi-Linx</h4>
         <form method="post">
           <p>
             <label>Email Address:</label>
@@ -348,7 +260,7 @@ $(document).ready(function()
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padding-right-none md-padding-right-none sm-padding-right-15 xs-padding-right-15">
-       <h4 class="contact-head">Contact us</h4>
+        <h4 class="contact-head">Contact us</h4>
         <div class="footer-contact">
           <ul>
             <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 3300 Sonoma Blvd,Vallejo, California, 94590</li>
@@ -366,7 +278,7 @@ $(document).ready(function()
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
-        <p>Powered by <a href="#">GLIDER-AUTOS</a></p>
+        <p>Powered by <a href="#">GLIDER AUTOS</a></p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
         <ul class="social clearfix">
@@ -379,7 +291,7 @@ $(document).ready(function()
         </ul>
         <div class="clear"></div>
         <ul class="f-nav">
-          <li><a href="${pageContext.request.contextPath}">Home</a></li>
+         <li><a href="${pageContext.request.contextPath}">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
           <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
           <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
@@ -391,9 +303,7 @@ $(document).ready(function()
   </div>
 </section>
 <div class="back_to_top"> <img src="http://demo.themesuite.com/automotive/images/arrow-up.png" alt="scroll up" /> </div>
-
 <!-- Bootstrap core JavaScript --> <script src="resources/autolinx/js/retina.js"></script> 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key&amp;sensor=false"></script> 
 <script src="resources/autolinx/js/main.js"></script> 
 <script type="text/javascript" src="resources/autolinx/js/jquery.fancybox.js"></script> 
 <script src="resources/autolinx/js/modernizr.custom.js"></script> <script defer src="resources/autolinx/js/jquery.flexslider.js"></script> 

@@ -317,3 +317,33 @@ app.controller("MobileNewArrivalController", function($scope,$http) {
 	
 });
 
+app.controller("BlogController", function($scope,$http) {
+	var contextPath = $('#contextpath').val();
+	$scope.noMore = false;
+	 var start = 0;
+	 $scope.blogList = [];
+	 $scope.blogsCount = "";
+	$scope.init = function() {
+		$scope.loadMore();
+	}
+	
+	$scope.loadMore = function() {
+		
+		if ($scope.noMore) return;
+		$http({method:'GET',url:contextPath+'/getAllBlogs',params:{start:start}})
+		.success(function(data) {
+			console.log(data);
+			if(data.blogList.length == 0) {
+				$scope.noMore = true;
+			}
+			$scope.blogsCount = data.count;
+			for (var i = 0; i < data.blogList.length; i++) {
+				$scope.blogList.push(data.blogList[i]);
+			}
+		});
+		
+		start = start + 3;
+	}
+	
+});
+
