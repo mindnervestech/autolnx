@@ -572,7 +572,67 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
-	
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailusername));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(request.getParameter("email")));
+			message.setSubject("Password Recovery");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+		
+			
+	        Template t = ve.getTemplate("com/mnt/views/template.vm");
+	        VelocityContext context = new VelocityContext();
+	        context.put("name", request.getParameter("name"));
+	        context.put("email", request.getParameter("email"));
+	        context.put("phone", request.getParameter("phone"));
+	        context.put("year", (String) oneRow.get(0).get("year"));
+	        context.put("make", (String) oneRow.get(0).get("make"));
+	        context.put("model", (String) oneRow.get(0).get("model"));
+	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
+	        context.put("vin", (String) oneRow.get(0).get("vin"));
+	        context.put("stock", (String) oneRow.get(0).get("stock"));
+	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        context.put("sitelogo", logo);
+	        context.put("path", path);
+	        context.put("urlLink", hostUrl);
+	        
+	        
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
 		
 		
 		return request.getParameter("vin");
@@ -625,7 +685,73 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
-		
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailusername));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(request.getParameter("femail")));
+			message.setSubject("Password Recovery");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+			
+	        Template t = ve.getTemplate("com/mnt/views/templateForFriend.vm");
+	        VelocityContext context = new VelocityContext();
+	        context.put("name", request.getParameter("name"));
+	        context.put("fname", request.getParameter("fname"));
+	        context.put("email", request.getParameter("email"));
+	        context.put("phone", request.getParameter("phone"));
+	        context.put("year", (String) oneRow.get(0).get("year"));
+	        context.put("make", (String) oneRow.get(0).get("make"));
+	        context.put("model", (String) oneRow.get(0).get("model"));
+	        context.put("price", "$" +  (Integer) oneRow.get(0).get("price"));
+	        context.put("vin", (String) oneRow.get(0).get("vin"));
+	        context.put("stock", (String) oneRow.get(0).get("stock"));
+	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        context.put("engine", (String) oneRow.get(0).get("engine"));
+	        context.put("exterior_color", (String) oneRow.get(0).get("exterior_color"));
+	        context.put("interior_color", (String) oneRow.get(0).get("interior_color"));
+	        context.put("city_mileage", (String) oneRow.get(0).get("city_mileage"));
+	        context.put("highway_mileage", (String) oneRow.get(0).get("highway_mileage"));
+	        
+	        context.put("sitelogo", logo);
+	        context.put("path", path);
+	        context.put("urlLink", hostUrl);
+	        
+	        
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
 
 		
 		return request.getParameter("vin");
@@ -682,7 +808,97 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
-	
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailusername));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(request.getParameter("email")));
+			message.setSubject("Password Recovery");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+			
+	        Template t = ve.getTemplate("com/mnt/views/trade_in_app.vm");
+	        VelocityContext context = new VelocityContext();
+	      	        
+	        /*---------Trad in info---------------*/
+	        
+	        /*contact info*/
+	        context.put("first_name", request.getParameter("first_name"));
+	        context.put("last_name", request.getParameter("last_name"));
+	        context.put("work_phone",request.getParameter("work_phone"));
+	       
+	        /*vehicale info*/
+	        
+	        context.put("year", request.getParameter("year"));
+	        context.put("make", request.getParameter("make"));
+	        context.put("model", request.getParameter("model"));
+	        context.put("exterior_colour", request.getParameter("exterior_colour"));
+	        context.put("kilometres", request.getParameter("kilometres"));
+	        context.put("engine", request.getParameter("engine"));
+	        context.put("doors", request.getParameter("doors"));
+	        context.put("transmission", request.getParameter("transmission"));
+	        context.put("drivetrain", request.getParameter("drivetrain"));
+	        
+	        /*vehicale rating*/
+	        
+	        context.put("body_rating", request.getParameter("body_rating"));
+	        context.put("tire_rating", request.getParameter("tire_rating"));
+	        context.put("engine_rating", request.getParameter("engine_rating"));
+	        context.put("transmission_rating", request.getParameter("transmission_rating"));
+	        context.put("glass_rating", request.getParameter("glass_rating"));
+	        context.put("interior_rating", request.getParameter("interior_rating"));
+	        context.put("exhaust_rating", request.getParameter("exhaust_rating"));
+	        
+	        /*vehicale History*/
+	        
+	        context.put("lease_or_rental", request.getParameter("rental_return"));
+	        context.put("operational_and_accurate", request.getParameter("odometer_accurate"));
+	        context.put("service_record", request.getParameter("service_records"));
+	        
+	        /*title History*/
+	        
+	        context.put("lienholder", request.getParameter("lienholder"));
+	        context.put("holds_this_title", request.getParameter("holds_this_title"));
+	        
+	        context.put("sitelogo", logo);
+	        context.put("path", path);
+	        context.put("urlLink", hostUrl);
+	        
+	        
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
 		
 		return request.getParameter("vin");
 		
