@@ -591,7 +591,7 @@ public class ClientService {
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(request.getParameter("email")));
-			message.setSubject("Password Recovery");
+			message.setSubject("Request More Info");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart = new MimeBodyPart();
@@ -604,7 +604,7 @@ public class ClientService {
 			ve.init();
 		
 			
-	        Template t = ve.getTemplate("com/mnt/views/template.vm");
+	        Template t = ve.getTemplate("template.vm"); //com/mnt/views/template.vm
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", request.getParameter("name"));
 	        context.put("email", request.getParameter("email"));
@@ -706,7 +706,7 @@ public class ClientService {
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(request.getParameter("femail")));
-			message.setSubject("Password Recovery");
+			message.setSubject("Email To Friend");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart = new MimeBodyPart();
@@ -718,7 +718,7 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 			
-	        Template t = ve.getTemplate("com/mnt/views/templateForFriend.vm");
+	        Template t = ve.getTemplate("templateForFriend.vm");
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", request.getParameter("name"));
 	        context.put("fname", request.getParameter("fname"));
@@ -831,7 +831,7 @@ public class ClientService {
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(request.getParameter("email")));
-			message.setSubject("Password Recovery");
+			message.setSubject("Trade-In Appraisal");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart = new MimeBodyPart();
@@ -843,7 +843,7 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 			
-	        Template t = ve.getTemplate("com/mnt/views/trade_in_app.vm");
+	        Template t = ve.getTemplate("trade_in_app.vm");
 	        VelocityContext context = new VelocityContext();
 	      	        
 	        /*---------Trad in info---------------*/
