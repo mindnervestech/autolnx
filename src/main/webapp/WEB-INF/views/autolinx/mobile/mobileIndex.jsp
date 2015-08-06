@@ -131,9 +131,9 @@
     <div class="searchBox">
     	<h4 class="welcome-wrap"><strong>SEARCH</strong> OUR INVENTORY</h4>
         <div class="search-form">
-            <form method="post" modelAttribute="userform" action="findVehicle">
+            <form method="post" modelAttribute="userform" action="${pageContext.request.contextPath}/mobile/findVehicle">
               <div class="select-wrapper clearfix">
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-left:26%;">
                   <div class="my-dropdown make-dropdown">
                       <select name="year" ng-model="year" class="css-dropdowns" tabindex="1" >
                         <option value="">Year</option>
@@ -143,7 +143,7 @@
                       </select>
                      </div>
                 </div> 
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-left:26%;">
                 <div class="my-dropdown">
                       <select name="fuelType" ng-model="fuelType" class="css-dropdowns" tabindex="1" >
                        <option value="">Fuel Type</option>
@@ -177,7 +177,7 @@
                
               </div> -->
               <div class="select-wrapper clearfix">
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-left:26%;">
                   <div class="my-dropdown model-dropdown">
                     <select name="model" ng-model="model" class="css-dropdowns" tabindex="1" >
                     	   <option value="">Model</option>
@@ -187,7 +187,7 @@
                     </select>
                   </div>
                 </div>
-                 <div class="col-md-6">
+                 <div class="col-md-6" style="margin-left:26%;">
                   <div class="my-dropdown body-styles-dropdownn">
                     <select name="bodyStyle" ng-model="bodyStyle" class="css-dropdowns" tabindex="1" >
            	            <option value="">Body Styles</option>
@@ -205,7 +205,7 @@
               
               </div>
             <div class="select-wrapper clearfix">
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-left:26%;">
                   <div class="my-dropdown make-dropdown">
                     <select name="make" ng-model="make" class="css-dropdowns" tabindex="1" >
                     	<option value="">Makes</option>
@@ -223,7 +223,7 @@
                 </div> -->
               </div>
               <div class="clear"></div>
-              <div class="select-wrapper clearfix">
+              <div class="col-md-6" style="margin-left:26%;">
                 <div class="form-element">
                   <input type="submit" value="Find My New Vehicle" class="find_new_vehicle pull-right md-button">
                 </div>

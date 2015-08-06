@@ -132,7 +132,7 @@
         </div>
         
 	</div>
-		<p ng-show="VehiclesCount == 0" style="margin-left:40%;"><b>No vehicle found!</b></p>
+		<p ng-show="VehiclesCount == 0" style="margin-left:33%;"><b>No vehicle found!</b></p>
 	<div class="mainBox" infinite-scroll='loadMore()' infinite-scroll-distance='2'>
     
     	<div class="inventoryBox" ng-repeat="vehicle in vehicleList">  

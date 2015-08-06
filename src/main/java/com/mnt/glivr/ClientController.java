@@ -324,6 +324,21 @@ public class ClientController {
 		return "autolinx/inventory";
 	}
 	
+	@RequestMapping(value="/mobile/findVehicle",method=RequestMethod.POST)
+	public String findVehiclemobile(Locale locale, Model model,HttpServletRequest request) {
+		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
+		List<String> vehicleListMake = clientService.getAllVehicleMakes();
+		List<String> vehicleListModel = clientService.getAllVehicleModel();
+		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		
+		model.addAttribute("vehicleListYear", vehicleListYear);
+		model.addAttribute("vehicleListMake", vehicleListMake );
+		model.addAttribute("vehicleListModel", vehicleListModel );
+		model.addAttribute("vehicle",vehicleVM);
+		model.addAttribute("siteLogo",siteLogo);
+		return "autolinx/mobile/mobileInventory";
+	}
 	
 	@RequestMapping(value = "/getRecentVehicles", method = RequestMethod.GET)
 	@ResponseBody

@@ -328,7 +328,7 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
      <form name="fome1" action="${pageContext.request.contextPath}/mobile/requestMore" method="post">
-      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+      <div class="modal-content" style="width: 100%;margin-left: 0px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Request More Info</h4>
@@ -383,7 +383,7 @@
 <div class="modal fade" id="scheduleTest" role="dialog">
     <div class="modal-dialog">
      <form method="post"  action="${pageContext.request.contextPath}/mobile/scheduleTest">
-      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+      <div class="modal-content" style="width: 100%;margin-left: 0px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Request More Info</h4>
@@ -456,7 +456,7 @@
   <div class="modal fade" id="otherInfo" role="dialog">
     <div class="modal-dialog">
      <form method="post"  action="${pageContext.request.contextPath}/mobile/otherInfo">
-      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+      <div class="modal-content" style="width: 100%;margin-left: 0px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">More Info</h4>
