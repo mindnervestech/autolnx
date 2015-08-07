@@ -44,7 +44,7 @@ import com.mnt.views.VehicleVM;
 @Service
 public class ClientService {
 	
-	static int userId = -1361609913; //Hardcode for now
+	static int userId = -1361609913; //Hardcode for now 336920057
 	@Value("${emailusername}")
 	String emailusername;
 	
@@ -573,6 +573,8 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
+		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
+		
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -590,7 +592,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(request.getParameter("email")));
+					InternetAddress.parse((String) userMail.get(0).get("email")));
 			message.setSubject("Request More Info");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -813,6 +815,8 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
+		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
+		
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -830,7 +834,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(request.getParameter("email")));
+					InternetAddress.parse((String) userMail.get(0).get("email")));
 			message.setSubject("Trade-In Appraisal");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();

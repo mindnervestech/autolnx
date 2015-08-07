@@ -72,7 +72,7 @@
 <body  offset="0" class="body" style="padding:0; margin:0; display:block; background:#eeebeb; -webkit-text-size-adjust:none" bgcolor="#eeebeb">
   <table align="center" cellpadding="0" cellspacing="0" width="100%" height="100%" >
     <tr>
-      <td align="center" valign="top" style="background:#5882FA;" width="100%">
+      <td align="center" valign="top" style="background:#00989a;" width="100%">
         <center style="text-align:-webkit-center !important;">
           <table style="margin:0 auto;" cellspacing="0" height="60" cellpadding="0" width="100%">
             <tr>
@@ -190,7 +190,7 @@
                                 <center>
                                   <![endif]-->
                                 <a class="btn" href="$urlLink/$vin"
-                                    style="background-color:#5882fa;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:180px;-webkit-text-size-adjust:none;
+                                    style="background-color:#00989a;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:180px;-webkit-text-size-adjust:none;
                                     -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;">See Vehicle's Profile </a>
                                   <!--[if mso]>
                                 </center>
