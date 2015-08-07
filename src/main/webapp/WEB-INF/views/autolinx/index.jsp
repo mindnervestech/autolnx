@@ -212,7 +212,7 @@ $(document).ready(function()
                     </li>
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
                         <a href="${sliderImages[1].link}">
-                        <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
                         <!-- LAYERS -->
                         <!-- <div class="tp-caption mediumlarge_light_white_center invest start"
@@ -283,7 +283,7 @@ $(document).ready(function()
                     </li>
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
                         <a href="${sliderImages[2].link}">
-                        <img src="/glivrImg/images${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat"> 
+                        <img src="/glivrImg/images${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption customin customout start green"
