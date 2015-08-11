@@ -78,21 +78,38 @@ public class ClientService {
 							
 							String image1[] = firstDesc.split(" ");
 							if(image1.length >= 1) {
-								vm.slider11 = image1[0];
+								vm.slider1 = image1[0];
+							}
+							if(image1.length >= 2) {
+								vm.slider2 = image1[1];
 							}
 							if(image1.length >= 3) {
-								vm.slider12 = image1[1]+" "+image1[2];
+								vm.slider3 = image1[2];
+							}
+							if(image1.length >= 4) {
+								vm.slider4 = image1[3];
+							}
+							if(image1.length >= 5) {
+								vm.slider5 = image1[4];
+							}
+							if(image1.length >= 6) {
+								vm.slider6 = image1[5];
 							}
 							if(image1.length >= 7) {
-								vm.slider13 = image1[3]+" "+image1[4]+" "+image1[5]+" "+image1[6];
+								vm.slider7 = image1[6];
 							}
 							if(image1.length >= 8) {
-								vm.slider14 = image1[7];
+								vm.slider8 = image1[7];
+							}
+							if(image1.length >= 9) {
+								vm.slider9 = image1[8];
+							}
+							if(image1.length >= 10) {
+								vm.slider10 = image1[9];
 							}
 							if(image1.length >= 11) {
-								vm.slider15 = image1[8]+" "+image1[9]+" "+image1[10];
+								vm.slider11 = image1[10];
 							}
-							
 						} else {
 							vm.slider11 = firstDesc;
 						}
@@ -120,7 +137,18 @@ public class ClientService {
 							if(image2.length >= 4) {
 								vm.slider24 = image2[3];
 							}
-							
+							if(image2.length >= 5) {
+								vm.slider25 = image2[4];
+							}
+							if(image2.length >= 6) {
+								vm.slider26 = image2[5];
+							}
+							if(image2.length >= 7) {
+								vm.slider27 = image2[6];
+							}
+							if(image2.length >= 8) {
+								vm.slider28 = image2[7];
+							}
 						} else {
 							vm.slider21 = secondDesc;
 						}
@@ -136,13 +164,15 @@ public class ClientService {
 						if(thirdDesc.contains(" ")) {
 							String image3[] = thirdDesc.split(" ");
 							
+							if(image3.length >= 1) {
+								vm.slider31 = image3[0];
+							}
 							if(image3.length >= 2) {
-								vm.slider31 = image3[0]+" "+image3[1];
+								vm.slider32 = image3[1];
 							}
 							if(image3.length >= 3) {
-								vm.slider32 = image3[2];
+								vm.slider33 = image3[2];
 							}
-							
 						} else {
 							vm.slider31 = thirdDesc;
 						}

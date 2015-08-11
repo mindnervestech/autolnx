@@ -163,7 +163,7 @@ $(document).ready(function()
 						data-speed="1000"
 						data-start="500"
 						data-easing="Back.easeInOut"
-						data-endspeed="300">${sliderImages[0].slider11} </div>
+						data-endspeed="300">${sliderImages[0].slider1} </div>
                         
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption internet  fade"
@@ -175,8 +175,8 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; letter-spacing: -3px;">${sliderImages[0].slider12} </div>
-                        LAYER NR. 2
+						style="z-index: 6; letter-spacing: -3px;">${sliderImages[0].slider2} ${sliderImages[0].slider3}</div>
+                        <!-- LAYER NR. 2 -->
                         <div class="tp-caption attract sfl"
 						data-x="0"
 						data-y="369"
@@ -186,8 +186,8 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; top: 371px; ">${sliderImages[0].slider13}</div>
-                        LAYER NR. 3
+						style="z-index: 6; top: 371px; ">${sliderImages[0].slider4} ${sliderImages[0].slider5} ${sliderImages[0].slider6} ${sliderImages[0].slider7}</div>
+                        <!-- LAYER NR. 3 -->
                         <div class="tp-caption more skewfromright "
 						data-x="100"
 						data-y="425"
@@ -197,8 +197,8 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; left:186px;">${sliderImages[0].slider14} </div>
-                        LAYER NR. 4
+						style="z-index: 6; left:186px;">${sliderImages[0].slider8} </div>
+                       <!--  LAYER NR. 4 -->
                         <div class="tp-caption qualified skewfromright"
 						data-x="0"
 						data-y="476"
@@ -208,9 +208,9 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6">${sliderImages[0].slider15}</div>
+						style="z-index: 6">${sliderImages[0].slider9} ${sliderImages[0].slider10} ${sliderImages[0].slider11}</div>
                     </li>
-                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+                    <li data-transition="fade" data-delay="50000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[1].link}">
                         <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
@@ -227,7 +227,7 @@ $(document).ready(function()
                         
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption move mediumlarge_light_white_center fade"
-						data-x="480"
+						data-x="100"
 						data-y="230"
 						data-speed="500"
 						data-start="800"
@@ -235,10 +235,10 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; letter-spacing: -3px;">${sliderImages[1].slider21} </div>
+						style="z-index: 6; letter-spacing: -3px;width:24%;">${sliderImages[1].slider21} </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption light_brown mediumlarge_light_white_center sfl"
-						data-x="615"
+						data-x="300"
 						data-y="230"
 						data-speed="500"
 						data-start="1200"
@@ -246,10 +246,10 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; top: 371px; ">${sliderImages[1].slider22} </div>
+						style="z-index: 6; top: 371px;width:24%; ">${sliderImages[1].slider22} </div>
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
-						data-x="735"
+						data-x="600"
 						data-y="230"
 						data-speed="800"
 						data-start="1900"
@@ -257,10 +257,10 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; left:186px;">${sliderImages[1].slider23} </div>
+						style="z-index: 6; left:186px;width:24%;">${sliderImages[1].slider23} </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
-						data-x="960"
+						data-x="900"
 						data-y="230"
 						data-speed="800"
 						data-start="2600"
@@ -268,10 +268,53 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6">${sliderImages[1].slider24} </div>
+						style="z-index: 6;width:24%;">${sliderImages[1].slider24} </div>
+						<div class="tp-caption move mediumlarge_light_white_center fade"
+						data-x="100"
+						data-y="300"
+						data-speed="500"
+						data-start="800"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6; letter-spacing: -3px;width:24%;">${sliderImages[1].slider25} </div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption light_brown mediumlarge_light_white_center sfl"
+						data-x="300"
+						data-y="300"
+						data-speed="500"
+						data-start="1200"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6; top: 371px;width:24%; ">${sliderImages[1].slider26} </div>
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
+						data-x="600"
+						data-y="300"
+						data-speed="800"
+						data-start="1900"
+						data-easing="Elastic.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6; left:186px;width:24%;">${sliderImages[1].slider27} </div>
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
+						data-x="900"
+						data-y="300"
+						data-speed="800"
+						data-start="2600"
+						data-easing="Power4.easeOut"
+						data-endspeed="300"
+						data-endeasing="Power1.easeIn"
+						data-captionhidden="off"
+						style="z-index: 6;width:24%;">${sliderImages[1].slider28} </div>
                         <!-- LAYER NR. 5 -->
-                        <div class="tp-caption brown_line skewfromright"
-						data-x="482"
+                        <!-- <div class="tp-caption brown_line skewfromright"
+						data-x="800"
 						data-y="261"
 						data-speed="800"
 						data-start="2600"
@@ -279,7 +322,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6"><img src="http://demo.themesuite.com/automotive/images/brown_line.jpg" alt="underline"> </div>
+						style="z-index: 6"><img src="http://demo.themesuite.com/automotive/images/brown_line.jpg" alt="underline"> </div> -->
                     </li>
                     <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[2].link}">
@@ -308,7 +351,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6;">${sliderImages[2].slider32} </div>
+						style="z-index: 6;">${sliderImages[2].slider32} ${sliderImages[2].slider33}</div>
                     </li>
                     <%-- </c:forEach> --%>
                     
