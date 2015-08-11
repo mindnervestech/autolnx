@@ -119,7 +119,7 @@ $(document).ready(function()
               <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li class="active"><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
-              <li><a href="">Contact Us</a></li>
+              <li><a href="${pageContext.request.contextPath}/contactUs">Contact Us</a></li>
             </ul>
           </div>
           <!-- /.navbar-collapse --> 
@@ -384,7 +384,7 @@ $(document).ready(function()
           <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
           <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
           <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="${pageContext.request.contextPath}/contactUs">Contact</a></li>
         </ul>
       </div>
     </div>

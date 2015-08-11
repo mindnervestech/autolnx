@@ -129,6 +129,20 @@ public class ClientController {
 		return "autolinx/about-us";
 	}
 	
+	@RequestMapping(value = "/contactUs", method = RequestMethod.GET)
+	public String contactUs(Locale locale, Model model) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		SiteLogoVM siteLogo = clientService.getLogoData();
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("siteLogo",siteLogo);
+		
+		return "autolinx/contactUs";
+	}
+	
 	@RequestMapping(value = "/mobile/aboutUs", method = RequestMethod.GET)
 	public String mobileAboutUs(Locale locale, Model model) {
 		

@@ -126,7 +126,7 @@ $(document).ready(function()
               <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
-              <li><a href="">Contact Us</a></li>
+              <li><a href="${pageContext.request.contextPath}/contactUs">Contact Us</a></li>
             </ul>
           </div>
           <!-- /.navbar-collapse --> 
@@ -147,7 +147,7 @@ $(document).ready(function()
                 
                     <!-- SLIDE  -->
                    <%--  <c:forEach var="row" items="${sliderImages}"> --%>
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
+                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
                         <img src="/glivrImg/images${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
@@ -210,7 +210,7 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6">${sliderImages[0].slider15}</div>
                     </li>
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
+                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[1].link}">
                         <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
@@ -281,7 +281,7 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6"><img src="http://demo.themesuite.com/automotive/images/brown_line.jpg" alt="underline"> </div>
                     </li>
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" > 
+                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[2].link}">
                         <img src="/glivrImg/images${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
@@ -389,7 +389,7 @@ $(document).ready(function()
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[0].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title'><a href="${featuredImages[0].link}" style="color:white;">${featuredImages[0].description}</a></div>
+                    <div class='hover_title' style="margin-top:19%;"><a href="${featuredImages[0].link}" style="color:white;">${featuredImages[0].description}</a></div>
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car1-lrg.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
@@ -400,7 +400,7 @@ $(document).ready(function()
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[1].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title'><a href="${featuredImages[1].link}" style="color:white;">${featuredImages[1].description}</a></div>
+                    <div class='hover_title' style="margin-top:19%;"><a href="${featuredImages[1].link}" style="color:white;">${featuredImages[1].description}</a></div>
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
@@ -411,7 +411,7 @@ $(document).ready(function()
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[2].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title'><a href="${featuredImages[2].link}" style="color:white;">${featuredImages[2].description}</a></div>
+                    <div class='hover_title' style="margin-top:19%;"><a href="${featuredImages[2].link}" style="color:white;">${featuredImages[2].description}</a></div>
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car3.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
@@ -883,7 +883,7 @@ $(document).ready(function()
           <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
           <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
           <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="${pageContext.request.contextPath}/contactUs">Contact</a></li>
         </ul>
       </div>
     </div>

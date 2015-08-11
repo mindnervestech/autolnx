@@ -3,7 +3,7 @@
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en" ng-app="gliderApp">
+<html lang="en">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -38,17 +38,13 @@
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/wow.min.js"></script>
-<script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
-<script type="text/javascript" src="resources/autolinx/js/ng-infinite-scroll.js"></script>
-<script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
-<script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key&amp;sensor=false"></script>
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 
 <script type="text/javascript" src="resources/autolinx/js/twitter/jquery.tweet.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/twitter/twitter_feed.js"></script> -->
-
 
 <script type="text/javascript">
 $(document).ready(function() 
@@ -84,8 +80,7 @@ $(document).ready(function()
 
 </head>
 
-<body ng-controller="BlogController">
-<input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
+<body>
 <!--Header Start-->
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner" no_resize="">
   <section class="toolbar">
@@ -120,12 +115,12 @@ $(document).ready(function()
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
-             <li><a href="${pageContext.request.contextPath}">Home</a></li>
+              <li><a href="${pageContext.request.contextPath}">Home</a></li>
               <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
               <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
-              <li class="active"><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
-              <li><a href="${pageContext.request.contextPath}/contactUs">Contact Us</a></li>
+              <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
+              <li class="active"><a href="${pageContext.request.contextPath}/contactUs">Contact Us</a></li>
             </ul>
           </div>
           <!-- /.navbar-collapse --> 
@@ -137,68 +132,231 @@ $(document).ready(function()
   </div>
 </header>
 <!--Header End-->
-<div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-4"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-5"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>AutoLinx Blog</h2>
-        <h4>Latest Industry News</h4>
+        <h2>Contact Us</h2>
+        <h4>We are located in the heart of the Bay Area, just off 80 HWY</h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 ">
         <ul class="breadcrumb">
           <li><a href="#">Home</a></li>
-          <li>AutoLinx Blog</li>
+          <li>Contact Us</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
-<!--#secondary-banner ends-->
+<!--secondary-banner ends-->
 <div class="message-shadow"></div>
 <div class="clearfix"></div>
-<section class="content" ng-init="init()">
+<section class="content">
   <div class="container">
-    <div class="inner-page blog-container row">
-      <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12 padding-left-none padding-right-15" infinite-scroll='loadMore()' infinite-scroll-distance='3'>
-        <div class="blog-content margin-bottom-40" ng-repeat="blog in blogList">
-          <div class="blog-title">
-            <h2 class="margin-bottom-25"><a href="http://www.autolinxinc.com/ask-your-dealer-should-i-buy-or-finance-my-used-luxury-car/">{{blog.title}}</a></h2>
+    <div class="inner-page">
+      <div class="col-md-12 padding-none"> 
+        <!--CONTACT INFORMATION-->
+        <div class="row contacts margin-top-25"> 
+          <!--LEFT INFORMATION-->
+          <div class="col-md-6 left-information">
+            <div class="contact_information information_head clearfix">
+              <h3 class="margin-bottom-25 margin-top-none">CONTACT INFORMATION</h3>
+              <div class="address clearfix margin-right-25 padding-bottom-40">
+                <div class="icon_address">
+                  <p><i class="fa fa-map-marker"></i><strong>Address:</strong></p>
+                </div>
+                <div class="contact_address">
+                  <p class="margin-bottom-none">AutoLinx Inc. <br>
+                    3300 Sonoma Blvd., Vallejo, California 94590</p>
+                </div>
+              </div>
+              <div class="address clearfix address_details margin-right-25 padding-bottom-40">
+                <ul class="margin-bottom-none">
+                  <li><i class="fa fa-phone"></i>Phone:<span>&nbsp;&nbsp;(707) 552-LINX (5469)</span></li>
+                  <li><i class="fa fa-envelope-o"></i>Email: &nbsp;&nbsp;<a href="#">info@autolinxinc.com</a></li>
+                  <li class="padding-bottom-none"><i class="fa fa-laptop"></i>Web:&nbsp;&nbsp; <a href="http://company.com"> www.autolinxinc.com</a></li>
+                </ul>
+              </div>
+            </div>
+            <!--INFORMATION HOUR-->
+            <div class="information_hour information_head margin-top-30 xs-padding-bottom-40">
+              <h3 class="margin-bottom-25 margin-top-none">BUSINESS HOURS</h3>
+              <div class="row">
+                <div class="col-sm-4 padding-left-none">
+                  <div class="deparment">
+                    <table class="table table-bordered no-border font-12px hours_table ">
+                      <thead>
+                        <tr>
+                          <td colspan="2"><strong>Sales Department</strong></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mon:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Tue:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Wed:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Thu:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Fri:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sat:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sun:</td>
+                          <td>10:00am - 4:00pm</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="deparment">
+                    <table class="table table-bordered no-border font-12px hours_table ">
+                      <thead>
+                        <tr>
+                          <td colspan="2"><strong>Service Department</strong></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mon:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Tue:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Wed:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Thu:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Fri:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sat:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sun:</td>
+                          <td>10:00am - 4:00pm</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-sm-4 padding-right-none">
+                  <div class="deparment">
+                    <table class="table table-bordered no-border font-12px hours_table ">
+                      <thead>
+                        <tr>
+                          <td colspan="2"><strong>Parts Department</strong></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mon:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Tue:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Wed:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Thu:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Fri:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sat:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sun:</td>
+                          <td>10:00am - 4:00pm</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--INFORMATION HOUR--> 
           </div>
-          <ul class="margin-top-10 margin-bottom-15">
-            <li class="fa fa-calendar"><a href="#">{{blog.postedDate}}</a></li>
-            <li class="fa fa-folder-open"> <a href="http://www.autolinxinc.com/category/uncategorized/">Uncategorized</a> </li>
-            <li class="fa fa-user"><span class="theme_font">Posted by</span> <a rel="author" title="Posts by Glider LLC" href="http://www.autolinxinc.com/author/glider/">{{blog.postedBy}}</a></li>
-            <li class="fa fa-comments"><a title="Comment on Ask Your Dealer &ndash;  Should I Buy or Finance My Used Luxury Car" href="http://www.autolinxinc.com/ask-your-dealer-should-i-buy-or-finance-my-used-luxury-car/#respond">No comments yet</a></li>
-          </ul>
-          <div class="post-entry clearfix">
-            <div compile="{{blog.description}}"></div>
-            <div class="clearfix"></div>
-            <div class="blog-end margin-top-20">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 read-more"><a href="">Read More...</a></div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right post-tags"><span class="fa fa-tags tags"> </span></div>
-              <div class="clearfix"></div>
+          <!--LEFT INFORMATION--> 
+          
+          <!--RIGHT INFORMATION-->
+          <div class="col-md-5 col-lg-offset-1 col-md-offset-1 padding-right-none xs-padding-left-none sm-padding-left-none xs-margin-top-30">
+            <div class="contact_wrapper information_head">
+              <h3 class="margin-bottom-25 margin-top-none">CONTACT FORM</h3>
+              <div class="form_contact margin-bottom-20">
+                <div id="result"></div>
+                <fieldset id="contact_form">
+                  <input type="text" name="name" class="form-control margin-bottom-25" placeholder="Name  (Required)" />
+                  <input type="email" name="email" class="form-control margin-bottom-25" placeholder="Email  (Required)" />
+                  <textarea name="msg" class="form-control margin-bottom-25 contact_textarea" placeholder="Your message" rows="7"></textarea>
+                  <input id="submit_btn" type="submit" value="Send Message">
+                </fieldset>
+              </div>
             </div>
           </div>
+          <!--RIGHT INFORMATION--> 
+          
         </div>
-        
-        <div class="clearfix"></div>
+        <!---CONTACT INFORMATION--> 
         
       </div>
       <div class="clearfix"></div>
+      
+      <!--MAP-->
+      <div class="find_map row clearfix">
+        <h2 class="margin-bottom-25 margin-top-none">FIND US ON THE MAP</h2>
+        <div class="map margin-vertical-30">
+          <div id='google-map-listing' class="contact" data-longitude='-79.38' data-latitude='43.65' data-zoom='7' style='height: 390px;'></div>
+        </div>
+      </div>
+      <!--MAP--> 
+      
     </div>
   </div>
   <!--container ends--> 
 </section>
 <!--content ends-->
 <div class="clearfix"></div>
+<div class="back_to_top"> <img src="http://demo.themesuite.com/automotive/images/arrow-up.png" alt="scroll up" /> </div>
 
-<!--footer Start-->
+<!--Footer Start-->
 <footer class="design_2">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padding-left-none md-padding-left-none sm-padding-left-15 xs-padding-left-15">
-        <h4>Subscribe to the official AutoLinx newsletter – Vehi-Linx</h4>
+        <h4>Subscribe to the official AutoLinx newsletter-Vehi-Linx</h4>
         <form method="post">
           <p>
             <label>Email Address:</label>
@@ -223,7 +381,7 @@ $(document).ready(function()
         </form>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-       <h4 class="contact-head">Latest tweets</h4>
+        <h4 class="contact-head">Latest tweets</h4>
         <div class="latest-tweets">
           <ul>
             <li>
@@ -278,7 +436,7 @@ $(document).ready(function()
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
-        <p>Powered by <a href="#">GLIDER AUTOS</a></p>
+        <p>Powered by <a href="">GLIDER-AUTOS</a></p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
         <ul class="social clearfix">
@@ -291,7 +449,7 @@ $(document).ready(function()
         </ul>
         <div class="clear"></div>
         <ul class="f-nav">
-         <li><a href="${pageContext.request.contextPath}">Home</a></li>
+          <li><a href="${pageContext.request.contextPath}">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
           <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
           <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
@@ -302,11 +460,74 @@ $(document).ready(function()
     </div>
   </div>
 </section>
-<div class="back_to_top"> <img src="http://demo.themesuite.com/automotive/images/arrow-up.png" alt="scroll up" /> </div>
-<!-- Bootstrap core JavaScript --> <script src="resources/autolinx/js/retina.js"></script> 
+<script src="resources/autolinx/js/retina.js"></script> 
 <script src="resources/autolinx/js/main.js"></script> 
 <script type="text/javascript" src="resources/autolinx/js/jquery.fancybox.js"></script> 
-<script src="resources/autolinx/js/modernizr.custom.js"></script> <script defer src="resources/autolinx/js/jquery.flexslider.js"></script> 
+<script src="resources/autolinx/js/modernizr.custom.js"></script> 
+<!-- jQuery --> 
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#submit_btn").click(function() { 
+        //collect input field values
+        var user_name       = $("input[name='name']").val(); 
+        var user_email      = $("input[name='email']").val();
+        var user_message    = $("textarea[name='msg']").val();
+        
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        var proceed = true;
+        if(user_name==""){ 
+            $("input[name='name']").css("border", "1px solid red"); 
+            proceed = false;
+        } else {
+			$("input[name='name']").css("border", "none");
+		}
+        if(user_email==""){ 
+            $("input[name='email']").css("border", "1px solid red"); 
+            proceed = false;
+        } else {
+			$("input[name='email']").css("border", "none");
+		}
+        if(user_message=="") {  
+            $("textarea[name='msg']").css("border", "1px solid red"); 
+            proceed = false;
+        } else {
+			$("textarea[name='msg']").css("border", "none");
+		}
+        
+        //everything looks good! proceed...
+        if(proceed) {
+            //data to be sent to server
+            post_data = {'userName':user_name, 'userEmail':user_email, 'userMessage':user_message};
+            
+            //Ajax post data to server
+            $.post('contact_process.php', post_data, function(data){  
+                
+                //load success massage in #result div element, with slide effect.       
+                $("#result").hide().html('<div class="success">'+data+'</div>').slideDown();
+                
+                //reset values in all input fields
+                $('#contact_form input[type="text"]').val('');
+				$('#contact_form input[type="email"]').val(''); 
+                $('#contact_form textarea').val(''); 
+                
+            }).fail(function(err) {  //load any error data
+                $("#result").hide().html('<div class="error">'+err.statusText+'</div>').slideDown();
+            });
+        }
+    });
+    
+    //reset previously set border colors and hide all message on .keyup()
+    $("#contact_form input, #contact_form textarea").keyup(function() { 
+        $("#contact_form input, #contact_form textarea").css('border-color',''); 
+        $("#result").slideUp();
+    });
+    
+});
+</script> 
+<!-- FlexSlider --> 
+<script defer src="resources/autolinx/js/jquery.flexslider.js"></script> 
 <script src="resources/autolinx/js/jquery.bxslider.js" type="text/javascript"></script> 
 <script src="resources/autolinx/js/jquery.selectbox-0.2.js" type="text/javascript"></script> 
 <script type="text/javascript" src="resources/autolinx/js/jquery.mousewheel.js"></script> 

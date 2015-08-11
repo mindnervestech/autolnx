@@ -59,6 +59,7 @@ public class ClientService {
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
 		List<SliderVM> sliderUrls = new ArrayList<SliderVM>();
+		List<Map<String, Object>> descriptionRows = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"'");
 		int count = 0;
 		for(Map map : rows) {
 			SliderVM vm = new SliderVM();
@@ -67,64 +68,83 @@ public class ClientService {
 			vm.link = (String) map.get("link");
 			
 			if(count == 0) {
-				if(vm.description.contains(" ")) {
-					String image1[] = vm.description.split(" ");
-					if(image1.length>0) {
-						vm.slider11 = image1[0];
+				String firstDesc = "";
+				if(descriptionRows.size() >= 1) {
+					firstDesc = (String) descriptionRows.get(0).get("description");
+					if(firstDesc != null) {
+						if(firstDesc.contains(" ")) {
+							
+							String image1[] = firstDesc.split(" ");
+							if(image1.length >= 1) {
+								vm.slider11 = image1[0];
+							}
+							if(image1.length >= 3) {
+								vm.slider12 = image1[1]+" "+image1[2];
+							}
+							if(image1.length >= 7) {
+								vm.slider13 = image1[3]+" "+image1[4]+" "+image1[5]+" "+image1[6];
+							}
+							if(image1.length >= 8) {
+								vm.slider14 = image1[7];
+							}
+							if(image1.length >= 11) {
+								vm.slider15 = image1[8]+" "+image1[9]+" "+image1[10];
+							}
+							
+						} else {
+							vm.slider11 = firstDesc;
+						}
 					}
-					if(image1.length>=3) {
-						vm.slider12 = image1[1]+" "+image1[2];
-					}
-					if(image1.length>=7) {
-						vm.slider13 = image1[3]+" "+image1[4]+" "+image1[5]+" "+image1[6];
-					}
-					if(image1.length>=8) {
-						vm.slider14 = image1[7];
-					}
-					if(image1.length>=11) {
-						vm.slider15 = image1[8]+" "+image1[9]+" "+image1[10];
-					}
-					
-				} else {
-					vm.slider11 = vm.description;
 				}
 			}
 			
 			if(count == 1) {
-				if(vm.description.contains(" ")) {
-					String image2[] = vm.description.split(" ");
-					
-					if(image2.length>0) {
-						vm.slider21 = image2[0];
+				String secondDesc = "";
+				if(descriptionRows.size() >= 2) {
+					secondDesc = (String) descriptionRows.get(1).get("description");
+					if(secondDesc != null) {
+						if(secondDesc.contains(" ")) {
+							String image2[] = secondDesc.split(" ");
+							
+							if(image2.length >= 1) {
+								vm.slider21 = image2[0];
+							}
+							if(image2.length >= 2) {
+								vm.slider22 = image2[1];
+							}
+							if(image2.length >= 3) {
+								vm.slider23 = image2[2];
+							}
+							if(image2.length >= 4) {
+								vm.slider24 = image2[3];
+							}
+							
+						} else {
+							vm.slider21 = secondDesc;
+						}
 					}
-					if(image2.length>=1) {
-						vm.slider22 = image2[1];
-					}
-					if(image2.length>=2) {
-						vm.slider23 = image2[2];
-					}
-					if(image2.length>=3) {
-						vm.slider24 = image2[3];
-					}
-					
-				} else {
-					vm.slider21 = vm.description;
 				}
 			}
 			
 			if(count == 2) {
-				if(vm.description.contains(" ")) {
-					String image3[] = vm.description.split(" ");
-					
-					if(image3.length>=2) {
-						vm.slider31 = image3[0]+" "+image3[1];
+				String thirdDesc = "";
+				if(descriptionRows.size() >= 3) {
+					thirdDesc = (String) descriptionRows.get(2).get("description");
+					if(thirdDesc != null) {
+						if(thirdDesc.contains(" ")) {
+							String image3[] = thirdDesc.split(" ");
+							
+							if(image3.length >= 2) {
+								vm.slider31 = image3[0]+" "+image3[1];
+							}
+							if(image3.length >= 3) {
+								vm.slider32 = image3[2];
+							}
+							
+						} else {
+							vm.slider31 = thirdDesc;
+						}
 					}
-					if(image3.length>=3) {
-						vm.slider32 = image3[2];
-					}
-					
-				} else {
-					vm.slider31 = vm.description;
 				}
 			}
 			
@@ -519,7 +539,7 @@ public class ClientService {
  		} else {
  			vehicleVM.nextVehicle = (String)row.get(0).get("vin");
  		}
- 		List<Map<String, Object>> imagerows = jdbcTemplate.queryForList("select path,default_image,thumb_path from vehicle_image where user_id = '"+userId+"' and vin= '"+vin+"' ");
+ 		List<Map<String, Object>> imagerows = jdbcTemplate.queryForList("select path,default_image,thumb_path from vehicle_image where user_id = '"+userId+"' and vin= '"+vin+"' ORDER BY vehicle_image.row,vehicle_image.col");
  		List<VehicleImage> imageList = new ArrayList<VehicleImage>();
  		
  		if(imagerows.isEmpty()) {
@@ -533,7 +553,14 @@ public class ClientService {
  		for(Map map : imagerows) {
  			VehicleImage vehicleImage = new VehicleImage();
  			vehicleImage.path = (String) map.get("path");
- 			vehicleImage.isDefault = (Boolean) map.get("default_image"); 
+ 			int def = (Integer) map.get("default_image"); 
+ 			if(def == 0) {
+ 				vehicleImage.isDefault = false; 
+ 			}
+ 			
+ 			if(def == 1) {
+ 				vehicleImage.isDefault = true; 
+ 			}
  			vehicleImage.thumbPath = (String) map.get("thumb_path");
  			imageList.add(vehicleImage);
 		}
