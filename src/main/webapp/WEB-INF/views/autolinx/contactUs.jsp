@@ -318,10 +318,12 @@ $(document).ready(function()
               <div class="form_contact margin-bottom-20">
                 <div id="result"></div>
                 <fieldset id="contact_form">
-                  <input type="text" name="name" class="form-control margin-bottom-25" placeholder="Name  (Required)" />
-                  <input type="email" name="email" class="form-control margin-bottom-25" placeholder="Email  (Required)" />
+                 <form name="fome1" action="${pageContext.request.contextPath}/contactUs" method="post">
+                  <input type="text" name="name" class="form-control margin-bottom-25" placeholder="Name  (Required)" required>
+                  <input type="email" name="email" class="form-control margin-bottom-25" placeholder="Email  (Required)" required>
                   <textarea name="msg" class="form-control margin-bottom-25 contact_textarea" placeholder="Your message" rows="7"></textarea>
                   <input id="submit_btn" type="submit" value="Send Message">
+                  </form>
                 </fieldset>
               </div>
             </div>

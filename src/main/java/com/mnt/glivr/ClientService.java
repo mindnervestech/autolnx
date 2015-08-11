@@ -1212,4 +1212,84 @@ public class ClientService {
 		return logo;
 	}
 	
+	public String contactUs(HttpServletRequest request, String hostUrl){
+		
+		jdbcTemplate.update("INSERT INTO contact_us(name, email,msg) VALUES('"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("msg")+"')");
+		
+		SiteLogoVM logo = new SiteLogoVM();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		
+		for(Map map : rows) {
+			logo.logoPath = (String) map.get("logo_image_path");
+			logo.faviconPath = (String) map.get("favicon_image_path");
+			logo.tabText = (String) map.get("tab_text");
+		}
+		
+		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
+		
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailusername));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse((String) userMail.get(0).get("email")));
+			message.setSubject("Contact us");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,"org.apache.velocity.runtime.log.Log4JLogChute" );
+			ve.setProperty("runtime.log.logsystem.log4j.logger","clientService");
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+		
+			
+	        Template t = ve.getTemplate("contactUstemplate.vm"); 
+	        VelocityContext context = new VelocityContext();
+	        context.put("name", request.getParameter("name"));
+	        context.put("email", request.getParameter("email"));
+	        context.put("msg", request.getParameter("msg"));
+	       
+	        context.put("urlLink", hostUrl);
+	        context.put("hostnameimg",  hostnameimg);
+	        
+	        
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
+		
+		
+		
+		
+		return null;
+	}
+	
+	
+	
 }

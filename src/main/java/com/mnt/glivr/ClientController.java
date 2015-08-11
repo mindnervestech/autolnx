@@ -247,6 +247,14 @@ public class ClientController {
 		return "autolinx/mobile/mobileViewDetails";
 	}
 	
+   @RequestMapping(value="/contactUs",method=RequestMethod.POST)
+	public String contactUs(Locale locale, Model model,HttpServletRequest request) {
+		
+		String requestVm = clientService.contactUs(request, hostUrl);
+		return "autolinx/contactUs";
+		
+	}
+   
    @RequestMapping(value="/requestMore",method=RequestMethod.POST)
 	public String requestMore(Locale locale, Model model,HttpServletRequest request) {
 		
