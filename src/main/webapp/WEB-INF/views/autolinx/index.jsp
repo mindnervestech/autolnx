@@ -210,7 +210,7 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6">${sliderImages[0].slider9} ${sliderImages[0].slider10} ${sliderImages[0].slider11}</div>
                     </li>
-                    <li data-transition="fade" data-delay="50000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[1].link}">
                         <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
@@ -249,7 +249,7 @@ $(document).ready(function()
 						style="z-index: 6; top: 371px;width:24%; ">${sliderImages[1].slider22} </div>
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
-						data-x="600"
+						data-x="500"
 						data-y="230"
 						data-speed="800"
 						data-start="1900"
@@ -260,7 +260,7 @@ $(document).ready(function()
 						style="z-index: 6; left:186px;width:24%;">${sliderImages[1].slider23} </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
-						data-x="900"
+						data-x="800"
 						data-y="230"
 						data-speed="800"
 						data-start="2600"
@@ -292,7 +292,7 @@ $(document).ready(function()
 						style="z-index: 6; top: 371px;width:24%; ">${sliderImages[1].slider26} </div>
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
-						data-x="600"
+						data-x="500"
 						data-y="300"
 						data-speed="800"
 						data-start="1900"
@@ -303,7 +303,7 @@ $(document).ready(function()
 						style="z-index: 6; left:186px;width:24%;">${sliderImages[1].slider27} </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
-						data-x="900"
+						data-x="800"
 						data-y="300"
 						data-speed="800"
 						data-start="2600"
