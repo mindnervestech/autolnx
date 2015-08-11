@@ -51,6 +51,8 @@ public class ClientService {
 	@Value("${emailpassword}")
 	String emailpassword;
 	
+	@Value("${hostnameimg}")
+	String hostnameimg;
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -638,6 +640,7 @@ public class ClientService {
 	        context.put("name", request.getParameter("name"));
 	        context.put("email", request.getParameter("email"));
 	        context.put("phone", request.getParameter("phone"));
+	        context.put("preferred",  request.getParameter("preferred"));
 	        context.put("year", (String) oneRow.get(0).get("year"));
 	        context.put("make", (String) oneRow.get(0).get("make"));
 	        context.put("model", (String) oneRow.get(0).get("model"));
@@ -648,6 +651,7 @@ public class ClientService {
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
+	        context.put("hostnameimg",  hostnameimg);
 	        
 	        
 	        
@@ -676,14 +680,106 @@ public class ClientService {
 	}
 	
 	
-	public String getScheduleTest(HttpServletRequest request){
+	public String getScheduleTest(HttpServletRequest request, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
-
+		String path = "";
 		
 		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+request.getParameter("bestDay")+"','"+request.getParameter("bestTime")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
 				
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
+			
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		if(vehiclePath.isEmpty()) {
+			path = "/no-image.jpg";
+		} else {
+			if(vehiclePath.get(0).get("path").toString() == "") {
+				path = "/no-image.jpg";
+			} else {
+				path = (String) vehiclePath.get(0).get("path");
+			}
+		}
+		
+		SiteLogoVM logo = new SiteLogoVM();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		
+		for(Map map : rows) {
+			logo.logoPath = (String) map.get("logo_image_path");
+			logo.faviconPath = (String) map.get("favicon_image_path");
+			logo.tabText = (String) map.get("tab_text");
+		}
+		
+		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
+		
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailusername));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse((String) userMail.get(0).get("email")));
+			message.setSubject("Schedule Test Drive");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,"org.apache.velocity.runtime.log.Log4JLogChute" );
+			ve.setProperty("runtime.log.logsystem.log4j.logger","clientService");
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+		
+	        Template t = ve.getTemplate("scheduleTestDriveTemplate.vm"); 
+	        VelocityContext context = new VelocityContext();
+	        context.put("name", request.getParameter("name"));
+	        context.put("email", request.getParameter("email"));
+	        context.put("phone", request.getParameter("phone"));
+	        context.put("preferred",  request.getParameter("preferred"));
+	        context.put("bestDay",  request.getParameter("bestDay"));
+	        context.put("bestTime",  request.getParameter("bestTime"));
+	        context.put("year", (String) oneRow.get(0).get("year"));
+	        context.put("make", (String) oneRow.get(0).get("make"));
+	        context.put("model", (String) oneRow.get(0).get("model"));
+	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
+	        context.put("vin", (String) oneRow.get(0).get("vin"));
+	        context.put("stock", (String) oneRow.get(0).get("stock"));
+	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        context.put("sitelogo", logo);
+	        context.put("path", path);
+	        context.put("urlLink", hostUrl);
+	        context.put("hostnameimg",  hostnameimg);
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+			
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
+		
+		
 		return request.getParameter("vin");
+		
+		
 		
 	}
 	
@@ -769,7 +865,7 @@ public class ClientService {
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
-	        
+	        context.put("hostnameimg",  hostnameimg);
 	        
 	        
 	        StringWriter writer = new StringWriter();
@@ -883,6 +979,10 @@ public class ClientService {
 	        context.put("first_name", request.getParameter("first_name"));
 	        context.put("last_name", request.getParameter("last_name"));
 	        context.put("work_phone",request.getParameter("work_phone"));
+	        context.put("email",request.getParameter("email"));
+	        context.put("preferred",  request.getParameter("preferred"));
+	        context.put("optionValue",  optionValue);
+	        
 	       
 	        /*vehicale info*/
 	        
@@ -917,10 +1017,20 @@ public class ClientService {
 	        context.put("lienholder", request.getParameter("lienholder"));
 	        context.put("holds_this_title", request.getParameter("holds_this_title"));
 	        
+	        /*Vehicle Assessment*/
+	        
+	        context.put("equipment", request.getParameter("equipment"));
+	        context.put("vehiclenew", request.getParameter("vehiclenew"));
+	        context.put("accidents", request.getParameter("accidents"));
+	        context.put("damage", request.getParameter("damage"));
+	        context.put("paint", request.getParameter("paint"));
+	        context.put("salvage", request.getParameter("salvage"));
+	        
+	        
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
-	        
+	        context.put("hostnameimg",  hostnameimg);
 	        
 	        
 	        StringWriter writer = new StringWriter();

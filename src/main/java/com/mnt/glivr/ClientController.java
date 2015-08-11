@@ -266,7 +266,7 @@ public class ClientController {
    @RequestMapping(value="/scheduleTest",method=RequestMethod.POST)
   	public String scheduleTest(Locale locale, Model model,HttpServletRequest request) {
   		
-	   String scheduleVm = clientService.getScheduleTest(request);
+	   String scheduleVm = clientService.getScheduleTest(request, hostUrl);
   		return "redirect:" + "/vehicleDetails/"+scheduleVm;
   		
   	}
@@ -274,7 +274,7 @@ public class ClientController {
    @RequestMapping(value="/mobile/scheduleTest",method=RequestMethod.POST)
  	public String scheduleTestMobile(Locale locale, Model model,HttpServletRequest request) {
  		
-	   String scheduleVm = clientService.getScheduleTest(request);
+	   String scheduleVm = clientService.getScheduleTest(request, hostUrl);
  		return "redirect:" + "/mobile/viewDetails/"+scheduleVm;
  		
  	}
