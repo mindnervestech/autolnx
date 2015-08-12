@@ -334,7 +334,7 @@ $(document).ready(function()
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="vehicleDetails/{{vehicle.vin}}" class="inventory">
                 <div class="title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
-                <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview">
+                <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview" style="width:210px;height:140px;">
                 <table class="options-primary">
                   <tbody>
                     <tr>

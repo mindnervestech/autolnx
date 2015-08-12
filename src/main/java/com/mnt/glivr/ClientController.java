@@ -108,7 +108,9 @@ public class ClientController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData();
 		String formattedDate = dateFormat.format(date);
+		List<String> vehicleListYear = clientService.getAllVehicleYear();
 		
+		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		

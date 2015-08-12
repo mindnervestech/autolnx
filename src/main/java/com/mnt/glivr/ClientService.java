@@ -469,6 +469,7 @@ public class ClientService {
 		List<Map<String, Object>> videoUrl = jdbcTemplate.queryForList("select desktop_url,mobile_url from virtual_tour where user_id= '"+userId+"' and vin= '"+vin+"' ");
 		if(videoUrl.isEmpty()) {
 			vehicleVM.videoUrl = "";
+			vehicleVM.mobileUrl = "";
 		} else {
 			if(videoUrl.get(0).get("desktop_url") == null) {
 				vehicleVM.videoUrl = "";

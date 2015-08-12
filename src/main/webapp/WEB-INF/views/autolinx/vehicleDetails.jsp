@@ -511,8 +511,12 @@ $(document).ready(function()
 	                    <div class="car-info margin-bottom-50">
                     
           
-                    
-                        <div style="text-align:center;">
+                    <c:choose>
+					    <c:when test="${vehicle.audioUrl==''}">
+					        
+					    </c:when>    
+					    <c:otherwise>
+					        <div style="text-align:center;">
 						  Click on the Engine Sound button to hear it roar!
                         <div class="playerBox">
                         	<ul>
@@ -520,7 +524,7 @@ $(document).ready(function()
                                 	<div class="sc_player_container1"><div class="sc_player_container1">
                                     <a onclick='playpause_audio();' href="javascript:void(0);">
                                     <img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-idle.png" id="start_engine"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-pressed.png" id="stop_engine" style="display:none;"></a></div></div>
-</div>
+
                                 </li>
                                 <audio controls preload="none" class='audioDemo' style='display:none;'>
 					<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/mpeg">
@@ -531,6 +535,11 @@ $(document).ready(function()
                         </div>
                           	
 						</div>
+					    </c:otherwise>
+					</c:choose>
+					
+                        
+						
 	                        <div class="table-responsive">
 	                            <table class="table">
 	                                <tbody>
@@ -846,7 +855,7 @@ $(document).ready(function()
       <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Request More Info</h4>
+          <h4 class="modal-title">Schedule Test Drive</h4>
         </div>
            <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
         <div class="modal-body">
@@ -1226,7 +1235,7 @@ $(document).ready(function()
       <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">More Info</h4>
+          <h4 class="modal-title">Email To Friend</h4>
         </div>
            <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
         <div class="modal-body">
