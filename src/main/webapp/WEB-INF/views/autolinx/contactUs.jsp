@@ -316,13 +316,14 @@ $(document).ready(function()
             <div class="contact_wrapper information_head">
               <h3 class="margin-bottom-25 margin-top-none">CONTACT FORM</h3>
               <div class="form_contact margin-bottom-20">
-                <div id="result"></div>
+                <div id="result"></div> 
                 <fieldset id="contact_form">
-                 <form name="fome1" action="${pageContext.request.contextPath}/contactUs" method="post">
-                  <input type="text" name="name" class="form-control margin-bottom-25" placeholder="Name  (Required)" required>
+                 <form name="fome1" id="fromSubmit" action="${pageContext.request.contextPath}/contactUsPage"  method="post"> 
+                   <input type="text" name="name" class="form-control margin-bottom-25" placeholder="Name  (Required)" required>
+                  <input type="text" name="number" pattern="\d*" title="Please enter numbers" class="form-control margin-bottom-25" placeholder="Number" >
                   <input type="email" name="email" class="form-control margin-bottom-25" placeholder="Email  (Required)" required>
                   <textarea name="msg" class="form-control margin-bottom-25 contact_textarea" placeholder="Your message" rows="7"></textarea>
-                  <input id="submit_btn" type="submit" value="Send Message">
+                  <input id="submit_btn" type="submit" value="Send Message">   <!-- data-toggle="modal" data-target="#myModal" -->  
                   </form>
                 </fieldset>
               </div>
@@ -461,6 +462,23 @@ $(document).ready(function()
       </div>
     </div>
   </div>
+   <!-- <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      Modal content
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <span style="color: black;">Thank you for your request, one
+					of our representative will contact you shortly</span>
+        </div>
+      
+      </div>
+      
+    </div>
+  </div> -->
+  
+</div>
 </section>
 <script src="resources/autolinx/js/retina.js"></script> 
 <script src="resources/autolinx/js/main.js"></script> 
@@ -469,6 +487,27 @@ $(document).ready(function()
 <!-- jQuery --> 
 
 <script type="text/javascript">
+
+/* $(function(){
+    $("form#fromSubmit").submit(function(e){
+        e.preventDefault();
+        $.post(
+            "processdata.php", 
+            $(this).serialize(), 
+            function(data){
+                //Your code to process returned data goes here
+                $("#postresult").text("Thank you!");
+            }
+        );
+    });        
+}); */
+/* $('#fromSubmit').on('submit', function(ev) {
+    $('#myModal').modal({
+        show: 'false'
+    }); 
+    ev.preventDefault();
+});
+ */
 $(document).ready(function() {
     $("#submit_btn").click(function() { 
         //collect input field values
@@ -515,7 +554,7 @@ $(document).ready(function() {
                 $('#contact_form textarea').val(''); 
                 
             }).fail(function(err) {  //load any error data
-                $("#result").hide().html('<div class="error">'+err.statusText+'</div>').slideDown();
+                $("#result").hide().html('<div class="success">Thank you for your request, one of our representative will contact you shortly</div>').slideDown();
             });
         }
     });

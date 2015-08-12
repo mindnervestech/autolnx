@@ -1243,8 +1243,8 @@ public class ClientService {
 	}
 	
 	public String contactUs(HttpServletRequest request, String hostUrl){
-		
-		jdbcTemplate.update("INSERT INTO contact_us(name, email,msg) VALUES('"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("msg")+"')");
+
+		jdbcTemplate.update("INSERT INTO contact_us(name, email,msg,number) VALUES('"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("msg")+"','"+request.getParameter("number")+"')");
 		
 		SiteLogoVM logo = new SiteLogoVM();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
@@ -1293,6 +1293,8 @@ public class ClientService {
 	        context.put("name", request.getParameter("name"));
 	        context.put("email", request.getParameter("email"));
 	        context.put("msg", request.getParameter("msg"));
+	        context.put("number", request.getParameter("number"));
+	        
 	       
 	        context.put("urlLink", hostUrl);
 	        context.put("hostnameimg",  hostnameimg);
