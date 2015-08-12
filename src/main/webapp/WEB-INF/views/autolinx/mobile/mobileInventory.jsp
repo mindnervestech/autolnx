@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -83,15 +82,24 @@
         </div>
         <div class="select-dropdown2">
                     
-                    <span class="my-dropdown">Year:</span>
+                    <span class="my-dropdown">Sort By:</span>
                     <div class="min-dropdown">
                    
-                      <select name="year" class="css-dropdowns" ng-model="year" ng-change="selectYear()" tabindex="1" >
-			              <option value="">All Years</option>
-			             <c:forEach var="option" items='${vehicleListYear}'>
-										<option value='${option}'>${option}</option>
-						</c:forEach> 
-			            </select>
+                      <select name="max-price" class="css-dropdowns" tabindex="1" ng-model="year" ng-change="selectYear()">
+                        <option value="">All Years</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                        <option>2013</option>
+                        <option>2012</option>
+                        <option>2011</option>
+                        <option>2010</option>
+                        <option>2009</option>
+                        <option>2008</option>
+                        <option>2007</option>
+                        <option>2006</option>
+                        <option>2005</option>
+                        <option>2004</option>
+                      </select>
                    
                     </div>
                   </div>
@@ -130,7 +138,7 @@
     	<div class="inventoryBox" ng-repeat="vehicle in vehicleList">        	
                 <div class="title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
                 <div class="imageBoxIn">
-                <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="/glivrImg/images{{vehicle.path}}" class="preview" alt="preview" style="width:210px;height:140px;"></a>              
+                <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="/glivrImg/images{{vehicle.path}}" class="preview" alt="preview" style="width:200px;height:150px;"></a>              
                 
                 </div>
                 <div class="leftBox">
@@ -168,7 +176,7 @@
                   </tbody>
                   
                 </table>
-                	<a href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0" target="_blank"> <img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/carfax2.png" alt="CarFax Report"> </a>
+                	<a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}" target="_blank"> <img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/carfax2.png" alt="CarFax Report"> </a>
                     
                 	<div class="gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><i class="fa fa-plus-circle"></i> View Details</a></div>
                 </div>

@@ -95,7 +95,7 @@
     	<div class="headingRow">
         	<ul>
             	<li>
-                	<h2>${vehicle.year} ${vehicle.make} ${vehicle.model}</h2>
+                	<h2>${vehicle.make}-detail</h2>
                 </li>
                 <li>
                 	<h2>${vehicle.price}</h2>
@@ -171,34 +171,20 @@
           
         <div class="playerBox">
             <ul>
-            	<c:choose>
-				    <c:when test="${vehicle.mobileUrl==''}">
-				        
-				    </c:when>    
-				    <c:otherwise>
-				       <li>
-                		<div class="sc_player_container1"><a href="${vehicle.mobileUrl}"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/sit-inside-button.png"></a></div>
-                	</li>
-				    </c:otherwise>
-				</c:choose>
-            	
-                <c:choose>
-				    <c:when test="${vehicle.audioUrl==''}">
-				        
-				    </c:when>    
-				    <c:otherwise>
-				        <li>
+            	<li>
+                	<div class="sc_player_container1"><a href="${vehicle.mobileUrl}"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/sit-inside-button.png"></a></div>
+                </li>
+                <li>
                                 	<div class="sc_player_container1"><div class="sc_player_container1">
                                     <a onclick='playpause_audio();' href="javascript:void(0);">
                                     <img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-idle.png" id="start_engine"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-pressed.png" id="stop_engine" style="display:none;"></a></div></div>
-                                    
+</div>
                                 </li>
-						 <audio controls preload="none" class='audioDemo' style='display:none;'>
-							<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/mpeg">
-							<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/ogg">
-						</audio>
-				    </c:otherwise>
-				</c:choose>
+				 <audio controls preload="none" class='audioDemo' style='display:none;'>
+					<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/mpeg">
+					<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/ogg">
+				</audio>
+				
                 
             </ul>
         </div>
@@ -400,7 +386,7 @@
       <div class="modal-content" style="width: 100%;margin-left: 0px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Schedule Test Drive</h4>
+          <h4 class="modal-title">Request More Info</h4>
         </div>
            <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
         <div class="modal-body">
@@ -473,7 +459,7 @@
       <div class="modal-content" style="width: 100%;margin-left: 0px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Email To Friend</h4>
+          <h4 class="modal-title">More Info</h4>
         </div>
            <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
         <div class="modal-body">

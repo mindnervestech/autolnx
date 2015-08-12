@@ -139,7 +139,7 @@
     	
                 <div class="title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
                 <div class="imageBoxIn">
-                <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="/glivrImg/images{{vehicle.path}}" class="preview" alt="preview" style="width:210px;height:140px;"></a>              
+                <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="/glivrImg/images{{vehicle.path}}" class="preview" alt="preview" style="width:200px;height:150px;"></a>              
                 
                 </div>
                 <div class="leftBox">
@@ -177,7 +177,7 @@
                   </tbody>
                   
                 </table>
-                	<a href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0" target="_blank"> <img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/carfax2.png" alt="CarFax Report"> </a>
+                	<a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}" target="_blank"> <img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/carfax2.png" alt="CarFax Report"> </a>
                     
                 	<div class="gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><i class="fa fa-plus-circle"></i> View Details</a></div>
                 </div>

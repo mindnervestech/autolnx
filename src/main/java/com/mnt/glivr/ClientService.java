@@ -665,6 +665,7 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 		
+			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
 			
 	        Template t = ve.getTemplate("template.vm"); //com/mnt/views/template.vm
 	        VelocityContext context = new VelocityContext();
@@ -682,6 +683,7 @@ public class ClientService {
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
+	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
 	        
 	        
@@ -772,6 +774,8 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 		
+			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
+			
 	        Template t = ve.getTemplate("scheduleTestDriveTemplate.vm"); 
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", request.getParameter("name"));
@@ -790,6 +794,7 @@ public class ClientService {
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
+	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
 	        
 	        StringWriter writer = new StringWriter();
