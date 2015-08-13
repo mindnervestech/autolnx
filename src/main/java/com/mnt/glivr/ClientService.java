@@ -1309,11 +1309,9 @@ public class ClientService {
 			
 	        Template t = ve.getTemplate("contactUstemplate.vm"); 
 	        VelocityContext context = new VelocityContext();
-	        context.put("name", request.getParameter("name"));
-	        context.put("email", request.getParameter("email"));
-	        context.put("msg", request.getParameter("msg"));
-	        context.put("number", request.getParameter("number"));
-	        
+	        context.put("name", request);
+	        context.put("email", request);
+	        context.put("msg", request);
 	       
 	        context.put("urlLink", hostUrl);
 	        context.put("hostnameimg",  hostnameimg);
