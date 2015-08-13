@@ -885,6 +885,8 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 			
+			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
+			
 	        Template t = ve.getTemplate("templateForFriend.vm");
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", model.getName());
@@ -906,6 +908,7 @@ public class ClientService {
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
+	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
 	        
 	        
@@ -1006,6 +1009,8 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 			
+			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
+			
 	        Template t = ve.getTemplate("trade_in_app.vm");
 	        VelocityContext context = new VelocityContext();
 	      	        
@@ -1022,7 +1027,12 @@ public class ClientService {
 	       
 	    //    vehicale info
 	        
-	        context.put("year", model.getYear());
+	        System.out.println(model.getYear());
+	        if(model.getYear() != null){
+	        	context.put("year", model.getYear());
+	        }else{
+	        	context.put("year", "");
+	        }
 	        context.put("make", model.getMake());
 	        context.put("model", model.getModel());
 	        context.put("exterior_colour", model.getExterior_colour());
@@ -1066,6 +1076,7 @@ public class ClientService {
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("urlLink", hostUrl);
+	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
 	        
 	        
