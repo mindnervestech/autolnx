@@ -1,4 +1,4 @@
-var app = angular.module('gliderApp', ['infinite-scroll'])
+var app = angular.module('gliderApp', ['infinite-scroll','jlareau.pnotify'])
 .directive('compile', function($compile) {
 	  return {
 	    restrict:'A',

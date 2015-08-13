@@ -1,13 +1,13 @@
 package com.mnt.views;
 
 
-public class RequestMore {
+public class FriendVM {
 
 	public Long id;
 	public String name;
-	public String preferred;
 	public String email;
-	public String phone;
+	public String fname;
+	public String femail;
 	public String vin;
 	
 	public Long getId() {
@@ -22,24 +22,23 @@ public class RequestMore {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getPreferred() {
-		return preferred;
-	}
-	public void setPreferred(String preferred) {
-		this.preferred = preferred;
-	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhone() {
-		return phone;
+	public String getFname() {
+		return fname;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getFemail() {
+		return femail;
+	}
+	public void setFemail(String femail) {
+		this.femail = femail;
 	}
 	public String getVin() {
 		return vin;
@@ -47,8 +46,6 @@ public class RequestMore {
 	public void setVin(String vin) {
 		this.vin = vin;
 	}
-	
-	
 	
 	
 }

@@ -36,9 +36,13 @@ import org.springframework.stereotype.Service;
 import com.mnt.views.BlogVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
+import com.mnt.views.FriendVM;
+import com.mnt.views.RequestMore;
+import com.mnt.views.ScheduleTestVM;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.SiteLogoVM;
 import com.mnt.views.SliderVM;
+import com.mnt.views.Trade_InVM;
 import com.mnt.views.VehicleImage;
 import com.mnt.views.VehicleVM;
 
@@ -617,16 +621,16 @@ public class ClientService {
 	}	
 	
 	
-	public String getRequestMore(HttpServletRequest request, String hostUrl){
+	public void getRequestMore(RequestMore model, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String path = "";
 		
-		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
+		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,user_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+userId+"')");
 		
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
- 				
-		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
+			
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+ model.getVin() +"' and default_image = true");
 		if(vehiclePath.isEmpty()) {
 			path = "/no-image.jpg";
 		} else {
@@ -682,10 +686,10 @@ public class ClientService {
 			
 	        Template t = ve.getTemplate("template.vm"); //com/mnt/views/template.vm
 	        VelocityContext context = new VelocityContext();
-	        context.put("name", request.getParameter("name"));
-	        context.put("email", request.getParameter("email"));
-	        context.put("phone", request.getParameter("phone"));
-	        context.put("preferred",  request.getParameter("preferred"));
+	        context.put("name", model.getName());
+	        context.put("email", model.getEmail());
+	        context.put("phone", model.getPhone());
+	        context.put("preferred",  model.getPreferred());
 	        context.put("year", (String) oneRow.get(0).get("year"));
 	        context.put("make", (String) oneRow.get(0).get("make"));
 	        context.put("model", (String) oneRow.get(0).get("model"));
@@ -716,26 +720,20 @@ public class ClientService {
 			e.printStackTrace();
 		} 
 		
-		
-		return request.getParameter("vin");
-		
-		
-		
-		
-		
 	}
 	
-	
-	public String getScheduleTest(HttpServletRequest request, String hostUrl){
+		
+	public void getScheduleTest(ScheduleTestVM model, String hostUrl){
+		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String path = "";
 		
-		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("preferred")+"','"+request.getParameter("email")+"','"+request.getParameter("phone")+"','"+request.getParameter("bestDay")+"','"+request.getParameter("bestTime")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
-				
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
-			
-		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,user_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+userId+"')");
+		
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
+		
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+model.getVin() +"' and default_image = true");
 		if(vehiclePath.isEmpty()) {
 			path = "/no-image.jpg";
 		} else {
@@ -791,12 +789,12 @@ public class ClientService {
 			
 	        Template t = ve.getTemplate("scheduleTestDriveTemplate.vm"); 
 	        VelocityContext context = new VelocityContext();
-	        context.put("name", request.getParameter("name"));
-	        context.put("email", request.getParameter("email"));
-	        context.put("phone", request.getParameter("phone"));
-	        context.put("preferred",  request.getParameter("preferred"));
-	        context.put("bestDay",  request.getParameter("bestDay"));
-	        context.put("bestTime",  request.getParameter("bestTime"));
+	        context.put("name", model.getName());
+	        context.put("email", model.getEmail());
+	        context.put("phone", model.getPhone());
+	        context.put("preferred",  model.getPreferred());
+	        context.put("bestDay",  model.getBestDay());
+	        context.put("bestTime",  model.getBestTime());
 	        context.put("year", (String) oneRow.get(0).get("year"));
 	        context.put("make", (String) oneRow.get(0).get("make"));
 	        context.put("model", (String) oneRow.get(0).get("model"));
@@ -824,25 +822,20 @@ public class ClientService {
 		{
 			e.printStackTrace();
 		} 
-		
-		
-		return request.getParameter("vin");
-		
-		
-		
 	}
 	
-	public String getOtherInfo(HttpServletRequest request, String hostUrl){
+		
+	public void getOtherInfo(FriendVM model, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String path = "";
 		
-		jdbcTemplate.update("INSERT INTO other_user_info(name, email,fname,femail,date_info,vin,user_id) VALUES('"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("fname")+"','"+request.getParameter("femail")+"','"+dateFormat.format(date)+"','"+request.getParameter("vin")+"','"+userId+"')");
+		jdbcTemplate.update("INSERT INTO other_user_info(name, email,fname,femail,date_info,vin,user_id) VALUES('"+model.getName()+"','"+ model.getEmail() +"','"+ model.getFname() +"','"+ model.getFemail() +"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+userId+"')");
 		
 		
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
  				
-		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+model.getVin()+"' and default_image = true");
 		if(vehiclePath.isEmpty()) {
 			path = "/no-image.jpg";
 		} else {
@@ -879,7 +872,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(request.getParameter("femail")));
+					InternetAddress.parse(model.getFemail()));
 			message.setSubject("Email To Friend");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -894,10 +887,9 @@ public class ClientService {
 			
 	        Template t = ve.getTemplate("templateForFriend.vm");
 	        VelocityContext context = new VelocityContext();
-	        context.put("name", request.getParameter("name"));
-	        context.put("fname", request.getParameter("fname"));
-	        context.put("email", request.getParameter("email"));
-	        context.put("phone", request.getParameter("phone"));
+	        context.put("name", model.getName());
+	        context.put("fname", model.getFname());
+	        context.put("email", model.getEmail());
 	        context.put("year", (String) oneRow.get(0).get("year"));
 	        context.put("make", (String) oneRow.get(0).get("make"));
 	        context.put("model", (String) oneRow.get(0).get("model"));
@@ -933,39 +925,34 @@ public class ClientService {
 		} 
 
 		
-		return request.getParameter("vin");
 		
 	}
 	
-	public String getTradeInApp(HttpServletRequest request, String hostUrl){
+	public void getTradeInApp(Trade_InVM model, String hostUrl){
+			
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String optionValue = "";
 		String path = "";
 		int i = 0;
 		
-		System.out.println(request.getParameter("options"));
-		if(request.getParameter("options") != null){
-			String opValues[] = request.getParameterValues("options");
-		
-			for(String str:opValues){
-				if(i == 0){
-					optionValue = optionValue + str;
-					i++;
-				}else{
-					optionValue = optionValue + "," + str;
-				}
+		for(String value:model.getOptions()){
+			if(i == 0){
+				optionValue = optionValue + value;
+				i++;
+			}else{
+				optionValue = optionValue + "," + value;
 			}
 		}
-	
-		
-		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,user_id) VALUES('"+request.getParameter("first_name")+"','"+request.getParameter("last_name")+"','"+request.getParameter("work_phone")+"','"+request.getParameter("phone")+"','"+request.getParameter("email")+"','"+request.getParameter("preferred")+"','"+dateFormat.format(date)+"','"+request.getParameter("comments")+"','"+request.getParameter("year")+"','"+request.getParameter("make")+"','"+request.getParameter("model")+"','"+request.getParameter("exterior_colour")+"','"+request.getParameter("kilometres")+"','"+request.getParameter("engine")+"'" +
-				",'"+request.getParameter("doors")+"','"+request.getParameter("transmission")+"','"+request.getParameter("drivetrain")+"','"+request.getParameter("body_rating")+"','"+request.getParameter("tire_rating")+"','"+request.getParameter("engine_rating")+"','"+request.getParameter("transmission_rating")+"','"+request.getParameter("glass_rating")+"','"+request.getParameter("interior_rating")+"','"+request.getParameter("exhaust_rating")+"','"+request.getParameter("rental_return")+"','"+request.getParameter("odometer_accurate")+"','"+request.getParameter("service_records")+"','"+request.getParameter("lienholder")+"','"+request.getParameter("titleholder")+"','"+request.getParameter("equipment")+"','"+request.getParameter("vehiclenew")+"','"+request.getParameter("accidents")+"','"+request.getParameter("damage")+"','"+request.getParameter("paint")+"','"+request.getParameter("salvage")+"','"+optionValue+"','"+request.getParameter("vin")+"','"+userId+"')");
-		
-		
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+request.getParameter("vin")+"'");
 			
-		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+request.getParameter("vin")+"' and default_image = true");
+		
+		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,user_id) VALUES('"+model.getFirst_name()+"','"+model.getLast_name()+"','"+model.getWork_phone()+"','"+model.getPhone()+"','"+model.getEmail()+"','"+model.getPreferred()+"','"+dateFormat.format(date)+"','"+model.getComments()+"','"+model.getYear()+"','"+model.getMake()+"','"+model.getModel()+"','"+model.getExterior_colour()+"','"+model.getKilometres()+"','"+model.getEngine()+"'" +
+				",'"+model.getDoors()+"','"+model.getTransmission()+"','"+model.getDrivetrain()+"','"+model.getBody_rating()+"','"+model.getTire_rating()+"','"+model.getEngine_rating()+"','"+model.getTransmission_rating()+"','"+model.getGlass_rating()+"','"+model.getInterior_rating()+"','"+model.getExhaust_rating()+"','"+model.getRental_return()+"','"+model.getOdometer_accurate()+"','"+model.getService_records()+"','"+ model.getLienholder() +"','"+model.getTitleholder()+"','"+model.getEquipment()+"','"+model.getVehiclenew()+"','"+model.getAccidents()+"','"+ model.getDamage()+"','"+model.getPaint()+"','"+model.getSalvage()+"','"+optionValue+"','"+model.getVin()+"','"+userId+"')");
+		
+		
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
+		
+		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+model.getVin()+"' and default_image = true");
 		//List<Map<String, Object>> trade_in = jdbcTemplate.queryForList("select * from trade_in where vin = '"+request.getParameter("vin")+"'");
 		
 		if(vehiclePath.isEmpty()) {
@@ -1022,58 +1009,58 @@ public class ClientService {
 	        Template t = ve.getTemplate("trade_in_app.vm");
 	        VelocityContext context = new VelocityContext();
 	      	        
-	        /*---------Trad in info---------------*/
+	       // ---------Trad in info---------------
 	        
-	        /*contact info*/
-	        context.put("first_name", request.getParameter("first_name"));
-	        context.put("last_name", request.getParameter("last_name"));
-	        context.put("work_phone",request.getParameter("work_phone"));
-	        context.put("email",request.getParameter("email"));
-	        context.put("preferred",  request.getParameter("preferred"));
+	     //   contact info
+	        context.put("first_name", model.getFirst_name());
+	        context.put("last_name", model.getLast_name());
+	        context.put("work_phone", model.getWork_phone());
+	        context.put("email", model.getEmail());
+	        context.put("preferred", model.getPreferred());
 	        context.put("optionValue",  optionValue);
 	        
 	       
-	        /*vehicale info*/
+	    //    vehicale info
 	        
-	        context.put("year", request.getParameter("year"));
-	        context.put("make", request.getParameter("make"));
-	        context.put("model", request.getParameter("model"));
-	        context.put("exterior_colour", request.getParameter("exterior_colour"));
-	        context.put("kilometres", request.getParameter("kilometres"));
-	        context.put("engine", request.getParameter("engine"));
-	        context.put("doors", request.getParameter("doors"));
-	        context.put("transmission", request.getParameter("transmission"));
-	        context.put("drivetrain", request.getParameter("drivetrain"));
+	        context.put("year", model.getYear());
+	        context.put("make", model.getMake());
+	        context.put("model", model.getModel());
+	        context.put("exterior_colour", model.getExterior_colour());
+	        context.put("kilometres", model.getKilometres());
+	        context.put("engine", model.getEngine());
+	        context.put("doors", model.getModel());
+	        context.put("transmission", model.getTransmission());
+	        context.put("drivetrain", model.getDrivetrain());
 	        
-	        /*vehicale rating*/
+	       // vehicale rating
 	        
-	        context.put("body_rating", request.getParameter("body_rating"));
-	        context.put("tire_rating", request.getParameter("tire_rating"));
-	        context.put("engine_rating", request.getParameter("engine_rating"));
-	        context.put("transmission_rating", request.getParameter("transmission_rating"));
-	        context.put("glass_rating", request.getParameter("glass_rating"));
-	        context.put("interior_rating", request.getParameter("interior_rating"));
-	        context.put("exhaust_rating", request.getParameter("exhaust_rating"));
+	        context.put("body_rating", model.getBody_rating());
+	        context.put("tire_rating", model.getTire_rating());
+	        context.put("engine_rating", model.getEngine_rating());
+	        context.put("transmission_rating", model.getTransmission_rating());
+	        context.put("glass_rating", model.getGlass_rating());
+	        context.put("interior_rating", model.getInterior_rating());
+	        context.put("exhaust_rating", model.getExhaust_rating());
 	        
-	        /*vehicale History*/
+	      //  vehicale History
 	        
-	        context.put("lease_or_rental", request.getParameter("rental_return"));
-	        context.put("operational_and_accurate", request.getParameter("odometer_accurate"));
-	        context.put("service_record", request.getParameter("service_records"));
+	        context.put("lease_or_rental", model.getRental_return());
+	        context.put("operational_and_accurate", model.getOdometer_accurate());
+	        context.put("service_record", model.getService_records());
 	        
-	        /*title History*/
+	      //  title History
 	        
-	        context.put("lienholder", request.getParameter("lienholder"));
-	        context.put("holds_this_title", request.getParameter("holds_this_title"));
+	        context.put("lienholder", model.getLienholder());
+	        context.put("holds_this_title", model.getTitleholder());
 	        
-	        /*Vehicle Assessment*/
+	        //Vehicle Assessment
 	        
-	        context.put("equipment", request.getParameter("equipment"));
-	        context.put("vehiclenew", request.getParameter("vehiclenew"));
-	        context.put("accidents", request.getParameter("accidents"));
-	        context.put("damage", request.getParameter("damage"));
-	        context.put("paint", request.getParameter("paint"));
-	        context.put("salvage", request.getParameter("salvage"));
+	        context.put("equipment", model.getEquipment());
+	        context.put("vehiclenew", model.getVehiclenew());
+	        context.put("accidents", model.getAccidents());
+	        context.put("damage", model.getDamage());
+	        context.put("paint", model.getPaint());
+	        context.put("salvage", model.getSalvage());
 	        
 	        
 	        context.put("sitelogo", logo);
@@ -1097,10 +1084,9 @@ public class ClientService {
 			e.printStackTrace();
 		} 
 		
-		return request.getParameter("vin");
-		
 	}
 	
+
 	public VehicleVM getVehicleInfo(HttpServletRequest request){
 		
 		VehicleVM vm = new VehicleVM();

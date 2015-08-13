@@ -1,5 +1,5 @@
 
-app.controller("InventoryController", function($scope,$http) {
+app.controller("InventoryController", function($scope,$http, notificationService) {
 	$scope.listView = true;
 	$scope.gridView = false;
 	var contextPath = $('#contextpath').val();
@@ -144,7 +144,7 @@ app.controller("InventoryController", function($scope,$http) {
 		
 });
 
-app.controller("HomeController", function($scope,$http) {
+app.controller("HomeController", function($scope,$http, notificationService) {
 	var contextPath = $('#contextpath').val();
 	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
@@ -162,11 +162,82 @@ app.controller("HomeController", function($scope,$http) {
 	
 });
 
-app.controller("VehicleDetailsController", function($scope,$http) {
-	console.log("vehicle details");
+app.controller("VehicleDetailsController", function($scope,$http,notificationService) {
+	
+	var contextPath = $('#contextpath').val();
+	
+	$scope.requestMore = function(vin){
+		console.log(vin);
+		$scope.request.vin = vin;
+		console.log($scope.request);
+		$http({
+			method : 'POST',
+			url : contextPath+'/requestMore',
+			data : $scope.request
+		}).success(function(response) {
+			console.log("Success...............");
+			$('#myModal').modal('hide');
+			notificationService.success("Request More Save Successfully");
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
+	$scope.scheduleTest = function(vin){
+		console.log(vin);
+		$scope.schedule.vin = vin;
+		console.log($scope.schedule);
+		$http({
+			method : 'POST',
+			url : contextPath+'/scheduleTest',
+			data : $scope.schedule
+		}).success(function(response) {
+			console.log("Success...............");
+			notificationService.success("Schedule Test Drive Save Successfully");
+			$('#scheduleTest').modal('hide');
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
+	
+	$scope.otherInfo = function(vin){
+		console.log(vin);
+		$scope.friend.vin = vin;
+		console.log($scope.friend);
+		$http({
+			method : 'POST',
+			url : contextPath+'/otherInfo',
+			data : $scope.friend
+		}).success(function(response) {
+			console.log("Success...............");
+			notificationService.success("Friend Email Save Successfully");
+			$('#otherInfo').modal('hide');
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
+	$scope.tradeInApp = function(vin){
+		console.log(vin);
+		$scope.tradeIn.vin = vin;
+		console.log($scope.tradeIn);
+		$http({
+			method : 'POST',
+			url : contextPath+'/tradeInApp',
+			data : $scope.tradeIn
+		}).success(function(response) {
+			console.log("Success...............");
+			notificationService.success("Trade-In App Save Successfully");
+			$('#tradeInApp').modal('hide');
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
 });
 
-app.controller("MobileHomeController", function($scope,$http) {
+app.controller("MobileHomeController", function($scope,$http, notificationService) {
 	
 	var contextPath = $('#contextpath').val();
 	
@@ -185,7 +256,7 @@ app.controller("MobileHomeController", function($scope,$http) {
 	});
 });
 
-app.controller("MobileInventoryController", function($scope,$http) {
+app.controller("MobileInventoryController", function($scope,$http, notificationService) {
 	
 	$scope.vehicleList = [];
 	$scope.year = "";
@@ -255,7 +326,7 @@ app.controller("MobileInventoryController", function($scope,$http) {
 	
 });
 
-app.controller("MobileNewArrivalController", function($scope,$http) {
+app.controller("MobileNewArrivalController", function($scope,$http,notificationService) {
 	
 	$scope.vehicleList = [];
 	$scope.year = "";
@@ -317,7 +388,7 @@ app.controller("MobileNewArrivalController", function($scope,$http) {
 	
 });
 
-app.controller("BlogController", function($scope,$http) {
+app.controller("BlogController", function($scope,$http,notificationService) {
 	var contextPath = $('#contextpath').val();
 	$scope.noMore = false;
 	 var start = 0;

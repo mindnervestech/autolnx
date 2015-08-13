@@ -43,6 +43,17 @@
 <script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
 <script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
 
+
+<link type="text/css" rel="stylesheet" href="resources/autolinx/css/pnotify_css/pnotify.buttons.css"> 
+<link type="text/css" rel="stylesheet" href="resources/autolinx/css/pnotify_css/pnotify.core.css"> 
+
+
+<script src="resources/autolinx/js/pnotify/pnotify.core.js" type="text/javascript"></script>	
+<script src="resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
+<script src="resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
+<script src="resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
+
+	
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 

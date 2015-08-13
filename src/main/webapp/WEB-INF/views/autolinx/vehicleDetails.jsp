@@ -32,12 +32,15 @@
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/jquery.selectbox.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/mobile.css" rel="stylesheet">
+
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/social-likes.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/autolinx/css/settings.css" media="screen" />
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/animate.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/print.css" rel="stylesheet" type="text/css" media="print">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/datepicker.css" rel="stylesheet">
+
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap.min.js"></script>
@@ -51,6 +54,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/ng-infinite-scroll.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/app.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/controller.js"></script>
+
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/autolinx/css/pnotify_css/pnotify.buttons.css"> 
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/autolinx/css/pnotify_css/pnotify.core.css"> 
+
+
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.core.js" type="text/javascript"></script>	
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
+
+	
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -809,20 +823,21 @@ $(document).ready(function()
 
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-     <form name="fome1" action="${pageContext.request.contextPath}/requestMore" method="post">
+     <form name="fome1" ng-submit="requestMore('${vehicle.vin}')"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
       <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Request More Info</h4>
         </div>
-        <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+      
         <div class="modal-body">
            <div class="row">
         	 <div class="col-md-6">
         	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
         	 </div>
+        	  <%--  <input type="text" name="vin" ng-model="request.vin" value="${vehicle.vin}" style="display: none;"> --%>
         	 <div class="col-md-6">
-        	 	<input type="text" name="name" style="width: 220px !important;" required>
+        	 	<input type="text" name="name" ng-model="request.name" style="width: 220px !important;" required>
         	 </div>
         	</div>
         	 <div class="row"> 
@@ -830,8 +845,8 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Preferred Contact:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="radio" name="preferred" value="email">Email
-				<input type="radio" name="preferred" value="phone" style="margin-left: 37px;">Phone
+        	 	<input type="radio" name="preferred" ng-model="request.preferred" value="email">Email
+				<input type="radio" name="preferred" ng-model="request.preferred" value="phone" style="margin-left: 37px;">Phone
         	 </div> 
         	 </div>
         	  <div class="row">
@@ -839,7 +854,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="email" name="email" style="width: 220px !important;">
+        	 	<input type="email" name="email" ng-model="request.email" style="width: 220px !important;">
         	 </div>
         	 </div>
         	  <div class="row">
@@ -847,7 +862,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Phone:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="phone" pattern="\d*" title="Please enter numbers" style="width: 220px !important;">
+        	 	<input type="text" name="phone" pattern="\d*" ng-model="request.phone" title="Please enter numbers" style="width: 220px !important;">
         	 </div>
         	 </div>
         </div>
@@ -864,20 +879,20 @@ $(document).ready(function()
    
 <div class="modal fade" id="scheduleTest" role="dialog">
     <div class="modal-dialog">
-     <form method="post"  action="${pageContext.request.contextPath}/scheduleTest">
+     <form method="post" ng-submit="scheduleTest('${vehicle.vin}')" >  <%--  action="${pageContext.request.contextPath}/scheduleTest" --%>
       <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Schedule Test Drive</h4>
         </div>
-           <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+          <%--  <input type="text" name="vin" value="${vehicle.vin}" style="display: none;"> --%>
         <div class="modal-body">
            <div class="row">
         	 <div class="col-md-6">
         	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="name" class="customBorder" style="width: 220px !important;" required>
+        	 	<input type="text" name="name" ng-model="schedule.name"  class="customBorder" style="width: 220px !important;" required>
         	 </div>
         	</div>
         	 <div class="row"> 
@@ -885,8 +900,8 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Preferred Contact:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="radio" name="preferred" value="email">Email
-				<input type="radio" name="preferred" value="phone" pattern="\d*" title="Please enter numbers" style="margin-left: 37px;">Phone
+        	 	<input type="radio" name="preferred" ng-model="schedule.preferred" value="email">Email
+				<input type="radio" name="preferred" ng-model="schedule.preferred" value="phone" pattern="\d*" title="Please enter numbers" style="margin-left: 37px;">Phone
         	 </div> 
         	 </div>
         	  <div class="row">
@@ -894,7 +909,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="email" name="email" style="width: 220px !important;">
+        	 	<input type="email" name="email" ng-model="schedule.email" style="width: 220px !important;">
         	 </div>
         	 </div>
         	  <div class="row">
@@ -902,7 +917,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Phone:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="phone" style="width: 220px !important;">
+        	 	<input type="text" name="phone" ng-model="schedule.phone" style="width: 220px !important;">
         	 </div>
         	 </div>
         	 <div class="row">
@@ -910,10 +925,9 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Best Day:</label>
         	 </div>
         	 <div class="col-md-6">
-<!--         	 	<input type="text" name="bestDay" style="width: 220px !important;"> -->
         	 	<input name="bestDay"
 										class="input-filter form-control meal-font-text-size"
-										data-provide="datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy" style="width: 220px !important;" required>
+										data-provide="datepicker" ng-model="schedule.bestDay" data-date-autoclose="true" data-date-format="dd-mm-yyyy" style="width: 220px !important;" required>
         	 	
         	 </div>
         	 </div>
@@ -922,7 +936,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Best Time:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="bestTime" style="width: 220px !important;">
+        	 	<input type="text" name="bestTime" ng-model="schedule.bestTime" style="width: 220px !important;">
         	 </div>
         	 </div>
         </div>
@@ -938,13 +952,13 @@ $(document).ready(function()
 
 <div class="modal fade" id="tradeInApp" role="dialog">
     <div class="modal-dialog" style="width: 961px">
-     <form method="post"  action="${pageContext.request.contextPath}/tradeInApp">
+     <form method="post" ng-submit="tradeInApp('${vehicle.vin}')"> <%-- action="${pageContext.request.contextPath}/tradeInApp" --%>
       <div class="modal-content" style="width: 996px;height: 620px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Trade-In</h4>
         </div>
-           <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+         <%--   <input type="text" name="vin" value="${vehicle.vin}" style="display: none;"> --%>
         <div class="modal-body">
           	<div class="fancybox-outer"><div class="fancybox-inner" style="overflow: auto; width: 970px; height: 430px;"><div id="trade_fancybox_form" class="" style="">
 
@@ -953,21 +967,21 @@ $(document).ready(function()
 		                    <td colspan="2"><h4>Contact Information</h4></td>
 		                </tr>
 		                <tr>
-		                    <td>First Name<br><input type="text" name="first_name"></td>
-		                    <td>Last Name<br><input type="text" name="last_name"></td>
+		                    <td>First Name<br><input type="text" ng-model="tradeIn.first_name" name="first_name"></td>
+		                    <td>Last Name<br><input type="text" ng-model="tradeIn.last_name" name="last_name"></td>
 		                </tr>
 		                <tr>
-		                    <td>Work Phone<br><input type="text" name="work_phone"></td>
-		                    <td>Phone<br><input type="text" pattern="\d*" title="Please enter numbers" name="phone"></td>
+		                    <td>Work Phone<br><input type="text" ng-model="tradeIn.work_phone" name="work_phone"></td>
+		                    <td>Phone<br><input type="text" pattern="\d*" title="Please enter numbers" ng-model="tradeIn.phone" name="phone"></td>
 		                </tr>
 		                <tr>
-		                    <td>Email<br><input type="email" name="email"></td>
+		                    <td>Email<br><input type="email" ng-model="tradeIn.email" name="email"></td>
 		                    <td>Preferred Contact<br>  
-		                    	<input type="radio" name="preferred" value="email" id="email" style="width: 14%;"> Email  
-		                    	<input type="radio" name="preferred" value="phone" id="phone" style="width: 14%;"> Phone </td>
+		                    	<input type="radio" name="preferred" ng-model="tradeIn.preferred" value="email" id="email" style="width: 14%;"> Email  
+		                    	<input type="radio" name="preferred" ng-model="tradeIn.preferred" value="phone" id="phone" style="width: 14%;"> Phone </td>
 		                </tr>
 		                <tr>
-		                    <td colspan="2">Comments<br><textarea name="comments" style="width: 89%;" rows="5"></textarea></td>
+		                    <td colspan="2">Comments<br><textarea name="comments" ng-model="tradeIn.comments" style="width: 89%;" rows="5"></textarea></td>
 		                </tr>
 		            </tbody></table>
 		            
@@ -977,7 +991,7 @@ $(document).ready(function()
 		                </tr>
 
 		                		                <tr>
-		                	<td><select name="options" multiple style="height: 200px;"> 
+		                	<td><select name="options" ng-model="tradeIn.options" multiple style="height: 200px;"> 
 			                	<option value="Adaptive Cruise Control">Adaptive Cruise Control</option>
 			                	<option value="Airbags">Airbags</option>
 			                	<option value="Air Conditioning">Air Conditioning</option>
@@ -1029,21 +1043,21 @@ $(document).ready(function()
 		                <tbody><tr><td colspan="2"><h4>Vehicle Information</h4></td></tr>
 		                
 		                <tr>
-		                    <td>Year<br><input type="text" name="year"></td>
-		                    <td>Make<br><input type="text" name="make"></td>
+		                    <td>Year<br><input type="text" ng-model="tradeIn.year" name="year"></td>
+		                    <td>Make<br><input type="text" ng-model="tradeIn.make" name="make"></td>
 		                </tr>
 		                <tr>
-		                    <td>Model<br><input type="text" name="model"></td>
-		                    <td>Exterior Colour<br><input type="text" name="exterior_colour"></td>
+		                    <td>Model<br><input type="text" ng-model="tradeIn.model" name="model"></td>
+		                    <td>Exterior Colour<br><input type="text" ng-model="tradeIn.exterior_colour" name="exterior_colour"></td>
 		                </tr>
 		                <tr>
-		                    <td>VIN<br><input type="text" name="vin"></td>
-		                    <td>Kilometres<br><input type="text" name="kilometres"></td>
+		                    <td>VIN<br><input type="text" ng-model="tradeIn.vininfo" name="vin"></td>
+		                    <td>Kilometres<br><input type="text" ng-model="tradeIn.kilometres" name="kilometres"></td>
 		                </tr>
 		                <tr>
-		                    <td>Engine<br><input type="text" name="engine"></td>
+		                    <td>Engine<br><input type="text" name="engine" ng-model="tradeIn.engine"></td>
 		                    <td>Doors<br>
-		                    	<select name="doors" class="css-dropdowns" style="display: none;">
+		                    	<select name="doors" ng-model="tradeIn.doors" class="css-dropdowns" style="display: none;">
 		                    		<option value="2">2</option>
 		                    		<option value="3">3</option>
 		                    		<option value="4">4</option>
@@ -1052,12 +1066,12 @@ $(document).ready(function()
 		                </tr>
 		                <tr>
 		                    <td>Transmission<br>
-		                    	<select name="transmission" class="css-dropdowns" style="display: none;">
+		                    	<select name="transmission" ng-model="tradeIn.transmission" class="css-dropdowns" style="display: none;">
 		                    		<option value="Automatic">Automatic</option>
 		                    		<option value="Manual">Manual</option>
 		                    	</select></td>
 		                    <td>Drivetrain<br>
-		                    	<select name="drivetrain" class="css-dropdowns" style="display: none;">
+		                    	<select name="drivetrain" ng-model="tradeIn.drivetrain" class="css-dropdowns" style="display: none;">
 		                    		<option value="2WD">2WD</option>
 		                    		<option value="4WD">4WD</option>
 		                    		<option value="AWD">AWD</option>
@@ -1071,7 +1085,7 @@ $(document).ready(function()
 		                
 		                <tr>
 		                    <td>Body (dents, dings, rust, rot, damage)<br>
-		                    	<select name="body_rating" class="css-dropdowns" style="display: none;">
+		                    	<select name="body_rating" ng-model="tradeIn.body_rating" class="css-dropdowns" style="display: none;">
 		                    			<option value="10">10 - best</option>
 		                    			<option value="9">9</option>
 		                    			<option value="8">8</option>
@@ -1084,7 +1098,7 @@ $(document).ready(function()
 		                    			<option value="1">1 - worst</option>
 		                    	</select></td>
 		                    <td>Tires ( tread  wear , mismatched )  <br>
-		                    		<select name="tire_rating" class="css-dropdowns" style="display: none;">
+		                    		<select name="tire_rating" ng-model="tradeIn.tire_rating" class="css-dropdowns" style="display: none;">
 		                    				<option value="10">10 - best</option>
 		                    				<option value="9">9</option>
 		                    				<option value="8">8</option>
@@ -1099,7 +1113,7 @@ $(document).ready(function()
 		                </tr>
 		                <tr>
 		                    <td>Engine (running condition, burns oil, knocking)<br>
-		                    		<select name="engine_rating" class="css-dropdowns" style="display: none;">
+		                    		<select name="engine_rating" ng-model="tradeIn.engine_rating" class="css-dropdowns" style="display: none;">
 		                    			<option value="10">10 - best</option>
 		                    			<option value="9">9</option>
 		                    			<option value="8">8</option>
@@ -1112,7 +1126,7 @@ $(document).ready(function()
 		                    			<option value="1">1 - worst</option>
 		                    			</select></td>
 		                    <td>Transmission / Clutch (slipping, hard shift, grinds)<br>
-		                    	   <select name="transmission_rating" class="css-dropdowns" style="display: none;">
+		                    	   <select name="transmission_rating" ng-model="tradeIn.transmission_rating" class="css-dropdowns" style="display: none;">
 		                    	   		<option value="10">10 - best</option>
 		                    	   		<option value="9">9</option>
 		                    	   		<option value="8">8</option>
@@ -1127,7 +1141,7 @@ $(document).ready(function()
 		                </tr>
 		                <tr>
 		                    <td>Glass (chips, scratches, cracks, pitted)<br>
-		                    	<select name="glass_rating" class="css-dropdowns" style="display: none;">
+		                    	<select name="glass_rating" ng-model="tradeIn.glass_rating" class="css-dropdowns" style="display: none;">
 		                    			<option value="10">10 - best</option>
 		                    			<option value="9">9</option>
 		                    			<option value="8">8</option>
@@ -1140,7 +1154,7 @@ $(document).ready(function()
 		                    			<option value="1">1 - worst</option>
 		                    	</select></td>
 		                    <td>Interior (rips, tears, burns, faded/worn, stains)<br>
-		                    	<select name="interior_rating" class="css-dropdowns" style="display: none;">
+		                    	<select name="interior_rating" ng-model="tradeIn.interior_rating" class="css-dropdowns" style="display: none;">
 		                    		<option value="10">10 - best</option>
 		                    		<option value="9">9</option>
 		                    		<option value="8">8</option>
@@ -1155,7 +1169,7 @@ $(document).ready(function()
 		                </tr>
 		                <tr>
 		                    <td colspan="2">Exhaust (rusted, leaking, noisy)<br>
-		                    	<select name="exhaust_rating" class="css-dropdowns" style="display: none;">
+		                    	<select name="exhaust_rating" ng-model="tradeIn.exhaust_rating" class="css-dropdowns" style="display: none;">
 		                    		<option value="10">10 - best</option>
 		                    		<option value="9">9</option>
 		                    		<option value="8">8</option>
@@ -1177,21 +1191,21 @@ $(document).ready(function()
 		                
 		                <tr>
 		                    <td>Was it ever a lease or rental return? <br>
-		                    	<select name="rental_return" class="css-dropdowns" style="display: none;">
+		                    	<select name="rental_return" ng-model="tradeIn.rental_return" class="css-dropdowns" style="display: none;">
 		                    		<option value="Yes">Yes</option>
 		                    		<option value="No">No</option>
 		                    	</select></td>
 		                </tr>
 		                <tr>
 		                    <td>Is the odometer operational and accurate? <br>
-		                    	<select name="odometer_accurate" class="css-dropdowns"  style="display: none;">
+		                    	<select name="odometer_accurate" ng-model="tradeIn.odometer_accurate" class="css-dropdowns"  style="display: none;">
 		                    		<option value="Yes">Yes</option>
 		                    		<option value="No">No</option>
 		                    	</select></td>
 		                </tr>
 		                <tr>
 		                    <td>Detailed service records available? <br>
-		                    	<select name="service_records" class="css-dropdowns" style="display: none;">
+		                    	<select name="service_records" ng-model="tradeIn.service_records" class="css-dropdowns" style="display: none;">
 		                    		<option value="Yes">Yes</option>
 		                    		<option value="No">No</option>
 		                    	</select></td>
@@ -1204,10 +1218,10 @@ $(document).ready(function()
 		                </tr>
 		                
 		                <tr>
-		                    <td>Is there a lineholder? <br><input type="text" name="lienholder"></td>
+		                    <td>Is there a lienholder? <br><input type="text"  ng-model="tradeIn.lienholder" name="lienholder"></td>
 		                </tr>
 		                <tr>
-		                    <td>Who holds this title? <br><input type="text" name="titleholder"></td>
+		                    <td>Who holds this title? <br><input type="text" ng-model="tradeIn.titleholder" name="titleholder"></td>
 		                </tr>
 		            </tbody></table>
 		            
@@ -1217,16 +1231,16 @@ $(document).ready(function()
 		                <tbody><tr><td colspan="2"><h4>Vehicle Assessment</h4></td></tr>
 		                
 		                <tr>
-		                    <td>Does all equipment and accessories work correctly?<br><textarea name="equipment" rows="5" style="width: 89%;"></textarea></td>
-		                    <td>Did you buy the vehicle new?<br><textarea name="vehiclenew" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Does all equipment and accessories work correctly?<br><textarea name="equipment" ng-model="tradeIn.equipment" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Did you buy the vehicle new?<br><textarea name="vehiclenew" ng-model="tradeIn.vehiclenew" rows="5" style="width: 89%;"></textarea></td>
 		                </tr>
 		                <tr>
-		                    <td>Has the vehicle ever been in any accidents? Cost of repairs?<br><textarea name="accidents" rows="5" style="width: 89%;"></textarea></td>
-		                    <td>Is there existing damage on the vehicle? Where?<br><textarea name="damage" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Has the vehicle ever been in any accidents? Cost of repairs?<br><textarea name="accidents" ng-model="tradeIn.accidents" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Is there existing damage on the vehicle? Where?<br><textarea name="damage" ng-model="tradeIn.damage" rows="5" style="width: 89%;"></textarea></td>
 		                </tr>
 		                <tr>
-		                    <td>Has the vehicle ever had paint work performed?<br><textarea name="paint" rows="5" style="width: 89%;"></textarea></td>
-		                    <td>Is the title designated 'Salvage' or 'Reconstructed'? Any other?<br><textarea name="salvage" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Has the vehicle ever had paint work performed?<br><textarea name="paint" ng-model="tradeIn.paint" rows="5" style="width: 89%;"></textarea></td>
+		                    <td>Is the title designated 'Salvage' or 'Reconstructed'? Any other?<br><textarea name="salvage" ng-model="tradeIn.salvage" rows="5" style="width: 89%;"></textarea></td>
 		                </tr>
 <!-- 		                		                <tr><td colspan="2"><input type="submit" value="Submit"> <i class="fa fa-refresh fa-spin loading_icon_form"></i></td></tr> -->
 		            </tbody></table>
@@ -1244,20 +1258,20 @@ $(document).ready(function()
   
   <div class="modal fade" id="otherInfo" role="dialog">
     <div class="modal-dialog">
-     <form method="post"  action="${pageContext.request.contextPath}/otherInfo">
+     <form method="post" ng-submit="otherInfo('${vehicle.vin}')">    <%-- action="${pageContext.request.contextPath}/otherInfo" --%>
       <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Email To Friend</h4>
         </div>
-           <input type="text" name="vin" value="${vehicle.vin}" style="display: none;">
+          <%--  <input type="text" name="vin" value="${vehicle.vin}" style="display: none;"> --%>
         <div class="modal-body">
            <div class="row">
         	 <div class="col-md-6">
         	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="name" class="customBorder" style="width: 220px !important;" required>
+        	 	<input type="text" name="name" ng-model="friend.name" class="customBorder" style="width: 220px !important;" required>
         	 </div>
         	</div>
         	
@@ -1266,7 +1280,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="email" name="email" style="width: 220px !important;">
+        	 	<input type="email" name="email" ng-model="friend.email" style="width: 220px !important;">
         	 </div>
         	 </div>
         	  <div class="row">
@@ -1274,7 +1288,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Friend Name:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="text" name="fname" style="width: 220px !important;" required>
+        	 	<input type="text" name="fname" ng-model="friend.fname" style="width: 220px !important;" required>
         	 </div>
         	 </div>
         	 <div class="row">
@@ -1282,7 +1296,7 @@ $(document).ready(function()
         	 	<label style="font-weight: initial;padding: 0px;">Friend Email:</label>
         	 </div>
         	 <div class="col-md-6">
-        	 	<input type="email" name="femail" style="width: 220px !important;" required>
+        	 	<input type="email" name="femail" ng-model="friend.femail" style="width: 220px !important;" required>
         	 </div>
         	 </div>
         	

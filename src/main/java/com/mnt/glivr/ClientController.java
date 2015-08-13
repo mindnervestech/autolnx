@@ -24,9 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
+import com.mnt.views.FriendVM;
+import com.mnt.views.RequestMore;
+import com.mnt.views.ScheduleTestVM;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.SiteLogoVM;
 import com.mnt.views.SliderVM;
+import com.mnt.views.Trade_InVM;
 import com.mnt.views.VehicleVM;
 
 /**
@@ -260,64 +264,61 @@ public class ClientController {
 		
 	}
    
-   @RequestMapping(value="/requestMore",method=RequestMethod.POST)
-	public String requestMore(Locale locale, Model model,HttpServletRequest request) {
-		
-		String requestVm = clientService.getRequestMore(request, hostUrl);
-		return "redirect:" + "/vehicleDetails/"+requestVm;
-		
-	}
+      
+   @RequestMapping(value = "/requestMore", method = RequestMethod.POST)
+   @ResponseBody
+	public void requestMore(@RequestBody RequestMore model){
+	    clientService.getRequestMore(model, hostUrl);
+   } 
+   
    
    @RequestMapping(value="/mobile/requestMore",method=RequestMethod.POST)
 	public String requestMoreMobile(Locale locale, Model model,HttpServletRequest request) {
 		
-		String requestVm = clientService.getRequestMore(request, hostUrl);
-		return "redirect:" + "/mobile/viewDetails/"+requestVm;
+	//	String requestVm = clientService.getRequestMore(request, hostUrl);
+	//	return "redirect:" + "/mobile/viewDetails/"+requestVm;
+	   return "aa";
 		
 	}
    
-   @RequestMapping(value="/scheduleTest",method=RequestMethod.POST)
-  	public String scheduleTest(Locale locale, Model model,HttpServletRequest request) {
-  		
-	   String scheduleVm = clientService.getScheduleTest(request, hostUrl);
-  		return "redirect:" + "/vehicleDetails/"+scheduleVm;
-  		
-  	}
+    
+   @RequestMapping(value = "/scheduleTest", method = RequestMethod.POST)
+   @ResponseBody
+	public void scheduleTest(@RequestBody ScheduleTestVM model){
+	    clientService.getScheduleTest(model, hostUrl);
+   } 
    
    @RequestMapping(value="/mobile/scheduleTest",method=RequestMethod.POST)
  	public String scheduleTestMobile(Locale locale, Model model,HttpServletRequest request) {
  		
-	   String scheduleVm = clientService.getScheduleTest(request, hostUrl);
- 		return "redirect:" + "/mobile/viewDetails/"+scheduleVm;
- 		
+	 //  String scheduleVm = clientService.getScheduleTest(request, hostUrl);
+ 		//return "redirect:" + "/mobile/viewDetails/"+scheduleVm;
+	   return "aa";
  	}
    
    
-   @RequestMapping(value="/otherInfo",method=RequestMethod.POST)
- 	public String otherInfo(Locale locale, Model model,HttpServletRequest request) {
- 		
-	   String otherInfoVm = clientService.getOtherInfo(request, hostUrl);
- 		return "redirect:" + "/vehicleDetails/"+otherInfoVm;
- 		
- 	}
+   
+   @RequestMapping(value = "/otherInfo", method = RequestMethod.POST)
+   @ResponseBody
+	public void otherInfo(@RequestBody FriendVM model){
+	    clientService.getOtherInfo(model, hostUrl);
+   } 
    
    @RequestMapping(value="/mobile/otherInfo",method=RequestMethod.POST)
 	public String otherInfoMobile(Locale locale, Model model,HttpServletRequest request) {
 		
-	   String otherInfoVm = clientService.getOtherInfo(request, hostUrl);
-		return "redirect:" + "/mobile/viewDetails/"+otherInfoVm;
+	  // String otherInfoVm = clientService.getOtherInfo(request, hostUrl);
+	//	return "redirect:" + "/mobile/viewDetails/"+otherInfoVm;
+		 return "aa";
 		
 	}
    
-   @RequestMapping(value="/tradeInApp",method=RequestMethod.POST)
- 	public String tradeInApp(Locale locale, Model model,HttpServletRequest request) {
- 		
-	   String scheduleVm = clientService.getTradeInApp(request, hostUrl);
-	   
-	   return "redirect:" + "/vehicleDetails/"+request.getParameter("vin");
- 		
- 	}
-   
+     
+   @RequestMapping(value = "/tradeInApp", method = RequestMethod.POST)
+   @ResponseBody
+	public void tradeInApp(@RequestBody Trade_InVM model){
+	    clientService.getTradeInApp(model, hostUrl);
+   } 
    
 	
 	@RequestMapping(value="/findVehicles",method=RequestMethod.GET)

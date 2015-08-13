@@ -1,7 +1,7 @@
 package com.mnt.views;
 
 
-public class RequestMore {
+public class ScheduleTestVM {
 
 	public Long id;
 	public String name;
@@ -9,6 +9,8 @@ public class RequestMore {
 	public String email;
 	public String phone;
 	public String vin;
+	public String bestDay;
+	public String bestTime;
 	
 	public Long getId() {
 		return id;
@@ -46,6 +48,18 @@ public class RequestMore {
 	}
 	public void setVin(String vin) {
 		this.vin = vin;
+	}
+	public String getBestDay() {
+		return bestDay;
+	}
+	public void setBestDay(String bestDay) {
+		this.bestDay = bestDay;
+	}
+	public String getBestTime() {
+		return bestTime;
+	}
+	public void setBestTime(String bestTime) {
+		this.bestTime = bestTime;
 	}
 	
 	
