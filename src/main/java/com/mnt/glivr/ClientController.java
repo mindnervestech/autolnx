@@ -273,11 +273,10 @@ public class ClientController {
    
    
    @RequestMapping(value="/mobile/requestMore",method=RequestMethod.POST)
-	public String requestMoreMobile(Locale locale, Model model,HttpServletRequest request) {
+   @ResponseBody
+	public void requestMoreMobile(Locale locale,@RequestBody RequestMore req) {
 		
-	//	String requestVm = clientService.getRequestMore(request, hostUrl);
-	//	return "redirect:" + "/mobile/viewDetails/"+requestVm;
-	   return "aa";
+	   clientService.getRequestMore(req, hostUrl);
 		
 	}
    
@@ -289,11 +288,10 @@ public class ClientController {
    } 
    
    @RequestMapping(value="/mobile/scheduleTest",method=RequestMethod.POST)
- 	public String scheduleTestMobile(Locale locale, Model model,HttpServletRequest request) {
+   @ResponseBody
+ 	public void scheduleTestMobile(Locale locale,@RequestBody ScheduleTestVM model) {
  		
-	 //  String scheduleVm = clientService.getScheduleTest(request, hostUrl);
- 		//return "redirect:" + "/mobile/viewDetails/"+scheduleVm;
-	   return "aa";
+	   clientService.getScheduleTest(model, hostUrl);
  	}
    
    
@@ -305,12 +303,10 @@ public class ClientController {
    } 
    
    @RequestMapping(value="/mobile/otherInfo",method=RequestMethod.POST)
-	public String otherInfoMobile(Locale locale, Model model,HttpServletRequest request) {
-		
-	  // String otherInfoVm = clientService.getOtherInfo(request, hostUrl);
-	//	return "redirect:" + "/mobile/viewDetails/"+otherInfoVm;
-		 return "aa";
-		
+   @ResponseBody
+	public void otherInfoMobile(Locale locale, @RequestBody FriendVM model) {
+	
+	   clientService.getOtherInfo(model, hostUrl);
 	}
    
      

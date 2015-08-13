@@ -177,7 +177,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		}).success(function(response) {
 			console.log("Success...............");
 			$('#myModal').modal('hide');
-			notificationService.success("Request More Save Successfully");
+			notificationService.success("Your request has been submitted");
 		}).error(function(){
 			console.log("Error.................");
 		});
@@ -193,7 +193,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 			data : $scope.schedule
 		}).success(function(response) {
 			console.log("Success...............");
-			notificationService.success("Schedule Test Drive Save Successfully");
+			notificationService.success("Your request has been submitted");
 			$('#scheduleTest').modal('hide');
 		}).error(function(){
 			console.log("Error.................");
@@ -211,7 +211,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 			data : $scope.friend
 		}).success(function(response) {
 			console.log("Success...............");
-			notificationService.success("Friend Email Save Successfully");
+			notificationService.success("Your request has been submitted");
 			$('#otherInfo').modal('hide');
 		}).error(function(){
 			console.log("Error.................");
@@ -228,12 +228,71 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 			data : $scope.tradeIn
 		}).success(function(response) {
 			console.log("Success...............");
-			notificationService.success("Trade-In App Save Successfully");
+			notificationService.success("Your request has been submitted");
 			$('#tradeInApp').modal('hide');
 		}).error(function(){
 			console.log("Error.................");
 		});
 	};
+	
+});
+
+app.controller("MobileVehicleDetailsController", function($scope,$http,notificationService) {
+	
+	var contextPath = $('#contextpath').val();
+	
+	$scope.requestMore = function(vin){
+		console.log(vin);
+		$scope.request.vin = vin;
+		console.log($scope.request);
+		$http({
+			method : 'POST',
+			url : contextPath+'/requestMore',
+			data : $scope.request
+		}).success(function(response) {
+			console.log("Success...............");
+			$('#myModal').modal('hide');
+			notificationService.success("Your request has been submitted");
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
+	$scope.scheduleTest = function(vin){
+		console.log(vin);
+		$scope.schedule.vin = vin;
+		console.log($scope.schedule);
+		$http({
+			method : 'POST',
+			url : contextPath+'/scheduleTest',
+			data : $scope.schedule
+		}).success(function(response) {
+			console.log("Success...............");
+			notificationService.success("Your request has been submitted");
+			$('#scheduleTest').modal('hide');
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
+	
+	$scope.otherInfo = function(vin){
+		console.log(vin);
+		$scope.friend.vin = vin;
+		console.log($scope.friend);
+		$http({
+			method : 'POST',
+			url : contextPath+'/otherInfo',
+			data : $scope.friend
+		}).success(function(response) {
+			console.log("Success...............");
+			notificationService.success("Your request has been submitted");
+			$('#otherInfo').modal('hide');
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
 	
 });
 
