@@ -352,10 +352,7 @@
         <ul class="f-nav">
           <li><a href="${pageContext.request.contextPath}/mobile/home">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a></li>
-          <li><a href="#"> Warranty</a></li>
-          <li><a href="${pageContext.request.contextPath}/mobile/aboutUs"> About Us</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="${pageContext.request.contextPath}/mobile/aboutUs"> Contact Us</a></li>
         </ul>
 </div>
  <div class="back_to_top" style="display: block;"> <img alt="scroll up" src="http://demo.themesuite.com/automotive/images/arrow-up.png"> </div>   

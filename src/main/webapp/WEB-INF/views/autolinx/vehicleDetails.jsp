@@ -257,13 +257,22 @@ $(document).ready(function()
                         <em>Plus Taxes & Licensing</em> </div>
                 </div>
             </div>
-            <div style="text-align:right;">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
+            <c:choose>
+				    <c:when test="${vehicle.videoUrl==''}">
+				       
+				    </c:when>    
+				    <c:otherwise>
+				        <div style="text-align:right;">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
+				        
+				    </c:otherwise>
+				</c:choose>
+            
 
             <div class="content-nav margin-bottom-30">
                    <p>
                    <c:choose>
 				    <c:when test="${vehicle.videoUrl==''}">
-				       <img alt="" src="/glivrImg/images/360_COMING_SOON.jpg">
+				       
 				    </c:when>    
 				    <c:otherwise>
 				        ${vehicle.videoUrl}
