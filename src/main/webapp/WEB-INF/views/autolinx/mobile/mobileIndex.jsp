@@ -62,7 +62,7 @@
 	<div class="toolbar">
 		<ul>
          
-            <li><a href="#"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
+            <li><a href="tel:+15525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
             
           </ul>
 	</div>
@@ -99,7 +99,7 @@
         <div class="boxInLeft">
         	<img src="${pageContext.request.contextPath}/resources/autolinx/images/about_us_mobile.jpg" alt="">
             <p class="boxInText">
-            	<a href="${pageContext.request.contextPath}/mobile/aboutUs">About Us</a>
+            	<a href="${pageContext.request.contextPath}/mobile/contactUs">Contact Us</a>
             </p>
         </div>      
     </div>
@@ -117,7 +117,7 @@
                 <div class="car-block">
                 
                  <!-- <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview">    <img src="resources/autolinx/images/DSC_0002-167x119.jpg"-->
-                  <div class="img-flex"><a href="viewDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="viewDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border" style="height:121px;"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>{{recent.year}} {{recent.make}} {{recent.model}}</strong></h6>
                     <h6></h6>
@@ -352,7 +352,7 @@
         <ul class="f-nav">
           <li><a href="${pageContext.request.contextPath}/mobile/home">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a></li>
-          <li><a href="${pageContext.request.contextPath}/mobile/aboutUs"> Contact Us</a></li>
+          <li><a href="${pageContext.request.contextPath}/mobile/contactUs"> Contact Us</a></li>
         </ul>
 </div>
  <div class="back_to_top" style="display: block;"> <img alt="scroll up" src="http://demo.themesuite.com/automotive/images/arrow-up.png"> </div>   

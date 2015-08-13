@@ -74,8 +74,8 @@
 <header>
 	<div class="toolbar">
 		<ul>
-           <li><a href="#">Directions</a></li>
-            <li><a href="#"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
+           <li><a href="https://www.google.com/maps/dir//AutoLinx+-+Luxury+Pre-Owned,+3300+Sonoma+Blvd,+Vallejo,+CA+94590,+United+States/@38.1202427,-122.2546659,15z/data=!4m12!1m3!3m2!1s0x0:0xce9d2ad188e1093!2sAutoLinx+-+Luxury+Pre-Owned!4m7!1m0!1m5!1m1!1s0x80857351d3b20b31:0xce9d2ad188e1093!2m2!1d-122.2546659!2d38.1202427">Directions</a></li>
+            <li><a href="tel:+15525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
             
           </ul>
 	</div>
@@ -317,10 +317,7 @@
         <ul class="f-nav">
           <li><a href="${pageContext.request.contextPath}/mobile/home">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a></li>
-          <li><a href="#"> Warranty</a></li>
-          <li><a href="${pageContext.request.contextPath}/mobile/aboutUs"> About Us</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="${pageContext.request.contextPath}/mobile/contactUs"> Contact Us</a></li>
         </ul>
 </div>
  <div class="back_to_top" style="display: block;"> <img alt="scroll up" src="http://demo.themesuite.com/automotive/images/arrow-up.png"> 

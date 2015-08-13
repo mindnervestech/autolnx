@@ -34,6 +34,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.mnt.views.BlogVM;
+import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.SiteLogoVM;
@@ -148,6 +149,18 @@ public class ClientService {
 							}
 							if(image2.length >= 8) {
 								vm.slider28 = image2[7];
+							}
+							if(image2.length >= 9) {
+								vm.slider29 = image2[8];
+							}
+							if(image2.length >= 10) {
+								vm.slider30 = image2[9];
+							}
+							if(image2.length >= 11) {
+								vm.slider211 = image2[10];
+							}
+							if(image2.length >= 12) {
+								vm.slider212 = image2[11];
 							}
 						} else {
 							vm.slider21 = secondDesc;
@@ -1248,9 +1261,9 @@ public class ClientService {
 		return logo;
 	}
 	
-	public String contactUs(HttpServletRequest request, String hostUrl){
+	public String contactUs(ContactVM request, String hostUrl){
 
-		jdbcTemplate.update("INSERT INTO contact_us(name, email,msg,number) VALUES('"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("msg")+"','"+request.getParameter("number")+"')");
+		jdbcTemplate.update("INSERT INTO contact_us(name, email,msg,number) VALUES('"+request.name+"','"+request.email+"','"+request.message+"','"+request.number+"')");
 		
 		SiteLogoVM logo = new SiteLogoVM();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");

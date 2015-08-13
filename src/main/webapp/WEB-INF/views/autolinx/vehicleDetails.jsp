@@ -47,6 +47,10 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/social-likes.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/angular.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/app.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/controller.js"></script>
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -1200,7 +1204,7 @@ $(document).ready(function()
 		                </tr>
 		                
 		                <tr>
-		                    <td>Is there a lienholder? <br><input type="text" name="lienholder"></td>
+		                    <td>Is there a lineholder? <br><input type="text" name="lienholder"></td>
 		                </tr>
 		                <tr>
 		                    <td>Who holds this title? <br><input type="text" name="titleholder"></td>

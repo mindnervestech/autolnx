@@ -347,3 +347,29 @@ app.controller("BlogController", function($scope,$http) {
 	
 });
 
+app.controller("ContactUsController", function($scope,$http) {
+	
+	$scope.contact = {};
+	var contextPath = $('#contextpath').val();
+	$scope.saveContact = function() {
+		
+		$http.post(contextPath+'/saveContact',$scope.contact)
+		.success(function(data) {
+			console.log('success');
+		});
+	}
+});
+
+app.controller("MobileContactUsController", function($scope,$http) {
+	$scope.showMsg = false;
+	$scope.contact = {};
+	var contextPath = $('#contextpath').val();
+	$scope.saveContact = function() {
+		
+		$http.post(contextPath+'/saveContact',$scope.contact)
+		.success(function(data) {
+			console.log('success');
+			$scope.showMsg = true;
+		});
+	}
+});

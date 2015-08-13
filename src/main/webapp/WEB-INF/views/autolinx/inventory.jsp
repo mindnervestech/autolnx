@@ -596,7 +596,7 @@ $(document).ready(function()
     <div class="row">
       <div class="col-lg-12">
         <div class="logo-footer margin-bottom-15 md-margin-bottom-15 sm-margin-bottom-10 xs-margin-bottom-15"> <a class="logo-f" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a>
-          <p>Powered by <a href="#">GLIDER-AUTOS</a> with partnership of Vivid Concept, Inc.</p>
+          <p>Powered by <a href="">GLIDER-AUTOS</a></p>
         </div>
       </div>
     </div>

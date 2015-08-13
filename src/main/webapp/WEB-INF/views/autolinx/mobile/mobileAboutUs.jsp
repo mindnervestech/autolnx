@@ -3,7 +3,7 @@
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en">
+<html lang="en" ng-app="gliderApp">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -13,7 +13,6 @@
 <link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
-
 <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="${pageContext.request.contextPath}/resources/autolinx/js/html5shiv.js"></script>
@@ -37,6 +36,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/wow.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key&amp;sensor=false"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/angular.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/app.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/controller.js"></script>
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -46,13 +49,13 @@
 
 </head>
 
-<body>
+<body ng-controller="MobileContactUsController">
 <div class="wrapperIn">
 <header>
 	<div class="toolbar1">
 		<ul>
-           <li><a href="#">Directions</a></li>
-            <li><a href="#"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
+           <li><a href="https://www.google.com/maps/dir//AutoLinx+-+Luxury+Pre-Owned,+3300+Sonoma+Blvd,+Vallejo,+CA+94590,+United+States/@38.1202427,-122.2546659,15z/data=!4m12!1m3!3m2!1s0x0:0xce9d2ad188e1093!2sAutoLinx+-+Luxury+Pre-Owned!4m7!1m0!1m5!1m1!1s0x80857351d3b20b31:0xce9d2ad188e1093!2m2!1d-122.2546659!2d38.1202427">Directions</a></li>
+            <li><a href="tel:+15525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
             
           </ul>
 	</div>
@@ -62,7 +65,7 @@
 </header>
     <div class="topBanner">
     	<img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/dynamic-header-1.jpg" alt="">
-        <h1 class="topBannerText">About Us<br> <span>Located on Sonoma Boulevard in Vallejo, CA - in the heart of beautiful and historic Solano County.</span></h1>
+        <h1 class="topBannerText">Contact Us<br> <span>Located on Sonoma Boulevard in Vallejo, CA - in the heart of beautiful and historic Solano County.</span></h1>
     </div>
     <div class="message-shadow1"></div>
     
@@ -79,10 +82,10 @@ Sincerely, The Autolinx Team</p>
           Vallejo, California 94590<br>
           (707) 552-5469 <br>
           (707) 552-LINX <br>
-          <a class="linkIn" href="#">info@autolinxinc.com</a><br>
+          <a class="linkIn" href="mailto:info@autolinxinc.com">info@autolinxinc.com</a><br>
         </p>
         
-        <h3>Directions</h3>
+        <a style="text-decoration: none;" href="https://www.google.com/maps/dir//AutoLinx+-+Luxury+Pre-Owned,+3300+Sonoma+Blvd,+Vallejo,+CA+94590,+United+States/@38.1202427,-122.2546659,15z/data=!4m12!1m3!3m2!1s0x0:0xce9d2ad188e1093!2sAutoLinx+-+Luxury+Pre-Owned!4m7!1m0!1m5!1m1!1s0x80857351d3b20b31:0xce9d2ad188e1093!2m2!1d-122.2546659!2d38.1202427"><h3>Directions</h3></a>
 
 		
         <h4>WHAT WE SPECIALIZE IN</h4>	
@@ -175,7 +178,20 @@ Sincerely, The Autolinx Team</p>
     	<div class="clearClass"></div>    
     </div>
 	
+          <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
+          
+	
 <footer>
+	<h4>CONTACT FORM</h4>
+	<p ng-show="showMsg" style="margin-bottom: 3%;"><b>Thank you for your request, one of our representative will contact you shortly</b></p>
+    <form name="fome1" id="fromSubmit" ng-submit="saveContact()"> 
+                   <input type="text" name="name" ng-model="contact.name" class="inputInner" placeholder="Name  (Required)" required>
+                  <input type="text" name="number" ng-model="contact.number" pattern="\d*" title="Please enter numbers" class="inputInner" placeholder="Number" >
+                  <input type="email" name="email" ng-model="contact.email" class="inputInner" placeholder="Email  (Required)" required>
+                  <textarea name="message" class="inputInner" ng-model="contact.message" placeholder="Your message" rows="7"></textarea>
+                  <input id="submit_btn" type="submit" value="Send Message">   <!-- data-toggle="modal" data-target="#myModal" -->  
+    </form>
+          
 	<h4>Subscribe to the official AutoLinx newsletter-Vehi-Linx</h4>
     <form method="post">
           <p>
@@ -213,10 +229,7 @@ Sincerely, The Autolinx Team</p>
         <ul class="f-nav">
          <li><a href="${pageContext.request.contextPath}/mobile/home">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a></li>
-          <li><a href="#"> Warranty</a></li>
-          <li><a href="${pageContext.request.contextPath}/mobile/aboutUs"> About Us</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="${pageContext.request.contextPath}/mobile/contactUs"> Contact Us</a></li>
         </ul>
 </div>
  <div class="back_to_top" style="display: block;"> <img alt="scroll up" src="http://demo.themesuite.com/automotive/images/arrow-up.png"> </div>      

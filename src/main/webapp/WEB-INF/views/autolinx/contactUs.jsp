@@ -3,7 +3,7 @@
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en">
+<html lang="en" ng-app="gliderApp">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -39,6 +39,10 @@
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/wow.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key&amp;sensor=false"></script>
+<script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/autolinx/js/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -80,7 +84,7 @@ $(document).ready(function()
 
 </head>
 
-<body>
+<body ng-controller="ContactUsController">
 <!--Header Start-->
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner" no_resize="">
   <section class="toolbar">
@@ -173,7 +177,7 @@ $(document).ready(function()
               <div class="address clearfix address_details margin-right-25 padding-bottom-40">
                 <ul class="margin-bottom-none">
                   <li><i class="fa fa-phone"></i>Phone:<span>&nbsp;&nbsp;(707) 552-LINX (5469)</span></li>
-                  <li><i class="fa fa-envelope-o"></i>Email: &nbsp;&nbsp;<a href="#">info@autolinxinc.com</a></li>
+                  <li><i class="fa fa-envelope-o"></i>Email: &nbsp;&nbsp;<a href="mailto:info@autolinxinc.com">info@autolinxinc.com</a></li>
                   <li class="padding-bottom-none"><i class="fa fa-laptop"></i>Web:&nbsp;&nbsp; <a href="http://company.com"> www.autolinxinc.com</a></li>
                 </ul>
               </div>
@@ -310,7 +314,7 @@ $(document).ready(function()
             <!--INFORMATION HOUR--> 
           </div>
           <!--LEFT INFORMATION--> 
-          
+          <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
           <!--RIGHT INFORMATION-->
           <div class="col-md-5 col-lg-offset-1 col-md-offset-1 padding-right-none xs-padding-left-none sm-padding-left-none xs-margin-top-30">
             <div class="contact_wrapper information_head">
@@ -318,11 +322,11 @@ $(document).ready(function()
               <div class="form_contact margin-bottom-20">
                 <div id="result"></div> 
                 <fieldset id="contact_form">
-                 <form name="fome1" id="fromSubmit" action="${pageContext.request.contextPath}/contactUsPage"  method="post"> 
-                   <input type="text" name="name" class="form-control margin-bottom-25" placeholder="Name  (Required)" required>
-                  <input type="text" name="number" pattern="\d*" title="Please enter numbers" class="form-control margin-bottom-25" placeholder="Number" >
-                  <input type="email" name="email" class="form-control margin-bottom-25" placeholder="Email  (Required)" required>
-                  <textarea name="msg" class="form-control margin-bottom-25 contact_textarea" placeholder="Your message" rows="7"></textarea>
+                 <form name="fome1" id="fromSubmit" ng-submit="saveContact()"> 
+                   <input type="text" name="name" ng-model="contact.name" class="form-control margin-bottom-25" placeholder="Name  (Required)" required>
+                  <input type="text" name="number" ng-model="contact.number" pattern="\d*" title="Please enter numbers" class="form-control margin-bottom-25" placeholder="Number" >
+                  <input type="email" name="email" ng-model="contact.email" class="form-control margin-bottom-25" placeholder="Email  (Required)" required>
+                  <textarea name="message" class="form-control margin-bottom-25 contact_textarea" ng-model="contact.message" placeholder="Your message" rows="7"></textarea>
                   <input id="submit_btn" type="submit" value="Send Message">   <!-- data-toggle="modal" data-target="#myModal" -->  
                   </form>
                 </fieldset>

@@ -147,7 +147,9 @@ $(document).ready(function()
                 
                     <!-- SLIDE  -->
                    <%--  <c:forEach var="row" items="${sliderImages}"> --%>
-                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
+                   <c:choose>
+				    <c:when test="${sliderImages.size()>=1}">
+				       <li data-transition="fade" data-delay="3000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
                         <img src="/glivrImg/images${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
@@ -210,20 +212,28 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6">${sliderImages[0].slider9} ${sliderImages[0].slider10} ${sliderImages[0].slider11}</div>
                     </li>
-                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+				    </c:when>    
+				    <c:otherwise>
+				        
+				    </c:otherwise>
+					</c:choose>
+                    
+                    <c:choose>
+					    <c:when test="${sliderImages.size()>=2}">
+					       <li data-transition="fade" data-delay="3000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[1].link}">
                         <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
                         <!-- LAYERS -->
-                        <!-- <div class="tp-caption mediumlarge_light_white_center invest start"
-						data-x="543"
+                        <div class="tp-caption mediumlarge_light_white_center invest start"
+						data-x="190"
 						data-hoffset="0"
-						data-y="160"
+						data-y="170"
                         
 						data-speed="1000"
 						data-start="500"
 						data-easing="Back.easeInQuart"
-						data-endspeed="300">Time to invest in a website built to </div> -->
+						data-endspeed="300">${sliderImages[1].slider21} ${sliderImages[1].slider22} ${sliderImages[1].slider23} ${sliderImages[1].slider24} ${sliderImages[1].slider25} ${sliderImages[1].slider26} ${sliderImages[1].slider27} ${sliderImages[1].slider28} </div>
                         
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption move mediumlarge_light_white_center fade"
@@ -235,7 +245,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; letter-spacing: -3px;width:24%;">${sliderImages[1].slider21} </div>
+						style="z-index: 6; letter-spacing: -3px;width:24%;">${sliderImages[1].slider29} </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption light_brown mediumlarge_light_white_center sfl"
 						data-x="300"
@@ -246,7 +256,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; top: 371px;width:24%; ">${sliderImages[1].slider22} </div>
+						style="z-index: 6; top: 371px;width:24%; ">${sliderImages[1].slider30} </div>
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
 						data-x="500"
@@ -257,7 +267,7 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6; left:186px;width:24%;">${sliderImages[1].slider23} </div>
+						style="z-index: 6; left:186px;width:24%;">${sliderImages[1].slider211} </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
 						data-x="800"
@@ -268,53 +278,11 @@ $(document).ready(function()
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6;width:24%;">${sliderImages[1].slider24} </div>
-						<div class="tp-caption move mediumlarge_light_white_center fade"
-						data-x="100"
-						data-y="300"
-						data-speed="500"
-						data-start="800"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; letter-spacing: -3px;width:24%;">${sliderImages[1].slider25} </div>
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption light_brown mediumlarge_light_white_center sfl"
-						data-x="300"
-						data-y="300"
-						data-speed="500"
-						data-start="1200"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; top: 371px;width:24%; ">${sliderImages[1].slider26} </div>
-                        <!-- LAYER NR. 3 -->
-                        <div class="tp-caption dark_brown mediumlarge_light_white_center skewfromright "
-						data-x="500"
-						data-y="300"
-						data-speed="800"
-						data-start="1900"
-						data-easing="Elastic.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6; left:186px;width:24%;">${sliderImages[1].slider27} </div>
-                        <!-- LAYER NR. 4 -->
-                        <div class="tp-caption faster mediumlarge_light_white_center skewfromright"
-						data-x="800"
-						data-y="300"
-						data-speed="800"
-						data-start="2600"
-						data-easing="Power4.easeOut"
-						data-endspeed="300"
-						data-endeasing="Power1.easeIn"
-						data-captionhidden="off"
-						style="z-index: 6;width:24%;">${sliderImages[1].slider28} </div>
+						style="z-index: 6;width:24%;">${sliderImages[1].slider212} </div>
+						
                         <!-- LAYER NR. 5 -->
                         <!-- <div class="tp-caption brown_line skewfromright"
-						data-x="800"
+						data-x="100"
 						data-y="261"
 						data-speed="800"
 						data-start="2600"
@@ -324,7 +292,16 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6"><img src="http://demo.themesuite.com/automotive/images/brown_line.jpg" alt="underline"> </div> -->
                     </li>
-                    <li data-transition="fade" data-delay="5000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+					    </c:when>    
+					    <c:otherwise>
+					        
+					    </c:otherwise>
+					</c:choose>
+                    
+                    
+                    <c:choose>
+					    <c:when test="${sliderImages.size()>=3}">
+					       <li data-transition="fade" data-delay="3000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[2].link}">
                         <img src="/glivrImg/images${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
@@ -353,6 +330,13 @@ $(document).ready(function()
 						data-captionhidden="off"
 						style="z-index: 6;">${sliderImages[2].slider32} ${sliderImages[2].slider33}</div>
                     </li>
+					    </c:when>    
+					    <c:otherwise>
+					        
+					    </c:otherwise>
+					</c:choose>
+                    
+                    
                     <%-- </c:forEach> --%>
                     
                 </ul>
@@ -432,7 +416,7 @@ $(document).ready(function()
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[0].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title' style="margin-top:19%;"><a href="${featuredImages[0].link}" style="color:white;">${featuredImages[0].description}</a></div>
+                    <div class='hover_title' style="line-height:100px;text-align:center;"><a href="${featuredImages[0].link}" style="color:white;display:inline-block;vertical-align: middle;line-height: normal;">${featuredImages[0].description}</a></div>
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car1-lrg.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
@@ -443,7 +427,7 @@ $(document).ready(function()
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[1].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title' style="margin-top:19%;"><a href="${featuredImages[1].link}" style="color:white;">${featuredImages[1].description}</a></div>
+                    <div class='hover_title' style="line-height:100px;text-align:center;"><a href="${featuredImages[1].link}" style="color:white;display:inline-block;vertical-align: middle;line-height: normal;">${featuredImages[1].description}</a></div>
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car2-lrg-200x150-200x150.jpg-200x150-200x150.jpg-200x150-200x150.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
@@ -454,7 +438,7 @@ $(document).ready(function()
                 <div class="card">
                   <div class="face front"><img class="img-responsive" src="/glivrImg/images${featuredImages[2].url}" alt=""></div>
                   <div class="face back">
-                    <div class='hover_title' style="margin-top:19%;"><a href="${featuredImages[2].link}" style="color:white;">${featuredImages[2].description}</a></div>
+                    <div class='hover_title' style="line-height:100px;text-align:center;"><a href="${featuredImages[2].link}" style="color:white;display:inline-block;vertical-align: middle;line-height: normal;">${featuredImages[2].description}</a></div>
                     <a href="inventory-listing.html"></a> <a href="resources/autolinx/images/car3.jpg" class="fancybox"></a> </div>
                 </div>
               </div>
@@ -625,7 +609,7 @@ $(document).ready(function()
                 <div class="car-block">
                 
                  <!-- <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview">    <img src="resources/autolinx/images/DSC_0002-167x119.jpg"-->
-                  <div class="img-flex"><a href="vehicleDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border"> </div>
+                  <div class="img-flex"><a href="vehicleDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border" style="height:121px;"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>{{recent.year}} {{recent.make}} {{recent.model}}</strong></h6>
                     <h6></h6>

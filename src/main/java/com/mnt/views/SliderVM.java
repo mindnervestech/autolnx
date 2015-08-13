@@ -24,6 +24,10 @@ public class SliderVM {
 	public String slider26;
 	public String slider27;
 	public String slider28;
+	public String slider29;
+	public String slider30;
+	public String slider211;
+	public String slider212;
 	public String slider31;
 	public String slider32;
 	public String slider33;
@@ -177,6 +181,30 @@ public class SliderVM {
 	}
 	public void setSlider33(String slider33) {
 		this.slider33 = slider33;
+	}
+	public String getSlider29() {
+		return slider29;
+	}
+	public void setSlider29(String slider29) {
+		this.slider29 = slider29;
+	}
+	public String getSlider30() {
+		return slider30;
+	}
+	public void setSlider30(String slider30) {
+		this.slider30 = slider30;
+	}
+	public String getSlider211() {
+		return slider211;
+	}
+	public void setSlider211(String slider211) {
+		this.slider211 = slider211;
+	}
+	public String getSlider212() {
+		return slider212;
+	}
+	public void setSlider212(String slider212) {
+		this.slider212 = slider212;
 	}
 	
 }

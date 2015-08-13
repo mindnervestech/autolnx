@@ -16,11 +16,13 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.SiteLogoVM;
@@ -145,7 +147,7 @@ public class ClientController {
 		return "autolinx/contactUs";
 	}
 	
-	@RequestMapping(value = "/mobile/aboutUs", method = RequestMethod.GET)
+	@RequestMapping(value = "/mobile/contactUs", method = RequestMethod.GET)
 	public String mobileAboutUs(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -249,11 +251,12 @@ public class ClientController {
 		return "autolinx/mobile/mobileViewDetails";
 	}
 	
-   @RequestMapping(value="/contactUsPage",method=RequestMethod.POST)
-	public String contactUs(Locale locale, Model model,HttpServletRequest request) {
+   @RequestMapping(value="/saveContact",method=RequestMethod.POST)
+   @ResponseBody
+   public void contactUs(Locale locale, Model model,HttpServletRequest request,@RequestBody ContactVM contactVM) {
 		
-		String requestVm = clientService.contactUs(request, hostUrl);
-		return "autolinx/contactUs";
+		String requestVm = clientService.contactUs(contactVM, hostUrl);
+		
 		
 	}
    
