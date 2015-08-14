@@ -113,7 +113,7 @@ $(document).ready(function()
           
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-right" style="margin-top: 14px;">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
               <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
               <li class="active"><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
