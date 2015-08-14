@@ -494,12 +494,38 @@ app.controller("MobileContactUsController", function($scope,$http) {
 	$scope.showMsg = false;
 	$scope.contact = {};
 	var contextPath = $('#contextpath').val();
+	$scope.nameText = 0;
+	$scope.emailText = 0;
 	$scope.saveContact = function() {
-		
+	
+	console.log($scope.contact);
+	if($scope.contact.name == undefined || $scope.contact.name == ""){
+		$scope.nameText = 1;
+	}else{
+		$scope.nameText = 0;
+	}
+	
+	if($scope.contact.email == undefined || $scope.contact.email == ""){
+		$scope.emailText = 1;
+	}else{
+		$scope.emailText = 0;
+	}
+	
+	if($scope.contact.number == undefined){
+		$scope.contact.number = "";
+	}
+	
+	if($scope.contact.message == undefined){
+		$scope.contact.message = "";
+	}
+	
+	if($scope.emailText == 0 && $scope.nameText == 0){
 		$http.post(contextPath+'/saveContact',$scope.contact)
 		.success(function(data) {
 			console.log('success');
 			$scope.showMsg = true;
 		});
 	}
+	
+	};
 });

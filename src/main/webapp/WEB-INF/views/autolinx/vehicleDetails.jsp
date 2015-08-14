@@ -1218,7 +1218,7 @@ $(document).ready(function()
 		                </tr>
 		                
 		                <tr>
-		                    <td>Is there a lienholder? <br><input type="text"  ng-model="tradeIn.lienholder" name="lienholder"></td>
+		                    <td>Is there a lineholder? <br><input type="text"  ng-model="tradeIn.lienholder" name="lienholder"></td>
 		                </tr>
 		                <tr>
 		                    <td>Who holds this title? <br><input type="text" ng-model="tradeIn.titleholder" name="titleholder"></td>

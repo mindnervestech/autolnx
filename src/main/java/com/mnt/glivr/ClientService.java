@@ -785,7 +785,7 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 		
-			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
+			String urlfind= "http://www.glider-autos.com/dealer/index.html#/scheduleTest";
 			
 	        Template t = ve.getTemplate("scheduleTestDriveTemplate.vm"); 
 	        VelocityContext context = new VelocityContext();
@@ -1009,7 +1009,7 @@ public class ClientService {
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 			
-			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
+			String urlfind= "http://www.glider-autos.com/dealer/index.html#/tradeIn";
 			
 	        Template t = ve.getTemplate("trade_in_app.vm");
 	        VelocityContext context = new VelocityContext();
@@ -1306,9 +1306,12 @@ public class ClientService {
 			
 	        Template t = ve.getTemplate("contactUstemplate.vm"); 
 	        VelocityContext context = new VelocityContext();
-	        context.put("name", request);
-	        context.put("email", request);
-	        context.put("msg", request);
+	        
+	        System.out.println(request.name);
+	        context.put("name", request.getName());
+	        context.put("email", request.getEmail());
+	        context.put("msg", request.getMessage());
+	        context.put("number", request.getNumber());
 	       
 	        context.put("urlLink", hostUrl);
 	        context.put("hostnameimg",  hostnameimg);

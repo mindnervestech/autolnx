@@ -63,7 +63,7 @@
 	<div class="toolbar1">
 		<ul>
            <li><a href="https://www.google.com/maps/dir//AutoLinx+-+Luxury+Pre-Owned,+3300+Sonoma+Blvd,+Vallejo,+CA+94590,+United+States/@38.1202427,-122.2546659,15z/data=!4m12!1m3!3m2!1s0x0:0xce9d2ad188e1093!2sAutoLinx+-+Luxury+Pre-Owned!4m7!1m0!1m5!1m1!1s0x80857351d3b20b31:0xce9d2ad188e1093!2m2!1d-122.2546659!2d38.1202427">Directions</a></li>
-            <li><a href="tel:+15525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
+            <li><a href="tel:+17075525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
             
           </ul>
 	</div>
@@ -193,9 +193,9 @@ Sincerely, The Autolinx Team</p>
 	<h4>CONTACT FORM</h4>
 	<p ng-show="showMsg" style="margin-bottom: 3%;"><b>Thank you for your request, one of our representative will contact you shortly</b></p>
     <form name="fome1" id="fromSubmit" ng-submit="saveContact()"> 
-                   <input type="text" name="name" ng-model="contact.name" class="inputInner" placeholder="Name  (Required)" required>
+                   <input type="text" name="name" ng-model="contact.name" ng-class="nameText == 1? 'textborder' : ''" class="inputInner" placeholder="Name  (Required)" required>
                   <input type="text" name="number" ng-model="contact.number" pattern="\d*" title="Please enter numbers" class="inputInner" placeholder="Number" >
-                  <input type="email" name="email" ng-model="contact.email" class="inputInner" placeholder="Email  (Required)" required>
+                  <input type="email" name="email" ng-model="contact.email" class="inputInner" ng-class="emailText == 1? 'textborder' : ''" placeholder="Email  (Required)" required>
                   <textarea name="message" class="inputInner" ng-model="contact.message" placeholder="Your message" rows="7"></textarea>
                   <input id="submit_btn" type="submit" value="Send Message">   <!-- data-toggle="modal" data-target="#myModal" -->  
     </form>
@@ -252,3 +252,8 @@ Sincerely, The Autolinx Team</p>
 </body>
 </html>
 
+<style>
+	.textborder{
+		border: 2px solid red !important;
+	}
+</style>

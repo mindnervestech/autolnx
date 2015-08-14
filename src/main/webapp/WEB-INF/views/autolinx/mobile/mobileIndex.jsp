@@ -71,7 +71,7 @@
 	<div class="toolbar">
 		<ul>
          
-            <li><a href="tel:+15525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
+            <li><a href="tel:+17075525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
             
           </ul>
 	</div>
@@ -85,7 +85,9 @@
         </h2>
     </div>
     <div class="message-shadow"></div>
-    <div class="boxIn">
+     <!-- <div class="row">
+        	 <div class="col-md-6"> -->
+    <div class="boxIn" style="background: #580000;">
     	<div class="boxInLeft">
         	<img src="${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg" alt="">
             <p class="boxInText">
