@@ -108,7 +108,7 @@
     	<div class="headingRow">
         	<ul>
             	<li>
-                	<h2>${vehicle.year} ${vehicle.make} ${vehicle.model}</h2>
+                	<h2>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
                 </li>
                 <li>
                 	<h2>${vehicle.price}</h2>
