@@ -267,7 +267,7 @@ $(document).ready(function()
             <div class="inventory-heading margin-bottom-10 clearfix">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                        <h2>${vehicle.year} ${vehicle.make} ${vehicle.model}</h2>
+                        <h2>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
                         
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 text-right">
