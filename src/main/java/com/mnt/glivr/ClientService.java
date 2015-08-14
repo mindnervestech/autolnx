@@ -1481,7 +1481,7 @@ public class ClientService {
 	        context.put("email", request.getEmail());
 	        context.put("msg", request.getMessage());
 	        context.put("number", request.getNumber());
-	       
+	        context.put("sitelogo", logo);
 	        context.put("urlLink", hostUrl);
 	        context.put("hostnameimg",  hostnameimg);
 	        
