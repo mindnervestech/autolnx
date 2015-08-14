@@ -31,6 +31,15 @@ public class SliderVM {
 	public String slider31;
 	public String slider32;
 	public String slider33;
+	public String slider34;
+	public String slider35;
+	public String slider36;
+	public String slider37;
+	public String slider38;
+	public String slider39;
+	public String slider40;
+	public String slider41;
+	public String slider42;
 	
 	public String getUrl() {
 		return url;
@@ -205,6 +214,60 @@ public class SliderVM {
 	}
 	public void setSlider212(String slider212) {
 		this.slider212 = slider212;
+	}
+	public String getSlider34() {
+		return slider34;
+	}
+	public void setSlider34(String slider34) {
+		this.slider34 = slider34;
+	}
+	public String getSlider35() {
+		return slider35;
+	}
+	public void setSlider35(String slider35) {
+		this.slider35 = slider35;
+	}
+	public String getSlider36() {
+		return slider36;
+	}
+	public void setSlider36(String slider36) {
+		this.slider36 = slider36;
+	}
+	public String getSlider37() {
+		return slider37;
+	}
+	public void setSlider37(String slider37) {
+		this.slider37 = slider37;
+	}
+	public String getSlider38() {
+		return slider38;
+	}
+	public void setSlider38(String slider38) {
+		this.slider38 = slider38;
+	}
+	public String getSlider39() {
+		return slider39;
+	}
+	public void setSlider39(String slider39) {
+		this.slider39 = slider39;
+	}
+	public String getSlider40() {
+		return slider40;
+	}
+	public void setSlider40(String slider40) {
+		this.slider40 = slider40;
+	}
+	public String getSlider41() {
+		return slider41;
+	}
+	public void setSlider41(String slider41) {
+		this.slider41 = slider41;
+	}
+	public String getSlider42() {
+		return slider42;
+	}
+	public void setSlider42(String slider42) {
+		this.slider42 = slider42;
 	}
 	
 }

@@ -293,7 +293,9 @@ $(document).ready(function()
 				       
 				    </c:when>    
 				    <c:otherwise>
-				        ${vehicle.videoUrl}
+				        <p>
+                   			<iframe width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
+                   		</p>
 				        <br />
 				    </c:otherwise>
 				</c:choose>

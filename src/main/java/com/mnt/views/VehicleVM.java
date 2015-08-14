@@ -7,6 +7,7 @@ public class VehicleVM {
 	public String year;
 	public String make;
 	public String model;
+	public String trim;
 	public String mileage;
 	public String bodyStyle;
 	public String doors;
@@ -472,6 +473,12 @@ public class VehicleVM {
 	}
 	public void setMobileUrl(String mobileUrl) {
 		this.mobileUrl = mobileUrl;
+	}
+	public String getTrim() {
+		return trim;
+	}
+	public void setTrim(String trim) {
+		this.trim = trim;
 	}
 	
 }

@@ -190,6 +190,33 @@ public class ClientService {
 							if(image3.length >= 3) {
 								vm.slider33 = image3[2];
 							}
+							if(image3.length >= 4) {
+								vm.slider34 = image3[3];
+							}
+							if(image3.length >= 5) {
+								vm.slider35 = image3[4];
+							}
+							if(image3.length >= 6) {
+								vm.slider36 = image3[5];
+							}
+							if(image3.length >= 7) {
+								vm.slider37 = image3[6];
+							}
+							if(image3.length >= 8) {
+								vm.slider38 = image3[7];
+							}
+							if(image3.length >= 9) {
+								vm.slider39 = image3[8];
+							}
+							if(image3.length >= 10) {
+								vm.slider40 = image3[9];
+							}
+							if(image3.length >= 11) {
+								vm.slider41 = image3[10];
+							}
+							if(image3.length >= 12) {
+								vm.slider42 = image3[11];
+							}
 						} else {
 							vm.slider31 = thirdDesc;
 						}
@@ -510,6 +537,7 @@ public class ClientService {
  		vehicleVM.year = (String) row.get(0).get("year");
  		vehicleVM.make = (String) row.get(0).get("make");
  		vehicleVM.model = (String) row.get(0).get("model");
+ 		vehicleVM.trim = (String) row.get(0).get("trim");
  		vehicleVM.fuelType = (String) row.get(0).get("fuel");
  		vehicleVM.mileage = (String) row.get(0).get("mileage");
  		vehicleVM.bodyStyle = (String) row.get(0).get("body_style");
@@ -1307,7 +1335,7 @@ public class ClientService {
 	        Template t = ve.getTemplate("contactUstemplate.vm"); 
 	        VelocityContext context = new VelocityContext();
 	        
-	        System.out.println(request.name);
+	        
 	        context.put("name", request.getName());
 	        context.put("email", request.getEmail());
 	        context.put("msg", request.getMessage());

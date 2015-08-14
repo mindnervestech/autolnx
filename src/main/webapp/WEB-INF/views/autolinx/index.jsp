@@ -160,7 +160,7 @@ $(document).ready(function()
                    <%--  <c:forEach var="row" items="${sliderImages}"> --%>
                    <c:choose>
 				    <c:when test="${sliderImages.size()>=1}">
-				       <li data-transition="fade" data-delay="3000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
+				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
                         <img src="/glivrImg/images${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
@@ -231,7 +231,7 @@ $(document).ready(function()
                     
                     <c:choose>
 					    <c:when test="${sliderImages.size()>=2}">
-					       <li data-transition="fade" data-delay="3000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[1].link}">
                         <img src="/glivrImg/images${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
@@ -312,7 +312,7 @@ $(document).ready(function()
                     
                     <c:choose>
 					    <c:when test="${sliderImages.size()>=3}">
-					       <li data-transition="fade" data-delay="3000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[2].link}">
                         <img src="/glivrImg/images${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
                         </a>
@@ -320,26 +320,36 @@ $(document).ready(function()
                         <div class="tp-caption customin customout start green"
 						data-x="40"
 						data-hoffset="0"
-						data-y="510"
+						data-y="460"
 					
 						data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
 						data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
 						data-speed="1000"
 						data-start="500"
 						data-easing="Back.easeInOut"
-						data-endspeed="300">${sliderImages[2].slider31}</div>
+						data-endspeed="300">${sliderImages[2].slider31} ${sliderImages[2].slider32} ${sliderImages[2].slider33} ${sliderImages[2].slider34}</div>
                         
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption big_white fade"
 						data-x="40"
-						data-y="560"
+						data-y="510"
 						data-speed="500"
 						data-start="800"
 						data-easing="Power4.easeOut"
 						data-endspeed="300"
 						data-endeasing="Power1.easeIn"
 						data-captionhidden="off"
-						style="z-index: 6;">${sliderImages[2].slider32} ${sliderImages[2].slider33}</div>
+						style="z-index: 6;">${sliderImages[2].slider35} ${sliderImages[2].slider36} ${sliderImages[2].slider37} ${sliderImages[2].slider38}</div>
+						
+						<div class="tp-caption mediumlarge_light_white_center thirdSlider start"
+						data-x="40"
+						data-hoffset="0"
+						data-y="560"
+                        
+						data-speed="1000"
+						data-start="500"
+						data-easing="Back.easeInQuart"
+						data-endspeed="300">${sliderImages[2].slider39} ${sliderImages[2].slider40} ${sliderImages[2].slider41} ${sliderImages[2].slider42}</div>
                     </li>
 					    </c:when>    
 					    <c:otherwise>
@@ -942,3 +952,9 @@ $(document).ready(function()
 <script type="text/javascript" src="resources/autolinx/js/jquery.easing.js"></script>
 </body>
 </html>
+
+<style>
+.tp-banner ul li div.thirdSlider {
+	  background-color:#bcdf5e
+}
+</style>
