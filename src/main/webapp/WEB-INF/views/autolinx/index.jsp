@@ -149,7 +149,7 @@ $(document).ready(function()
 </header>
 <!--Header End-->
 
-<div class="clearfix"></div>
+<div class="clearfix imgSet"></div>
 <section class="banner-wrap">
     <div class="banner">
         <div class="tp-banner-container">
@@ -952,9 +952,14 @@ $(document).ready(function()
 <script type="text/javascript" src="resources/autolinx/js/jquery.easing.js"></script>
 </body>
 </html>
-
 <style>
-.tp-banner ul li div.thirdSlider {
+	@media all and (min-width: 800px),(max-width: 1020px) {
+    .imgSet {
+        margin-top: 150px !important;
+    }
+    
+    .tp-banner ul li div.thirdSlider {
 	  background-color:#bcdf5e
 }
+
 </style>

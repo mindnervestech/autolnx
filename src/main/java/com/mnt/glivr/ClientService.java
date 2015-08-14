@@ -1049,7 +1049,12 @@ public class ClientService {
 	        context.put("last_name", model.getLast_name());
 	        context.put("work_phone", model.getWork_phone());
 	        context.put("email", model.getEmail());
-	        context.put("preferred", model.getPreferred());
+	        if(model.getPreferred() != null){
+	        	context.put("preferred", model.getPreferred());
+	        }else{
+	        	context.put("preferred", "");
+	        }
+	        
 	        context.put("optionValue",  optionValue);
 	        
 	       
@@ -1061,44 +1066,180 @@ public class ClientService {
 	        }else{
 	        	context.put("year", "");
 	        }
-	        context.put("make", model.getMake());
-	        context.put("model", model.getModel());
-	        context.put("exterior_colour", model.getExterior_colour());
-	        context.put("kilometres", model.getKilometres());
-	        context.put("engine", model.getEngine());
-	        context.put("doors", model.getModel());
-	        context.put("transmission", model.getTransmission());
-	        context.put("drivetrain", model.getDrivetrain());
+	        if(model.getMake() != null){
+	        	context.put("make", model.getMake());
+	        }else{
+	        	context.put("make", "");
+	        }
+	        if(model.getModel() != null){
+	        	context.put("model", model.getModel());
+	        }else{
+	        	context.put("model", "");
+	        }
+	        if(model.getExterior_colour() != null){
+	        	context.put("exterior_colour", model.getExterior_colour());
+	        }else{
+	        	context.put("exterior_colour", "");
+	        }
+	        
+	        if(model.getKilometres() != null){
+	        	  context.put("kilometres", model.getKilometres());
+	        }else{
+	        	context.put("kilometres", "");
+	        }
+	      
+	        if(model.getEngine() != null){
+	        	context.put("engine", model.getEngine());
+	        }else{
+	        	context.put("engine", "");
+	        }
+	        
+	        if(model.getModel() != null){
+	        	 context.put("doors", model.getModel());
+	        }else{
+	        	 context.put("doors", "");
+	        }
+	       
+	        if(model.getTransmission() != null){
+	        	 context.put("transmission", model.getTransmission());
+	        }else{
+	        	 context.put("transmission","");
+	        }
+	       
+	        if(model.getDrivetrain() != null){
+	        	context.put("drivetrain", model.getDrivetrain());
+	        }else{
+	        	context.put("drivetrain", "");
+	        }
+	        
 	        
 	       // vehicale rating
 	        
-	        context.put("body_rating", model.getBody_rating());
-	        context.put("tire_rating", model.getTire_rating());
-	        context.put("engine_rating", model.getEngine_rating());
-	        context.put("transmission_rating", model.getTransmission_rating());
-	        context.put("glass_rating", model.getGlass_rating());
-	        context.put("interior_rating", model.getInterior_rating());
-	        context.put("exhaust_rating", model.getExhaust_rating());
+	        if(model.getBody_rating() != null){
+	        	 context.put("body_rating", model.getBody_rating());
+	        }else{
+	        	 context.put("body_rating", "");
+	        }
+	        
+	        if(model.getBody_rating() != null){
+	        	 context.put("body_rating", model.getBody_rating());
+	        }else{
+	        	 context.put("body_rating", "");
+	        }
+	       
+	        if(model.getTire_rating() != null){
+	        	context.put("tire_rating", model.getTire_rating());
+	        }else{
+	        	context.put("tire_rating", "");
+	        }
+	        
+	        if(model.getEngine_rating() != null){
+	        	context.put("engine_rating", model.getEngine_rating());
+	        }else{	
+	        	context.put("engine_rating", "");
+	        }
+	        
+	        if(model.getTransmission_rating() != null){
+	        	 context.put("transmission_rating", model.getTransmission_rating());
+	        }else{
+	        	 context.put("transmission_rating", "");
+	        }
+	       
+	        if(model.getGlass_rating() != null){
+	        	context.put("glass_rating", model.getGlass_rating());
+	        }else{
+	        	context.put("glass_rating", "");
+	        }
+	        
+	        if(model.getInterior_rating() != null){
+	        	 context.put("interior_rating", model.getInterior_rating());
+	        }else{
+	        	 context.put("interior_rating", "");
+	        }
+	       
+	        if(model.getExhaust_rating() != null){
+	        	context.put("exhaust_rating", model.getExhaust_rating());
+	        }else{
+	        	context.put("exhaust_rating", "");
+	        }
+	        
 	        
 	      //  vehicale History
 	        
-	        context.put("lease_or_rental", model.getRental_return());
-	        context.put("operational_and_accurate", model.getOdometer_accurate());
-	        context.put("service_record", model.getService_records());
+	        if(model.getRental_return() != null){
+	        	context.put("lease_or_rental", model.getRental_return());
+	        }else{
+	        	context.put("lease_or_rental", "");
+	        }
+	        
+	        if(model.getOdometer_accurate() != null){
+	        	context.put("operational_and_accurate", model.getOdometer_accurate());
+	        }else{
+	        	context.put("operational_and_accurate", "");
+	        }
+	        
+	        if(model.getService_records() != null){
+	        	context.put("service_record", model.getService_records());
+	        }else{
+	        	context.put("service_record", "");
+	        }
+	        
 	        
 	      //  title History
 	        
-	        context.put("lienholder", model.getLienholder());
-	        context.put("holds_this_title", model.getTitleholder());
+	        if(model.getLienholder() != null){
+	        	context.put("lienholder", model.getLienholder());
+	        }else{
+	        	context.put("lienholder", "");
+	        }
+	        
+	        if(model.getTitleholder() != null){
+	        	context.put("holds_this_title", model.getTitleholder());
+	        }else{
+	        	context.put("holds_this_title", "");
+	        }
+	        
+	        
 	        
 	        //Vehicle Assessment
 	        
-	        context.put("equipment", model.getEquipment());
-	        context.put("vehiclenew", model.getVehiclenew());
-	        context.put("accidents", model.getAccidents());
-	        context.put("damage", model.getDamage());
-	        context.put("paint", model.getPaint());
-	        context.put("salvage", model.getSalvage());
+	        if(model.getEquipment() != null){
+	        	context.put("equipment", model.getEquipment());
+	        }else{
+	        	context.put("equipment", "");
+	        }
+	        
+	        if(model.getVehiclenew() != null){
+	        	context.put("vehiclenew", model.getVehiclenew());
+	        }else{
+	        	context.put("vehiclenew", "");
+	        }
+	        
+	        if(model.getAccidents() != null){
+	        	context.put("accidents", model.getAccidents());
+	        }else{
+	        	context.put("accidents", "");
+	        }
+	        
+	        if(model.getDamage() != null){
+	        	context.put("damage", model.getDamage());
+	        }else{
+	        	context.put("damage", "");
+	        }
+	        
+	        if(model.getPaint() != null){
+	        	context.put("paint", model.getPaint());
+	        }else{
+	        	context.put("paint", "");
+	        }
+	        
+	        if(model.getSalvage() != null){
+	        	context.put("salvage", model.getSalvage());
+	        }else{
+	        	context.put("salvage", "");
+	        }
+	        
+	        
 	        
 	        
 	        context.put("sitelogo", logo);

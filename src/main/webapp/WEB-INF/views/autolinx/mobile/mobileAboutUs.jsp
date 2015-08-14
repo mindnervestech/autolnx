@@ -192,8 +192,9 @@ Sincerely, The Autolinx Team</p>
 <footer>
 	<h4>CONTACT FORM</h4>
 	<p ng-show="showMsg" style="margin-bottom: 3%;"><b>Thank you for your request, one of our representative will contact you shortly</b></p>
-    <form name="fome1" id="fromSubmit" ng-submit="saveContact()"> 
+    <form name="fome1" id="fromSubmit" ng-submit="saveContact()" novalidate> 
                    <input type="text" name="name" ng-model="contact.name" ng-class="nameText == 1? 'textborder' : ''" class="inputInner" placeholder="Name  (Required)" required>
+                     <span class="help-inline" ng-show="submitted && form1.name.$error.required">Required</span>
                   <input type="text" name="number" ng-model="contact.number" pattern="\d*" title="Please enter numbers" class="inputInner" placeholder="Number" >
                   <input type="email" name="email" ng-model="contact.email" class="inputInner" ng-class="emailText == 1? 'textborder' : ''" placeholder="Email  (Required)" required>
                   <textarea name="message" class="inputInner" ng-model="contact.message" placeholder="Your message" rows="7"></textarea>
@@ -257,3 +258,64 @@ Sincerely, The Autolinx Team</p>
 		border: 2px solid red !important;
 	}
 </style>
+
+<script>
+$(document).ready(function() {
+    $("#submit_btn").click(function() { 
+        //collect input field values
+        var user_name       = $("input[name='name']").val(); 
+        var user_email      = $("input[name='email']").val();
+        var user_message    = $("textarea[name='msg']").val();
+        
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        var proceed = true;
+        if(user_name==""){ 
+            $("input[name='name']").css("border", "1px solid red"); 
+            proceed = false;
+        } else {
+			$("input[name='name']").css("border", "none");
+		}
+        if(user_email==""){ 
+            $("input[name='email']").css("border", "1px solid red"); 
+            proceed = false;
+        } else {
+			$("input[name='email']").css("border", "none");
+		}
+        if(user_message=="") {  
+            $("textarea[name='msg']").css("border", "1px solid red"); 
+            proceed = false;
+        } else {
+			$("textarea[name='msg']").css("border", "none");
+		}
+        
+        //everything looks good! proceed...
+        if(proceed) {
+            //data to be sent to server
+            post_data = {'userName':user_name, 'userEmail':user_email, 'userMessage':user_message};
+            
+            //Ajax post data to server
+            $.post('contact_process.php', post_data, function(data){  
+                
+                //load success massage in #result div element, with slide effect.       
+                $("#result").hide().html('<div class="success">'+data+'</div>').slideDown();
+                
+                //reset values in all input fields
+                $('#contact_form input[type="text"]').val('');
+				$('#contact_form input[type="email"]').val(''); 
+                $('#contact_form textarea').val(''); 
+                
+            }).fail(function(err) {  //load any error data
+                $("#result").hide().html('<div class="success">Thank you for your request, one of our representative will contact you shortly</div>').slideDown();
+            });
+        }
+    });
+    
+    //reset previously set border colors and hide all message on .keyup()
+    $("#contact_form input, #contact_form textarea").keyup(function() { 
+        $("#contact_form input, #contact_form textarea").css('border-color',''); 
+        $("#result").slideUp();
+    });
+    
+});
+</script>
