@@ -190,7 +190,7 @@
 				    </c:when>    
 				    <c:otherwise>
 				       <li>
-                		<div class="sc_player_container1"><a href="${vehicle.mobileUrl}"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/sit-inside-button.png"></a></div>
+                		<div class="sc_player_container1"><a href="${vehicle.mobileUrl}"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/sit-inside-button.png" ></a></div>
                 	</li>
 				    </c:otherwise>
 				</c:choose>
@@ -203,7 +203,7 @@
 				        <li>
                                 	<div class="sc_player_container1"><div class="sc_player_container1">
                                     <a onclick='playpause_audio();' href="javascript:void(0);">
-                                    <img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-idle.png" id="start_engine"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-pressed.png" id="stop_engine" style="display:none;"></a></div></div>
+                                    <img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-idle.png" id="start_engine" style="align-content: center;"><img alt="" src="${pageContext.request.contextPath}/resources/autolinx/images/engine-sound-pressed.png" id="stop_engine" style="display:none;"></a></div></div>
                                     
                                 </li>
 						 <audio controls preload="none" class='audioDemo' style='display:none;'>
@@ -553,5 +553,10 @@
   		.sbHolder{
   			width: 80% !important;
   		}
+  		  		
+  		@media screen and (max-width: 414px)
+			.playerBox ul li img {
+   			 width: auto !important;
+		}
   		  		
     </style>

@@ -87,28 +87,28 @@
     <div class="message-shadow"></div>
      <!-- <div class="row">
         	 <div class="col-md-6"> -->
-    <div class="boxIn" style="background: #580000;">
-    	<div class="boxInLeft">
-        	<img src="${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg" alt="">
+    <div class="boxIn">
+    	<div class="boxInLeft" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg'); background-size: 100% 100%;background-repeat: no-repeat; height: 200px;width: 50%;">
+        	<%-- <img src="${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg" alt=""> --%>
             <p class="boxInText">
             	<a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a>
             </p>
         </div>
-        <div class="boxInLeft">
-        	<img src="${pageContext.request.contextPath}/resources/autolinx/images/new_arrivals_mobile.jpg" alt="">
+        <div class="boxInLeft" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/new_arrivals_mobile.jpg');background-size: 100% 100%;background-repeat: no-repeat;height: 200px;width: 50%;">
+        	<%-- <img src="${pageContext.request.contextPath}/resources/autolinx/images/new_arrivals_mobile.jpg" alt=""> --%>
              <p class="boxInText">
             	<a href="${pageContext.request.contextPath}/mobile/newArrivals">New Arrivals</a>
             </p>
         </div>
         
-        <div class="boxInLeft">
-        	<img src="${pageContext.request.contextPath}/resources/autolinx/images/directions_mobile.jpg" alt="">
+        <div class="boxInLeft" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/directions_mobile.jpg');background-size: 100% 100%;background-repeat: no-repeat;height: 200px;width: 50%;">
+        	<%-- <img src="${pageContext.request.contextPath}/resources/autolinx/images/directions_mobile.jpg" alt=""> --%>
             <p class="boxInText">
             	<a href="https://www.google.com/maps/dir//AutoLinx+-+Luxury+Pre-Owned,+3300+Sonoma+Blvd,+Vallejo,+CA+94590,+United+States/@38.1202427,-122.2546659,15z/data=!4m12!1m3!3m2!1s0x0:0xce9d2ad188e1093!2sAutoLinx+-+Luxury+Pre-Owned!4m7!1m0!1m5!1m1!1s0x80857351d3b20b31:0xce9d2ad188e1093!2m2!1d-122.2546659!2d38.1202427">Directions</a>
             </p>
         </div>
-        <div class="boxInLeft">
-        	<img src="${pageContext.request.contextPath}/resources/autolinx/images/about_us_mobile.jpg" alt="">
+        <div class="boxInLeft" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/about_us_mobile.jpg'); background-size: 100% 100%;background-repeat: no-repeat;height: 200px;width: 50%;">
+        	<%-- <img src="${pageContext.request.contextPath}/resources/autolinx/images/about_us_mobile.jpg" alt=""> --%>
             <p class="boxInText">
             	<a href="${pageContext.request.contextPath}/mobile/contactUs">Contact Us</a>
             </p>

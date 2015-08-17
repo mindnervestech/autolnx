@@ -163,7 +163,7 @@ $(document).ready(function()
 				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
-                        <img src="/glivrImg/images${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
+                        <img src="/glivrImg/images${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:100%;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -628,9 +628,10 @@ $(document).ready(function()
             <div class="carasouel-slider3">
             <div class="slide" ng-repeat="recent in recentVehicles" style="float: left; list-style: none; position: relative; margin-right: 30px; width: 170px;">
                 <div class="car-block">
-                
-                 <!-- <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview">    <img src="resources/autolinx/images/DSC_0002-167x119.jpg"-->
-                  <div class="img-flex"><a href="vehicleDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border" style="height:121px;"> </div>
+               
+               <%--  href="${pageContext.request.contextPath}/warranty" --%>
+                 <!-- <img class="preview" src="${pageContext.request.contextPath}/glivrImg/images{{vehicle.path}}" alt="preview">    <img src="resources/autolinx/images/DSC_0002-167x119.jpg"-->
+                  <div class="img-flex"><a href="${pageContext.request.contextPath}/vehicleDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="/glivrImg/images{{recent.path}}" alt="" class="img-responsive no_border" style="height:121px;"> </div>
                   <div class="car-block-bottom">
                     <h6><strong>{{recent.year}} {{recent.make}} {{recent.model}}</strong></h6>
                     <h6></h6>
