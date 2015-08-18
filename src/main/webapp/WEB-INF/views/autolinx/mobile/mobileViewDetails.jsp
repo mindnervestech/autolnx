@@ -554,8 +554,7 @@
   			width: 80% !important;
   		}
   		  		
-  		@media screen and (max-width: 414px)
-			.playerBox ul li img {
+		.playerBox ul li img {
    			 width: auto !important;
 		}
   		  		

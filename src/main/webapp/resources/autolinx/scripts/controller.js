@@ -490,7 +490,7 @@ app.controller("ContactUsController", function($scope,$http) {
 	}
 });
 
-app.controller("MobileContactUsController", function($scope,$http) {
+app.controller("MobileContactUsController", function($scope,$http,$timeout) {
 	$scope.showMsg = false;
 	$scope.contact = {};
 	var contextPath = $('#contextpath').val();
@@ -522,10 +522,17 @@ app.controller("MobileContactUsController", function($scope,$http) {
 	if($scope.emailText == 0 && $scope.nameText == 0){
 		$http.post(contextPath+'/saveContact',$scope.contact)
 		.success(function(data) {
-			console.log('success');
 			$scope.showMsg = true;
+			$timeout(callAtTimeout, 4000);
+			console.log('success');
 		});
+		
 	}
 	
 	};
+	
+	function callAtTimeout() {
+		$scope.showMsg = false;
+	}
+	
 });

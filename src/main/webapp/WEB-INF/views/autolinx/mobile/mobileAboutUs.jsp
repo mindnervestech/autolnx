@@ -191,14 +191,15 @@ Sincerely, The Autolinx Team</p>
 	
 <footer>
 	<h4>CONTACT FORM</h4>
-	<p ng-show="showMsg" style="margin-bottom: 3%;"><b>Thank you for your request, one of our representative will contact you shortly</b></p>
+	<p ng-show="showMsg" style="margin-bottom: 3%;color: red;"><b>Thank you for your request, one of our representative will contact you shortly</b></p>
     <form name="fome1" id="fromSubmit" ng-submit="saveContact()" novalidate> 
                    <input type="text" name="name" ng-model="contact.name" ng-class="nameText == 1? 'textborder' : ''" class="inputInner" placeholder="Name  (Required)" required>
                      <span class="help-inline" ng-show="submitted && form1.name.$error.required">Required</span>
                   <input type="text" name="number" ng-model="contact.number" pattern="\d*" title="Please enter numbers" class="inputInner" placeholder="Number" >
                   <input type="email" name="email" ng-model="contact.email" class="inputInner" ng-class="emailText == 1? 'textborder' : ''" placeholder="Email  (Required)" required>
                   <textarea name="message" class="inputInner" ng-model="contact.message" placeholder="Your message" rows="7"></textarea>
-                  <input id="submit_btn" type="submit" value="Send Message">   <!-- data-toggle="modal" data-target="#myModal" -->  
+                  <input id="submit_btn" ng-show="showMsg == false" type="submit" value="Send Message"> 
+                  <input id="submit_btn" ng-show="showMsg" disabled="disabled" type="submit" value="Send Message" style="background-color: burlywood;">   <!-- data-toggle="modal" data-target="#myModal" -->  
     </form>
           
 	<h4>Subscribe to the official AutoLinx newsletter-Vehi-Linx</h4>
