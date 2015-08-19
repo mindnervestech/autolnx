@@ -549,7 +549,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                             <td valign="middle"><table align="left" border="0" cellspacing="0" cellpadding="0" class="container2" dir="ltr">
                                 <tbody><tr>
                                   <td align="center" valign="top">
-                                    <a href="#" style="font-size: inherit; text-decoration: none;"><img src="$hostnameimg/email_images/20150815032140_glider_logo_cloud.png" width="100" style="max-width: 100px; display: block;" alt="" border="0" hspace="0" vspace="0"></a>
+                                    <a href="#" style="font-size: inherit; text-decoration: none;"><img src="$hostnameimg$sitelogo.logoPath" width="100" style="max-width: 100px; display: block;" alt="" border="0" hspace="0" vspace="0"></a>
                                   </td>
                                 </tr>
                                 <!-- start space -->
@@ -564,7 +564,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                   <td valign="middle" align="center">
                                     <table align="center" border="0" cellpadding="0" cellspacing="0" class="clear-align" style="height:100%;">
                                       <tbody><tr>
-                                        <td style="font-size: 13px; line-height: 18px; color: rgb(163, 162, 162); font-weight: 300; text-align: center; font-family: Roboto, Arial, Helvetica, sans-serif; word-break: break-word;"><span style="font-size: 24px; line-height: 24px;"><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;"><br style="line-height: 24px;"></span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;">LUXURY WITHIN</span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"> <span style="font-weight: bold; color: rgb(194, 0, 0); font-size: inherit; line-height: 24px;">REACH</span></span></span><br style="line-height: 24px;"><br style="line-height: 24px;"></td>
+                                        <td style="font-size: 13px; line-height: 18px; color: rgb(163, 162, 162); font-weight: 300; text-align: center; font-family: Roboto, Arial, Helvetica, sans-serif; word-break: break-word;"><span style="font-size: 24px; line-height: 24px;"><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;"><br style="line-height: 24px;"></span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;">$heading1</span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"> <span style="font-weight: bold; color: rgb(194, 0, 0); font-size: inherit; line-height: 24px;">$heading2</span></span></span><br style="line-height: 24px;"><br style="line-height: 24px;"></td>
                                       </tr>
                                     </tbody></table>
                                   </td>
@@ -623,7 +623,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                               <!-- start button -->
                               <table border="0" align="center" cellpadding="0" cellspacing="0">
                                 <tbody><tr>
-                                  <td width="auto" align="center" valign="middle" height="28" style="border: 1px solid rgb(236, 236, 237); font-size: 18px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(163, 162, 162); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-clip: padding-box;"><span style="font-size: 24px; font-weight: 300; line-height: 24px;"><span style="font-size: 28px; line-height: 28px;">HELLO&nbsp;<span style="font-weight: bold; color: rgb(194, 0, 0); font-size: inherit; line-height: 28px;">JOHN DOE</span>,</span><br style="line-height: 24px;"><span style="font-size: 21px; line-height: 24px;">YOUR FRIEND <span style="font-weight: bold; font-size: inherit; line-height: 24px;">MAX THOMANSON</span> SENT YOU THIS CAR!</span></span></td>
+                                  <td width="auto" align="center" valign="middle" height="28" style="border: 1px solid rgb(236, 236, 237); font-size: 18px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(163, 162, 162); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-clip: padding-box;"><span style="font-size: 24px; font-weight: 300; line-height: 24px;"><span style="font-size: 28px; line-height: 28px;">HELLO&nbsp;<span style="font-weight: bold; color: rgb(194, 0, 0); font-size: inherit; line-height: 28px;">$fname</span>,</span><br style="line-height: 24px;"><span style="font-size: 21px; line-height: 24px;">YOUR FRIEND <span style="font-weight: bold; font-size: inherit; line-height: 24px;">$name</span> SENT YOU THIS CAR!</span></span></td>
                                 </tr>
                               </tbody></table>
                               <!-- end button -->
@@ -666,7 +666,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                 <tbody><tr>
                                   <td valign="top" align="left" class="image-270px">
                                     <a href="#" style="font-size: inherit; text-decoration: none;">
-                                      <img src="$hostnameimg/email_images/20150817001412_bentley.jpg" width="270" alt="" style="max-width: 270px; display: block !important;" border="0" hspace="0" vspace="0">
+                                      <img src="$hostnameimg$path" width="270" alt="" style="max-width: 270px; display: block !important;" border="0" hspace="0" vspace="0">
                                     </a>
                                   </td>
                                 </tr>
@@ -690,7 +690,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                             <td valign="top">
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
                                 <tbody><tr>
-                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-weight: bold; font-size: 20px; line-height: 24px;">BENTLEY CONTINENTAL GT</span><br style="line-height: 24px;"></td>
+                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-weight: bold; font-size: 20px; line-height: 24px;">$make $model</span><br style="line-height: 24px;"></td>
                                 </tr>
                                 <!--start space height -->
                                 <tr>
@@ -698,7 +698,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                 </tr>
                                 <!--end space height -->
                                 <tr>
-                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(0, 0, 0); font-size: 14px; font-weight: 300; line-height: 24px;">MILEAGE: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">999999</span><br style="line-height: 24px;">ENGINE: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">5.0L</span><br style="line-height: 24px;">TRANSMISSION: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">ATUTOMATIC</span><br style="line-height: 24px;">MPG: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">19/25</span><br style="line-height: 24px;">VIN: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">12345YFGHDF34234</span><br style="line-height: 24px;">STOCK: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">1234</span></span></td>
+                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(0, 0, 0); font-size: 14px; font-weight: 300; line-height: 24px;">MILEAGE: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">$mileage</span><br style="line-height: 24px;">ENGINE: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">$engine</span><br style="line-height: 24px;">TRANSMISSION: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">ATUTOMATIC</span><br style="line-height: 24px;">MPG: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">19/25</span><br style="line-height: 24px;">VIN: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">$vin</span><br style="line-height: 24px;">STOCK: <span style="font-weight: bold; font-size: inherit; line-height: 24px;">$stock</span></span></td>
                                 </tr>
                                 <!--start space height -->
                                 <tr>
@@ -713,7 +713,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                         <td valign="top">
                                           <table border="0" align="left" cellpadding="0" cellspacing="0">
                                             <tbody><tr>
-                                              <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><span style="font-size: 16px; font-weight: 300; line-height: 24px;">MORE DETAILS</span><br style="line-height: 24px;"></td>
+                                              <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"> <a href="$urlLink/$vin"><span style="font-size: 16px; font-weight: 300; line-height: 24px;">MORE DETAILS</span></a><br style="line-height: 24px;"></td>
                                               <!-- start space width -->
                                               <td valign="top">
                                                 <table width="20" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -1016,7 +1016,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!-- START LAYOUT-12 -->
         <tbody><tr>
-          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(images/20150816054612_58.jpg); background-color: rgb(236, 235, 235); background-size: cover; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816054612_58.jpg">
+          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816054612_58.jpg); background-color: rgb(236, 235, 235); background-size: cover; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816054612_58.jpg">
             <!-- start container width 600px -->
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" style="background-color: #ffffff; border-bottom:1px solid #c7c7c7; padding-left:20px; padding-right:20px; min-width:600px;">
               <tbody><tr>
@@ -1339,7 +1339,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!-- START LAYOUT-16 -->
         <tbody><tr>
-          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(images/20150816054613_62.jpg); background-color: rgb(236, 235, 235); background-size: cover; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816054613_62.jpg">
+          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816054613_62.jpg); background-color: rgb(236, 235, 235); background-size: cover; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816054613_62.jpg">
             <!-- start  container width 600px -->
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" style="background-color: #ffffff; border-bottom:1px solid #c7c7c7; padding-left:20px; padding-right:20px; min-width:600px;">
               <!--start space height -->
@@ -1423,7 +1423,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!--  START FOOTER COPY RIGHT -->
         <tbody><tr>
-          <td align="center" valign="top" style="background: none no-repeat top center/cover; background-image: url(images/20150816054612_63.jpg); background-attachment: initial; background-color: rgb(208, 93, 104); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816054612_63.jpg">
+          <td align="center" valign="top" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816054612_63.jpg); background-attachment: initial; background-color: rgb(208, 93, 104); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816054612_63.jpg">
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" style="min-width: 600px; padding-left: 20px; padding-right: 20px;">
               <tbody><tr>
                 <td valign="top">

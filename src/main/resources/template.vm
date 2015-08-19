@@ -529,7 +529,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
         <!--START TOP NAVIGATION ​LAYOUT-->
         <tbody><tr>
           <td valign="top">
-            <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="background: none no-repeat top center/cover; background-image: url(images/20150816021401_1.jpeg); background-color: rgb(236, 235, 235); background-size: cover; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_1.jpeg">
+            <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021401_1.jpeg); background-color: rgb(236, 235, 235); background-size: cover; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_1.jpeg">
               <!-- START CONTAINER NAVIGATION -->
               <tbody><tr>
                 <td align="center" valign="top">
@@ -564,7 +564,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                   <td valign="middle" align="center">
                                     <table align="center" border="0" cellpadding="0" cellspacing="0" class="clear-align" style="height:100%;">
                                       <tbody><tr>
-                                        <td style="font-size: 13px; line-height: 18px; color: rgb(163, 162, 162); font-weight: 300; text-align: center; font-family: Roboto, Arial, Helvetica, sans-serif; word-break: break-word;"><span style="font-size: 24px; line-height: 24px;"><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;"><br style="line-height: 24px;"></span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;">LUXURY WITHIN</span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"> <span style="font-weight: bold; color: rgb(194, 0, 0); font-size: inherit; line-height: 24px;">REACH</span></span></span><br style="line-height: 24px;"><br style="line-height: 24px;"></td>
+                                        <td style="font-size: 13px; line-height: 18px; color: rgb(163, 162, 162); font-weight: 300; text-align: center; font-family: Roboto, Arial, Helvetica, sans-serif; word-break: break-word;"><span style="font-size: 24px; line-height: 24px;"><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;"><br style="line-height: 24px;"></span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"><span style="color: rgb(255, 255, 255); font-weight: 300; font-size: inherit; line-height: 24px;">$heading1</span></span><span style="font-weight: 300; font-size: inherit; line-height: 24px;"> <span style="font-weight: bold; color: rgb(194, 0, 0); font-size: inherit; line-height: 24px;">$heading2</span></span></span><br style="line-height: 24px;"><br style="line-height: 24px;"></td>
                                       </tr>
                                     </tbody></table>
                                   </td>
@@ -594,11 +594,11 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!-- START HEIGHT SPACE 20PX LAYOUT-1 -->
         <tbody><tr>
-          <td valign="top" align="center" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(http://glider-autos.com:8080/glivrImg/images/email_images/20150816021401_2.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_2.jpg">
+          <td valign="top" align="center" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021401_2.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_2.jpg">
             <table width="600" height="20" align="center" border="0" cellspacing="0" cellpadding="0" style="min-width: 600px; background-color: rgb(255, 255, 255);" class="full-width">
               <tbody><tr>
                 <td valign="top" height="20">
-                <img src="http://glider-autos.com:8080/glivrImg/images/email_images/space.png" width="20" alt="space" style="max-height: 20px; max-width: 20px; display: block;"> </td>
+                <img src="$hostnameimg/email_images/space.png" width="20" alt="space" style="max-height: 20px; max-width: 20px; display: block;"> </td>
               </tr>
             </tbody></table>
           </td>
@@ -607,7 +607,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!-- START LAYOUT-1/1 -->
         <tbody><tr>
-          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(http://glider-autos.com:8080/glivrImg/images/email_images/20150816021401_3.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_3.jpg">
+          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021401_3.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_3.jpg">
             <!-- start  container width 600px -->
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" style="background-color: #ffffff; padding-left:20px; padding-right:20px; min-width:600px;">
               <tbody><tr>
@@ -645,7 +645,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!--START IMAGE HEADER LAYOUT-->
         <tbody><tr>
-          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(images/20150816021401_4.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_4.jpg">
+          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021401_4.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_4.jpg">
             <!-- start HEADER LAYOUT-container width 600px -->
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="full-width" syle="background-color:#ffffff min-width:600px;" style="background-color: rgb(236, 235, 235);">
               <tbody><tr>
@@ -661,11 +661,11 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!-- START HEIGHT SPACE 20PX LAYOUT-1 -->
         <tbody><tr>
-          <td valign="top" align="center" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(http://glider-autos.com:8080/glivrImg/images/email_images/20150816021401_5.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_5.jpg">
+          <td valign="top" align="center" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021401_5.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021401_5.jpg">
             <table width="600" height="20" align="center" border="0" cellspacing="0" cellpadding="0" style="background-color: #ffffff; min-width:600px;" class="full-width">
               <tbody><tr>
                 <td valign="top" height="20">
-                <img src="http://glider-autos.com:8080/glivrImg/images/email_images/space.png" width="20" alt="space" style="max-height: 20px; max-width: 20px; display: block;"> </td>
+                <img src="$hostnameimg/email_images/space.png" width="20" alt="space" style="max-height: 20px; max-width: 20px; display: block;"> </td>
               </tr>
             </tbody></table>
           </td>
@@ -674,7 +674,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!-- START LAYOUT-1/2 -->
         <tbody><tr>
-          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(http://glider-autos.com:8080/glivrImg/images/email_images/20150816021400_6.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021400_6.jpg">
+          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021400_6.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021400_6.jpg">
             <!-- start  container width 600px -->
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" style="background-color: #ffffff; padding-left:20px; padding-right:20px; min-width:600px;">
               <tbody><tr>
@@ -752,7 +752,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!-- START LAYOUT-14 -->
         <tbody><tr>
-          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url(http://glider-autos.com:8080/glivrImg/images/email_images/20150816021400_7.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021400_7.jpg">
+          <td align="center" valign="top" class="fix-box" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021400_7.jpg); background-attachment: initial; background-color: rgb(236, 235, 235); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021400_7.jpg">
             <!-- start  container width 600px -->
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(199, 199, 199); padding-left: 20px; padding-right: 20px; min-width: 600px; background-color: rgb(255, 255, 255);">
               <tbody><tr>
@@ -776,7 +776,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                 <tbody><tr>
                                   <td valign="top" align="left" style="padding-right: 20px;">
                                     
-                                      <img src="http://glider-autos.com:8080/glivrImg/images/email_images/20150816013630_car.jpeg" width="69" alt="" style="max-width: 69px; display: block;" border="0" hspace="0" vspace="0">
+                                      <img src="$hostnameimg/email_images/20150816013630_car.jpeg" width="69" alt="" style="max-width: 69px; display: block;" border="0" hspace="0" vspace="0">
                                     
                                   </td>
                                   <td valign="top">
@@ -816,7 +816,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                 <tbody><tr>
                                   <td valign="top" align="left" style="padding-right: 20px;">
                                     
-                                      <img src="http://glider-autos.com:8080/glivrImg/images/email_images/face1.png" width="69" alt="" style="max-width: 69px; display: block;" border="0" hspace="0" vspace="0">
+                                      <img src="$hostnameimg/email_images/face1.png" width="69" alt="" style="max-width: 69px; display: block;" border="0" hspace="0" vspace="0">
                                     
                                   </td>
                                   <td valign="top">
@@ -861,7 +861,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
       </tbody>
         <!--  START FOOTER COPY RIGHT -->
         <tbody><tr>
-          <td align="center" valign="top" style="background: none no-repeat top center/cover; background-image: url(http://glider-autos.com:8080/glivrImg/images/email_images/20150816021400_8.jpg); background-attachment: initial; background-color: rgb(208, 93, 104); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021400_8.jpg">
+          <td align="center" valign="top" style="background: none no-repeat top center/cover; background-image: url($hostnameimg/email_images/20150816021400_8.jpg); background-attachment: initial; background-color: rgb(208, 93, 104); background-size: cover; background-origin: initial; background-clip: initial; background-position: 50% 0%, 50% 50%; background-repeat: no-repeat;" background="http://mailbuild.rookiewebstudio.com/customers/fyG9M92m/user_upload/20150816021400_8.jpg">
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" style="min-width: 600px; padding-left: 20px; padding-right: 20px;">
               <tbody><tr>
                 <td valign="top">

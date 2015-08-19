@@ -698,6 +698,16 @@ public class ClientService {
 		
 		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		
+		String heading1 = "",heading2 = "";
+		String heading = (String) headingtext.get(0).get("heading");
+		if(heading != null) {
+	        int index= heading.lastIndexOf(" ");
+	        heading1 = heading.substring(0, index);
+	        heading2 = heading.substring(index+1);
+		}
+		
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -745,6 +755,8 @@ public class ClientService {
 	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
+	        context.put("heading1", heading1);
+	        context.put("heading2", heading2);
 	        context.put("urlLink", hostUrl);
 	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
@@ -801,6 +813,16 @@ public class ClientService {
 		
 		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		
+		String heading1 = "",heading2 = "";
+		String heading = (String) headingtext.get(0).get("heading");
+		if(heading != null) {
+	        int index= heading.lastIndexOf(" ");
+	        heading1 = heading.substring(0, index);
+	        heading2 = heading.substring(index+1);
+		}
+		
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -850,6 +872,8 @@ public class ClientService {
 	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
+	        context.put("heading1", heading1);
+	        context.put("heading2", heading2);
 	        context.put("urlLink", hostUrl);
 	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
@@ -899,6 +923,16 @@ public class ClientService {
 			logo.logoPath = (String) map.get("logo_image_path");
 			logo.faviconPath = (String) map.get("favicon_image_path");
 			logo.tabText = (String) map.get("tab_text");
+		}
+		
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		
+		String heading1 = "",heading2 = "";
+		String heading = (String) headingtext.get(0).get("heading");
+		if(heading != null) {
+	        int index= heading.lastIndexOf(" ");
+	        heading1 = heading.substring(0, index);
+	        heading2 = heading.substring(index+1);
 		}
 		
 		final String username = emailusername;
@@ -953,6 +987,8 @@ public class ClientService {
 	        
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
+	        context.put("heading1", heading1);
+	        context.put("heading2", heading2);
 	        context.put("urlLink", hostUrl);
 	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
@@ -1025,6 +1061,16 @@ public class ClientService {
 		
 		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		
+		String heading1 = "",heading2 = "";
+		String heading = (String) headingtext.get(0).get("heading");
+		if(heading != null) {
+	        int index= heading.lastIndexOf(" ");
+	        heading1 = heading.substring(0, index);
+	        heading2 = heading.substring(index+1);
+		}
+		
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -1067,6 +1113,16 @@ public class ClientService {
 	        context.put("last_name", model.getLast_name());
 	        context.put("work_phone", model.getWork_phone());
 	        context.put("email", model.getEmail());
+	        
+	        context.put("year", (String) oneRow.get(0).get("year"));
+	        context.put("make", (String) oneRow.get(0).get("make"));
+	        context.put("model", (String) oneRow.get(0).get("model"));
+	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
+	        context.put("vin", (String) oneRow.get(0).get("vin"));
+	        context.put("stock", (String) oneRow.get(0).get("stock"));
+	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        
+	        
 	        if(model.getPreferred() != null){
 	        	context.put("preferred", model.getPreferred());
 	        }else{
@@ -1080,19 +1136,19 @@ public class ClientService {
 	        
 	        System.out.println(model.getYear());
 	        if(model.getYear() != null){
-	        	context.put("year", model.getYear());
+	        	context.put("yearValue", model.getYear());
 	        }else{
-	        	context.put("year", "");
+	        	context.put("yearValue", "");
 	        }
 	        if(model.getMake() != null){
-	        	context.put("make", model.getMake());
+	        	context.put("makeValue", model.getMake());
 	        }else{
-	        	context.put("make", "");
+	        	context.put("makeValue", "");
 	        }
 	        if(model.getModel() != null){
-	        	context.put("model", model.getModel());
+	        	context.put("modelValue", model.getModel());
 	        }else{
-	        	context.put("model", "");
+	        	context.put("modelValue", "");
 	        }
 	        if(model.getExterior_colour() != null){
 	        	context.put("exterior_colour", model.getExterior_colour());
@@ -1258,10 +1314,10 @@ public class ClientService {
 	        }
 	        
 	        
-	        
-	        
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
+	        context.put("heading1", heading1);
+	        context.put("heading2", heading2);
 	        context.put("urlLink", hostUrl);
 	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
@@ -2059,6 +2115,16 @@ public class ClientService {
 		
 		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		
+		String heading1 = "",heading2 = "";
+		String heading = (String) headingtext.get(0).get("heading");
+		if(heading != null) {
+	        int index= heading.lastIndexOf(" ");
+	        heading1 = heading.substring(0, index);
+	        heading2 = heading.substring(index+1);
+		}
+				
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -2099,6 +2165,8 @@ public class ClientService {
 	        context.put("msg", request.getMessage());
 	        context.put("number", request.getNumber());
 	        context.put("sitelogo", logo);
+	        context.put("heading1", heading1);
+	        context.put("heading2", heading2);
 	        context.put("urlLink", hostUrl);
 	        context.put("hostnameimg",  hostnameimg);
 	        
