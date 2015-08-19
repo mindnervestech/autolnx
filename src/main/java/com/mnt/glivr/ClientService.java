@@ -75,8 +75,7 @@ public class ClientService {
 	@Value("${hostnameimg}")
 	String hostnameimg;
 	
-	@Value("${saveimgpath}")
-	String saveimgpath;
+	
 	
 	
 	@Autowired
