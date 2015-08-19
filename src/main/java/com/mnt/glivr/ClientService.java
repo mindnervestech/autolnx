@@ -1,5 +1,8 @@
 package com.mnt.glivr;
 
+import java.awt.Color;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.StringWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -33,6 +36,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.mnt.views.BlogVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
@@ -59,6 +75,10 @@ public class ClientService {
 	@Value("${hostnameimg}")
 	String hostnameimg;
 	
+	@Value("${saveimgpath}")
+	String saveimgpath;
+	
+	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
@@ -66,7 +86,9 @@ public class ClientService {
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
 		List<SliderVM> sliderUrls = new ArrayList<SliderVM>();
-		List<Map<String, Object>> descriptionRows = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"'");
+		List<Map<String, Object>> descriptionOne = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"' and slider_number = 1");
+		List<Map<String, Object>> descriptionTwo = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"' and slider_number = 2");
+		List<Map<String, Object>> descriptionThree = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"' and slider_number = 3");
 		int count = 0;
 		for(Map map : rows) {
 			SliderVM vm = new SliderVM();
@@ -76,8 +98,7 @@ public class ClientService {
 			
 			if(count == 0) {
 				String firstDesc = "";
-				if(descriptionRows.size() >= 1) {
-					firstDesc = (String) descriptionRows.get(0).get("description");
+					firstDesc = (String) descriptionOne.get(0).get("description");
 					if(firstDesc != null) {
 						if(firstDesc.contains(" ")) {
 							
@@ -119,13 +140,12 @@ public class ClientService {
 							vm.slider11 = firstDesc;
 						}
 					}
-				}
+				
 			}
 			
 			if(count == 1) {
 				String secondDesc = "";
-				if(descriptionRows.size() >= 2) {
-					secondDesc = (String) descriptionRows.get(1).get("description");
+					secondDesc = (String) descriptionTwo.get(0).get("description");
 					if(secondDesc != null) {
 						if(secondDesc.contains(" ")) {
 							String image2[] = secondDesc.split(" ");
@@ -170,13 +190,12 @@ public class ClientService {
 							vm.slider21 = secondDesc;
 						}
 					}
-				}
+				
 			}
 			
 			if(count == 2) {
 				String thirdDesc = "";
-				if(descriptionRows.size() >= 3) {
-					thirdDesc = (String) descriptionRows.get(2).get("description");
+					thirdDesc = (String) descriptionThree.get(0).get("description");
 					if(thirdDesc != null) {
 						if(thirdDesc.contains(" ")) {
 							String image3[] = thirdDesc.split(" ");
@@ -221,7 +240,7 @@ public class ClientService {
 							vm.slider31 = thirdDesc;
 						}
 					}
-				}
+				
 			}
 			
 			sliderUrls.add(vm);
@@ -1263,6 +1282,605 @@ public class ClientService {
 		{
 			e.printStackTrace();
 		} 
+		
+		
+		try {
+            Document document = new Document();
+           // String fileName = saveimgpath+ File.separator + "FourthTuto.pdf";
+            PdfWriter pdfWriter = 
+            PdfWriter.getInstance(document, new FileOutputStream("FourthTuto.pdf"));
+             
+            // Properties
+            document.addAuthor("Celinio");
+            document.addCreator("Celinio");
+            document.addSubject("iText with Maven");
+                        document.addTitle("Fourth tutorial");
+                        document.addKeywords("iText, Maven, Java");
+             
+            document.open();
+             
+           /* Chunk chunk = new Chunk("Fourth tutorial");*/
+                        Font font = new Font();
+                        font.setStyle(Font.UNDERLINE);
+                        font.setStyle(Font.ITALIC);
+                       /* chunk.setFont(font);*/
+                      //  chunk.setBackground(Color.BLACK);
+                       /* document.add(chunk);*/
+                        
+                        Font font1 = new Font(FontFamily.HELVETICA, 8, Font.NORMAL,
+            					BaseColor.BLACK);
+            			Font font2 = new Font(FontFamily.HELVETICA, 8, Font.BOLD,
+            					BaseColor.BLACK);            
+            			
+            			
+            			
+            			PdfPTable Titlemain = new PdfPTable(1);
+            			Titlemain.setWidthPercentage(100);
+            			float[] TitlemainWidth = {2f};
+            			Titlemain.setWidths(TitlemainWidth);
+            			
+            			PdfPCell title = new PdfPCell(new Phrase("Trade-IN Appraisal"));
+            			title.setBorderColor(BaseColor.WHITE);
+            			title.setBackgroundColor(new BaseColor(255, 255, 255));
+            			Titlemain.addCell(title);
+            			
+            			PdfPTable contactInfo = new PdfPTable(4);
+            			contactInfo.setWidthPercentage(100);
+            			float[] contactInfoWidth = {2f,2f,2f,2f};
+            			contactInfo.setWidths(contactInfoWidth);
+            			
+            			PdfPCell firstname = new PdfPCell(new Phrase("First Name:",font1));
+            			firstname.setBorderColor(BaseColor.WHITE);
+            			firstname.setBackgroundColor(new BaseColor(255, 255, 255));
+            			contactInfo.addCell(firstname);
+            			            			
+            			PdfPCell firstnameValue = new PdfPCell(new Paragraph(model.getFirst_name(),font2));
+            			firstnameValue.setBorderColor(BaseColor.WHITE);
+            			firstnameValue.setBorderWidth(1f);
+            			firstnameValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			contactInfo.addCell(firstnameValue);
+            			
+            			PdfPCell lastname = new PdfPCell(new Phrase("Last Name:",font1));
+            			lastname.setBorderColor(BaseColor.WHITE);
+            			contactInfo.addCell(lastname);
+            			            			
+            			PdfPCell lastnameValue = new PdfPCell(new Paragraph(model.getLast_name(),font2));
+            			lastnameValue.setBorderColor(BaseColor.WHITE);
+            			lastnameValue.setBorderWidth(1f);
+            			lastnameValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			contactInfo.addCell(lastnameValue);
+            			
+            			PdfPCell workPhone = new PdfPCell(new Phrase("Work Phone:",font1));
+            			workPhone.setBorderColor(BaseColor.WHITE);
+            			contactInfo.addCell(workPhone);
+            			            			
+            			PdfPCell workPhoneValue = new PdfPCell(new Paragraph(model.getWork_phone(),font2));
+            			workPhoneValue.setBorderColor(BaseColor.WHITE);
+            			workPhoneValue.setBorderWidth(1f);
+            			workPhoneValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			contactInfo.addCell(workPhoneValue);
+            			
+            			PdfPCell phone = new PdfPCell(new Phrase("Phone:",font1));
+            			phone.setBorderColor(BaseColor.WHITE);
+            			contactInfo.addCell(phone);
+            			            			
+            			PdfPCell phoneValue = new PdfPCell(new Paragraph(model.getPhone(),font2));
+            			phoneValue.setBorderColor(BaseColor.WHITE);
+            			phoneValue.setBorderWidth(1f);
+            			phoneValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			contactInfo.addCell(phoneValue);
+            			
+            			PdfPCell email = new PdfPCell(new Phrase("Email",font1));
+            			email.setBorderColor(BaseColor.WHITE);
+            			contactInfo.addCell(email);
+            			            			
+            			PdfPCell emailValue = new PdfPCell(new Paragraph(model.getEmail(),font2));
+            			emailValue.setBorderColor(BaseColor.WHITE);
+            			emailValue.setBorderWidth(1f);
+            			emailValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			contactInfo.addCell(emailValue);
+            			
+            			PdfPCell options = new PdfPCell(new Phrase("Options:",font1));
+            			options.setBorderColor(BaseColor.WHITE);
+            			contactInfo.addCell(options);
+            			            			
+            			PdfPCell optionsValue = new PdfPCell(new Paragraph(optionValue,font2));
+            			optionsValue.setBorderColor(BaseColor.WHITE);
+            			optionsValue.setBorderWidth(1f);
+            			optionsValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			contactInfo.addCell(optionsValue);
+            			
+            			//--------------Vehicle Information
+            			
+            			PdfPTable vehicleInformationTitle = new PdfPTable(1);
+            			vehicleInformationTitle.setWidthPercentage(100);
+            			float[] vehicleInformationTitleWidth = {2f};
+            			vehicleInformationTitle.setWidths(vehicleInformationTitleWidth);
+            			
+            			PdfPCell vehicleInformationTitleValue = new PdfPCell(new Phrase("Vehicle Information"));
+            			vehicleInformationTitleValue.setBorderColor(BaseColor.WHITE);
+            			vehicleInformationTitleValue.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleInformationTitle.addCell(vehicleInformationTitleValue);
+            			
+            			//------------vehicle info data
+            			
+            			PdfPTable vehicleInformation = new PdfPTable(4);
+            			vehicleInformation.setWidthPercentage(100);
+            			float[] vehicleInformationWidth = {2f,2f,2f,2f};
+            			vehicleInformation.setWidths(vehicleInformationWidth);
+            			
+            			PdfPCell year = new PdfPCell(new Phrase("Year:",font1));
+            			year.setBorderColor(BaseColor.WHITE);
+            			year.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleInformation.addCell(year);
+            			            			
+            			PdfPCell yearValue = new PdfPCell(new Paragraph(model.getYear(),font2));
+            			yearValue.setBorderColor(BaseColor.WHITE);
+            			yearValue.setBorderWidth(1f);
+            			yearValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(yearValue);
+            			
+            			PdfPCell make = new PdfPCell(new Phrase("Make:",font1));
+            			make.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(make);
+            			            			
+            			PdfPCell makeValue = new PdfPCell(new Paragraph(model.getMake(),font2));
+            			makeValue.setBorderColor(BaseColor.WHITE);
+            			makeValue.setBorderWidth(1f);
+            			makeValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(makeValue);
+            			
+            			PdfPCell Model = new PdfPCell(new Phrase("Model:",font1));
+            			Model.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(Model);
+            			            			
+            			PdfPCell modelValue = new PdfPCell(new Paragraph(model.getModel(),font2));
+            			modelValue.setBorderColor(BaseColor.WHITE);
+            			modelValue.setBorderWidth(1f);
+            			modelValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(modelValue);
+            			
+            			PdfPCell exteriorColour = new PdfPCell(new Phrase("exteriorColour:",font1));
+            			exteriorColour.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(exteriorColour);
+            			            			
+            			PdfPCell exteriorColourValue = new PdfPCell(new Paragraph(model.getExterior_colour(),font2));
+            			exteriorColourValue.setBorderColor(BaseColor.WHITE);
+            			exteriorColourValue.setBorderWidth(1f);
+            			exteriorColourValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(exteriorColourValue);
+            			
+            			PdfPCell vin = new PdfPCell(new Phrase("VIN:",font1));
+            			vin.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(vin);
+            			            			
+            			PdfPCell vinValue = new PdfPCell(new Paragraph(model.getVin(),font2));
+            			vinValue.setBorderColor(BaseColor.WHITE);
+            			vinValue.setBorderWidth(1f);
+            			vinValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(vinValue);
+            			
+            			PdfPCell kilometres = new PdfPCell(new Phrase("Kilometres:",font1));
+            			kilometres.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(kilometres);
+            			            			
+            			PdfPCell kilometresValue = new PdfPCell(new Paragraph(model.getKilometres(),font2));
+            			kilometresValue.setBorderColor(BaseColor.WHITE);
+            			kilometresValue.setBorderWidth(1f);
+            			kilometresValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(kilometresValue);
+            			
+            			PdfPCell engine = new PdfPCell(new Phrase("Engine:",font1));
+            			engine.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(engine);
+            			            			
+            			PdfPCell engineValue = new PdfPCell(new Paragraph(model.getEngine(),font2));
+            			engineValue.setBorderColor(BaseColor.WHITE);
+            			engineValue.setBorderWidth(1f);
+            			engineValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(engineValue);
+            			
+            			PdfPCell doors = new PdfPCell(new Phrase("Doors:",font1));
+            			doors.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(doors);
+            			            			
+            			PdfPCell doorsValue = new PdfPCell(new Paragraph(model.getDoors(),font2));
+            			doorsValue.setBorderColor(BaseColor.WHITE);
+            			doorsValue.setBorderWidth(1f);
+            			doorsValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(doorsValue);
+            			
+            			PdfPCell transmission = new PdfPCell(new Phrase("Transmission:",font1));
+            			transmission.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(transmission);
+            			            			
+            			PdfPCell transmissionValue = new PdfPCell(new Paragraph(model.getTransmission(),font2));
+            			transmissionValue.setBorderColor(BaseColor.WHITE);
+            			transmissionValue.setBorderWidth(1f);
+            			transmissionValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(transmissionValue);
+            			
+            			PdfPCell drivetrain = new PdfPCell(new Phrase("Drivetrain:",font1));
+            			drivetrain.setBorderColor(BaseColor.WHITE);
+            			vehicleInformation.addCell(drivetrain);
+            			            			
+            			PdfPCell drivetrainValue = new PdfPCell(new Paragraph(model.getDrivetrain(),font2));
+            			drivetrainValue.setBorderColor(BaseColor.WHITE);
+            			drivetrainValue.setBorderWidth(1f);
+            			drivetrainValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleInformation.addCell(drivetrainValue);
+            			
+            			//----------------Vehicle Rating title----
+            			
+            			PdfPTable vehicleRatingTitle = new PdfPTable(1);
+            			vehicleRatingTitle.setWidthPercentage(100);
+            			float[] vehicleRatingTitleWidth = {2f};
+            			vehicleRatingTitle.setWidths(vehicleRatingTitleWidth);
+            			
+            			PdfPCell vehicleRatingTitleValue = new PdfPCell(new Phrase("Vehicle Rating"));
+            			vehicleRatingTitleValue.setBorderColor(BaseColor.WHITE);
+            			vehicleRatingTitleValue.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingTitle.addCell(vehicleRatingTitleValue);
+            			
+            			//------------Vehicle Rating data
+            			
+            			PdfPTable vehicleRatingData = new PdfPTable(4);
+            			vehicleRatingData.setWidthPercentage(100);
+            			float[] vehicleRatingDataWidth = {2f,2f,2f,2f};
+            			vehicleRatingData.setWidths(vehicleRatingDataWidth);
+            			
+            			PdfPCell body = new PdfPCell(new Phrase("Body :",font1));
+            			body.setBorderColor(BaseColor.WHITE);
+            			body.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingData.addCell(body);
+            			            			
+            			PdfPCell bodyValue = new PdfPCell(new Paragraph(model.getBody_rating(),font2));
+            			bodyValue.setBorderColor(BaseColor.WHITE);
+            			bodyValue.setBorderWidth(1f);
+            			bodyValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleRatingData.addCell(bodyValue);
+            			
+            			PdfPCell tires = new PdfPCell(new Phrase("Tires :",font1));
+            			tires.setBorderColor(BaseColor.WHITE);
+            			tires.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingData.addCell(tires);
+            			            			
+            			PdfPCell tiresValue = new PdfPCell(new Paragraph(model.getTire_rating(),font2));
+            			tiresValue.setBorderColor(BaseColor.WHITE);
+            			tiresValue.setBorderWidth(1f);
+            			tiresValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleRatingData.addCell(tiresValue);
+            			
+            			PdfPCell engineRate = new PdfPCell(new Phrase("Engine :",font1));
+            			engineRate.setBorderColor(BaseColor.WHITE);
+            			engineRate.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingData.addCell(engineRate);
+            			            			
+            			PdfPCell engineRateValue = new PdfPCell(new Paragraph(model.getEngine_rating(),font2));
+            			engineRateValue.setBorderColor(BaseColor.WHITE);
+            			engineRateValue.setBorderWidth(1f);
+            			engineRateValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleRatingData.addCell(engineRateValue);
+            			
+            			PdfPCell transmissionRate = new PdfPCell(new Phrase("Transmission :",font1));
+            			transmissionRate.setBorderColor(BaseColor.WHITE);
+            			transmissionRate.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingData.addCell(transmissionRate);
+            			            			
+            			PdfPCell transmissionRateValue = new PdfPCell(new Paragraph(model.getTransmission_rating(),font2));
+            			transmissionRateValue.setBorderColor(BaseColor.WHITE);
+            			transmissionRateValue.setBorderWidth(1f);
+            			transmissionRateValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleRatingData.addCell(transmissionRateValue);
+            			
+            			PdfPCell glass = new PdfPCell(new Phrase("Glass :",font1));
+            			glass.setBorderColor(BaseColor.WHITE);
+            			glass.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingData.addCell(glass);
+            			            			
+            			PdfPCell glassValue = new PdfPCell(new Paragraph(model.getGlass_rating(),font2));
+            			glassValue.setBorderColor(BaseColor.WHITE);
+            			glassValue.setBorderWidth(1f);
+            			glassValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleRatingData.addCell(glassValue);
+            			
+            			PdfPCell interior = new PdfPCell(new Phrase("Interior :",font1));
+            			interior.setBorderColor(BaseColor.WHITE);
+            			interior.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingData.addCell(interior);
+            			            			
+            			PdfPCell interiorValue = new PdfPCell(new Paragraph(model.getInterior_rating(),font2));
+            			interiorValue.setBorderColor(BaseColor.WHITE);
+            			interiorValue.setBorderWidth(1f);
+            			interiorValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleRatingData.addCell(interiorValue);
+            			
+            			PdfPCell exhaust = new PdfPCell(new Phrase("Exhaust :",font1));
+            			exhaust.setBorderColor(BaseColor.WHITE);
+            			exhaust.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleRatingData.addCell(exhaust);
+            			            			
+            			PdfPCell exhaustValue = new PdfPCell(new Paragraph(model.getExhaust_rating(),font2));
+            			exhaustValue.setBorderColor(BaseColor.WHITE);
+            			exhaustValue.setBorderWidth(1f);
+            			exhaustValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleRatingData.addCell(exhaustValue);
+            			
+//					----------------Vehicle History title----
+            			
+            			PdfPTable vehiclehistoryTitle = new PdfPTable(1);
+            			vehiclehistoryTitle.setWidthPercentage(100);
+            			float[] vehiclehistoryTitleWidth = {2f};
+            			vehiclehistoryTitle.setWidths(vehiclehistoryTitleWidth);
+            			
+            			PdfPCell vehiclehistoryValue = new PdfPCell(new Phrase("Vehicle History"));
+            			vehiclehistoryValue.setBorderColor(BaseColor.WHITE);
+            			vehiclehistoryValue.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehiclehistoryTitle.addCell(vehiclehistoryValue);
+            			
+            			//------------Vehicle History data
+            			
+            			PdfPTable vehicleHistoryData = new PdfPTable(4);
+            			vehicleHistoryData.setWidthPercentage(100);
+            			float[] vehicleHistoryDataWidth = {2f,2f,2f,2f};
+            			vehicleHistoryData.setWidths(vehicleHistoryDataWidth);
+            			
+            			PdfPCell rentalReturn = new PdfPCell(new Phrase("Was it ever a lease or rental return?  :",font1));
+            			rentalReturn.setBorderColor(BaseColor.WHITE);
+            			rentalReturn.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleHistoryData.addCell(rentalReturn);
+            			            			
+            			PdfPCell rentalReturnValue = new PdfPCell(new Paragraph(model.getRental_return(),font2));
+            			rentalReturnValue.setBorderColor(BaseColor.WHITE);
+            			rentalReturnValue.setBorderWidth(1f);
+            			rentalReturnValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleHistoryData.addCell(rentalReturnValue); 
+            			
+            			PdfPCell operationalAndaccu = new PdfPCell(new Phrase("Is the odometer operational and accurate?  :",font1));
+            			operationalAndaccu.setBorderColor(BaseColor.WHITE);
+            			operationalAndaccu.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleHistoryData.addCell(operationalAndaccu);
+            			            			
+            			PdfPCell operationalAndaccuValue = new PdfPCell(new Paragraph(model.getOdometer_accurate(),font2));
+            			operationalAndaccuValue.setBorderColor(BaseColor.WHITE);
+            			operationalAndaccuValue.setBorderWidth(1f);
+            			operationalAndaccuValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleHistoryData.addCell(operationalAndaccuValue); 
+            			
+            			PdfPCell serviceRecodes = new PdfPCell(new Phrase("Detailed service records available?   :",font1));
+            			serviceRecodes.setBorderColor(BaseColor.WHITE);
+            			serviceRecodes.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleHistoryData.addCell(serviceRecodes);
+            			            			
+            			PdfPCell serviceRecodesValue = new PdfPCell(new Paragraph(model.getService_records(),font2));
+            			serviceRecodesValue.setBorderColor(BaseColor.WHITE);
+            			serviceRecodesValue.setBorderWidth(1f);
+            			serviceRecodesValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleHistoryData.addCell(serviceRecodesValue); 
+            			
+            			
+            			//----------------Title History title----
+            			
+            			PdfPTable historyTitle = new PdfPTable(1);
+            			historyTitle.setWidthPercentage(100);
+            			float[] historyTitleWidth = {2f};
+            			historyTitle.setWidths(historyTitleWidth);
+            			
+            			PdfPCell historyTitleValue = new PdfPCell(new Phrase("Title History"));
+            			historyTitleValue.setBorderColor(BaseColor.WHITE);
+            			historyTitleValue.setBackgroundColor(new BaseColor(255, 255, 255));
+            			historyTitle.addCell(historyTitleValue);
+            			
+            			//------------Title History data
+            			
+            			PdfPTable historyTitleData = new PdfPTable(2);
+            			historyTitleData.setWidthPercentage(100);
+            			float[] historyTitleDataWidth = {2f,2f};
+            			historyTitleData.setWidths(historyTitleDataWidth);
+            			
+            			PdfPCell lineholder = new PdfPCell(new Phrase("Is there a lineholder? :",font1));
+            			lineholder.setBorderColor(BaseColor.WHITE);
+            			lineholder.setBackgroundColor(new BaseColor(255, 255, 255));
+            			historyTitleData.addCell(lineholder);
+            			            			
+            			PdfPCell lineholderValue = new PdfPCell(new Paragraph(model.getLienholder(),font2));
+            			lineholderValue.setBorderColor(BaseColor.WHITE);
+            			lineholderValue.setBorderWidth(1f);
+            			lineholderValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			historyTitleData.addCell(lineholderValue);
+            			
+            			PdfPCell titleholder = new PdfPCell(new Phrase("Who holds this title?  :",font1));
+            			titleholder.setBorderColor(BaseColor.WHITE);
+            			titleholder.setBackgroundColor(new BaseColor(255, 255, 255));
+            			historyTitleData.addCell(titleholder);
+            			            			
+            			PdfPCell titleholderValue = new PdfPCell(new Paragraph(model.getTitleholder(),font2));
+            			titleholderValue.setBorderColor(BaseColor.WHITE);
+            			titleholderValue.setBorderWidth(1f);
+            			titleholderValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			historyTitleData.addCell(titleholderValue);
+            			
+            			
+            			//----------------Vehicle Assessment title----
+            			
+            			PdfPTable vehicleAssessmentTitle = new PdfPTable(1);
+            			vehicleAssessmentTitle.setWidthPercentage(100);
+            			float[] vehicleAssessmentTitleWidth = {2f};
+            			vehicleAssessmentTitle.setWidths(vehiclehistoryTitleWidth);
+            			
+            			PdfPCell vehiclTitle = new PdfPCell(new Phrase("Vehicle Assessment"));
+            			vehiclTitle.setBorderColor(BaseColor.WHITE);
+            			vehiclTitle.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleAssessmentTitle.addCell(vehiclTitle);
+            			
+            			//------------Vehicle Assessment data
+            			
+            			PdfPTable vehicleAssessmentData = new PdfPTable(1);
+            			vehicleAssessmentData.setWidthPercentage(100);
+            			float[] vehicleAssessmentDataWidth = {2f};
+            			vehicleAssessmentData.setWidths(vehicleAssessmentDataWidth);
+            			
+            			PdfPCell equipment = new PdfPCell(new Phrase("Does all equipment and accessories work correctly? :",font1));
+            			equipment.setBorderColor(BaseColor.WHITE);
+            			equipment.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleAssessmentData.addCell(rentalReturn);
+            			            			
+            			PdfPCell equipmentValue = new PdfPCell(new Paragraph(model.getEquipment(),font2));
+            			equipmentValue.setBorderColor(BaseColor.WHITE);
+            			equipmentValue.setBorderWidth(1f);
+            			equipmentValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleAssessmentData.addCell(equipmentValue); 
+            			
+            			PdfPCell buyVehicle = new PdfPCell(new Phrase("Did you buy the vehicle new? :",font1));
+            			buyVehicle.setBorderColor(BaseColor.WHITE);
+            			buyVehicle.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleAssessmentData.addCell(buyVehicle);
+            			            			
+            			PdfPCell buyVehicleValue = new PdfPCell(new Paragraph(model.getVehiclenew(),font2));
+            			buyVehicleValue.setBorderColor(BaseColor.WHITE);
+            			buyVehicleValue.setBorderWidth(1f);
+            			buyVehicleValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleAssessmentData.addCell(buyVehicleValue); 
+            			
+            			PdfPCell accidents = new PdfPCell(new Phrase("Has the vehicle ever been in any accidents? Cost of repairs? :",font1));
+            			accidents.setBorderColor(BaseColor.WHITE);
+            			accidents.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleAssessmentData.addCell(accidents);
+            			            			
+            			PdfPCell accidentsValue = new PdfPCell(new Paragraph(model.getAccidents(),font2));
+            			accidentsValue.setBorderColor(BaseColor.WHITE);
+            			accidentsValue.setBorderWidth(1f);
+            			accidentsValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleAssessmentData.addCell(accidentsValue); 
+            			
+            			PdfPCell damage = new PdfPCell(new Phrase("Is there existing damage on the vehicle? Where? :",font1));
+            			damage.setBorderColor(BaseColor.WHITE);
+            			damage.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleAssessmentData.addCell(damage);
+            			            			
+            			PdfPCell damageValue = new PdfPCell(new Paragraph(model.getDamage(),font2));
+            			damageValue.setBorderColor(BaseColor.WHITE);
+            			damageValue.setBorderWidth(1f);
+            			damageValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleAssessmentData.addCell(damageValue);
+            			
+            			PdfPCell paintWork = new PdfPCell(new Phrase("Has the vehicle ever had paint work performed? :",font1));
+            			paintWork.setBorderColor(BaseColor.WHITE);
+            			paintWork.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleAssessmentData.addCell(paintWork);
+            			            			
+            			PdfPCell paintWorkValue = new PdfPCell(new Paragraph(model.getPaint(),font2));
+            			paintWorkValue.setBorderColor(BaseColor.WHITE);
+            			paintWorkValue.setBorderWidth(1f);
+            			paintWorkValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleAssessmentData.addCell(paintWorkValue);
+            			
+            			PdfPCell salvage = new PdfPCell(new Phrase("Is the title designated 'Salvage' or 'Reconstructed'? Any other? :",font1));
+            			salvage.setBorderColor(BaseColor.WHITE);
+            			salvage.setBackgroundColor(new BaseColor(255, 255, 255));
+            			vehicleAssessmentData.addCell(salvage);
+            			            			
+            			PdfPCell salvageValue = new PdfPCell(new Paragraph(model.getSalvage(),font2));
+            			salvageValue.setBorderColor(BaseColor.WHITE);
+            			salvageValue.setBorderWidth(1f);
+            			salvageValue.setHorizontalAlignment(Element.ALIGN_CENTER);
+            			vehicleAssessmentData.addCell(salvageValue);
+            		
+            			
+            			
+            			//----------sub main Table----------	
+            			
+            			PdfPTable AddAllTableInMainTable = new PdfPTable(1);
+            			AddAllTableInMainTable.setWidthPercentage(100);
+            			float[] AddAllTableInMainTableWidth = {2f};
+            			AddAllTableInMainTable.setWidths(AddAllTableInMainTableWidth);
+            		
+            			PdfPCell hotelVoucherTitlemain1 = new PdfPCell(Titlemain);
+            			hotelVoucherTitlemain1.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(hotelVoucherTitlemain1);
+            			
+            			PdfPCell contactInfoData = new PdfPCell(contactInfo);
+            			contactInfoData.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(contactInfoData);
+            			
+            			PdfPCell vehicaleInfoTitle = new PdfPCell(vehicleInformationTitle);
+            			vehicaleInfoTitle.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicaleInfoTitle);
+            			
+            			PdfPCell vehicaleInfoData = new PdfPCell(vehicleInformation);
+            			vehicaleInfoData.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicaleInfoData);
+            			
+            			PdfPCell vehicleRatingTitles = new PdfPCell(vehicleRatingTitle);
+            			vehicleRatingTitles.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicleRatingTitles);
+            			
+            			PdfPCell vehicleRatinginfo = new PdfPCell(vehicleRatingData);
+            			vehicleRatinginfo.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicleRatinginfo);
+            			
+            			PdfPCell vehicleHisTitle = new PdfPCell(vehiclehistoryTitle);
+            			vehicleHisTitle.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicleHisTitle);
+            			
+            			PdfPCell vehicleHistoryInfo = new PdfPCell(vehicleHistoryData);
+            			vehicleHistoryInfo.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicleHistoryInfo);
+            			
+            			PdfPCell historyTitles = new PdfPCell(historyTitle);
+            			historyTitles.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(historyTitles);
+            			
+            			PdfPCell historyTitleinfo = new PdfPCell(historyTitleData);
+            			historyTitleinfo.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(historyTitleinfo);
+            			
+            			PdfPCell vehicleTitleAssessment = new PdfPCell(vehicleAssessmentTitle);
+            			vehicleTitleAssessment.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicleTitleAssessment);
+            			
+            			PdfPCell vehicleAssessmentDataTitle = new PdfPCell(vehicleAssessmentData);
+            			vehicleAssessmentDataTitle.setBorder(Rectangle.NO_BORDER);
+            			AddAllTableInMainTable.addCell(vehicleAssessmentDataTitle);
+            			
+            			
+            			
+            		//----------main Table----------	
+            		
+            			PdfPTable AddMainTable = new PdfPTable(1);
+            			AddMainTable.setWidthPercentage(100);
+            			float[] AddMainTableWidth = {2f};
+            			AddMainTable.setWidths(AddMainTableWidth);
+            		
+            			PdfPCell AddAllTableInMainTable1 = new PdfPCell(AddAllTableInMainTable);
+            			AddAllTableInMainTable1.setPadding(10);
+            			AddAllTableInMainTable1.setBorderWidth(1f);
+            			AddMainTable.addCell(AddAllTableInMainTable1);		
+            			
+            			
+            			document.add(AddMainTable);
+ 
+            document.close();
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	
