@@ -94,8 +94,8 @@ $(document).ready(function()
         </div>
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
-            <li><a href="tel:18005670123"><i class="fa fa-phone"></i> (707) 552-5469  , (707) 552-LINX</a></li>
-            <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>3300 Sonoma Blvd Vallejo, California 94590 </a></li>
+            <li><a href="tel:18005670123"><i class="fa fa-phone"></i> ${myphone}</a></li>
+            <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
           </ul>
         </div>
       </div>
@@ -161,13 +161,13 @@ $(document).ready(function()
         <p><img class="alignleft margin-top-10 margin-bottom-20 margin-right-25 margin-left-none" src="resources/autolinx/images/DSC_0656.jpg" alt="automotive">Our Mission is to offer a unique and upscale vehicle buying experience to every customer, every time, by combining our collective passions for cars, technology and customer service</p>
         <p>Visit our showroom today and drive away with your new pre-owned quality car. Contact us via phone or email to set up a time convenient for you, or simply drop by for a great cup of coffee.
         <p>
-        <p>Sincerely, 
+        <p >Sincerely, 
           The Autolinx Team</p>
-        <p>3300 Sonoma Blvd<br>
-          Vallejo, California 94590<br>
-          (707) 552-5469 <br>
-          (707) 552-LINX <br>
-          <a href="#">info@autolinxinc.com</a><br>
+        <p style="width:39%"><br>${myprofile.address}<br>
+     
+          ${myphone}
+          <br>
+          <a href="#">${myprofile.email}</a><br>
         </p>
         <h3>Directions</h3>
       </div>
@@ -351,9 +351,9 @@ $(document).ready(function()
        <h4 class="contact-head">Contact us</h4>
         <div class="footer-contact">
           <ul>
-            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 3300 Sonoma Blvd,Vallejo, California, 94590</li>
-            <li><i class="fa fa-phone"></i> <strong>Phone:</strong> (707) 552-5469 </li>
-            <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">info@autolinxinc.com</a></li>
+            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.address}</li>
+            <li><i class="fa fa-phone"></i> <strong>Phone:</strong> ${myphone} </li>
+            <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">${myprofile.email}</a></li>
           </ul>
           <i class="fa fa-location-arrow back_icon"></i> </div>
       </div>

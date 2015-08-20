@@ -108,8 +108,8 @@ $(document).ready(function()
         </div>
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
-            <li><a href="tel:18005670123"><i class="fa fa-phone"></i> (707) 552-5469</a></li>
-            <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>3300 Sonoma Blvd Vallejo, California 94590 </a></li>
+            <li><a href="tel:18005670123"><i class="fa fa-phone"></i>${myphone}</a></li>
+            <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
           </ul>
         </div>
       </div>
@@ -178,16 +178,16 @@ $(document).ready(function()
                 <div class="icon_address">
                   <p><i class="fa fa-map-marker"></i><strong>Address:</strong></p>
                 </div>
-                <div class="contact_address">
-                  <p class="margin-bottom-none">AutoLinx Inc. <br>
-                    3300 Sonoma Blvd., Vallejo, California 94590</p>
+                <div class="contact_address"> 
+                  <p class="margin-bottom-none">
+                  ${myprofile.address} </p>
                 </div>
               </div>
               <div class="address clearfix address_details margin-right-25 padding-bottom-40">
                 <ul class="margin-bottom-none">
-                  <li><i class="fa fa-phone"></i>Phone:<span>&nbsp;&nbsp;(707) 552-LINX (5469)</span></li>
-                  <li><i class="fa fa-envelope-o"></i>Email: &nbsp;&nbsp;<a href="mailto:info@autolinxinc.com">info@autolinxinc.com</a></li>
-                  <li class="padding-bottom-none"><i class="fa fa-laptop"></i>Web:&nbsp;&nbsp; <a href="http://company.com"> www.autolinxinc.com</a></li>
+                  <li><i class="fa fa-phone"></i>Phone:<span>&nbsp;&nbsp;${myphone}</span></li>
+                  <li><i class="fa fa-envelope-o"></i>Email: &nbsp;&nbsp;<a href="mailto:info@autolinxinc.com">${myprofile.email}</a></li>
+                  <li class="padding-bottom-none"><i class="fa fa-laptop"></i>Web:&nbsp;&nbsp; <a href="http://company.com"> ${myprofile.web}</a></li>
                 </ul>
               </div>
             </div>
@@ -437,9 +437,9 @@ $(document).ready(function()
         <h4 class="contact-head">Contact us</h4>
         <div class="footer-contact">
           <ul>
-            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 3300 Sonoma Blvd,Vallejo, California, 94590</li>
-            <li><i class="fa fa-phone"></i> <strong>Phone:</strong> (707) 552-5469 </li>
-            <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">info@autolinxinc.com</a></li>
+            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.address}</li>
+            <li><i class="fa fa-phone"></i> <strong>Phone:</strong> ${myphone} </li>
+            <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">${myprofile.email}</a></li>
           </ul>
           <i class="fa fa-location-arrow back_icon"></i> </div>
       </div>

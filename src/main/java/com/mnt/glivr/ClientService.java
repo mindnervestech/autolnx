@@ -53,6 +53,7 @@ import com.mnt.views.BlogVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
+import com.mnt.views.MyProfileVM;
 import com.mnt.views.RequestMore;
 import com.mnt.views.ScheduleTestVM;
 import com.mnt.views.SiteContentVM;
@@ -65,7 +66,7 @@ import com.mnt.views.VehicleVM;
 @Service
 public class ClientService {
 	
-	static int userId = -1361609913; //Hardcode for now 336920057
+	static int userId = 336920057; //Hardcode for now 336920057
 	@Value("${emailusername}")
 	String emailusername;
 	
@@ -85,7 +86,7 @@ public class ClientService {
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
 		List<SliderVM> sliderUrls = new ArrayList<SliderVM>();
-		
+		List<Map<String, Object>> descriptionRows = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"'");
 		int count = 0;
 		for(Map map : rows) {
 			SliderVM vm = new SliderVM();
@@ -356,7 +357,26 @@ public class ClientService {
 		
 	}
 	
-	public List<String> getAllVehicleModel() {
+	public MyProfileVM getProfileModel(){
+		MyProfileVM profileModel = new MyProfileVM();
+
+		List<Map<String, Object>> myprofileModel = jdbcTemplate.queryForList("select * from my_profile where user_id = '"+userId+"'");
+		
+		profileModel.myname =(String) myprofileModel.get(0).get("myname");
+		profileModel.address =(String) myprofileModel.get(0).get("address");
+		profileModel.phone =(String) myprofileModel.get(0).get("phone");
+		profileModel.email =(String) myprofileModel.get(0).get("email");
+		profileModel.web=(String) myprofileModel.get(0).get("web");
+		profileModel.facebook =(String) myprofileModel.get(0).get("facebook");
+		profileModel.pinterest =(String) myprofileModel.get(0).get("pinterest");	
+		profileModel.instagram =(String) myprofileModel.get(0).get("instagram");
+		profileModel.twitter =(String) myprofileModel.get(0).get("twitter");
+		profileModel.googleplus =(String) myprofileModel.get(0).get("googleplus");
+		return profileModel;
+	}
+	
+	
+	  public List<String> getAllVehicleModel() {
 		List<String> vehicleListModel = new ArrayList<String>();
 		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT model FROM vehicle where user_id = '"+userId+"'");
 		
@@ -2173,6 +2193,22 @@ public class ClientService {
 		
 		
 		return null;
+	}
+
+	public String getPhoneno() {
+		
+		List<Map<String, Object>> phoneno = jdbcTemplate.queryForList("select * from my_profile where user_id = '"+userId+"'"); 
+		String phno =(String) phoneno.get(0).get("phone");
+			
+		String value1 = phno.substring(0, 3);
+		String value2 = phno.substring(3, 6);
+		String value3=phno.substring(6,10);	
+		//System.out.println(value1);
+		//System.out.println(value2);         
+		//System.out.println(value3);  
+		String result="("+value1+")"+" "+value2+"-"+value3;
+		//System.out.println(result);
+		return result;
 	}
 	
 	

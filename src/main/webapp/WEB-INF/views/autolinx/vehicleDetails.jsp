@@ -170,8 +170,8 @@ $(document).ready(function()
         </div>
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
-            <li><a href="tel:18005670123"><i class="fa fa-phone"></i> (707) 552-5469</a></li>
-            <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>3300 Sonoma Blvd Vallejo, California 94590 </a></li>
+            <li><a href="tel:18005670123"><i class="fa fa-phone"></i> ${myphone}</a></li>
+            <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
           </ul>
         </div>
       </div>
@@ -267,7 +267,7 @@ $(document).ready(function()
             <div class="inventory-heading margin-bottom-10 clearfix">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                        <h2>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
+                        <h2>${vehicle.year} ${vehicle.make} ${vehicle.model}</h2>
                         
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 text-right">
