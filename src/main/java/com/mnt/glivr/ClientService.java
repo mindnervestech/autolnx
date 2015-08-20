@@ -1,7 +1,5 @@
 package com.mnt.glivr;
 
-import java.awt.Color;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.StringWriter;
 import java.text.DateFormat;
@@ -37,12 +35,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
@@ -744,7 +739,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("email")));
+					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
 			message.setSubject("Request More Info");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -859,7 +854,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("email")));
+					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
 			message.setSubject("Schedule Test Drive");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -1123,11 +1118,17 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("email")));
+					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
 			message.setSubject("Trade-In Appraisal");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart = new MimeBodyPart();
+			//attachPart.attachFile(file);
+			
+			/*String filename = "Trade_In.pdf";
+	        DataSource source = new FileDataSource(filename);
+	        messageBodyPart.setDataHandler(new DataHandler(source));
+	        messageBodyPart.setFileName("attachement");*/
 			
 			VelocityEngine ve = new VelocityEngine();
 			ve.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,"org.apache.velocity.runtime.log.Log4JLogChute" );
@@ -1357,13 +1358,36 @@ public class ClientService {
 	        context.put("urlfind", urlfind);
 	        context.put("hostnameimg",  hostnameimg);
 	        
+	       // String fileName = "Trade_In.pdf";
+	       // File file = new File(fileName);
+	        
+	        //FileSystemResource file = new FileSystemResource("C:\\log.txt");
+			//helper.addAttachment(file.getFilename(), file);
+	   //     BodyPart body = new MimeBodyPart();
+	        
+	      //  body.setContent(out.toString(), "text/html");
+
+	    /*    Multipart multipart1 = new MimeMultipart();
+	        multipart1.addBodyPart(body);
+
+	        body = new MimeBodyPart();*/
+	        
+	        
+	      /*  String filename = "Trade_In.pdf";
+	        DataSource source = new FileDataSource(filename);
+	        body.setDataHandler(new DataHandler(source));
+	        body.setFileName("attachement");
+	        multipart.addBodyPart(body);	 */       
 	        
 	        StringWriter writer = new StringWriter();
 	        t.merge( context, writer );
 	        String content = writer.toString(); 
-			
+	       // attachPart.attachFile(file);
 			messageBodyPart.setContent(content, "text/html");
 			multipart.addBodyPart(messageBodyPart);
+			
+			
+			
 			message.setContent(multipart);
 			Transport.send(message);
 			System.out.println("Sent test message successfully....");
@@ -2144,7 +2168,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("email")));
+					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
 			message.setSubject("Contact us");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -2203,11 +2227,9 @@ public class ClientService {
 		String value1 = phno.substring(0, 3);
 		String value2 = phno.substring(3, 6);
 		String value3=phno.substring(6,10);	
-		//System.out.println(value1);
-		//System.out.println(value2);         
-		//System.out.println(value3);  
+		
 		String result="("+value1+")"+" "+value2+"-"+value3;
-		//System.out.println(result);
+	
 		return result;
 	}
 	

@@ -829,9 +829,9 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <!--end space height -->
                           <tr>
                             <td width="100%" valign="top" align="left" class="image-170px">
-                              
+                               #if ($similarVehicle.size() > 0)
                                 <img src="$hostnameimg$similarVehicle[0].path" width="170" alt="" style="max-width: 170px; display: block;" border="0" hspace="0" vspace="0">
-                              
+                              #end
                             </td>
                           </tr>
                           <!--start space height -->
@@ -842,7 +842,8 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <tr>
                             <td>
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
-                                <tbody><tr>
+								 #if ($similarVehicle.size() > 0)
+							   <tbody><tr>
                                   <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">SAME BODY STYLE</span></td>
                                 </tr>
                                 <!--start space height -->
@@ -869,7 +870,9 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                     <!-- end button -->
                                   </td>
                                 </tr>
-                              </tbody></table>
+                              </tbody>
+							  #end
+							  </table>
                             </td>
                           </tr>
                           <!--start space height -->
@@ -883,7 +886,9 @@ td,span,a{font-family: Arial, sans-serif !important;}
                               <p style="padding-left: 20px;">&nbsp;</p>
                             </td>
                           </tr>
-                        </tbody></table><!--[if (gte mso 9)|(IE)]></td><td valign="top"><![endif]--><table width="170" border="0" cellspacing="0" cellpadding="0" align="left" class="col-3" dir="ltr">
+                        </tbody></table><!--[if (gte mso 9)|(IE)]></td><td valign="top"><![endif]-->
+                      
+                        <table width="170" border="0" cellspacing="0" cellpadding="0" align="left" class="col-3" dir="ltr">
                           <!--start space height -->
                           <tbody><tr>
                             <td height="10" style="height: 10px; font-size: 0px; line-height: 0; border-collapse: collapse;"></td>
@@ -891,9 +896,9 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <!--end space height -->
                           <tr>
                             <td width="100%" valign="top" align="left" class="image-170px">
-                              
-                                <img src="$hostnameimg$similarVehicle[0].path" width="170" alt="" style="max-width: 170px; display: block !important;" border="0" hspace="0" vspace="0">
-                              
+                                #if ($similarVehicle.size() > 1)
+                                <img src="$hostnameimg$similarVehicle[1].path" width="170" alt="" style="max-width: 170px; display: block !important;" border="0" hspace="0" vspace="0">
+                              #end
                             </td>
                           </tr>
                           <!--start space height -->
@@ -904,6 +909,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <tr>
                             <td>
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+							   #if ($similarVehicle.size() > 1)
                                 <tbody><tr>
                                   <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">SAME ENGINE</span></td>
                                 </tr>
@@ -913,7 +919,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                 </tr>
                                 <!--end space height -->
                                 <tr>
-                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(128, 128, 128); font-size: 18px; font-weight: 300; line-height: 24px;"><span style="font-weight: 300; font-size: inherit; line-height: 24px;">PRICE:</span> <span style="font-weight: bold; font-size: inherit; line-height: 24px;">$similarVehicle[0].price</span></span></td>
+                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(128, 128, 128); font-size: 18px; font-weight: 300; line-height: 24px;"><span style="font-weight: 300; font-size: inherit; line-height: 24px;">PRICE:</span> <span style="font-weight: bold; font-size: inherit; line-height: 24px;">$similarVehicle[1].price</span></span></td>
                                 </tr>
                                 <!--start space height -->
                                 <tr>
@@ -925,13 +931,16 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                     <!-- start button -->
                                     <table width="auto" border="0" align="left" cellpadding="0" cellspacing="0">
                                       <tbody><tr>
-                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[0].vin"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></span></a></td>
+                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[1].vin"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></span></a></td>
                                       </tr>
                                     </tbody></table>
                                     <!-- end button -->
                                   </td>
                                 </tr>
-                              </tbody></table>
+                              </tbody>
+							  #end
+							 </table>
+                              
                             </td>
                           </tr>
                           <!--start space height -->
@@ -953,9 +962,9 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <!--end space height -->
                           <tr>
                             <td width="100%" valign="top" align="left" class="image-170px">
-                              
-                                <img src="$hostnameimg$similarVehicle[0].path" width="170" alt="" style="max-width: 170px; display: block !important;" border="0" hspace="0" vspace="0">
-                              
+                              #if ($similarVehicle.size() > 2)
+                                <img src="$hostnameimg$similarVehicle[2].path" width="170" alt="" style="max-width: 170px; display: block !important;" border="0" hspace="0" vspace="0">
+                              #end
                             </td>
                           </tr>
                           <!--start space height -->
@@ -966,6 +975,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <tr>
                             <td>
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+                                 #if ($similarVehicle.size() > 2)
                                 <tbody><tr>
                                   <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">SAME BRAND</span></td>
                                 </tr>
@@ -993,7 +1003,9 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                     <!-- end button -->
                                   </td>
                                 </tr>
-                              </tbody></table>
+                              </tbody>
+							  #end
+							  </table>
                             </td>
                           </tr>
                           <!--start space height -->
