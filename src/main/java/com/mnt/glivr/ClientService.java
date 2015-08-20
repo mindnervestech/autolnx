@@ -85,19 +85,18 @@ public class ClientService {
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
 		List<SliderVM> sliderUrls = new ArrayList<SliderVM>();
-		List<Map<String, Object>> descriptionOne = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"' and slider_number = 1");
-		List<Map<String, Object>> descriptionTwo = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"' and slider_number = 2");
-		List<Map<String, Object>> descriptionThree = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"' and slider_number = 3");
+		
 		int count = 0;
 		for(Map map : rows) {
 			SliderVM vm = new SliderVM();
 			vm.url = (String) map.get("path");
 			vm.description = (String) map.get("description");
 			vm.link = (String) map.get("link");
-			
-			if(count == 0) {
+			Integer row = (Integer) map.get("row");
+			Integer col = (Integer) map.get("col");
+			if(row == 0 && col == 0) {
 				String firstDesc = "";
-					firstDesc = (String) descriptionOne.get(0).get("description");
+					firstDesc = (String) map.get("description");
 					if(firstDesc != null) {
 						if(firstDesc.contains(" ")) {
 							
@@ -142,9 +141,9 @@ public class ClientService {
 				
 			}
 			
-			if(count == 1) {
+			if(row == 0 && col == 1) {
 				String secondDesc = "";
-					secondDesc = (String) descriptionTwo.get(0).get("description");
+					secondDesc = (String) map.get("description");
 					if(secondDesc != null) {
 						if(secondDesc.contains(" ")) {
 							String image2[] = secondDesc.split(" ");
@@ -192,9 +191,9 @@ public class ClientService {
 				
 			}
 			
-			if(count == 2) {
+			if(row == 0 && col == 2) {
 				String thirdDesc = "";
-					thirdDesc = (String) descriptionThree.get(0).get("description");
+					thirdDesc = (String) map.get("description");
 					if(thirdDesc != null) {
 						if(thirdDesc.contains(" ")) {
 							String image3[] = thirdDesc.split(" ");
