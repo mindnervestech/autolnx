@@ -61,7 +61,7 @@ import com.mnt.views.VehicleVM;
 @Service
 public class ClientService {
 	
-	static int userId = 336920057; //Hardcode for now 336920057
+	static int userId = -1361609913; //Hardcode for now 336920057
 	@Value("${emailusername}")
 	String emailusername;
 	
@@ -357,16 +357,18 @@ public class ClientService {
 
 		List<Map<String, Object>> myprofileModel = jdbcTemplate.queryForList("select * from my_profile where user_id = '"+userId+"'");
 		
-		profileModel.myname =(String) myprofileModel.get(0).get("myname");
-		profileModel.address =(String) myprofileModel.get(0).get("address");
-		profileModel.phone =(String) myprofileModel.get(0).get("phone");
-		profileModel.email =(String) myprofileModel.get(0).get("email");
-		profileModel.web=(String) myprofileModel.get(0).get("web");
-		profileModel.facebook =(String) myprofileModel.get(0).get("facebook");
-		profileModel.pinterest =(String) myprofileModel.get(0).get("pinterest");	
-		profileModel.instagram =(String) myprofileModel.get(0).get("instagram");
-		profileModel.twitter =(String) myprofileModel.get(0).get("twitter");
-		profileModel.googleplus =(String) myprofileModel.get(0).get("googleplus");
+		if(myprofileModel != null){
+			profileModel.myname =(String) myprofileModel.get(0).get("myname");
+			profileModel.address =(String) myprofileModel.get(0).get("address");
+			profileModel.phone =(String) myprofileModel.get(0).get("phone");
+			profileModel.email =(String) myprofileModel.get(0).get("email");
+			profileModel.web=(String) myprofileModel.get(0).get("web");
+			profileModel.facebook =(String) myprofileModel.get(0).get("facebook");
+			profileModel.pinterest =(String) myprofileModel.get(0).get("pinterest");	
+			profileModel.instagram =(String) myprofileModel.get(0).get("instagram");
+			profileModel.twitter =(String) myprofileModel.get(0).get("twitter");
+			profileModel.googleplus =(String) myprofileModel.get(0).get("googleplus");
+		}
 		return profileModel;
 	}
 	
@@ -2223,10 +2225,16 @@ public class ClientService {
 		
 		List<Map<String, Object>> phoneno = jdbcTemplate.queryForList("select * from my_profile where user_id = '"+userId+"'"); 
 		String phno =(String) phoneno.get(0).get("phone");
-			
-		String value1 = phno.substring(0, 3);
-		String value2 = phno.substring(3, 6);
-		String value3=phno.substring(6,10);	
+		
+		String value1 = null;
+		String value2 = null;
+		String value3 = null;
+		
+		if(!phno.equals(null)){
+			value1 = phno.substring(0, 3);
+			value2 = phno.substring(3, 6);
+			value3=phno.substring(6,10);	
+		}
 		
 		String result="("+value1+")"+" "+value2+"-"+value3;
 	
