@@ -1,5 +1,6 @@
 package com.mnt.glivr;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.StringWriter;
 import java.text.DateFormat;
@@ -71,6 +72,8 @@ public class ClientService {
 	@Value("${hostnameimg}")
 	String hostnameimg;
 	
+	@Value("${pdfRootDir}")
+	String pdfRootDir;
 	
 	
 	
@@ -1051,7 +1054,7 @@ public class ClientService {
 		Date date = new Date();
 		String optionValue = "";
 		String path = "";
-		int i = 0;
+		int i = 0,lastId =0;
 		
 		for(String value:model.getOptions()){
 			if(i == 0){
@@ -1066,7 +1069,7 @@ public class ClientService {
 		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,user_id) VALUES('"+model.getFirst_name()+"','"+model.getLast_name()+"','"+model.getWork_phone()+"','"+model.getPhone()+"','"+model.getEmail()+"','"+model.getPreferred()+"','"+dateFormat.format(date)+"','"+model.getComments()+"','"+model.getYear()+"','"+model.getMake()+"','"+model.getModel()+"','"+model.getExterior_colour()+"','"+model.getKilometres()+"','"+model.getEngine()+"'" +
 				",'"+model.getDoors()+"','"+model.getTransmission()+"','"+model.getDrivetrain()+"','"+model.getBody_rating()+"','"+model.getTire_rating()+"','"+model.getEngine_rating()+"','"+model.getTransmission_rating()+"','"+model.getGlass_rating()+"','"+model.getInterior_rating()+"','"+model.getExhaust_rating()+"','"+model.getRental_return()+"','"+model.getOdometer_accurate()+"','"+model.getService_records()+"','"+ model.getLienholder() +"','"+model.getTitleholder()+"','"+model.getEquipment()+"','"+model.getVehiclenew()+"','"+model.getAccidents()+"','"+ model.getDamage()+"','"+model.getPaint()+"','"+model.getSalvage()+"','"+optionValue+"','"+model.getVin()+"','"+userId+"')");
 		
-		
+		lastId =jdbcTemplate.queryForInt("select MAX(id) from trade_in where user_id = '"+userId+"' ");
 		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
 		
 		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where user_id = '"+userId+"' and vin = '"+model.getVin()+"' and default_image = true");
@@ -1102,309 +1105,15 @@ public class ClientService {
 	        heading1 = heading.substring(0, index);
 	        heading2 = heading.substring(index+1);
 		}
-		
-		final String username = emailusername;
-		final String password = emailpassword;
-		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.starttls.enable", "true");
-		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		});
-		try
-		{
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(emailusername));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
-			message.setSubject("Trade-In Appraisal");
-			Multipart multipart = new MimeMultipart();
-			BodyPart messageBodyPart = new MimeBodyPart();
-			messageBodyPart = new MimeBodyPart();
-			//attachPart.attachFile(file);
-			
-			/*String filename = "Trade_In.pdf";
-	        DataSource source = new FileDataSource(filename);
-	        messageBodyPart.setDataHandler(new DataHandler(source));
-	        messageBodyPart.setFileName("attachement");*/
-			
-			VelocityEngine ve = new VelocityEngine();
-			ve.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,"org.apache.velocity.runtime.log.Log4JLogChute" );
-			ve.setProperty("runtime.log.logsystem.log4j.logger","clientService");
-			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
-			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-			ve.init();
-			
-			String urlfind= "http://www.glider-autos.com/dealer/index.html#/tradeIn";
-			
-	        Template t = ve.getTemplate("trade_in_app.vm");
-	        VelocityContext context = new VelocityContext();
-	      	        
-	       // ---------Trad in info---------------
-	        
-	     //   contact info
-	        context.put("first_name", model.getFirst_name());
-	        context.put("last_name", model.getLast_name());
-	        context.put("work_phone", model.getWork_phone());
-	        context.put("email", model.getEmail());
-	        
-	        context.put("year", (String) oneRow.get(0).get("year"));
-	        context.put("make", (String) oneRow.get(0).get("make"));
-	        context.put("model", (String) oneRow.get(0).get("model"));
-	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
-	        context.put("vin", (String) oneRow.get(0).get("vin"));
-	        context.put("stock", (String) oneRow.get(0).get("stock"));
-	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
-	        
-	        
-	        if(model.getPreferred() != null){
-	        	context.put("preferred", model.getPreferred());
-	        }else{
-	        	context.put("preferred", "");
-	        }
-	        
-	        context.put("optionValue",  optionValue);
-	        
-	       
-	    //    vehicale info
-	        
-	        System.out.println(model.getYear());
-	        if(model.getYear() != null){
-	        	context.put("yearValue", model.getYear());
-	        }else{
-	        	context.put("yearValue", "");
-	        }
-	        if(model.getMake() != null){
-	        	context.put("makeValue", model.getMake());
-	        }else{
-	        	context.put("makeValue", "");
-	        }
-	        if(model.getModel() != null){
-	        	context.put("modelValue", model.getModel());
-	        }else{
-	        	context.put("modelValue", "");
-	        }
-	        if(model.getExterior_colour() != null){
-	        	context.put("exterior_colour", model.getExterior_colour());
-	        }else{
-	        	context.put("exterior_colour", "");
-	        }
-	        
-	        if(model.getKilometres() != null){
-	        	  context.put("kilometres", model.getKilometres());
-	        }else{
-	        	context.put("kilometres", "");
-	        }
-	      
-	        if(model.getEngine() != null){
-	        	context.put("engine", model.getEngine());
-	        }else{
-	        	context.put("engine", "");
-	        }
-	        
-	        if(model.getModel() != null){
-	        	 context.put("doors", model.getModel());
-	        }else{
-	        	 context.put("doors", "");
-	        }
-	       
-	        if(model.getTransmission() != null){
-	        	 context.put("transmission", model.getTransmission());
-	        }else{
-	        	 context.put("transmission","");
-	        }
-	       
-	        if(model.getDrivetrain() != null){
-	        	context.put("drivetrain", model.getDrivetrain());
-	        }else{
-	        	context.put("drivetrain", "");
-	        }
-	        
-	        
-	       // vehicale rating
-	        
-	        if(model.getBody_rating() != null){
-	        	 context.put("body_rating", model.getBody_rating());
-	        }else{
-	        	 context.put("body_rating", "");
-	        }
-	        
-	        if(model.getBody_rating() != null){
-	        	 context.put("body_rating", model.getBody_rating());
-	        }else{
-	        	 context.put("body_rating", "");
-	        }
-	       
-	        if(model.getTire_rating() != null){
-	        	context.put("tire_rating", model.getTire_rating());
-	        }else{
-	        	context.put("tire_rating", "");
-	        }
-	        
-	        if(model.getEngine_rating() != null){
-	        	context.put("engine_rating", model.getEngine_rating());
-	        }else{	
-	        	context.put("engine_rating", "");
-	        }
-	        
-	        if(model.getTransmission_rating() != null){
-	        	 context.put("transmission_rating", model.getTransmission_rating());
-	        }else{
-	        	 context.put("transmission_rating", "");
-	        }
-	       
-	        if(model.getGlass_rating() != null){
-	        	context.put("glass_rating", model.getGlass_rating());
-	        }else{
-	        	context.put("glass_rating", "");
-	        }
-	        
-	        if(model.getInterior_rating() != null){
-	        	 context.put("interior_rating", model.getInterior_rating());
-	        }else{
-	        	 context.put("interior_rating", "");
-	        }
-	       
-	        if(model.getExhaust_rating() != null){
-	        	context.put("exhaust_rating", model.getExhaust_rating());
-	        }else{
-	        	context.put("exhaust_rating", "");
-	        }
-	        
-	        
-	      //  vehicale History
-	        
-	        if(model.getRental_return() != null){
-	        	context.put("lease_or_rental", model.getRental_return());
-	        }else{
-	        	context.put("lease_or_rental", "");
-	        }
-	        
-	        if(model.getOdometer_accurate() != null){
-	        	context.put("operational_and_accurate", model.getOdometer_accurate());
-	        }else{
-	        	context.put("operational_and_accurate", "");
-	        }
-	        
-	        if(model.getService_records() != null){
-	        	context.put("service_record", model.getService_records());
-	        }else{
-	        	context.put("service_record", "");
-	        }
-	        
-	        
-	      //  title History
-	        
-	        if(model.getLienholder() != null){
-	        	context.put("lienholder", model.getLienholder());
-	        }else{
-	        	context.put("lienholder", "");
-	        }
-	        
-	        if(model.getTitleholder() != null){
-	        	context.put("holds_this_title", model.getTitleholder());
-	        }else{
-	        	context.put("holds_this_title", "");
-	        }
-	        
-	        
-	        
-	        //Vehicle Assessment
-	        
-	        if(model.getEquipment() != null){
-	        	context.put("equipment", model.getEquipment());
-	        }else{
-	        	context.put("equipment", "");
-	        }
-	        
-	        if(model.getVehiclenew() != null){
-	        	context.put("vehiclenew", model.getVehiclenew());
-	        }else{
-	        	context.put("vehiclenew", "");
-	        }
-	        
-	        if(model.getAccidents() != null){
-	        	context.put("accidents", model.getAccidents());
-	        }else{
-	        	context.put("accidents", "");
-	        }
-	        
-	        if(model.getDamage() != null){
-	        	context.put("damage", model.getDamage());
-	        }else{
-	        	context.put("damage", "");
-	        }
-	        
-	        if(model.getPaint() != null){
-	        	context.put("paint", model.getPaint());
-	        }else{
-	        	context.put("paint", "");
-	        }
-	        
-	        if(model.getSalvage() != null){
-	        	context.put("salvage", model.getSalvage());
-	        }else{
-	        	context.put("salvage", "");
-	        }
-	        
-	        
-	        context.put("sitelogo", logo);
-	        context.put("path", path);
-	        context.put("heading1", heading1);
-	        context.put("heading2", heading2);
-	        context.put("urlLink", hostUrl);
-	        context.put("urlfind", urlfind);
-	        context.put("hostnameimg",  hostnameimg);
-	        
-	       // String fileName = "Trade_In.pdf";
-	       // File file = new File(fileName);
-	        
-	        //FileSystemResource file = new FileSystemResource("C:\\log.txt");
-			//helper.addAttachment(file.getFilename(), file);
-	   //     BodyPart body = new MimeBodyPart();
-	        
-	      //  body.setContent(out.toString(), "text/html");
+		String filepath = null,findpath = null;
 
-	    /*    Multipart multipart1 = new MimeMultipart();
-	        multipart1.addBodyPart(body);
-
-	        body = new MimeBodyPart();*/
-	        
-	        
-	      /*  String filename = "Trade_In.pdf";
-	        DataSource source = new FileDataSource(filename);
-	        body.setDataHandler(new DataHandler(source));
-	        body.setFileName("attachement");
-	        multipart.addBodyPart(body);	 */       
-	        
-	        StringWriter writer = new StringWriter();
-	        t.merge( context, writer );
-	        String content = writer.toString(); 
-	       // attachPart.attachFile(file);
-			messageBodyPart.setContent(content, "text/html");
-			multipart.addBodyPart(messageBodyPart);
-			
-			
-			
-			message.setContent(multipart);
-			Transport.send(message);
-			System.out.println("Sent test message successfully....");
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		} 
-		
-		
 		try {
             Document document = new Document();
-           // String fileName = saveimgpath+ File.separator + "FourthTuto.pdf";
+            createDir(pdfRootDir, userId, lastId);
+            filepath = pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+ lastId + File.separator + "Trade_In.pdf";
+            findpath = "/" + userId +"/"+ "trade_in_pdf"+"/"+ lastId + "/" + "Trade_In.pdf";
             PdfWriter pdfWriter = 
-            PdfWriter.getInstance(document, new FileOutputStream("Trade_In.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream(filepath));
              
             // Properties
             document.addAuthor("Celinio");
@@ -1942,6 +1651,9 @@ public class ClientService {
             			
             			
             			document.add(AddMainTable);
+            			
+            			           			
+            			
  
             document.close();
  
@@ -1952,21 +1664,288 @@ public class ClientService {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try
+		{
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailusername));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
+			message.setSubject("Trade-In Appraisal");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart = new MimeBodyPart();
+			
+			VelocityEngine ve = new VelocityEngine();
+			ve.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,"org.apache.velocity.runtime.log.Log4JLogChute" );
+			ve.setProperty("runtime.log.logsystem.log4j.logger","clientService");
+			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
+			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+			ve.init();
+			
+			String urlfind= "http://www.glider-autos.com/dealer/index.html#/tradeIn";
+			
+	        Template t = ve.getTemplate("trade_in_app.vm");
+	        VelocityContext context = new VelocityContext();
+	      	        
+	       // ---------Trad in info---------------
+	        
+	     //   contact info
+	        context.put("first_name", model.getFirst_name());
+	        context.put("last_name", model.getLast_name());
+	        context.put("work_phone", model.getWork_phone());
+	        context.put("email", model.getEmail());
+	        
+	        context.put("year", (String) oneRow.get(0).get("year"));
+	        context.put("make", (String) oneRow.get(0).get("make"));
+	        context.put("model", (String) oneRow.get(0).get("model"));
+	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
+	        context.put("vin", (String) oneRow.get(0).get("vin"));
+	        context.put("stock", (String) oneRow.get(0).get("stock"));
+	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        context.put("pdffilePath", findpath);
+	        
+	        
+	        if(model.getPreferred() != null){
+	        	context.put("preferred", model.getPreferred());
+	        }else{
+	        	context.put("preferred", "");
+	        }
+	        
+	        context.put("optionValue",  optionValue);
+	        
+	       
+	    //    vehicale info
+	        
+	        System.out.println(model.getYear());
+	        if(model.getYear() != null){
+	        	context.put("yearValue", model.getYear());
+	        }else{
+	        	context.put("yearValue", "");
+	        }
+	        if(model.getMake() != null){
+	        	context.put("makeValue", model.getMake());
+	        }else{
+	        	context.put("makeValue", "");
+	        }
+	        if(model.getModel() != null){
+	        	context.put("modelValue", model.getModel());
+	        }else{
+	        	context.put("modelValue", "");
+	        }
+	        if(model.getExterior_colour() != null){
+	        	context.put("exterior_colour", model.getExterior_colour());
+	        }else{
+	        	context.put("exterior_colour", "");
+	        }
+	        
+	        if(model.getKilometres() != null){
+	        	  context.put("kilometres", model.getKilometres());
+	        }else{
+	        	context.put("kilometres", "");
+	        }
+	      
+	        if(model.getEngine() != null){
+	        	context.put("engine", model.getEngine());
+	        }else{
+	        	context.put("engine", "");
+	        }
+	        
+	        if(model.getModel() != null){
+	        	 context.put("doors", model.getModel());
+	        }else{
+	        	 context.put("doors", "");
+	        }
+	       
+	        if(model.getTransmission() != null){
+	        	 context.put("transmission", model.getTransmission());
+	        }else{
+	        	 context.put("transmission","");
+	        }
+	       
+	        if(model.getDrivetrain() != null){
+	        	context.put("drivetrain", model.getDrivetrain());
+	        }else{
+	        	context.put("drivetrain", "");
+	        }
+	        
+	        
+	       // vehicale rating
+	        
+	        if(model.getBody_rating() != null){
+	        	 context.put("body_rating", model.getBody_rating());
+	        }else{
+	        	 context.put("body_rating", "");
+	        }
+	        
+	        if(model.getBody_rating() != null){
+	        	 context.put("body_rating", model.getBody_rating());
+	        }else{
+	        	 context.put("body_rating", "");
+	        }
+	       
+	        if(model.getTire_rating() != null){
+	        	context.put("tire_rating", model.getTire_rating());
+	        }else{
+	        	context.put("tire_rating", "");
+	        }
+	        
+	        if(model.getEngine_rating() != null){
+	        	context.put("engine_rating", model.getEngine_rating());
+	        }else{	
+	        	context.put("engine_rating", "");
+	        }
+	        
+	        if(model.getTransmission_rating() != null){
+	        	 context.put("transmission_rating", model.getTransmission_rating());
+	        }else{
+	        	 context.put("transmission_rating", "");
+	        }
+	       
+	        if(model.getGlass_rating() != null){
+	        	context.put("glass_rating", model.getGlass_rating());
+	        }else{
+	        	context.put("glass_rating", "");
+	        }
+	        
+	        if(model.getInterior_rating() != null){
+	        	 context.put("interior_rating", model.getInterior_rating());
+	        }else{
+	        	 context.put("interior_rating", "");
+	        }
+	       
+	        if(model.getExhaust_rating() != null){
+	        	context.put("exhaust_rating", model.getExhaust_rating());
+	        }else{
+	        	context.put("exhaust_rating", "");
+	        }
+	        
+	        
+	      //  vehicale History
+	        
+	        if(model.getRental_return() != null){
+	        	context.put("lease_or_rental", model.getRental_return());
+	        }else{
+	        	context.put("lease_or_rental", "");
+	        }
+	        
+	        if(model.getOdometer_accurate() != null){
+	        	context.put("operational_and_accurate", model.getOdometer_accurate());
+	        }else{
+	        	context.put("operational_and_accurate", "");
+	        }
+	        
+	        if(model.getService_records() != null){
+	        	context.put("service_record", model.getService_records());
+	        }else{
+	        	context.put("service_record", "");
+	        }
+	        
+	        
+	      //  title History
+	        
+	        if(model.getLienholder() != null){
+	        	context.put("lienholder", model.getLienholder());
+	        }else{
+	        	context.put("lienholder", "");
+	        }
+	        
+	        if(model.getTitleholder() != null){
+	        	context.put("holds_this_title", model.getTitleholder());
+	        }else{
+	        	context.put("holds_this_title", "");
+	        }
+	        
+	        
+	        
+	        //Vehicle Assessment
+	        
+	        if(model.getEquipment() != null){
+	        	context.put("equipment", model.getEquipment());
+	        }else{
+	        	context.put("equipment", "");
+	        }
+	        
+	        if(model.getVehiclenew() != null){
+	        	context.put("vehiclenew", model.getVehiclenew());
+	        }else{
+	        	context.put("vehiclenew", "");
+	        }
+	        
+	        if(model.getAccidents() != null){
+	        	context.put("accidents", model.getAccidents());
+	        }else{
+	        	context.put("accidents", "");
+	        }
+	        
+	        if(model.getDamage() != null){
+	        	context.put("damage", model.getDamage());
+	        }else{
+	        	context.put("damage", "");
+	        }
+	        
+	        if(model.getPaint() != null){
+	        	context.put("paint", model.getPaint());
+	        }else{
+	        	context.put("paint", "");
+	        }
+	        
+	        if(model.getSalvage() != null){
+	        	context.put("salvage", model.getSalvage());
+	        }else{
+	        	context.put("salvage", "");
+	        }
+	        
+	        
+	        context.put("sitelogo", logo);
+	        context.put("path", path);
+	        context.put("heading1", heading1);
+	        context.put("heading2", heading2);
+	        context.put("urlLink", hostUrl);
+	        context.put("urlfind", urlfind);
+	        context.put("hostnameimg",  hostnameimg);
+	        
+	        
+	        StringWriter writer = new StringWriter();
+	        t.merge( context, writer );
+	        String content = writer.toString(); 
+	       // attachPart.attachFile(file);
+			messageBodyPart.setContent(content, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			
+			
+			
+			message.setContent(multipart);
+			Transport.send(message);
+			System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
 		
 		
 		
 	}
 	
+	
+	public static void createDir(String pdfRootDir,int userId, int lastId) {
+        File file = new File(pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+lastId);
+        if (!file.exists()) {
+                file.mkdirs();
+        }
+	}
 
 	public VehicleVM getVehicleInfo(HttpServletRequest request){
 		
@@ -2235,6 +2214,7 @@ public class ClientService {
 			value2 = phno.substring(3, 6);
 			value3=phno.substring(6,10);	
 		}
+		
 		
 		String result="("+value1+")"+" "+value2+"-"+value3;
 	
