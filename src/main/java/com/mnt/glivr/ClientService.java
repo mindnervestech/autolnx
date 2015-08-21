@@ -1110,8 +1110,11 @@ public class ClientService {
 		try {
             Document document = new Document();
             createDir(pdfRootDir, userId, lastId);
-            filepath = pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+ lastId + File.separator + "Trade_In.pdf";
-            findpath = "/" + userId +"/"+ "trade_in_pdf"+"/"+ lastId + "/" + "Trade_In.pdf";
+            filepath = pdfRootDir + File.separator+ "trade_in_pdf" + File.separator+ userId + File.separator+ lastId + File.separator + "Trade_In.pdf";
+            findpath = "/" + "trade_in_pdf"+"/"+ userId +"/"+ lastId + "/" + "Trade_In.pdf";
+           
+            jdbcTemplate.update("UPDATE trade_in  SET pdf_path='"+findpath+"' where id='"+lastId+"'");
+            
             PdfWriter pdfWriter = 
             PdfWriter.getInstance(document, new FileOutputStream(filepath));
              
@@ -1941,7 +1944,7 @@ public class ClientService {
 	
 	
 	public static void createDir(String pdfRootDir,int userId, int lastId) {
-        File file = new File(pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+lastId);
+        File file = new File(pdfRootDir + File.separator + "trade_in_pdf"+ File.separator+ userId +File.separator+lastId);
         if (!file.exists()) {
                 file.mkdirs();
         }
