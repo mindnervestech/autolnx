@@ -65,13 +65,19 @@
 </head>
 
 <body ng-controller="MobileHomeController">
+<%-- <div id="loading" style='position:fixed;display:none;
+    							top:50%;
+    							left:50%;
+    							z-index:1;'>
+    		<img alt="loading" src="${pageContext.request.contextPath}/resources/autolinx/images/loading.gif"/>
+    	</div> --%>
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <div class="wrapperIn">
 <header>
 	<div class="toolbar">
 		<ul>
          
-            <li><a href="tel:+17075525469"><i class="fa fa-phone"> </i> (707) 552-5469</a></li>
+            <li><a href="tel:+1${myprofile.phone }"><i class="fa fa-phone"> </i>&nbsp;${myphone}</a></li>
             
           </ul>
 	</div>
