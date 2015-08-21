@@ -75,8 +75,6 @@ public class ClientService {
 	@Value("${pdfRootDir}")
 	String pdfRootDir;
 	
-	@Value("${hostnamepdf}")
-	String hostnamepdf;
 	
 	
 	@Autowired
@@ -1112,9 +1110,11 @@ public class ClientService {
 		try {
             Document document = new Document();
             createDir(pdfRootDir, userId, lastId);
-            filepath = pdfRootDir + File.separator+ "trade_in_pdf" + File.separator+ userId + File.separator+ lastId + File.separator + "Trade_In.pdf";
-            findpath = "/" + "trade_in_pdf"+"/"+ userId +"/"+ lastId + "/" + "Trade_In.pdf";
-           
+            filepath = pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+ lastId + File.separator + "Trade_In.pdf";
+            findpath = "/" + userId +"/"+ "trade_in_pdf"+"/"+ lastId + "/" + "Trade_In.pdf";
+            //UPDATE table_name
+            //SET column1=value1,column2=value2,...
+            //WHERE some_column=some_value;
             jdbcTemplate.update("UPDATE trade_in  SET pdf_path='"+findpath+"' where id='"+lastId+"'");
             
             PdfWriter pdfWriter = 
@@ -1720,7 +1720,6 @@ public class ClientService {
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
 	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
 	        context.put("pdffilePath", findpath);
-	        context.put("hostnamepdf", hostnamepdf);
 	        
 	        
 	        if(model.getPreferred() != null){
@@ -1947,7 +1946,7 @@ public class ClientService {
 	
 	
 	public static void createDir(String pdfRootDir,int userId, int lastId) {
-        File file = new File(pdfRootDir + File.separator + "trade_in_pdf"+ File.separator+ userId +File.separator+lastId);
+        File file = new File(pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+lastId);
         if (!file.exists()) {
                 file.mkdirs();
         }
