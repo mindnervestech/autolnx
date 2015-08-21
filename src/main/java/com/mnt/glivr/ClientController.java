@@ -2,6 +2,7 @@ package com.mnt.glivr;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mnt.views.CharacterVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
@@ -119,12 +121,23 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData();
 		String formattedDate = dateFormat.format(date);
 		List<String> vehicleListYear = clientService.getAllVehicleYear();
-		
+		List<String> brandList = clientService.getCarBrands();
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("brandList",brandList);
 		
 		return "autolinx/mobile/mobileInventory";
+	}
+	
+	@RequestMapping(value = "/getCarBrands", method = RequestMethod.GET)
+	@ResponseBody
+	public Map getCarBrands(Locale locale, Model model) {
+		
+		List<CharacterVM> alphabets = clientService.getCharacters();
+		Map<String,Object> map = new HashMap();
+		map.put("alphabates", alphabets);
+		return map;
 	}
 	
 	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
@@ -430,6 +443,5 @@ public class ClientController {
 		
 		return "autolinx/mobile/mobileNewArrivals";
 	}
-
 	
 }

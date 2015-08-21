@@ -333,6 +333,34 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 		$scope.loadMore();
 	}
 	
+	$http.get(contextPath+'/getCarBrands')
+	.success(function(data) {
+		$scope.characters = data.alphabates;
+		//$scope.chr = $scope.characters[0].name;
+		//$('#'+$scope.chr).addClass('active');
+	});
+	
+	 var mySwiper = new Swiper ('.swiper-container', {
+		 effect: 'coverflow',
+		       grabCursor: true,
+		       centeredSlides: true,
+		       slidesPerView: 'auto',
+		       coverflow: {
+		           rotate: 50,
+		           stretch: 0,
+		           depth: 100,
+		           modifier: 1,
+		           slideShadows : true
+		       },
+		       
+		       onTouchEnd: function(swiper, event) {
+		    	   $scope.searchChar = $('.swiper-slide-active').attr('name');
+		    	   $('.alfaList ul li a.active').removeClass('active');
+		    	   $('#'+$scope.searchChar).addClass('active');
+		    	   $scope.setAlphabet($scope.searchChar,$('.swiper-slide-active').attr('index'));
+		       }
+		 }) 
+	
 	 $scope.noMore = false;
 	 var start = 0;
 	$scope.loadMore = function() {
@@ -356,8 +384,7 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 		$scope.selectYear = function(){
 		
 			$scope.vehicleList = [];
-			$scope.alphbet = "";
-			$scope.price = "lowToHigh";
+			$scope.price = "";
 			start = 0;
 			$scope.noMore = false;
 			$scope.loadMore();
@@ -372,11 +399,13 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 		}		
 		
 		
-		$scope.setAlphabet = function(alphabate) {
-			console.log(alphabate);
+		$scope.setAlphabet = function(alphabate,index) {
+			$('.alfaList ul li a.active').removeClass('active');
+	    	$('#'+alphabate).addClass('active');
+	    	mySwiper.slideTo(index, 1000, false);
 			$scope.alphbet = alphabate;
 			$scope.price = "";
-			$scope.year = "";
+			//$scope.year = "";
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;

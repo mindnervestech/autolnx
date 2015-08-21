@@ -46,6 +46,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mnt.views.BlogVM;
+import com.mnt.views.CharacterVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
@@ -84,7 +85,7 @@ public class ClientService {
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
 		List<SliderVM> sliderUrls = new ArrayList<SliderVM>();
-		List<Map<String, Object>> descriptionRows = jdbcTemplate.queryForList("select description from slider_image where user_id = '"+userId+"'");
+		
 		int count = 0;
 		for(Map map : rows) {
 			SliderVM vm = new SliderVM();
@@ -292,6 +293,48 @@ public class ClientService {
 			vehicleListMake.add((String) map.get("make"));
 		}
 		return vehicleListMake;
+	}
+	
+	public List<String> getCarBrands() {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select distinct lower(left(make,3)),make from vehicle where user_id = '"+userId+"' order by make");
+		List<String> brandList = new ArrayList<String>();
+		String name = "";
+		for(Map map : rows) {
+			name = (String) map.get("make");
+			if(name.equals("Volkswagen")) {
+				name = "wag.jpg";
+			} else {
+				name = (String)map.get("lower(left(make,3))")+".jpg";
+			}
+			brandList.add(name);
+		}
+		return brandList;
+	}
+	
+	public List<CharacterVM> getCharacters() {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select distinct left(make,1) from vehicle where user_id = '"+userId+"' order by make");
+		List<Map<String, Object>> rowsIndex = jdbcTemplate.queryForList("select distinct make from vehicle where user_id = '"+userId+"' order by make");
+		List<CharacterVM> brandList = new ArrayList<CharacterVM>();
+		
+		for(Map map : rows) {
+			CharacterVM vm = new CharacterVM();
+			vm.name = (String)map.get("left(make,1)");
+			brandList.add(vm);
+		}
+		
+		for(int i=0;i<brandList.size();i++) {
+			int count = 0;
+			for(Map map: rowsIndex) {
+				String make = (String)map.get("make");
+				if(brandList.get(i).name.equals(make.substring(0, 1))) {
+					brandList.get(i).index = count;
+					break;
+				}
+				count++;
+			}
+		}
+		
+		return brandList;
 	}
 	
 	

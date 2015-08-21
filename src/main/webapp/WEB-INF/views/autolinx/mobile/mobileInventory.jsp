@@ -33,6 +33,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/autolinx/mobile-css/settings.css" media="screen" />
 <link href="${pageContext.request.contextPath}/resources/autolinx/mobile-css/animate.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/mobile-css/ts.css" type="text/css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/swiper.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
@@ -51,6 +52,7 @@
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/swiper.js"></script>
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 
@@ -80,7 +82,7 @@
     </div>
     <div class="message-shadow1"></div>
     <div class="topBottomBox">
-        <div class="listBox">
+        <%-- <div class="listBox">
             <ul>
             	
                 <li>
@@ -88,7 +90,17 @@
                     <span>Acura</span>
                 </li>
             </ul>
-        </div>
+        </div> --%>
+        <div class="swiper-container">
+		   <!-- Additional required wrapper -->
+		   <div class="swiper-wrapper">
+		       <!-- Slides -->
+		       <c:forEach var="row" items="${brandList}" varStatus="loop">
+                 <div name="${row.substring(0,1).toUpperCase()}" index="${loop.index}" style="background-image:url('/glivrImg/images/Logos/${row}')" class="swiper-slide"></div>               	
+		   		</c:forEach>
+		   </div>
+		</div>
+        
         <div class="select-dropdown2">
                     
                     <span class="my-dropdown">Year:</span>
@@ -107,27 +119,10 @@
         <div class="clearClass"></div>
         <div class="alfaList">
             <ul>
-                <li><a ng-click="setAlphabet('A')" style="cursor: pointer;">A</a></li>
-                <li><a ng-click="setAlphabet('B')" style="cursor: pointer;">B</a></li>
-                <li><a ng-click="setAlphabet('C')" style="cursor: pointer;">C</a></li>
-                <li><a ng-click="setAlphabet('D')" style="cursor: pointer;">D</a></li>
-                <li><a ng-click="setAlphabet('E')" style="cursor: pointer;">E</a></li>
-                <li><a ng-click="setAlphabet('F')" style="cursor: pointer;">F</a></li>
-                <li><a ng-click="setAlphabet('G')" style="cursor: pointer;">G</a></li>
-                <li><a ng-click="setAlphabet('H')" style="cursor: pointer;">H</a></li>
-                <li><a ng-click="setAlphabet('I')" style="cursor: pointer;">I</a></li>
-                <li><a ng-click="setAlphabet('J')" style="cursor: pointer;">J</a></li>
-                <li><a ng-click="setAlphabet('K')" style="cursor: pointer;">K</a></li>
-                <li><a ng-click="setAlphabet('L')" style="cursor: pointer;">L</a></li>
-                <li><a ng-click="setAlphabet('M')" style="cursor: pointer;">M</a></li>
-                <li><a ng-click="setAlphabet('N')" style="cursor: pointer;">N</a></li>
-                <li><a ng-click="setAlphabet('O')" style="cursor: pointer;">O</a></li>
-                <li><a ng-click="setAlphabet('P')" style="cursor: pointer;">P</a></li>
-                <li><a ng-click="setAlphabet('Q')" style="cursor: pointer;">Q</a></li>
-                <li><a ng-click="setAlphabet('R')" style="cursor: pointer;">R</a></li>
-                <li><a ng-click="setAlphabet('S')" style="cursor: pointer;">S</a></li>
-                <li><a ng-click="setAlphabet('T')" style="cursor: pointer;">T</a></li>
-                <li><a ng-click="setAlphabet('V')" style="cursor: pointer;">V</a></li>
+            	<li ng-repeat="obj in characters">
+            	<a id="{{obj.name}}" ng-click="setAlphabet(obj.name,obj.index)" 
+            	style="cursor: pointer;font-size: 18px;">{{obj.name}}</a>
+            	</li>
             </ul>
         </div>
         
@@ -237,3 +232,19 @@
 </body>
 </html>
 
+<style>
+ .swiper-container {
+       width: 100%;
+       padding-top: 50px;
+       padding-bottom: 50px;
+   }
+   .swiper-slide {
+       background-position: center;
+       background-size: cover;
+       width: 150px;
+       height: 150px;
+   }
+   .alfaList ul li a.active {
+    color: #10529e;
+}
+</style>
