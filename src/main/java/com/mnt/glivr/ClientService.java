@@ -75,6 +75,8 @@ public class ClientService {
 	@Value("${pdfRootDir}")
 	String pdfRootDir;
 	
+	@Value("${hostnamepdf}")
+	String hostnamepdf;
 	
 	
 	@Autowired
@@ -1718,6 +1720,7 @@ public class ClientService {
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
 	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
 	        context.put("pdffilePath", findpath);
+	        context.put("hostnamepdf", hostnamepdf);
 	        
 	        
 	        if(model.getPreferred() != null){
