@@ -89,6 +89,11 @@ public class ClientController {
 		List<String> vehicleListMake = clientService.getAllVehicleMakes();
 		List<String> vehicleListModel = clientService.getAllVehicleModel();
 		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		MyProfileVM profile = clientService.getProfileModel();
+		model.addAttribute("myprofile",profile);
+		String ph =clientService.getPhoneno();
+		model.addAttribute("myphone",ph);
+		
 		
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("siteContent", siteContent);
@@ -121,7 +126,12 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData();
 		String formattedDate = dateFormat.format(date);
 		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		MyProfileVM profile = clientService.getProfileModel();
+		model.addAttribute("myprofile",profile);
 		List<String> brandList = clientService.getCarBrands();
+		String ph =clientService.getPhoneno();
+		model.addAttribute("myphone",ph);
+		
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
@@ -184,6 +194,10 @@ public class ClientController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData();
 		String formattedDate = dateFormat.format(date);
+		MyProfileVM profile = clientService.getProfileModel();
+		model.addAttribute("myprofile",profile);
+		String ph =clientService.getPhoneno();
+		model.addAttribute("myphone",ph);
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
@@ -278,7 +292,10 @@ public class ClientController {
 		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin);
 		SiteContentVM siteContent = clientService.getSitContent();
 		SiteLogoVM siteLogo = clientService.getLogoData();
-		
+		MyProfileVM profile = clientService.getProfileModel();
+		model.addAttribute("myprofile",profile);
+		String ph =clientService.getPhoneno();
+		model.addAttribute("myphone",ph);
 		model.addAttribute("siteContent", siteContent);
 		model.addAttribute("similarVehicle",similarVehicleVm);
 		model.addAttribute("vehicle",vehicleVM);
@@ -437,11 +454,16 @@ public class ClientController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData();
 		String formattedDate = dateFormat.format(date);
+		MyProfileVM profile = clientService.getProfileModel();
+		model.addAttribute("myprofile",profile);
+		String ph =clientService.getPhoneno();
+		model.addAttribute("myphone",ph);
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		
 		return "autolinx/mobile/mobileNewArrivals";
 	}
+
 	
 }
