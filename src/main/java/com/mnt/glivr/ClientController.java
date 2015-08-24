@@ -276,6 +276,10 @@ public class ClientController {
 		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin);
 		SiteContentVM siteContent = clientService.getSitContent();
 		SiteLogoVM siteLogo = clientService.getLogoData();
+		MyProfileVM profile = clientService.getProfileModel();
+		model.addAttribute("myprofile",profile);
+		String ph =clientService.getPhoneno();
+		model.addAttribute("myphone",ph);
 		
 		model.addAttribute("siteContent", siteContent);
 		model.addAttribute("similarVehicle",similarVehicleVm);

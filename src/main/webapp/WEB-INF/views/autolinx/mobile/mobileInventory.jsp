@@ -67,7 +67,7 @@
 <header>
 	<div class="toolbar1">
 		<ul>
-           <li><a href="https://www.google.com/maps/dir//AutoLinx+-+Luxury+Pre-Owned,+3300+Sonoma+Blvd,+Vallejo,+CA+94590,+United+States/@38.1202427,-122.2546659,15z/data=!4m12!1m3!3m2!1s0x0:0xce9d2ad188e1093!2sAutoLinx+-+Luxury+Pre-Owned!4m7!1m0!1m5!1m1!1s0x80857351d3b20b31:0xce9d2ad188e1093!2m2!1d-122.2546659!2d38.1202427">Directions</a></li>
+           <li><a href="http://maps.google.com/?q=${myprofile.address }">Directions</a></li>
             <li><a href="tel:+1${myprofile.phone }"><i class="fa fa-phone">&nbsp; </i> ${myphone }</a></li>
             
           </ul>
@@ -179,7 +179,7 @@
         
     </div>
 
-<footer>
+<!-- <footer>
 	<h4>Subscribe to the official AutoLinx newsletter - Vehi-Linx</h4>
     <form method="post">
           <p>
@@ -203,7 +203,7 @@
           <input type="hidden" value="1" name="_mc4wp_form_instance">
           <input type="hidden" value="0c197cabe5" name="_mc4wp_form_nonce">
         </form>
-</footer> 
+</footer>  -->
 <div class="copyright-wrap">
 	<ul class="social">
           <li><a target="_blank" href="https://www.facebook.com/AutoLinxVallejo" class="facebook"></a></li>
