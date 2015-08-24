@@ -95,7 +95,7 @@ $(document).ready(function()
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
              <li><a href="tel:18005670123"><i class="fa fa-phone"></i> ${myphone}</a></li>
-            <li class="address"><a href="contact.html"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
+            <li class="address"><a href="http://maps.google.com/?q=${myprofile.address }"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
           </ul>
         </div>
       </div>
