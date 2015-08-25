@@ -97,7 +97,7 @@
 		       <!-- Slides -->
 		       <c:forEach var="row" items="${brandList}" varStatus="loop">
                  <div name="${row.substring(0,1).toUpperCase()}" index="${loop.index}"  class="swiper-slide">
-                 	<img src="/glivrImg/images/Logos/${row}" style="width:150px;height:150px;">
+                 	<img src="/glivrImg/images/Logos/${row}" style="width:120px;height:120px;">
                  </div>               	
 		   		</c:forEach>
 		   </div>
@@ -250,3 +250,5 @@
     color: #10529e;
 }
 </style>
+
+
