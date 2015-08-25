@@ -206,7 +206,7 @@
           <input type="hidden" value="0c197cabe5" name="_mc4wp_form_nonce">
         </form>
 </footer>  -->
-<div class="copyright-wrap">
+<%-- <div class="copyright-wrap">
 	<ul class="social">
           <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
           <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
@@ -221,7 +221,7 @@
           <li><a href="${pageContext.request.contextPath}/mobile/inventory">Inventory</a></li>
           <li><a href="${pageContext.request.contextPath}/mobile/contactUs"> Contact Us</a></li>
         </ul>
-</div>
+</div> --%>
  <div class="back_to_top" style="display: block;"> <img alt="scroll up" src="http://demo.themesuite.com/automotive/images/arrow-up.png"> </div>      
 </div>
 
@@ -243,8 +243,8 @@
    .swiper-slide {
        background-position: center;
        background-size: cover;
-       width: 150px;
-       height: 150px;
+       width: 120px;
+       height: 120px;
    }
    .alfaList ul li a.active {
     color: #10529e;
