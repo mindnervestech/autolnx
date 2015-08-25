@@ -110,7 +110,7 @@
         <div class="boxInLeft setImgs setheight" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/directions_mobile.jpg');">
         	<%-- <img src="${pageContext.request.contextPath}/resources/autolinx/images/directions_mobile.jpg" alt=""> --%>
             <p class="boxInText">
-            	<a href=" http://maps.google.com/?q=${myprofile.address }">Directions</a>
+            	<a href=" http://maps.google.com/?q=${myprofile.fullAddress }">Directions</a>
             </p>
         </div>
         <div class="boxInLeft setImgs setheight" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/about_us_mobile.jpg');">
@@ -358,12 +358,12 @@
 </footer> 
 <div class="copyright-wrap">
 	<ul class="social">
-          <li><a target="_blank" href="https://www.facebook.com/AutoLinxVallejo" class="facebook"></a></li>
-          <li><a target="_blank" href="https://plus.google.com/b/100362181731377676567/100362181731377676567/about" class="google"></a> </li>
-          <li><a target="_blank" href="https://twitter.com/autolinxvallejo" class="twitter"></a></li>
+          <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
+          <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
+          <li><a target="_blank" href="${myprofile.twitter}" class="twitter"></a></li>
           <li><a target="_blank" href="http://www.yelp.com/biz/autolinx-luxury-pre-owned-vallejo" class="yelp"></a></li>
-          <li><a target="_blank" href="https://instagram.com/autolinxinc/" class="instagram"></a></li>
-          <li><a target="_blank" href="https://www.pinterest.com/autolinx0344/" class="pinterest"></a></li>
+          <li><a target="_blank" href="${myprofile.instagram}" class="instagram"></a></li>
+          <li><a target="_blank" href="${myprofile.pinterest}" class="pinterest"></a></li>
         </ul>
         <div class="clearClass"></div>
         <ul class="f-nav">

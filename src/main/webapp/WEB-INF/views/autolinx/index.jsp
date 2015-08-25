@@ -39,7 +39,7 @@
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/wow.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key&amp;sensor=false"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/ng-infinite-scroll.js"></script>
 <script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
@@ -85,8 +85,10 @@ $(document).ready(function()
 		}
 	
 }); 
-				
+			
+
 </script>
+
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -98,6 +100,7 @@ $(document).ready(function()
 
 <body ng-controller="HomeController">
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
+<input type="hidden" id="vehicleLocation" value="${myprofile.fullAddress}">
 <!--Header Start-->
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-home" no_resize="">
   <section class="toolbar">
@@ -113,7 +116,7 @@ $(document).ready(function()
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
             <li><a href="tel:18005670123"><i class="fa fa-phone"></i> ${myphone}</a></li>
-            <li class="address"><a href="http://maps.google.com/?q=${myprofile.address }"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
+            <li class="address"><a href="http://maps.google.com/?q=${myprofile.fullAddress }"><i class="fa fa-map-marker"></i>${myprofile.fullAddress} </a></li>
           </ul>
         </div>
       </div>
@@ -652,8 +655,9 @@ $(document).ready(function()
   </div>
   
   <!-- Footer Map -->
+  
   <div class='fullwidth_element_parent margin-top-30 padding-bottom-40'>
-    <div id='google-map-listing' class='fullwidth_element' data-longitude='-79.38' data-latitude='43.65' data-zoom='12' style='height: 390px;' data-scroll='false' data-style='[{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"stylers":[{"hue":"#F0F0F0"},{"saturation":-100},{"gamma":2.15},{"lightness":12}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"lightness":24}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":57}]}]'></div>
+    <div id="map-canvas" style="width:100%; height:500px"></div>
   </div>
   <div class="car-rate-block clearfix margin-top-30 padding-bottom-40">
     <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-left-none scroll_effect bounceInLeft">
@@ -899,7 +903,7 @@ $(document).ready(function()
         <h4 class="contact-head">Contact us</h4>
         <div class="footer-contact">
           <ul>
-            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.address}</li>
+            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.fullAddress}</li>
             <li><i class="fa fa-phone"></i> <strong>Phone:</strong> ${myphone} </li>
             <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">${myprofile.email}</a></li>
           </ul>
@@ -918,12 +922,12 @@ $(document).ready(function()
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
         <ul class="social clearfix">
-          <li><a target="_blank" href="https://www.facebook.com/AutoLinxVallejo" class="facebook"></a></li>
-          <li><a target="_blank" href="https://plus.google.com/b/100362181731377676567/100362181731377676567/about" class="google"></a> </li>
-          <li><a target="_blank" href="https://twitter.com/autolinxvallejo" class="twitter"></a></li>
+          <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
+          <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
+          <li><a target="_blank" href="${myprofile.twitter}" class="twitter"></a></li>
           <li><a target="_blank" href="http://www.yelp.com/biz/autolinx-luxury-pre-owned-vallejo" class="yelp"></a></li>
-          <li><a target="_blank" href="https://instagram.com/autolinxinc/" class="instagram"></a></li>
-          <li><a target="_blank" href="https://www.pinterest.com/autolinx0344/" class="pinterest"></a></li>
+          <li><a target="_blank" href="${myprofile.instagram}" class="instagram"></a></li>
+          <li><a target="_blank" href="${myprofile.pinterest}" class="pinterest"></a></li>
         </ul>
         <div class="clear"></div>
         <ul class="f-nav">
@@ -964,3 +968,34 @@ $(document).ready(function()
 }
 
 </style>
+<script type="text/javascript">
+function initialize() {
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+      center: new google.maps.LatLng(44.5403, -78.5463),
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+    
+    var address = $('#vehicleLocation').val();
+    console.log(address);
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+
+        }
+        else {
+            //alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>

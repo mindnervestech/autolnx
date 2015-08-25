@@ -68,7 +68,7 @@
 <header>
 	<div class="toolbar1">
 		<ul>
-           <li><a href="http://maps.google.com/?q=${myprofile.address }">Directions</a></li>
+           <li><a href="http://maps.google.com/?q=${myprofile.fullAddress }">Directions</a></li>
             <li><a href="tel:+1${myprofile.phone }"><i class="fa fa-phone">&nbsp; </i>${myphone } </a></li>
             
           </ul>
@@ -92,14 +92,14 @@
 
 Sincerely, The Autolinx Team</p>
 		
-        <p style="width:37%;">${myprofile.address }
+        <p style="width:37%;">${myprofile.fullAddress }
           
          <br> ${myphone } 
           <br>
           <a class="linkIn" href="mailto:info@autolinxinc.com">${myprofile.email }</a><br>
         </p>
         
-        <a style="text-decoration: none;" href="https://www.google.com/maps/dir//AutoLinx+-+Luxury+Pre-Owned,+3300+Sonoma+Blvd,+Vallejo,+CA+94590,+United+States/@38.1202427,-122.2546659,15z/data=!4m12!1m3!3m2!1s0x0:0xce9d2ad188e1093!2sAutoLinx+-+Luxury+Pre-Owned!4m7!1m0!1m5!1m1!1s0x80857351d3b20b31:0xce9d2ad188e1093!2m2!1d-122.2546659!2d38.1202427"><h3>Directions</h3></a>
+        <a style="text-decoration: none;" href="http://maps.google.com/?q=${myprofile.fullAddress }"><h3>Directions</h3></a>
 
 		
         <h4>WHAT WE SPECIALIZE IN</h4>	
@@ -234,12 +234,12 @@ Sincerely, The Autolinx Team</p>
 </footer> 
 <div class="copyright-wrap">
 	<ul class="social">
-          <li><a target="_blank" href="https://www.facebook.com/AutoLinxVallejo" class="facebook"></a></li>
-          <li><a target="_blank" href="https://plus.google.com/b/100362181731377676567/100362181731377676567/about" class="google"></a> </li>
-          <li><a target="_blank" href="https://twitter.com/autolinxvallejo" class="twitter"></a></li>
+          <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
+          <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
+          <li><a target="_blank" href="${myprofile.twitter}" class="twitter"></a></li>
           <li><a target="_blank" href="http://www.yelp.com/biz/autolinx-luxury-pre-owned-vallejo" class="yelp"></a></li>
-          <li><a target="_blank" href="https://instagram.com/autolinxinc/" class="instagram"></a></li>
-          <li><a target="_blank" href="https://www.pinterest.com/autolinx0344/" class="pinterest"></a></li>
+          <li><a target="_blank" href="${myprofile.instagram}" class="instagram"></a></li>
+          <li><a target="_blank" href="${myprofile.pinterest}" class="pinterest"></a></li>
         </ul>
         <div class="clearClass"></div>
         <ul class="f-nav">
