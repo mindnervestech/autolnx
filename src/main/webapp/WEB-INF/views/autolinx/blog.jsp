@@ -112,7 +112,7 @@ $(document).ready(function()
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
             <li><a href="tel:18005670123"><i class="fa fa-phone"></i> ${myphone}</a></li>
-            <li class="address"><a href="http://maps.google.com/?q=${myprofile.address }"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
+            <li class="address"><a href="http://maps.google.com/?q=${myprofile.fullAddress }"><i class="fa fa-map-marker"></i>${myprofile.fullAddress} </a></li>
           </ul>
         </div>
       </div>
@@ -274,7 +274,7 @@ $(document).ready(function()
         <h4 class="contact-head">Contact us</h4>
         <div class="footer-contact">
           <ul>
-            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.address}</li>
+            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.fullAddress}</li>
             <li><i class="fa fa-phone"></i> <strong>Phone:</strong> ${myphone} </li>
             <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">${myprofile.email}</a></li>
           </ul>
@@ -293,12 +293,12 @@ $(document).ready(function()
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
         <ul class="social clearfix">
-          <li><a target="_blank" href="https://www.facebook.com/AutoLinxVallejo" class="facebook"></a></li>
-          <li><a target="_blank" href="https://plus.google.com/b/100362181731377676567/100362181731377676567/about" class="google"></a> </li>
-          <li><a target="_blank" href="https://twitter.com/autolinxvallejo" class="twitter"></a></li>
+          <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
+          <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
+          <li><a target="_blank" href="${myprofile.twitter}" class="twitter"></a></li>
           <li><a target="_blank" href="http://www.yelp.com/biz/autolinx-luxury-pre-owned-vallejo" class="yelp"></a></li>
-          <li><a target="_blank" href="https://instagram.com/autolinxinc/" class="instagram"></a></li>
-          <li><a target="_blank" href="https://www.pinterest.com/autolinx0344/" class="pinterest"></a></li>
+          <li><a target="_blank" href="${myprofile.instagram}" class="instagram"></a></li>
+          <li><a target="_blank" href="${myprofile.pinterest}" class="pinterest"></a></li>
         </ul>
         <div class="clear"></div>
         <ul class="f-nav">

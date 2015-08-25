@@ -95,6 +95,7 @@ $(document).ready(function()
 
 <body ng-controller="ContactUsController">
 <!--Header Start-->
+<input type="hidden" id="vehicleLocation" value="${myprofile.fullAddress}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner" no_resize="">
   <section class="toolbar">
     <div class="container">
@@ -109,7 +110,7 @@ $(document).ready(function()
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
             <li><a href="tel:18005670123"><i class="fa fa-phone"></i>${myphone}</a></li>
-            <li class="address"><a href="http://maps.google.com/?q=${myprofile.address }"><i class="fa fa-map-marker"></i>${myprofile.address} </a></li>
+            <li class="address"><a href="http://maps.google.com/?q=${myprofile.fullAddress }"><i class="fa fa-map-marker"></i>${myprofile.fullAddress} </a></li>
           </ul>
         </div>
       </div>
@@ -174,16 +175,16 @@ $(document).ready(function()
           <div class="col-md-6 left-information">
             <div class="contact_information information_head clearfix">
               <h3 class="margin-bottom-25 margin-top-none">CONTACT INFORMATION</h3>
-              <div class="address clearfix margin-right-25 padding-bottom-40">
+              <div class="address clearfix margin-right-25 padding-bottom-40" style="width:60%;">
                 <div class="icon_address">
                   <p><i class="fa fa-map-marker"></i><strong>Address:</strong></p>
                 </div>
                 <div class="contact_address"> 
                   <p class="margin-bottom-none">
-                  ${myprofile.address} </p>
+                  ${myprofile.fullAddress} </p>
                 </div>
               </div>
-              <div class="address clearfix address_details margin-right-25 padding-bottom-40">
+              <div class="address clearfix address_details margin-right-25 padding-bottom-1px">
                 <ul class="margin-bottom-none">
                   <li><i class="fa fa-phone"></i>Phone:<span>&nbsp;&nbsp;${myphone}</span></li>
                   <li><i class="fa fa-envelope-o"></i>Email: &nbsp;&nbsp;<a href="mailto:info@autolinxinc.com">${myprofile.email}</a></li>
@@ -354,7 +355,7 @@ $(document).ready(function()
       <div class="find_map row clearfix">
         <h2 class="margin-bottom-25 margin-top-none">FIND US ON THE MAP</h2>
         <div class="map margin-vertical-30">
-          <div id='google-map-listing' class="contact" data-longitude='-79.38' data-latitude='43.65' data-zoom='7' style='height: 390px;'></div>
+          <div id="map-canvas" style="width:100%; height:500px"></div>
         </div>
       </div>
       <!--MAP--> 
@@ -437,7 +438,7 @@ $(document).ready(function()
         <h4 class="contact-head">Contact us</h4>
         <div class="footer-contact">
           <ul>
-            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.address}</li>
+            <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> ${myprofile.fullAddress}</li>
             <li><i class="fa fa-phone"></i> <strong>Phone:</strong> ${myphone} </li>
             <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">${myprofile.email}</a></li>
           </ul>
@@ -456,12 +457,12 @@ $(document).ready(function()
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
         <ul class="social clearfix">
-          <li><a target="_blank" href="https://www.facebook.com/AutoLinxVallejo" class="facebook"></a></li>
-          <li><a target="_blank" href="https://plus.google.com/b/100362181731377676567/100362181731377676567/about" class="google"></a> </li>
-          <li><a target="_blank" href="https://twitter.com/autolinxvallejo" class="twitter"></a></li>
+          <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
+          <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
+          <li><a target="_blank" href="${myprofile.twitter}" class="twitter"></a></li>
           <li><a target="_blank" href="http://www.yelp.com/biz/autolinx-luxury-pre-owned-vallejo" class="yelp"></a></li>
-          <li><a target="_blank" href="https://instagram.com/autolinxinc/" class="instagram"></a></li>
-          <li><a target="_blank" href="https://www.pinterest.com/autolinx0344/" class="pinterest"></a></li>
+          <li><a target="_blank" href="${myprofile.instagram}" class="instagram"></a></li>
+          <li><a target="_blank" href="${myprofile.pinterest}" class="pinterest"></a></li>
         </ul>
         <div class="clear"></div>
         <ul class="f-nav">
@@ -588,3 +589,35 @@ $(document).ready(function() {
 <script type="text/javascript" src="resources/autolinx/js/jquery.easing.js"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+function initialize() {
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+      center: new google.maps.LatLng(44.5403, -78.5463),
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+    
+    var address = $('#vehicleLocation').val();
+    console.log(address);
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+
+        }
+        else {
+            //alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>

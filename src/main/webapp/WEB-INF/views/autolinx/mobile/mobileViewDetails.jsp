@@ -87,7 +87,7 @@
 <header>
 	<div class="toolbar">
 		<ul>
-           <li><a href="http://maps.google.com/?q=${myprofile.address }">Directions</a></li>
+           <li><a href="http://maps.google.com/?q=${myprofile.fullAddress }">Directions</a></li>
             <li><a href="tel:+1${myprofile.phone }"><i class="fa fa-phone">&nbsp; </i>${myphone } </a></li>
             
           </ul>
@@ -319,12 +319,12 @@
 </footer> 
 <div class="copyright-wrap">
 	<ul class="social">
-          <li><a target="_blank" href="https://www.facebook.com/AutoLinxVallejo" class="facebook"></a></li>
-          <li><a target="_blank" href="https://plus.google.com/b/100362181731377676567/100362181731377676567/about" class="google"></a> </li>
-          <li><a target="_blank" href="https://twitter.com/autolinxvallejo" class="twitter"></a></li>
+          <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
+          <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
+          <li><a target="_blank" href="${myprofile.twitter}" class="twitter"></a></li>
           <li><a target="_blank" href="http://www.yelp.com/biz/autolinx-luxury-pre-owned-vallejo" class="yelp"></a></li>
-          <li><a target="_blank" href="https://instagram.com/autolinxinc/" class="instagram"></a></li>
-          <li><a target="_blank" href="https://www.pinterest.com/autolinx0344/" class="pinterest"></a></li>
+          <li><a target="_blank" href="${myprofile.instagram}" class="instagram"></a></li>
+          <li><a target="_blank" href="${myprofile.pinterest}" class="pinterest"></a></li>
         </ul>
         <div class="clearClass"></div>
         <ul class="f-nav">

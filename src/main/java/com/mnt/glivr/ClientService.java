@@ -406,6 +406,10 @@ public class ClientService {
 		if(myprofileModel != null){
 			profileModel.myname =(String) myprofileModel.get(0).get("myname");
 			profileModel.address =(String) myprofileModel.get(0).get("address");
+			profileModel.city =(String) myprofileModel.get(0).get("city");
+			profileModel.state =(String) myprofileModel.get(0).get("state");
+			profileModel.zip =(String) myprofileModel.get(0).get("zip");
+			profileModel.country =(String) myprofileModel.get(0).get("country");
 			profileModel.phone =(String) myprofileModel.get(0).get("phone");
 			profileModel.email =(String) myprofileModel.get(0).get("email");
 			profileModel.web=(String) myprofileModel.get(0).get("web");
@@ -414,6 +418,7 @@ public class ClientService {
 			profileModel.instagram =(String) myprofileModel.get(0).get("instagram");
 			profileModel.twitter =(String) myprofileModel.get(0).get("twitter");
 			profileModel.googleplus =(String) myprofileModel.get(0).get("googleplus");
+			profileModel.fullAddress = profileModel.address+","+profileModel.city+","+profileModel.zip+","+profileModel.state+","+profileModel.country;
 		}
 		return profileModel;
 	}
