@@ -62,7 +62,7 @@
     							top:50%;
     							left:50%;
     							z-index:1;'>
-    		<img alt="loading" src="${pageContext.request.contextPath}/resources/autolinx/images/12.gif"/>
+    		<img alt="loading" src="${pageContext.request.contextPath}/resources/autolinx/images/loading.gif"/>
     	</div>
 <div class="wrapperIn">
 <header>
