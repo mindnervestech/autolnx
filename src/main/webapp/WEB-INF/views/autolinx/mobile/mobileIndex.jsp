@@ -387,7 +387,7 @@
 <style>
 
 	.setImgs{
-		background-size: 100% 100%;
+		background-size: cover;
 		background-repeat: no-repeat;
 		height: 200px;
 		width: 50%;
