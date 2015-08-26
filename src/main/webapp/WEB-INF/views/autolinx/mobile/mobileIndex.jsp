@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="google-site-verification" content="9Z8MSVa9CjEuNBRNdXR_BU1sIVo7fRHRxbaHJxL0GZ4" />
 <link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
