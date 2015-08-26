@@ -144,7 +144,10 @@ $(document).ready(function()
 			}
 		};
 		if(isMobile.any() ) {
-				window.location.href="http://glider-autos.com/glivr/mobile/home";
+				var url = window.location.href;
+				var arr = url.split('/');
+				console.log(arr[arr.length-1]);
+				window.location.href="http://glider-autos.com/glivr/mobile/viewDetails/"+arr[arr.length-1];
 				return false;
 		}
 	
