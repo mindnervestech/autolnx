@@ -403,7 +403,7 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 			$('.alfaList ul li a.active').removeClass('active');
 	    	$('#'+alphabate).addClass('active');
 	    	mySwiper.slideTo(index, 1000, false);
-			$scope.alphbet = alphabate;
+			$scope.alphbet = $('.swiper-slide-active').attr('make');
 			$scope.price = "";
 			//$scope.year = "";
 			$scope.vehicleList = [];

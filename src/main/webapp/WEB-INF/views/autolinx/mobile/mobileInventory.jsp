@@ -96,8 +96,8 @@
 		   <div class="swiper-wrapper">
 		       <!-- Slides -->
 		       <c:forEach var="row" items="${brandList}" varStatus="loop">
-                 <div name="${row.substring(0,1).toUpperCase()}" index="${loop.index}"  class="swiper-slide">
-                 	<img src="/glivrImg/images/Logos/${row}" style="width:150px;max-height:150px;;vertical-align: middle;">
+                 <div name="${row.name.substring(0,1).toUpperCase()}" index="${loop.index}" make="${row.make}"  class="swiper-slide">
+                 	<img src="/glivrImg/images/Logos/${row.name}" style="width:150px;max-height:150px;;vertical-align: middle;">
                  </div>               	
 		   		</c:forEach>
 		   </div>

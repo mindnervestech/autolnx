@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mnt.views.BrandVM;
 import com.mnt.views.CharacterVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
@@ -128,7 +129,7 @@ public class ClientController {
 		List<String> vehicleListYear = clientService.getAllVehicleYear();
 		MyProfileVM profile = clientService.getProfileModel();
 		model.addAttribute("myprofile",profile);
-		List<String> brandList = clientService.getCarBrands();
+		List<BrandVM> brandList = clientService.getCarBrands();
 		String ph =clientService.getPhoneno();
 		model.addAttribute("myphone",ph);
 		

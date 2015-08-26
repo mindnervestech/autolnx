@@ -46,6 +46,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mnt.views.BlogVM;
+import com.mnt.views.BrandVM;
 import com.mnt.views.CharacterVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
@@ -295,18 +296,21 @@ public class ClientService {
 		return vehicleListMake;
 	}
 	
-	public List<String> getCarBrands() {
+	public List<BrandVM> getCarBrands() {
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select distinct lower(left(make,3)),make from vehicle where user_id = '"+userId+"' order by make");
-		List<String> brandList = new ArrayList<String>();
+		List<BrandVM> brandList = new ArrayList<BrandVM>();
 		String name = "";
 		for(Map map : rows) {
+			BrandVM vm = new BrandVM();
 			name = (String) map.get("make");
 			if(name.equals("Volkswagen")) {
-				name = "wag.jpg";
+				vm.name = "wag.jpg";
 			} else {
-				name = (String)map.get("lower(left(make,3))")+".jpg";
+				vm.name = (String)map.get("lower(left(make,3))")+".jpg";
 			}
-			brandList.add(name);
+			
+			vm.make = name;
+			brandList.add(vm);
 		}
 		return brandList;
 	}
