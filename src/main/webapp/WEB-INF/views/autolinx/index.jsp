@@ -658,7 +658,7 @@ $(document).ready(function()
   <!-- Footer Map -->
   
   <div class='fullwidth_element_parent margin-top-30 padding-bottom-40'>
-    <div id="map-canvas" style="width:100%; height:500px"></div>
+    <div id="map-canvas" style="width:100%; height:390px;"></div>
   </div>
   <div class="car-rate-block clearfix margin-top-30 padding-bottom-40">
     <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-left-none scroll_effect bounceInLeft">
@@ -979,6 +979,8 @@ function initialize() {
     }
     var map = new google.maps.Map(mapCanvas, mapOptions)
     
+    map.set('styles', [{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"stylers":[{"hue":"#F0F0F0"},{"saturation":-100},{"gamma":2.15},{"lightness":12}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"lightness":24}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":57}]}]);
+    
     var address = $('#vehicleLocation').val();
     console.log(address);
     geocoder = new google.maps.Geocoder();
@@ -999,4 +1001,6 @@ function initialize() {
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
+  
+  
 </script>

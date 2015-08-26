@@ -276,7 +276,7 @@ $(document).ready(function()
 </section>
 
 <!-- Footer Map -->
- <div id="map-canvas" style="width:100%; height:500px"></div>
+ <div id="map-canvas" style="width:100%; height:390px"></div>
 
 <!--Footer Start-->
 
@@ -414,6 +414,7 @@ function initialize() {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     var map = new google.maps.Map(mapCanvas, mapOptions)
+    map.set('styles', [{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"stylers":[{"hue":"#F0F0F0"},{"saturation":-100},{"gamma":2.15},{"lightness":12}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"lightness":24}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":57}]}]);
     
     var address = $('#vehicleLocation').val();
     console.log(address);
