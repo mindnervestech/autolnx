@@ -237,8 +237,9 @@
 <style>
  .swiper-container {
        width: 100%;
-       padding-top: 50px;
-       padding-bottom: 50px;
+       height: 150px;
+       padding-top: 25px;
+       padding-bottom: 10px;
    }
    .swiper-slide {
        background-position: center;
@@ -250,6 +251,32 @@
    .alfaList ul li a.active {
     color: #10529e;
 }
+
+.topBanner {
+    margin: 0px;
+    position: relative;
+    height: 50px;
+    
+}
+
+
+.topBanner img {
+    width: 100%;
+    height: 100%;
+}
+
+.topBannerText {
+    margin: 0px;
+    position: absolute;
+    text-shadow: 0px 1px 0px #000;
+    font-weight: 700;
+    font-size: 35px;
+    color: #FFF;
+    left: 5%;
+    padding: 0px;
+    top: 0%;
+}
+
 </style>
 
 
