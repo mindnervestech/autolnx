@@ -155,6 +155,7 @@ $(document).ready(function()
 
 <div class="clearfix imgSet"></div>
 <section class="banner-wrap">
+	<a href="#" class="scroll-slider-down"></a>
     <div class="banner">
         <div class="tp-banner-container">
             <div class="tp-banner" >
@@ -368,29 +369,84 @@ $(document).ready(function()
             </div>
         </div>
         <script type="text/javascript">
+        	(function() {
+					jQuery(function() {
+						// slider
+						var curWidth = jQuery(window).width(),
+							revapi,
+							offset = jQuery('header'),
+							curHeigth,
+							imageHeight,
+							fullScreenState = false,
+							fullScreenRes = 1400;
 
-				var revapi;
-
-				jQuery(document).ready(function() {
-
-					   revapi = jQuery('.tp-banner').revolution(
+						if (jQuery(window).width() > fullScreenRes) {
+							fullScreenState = true;
+						}
+						
+						revapi = jQuery('.tp-banner').revolution(
 						{
 							delay:8000,
 							startwidth:1170,
-							startheight:645,
+							startheight:645, //665 & ori 645 & fw 800
 							hideThumbs:10,
 							fullWidth:"off",
-							fullScreen:"off",
-							fullScreenOffsetContainer: "",
+							fullScreen:'off',
+							fullScreenOffsetContainer: "header",
 							hideTimerBar: "on",
 							navigationType:"none",
 							stopAtSlide: 1
 
 						});
 
-				});	//ready
+						revapi.on('revolution.slide.onchange',function() {
+								adjustSlider();
+						});
 
-			</script> 
+						jQuery(window).resize(function() {
+								adjustSlider();
+						});
+
+						function adjustSlider() {
+							var el = jQuery('.tp-banner-container'),
+								slideDownEl = jQuery('.scroll-slider-down');
+							curWidth = jQuery(window).width();
+							curHeigth = jQuery(window).height() - offset.height();
+							imageHeight = jQuery('.tp-banner-container li img').height();
+							if (curWidth < fullScreenRes) {
+								if (imageHeight > 540) {
+									el.height('540');
+								} else {
+									el.height(imageHeight);
+								}
+								fullScreenState = false;
+								slideDownEl.css('opacity', '0');
+							} else {
+								el.height(curHeigth);
+								fullScreenState = true;
+								slideDownEl.css('opacity', '1');
+							}
+						}
+
+						// slide down init
+						var slideDownEl = jQuery('.scroll-slider-down');
+						if (fullScreenState === true) {
+							slideDownEl.css('opacity', '1');
+						} else {
+							slideDownEl.css('opacity', '0');
+						}
+
+						// slide down click
+						slideDownEl.click(function(e) {
+							e.preventDefault();
+							var scrollFrom = jQuery('.tp-banner-container');
+							jQuery('html, body').animate({
+								scrollTop: jQuery(window).height() + 20
+							}, 2000);
+						});
+					});
+				})(jQuery);
+		</script> 
         
         <!-- END REVOLUTION SLIDER --> 
         
