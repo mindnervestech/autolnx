@@ -1333,6 +1333,14 @@ table.right_table {
 	padding: 0;
 }
 
+.tp-revslider-mainul img {
+	height: auto !important;
+}
+
+.tp-revslider-mainul li {
+	/*overflow: visible !important;*/
+}
+
 .slide {
 }
 
