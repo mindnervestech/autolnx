@@ -2206,7 +2206,7 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
+					InternetAddress.parse("Info@glider-autos.com"));
 			message.setSubject("Contact us");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
