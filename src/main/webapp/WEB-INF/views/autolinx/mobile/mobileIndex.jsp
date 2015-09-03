@@ -15,7 +15,7 @@
 <link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
-
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
 <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="${pageContext.request.contextPath}/resources/autolinx/js/html5shiv.js"></script>
@@ -35,6 +35,7 @@
 <link href="${pageContext.request.contextPath}/resources/autolinx/mobile-css/animate.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/mobile-css/ts.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/wow.min.js"></script>
@@ -90,6 +91,7 @@
     	<h2>
         	<strong>${siteContent.heading1}</strong> ${siteContent.heading2} 
         </h2>
+        <a class="default-btn pull-right action_button lg-button mainBoxIn1" style="cursor:pointer;" data-toggle="modal" data-target="#carBrandModal">Follow car brand</a>
     </div>
     <div class="message-shadow"></div>
      <!-- <div class="row">
@@ -384,6 +386,55 @@
 
 </body>
 </html>
+
+<div class="modal fade" id="carBrandModal" role="dialog">
+    <div class="modal-dialog">
+     <form name="fome1" ng-submit="saveFollowBrand()"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Follow car brand</h4>
+        </div>
+      
+        <div class="modal-body">
+           <div class="row">
+        	 <div class="col-md-3">
+        	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="name" ng-model="followBrand.name" style="width: 220px !important;border: 1px solid rgb(200, 195, 195) !important;" required>
+        	 </div>
+        	 </div>
+           
+        	  <div class="row">
+        	 <div class="col-md-3">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="email" name="email" ng-model="followBrand.email" style="width: 220px !important;border: 1px solid rgb(200, 195, 195) !important;" required>
+        	 </div>
+        	 </div>
+        	  <div class="row">
+        	 <div class="col-md-3">
+        	 	<label style="font-weight: initial;padding: 0px;">Car brand:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<select class="form-control" ng-model="followBrand.brand" style="width: 220px !important;border: 1px solid rgb(200, 195, 195) !important;" required>
+        	 		<option value="">Select</option>
+        	 		<option ng-repeat="brand in allMakes.make" value="{{brand}}">{{brand}}</option>
+        	 	</select>
+        	 </div>
+        	 </div>
+        </div>
+       
+        <div class="modal-footer">
+           <input type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+
 <style>
 
 	.setImgs{

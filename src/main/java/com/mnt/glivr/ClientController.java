@@ -331,6 +331,12 @@ public class ClientController {
 	    clientService.saveAlertEmail(model);
    } 
    
+   @RequestMapping(value = "/saveFollowBrand", method = RequestMethod.POST)
+   @ResponseBody
+	public void saveFollowBrand(@RequestBody RequestMore model){
+	    clientService.saveCarModel(model);
+   }
+   
    @RequestMapping(value="/mobile/requestMore",method=RequestMethod.POST)
    @ResponseBody
 	public void requestMoreMobile(Locale locale,@RequestBody RequestMore req) {

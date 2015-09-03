@@ -148,17 +148,31 @@ app.controller("HomeController", function($scope,$http, notificationService) {
 	var contextPath = $('#contextpath').val();
 	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
-		console.log(data);
 		$scope.allMakes = data;
 		
 	});
 	
 	$http({method:'GET',url:contextPath+'/getRecentVehicles'})
 	.success(function(data) {
-		console.log(data);
 		$scope.recentVehicles = data;
 		
 	});
+	$scope.followBrand = {};
+	
+	$scope.saveFollowBrand = function() {
+		console.log($scope.followBrand);
+		$http({
+			method : 'POST',
+			url : contextPath+'/saveFollowBrand',
+			data : $scope.followBrand
+		}).success(function(response) {
+			console.log("Success...............");
+			notificationService.success("Your request has been submitted");
+			$('#carBrandModal').modal('hide');
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
 	
 });
 
@@ -343,6 +357,24 @@ app.controller("MobileHomeController", function($scope,$http, notificationServic
 		$scope.recentVehicles = data;
 		
 	});
+	
+	$scope.followBrand = {};
+	
+	$scope.saveFollowBrand = function() {
+		console.log($scope.followBrand);
+		$http({
+			method : 'POST',
+			url : contextPath+'/saveFollowBrand',
+			data : $scope.followBrand
+		}).success(function(response) {
+			console.log("Success...............");
+			notificationService.success("Your request has been submitted");
+			$('#carBrandModal').modal('hide');
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
+	
 });
 
 app.controller("MobileInventoryController", function($scope,$http, notificationService) {

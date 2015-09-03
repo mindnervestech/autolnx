@@ -741,6 +741,9 @@ public class ClientService {
 		jdbcTemplate.update("INSERT INTO price_alert(email,vin,user_id) VALUES('"+model.getEmail()+"','"+model.getVin()+"','"+userId+"')");
 	}
 	
+	public void saveCarModel(RequestMore model){
+		jdbcTemplate.update("INSERT INTO follow_brand(name,email,brand,user_id) VALUES('"+model.getName()+"','"+model.getEmail()+"','"+model.getBrand()+"','"+userId+"')");
+	}
 	
 	public void getRequestMore(RequestMore model, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

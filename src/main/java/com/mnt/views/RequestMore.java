@@ -9,6 +9,7 @@ public class RequestMore {
 	public String email;
 	public String phone;
 	public String vin;
+	public String brand;
 	
 	public Long getId() {
 		return id;
@@ -47,8 +48,11 @@ public class RequestMore {
 	public void setVin(String vin) {
 		this.vin = vin;
 	}
-	
-	
-	
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 	
 }
