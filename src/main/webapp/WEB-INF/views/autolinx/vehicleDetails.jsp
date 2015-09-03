@@ -232,9 +232,9 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
      <!--  <h2 class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15">Make your dream car a <span style="color:#ff0000;">REALITY</span></h2> -->
-      <h2 class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;">${siteContent.heading1}</strong> ${siteContent.heading2} </h2>
+      <h2 class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;">SET</strong> YOUR OWN PRICE ALERT! </h2>
       <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 "> 
-      	<a class="default-btn pull-right action_button lg-button mainBoxIn1" href="#">Schedule a Test Drive</a>
+      	<a class="default-btn pull-right action_button lg-button mainBoxIn1" style="cursor:pointer;" data-toggle="modal" data-target="#priceAlertModal">Follow this car</a>
 	  		<div class="boxIn">
             	<ul>
                 	<li>
@@ -1315,6 +1315,35 @@ $(document).ready(function()
     </div>
   </div>
   
+  <div class="modal fade" id="priceAlertModal" role="dialog">
+    <div class="modal-dialog">
+     <form name="fome1" ng-submit="savePriceAlert('${vehicle.vin}')"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Price alert email</h4>
+        </div>
+      
+        <div class="modal-body">
+           
+        	  <div class="row">
+        	 <div class="col-md-3">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="email" name="email" ng-model="priceAlert.email" style="width: 220px !important;" required>
+        	 </div>
+        	 </div>
+        	  
+        </div>
+       
+        <div class="modal-footer">
+           <input type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
   
 
 </body>

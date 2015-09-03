@@ -234,6 +234,21 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 			console.log("Error.................");
 		});
 	};
+	$scope.priceAlert = {};
+	$scope.savePriceAlert = function(vin){
+		$scope.priceAlert.vin = vin;
+		$http({
+			method : 'POST',
+			url : contextPath+'/savePriceAlert',
+			data : $scope.priceAlert
+		}).success(function(response) {
+			console.log("Success...............");
+			$('#priceAlertModal').modal('hide');
+			notificationService.success("Your request has been submitted");
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
 	
 });
 
@@ -293,6 +308,21 @@ app.controller("MobileVehicleDetailsController", function($scope,$http,notificat
 		});
 	};
 	
+	$scope.priceAlert = {};
+	$scope.savePriceAlert = function(vin){
+		$scope.priceAlert.vin = vin;
+		$http({
+			method : 'POST',
+			url : contextPath+'/savePriceAlert',
+			data : $scope.priceAlert
+		}).success(function(response) {
+			console.log("Success...............");
+			$('#priceAlertModal').modal('hide');
+			notificationService.success("Your request has been submitted");
+		}).error(function(){
+			console.log("Error.................");
+		});
+	};
 	
 });
 

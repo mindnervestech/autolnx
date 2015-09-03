@@ -737,6 +737,10 @@ public class ClientService {
 		
 	}	
 	
+	public void saveAlertEmail(RequestMore model){
+		jdbcTemplate.update("INSERT INTO price_alert(email,vin,user_id) VALUES('"+model.getEmail()+"','"+model.getVin()+"','"+userId+"')");
+	}
+	
 	
 	public void getRequestMore(RequestMore model, String hostUrl){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

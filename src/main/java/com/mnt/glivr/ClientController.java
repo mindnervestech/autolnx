@@ -325,6 +325,11 @@ public class ClientController {
 	    clientService.getRequestMore(model, hostUrl);
    } 
    
+   @RequestMapping(value = "/savePriceAlert", method = RequestMethod.POST)
+   @ResponseBody
+	public void savePriceAlert(@RequestBody RequestMore model){
+	    clientService.saveAlertEmail(model);
+   } 
    
    @RequestMapping(value="/mobile/requestMore",method=RequestMethod.POST)
    @ResponseBody

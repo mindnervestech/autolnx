@@ -282,9 +282,9 @@
         
         
         <div class="message-wrap">
-        	<h2>Make your dreame car a <strong style="color:#ff0000;">REALITY</strong> </h2>
+        	<h2>SET YOUR OWN PRICE <strong style="color:#ff0000;">ALERT!</strong> </h2>
             <div class="buttonInner">
-            	<a href="#">Schedule a Test Drive</a>
+            	<a style="cursor: pointer;" data-toggle="modal" data-target="#priceAlertModal">Follow this car</a>
             </div>
         </div>
         
@@ -522,6 +522,36 @@
         	 </div>
         	 </div>
         	
+        </div>
+       
+        <div class="modal-footer">
+           <input type="submit" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+
+<div class="modal fade" id="priceAlertModal" role="dialog">
+    <div class="modal-dialog">
+     <form name="fome1" ng-submit="savePriceAlert('${vehicle.vin}')"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Price alert email</h4>
+        </div>
+      
+        <div class="modal-body">
+           
+        	  <div class="row">
+        	 <div class="col-md-3">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="email" name="email" ng-model="priceAlert.email" style="width: 220px !important;" required>
+        	 </div>
+        	 </div>
+        	  
         </div>
        
         <div class="modal-footer">
