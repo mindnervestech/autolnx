@@ -800,10 +800,19 @@ public class ClientService {
 		});
 		try
 		{
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user");
+			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
+			int i=0;
+			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
+			i++;
+			for(Map map : allUsers) {
+				usersArray[i] = new InternetAddress((String) map.get("email"));
+				i++;
+			}
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
+					usersArray);
 			message.setSubject("Request More Info");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -915,10 +924,21 @@ public class ClientService {
 		});
 		try
 		{
+			
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user");
+			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
+			int i=0;
+			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
+			i++;
+			for(Map map : allUsers) {
+				usersArray[i] = new InternetAddress((String) map.get("email"));
+				i++;
+			}
+			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
+					usersArray);
 			message.setSubject("Schedule Test Drive");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -1042,10 +1062,21 @@ public class ClientService {
 		});
 		try
 		{
+			
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user");
+			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
+			int i=0;
+			usersArray[i] = new InternetAddress(model.getEmail());
+			i++;
+			for(Map map : allUsers) {
+				usersArray[i] = new InternetAddress((String) map.get("email"));
+				i++;
+			}
+			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(model.getFemail()));
+					usersArray);
 			message.setSubject("Email To Friend");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -1059,6 +1090,7 @@ public class ClientService {
 			ve.init();
 			
 			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
+			List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from my_profile where user_id = '"+userId+"'");
 			
 	        Template t = ve.getTemplate("templateForFriend.vm");
 	        VelocityContext context = new VelocityContext();
@@ -1078,6 +1110,8 @@ public class ClientService {
 	        context.put("city_mileage", (String) oneRow.get(0).get("city_mileage"));
 	        context.put("highway_mileage", (String) oneRow.get(0).get("highway_mileage"));
 	        context.put("similarVehicle", similarVehicleVm);
+	        context.put("dealerMail", userMail.get(0).get("email"));
+	        context.put("dealerPhone", userMail.get(0).get("phone"));
 	        
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
@@ -1742,10 +1776,20 @@ public class ClientService {
 		});
 		try
 		{
+			
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user");
+			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
+			int index=0;
+			usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
+			index++;
+			for(Map map : allUsers) {
+				usersArray[index] = new InternetAddress((String) map.get("email"));
+				index++;
+			}
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse((String) userMail.get(0).get("communicationemail")));
+					usersArray);
 			message.setSubject("Trade-In Appraisal");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();

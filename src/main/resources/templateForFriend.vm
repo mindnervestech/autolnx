@@ -1113,7 +1113,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                 </tr>
                                 <!--end space height -->
                                 <tr>
-                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: center; word-break: break-word;"><span style="font-size: 22px; color: rgb(0, 0, 0); font-weight: 300; line-height: 24px;">1(123)456-7890</span></td>
+                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: center; word-break: break-word;"><span style="font-size: 22px; color: rgb(0, 0, 0); font-weight: 300; line-height: 24px;">$dealerPhone</span></td>
                                 </tr>
                               </tbody></table>
                             </td>
@@ -1159,7 +1159,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                 </tr>
                                 <!--end space height -->
                                 <tr>
-                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: center; word-break: break-word;"><span style="color: rgb(0, 0, 0); font-size: 18px; font-weight: 300; line-height: 24px;">info@business.com</span><br style="line-height: 24px;"></td>
+                                  <td style="font-size: 13px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(163, 162, 162); font-weight: 300; text-align: center; word-break: break-word;"><span style="color: rgb(0, 0, 0); font-size: 18px; font-weight: 300; line-height: 24px;">$dealerMail</span><br style="line-height: 24px;"></td>
                                 </tr>
                               </tbody></table>
                             </td>
