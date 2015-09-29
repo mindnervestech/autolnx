@@ -560,8 +560,11 @@ public class ClientService {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin= '"+vin+"' ");
 		
- 		List<Map<String, Object>> similarData = jdbcTemplate.queryForList("select * from vehicle where engine= '"+(String) row.get(0).get("engine")+"' and make='"+(String) row.get(0).get("make")+"' and body_style = '"+(String) row.get(0).get("body_style")+"' and status != 'Sold'");
- 		for(Map map : similarData) {
+ 		List<Map<String, Object>> similarBodyData = jdbcTemplate.queryForList("select * from vehicle where body_style = '"+(String) row.get(0).get("body_style")+"' and status != 'Sold'");
+ 		List<Map<String, Object>> similarEngineData = jdbcTemplate.queryForList("select * from vehicle where engine= '"+(String) row.get(0).get("engine")+"' and status != 'Sold'");
+ 		List<Map<String, Object>> similarMakeData = jdbcTemplate.queryForList("select * from vehicle where make='"+(String) row.get(0).get("make")+"' and status != 'Sold'");
+ 		
+ 		for(Map map : similarBodyData) {
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
 			vm.drivetrain = (String) map.get("drivetrain");
@@ -591,6 +594,73 @@ public class ClientService {
 			}
 			
 			vehicleList.add(vm);
+			break;
+		}
+ 		
+ 		for(Map map : similarEngineData) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			
+			vehicleList.add(vm);
+			break;
+		}
+ 		
+ 		for(Map map : similarMakeData) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			
+			vehicleList.add(vm);
+			break;
 		}
  		
  		return vehicleList;
