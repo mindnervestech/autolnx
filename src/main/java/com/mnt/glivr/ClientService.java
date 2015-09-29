@@ -598,6 +598,12 @@ public class ClientService {
 		}
  		
  		for(Map map : similarEngineData) {
+ 			if(vehicleList.size()>0) {
+ 				String vinStr = (String)map.get("vin");
+	 			if(vehicleList.get(0).vin.equals(vinStr)) {
+	 				break;
+	 			}
+ 			}
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
 			vm.drivetrain = (String) map.get("drivetrain");
@@ -631,6 +637,18 @@ public class ClientService {
 		}
  		
  		for(Map map : similarMakeData) {
+ 			if(vehicleList.size()>0) {
+ 				String vinStr = (String)map.get("vin");
+	 			if(vehicleList.get(0).vin.equals(vinStr)) {
+	 				break;
+	 			}
+ 			}
+ 			if(vehicleList.size()>1) {
+ 				String vinStr = (String)map.get("vin");
+	 			if(vehicleList.get(1).vin.equals(vinStr)) {
+	 				break;
+	 			}
+ 			}
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
 			vm.drivetrain = (String) map.get("drivetrain");
