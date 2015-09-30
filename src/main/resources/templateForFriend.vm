@@ -844,7 +844,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
 								 #if ($similarVehicle.size() > 0)
 							   <tbody><tr>
-                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">SAME BODY STYLE</span></td>
+                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">$similarVehicle[0].make</span></td>
                                 </tr>
                                 <!--start space height -->
                                 <tr>
@@ -911,7 +911,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
 							   #if ($similarVehicle.size() > 1)
                                 <tbody><tr>
-                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">SAME ENGINE</span></td>
+                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">$similarVehicle[1].make</span></td>
                                 </tr>
                                 <!--start space height -->
                                 <tr>
@@ -977,7 +977,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
                                  #if ($similarVehicle.size() > 2)
                                 <tbody><tr>
-                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">SAME BRAND</span></td>
+                                  <td style="font-size: 18px; line-height: 22px; font-family: Roboto, Arial, Helvetica, sans-serif; color: rgb(85, 85, 85); font-weight: 300; text-align: left; word-break: break-word;"><span style="color: rgb(194, 0, 0); font-size: 16px; font-weight: bold; line-height: 24px;">$similarVehicle[2].make</span></td>
                                 </tr>
                                 <!--start space height -->
                                 <tr>
