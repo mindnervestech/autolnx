@@ -830,7 +830,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <tr>
                             <td width="100%" valign="top" align="left" class="image-170px">
                                #if ($similarVehicle.size() > 0)
-                                <img src="$hostnameimg$similarVehicle[0].path" width="170" alt="" style="max-width: 170px; display: block;" border="0" hspace="0" vspace="0">
+                                <img src="$hostnameimg$similarVehicle[0].path" width="170" alt="" style="max-width: 170px; display: block;max-height:102px;" border="0" hspace="0" vspace="0">
                               #end
                             </td>
                           </tr>
@@ -897,7 +897,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <tr>
                             <td width="100%" valign="top" align="left" class="image-170px">
                                 #if ($similarVehicle.size() > 1)
-                                <img src="$hostnameimg$similarVehicle[1].path" width="170" alt="" style="max-width: 170px; display: block !important;" border="0" hspace="0" vspace="0">
+                                <img src="$hostnameimg$similarVehicle[1].path" width="170" alt="" style="max-width: 170px; display: block !important;max-height:102px;" border="0" hspace="0" vspace="0">
                               #end
                             </td>
                           </tr>
@@ -963,7 +963,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                           <tr>
                             <td width="100%" valign="top" align="left" class="image-170px">
                               #if ($similarVehicle.size() > 2)
-                                <img src="$hostnameimg$similarVehicle[2].path" width="170" alt="" style="max-width: 170px; display: block !important;" border="0" hspace="0" vspace="0">
+                                <img src="$hostnameimg$similarVehicle[2].path" width="170" alt="" style="max-width: 170px; display: block !important;max-height:102px;" border="0" hspace="0" vspace="0">
                               #end
                             </td>
                           </tr>
