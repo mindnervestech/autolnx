@@ -580,7 +580,7 @@ public class ClientService {
 			vm.transmission = (String) map.get("transmission");
 			vm.vin = (String) map.get("vin");
 			vm.year = (String) map.get("year");
-			
+			vm.model = (String) map.get("model");
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
 			if(vehiclePath.isEmpty()) {
 				vm.path = "/no-image.jpg";
