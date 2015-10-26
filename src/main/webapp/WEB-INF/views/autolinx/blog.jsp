@@ -185,7 +185,7 @@ $(document).ready(function()
           <div class="post-entry clearfix">
           	<div compile="{{blog.videoUrl}}"></div><br>
           	<img alt="" src="http://glider-autos.com/glivrImg/images{{blog.imageUrl}}" ng-show="blog.imageUrl != null"><br>
-            <pre style="margin-top:3%;font-size: 14px;">{{blog.description}}</pre>
+            <pre style="margin-top:3%;font-size: 14px;font-family: 'Open Sans', sans-serif, Arial;">{{blog.description}}</pre>
             <div class="clearfix"></div>
             <div class="blog-end margin-top-20">
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 read-more"><a href="">Read More...</a></div>
