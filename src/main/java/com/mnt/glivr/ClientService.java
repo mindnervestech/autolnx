@@ -2133,6 +2133,8 @@ public class ClientService {
 			BlogVM vm = new BlogVM();
 			vm.title = (String) map.get("title");
 			vm.description = (String) map.get("description");
+			vm.imageUrl = (String) map.get("image_url");
+			vm.videoUrl = (String) map.get("video_url");
 			vm.postedBy = (String) map.get("posted_by");
 			Date date = (Date) map.get("posted_date");
 			vm.postedDate = dateFormat.format(date);

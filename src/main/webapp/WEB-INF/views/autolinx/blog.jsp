@@ -183,7 +183,9 @@ $(document).ready(function()
             <li class="fa fa-comments"><a title="Comment on Ask Your Dealer &ndash;  Should I Buy or Finance My Used Luxury Car" href="http://www.autolinxinc.com/ask-your-dealer-should-i-buy-or-finance-my-used-luxury-car/#respond">No comments yet</a></li>
           </ul>
           <div class="post-entry clearfix">
-            <div compile="{{blog.description}}"></div>
+          	<div compile="{{blog.videoUrl}}"></div>
+          	<img alt="" src="http://glider-autos.com/glivrImg/images{{blog.imageUrl}}">
+            <div>{{blog.description}}</div>
             <div class="clearfix"></div>
             <div class="blog-end margin-top-20">
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 read-more"><a href="">Read More...</a></div>
