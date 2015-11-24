@@ -1371,7 +1371,7 @@ $(document).ready(function()
     
   <a title="Real Time Web Analytics" href="http://clicky.com/100875513"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
 <script type="text/javascript">
-
+console.log("find Clicky.....!!!!!");
 var clicky_site_ids = clicky_site_ids || [];
 clicky_site_ids.push(100875513);
 (function() {
@@ -1383,7 +1383,7 @@ clicky_site_ids.push(100875513);
 })();
 
 clicky.log("https://clicky.com/user/", "yogesh", "pageview");
-console.log(window.clicky);
+console.log(clicky.site_id_exists(100875513));
 console.log(clicky_obj);
 </script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
