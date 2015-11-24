@@ -1309,6 +1309,7 @@ $(document).ready(function()
        
         <div class="modal-footer">
            <input type="submit" value="Submit">
+            <a id="clickId" clicky.log('http://www.glider-autos.com/glivr/vehicleDetails/WBAFR7C51CC813198','emailTofrient','emailTofrient');></a> 
         </div>
       </div>
       </form>
