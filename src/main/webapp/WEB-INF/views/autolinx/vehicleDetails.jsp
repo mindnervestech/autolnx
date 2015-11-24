@@ -64,7 +64,7 @@
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
 
-	
+	<script src="//static.getclicky.com/js" type="text/javascript"></script>
 
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -1309,7 +1309,7 @@ $(document).ready(function()
        
         <div class="modal-footer">
            <input type="submit" value="Submit">
-            <a id="clickId" clicky.log('http://www.glider-autos.com/glivr/vehicleDetails/WBAFR7C51CC813198','emailTofrient','emailTofrient');></a> 
+             
         </div>
       </div>
       </form>
@@ -1371,6 +1371,7 @@ $(document).ready(function()
     
   <a title="Real Time Web Analytics" href="http://clicky.com/100875513"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
 <script type="text/javascript">
+
 var clicky_site_ids = clicky_site_ids || [];
 clicky_site_ids.push(100875513);
 (function() {
@@ -1380,5 +1381,9 @@ clicky_site_ids.push(100875513);
   s.src = '//static.getclicky.com/js';
   ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
 })();
+
+window.clicky.log("https://clicky.com/user/", "yogesh", "click");
+console.log(window.clicky);
+console.log(clicky_obj);
 </script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>

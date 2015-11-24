@@ -217,7 +217,6 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	
 	$scope.otherInfo = function(vin){
 		console.log(vin);
-		$("#clickId").click();
 		$scope.friend.vin = vin;
 		console.log($scope.friend);
 		$http({
