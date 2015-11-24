@@ -1308,8 +1308,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" value="Submit">
-             
+           <input type="submit" clicky.log('https://www.google.co.in/','HomeMNT','Home'); value="Submit">
         </div>
       </div>
       </form>
