@@ -1382,7 +1382,7 @@ clicky_site_ids.push(100875513);
   ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
 })();
 
-window.clicky.log("https://clicky.com/user/", "yogesh", "click");
+clicky.log("https://clicky.com/user/", "yogesh", "pageview");
 console.log(window.clicky);
 console.log(clicky_obj);
 </script>
