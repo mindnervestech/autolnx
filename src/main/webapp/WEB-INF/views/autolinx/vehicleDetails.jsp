@@ -1382,4 +1382,4 @@ clicky_site_ids.push(100875513);
 
 </script>
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
-<a href="https://www.google.co.in" clicky.log('https://www.google.co.in','yogesh','click'); return false;">hiiiiiiiiiiiiiii</a>
+<a href="https://www.google.co.in" onclick="clicky.log('https://www.google.co.in','yogesh','click'); return false;">hiiiiiiiiiiiiiii</a>
