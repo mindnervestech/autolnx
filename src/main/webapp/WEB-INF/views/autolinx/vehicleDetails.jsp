@@ -64,8 +64,6 @@
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
 
-	<script src="//static.getclicky.com/js" type="text/javascript"></script>
-
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 
@@ -1308,7 +1306,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" clicky.log('https://www.google.co.in/','HomeMNT','Home'); value="Submit">
+           <input type="submit" clicky.log('https://www.google.co.in/','HomeMNT','click');  return false; value="Submit">
         </div>
       </div>
       </form>
@@ -1381,8 +1379,6 @@ clicky_site_ids.push(100875513);
   ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
 })();
 
-clicky.log("https://clicky.com/user/", "yogesh", "pageview");
-console.log(clicky.site_id_exists(100875513));
-console.log(clicky_obj);
+
 </script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
+ <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
