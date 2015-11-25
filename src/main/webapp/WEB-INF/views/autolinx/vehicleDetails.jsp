@@ -1306,7 +1306,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" clicky.log('https://www.google.co.in/','HomeMNT','click');  return false; value="Submit">
+           <input type="submit" value="Submit">
         </div>
       </div>
       </form>
@@ -1382,3 +1382,4 @@ clicky_site_ids.push(100875513);
 
 </script>
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
+<a href="#menu/home" clicky.log('#menu/home','Home'); return false;">hiiiiiiiiiiiiiii</a>
