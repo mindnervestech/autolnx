@@ -1342,8 +1342,6 @@ $(document).ready(function()
       </form>
     </div>
   </div>
-  
-
 </body>
 </html>
 
@@ -1381,7 +1379,7 @@ clicky_site_ids.push(100875513);
 
 </script>
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
-<a href="https://www.google.co.in" id="callemail" onclick="clicky.log('https://www.google.co.in','emailtofriend','click'); return false;">emailToFriend</a>
-<a href="https://www.google.co.in" id="callRequest" onclick="clicky.log('https://www.google.co.in','requestmoreinfo','click'); return false;">requestMoreInfo</a>
-<a href="https://www.google.co.in" id="callSchedule" onclick="clicky.log('https://www.google.co.in','scheduletest','click'); return false;">scheduleTest</a>
-<a href="https://www.google.co.in" id="callTrade" onclick="clicky.log('https://www.google.co.in','tradeinapp','click'); return false;">tradeInApp</a>
+<a href="https://in.yahoo.com" id="callemail" onclick="clicky.log('https://in.yahoo.com','emailtofriend','click'); return false;">emailToFriend</a>
+<a href="https://in.yahoo.com" id="callRequest" onclick="clicky.log('https://in.yahoo.com','requestmoreinfo','click'); return false;">requestMoreInfo</a>
+<a href="https://in.yahoo.com" id="callSchedule" onclick="clicky.log('https://in.yahoo.com','scheduletest','click'); return false;">scheduleTest</a>
+<a href="https://in.yahoo.com" id="callTrade" onclick="clicky.log('https://in.yahoo.com','tradeinapp','click'); return false;">tradeInApp</a>
