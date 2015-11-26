@@ -343,7 +343,7 @@ $(document).ready(function()
 	                	                	<li class="trade gradient_button"><a data-toggle="modal" data-target="#tradeInApp">Trade-In Appraisal</a></li>
 	                	                
 	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
-	                	                <li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" onclick="clicky.log('https://www.google.co.in','yogesh','click'); return false;">Email To Friend</a></li>
+	                	                <li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" >Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                	
 	                	                
@@ -1381,7 +1381,7 @@ clicky_site_ids.push(100875513);
 
 </script>
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
-<a href="https://www.google.co.in" id="callemail" onclick="clicky.log('https://www.google.co.in','emailToFriend','click'); return false;"></a>
-<a href="https://www.google.co.in" id="callRequest" onclick="clicky.log('https://www.google.co.in','requestMoreInfo','click'); return false;"></a>
+<a href="https://www.google.co.in" id="callemail" onclick="clicky.log('https://www.google.co.in','emailToFriend','click'); return false;">emailToFriend</a>
+<a href="https://www.google.co.in" id="callRequest" onclick="clicky.log('https://www.google.co.in','requestMoreInfo','click'); return false;">requestMoreInfo</a>
 <a href="https://www.google.co.in" id="callSchedule" onclick="clicky.log('https://www.google.co.in','scheduleTest','click'); return false;"></a>
 <a href="https://www.google.co.in" id="callTrade" onclick="clicky.log('https://www.google.co.in','tradeInApp','click'); return false;"></a>
