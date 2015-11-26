@@ -1306,7 +1306,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" value="Submit">
+           <input type="submit" onclick="clicky.log('https://www.google.co.in','yogesh','click'); return false;" value="Submit">
         </div>
       </div>
       </form>
