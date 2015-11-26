@@ -181,6 +181,8 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	var contextPath = $('#contextpath').val();
 	
 	$scope.requestMore = function(vin){
+		
+		$("#callRequest").click();
 		console.log(vin);
 		$scope.request.vin = vin;
 		console.log($scope.request);
@@ -198,6 +200,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	};
 	
 	$scope.scheduleTest = function(vin){
+		$("#callSchedule").click();
 		console.log(vin);
 		$scope.schedule.vin = vin;
 		console.log($scope.schedule);
@@ -218,7 +221,6 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.otherInfo = function(vin){
 		console.log(vin);
 		$("#callemail").click();
-		clicky.log('https://www.google.co.in','yog1234567esh','click');
 		$scope.friend.vin = vin;
 		console.log($scope.friend);
 		$http({
@@ -235,6 +237,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	};
 	
 	$scope.tradeInApp = function(vin){
+		$("#callTrade").click();
 		console.log(vin);
 		$scope.tradeIn.vin = vin;
 		console.log($scope.tradeIn);
@@ -273,6 +276,8 @@ app.controller("MobileVehicleDetailsController", function($scope,$http,notificat
 	var contextPath = $('#contextpath').val();
 	
 	$scope.requestMore = function(vin){
+		
+		$("#callRequest").click();
 		console.log(vin);
 		$scope.request.vin = vin;
 		console.log($scope.request);
