@@ -217,8 +217,8 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	
 	$scope.otherInfo = function(vin){
 		console.log(vin);
-		$("#clickId").click();
-		
+		$("#callemail").click();
+		clicky.log('https://www.google.co.in','yog1234567esh','click');
 		$scope.friend.vin = vin;
 		console.log($scope.friend);
 		$http({

@@ -1306,7 +1306,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" onclick="clicky.log('https://www.google.co.in','yoge123456677sh','click'); return false;" value="Submit">
+           <input type="submit" value="Submit">
         </div>
       </div>
       </form>
@@ -1379,7 +1379,6 @@ clicky_site_ids.push(100875513);
   ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
 })();
 
-
 </script>
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
-<a href="https://www.google.co.in" onclick="clicky.log('https://www.google.co.in','yog111111esh','click'); return false;">hiiiiiiiiiiiiiii</a>
+<a href="https://www.google.co.in" id="callemail" onclick="clicky.log('https://www.google.co.in','yogiii','click'); return false;">hiiiiiiiiiiiiiii</a>
