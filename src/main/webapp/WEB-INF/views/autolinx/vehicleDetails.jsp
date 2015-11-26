@@ -343,7 +343,7 @@ $(document).ready(function()
 	                	                	<li class="trade gradient_button"><a data-toggle="modal" data-target="#tradeInApp">Trade-In Appraisal</a></li>
 	                	                
 	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
-	                	                <li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo">Email To Friend</a></li>
+	                	                <li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" onclick="clicky.log('https://www.google.co.in','yogesh','click'); return false;">Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                	
 	                	                
@@ -1306,7 +1306,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" onclick="clicky.log('https://www.google.co.in','yogesh','click'); return false;" value="Submit">
+           <input type="submit" value="Submit">
         </div>
       </div>
       </form>
