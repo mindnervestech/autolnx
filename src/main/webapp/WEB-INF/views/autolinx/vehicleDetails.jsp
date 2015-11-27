@@ -334,16 +334,14 @@ $(document).ready(function()
 	                	                
 	                	                
 	                	                
-	                	                	<li class="request gradient_button"><a  data-toggle="modal" data-target="#myModal" >Request More Info</a></li>
+	                	                	<li class="request gradient_button"><a  data-toggle="modal" data-target="#myModal" href="##requestmoreinfohow" onclick="clicky.log('##requestmoreinfoshow','click'); return false;">Request More Info</a></li>
 	                	                
-	                	                	<li class="schedule gradient_button"><a  data-toggle="modal" data-target="#scheduleTest">Schedule Test Drive</a></li>
+	                	                	<li class="schedule gradient_button"><a  data-toggle="modal" data-target="#scheduleTest" href="#scheduletestshow" onclick="clicky.log('#scheduletestshow','click'); return false;">Schedule Test Drive</a></li>
 	                	                
-	                	                	<!-- <li class="offer gradient_button"><a class="fancybox_div" href="#offer_fancybox_form">Make an Offer</a></li> -->
-	                	                
-	                	                	<li class="trade gradient_button"><a data-toggle="modal" data-target="#tradeInApp">Trade-In Appraisal</a></li>
+	                	                	<li class="trade gradient_button"><a data-toggle="modal" data-target="#tradeInApp" href="##tradeinappshow" onclick="clicky.log('#tradeinappshow','click'); return false;">Trade-In Appraisal</a></li>
 	                	                
 	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
-	                	                <li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" >Email To Friend</a></li>
+	                	                <li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" href="#emailtofriendshow" onclick="clicky.log('#emailtofriendshow','click'); return false;">Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                	
 	                	                
