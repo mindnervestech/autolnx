@@ -1377,7 +1377,7 @@ clicky_site_ids.push(100875513);
 
 </script>
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
-<a href="#emailtofriend" id="callemail" onclick="clicky.log('#emailtofriend','click'); return false;">emailToFriend</a>
-<a href="#requestmoreinfo" id="callRequest" onclick="clicky.log('#requestmoreinfo','click'); return false;">requestMoreInfo</a>
-<a href="#scheduletest" id="callSchedule" onclick="clicky.log('#scheduletest','click'); return false;">scheduleTest</a>
-<a href="#tradeinapp" id="callTrade" onclick="clicky.log('#tradeinapp','click'); return false;">tradeInApp</a>
+<a href="#emailtofriend" id="callemail" onclick="clicky.log('#emailtofriend','${vehicle.vin}','click'); return false;">emailToFriend</a>
+<a href="#requestmoreinfo" id="callRequest" onclick="clicky.log('#requestmoreinfo','${vehicle.vin}','click'); return false;">requestMoreInfo</a>
+<a href="#scheduletest" id="callSchedule" onclick="clicky.log('#scheduletest','${vehicle.vin}','click'); return false;">scheduleTest</a>
+<a href="#tradeinapp" id="callTrade" onclick="clicky.log('#tradeinapp','${vehicle.vin}','click'); return false;">tradeInApp</a>
