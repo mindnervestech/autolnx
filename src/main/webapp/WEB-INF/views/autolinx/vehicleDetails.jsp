@@ -72,7 +72,13 @@
 
 <script type="text/javascript">
 
+
+$("#ab").click(function() {
+    console.log("kjjjjjjjjjjjjj");
+});
+	
   function playpause_audio(){
+	  
 	
 	var  audio = $(".audioDemo");
 	 if (audio[0].paused == false) {
@@ -80,6 +86,7 @@
 		$('#start_engine').show();
 		$('#stop_engine').hide();
     } else {
+    	$("#enginesound").click();
         audio.trigger('play');
 		$('#start_engine').hide();
 		$('#stop_engine').show();
@@ -295,7 +302,7 @@ $(document).ready(function()
 				    </c:when>    
 				    <c:otherwise>
 				        <p>
-                   			<iframe width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
+                   		<iframe id="ab" width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
                    		</p>
 				        <br />
 				    </c:otherwise>
@@ -330,8 +337,6 @@ $(document).ready(function()
   
   
 </div>    -->
-	                	                
-	                	                
 	                	                
 	                	                
 	                	                	<li class="request gradient_button"><a  data-toggle="modal" data-target="#myModal" href="#${vehicle.vin}#requestmoreinfohow" onclick="clicky.log('#${vehicle.vin}#requestmoreinfoshow','click'); return false;">Request More Info</a></li>
@@ -1377,7 +1382,8 @@ clicky_site_ids.push(100875513);
 
 </script>
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
-<a href="#${vehicle.vin}#emailtofriend" id="callemail" onclick="clicky.log('#${vehicle.vin}#emailtofriend','click'); return false;">emailToFriend</a>
-<a href="#${vehicle.vin}#requestmoreinfo" id="callRequest" onclick="clicky.log('#${vehicle.vin}#requestmoreinfo','click'); return false;">requestMoreInfo</a>
-<a href="#${vehicle.vin}#scheduletest" id="callSchedule" onclick="clicky.log('#${vehicle.vin}#scheduletest','click'); return false;">scheduleTest</a>
-<a href="#${vehicle.vin}#tradeinapp" id="callTrade" onclick="clicky.log('#${vehicle.vin}#tradeinapp','click'); return false;">tradeInApp</a>
+<a href="#${vehicle.vin}#emailtofriend" id="callemail" onclick="clicky.log('#${vehicle.vin}#emailtofriend','click'); return false;"></a>
+<a href="#${vehicle.vin}#requestmoreinfo" id="callRequest" onclick="clicky.log('#${vehicle.vin}#requestmoreinfo','click'); return false;"></a>
+<a href="#${vehicle.vin}#scheduletest" id="callSchedule" onclick="clicky.log('#${vehicle.vin}#scheduletest','click'); return false;"></a>
+<a href="#${vehicle.vin}#tradeinapp" id="callTrade" onclick="clicky.log('#${vehicle.vin}#tradeinapp','click'); return false;"></a>
+<a href="#${vehicle.vin}#enginesound" id="enginesound" onclick="clicky.log('#${vehicle.vin}#enginesound','click'); return false;"></a>

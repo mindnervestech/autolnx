@@ -269,6 +269,10 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		});
 	};
 	
+	$scope.callVirtualTourArea = function(){
+		console.log("mmmmmmmmmmmmmmmmm");
+	};
+	
 });
 
 app.controller("MobileVehicleDetailsController", function($scope,$http,notificationService) {
