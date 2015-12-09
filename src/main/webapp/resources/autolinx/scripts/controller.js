@@ -176,7 +176,7 @@ app.controller("HomeController", function($scope,$http, notificationService) {
 	
 });
 
-app.controller("VehicleDetailsController", function($scope,$http,notificationService) {
+app.controller("VehicleDetailsController", function($scope,$http,notificationService,$timeout) {
 	
 	var contextPath = $('#contextpath').val();
 	
@@ -198,6 +198,23 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 			console.log("Error.................");
 		});
 	};
+	$scope.flag = 0;
+	$('iframe').mouseenter(function(event){
+		console.log("lllll");
+		$scope.flag = 1;
+		$timeout(callAtTimeout, 5000);
+	});
+	
+	
+	$('iframe').mouseleave(function(event){
+		$scope.flag = 0;
+	});
+	
+	function callAtTimeout() {
+		if($scope.flag == 1){
+			$('#virtualTour').click();
+		}
+	}
 	
 	$scope.scheduleTest = function(vin){
 		$("#callSchedule").click();
