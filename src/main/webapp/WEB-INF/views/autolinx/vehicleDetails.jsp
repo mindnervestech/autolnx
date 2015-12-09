@@ -1387,3 +1387,4 @@ clicky_site_ids.push(100875513);
 <a href="#${vehicle.vin}#scheduletest" id="callSchedule" onclick="clicky.log('#${vehicle.vin}#scheduletest','click'); return false;"></a>
 <a href="#${vehicle.vin}#tradeinapp" id="callTrade" onclick="clicky.log('#${vehicle.vin}#tradeinapp','click'); return false;"></a>
 <a href="#${vehicle.vin}#enginesound" id="enginesound" onclick="clicky.log('#${vehicle.vin}#enginesound','click'); return false;"></a>
+<a href="#${vehicle.vin}#virtualTour" id="virtualTour" onclick="clicky.log('#${vehicle.vin}#virtualTour','click'); return false;">ooooooo</a>
