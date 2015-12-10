@@ -713,7 +713,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                         <td valign="top">
                                           <table border="0" align="left" cellpadding="0" cellspacing="0">
                                             <tbody><tr>
-                                              <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"> <a href="$urlLink/$vin"><span style="font-size: 16px; font-weight: 300; line-height: 24px;">MORE DETAILS</span></a><br style="line-height: 24px;"></td>
+                                              <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"> <a href="$urlLink/$vin?frdEmail"><span style="font-size: 16px; font-weight: 300; line-height: 24px;">MORE DETAILS</span></a><br style="line-height: 24px;"></td>
                                               <!-- start space width -->
                                               <td valign="top">
                                                 <table width="20" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -864,7 +864,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                     <!-- start button -->
                                     <table width="auto" border="0" align="left" cellpadding="0" cellspacing="0">
                                       <tbody><tr>
-                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[0].vin"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></span></a></td>
+                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[0].vin?frdEmail"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></span></a></td>
                                       </tr>
                                     </tbody></table>
                                     <!-- end button -->
@@ -931,7 +931,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                     <!-- start button -->
                                     <table width="auto" border="0" align="left" cellpadding="0" cellspacing="0">
                                       <tbody><tr>
-                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[1].vin"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></span></a></td>
+                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[1].vin?frdEmail"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></span></a></td>
                                       </tr>
                                     </tbody></table>
                                     <!-- end button -->
@@ -997,7 +997,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
                                     <!-- start button -->
                                     <table width="auto" border="0" align="left" cellpadding="0" cellspacing="0">
                                       <tbody><tr>
-                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[0].vin"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></a></span></td>
+                                        <td width="auto" align="center" valign="middle" height="32" style="border-radius: 5px; font-size: 13px; font-family: Roboto, Arial, Helvetica, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; word-break: break-word; background-color: rgb(208, 93, 104); background-clip: padding-box;"><a href="$urlLink/$similarVehicle[0].vin?frdEmail"><span style="font-size: inherit; line-height: 24px;">MORE DETAILS<br style="line-height: 24px;"></a></span></td>
                                       </tr>
                                     </tbody></table>
                                     <!-- end button -->

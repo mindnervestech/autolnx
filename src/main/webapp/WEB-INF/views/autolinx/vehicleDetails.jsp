@@ -72,6 +72,16 @@
 
 <script type="text/javascript">
 
+var url= window.location.href;
+
+
+var res = url.split("?");
+
+console.log(res[1]);
+	if(res[1] == "frdEmail"){
+		$("#frdEmailSee").click();
+	}
+
 
 $("#ab").click(function() {
     console.log("kjjjjjjjjjjjjj");
@@ -1388,3 +1398,4 @@ clicky_site_ids.push(100875513);
 <a href="#${vehicle.vin}#tradeinapp" id="callTrade" onclick="clicky.log('#${vehicle.vin}#tradeinapp','click'); return false;"></a>
 <a href="#${vehicle.vin}#enginesound" id="enginesound" onclick="clicky.log('#${vehicle.vin}#enginesound','click'); return false;"></a>
 <a href="#${vehicle.vin}#virtualTour" id="virtualTour" onclick="clicky.log('#${vehicle.vin}#virtualTour','click'); return false;"></a>
+<a href="#${vehicle.vin}#frdEmailSee" id="frdEmailSee" onclick="clicky.log('#${vehicle.vin}#frdEmailSee','click'); return false;"></a>
