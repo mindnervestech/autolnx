@@ -809,11 +809,11 @@ public class ClientService {
 			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			i++;
 			for(Map map : allUsers) {
-				usersArray[i] = new InternetAddress((String) map.get("email"));
+				usersArray[i] = new InternetAddress("yogeshpatil424@gmail.com");  //(String) map.get("email")
 				i++;
 			}
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(emailusername));
+			message.setFrom(new InternetAddress(emailusername)); 
 			message.setRecipients(Message.RecipientType.TO,
 					usersArray);
 			message.setSubject("Request More Info");
@@ -934,12 +934,12 @@ public class ClientService {
 			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			i++;
 			for(Map map : allUsers) {
-				usersArray[i] = new InternetAddress((String) map.get("email"));
+				usersArray[i] = new InternetAddress("yogeshpatil424@gmail.com");  //(String) map.get("email")
 				i++;
 			}
 			
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(emailusername));
+			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
 					usersArray);
 			message.setSubject("Schedule Test Drive");
@@ -1786,11 +1786,11 @@ public class ClientService {
 			usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			index++;
 			for(Map map : allUsers) {
-				usersArray[index] = new InternetAddress((String) map.get("email"));
+				usersArray[index] = new InternetAddress("yogeshpatil424@gmail.com");   //(String) map.get("email")
 				index++;
 			}
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(emailusername));
+			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
 					usersArray);
 			message.setSubject("Trade-In Appraisal");

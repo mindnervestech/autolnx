@@ -81,6 +81,16 @@ console.log(res[1]);
 	if(res[1] == "frdEmail"){
 		$("#frdEmailSee").click();
 	}
+	if(res[1] == "shedule"){
+		$("#sheduleSee").click();
+	}
+	if(res[1] == "request"){
+		$("#requestSee").click();
+	}
+	
+	if(res[1] == "trade"){
+		$("#tradeSee").click();
+	}
 
 
 $("#ab").click(function() {
@@ -1399,3 +1409,6 @@ clicky_site_ids.push(100875513);
 <a href="#${vehicle.vin}#enginesound" id="enginesound" onclick="clicky.log('#${vehicle.vin}#enginesound','click'); return false;"></a>
 <a href="#${vehicle.vin}#virtualTour" id="virtualTour" onclick="clicky.log('#${vehicle.vin}#virtualTour','click'); return false;"></a>
 <a href="#${vehicle.vin}#frdEmailSee" id="frdEmailSee" onclick="clicky.log('#${vehicle.vin}#frdEmailSee','click'); return false;"></a>
+<a href="#${vehicle.vin}#sheduleSee" id="sheduleSee" onclick="clicky.log('#${vehicle.vin}#sheduleSee','click'); return false;"></a>
+<a href="#${vehicle.vin}#requestSee" id="requestSee" onclick="clicky.log('#${vehicle.vin}#requestSee','click'); return false;"></a>
+<a href="#${vehicle.vin}#tradeSee" id="tradeSee" onclick="clicky.log('#${vehicle.vin}#tradeSee','click'); return false;"></a>

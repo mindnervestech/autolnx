@@ -650,7 +650,7 @@ td,span,a{font-family: Arial, sans-serif !important;}
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="full-width" syle="background-color:#ffffff min-width:600px;" style="background-color: rgb(236, 235, 235);">
               <tbody><tr>
                 <td valign="top" class="image-100-percent">
-                   <a href="$urlLink/$vin"><img src="$hostnameimg$path" width="600" alt="" style="max-width: 600px; display: block !important;"></a>
+                   <a href="$urlLink/$vin?trade"><img src="$hostnameimg$path" width="600" alt="" style="max-width: 600px; display: block !important;"></a>
                 </td>
               </tr>
             </tbody></table>
