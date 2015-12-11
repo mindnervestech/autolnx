@@ -809,7 +809,7 @@ public class ClientService {
 			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			i++;
 			for(Map map : allUsers) {
-				usersArray[i] = new InternetAddress("yogeshpatil424@gmail.com");  //(String) map.get("email")
+				usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
 				i++;
 			}
 			Message message = new MimeMessage(session);
@@ -934,7 +934,7 @@ public class ClientService {
 			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			i++;
 			for(Map map : allUsers) {
-				usersArray[i] = new InternetAddress("yogeshpatil424@gmail.com");  //(String) map.get("email")
+				usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
 				i++;
 			}
 			
@@ -1786,7 +1786,7 @@ public class ClientService {
 			usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			index++;
 			for(Map map : allUsers) {
-				usersArray[index] = new InternetAddress("yogeshpatil424@gmail.com");   //(String) map.get("email")
+				usersArray[index] = new InternetAddress((String) map.get("email"));   //(String) map.get("email")
 				index++;
 			}
 			Message message = new MimeMessage(session);
