@@ -82,9 +82,10 @@ public class ClientService {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	public List<SliderVM> getSliderImages() {
+	public List<SliderVM> getSliderImages(Long locationId) {
 		
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
+		//List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where user_id = '"+userId+"' order by slider_image.`row`,slider_image.col");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from slider_image where locations_id = '"+locationId+"' order by slider_image.`row`,slider_image.col");
 		List<SliderVM> sliderUrls = new ArrayList<SliderVM>();
 		
 		int count = 0;
@@ -248,9 +249,11 @@ public class ClientService {
 		return sliderUrls;
 	}
 	
-	public List<FeaturedVM> getFeaturedImages() {
+	public List<FeaturedVM> getFeaturedImages(Long locationId) {
 		
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where user_id = '"+userId+"' order by featured_image.`row`,featured_image.col");
+		//List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where user_id = '"+userId+"' order by featured_image.`row`,featured_image.col");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from featured_image where locations_id = '"+locationId+"' order by featured_image.`row`,featured_image.col");
+		
 		List<FeaturedVM> featuredUrls = new ArrayList<FeaturedVM>();
 		for(Map map : rows) {
 			FeaturedVM vm = new FeaturedVM();
@@ -283,6 +286,15 @@ public class ClientService {
 		mapAll.put("model", vehicleListModel);
 		
 		return mapAll;
+	}
+	
+	public Long getfindByLocationName(String locationName){
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from location where name = '"+locationName+"'");
+		Long id = 0L;
+		//for(Map map : rows) {
+			id = (Long) rows.get(0).get("id");
+		//}
+			return id;
 	}
 	
 	public List<String> getAllVehicleMakes() {
@@ -342,9 +354,11 @@ public class ClientService {
 	}
 	
 	
-	public SiteContentVM getSitContent() {
+	public SiteContentVM getSitContent(Long locationId) {
 		SiteContentVM sContentVM = new SiteContentVM();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM site_content where user_id = '"+userId+"'");
+		//List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM site_content where user_id = '"+userId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM site_content where locations_id = '"+locationId+"'");
+		
 		for(Map map : rows) {
 			sContentVM.id = (Long) map.get("id");
 			sContentVM.heading = (String) map.get("heading");
@@ -402,10 +416,11 @@ public class ClientService {
 		
 	}
 	
-	public MyProfileVM getProfileModel(){
+	public MyProfileVM getProfileModel(Long locationId){
 		MyProfileVM profileModel = new MyProfileVM();
-
-		List<Map<String, Object>> myprofileModel = jdbcTemplate.queryForList("select * from my_profile where user_id = '"+userId+"'");
+		// user_id = '"+userId+"'
+		Long a = 5L;
+		List<Map<String, Object>> myprofileModel = jdbcTemplate.queryForList("select * from my_profile where locations_id = '"+a+"'");
 		
 		if(myprofileModel != null){
 			profileModel.myname =(String) myprofileModel.get(0).get("myname");
@@ -448,16 +463,16 @@ public class ClientService {
 		return vehicleListYear;
 	}
 	
-	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet) {
+	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet,Long locationId) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> rows = null;
 		Integer count = 0;
 		if(!priceSort.equals("")){
-			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
-			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold'");
+			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
 		}else if(!alphbet.equals("")){
-			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
-			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and status != 'Sold'");
+			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
 		}
 		
 		for(Map map : rows) {
@@ -748,12 +763,12 @@ public class ClientService {
 		jdbcTemplate.update("INSERT INTO follow_brand(name,email,brand,user_id) VALUES('"+model.getName()+"','"+model.getEmail()+"','"+model.getBrand()+"','"+userId+"')");
 	}
 	
-	public void getRequestMore(RequestMore model, String hostUrl){
+	public void getRequestMore(RequestMore model, String hostUrl, Long locationId){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String path = "";
 		
-		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,user_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+userId+"')");
+		jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,user_id,locations_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+userId+"','"+locationId+"')");
 		
 		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
 			
@@ -769,7 +784,8 @@ public class ClientService {
 		}
 		
 		SiteLogoVM logo = new SiteLogoVM();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		//List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where locations_id = '"+locationId+"'");
 		
 		for(Map map : rows) {
 			logo.logoPath = (String) map.get("logo_image_path");
@@ -777,9 +793,10 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
-		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
+		//List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
-		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		//List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where locations_id = '"+locationId+"'");
 		
 		String heading1 = "",heading2 = "";
 		String heading = (String) headingtext.get(0).get("heading");
@@ -803,10 +820,10 @@ public class ClientService {
 		});
 		try
 		{
-			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user");
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where locations_id = '"+locationId+"'");
 			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
 			int i=0;
-			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
+			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			i++;
 			for(Map map : allUsers) {
 				usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
@@ -871,13 +888,13 @@ public class ClientService {
 	}
 	
 		
-	public void getScheduleTest(ScheduleTestVM model, String hostUrl){
+	public void getScheduleTest(ScheduleTestVM model, String hostUrl, Long locationId){
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String path = "";
 		
-		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,user_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+userId+"')");
+		jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,user_id,locations_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+userId+"','"+locationId+"')");
 		
 		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
 		
@@ -893,7 +910,7 @@ public class ClientService {
 		}
 		
 		SiteLogoVM logo = new SiteLogoVM();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where locations_id = '"+locationId+"'");
 		
 		for(Map map : rows) {
 			logo.logoPath = (String) map.get("logo_image_path");
@@ -901,9 +918,9 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
-		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
+		//List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
-		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where locations_id = '"+locationId+"'");
 		
 		String heading1 = "",heading2 = "";
 		String heading = (String) headingtext.get(0).get("heading");
@@ -928,10 +945,10 @@ public class ClientService {
 		try
 		{
 			
-			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user");
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where locations_id = '"+locationId+"'");
 			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
 			int i=0;
-			usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
+			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			i++;
 			for(Map map : allUsers) {
 				usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
@@ -1144,7 +1161,7 @@ public class ClientService {
 		
 	}
 	
-	public void getTradeInApp(Trade_InVM model, String hostUrl){
+	public void getTradeInApp(Trade_InVM model, String hostUrl, Long locationId){
 			
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
@@ -1162,10 +1179,10 @@ public class ClientService {
 		}
 			
 		
-		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,user_id) VALUES('"+model.getFirst_name()+"','"+model.getLast_name()+"','"+model.getWork_phone()+"','"+model.getPhone()+"','"+model.getEmail()+"','"+model.getPreferred()+"','"+dateFormat.format(date)+"','"+model.getComments()+"','"+model.getYear()+"','"+model.getMake()+"','"+model.getModel()+"','"+model.getExterior_colour()+"','"+model.getKilometres()+"','"+model.getEngine()+"'" +
-				",'"+model.getDoors()+"','"+model.getTransmission()+"','"+model.getDrivetrain()+"','"+model.getBody_rating()+"','"+model.getTire_rating()+"','"+model.getEngine_rating()+"','"+model.getTransmission_rating()+"','"+model.getGlass_rating()+"','"+model.getInterior_rating()+"','"+model.getExhaust_rating()+"','"+model.getRental_return()+"','"+model.getOdometer_accurate()+"','"+model.getService_records()+"','"+ model.getLienholder() +"','"+model.getTitleholder()+"','"+model.getEquipment()+"','"+model.getVehiclenew()+"','"+model.getAccidents()+"','"+ model.getDamage()+"','"+model.getPaint()+"','"+model.getSalvage()+"','"+optionValue+"','"+model.getVin()+"','"+userId+"')");
+		jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,user_id,locations_id) VALUES('"+model.getFirst_name()+"','"+model.getLast_name()+"','"+model.getWork_phone()+"','"+model.getPhone()+"','"+model.getEmail()+"','"+model.getPreferred()+"','"+dateFormat.format(date)+"','"+model.getComments()+"','"+model.getYear()+"','"+model.getMake()+"','"+model.getModel()+"','"+model.getExterior_colour()+"','"+model.getKilometres()+"','"+model.getEngine()+"'" +
+				",'"+model.getDoors()+"','"+model.getTransmission()+"','"+model.getDrivetrain()+"','"+model.getBody_rating()+"','"+model.getTire_rating()+"','"+model.getEngine_rating()+"','"+model.getTransmission_rating()+"','"+model.getGlass_rating()+"','"+model.getInterior_rating()+"','"+model.getExhaust_rating()+"','"+model.getRental_return()+"','"+model.getOdometer_accurate()+"','"+model.getService_records()+"','"+ model.getLienholder() +"','"+model.getTitleholder()+"','"+model.getEquipment()+"','"+model.getVehiclenew()+"','"+model.getAccidents()+"','"+ model.getDamage()+"','"+model.getPaint()+"','"+model.getSalvage()+"','"+optionValue+"','"+model.getVin()+"','"+userId+"','"+locationId+"')");
 		
-		lastId =jdbcTemplate.queryForInt("select MAX(id) from trade_in where user_id = '"+userId+"' ");
+		lastId =jdbcTemplate.queryForInt("select MAX(id) from trade_in where locations_id = '"+locationId+"' ");
 		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
 		
 		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+model.getVin()+"' and default_image = true");
@@ -1182,7 +1199,7 @@ public class ClientService {
 		}
 		
 		SiteLogoVM logo = new SiteLogoVM();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where locations_id = '"+locationId+"'");
 		
 		for(Map map : rows) {
 			logo.logoPath = (String) map.get("logo_image_path");
@@ -1190,9 +1207,9 @@ public class ClientService {
 			logo.tabText = (String) map.get("tab_text");
 		}
 		
-		List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
+		//List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
-		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
+		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where locations_id = '"+locationId+"'");
 		
 		String heading1 = "",heading2 = "";
 		String heading = (String) headingtext.get(0).get("heading");
@@ -1780,10 +1797,10 @@ public class ClientService {
 		try
 		{
 			
-			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user");
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where locations_id ='"+locationId+"'");
 			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
 			int index=0;
-			usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
+			//usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			index++;
 			for(Map map : allUsers) {
 				usersArray[index] = new InternetAddress((String) map.get("email"));   //(String) map.get("email")
@@ -2207,9 +2224,10 @@ public class ClientService {
 		
 	}
 	
-	public SiteLogoVM getLogoData() {
+	public SiteLogoVM getLogoData(Long locationId) {
 		SiteLogoVM logo = new SiteLogoVM();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		//List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where user_id = '"+userId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where locations_id = '"+locationId+"'");
 		
 		for(Map map : rows) {
 			logo.logoPath = (String) map.get("logo_image_path");
@@ -2313,9 +2331,9 @@ public class ClientService {
 		return null;
 	}
 
-	public String getPhoneno() {
+	public String getPhoneno(Long locationId) {
 		
-		List<Map<String, Object>> phoneno = jdbcTemplate.queryForList("select * from my_profile where user_id = '"+userId+"'"); 
+		List<Map<String, Object>> phoneno = jdbcTemplate.queryForList("select * from my_profile where locations_id = '"+locationId+"'"); 
 		String phno =(String) phoneno.get(0).get("phone");
 		
 		String value1 = null;
