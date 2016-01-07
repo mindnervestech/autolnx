@@ -44,6 +44,8 @@ import com.mnt.views.VehicleVM;
 @PropertySource("classpath:conf/db.properties")
 public class ClientController {
 	
+	static long locationIdGol = 16L;
+	
 	@Value("${hostname}")
 	String hostUrl;
 	private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
@@ -91,7 +93,7 @@ public class ClientController {
 			locationId = clientService.getfindByLocationName(location);
 			
 		}else{
-			locationId = 16L;
+			locationId = locationIdGol;
 		}
 		//Long locationId = clientService.getfindByLocationName(location);
 		return locationId;
@@ -161,7 +163,7 @@ public class ClientController {
 	@ResponseBody
 	public Map getCarBrands(Locale locale, Model model) {
 		
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
 		List<CharacterVM> alphabets = clientService.getCharacters(locationId);
 		Map<String,Object> map = new HashMap();
 		map.put("alphabates", alphabets);
@@ -260,7 +262,9 @@ public class ClientController {
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getVehicleInfo(HttpServletRequest request, Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
+		//System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+		//System.out.println(request.getParameter("locationId"));*/
 		Map vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet,locationId);
 		
 		
@@ -270,7 +274,7 @@ public class ClientController {
 	@RequestMapping(value = "/getMobileVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getMobileVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
 		Map vehicleList = clientService.getMobileVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet, locationId);
 		
 		
@@ -280,7 +284,7 @@ public class ClientController {
 	@RequestMapping(value = "/getAllMakes", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getAllMakes(Locale locale, Model model) {
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
 		Map vehicleList = clientService.getAllMakes(locationId);
 		
 		
@@ -291,7 +295,7 @@ public class ClientController {
 	public String viewVehicle(HttpServletRequest request, Locale locale, Model model,@PathVariable("vin") String vin) {
 		//Long locationId = findLocation(request);
 		
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
 		
 		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
 		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin, locationId);
@@ -332,7 +336,7 @@ public class ClientController {
    @RequestMapping(value="/saveContact",method=RequestMethod.POST)
    @ResponseBody
    public void contactUs(Locale locale, Model model,HttpServletRequest request,@RequestBody ContactVM contactVM) {
-	   Long locationId = 16L;
+	   Long locationId = locationIdGol;
 		String requestVm = clientService.contactUs(contactVM, hostUrl, locationId);
 		
 		
@@ -342,28 +346,28 @@ public class ClientController {
    @RequestMapping(value = "/requestMore", method = RequestMethod.POST)
    @ResponseBody
 	public void requestMore(@RequestBody RequestMore model){
-	   Long locationId = 5L;
+	   Long locationId = locationIdGol;
 	    clientService.getRequestMore(model, hostUrl, locationId);
    } 
    
    @RequestMapping(value = "/savePriceAlert", method = RequestMethod.POST)
    @ResponseBody
 	public void savePriceAlert(@RequestBody RequestMore model){
-	   Long locationId = 16L;
+	   Long locationId = locationIdGol;
 	    clientService.saveAlertEmail(model, locationId);
    } 
    
    @RequestMapping(value = "/saveFollowBrand", method = RequestMethod.POST)
    @ResponseBody
 	public void saveFollowBrand(@RequestBody RequestMore model){
-	   Long locationId = 16L;
+	   Long locationId = locationIdGol;
 	    clientService.saveCarModel(model, locationId);
    }
    
    @RequestMapping(value="/mobile/requestMore",method=RequestMethod.POST)
    @ResponseBody
 	public void requestMoreMobile(Locale locale,@RequestBody RequestMore req) {
-	   Long locationId = 5L;
+	   Long locationId = locationIdGol;
 	   clientService.getRequestMore(req, hostUrl, locationId);
 		
 	}
@@ -372,14 +376,14 @@ public class ClientController {
    @RequestMapping(value = "/scheduleTest", method = RequestMethod.POST)
    @ResponseBody
 	public void scheduleTest(@RequestBody ScheduleTestVM model){
-	   Long locationId = 5L;
+	   Long locationId = locationIdGol;
 	    clientService.getScheduleTest(model, hostUrl, locationId);
    } 
    
    @RequestMapping(value="/mobile/scheduleTest",method=RequestMethod.POST)
    @ResponseBody
  	public void scheduleTestMobile(Locale locale,@RequestBody ScheduleTestVM model) {
-	   Long locationId = 5L;
+	   Long locationId = locationIdGol;
 	   clientService.getScheduleTest(model, hostUrl, locationId);
  	}
    
@@ -388,14 +392,14 @@ public class ClientController {
    @RequestMapping(value = "/otherInfo", method = RequestMethod.POST)
    @ResponseBody
 	public void otherInfo(@RequestBody FriendVM model){
-	   Long locationId = 5L;
+	   Long locationId = locationIdGol;
 	    clientService.getOtherInfo(model, hostUrl, locationId);
    } 
    
    @RequestMapping(value="/mobile/otherInfo",method=RequestMethod.POST)
    @ResponseBody
 	public void otherInfoMobile(Locale locale, @RequestBody FriendVM model) {
-	   Long locationId = 5L;
+	   Long locationId = locationIdGol;
 	   clientService.getOtherInfo(model, hostUrl, locationId);
 	}
    
@@ -403,7 +407,7 @@ public class ClientController {
    @RequestMapping(value = "/tradeInApp", method = RequestMethod.POST)
    @ResponseBody
 	public void tradeInApp(@RequestBody Trade_InVM model){
-	   Long locationId = 5L;
+	   Long locationId = locationIdGol;
 	    clientService.getTradeInApp(model, hostUrl, locationId);
    } 
    
@@ -474,7 +478,7 @@ public class ClientController {
 	@RequestMapping(value = "/getRecentVehicles", method = RequestMethod.GET)
 	@ResponseBody
 	public List<VehicleVM> getRecentVehicles(Locale locale, Model model) {
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
 		List<VehicleVM> vehicleList = clientService.getRecentVehicles(locationId);
 		
 		return vehicleList;
@@ -483,7 +487,7 @@ public class ClientController {
 	@RequestMapping(value = "/getAllBlogs", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getAllBlogs(Locale locale, Model model,@RequestParam("start") Integer start) {
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
 		Map blogList = clientService.getBlogsOfUser(start, locationId);
 		
 		return blogList;
@@ -492,7 +496,7 @@ public class ClientController {
 	@RequestMapping(value = "/mobile/getMobileRecentVehicles", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getMobileRecentVehicles(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("alphabet") String alphabet) {
-		Long locationId = 16L;
+		Long locationId = locationIdGol;
 		Map vehicleList = clientService.getRecentMobileVehicles(start,year,alphabet,locationId);
 		
 		return vehicleList;
