@@ -420,6 +420,7 @@ public class ClientService {
 		MyProfileVM profileModel = new MyProfileVM();
 		// user_id = '"+userId+"'
 		//Long a = 5L;
+		
 		List<Map<String, Object>> myprofileModel = jdbcTemplate.queryForList("select * from my_profile where locations_id = '"+locationId+"'");
 		
 		if(myprofileModel != null){

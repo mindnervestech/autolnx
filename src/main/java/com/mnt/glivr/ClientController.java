@@ -412,7 +412,7 @@ public class ClientController {
 	public String findVehicles(Locale locale, Model model,HttpServletRequest request) {
 		
 		//Long locationId = findLocation(request);
-		Long locationId = 5L;
+		Long locationId = 16L;
 		
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
