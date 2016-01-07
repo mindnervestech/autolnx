@@ -291,7 +291,7 @@ public class ClientController {
 	public String viewVehicle(HttpServletRequest request, Locale locale, Model model,@PathVariable("vin") String vin) {
 		//Long locationId = findLocation(request);
 		
-		Long locationId = 5L;
+		Long locationId = 16L;
 		
 		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
 		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin, locationId);
