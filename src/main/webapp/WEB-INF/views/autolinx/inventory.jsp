@@ -94,8 +94,8 @@ $(document).ready(function()
 </script>
 
 </head>
-  
-<body ng-controller="InventoryController" ng-init='initFunction(${vehicle.year},"${vehicle.make}","${vehicle.model}","${vehicle.bodyStyle}","${vehicle.fuelType}")'>
+ 
+<body ng-controller="InventoryController" ng-init='initFunction(${vehicle.year},"${vehicle.make}","${vehicle.model}","${vehicle.bodyStyle}","${vehicle.fuelType}","${myprofile.locationId}")'>
 <!--Header Start-->
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">

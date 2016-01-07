@@ -30,35 +30,62 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	$scope.make = "";
 	$scope.model = "";
 	$scope.bodyStyle = "";
+	$scope.locationId = "";
 	$scope.fuel = "";
 	$scope.mileage = "";
 	$scope.VehiclesCount = "";
 	$scope.alphbet = "";
 	$scope.price = "lowToHigh";
 	
-	$scope.initFunction = function(year,make,model,bodyStyle,fuel){
+	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId){
 		console.log(model);
 		console.log(make);
 		console.log(year);
 		console.log(bodyStyle);
 		console.log(fuel);
-		$scope.year = year;
-		$scope.make = make;
-		$scope.model = model;
-		$scope.bodyStyle = bodyStyle;
-		$scope.fuel = fuel;
+		if(year == 0){
+			$scope.year = null;
+		}else{
+			$scope.year = year;
+		}
 		
+		if(make == 0){
+			$scope.make = null;
+		}else{
+			$scope.make = make;
+		}
+		
+		if(model == 0){
+			$scope.model = null;
+		}else{
+			$scope.model = model;
+		}
+		
+		if(bodyStyle == 0){
+			$scope.bodyStyle = null;
+		}else{
+			$scope.bodyStyle = bodyStyle;
+		}
+		
+		if(fuel == 0){
+			$scope.fuel = null;
+		}else{
+			$scope.fuel = fuel;
+		}
+		$scope.locationId = locationId;
 		$scope.loadMore();
-	}
+	};
 	
 	 $scope.noMore = false;
 	 var start = 0;
 	$scope.loadMore = function() {
-		
+		console.log("sccuess");
+		console.log($scope.locationId);
 		console.log($scope.alphbet);
 		if ($scope.noMore) return;
 		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
 		.success(function(data) {
+			
 			if(data.vehicleList.length == 0) {
 				$scope.noMore = true;
 			}

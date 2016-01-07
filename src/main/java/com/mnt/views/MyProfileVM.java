@@ -17,6 +17,7 @@ public class MyProfileVM {
 	public String twitter;
 	public String googleplus;
 	public String fullAddress;
+	public Long locationId;
 	
 	public String getMyname() {
 		return myname;
@@ -107,6 +108,12 @@ public class MyProfileVM {
 	}
 	public void setFullAddress(String fullAddress) {
 		this.fullAddress = fullAddress;
+	}
+	public Long getLocationId() {
+		return locationId;
+	}
+	public void setLocationId(Long locationId) {
+		this.locationId = locationId;
 	}
 	
 	

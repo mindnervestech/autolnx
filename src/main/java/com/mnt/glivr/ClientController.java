@@ -64,9 +64,9 @@ public class ClientController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
-		List<String> vehicleListMake = clientService.getAllVehicleMakes();
-		List<String> vehicleListModel = clientService.getAllVehicleModel();
-		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
+		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		String ph =clientService.getPhoneno(locationId);
@@ -86,7 +86,14 @@ public class ClientController {
 	public Long findLocation(HttpServletRequest request){
 		
 		String location = request.getParameter("locationId");
-		Long locationId = clientService.getfindByLocationName(location);
+		Long locationId = 0L;
+		if(location != null){
+			locationId = clientService.getfindByLocationName(location);
+			
+		}else{
+			locationId = 16L;
+		}
+		//Long locationId = clientService.getfindByLocationName(location);
 		return locationId;
 		
 	}
@@ -96,9 +103,9 @@ public class ClientController {
 		Long locationId = findLocation(request);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
-		List<String> vehicleListMake = clientService.getAllVehicleMakes();
-		List<String> vehicleListModel = clientService.getAllVehicleModel();
-		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
+		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
@@ -135,10 +142,10 @@ public class ClientController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		String formattedDate = dateFormat.format(date);
-		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		model.addAttribute("myprofile",profile);
-		List<BrandVM> brandList = clientService.getCarBrands();
+		List<BrandVM> brandList = clientService.getCarBrands(locationId);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
 		
@@ -154,7 +161,8 @@ public class ClientController {
 	@ResponseBody
 	public Map getCarBrands(Locale locale, Model model) {
 		
-		List<CharacterVM> alphabets = clientService.getCharacters();
+		Long locationId = 16L;
+		List<CharacterVM> alphabets = clientService.getCharacters(locationId);
 		Map<String,Object> map = new HashMap();
 		map.put("alphabates", alphabets);
 		return map;
@@ -252,7 +260,7 @@ public class ClientController {
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getVehicleInfo(HttpServletRequest request, Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
-		Long locationId = 5L;
+		Long locationId = 16L;
 		Map vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet,locationId);
 		
 		
@@ -262,8 +270,8 @@ public class ClientController {
 	@RequestMapping(value = "/getMobileVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getMobileVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
-		
-		Map vehicleList = clientService.getMobileVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet);
+		Long locationId = 16L;
+		Map vehicleList = clientService.getMobileVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet, locationId);
 		
 		
 		return vehicleList;
@@ -272,8 +280,8 @@ public class ClientController {
 	@RequestMapping(value = "/getAllMakes", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getAllMakes(Locale locale, Model model) {
-		
-		Map vehicleList = clientService.getAllMakes();
+		Long locationId = 16L;
+		Map vehicleList = clientService.getAllMakes(locationId);
 		
 		
 		return vehicleList;
@@ -286,7 +294,7 @@ public class ClientController {
 		Long locationId = 5L;
 		
 		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
-		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin);
+		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin, locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
@@ -306,7 +314,7 @@ public class ClientController {
 	public String viewMobileVehicle(HttpServletRequest request, Locale locale, Model model,@PathVariable("vin") String vin) {
 		Long locationId = findLocation(request);
 		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
-		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin);
+		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin, locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
@@ -324,8 +332,8 @@ public class ClientController {
    @RequestMapping(value="/saveContact",method=RequestMethod.POST)
    @ResponseBody
    public void contactUs(Locale locale, Model model,HttpServletRequest request,@RequestBody ContactVM contactVM) {
-		
-		String requestVm = clientService.contactUs(contactVM, hostUrl);
+	   Long locationId = 16L;
+		String requestVm = clientService.contactUs(contactVM, hostUrl, locationId);
 		
 		
 	}
@@ -341,13 +349,15 @@ public class ClientController {
    @RequestMapping(value = "/savePriceAlert", method = RequestMethod.POST)
    @ResponseBody
 	public void savePriceAlert(@RequestBody RequestMore model){
-	    clientService.saveAlertEmail(model);
+	   Long locationId = 16L;
+	    clientService.saveAlertEmail(model, locationId);
    } 
    
    @RequestMapping(value = "/saveFollowBrand", method = RequestMethod.POST)
    @ResponseBody
 	public void saveFollowBrand(@RequestBody RequestMore model){
-	    clientService.saveCarModel(model);
+	   Long locationId = 16L;
+	    clientService.saveCarModel(model, locationId);
    }
    
    @RequestMapping(value="/mobile/requestMore",method=RequestMethod.POST)
@@ -378,14 +388,15 @@ public class ClientController {
    @RequestMapping(value = "/otherInfo", method = RequestMethod.POST)
    @ResponseBody
 	public void otherInfo(@RequestBody FriendVM model){
-	    clientService.getOtherInfo(model, hostUrl);
+	   Long locationId = 5L;
+	    clientService.getOtherInfo(model, hostUrl, locationId);
    } 
    
    @RequestMapping(value="/mobile/otherInfo",method=RequestMethod.POST)
    @ResponseBody
 	public void otherInfoMobile(Locale locale, @RequestBody FriendVM model) {
-	
-	   clientService.getOtherInfo(model, hostUrl);
+	   Long locationId = 5L;
+	   clientService.getOtherInfo(model, hostUrl, locationId);
 	}
    
      
@@ -404,9 +415,9 @@ public class ClientController {
 		Long locationId = 5L;
 		
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
-		List<String> vehicleListMake = clientService.getAllVehicleMakes();
-		List<String> vehicleListModel = clientService.getAllVehicleModel();
-		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
+		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		model.addAttribute("myprofile",profile);
@@ -418,6 +429,7 @@ public class ClientController {
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("flag",0);
 		return "autolinx/inventory";
 	}
 	@RequestMapping(value="/findVehicle",method=RequestMethod.POST)
@@ -425,9 +437,9 @@ public class ClientController {
 		
 		Long locationId = findLocation(request);
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
-		List<String> vehicleListMake = clientService.getAllVehicleMakes();
-		List<String> vehicleListModel = clientService.getAllVehicleModel();
-		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
+		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		model.addAttribute("myprofile",profile);
@@ -438,6 +450,7 @@ public class ClientController {
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("flag",1);
 		return "autolinx/inventory";
 	}
 	
@@ -445,9 +458,9 @@ public class ClientController {
 	public String findVehiclemobile(Locale locale, Model model,HttpServletRequest request) {
 		Long locationId = findLocation(request);
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
-		List<String> vehicleListMake = clientService.getAllVehicleMakes();
-		List<String> vehicleListModel = clientService.getAllVehicleModel();
-		List<String> vehicleListYear = clientService.getAllVehicleYear();
+		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
+		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		
 		model.addAttribute("vehicleListYear", vehicleListYear);
@@ -461,8 +474,8 @@ public class ClientController {
 	@RequestMapping(value = "/getRecentVehicles", method = RequestMethod.GET)
 	@ResponseBody
 	public List<VehicleVM> getRecentVehicles(Locale locale, Model model) {
-		
-		List<VehicleVM> vehicleList = clientService.getRecentVehicles();
+		Long locationId = 16L;
+		List<VehicleVM> vehicleList = clientService.getRecentVehicles(locationId);
 		
 		return vehicleList;
 	}
@@ -470,8 +483,8 @@ public class ClientController {
 	@RequestMapping(value = "/getAllBlogs", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getAllBlogs(Locale locale, Model model,@RequestParam("start") Integer start) {
-		
-		Map blogList = clientService.getBlogsOfUser(start);
+		Long locationId = 16L;
+		Map blogList = clientService.getBlogsOfUser(start, locationId);
 		
 		return blogList;
 	}
@@ -479,8 +492,8 @@ public class ClientController {
 	@RequestMapping(value = "/mobile/getMobileRecentVehicles", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getMobileRecentVehicles(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("alphabet") String alphabet) {
-		
-		Map vehicleList = clientService.getRecentMobileVehicles(start,year,alphabet);
+		Long locationId = 16L;
+		Map vehicleList = clientService.getRecentMobileVehicles(start,year,alphabet,locationId);
 		
 		return vehicleList;
 	}
