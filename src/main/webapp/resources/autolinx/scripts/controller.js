@@ -44,31 +44,31 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		console.log(bodyStyle);
 		console.log(fuel);
 		if(year == 0){
-			$scope.year = null;
+			$scope.year = "";
 		}else{
 			$scope.year = year;
 		}
 		
 		if(make == 0){
-			$scope.make = null;
+			$scope.make = "";
 		}else{
 			$scope.make = make;
 		}
 		
 		if(model == 0){
-			$scope.model = null;
+			$scope.model = "";
 		}else{
 			$scope.model = model;
 		}
 		
 		if(bodyStyle == 0){
-			$scope.bodyStyle = null;
+			$scope.bodyStyle = "";
 		}else{
 			$scope.bodyStyle = bodyStyle;
 		}
 		
 		if(fuel == 0){
-			$scope.fuel = null;
+			$scope.fuel = "";
 		}else{
 			$scope.fuel = fuel;
 		}

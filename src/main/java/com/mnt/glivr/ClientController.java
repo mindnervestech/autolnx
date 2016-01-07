@@ -419,6 +419,7 @@ public class ClientController {
 		Long locationId = 16L;
 		
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
+		VehicleVM vehicleVM1 = clientService.getVehicleInfoNotNull(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
 		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
@@ -432,6 +433,7 @@ public class ClientController {
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
+		model.addAttribute("vehicle1",vehicleVM1);
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("flag",0);
 		return "autolinx/inventory";
@@ -441,6 +443,7 @@ public class ClientController {
 		
 		Long locationId = findLocation(request);
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
+		VehicleVM vehicleVM1 = clientService.getVehicleInfoNotNull(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
 		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
@@ -453,6 +456,7 @@ public class ClientController {
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
+		model.addAttribute("vehicle1",vehicleVM1);
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("flag",1);
 		return "autolinx/inventory";

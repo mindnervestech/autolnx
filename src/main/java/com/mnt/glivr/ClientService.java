@@ -1084,7 +1084,7 @@ public class ClientService {
 		try
 		{
 			
-			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user location_id = '"+locationId+"'");
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"'");
 			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
 			int i=0;
 			usersArray[i] = new InternetAddress(model.getEmail());
@@ -2079,11 +2079,56 @@ public class ClientService {
 	public VehicleVM getVehicleInfo(HttpServletRequest request){
 		
 		VehicleVM vm = new VehicleVM();
+		
 		vm.setModel(request.getParameter("model"));
 		vm.setMake(request.getParameter("make"));
 		vm.setYear(request.getParameter("year"));
 		vm.setBodyStyle(request.getParameter("bodyStyle"));
-		vm.setFuelType(request.getParameter("fuelType"));
+		//if(request.getParameter("fuelType") != null){
+			vm.setFuelType(request.getParameter("fuelType"));
+		//}else{
+		//	vm.setFuelType("");
+		//}
+		
+		
+		return vm;
+		
+	}
+	
+public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
+		
+		VehicleVM vm = new VehicleVM();
+		System.out.println("()()()()()()()()()(");
+		System.out.println(request.getParameter("model"));
+		if(request.getParameter("model") != null && request.getParameter("model") != ""){
+			vm.setModel(request.getParameter("model"));
+		}else{
+			vm.setModel("0");
+		}
+		
+		if(request.getParameter("make") != null && request.getParameter("make") != ""){
+			vm.setMake(request.getParameter("make"));
+		}else{
+			vm.setMake("0");
+		}
+		
+		if(request.getParameter("year") != null && request.getParameter("year") != ""){
+			vm.setYear(request.getParameter("year"));
+		}else{
+			vm.setYear("0");
+		}
+		
+		if(request.getParameter("bodyStyle") != null && request.getParameter("bodyStyle") != ""){
+			vm.setBodyStyle(request.getParameter("bodyStyle"));
+		}else{
+			vm.setBodyStyle("0");
+		}
+		if(request.getParameter("fuelType") != null && request.getParameter("fuelType") != ""){
+			vm.setFuelType(request.getParameter("fuelType"));
+		}else{
+			vm.setFuelType("0");
+		}
+		
 		
 		return vm;
 		
