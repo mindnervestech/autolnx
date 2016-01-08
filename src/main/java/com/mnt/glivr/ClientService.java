@@ -1223,9 +1223,9 @@ public class ClientService {
 
 		try {
             Document document = new Document();
-            createDir(pdfRootDir, userId, lastId);
-            filepath = pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+ lastId + File.separator + "Trade_In.pdf";
-            findpath = "/" + userId +"/"+ "trade_in_pdf"+"/"+ lastId + "/" + "Trade_In.pdf";
+            createDir(pdfRootDir, locationId, lastId);
+            filepath = pdfRootDir + File.separator + "images" + File.separator+ locationId +File.separator+ "trade_in_pdf"+File.separator+ lastId + File.separator + "Trade_In.pdf";
+            findpath = "/" + locationId +"/"+ "trade_in_pdf"+"/"+ lastId + "/" + "Trade_In.pdf";
             //UPDATE table_name
             //SET column1=value1,column2=value2,...
             //WHERE some_column=some_value;
@@ -2069,8 +2069,8 @@ public class ClientService {
 	}
 	
 	
-	public static void createDir(String pdfRootDir,int userId, int lastId) {
-        File file = new File(pdfRootDir + File.separator+ userId +File.separator+ "trade_in_pdf"+File.separator+lastId);
+	public static void createDir(String pdfRootDir,Long locationId, int lastId) {
+        File file = new File(pdfRootDir + File.separator+"images"+ File.separator + locationId +File.separator+ "trade_in_pdf"+File.separator+lastId);
         if (!file.exists()) {
                 file.mkdirs();
         }
