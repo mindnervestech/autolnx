@@ -2070,7 +2070,7 @@ public class ClientService {
 	
 	
 	public static void createDir(String pdfRootDir,Long locationId, int lastId) {
-        File file = new File(pdfRootDir + File.separator + locationId +File.separator+ "trade_in_pdf"+File.separator+lastId);
+        File file = new File(pdfRootDir +"/"+ locationId +"/"+ "trade_in_pdf"+"/"+lastId);
         if (!file.exists()) {
                 file.mkdirs();
         }
