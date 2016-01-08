@@ -1224,7 +1224,7 @@ public class ClientService {
 		try {
             Document document = new Document();
             createDir(pdfRootDir, locationId, lastId);
-            filepath = pdfRootDir + File.separator + "images" + File.separator+ locationId +File.separator+ "trade_in_pdf"+File.separator+ lastId + File.separator + "Trade_In.pdf";
+            filepath = pdfRootDir + File.separator+ locationId +File.separator+ "trade_in_pdf"+File.separator+ lastId + File.separator + "Trade_In.pdf";
             findpath = "/" + locationId +"/"+ "trade_in_pdf"+"/"+ lastId + "/" + "Trade_In.pdf";
             //UPDATE table_name
             //SET column1=value1,column2=value2,...
@@ -2070,7 +2070,7 @@ public class ClientService {
 	
 	
 	public static void createDir(String pdfRootDir,Long locationId, int lastId) {
-        File file = new File(pdfRootDir + File.separator+"images"+ File.separator + locationId +File.separator+ "trade_in_pdf"+File.separator+lastId);
+        File file = new File(pdfRootDir + File.separator + locationId +File.separator+ "trade_in_pdf"+File.separator+lastId);
         if (!file.exists()) {
                 file.mkdirs();
         }
