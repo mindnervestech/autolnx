@@ -821,12 +821,13 @@ public class ClientService {
 		try
 		{
 			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"'");
-			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
+			InternetAddress[] usersArray = new InternetAddress[allUsers.size()];
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
-			i++;
+			//i++;
 			for(Map map : allUsers) {
-				usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
+				//usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
+				usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 				i++;
 			}
 			Message message = new MimeMessage(session);
@@ -2063,9 +2064,6 @@ public class ClientService {
 		{
 			e.printStackTrace();
 		} 
-		
-		
-		
 	}
 	
 	

@@ -339,7 +339,6 @@ public class ClientController {
 	   Long locationId = locationIdGol;
 		String requestVm = clientService.contactUs(contactVM, hostUrl, locationId);
 		
-		
 	}
    
       
