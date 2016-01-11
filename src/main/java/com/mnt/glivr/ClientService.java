@@ -950,9 +950,10 @@ public class ClientService {
 			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
-			i++;
+			//i++;
 			for(Map map : allUsers) {
-				usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
+				//usersArray[i] = new InternetAddress((String) map.get("email"));  
+				usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 				i++;
 			}
 			
@@ -1803,9 +1804,10 @@ public class ClientService {
 			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
 			int index=0;
 			//usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
-			index++;
+			//index++;
 			for(Map map : allUsers) {
-				usersArray[index] = new InternetAddress((String) map.get("email"));   //(String) map.get("email")
+				//usersArray[index] = new InternetAddress((String) map.get("email"));   
+				usersArray[index] = new InternetAddress((String) map.get("communicationemail"));   
 				index++;
 			}
 			Message message = new MimeMessage(session);
@@ -2324,7 +2326,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("Info@glider-autos.com"));
+					InternetAddress.parse("yogeshpatil424@gmail.com"));   //Info@glider-autos.com
 			message.setSubject("Contact us");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
