@@ -947,7 +947,7 @@ public class ClientService {
 		{
 			
 			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"'");
-			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
+			InternetAddress[] usersArray = new InternetAddress[allUsers.size()];
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
@@ -1801,7 +1801,7 @@ public class ClientService {
 		{
 			
 			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id ='"+locationId+"'");
-			InternetAddress[] usersArray = new InternetAddress[allUsers.size()+1];
+			InternetAddress[] usersArray = new InternetAddress[allUsers.size()];
 			int index=0;
 			//usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//index++;
@@ -2326,7 +2326,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("yogeshpatil424@gmail.com"));   //Info@glider-autos.com
+					InternetAddress.parse("Info@glider-autos.com"));   
 			message.setSubject("Contact us");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
