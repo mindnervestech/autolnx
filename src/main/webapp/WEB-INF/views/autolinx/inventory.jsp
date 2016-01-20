@@ -54,7 +54,8 @@
 <script src="resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
 <script src="resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
 <script src="resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
-
+<script src="http://www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded" async defer></script>
+<script type="text/javascript" src="resources/autolinx/js/angular-recaptcha.js"></script>
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 

@@ -1,4 +1,4 @@
-var app = angular.module('gliderApp', ['infinite-scroll','jlareau.pnotify'])
+var app = angular.module('gliderApp', ['infinite-scroll','jlareau.pnotify','vcRecaptcha'])
 .directive('compile', function($compile) {
 	  return {
 	    restrict:'A',

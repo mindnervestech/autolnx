@@ -41,6 +41,7 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key&amp;sensor=false"></script>
 <script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="resources/autolinx/js/angular-recaptcha.js"></script>
 <script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
 <script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
 

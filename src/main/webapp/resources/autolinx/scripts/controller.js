@@ -1,5 +1,5 @@
 
-app.controller("InventoryController", function($scope,$http, notificationService) {
+app.controller("InventoryController", function($scope,$http, notificationService, vcRecaptchaService) {
 	$scope.listView = true;
 	$scope.gridView = false;
 	var contextPath = $('#contextpath').val();
@@ -171,7 +171,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		
 });
 
-app.controller("HomeController", function($scope,$http, notificationService) {
+app.controller("HomeController", function($scope,$http, notificationService, vcRecaptchaService) {
 	var contextPath = $('#contextpath').val();
 	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
@@ -203,9 +203,34 @@ app.controller("HomeController", function($scope,$http, notificationService) {
 	
 });
 
-app.controller("VehicleDetailsController", function($scope,$http,notificationService,$timeout) {
+app.controller("VehicleDetailsController", function($scope,$http,notificationService,$timeout, vcRecaptchaService) {
 	
 	var contextPath = $('#contextpath').val();
+	
+	
+	$scope.model = {
+            key: '6LfR5BUTAAAAAJKfvNn4v_VOk-tR0zsfVvTno8QA'
+        };
+	
+	$scope.setResponse = function (response) {
+        console.info('Response available');
+
+        $scope.response = response;
+        console.log(response);
+    };
+
+    $scope.setWidgetId = function (widgetId) {
+        console.info('Created widget ID: %s', widgetId);
+
+        $scope.widgetId = widgetId;
+    };
+
+    $scope.cbExpiration = function() {
+        console.info('Captcha expired. Resetting response object');
+
+        $scope.response = null;
+     };
+
 	
 	$scope.requestMore = function(vin){
 		
