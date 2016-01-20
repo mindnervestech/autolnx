@@ -615,7 +615,7 @@ public class ClientService {
 		
 	}	
 	public VehicleVM getVehicleDetails(String vin) {
-		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin= '"+vin+"' ");
+		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin= '"+vin+"' and status ='Newly Arrived'");
 		VehicleVM vehicleVM = new VehicleVM();
 		List<Map<String, Object>> videoUrl = jdbcTemplate.queryForList("select desktop_url,mobile_url from virtual_tour where vin= '"+vin+"' ");
 		if(videoUrl.isEmpty()) {
