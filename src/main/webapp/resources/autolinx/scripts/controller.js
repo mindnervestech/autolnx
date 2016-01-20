@@ -212,11 +212,13 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
             key: '6LfR5BUTAAAAAJKfvNn4v_VOk-tR0zsfVvTno8QA'
         };
 	
+	$scope.showButton = 0;
 	$scope.setResponse = function (response) {
         console.info('Response available');
 
         $scope.response = response;
         console.log(response);
+        $scope.showButton = 1;
     };
 
     $scope.setWidgetId = function (widgetId) {
@@ -244,6 +246,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 			data : $scope.request
 		}).success(function(response) {
 			console.log("Success...............");
+			$scope.showButton = 0;
 			$('#myModal').modal('hide');
 			notificationService.success("Your request has been submitted");
 		}).error(function(){
@@ -280,6 +283,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		}).success(function(response) {
 			console.log("Success...............");
 			notificationService.success("Your request has been submitted");
+			$scope.showButton = 0;
 			$('#scheduleTest').modal('hide');
 		}).error(function(){
 			console.log("Error.................");
@@ -288,6 +292,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	
 	
 	$scope.otherInfo = function(vin){
+				
 		console.log(vin);
 		$("#callemail").click();
 		$scope.friend.vin = vin;
@@ -299,6 +304,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		}).success(function(response) {
 			console.log("Success...............");
 			notificationService.success("Your request has been submitted");
+			$scope.showButton = 0;
 			$('#otherInfo').modal('hide');
 		}).error(function(){
 			console.log("Error.................");
@@ -317,6 +323,7 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		}).success(function(response) {
 			console.log("Success...............");
 			notificationService.success("Your request has been submitted");
+			$scope.showButton = 0;
 			$('#tradeInApp').modal('hide');
 		}).error(function(){
 			console.log("Error.................");

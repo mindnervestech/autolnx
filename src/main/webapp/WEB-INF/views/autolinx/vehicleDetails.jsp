@@ -894,7 +894,16 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" value="Submit">
+           <div
+                vc-recaptcha
+                theme="'light'"
+                key="model.key"
+                on-create="setWidgetId(widgetId)"
+                on-success="setResponse(response)"
+                on-expire="cbExpiration()"
+            ></div>
+           <input type="button" ng-if="showButton == 0" disabled value="Submit">
+            <input type="submit" ng-if="showButton == 1" value="Submit">
         </div>
       </div>
       </form>
@@ -968,7 +977,16 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" value="Submit">
+           <div
+                vc-recaptcha
+                theme="'light'"
+                key="model.key"
+                on-create="setWidgetId(widgetId)"
+                on-success="setResponse(response)"
+                on-expire="cbExpiration()"
+            ></div>
+           <input type="button" ng-if="showButton == 0" disabled value="Submit">
+            <input type="submit" ng-if="showButton == 1" value="Submit">
         </div>
       </div>
       </form>
@@ -979,7 +997,7 @@ $(document).ready(function()
 <div class="modal fade" id="tradeInApp" role="dialog">
     <div class="modal-dialog" style="width: 961px">
      <form method="post" ng-submit="tradeInApp('${vehicle.vin}')"> <%-- action="${pageContext.request.contextPath}/tradeInApp" --%>
-      <div class="modal-content" style="width: 996px;height: 620px;">
+      <div class="modal-content" style="width: 996px;height: 703px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Trade-In</h4>
@@ -1275,7 +1293,17 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <input type="submit" value="Submit">
+        
+        <div
+                vc-recaptcha
+                theme="'light'"
+                key="model.key"
+                on-create="setWidgetId(widgetId)"
+                on-success="setResponse(response)"
+                on-expire="cbExpiration()"
+            ></div>
+           <input type="button" ng-if="showButton == 0" disabled value="Submit">
+            <input type="submit" ng-if="showButton == 1" value="Submit">
         </div>
       </div>
       </form>
@@ -1327,7 +1355,6 @@ $(document).ready(function()
         	 </div>
         	
         </div>
-       
         <div class="modal-footer">
         	<div
                 vc-recaptcha
@@ -1337,7 +1364,8 @@ $(document).ready(function()
                 on-success="setResponse(response)"
                 on-expire="cbExpiration()"
             ></div>
-           <input type="submit" value="Submit">
+           <input type="button" ng-if="showButton == 0" disabled value="Submit">
+            <input type="submit" ng-if="showButton == 1" value="Submit">
         </div>
       </div>
       </form>
