@@ -1096,7 +1096,7 @@ public class ClientService {
 			    try {  
 			     MimeMessage message = new MimeMessage(session);  
 			     message.setFrom(new InternetAddress(username));  
-			     message.addRecipient(Message.RecipientType.TO,new InternetAddress("yogeshpatil424@gmail.com"));//(String) authuser.get(0).get("communicationemail")));  
+			     message.addRecipient(Message.RecipientType.TO,new InternetAddress((String) authuser.get(0).get("communicationemail")));  
 			     message.setSubject("Premium Leads");  
 			     message.setText("Premium Request has been submitted");  
 			       
