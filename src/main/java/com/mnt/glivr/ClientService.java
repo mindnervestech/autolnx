@@ -486,6 +486,7 @@ public class ClientService {
 			vm.extColor = (String) map.get("exterior_color");
 			vm.intColor = (String) map.get("interior_color");
 			vm.make = (String) map.get("make");
+			vm.title = (String) map.get("title");
 			vm.model = (String) map.get("model");
 			vm.mileage = (String) map.get("mileage");
 			Integer price = (Integer) map.get("price");

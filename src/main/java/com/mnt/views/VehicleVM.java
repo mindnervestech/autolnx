@@ -7,6 +7,7 @@ public class VehicleVM {
 	public String year;
 	public String make;
 	public String model;
+	public String title;
 	public String trim;
 	public String mileage;
 	public String bodyStyle;
@@ -479,6 +480,12 @@ public class VehicleVM {
 	}
 	public void setTrim(String trim) {
 		this.trim = trim;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

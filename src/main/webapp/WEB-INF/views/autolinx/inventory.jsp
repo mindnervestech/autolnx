@@ -344,7 +344,7 @@ $(document).ready(function()
           <div class="inventory-wide-sidebar-left col-md-12  car_listings">
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="vehicleDetails/{{vehicle.vin}}" class="inventory">
-                <div class="title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
+                <div class="title">{{vehicle.title}}</div>
                 <img class="preview" src="/glivrImg/images{{vehicle.path}}" alt="preview" style="width:210px;height:140px;">
                 <table class="options-primary">
                   <tbody>
@@ -414,7 +414,7 @@ $(document).ready(function()
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="vehicle in vehicleList">
           <div class="inventory clearfix margin-bottom-20 styled_input "> <a href="vehicleDetails/{{vehicle.vin}}" class="inventory">
-            <div class="title">{{vehicle.year}} {{vehicle.make}}</div>
+            <div class="title">{{vehicle.title}}</div>
             <img alt="preview" class="preview" src="/glivrImg/images{{vehicle.path}}">
             <table class="options-primary">
               <tbody>
