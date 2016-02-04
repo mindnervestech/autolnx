@@ -944,7 +944,7 @@ public class ClientService {
 				}
 		}
 		
-		if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+		if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 			if(flag == 0){
 					jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+0+"')");
 			}else if(flag == 1){
