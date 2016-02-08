@@ -1018,8 +1018,10 @@ public class ClientService {
 			for(Map map : allUsers) {
 				if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 					if(flag == 0){
-						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-						i++;
+						if(map.get("role").toString().equalsIgnoreCase("Manager")){
+							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+							i++;
+						}
 					}else if(flag == 1){
 						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 						i++;
