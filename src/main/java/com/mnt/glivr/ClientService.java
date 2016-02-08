@@ -923,6 +923,8 @@ public class ClientService {
 	
 		
 	public void getScheduleTest(ScheduleTestVM model, String hostUrl, Long locationId){
+		
+		System.out.println("HHHHHHHHHHHHHH");
 		DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
@@ -951,9 +953,6 @@ public class ClientService {
 					sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 			}
 		}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
-			
-			//List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
-			//jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag,assigned_to_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+0+"','"+managerId.get(0).get("id")+"')");
 			
 			jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+1+"')");
 			sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
@@ -1015,7 +1014,40 @@ public class ClientService {
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
-			if((Integer) premiumOne.get(0).get("premium_flag") == 0 && flag == 0){
+			System.out.println(flag);
+			System.out.println((Integer) premiumOne.get(0).get("premium_flag"));
+			
+			
+			
+			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
+				if(flag == 0){
+					for(Map map : allUsers) {
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+					}
+				}else if(flag == 1){
+					for(Map map : allUsers) {
+						if(map.get("role").toString().equalsIgnoreCase("Manager")){
+							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+							i++;
+							break;
+						}
+					}
+				}
+			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+				for(Map map : allUsers) {
+					if(map.get("role").toString().equalsIgnoreCase("Manager")){
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+						break;
+					}
+				}
+			}	
+			
+			
+			
+			
+			/*if((Integer) premiumOne.get(0).get("premium_flag") == 0 && flag == 0){
 				for(Map map : allUsers) {
 					if(map.get("role").toString().equalsIgnoreCase("Manager")){
 						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
@@ -1028,7 +1060,7 @@ public class ClientService {
 					usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 					i++;
 				}
-			}
+			}*/
 			/*for(Map map : allUsers) {
 				if((Integer) premiumOne.get(0).get("premium_flag") == 0 && flag == 0){
 						if(map.get("role").toString().equalsIgnoreCase("Manager")){
