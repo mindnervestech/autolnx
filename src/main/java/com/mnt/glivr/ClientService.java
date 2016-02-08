@@ -1016,11 +1016,23 @@ public class ClientService {
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
 			for(Map map : allUsers) {
+				if((Integer) premiumOne.get(0).get("premium_flag") == 0){
+					if(flag == 0){
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+					}else if(flag == 1){
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+					}
+				}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+					usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+					i++;
+				}
 				//usersArray[i] = new InternetAddress((String) map.get("email"));  
-				usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-				i++;
 			}
-			
+			for (InternetAddress internetAddress : usersArray) {
+				System.out.println(internetAddress);
+			}
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
