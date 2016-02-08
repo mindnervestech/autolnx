@@ -1033,7 +1033,8 @@ public class ClientService {
 				//usersArray[i] = new InternetAddress((String) map.get("email"));  
 			}
 			for (InternetAddress internetAddress : usersArray) {
-				System.out.println(internetAddress);
+				System.out.println("hi");
+				System.out.println(internetAddress.toString());
 			}
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));  
