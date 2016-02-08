@@ -772,8 +772,7 @@ public class ClientService {
 		String path = "";
 		int flag = 0;
 		
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
-		
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"' and status = 'Newly Arrived'");
 		List<Map<String, Object>> premiumOne = jdbcTemplate.queryForList("select * from premium_leads where locations_id = '"+locationId+"'");
 		if(premiumOne.isEmpty()){
 				flag= 0;
@@ -931,7 +930,7 @@ public class ClientService {
 		int flag = 0;
 		
 		
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"' and status = 'Newly Arrived'");
 		
 		List<Map<String, Object>> premiumOne = jdbcTemplate.queryForList("select * from premium_leads where locations_id = '"+locationId+"'");
 		if(premiumOne.isEmpty()){
@@ -1134,7 +1133,7 @@ public class ClientService {
 		jdbcTemplate.update("INSERT INTO other_user_info(name, email,fname,femail,date_info,vin,locations_id) VALUES('"+model.getName()+"','"+ model.getEmail() +"','"+ model.getFname() +"','"+ model.getFemail() +"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+locationId+"')");
 		
 		
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"' and status = 'Newly Arrived'");
  				
 		List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+model.getVin()+"' and default_image = true");
 		if(vehiclePath.isEmpty()) {
@@ -1281,7 +1280,7 @@ public class ClientService {
 			}
 		}
 		
-		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"'");
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"' and status = 'Newly Arrived'");
 		
 		List<Map<String, Object>> premiumOne = jdbcTemplate.queryForList("select * from premium_leads where locations_id = '"+locationId+"'");
 		if(premiumOne.isEmpty()){
