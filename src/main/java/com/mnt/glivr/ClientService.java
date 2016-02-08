@@ -1015,23 +1015,33 @@ public class ClientService {
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
-			for(Map map : allUsers) {
-				if((Integer) premiumOne.get(0).get("premium_flag") == 0){
-					if(flag == 0){
+			if((Integer) premiumOne.get(0).get("premium_flag") == 0 && flag == 0){
+				for(Map map : allUsers) {
+					if(map.get("role").toString().equalsIgnoreCase("Manager")){
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+						break;
+					}
+				}
+			}else{
+				for(Map map : allUsers) {
+					usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+					i++;
+				}
+			}
+			/*for(Map map : allUsers) {
+				if((Integer) premiumOne.get(0).get("premium_flag") == 0 && flag == 0){
 						if(map.get("role").toString().equalsIgnoreCase("Manager")){
 							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 							i++;
+							break;
 						}
-					}else if(flag == 1){
-						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-						i++;
-					}
-				}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+				}else {
 					usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 					i++;
 				}
 				//usersArray[i] = new InternetAddress((String) map.get("email"));  
-			}
+			}*/
 			for (InternetAddress internetAddress : usersArray) {
 				System.out.println("hi");
 				System.out.println(internetAddress.toString());
