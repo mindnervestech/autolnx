@@ -858,10 +858,34 @@ public class ClientService {
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
-			for(Map map : allUsers) {
+			/*for(Map map : allUsers) {
 				//usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
 				usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 				i++;
+			}*/
+			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
+				if(flag == 0){
+					for(Map map : allUsers) {
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+					}
+				}else if(flag == 1){
+					for(Map map : allUsers) {
+						if(map.get("role").toString().equalsIgnoreCase("Manager")){
+							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+							i++;
+							break;
+						}
+					}
+				}
+			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+				for(Map map : allUsers) {
+					if(map.get("role").toString().equalsIgnoreCase("Manager")){
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+						break;
+					}
+				}
 			}
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername)); 
@@ -1074,10 +1098,10 @@ public class ClientService {
 				}
 				//usersArray[i] = new InternetAddress((String) map.get("email"));  
 			}*/
-			for (InternetAddress internetAddress : usersArray) {
+			/*for (InternetAddress internetAddress : usersArray) {
 				System.out.println("hi");
 				System.out.println(internetAddress.toString());
-			}
+			}*/
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
@@ -1993,10 +2017,34 @@ public class ClientService {
 			int index=0;
 			//usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//index++;
-			for(Map map : allUsers) {
+			/*for(Map map : allUsers) {
 				//usersArray[index] = new InternetAddress((String) map.get("email"));   
 				usersArray[index] = new InternetAddress((String) map.get("communicationemail"));   
 				index++;
+			}*/
+			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
+				if(flag == 0){
+					for(Map map : allUsers) {
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+					}
+				}else if(flag == 1){
+					for(Map map : allUsers) {
+						if(map.get("role").toString().equalsIgnoreCase("Manager")){
+							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+							i++;
+							break;
+						}
+					}
+				}
+			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+				for(Map map : allUsers) {
+					if(map.get("role").toString().equalsIgnoreCase("Manager")){
+						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+						i++;
+						break;
+					}
+				}
 			}
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));  
