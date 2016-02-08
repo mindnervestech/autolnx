@@ -854,39 +854,34 @@ public class ClientService {
 		try
 		{
 			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"'");
-			InternetAddress[] usersArray = new InternetAddress[allUsers.size()];
+			InternetAddress[] usersArray = null;
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
-			/*for(Map map : allUsers) {
-				//usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
-				usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-				i++;
-			}*/
+			
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
+					usersArray = new InternetAddress[allUsers.size()];
 					for(Map map : allUsers) {
+						//usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
 						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 						i++;
 					}
+					
+					
 				}else if(flag == 1){
-					for(Map map : allUsers) {
-						if(map.get("role").toString().equalsIgnoreCase("Manager")){
-							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-							i++;
-							break;
-						}
-					}
+					usersArray = new InternetAddress[1];
+					List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+					usersArray[i] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 				}
 			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
-				for(Map map : allUsers) {
-					if(map.get("role").toString().equalsIgnoreCase("Manager")){
-						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-						i++;
-						break;
-					}
-				}
+				usersArray = new InternetAddress[1];
+				List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+				usersArray[i] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 			}
+			
+			
+			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername)); 
 			message.setRecipients(Message.RecipientType.TO,
@@ -947,8 +942,6 @@ public class ClientService {
 	
 		
 	public void getScheduleTest(ScheduleTestVM model, String hostUrl, Long locationId){
-		
-		System.out.println("HHHHHHHHHHHHHH");
 		DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
@@ -977,6 +970,9 @@ public class ClientService {
 					sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 			}
 		}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+			
+			//List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+			//jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag,assigned_to_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+0+"','"+managerId.get(0).get("id")+"')");
 			
 			jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+1+"')");
 			sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
@@ -1034,74 +1030,37 @@ public class ClientService {
 		{
 			
 			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"'");
-			InternetAddress[] usersArray = new InternetAddress[allUsers.size()];
+			InternetAddress[] usersArray = null;
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
-			System.out.println(flag);
-			System.out.println((Integer) premiumOne.get(0).get("premium_flag"));
-			
-			
+			/*for(Map map : allUsers) {
+				//usersArray[i] = new InternetAddress((String) map.get("email"));  
+				usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
+				i++;
+			}*/
 			
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
+					usersArray = new InternetAddress[allUsers.size()];
 					for(Map map : allUsers) {
+						//usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
 						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
 						i++;
 					}
+					
+					
 				}else if(flag == 1){
-					for(Map map : allUsers) {
-						if(map.get("role").toString().equalsIgnoreCase("Manager")){
-							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-							i++;
-							break;
-						}
-					}
+					usersArray = new InternetAddress[1];
+					List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+					usersArray[i] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 				}
 			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
-				for(Map map : allUsers) {
-					if(map.get("role").toString().equalsIgnoreCase("Manager")){
-						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-						i++;
-						break;
-					}
-				}
-			}	
+				usersArray = new InternetAddress[1];
+				List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+				usersArray[i] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
+			}
 			
-			
-			
-			
-			/*if((Integer) premiumOne.get(0).get("premium_flag") == 0 && flag == 0){
-				for(Map map : allUsers) {
-					if(map.get("role").toString().equalsIgnoreCase("Manager")){
-						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-						i++;
-						break;
-					}
-				}
-			}else{
-				for(Map map : allUsers) {
-					usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-					i++;
-				}
-			}*/
-			/*for(Map map : allUsers) {
-				if((Integer) premiumOne.get(0).get("premium_flag") == 0 && flag == 0){
-						if(map.get("role").toString().equalsIgnoreCase("Manager")){
-							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-							i++;
-							break;
-						}
-				}else {
-					usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-					i++;
-				}
-				//usersArray[i] = new InternetAddress((String) map.get("email"));  
-			}*/
-			/*for (InternetAddress internetAddress : usersArray) {
-				System.out.println("hi");
-				System.out.println(internetAddress.toString());
-			}*/
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
@@ -2013,7 +1972,7 @@ public class ClientService {
 		{
 			
 			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id ='"+locationId+"'");
-			InternetAddress[] usersArray = new InternetAddress[allUsers.size()];
+			InternetAddress[] usersArray = null;
 			int index=0;
 			//usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//index++;
@@ -2022,30 +1981,29 @@ public class ClientService {
 				usersArray[index] = new InternetAddress((String) map.get("communicationemail"));   
 				index++;
 			}*/
+			
+			
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
+					usersArray = new InternetAddress[allUsers.size()];
 					for(Map map : allUsers) {
-						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-						i++;
+						//usersArray[i] = new InternetAddress((String) map.get("email"));  //(String) map.get("email")
+						usersArray[index] = new InternetAddress((String) map.get("communicationemail"));
+						index++;
 					}
+					
+					
 				}else if(flag == 1){
-					for(Map map : allUsers) {
-						if(map.get("role").toString().equalsIgnoreCase("Manager")){
-							usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-							i++;
-							break;
-						}
-					}
+					usersArray = new InternetAddress[1];
+					List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+					usersArray[index] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 				}
 			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
-				for(Map map : allUsers) {
-					if(map.get("role").toString().equalsIgnoreCase("Manager")){
-						usersArray[i] = new InternetAddress((String) map.get("communicationemail"));
-						i++;
-						break;
-					}
-				}
+				usersArray = new InternetAddress[1];
+				List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+				usersArray[index] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 			}
+			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
