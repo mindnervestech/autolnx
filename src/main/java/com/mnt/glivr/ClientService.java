@@ -790,14 +790,14 @@ public class ClientService {
 				jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+locationId+"','"+0+"')");
 			}else if(flag == 1){
 				jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+locationId+"','"+1+"')");
-				sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
+				//sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 			}
 		}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
 			//List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
 			//jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,locations_id,premium_flag,assigned_to_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+locationId+"','"+0+"','"+managerId.get(0).get("id")+"')");
 			
 		 	jdbcTemplate.update("INSERT INTO request_more_info(name, preferred_contact,email,phone,request_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+dateFormat.format(date)+"','"+model.getVin()+"','"+locationId+"','"+1+"')");
-			sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
+			//sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 		}
 		
 		
@@ -886,7 +886,17 @@ public class ClientService {
 			message.setFrom(new InternetAddress(emailusername)); 
 			message.setRecipients(Message.RecipientType.TO,
 					usersArray);
-			message.setSubject("Request More Info");
+			
+			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
+				if(flag == 0){
+					message.setSubject("Request More Info");
+				}else if(flag == 1){
+					message.setSubject("Premium Request has been submitted");
+				}
+			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+				message.setSubject("Premium Request has been submitted");
+			}
+			
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart = new MimeBodyPart();
@@ -967,7 +977,7 @@ public class ClientService {
 					jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+0+"')");
 			}else if(flag == 1){
 					jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+1+"')");
-					sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
+					//sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 			}
 		}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
 			
@@ -975,7 +985,7 @@ public class ClientService {
 			//jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag,assigned_to_id) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+0+"','"+managerId.get(0).get("id")+"')");
 			
 			jdbcTemplate.update("INSERT INTO schedule_test(name, preferred_contact,email,phone,best_day,best_time,schedule_date,vin,locations_id,premium_flag) VALUES('"+model.getName()+"','"+model.getPreferred()+"','"+model.getEmail()+"','"+model.getPhone()+"','"+model.getBestDay()+"','"+model.getBestTime()+"','"+dateFormat.format(date)+"','"+ model.getVin() +"','"+locationId+"','"+1+"')");
-			sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
+			//sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 		}	
 		
 		long lastId = 0L;
@@ -1065,7 +1075,17 @@ public class ClientService {
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
 					usersArray);
-			message.setSubject("Schedule Test Drive");
+			
+			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
+				if(flag == 0){
+					message.setSubject("Schedule Test Drive");
+				}else if(flag == 1){
+					message.setSubject("Premium Request has been submitted");
+				}
+			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+				message.setSubject("Premium Request has been submitted");
+			}
+			
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart = new MimeBodyPart();
@@ -1340,7 +1360,7 @@ public class ClientService {
 			}else if(flag == 1){
 				jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,locations_id,premium_flag) VALUES('"+model.getFirst_name()+"','"+model.getLast_name()+"','"+model.getWork_phone()+"','"+model.getPhone()+"','"+model.getEmail()+"','"+model.getPreferred()+"','"+dateFormat.format(date)+"','"+model.getComments()+"','"+model.getYear()+"','"+model.getMake()+"','"+model.getModel()+"','"+model.getExterior_colour()+"','"+model.getKilometres()+"','"+model.getEngine()+"'" +
 						",'"+model.getDoors()+"','"+model.getTransmission()+"','"+model.getDrivetrain()+"','"+model.getBody_rating()+"','"+model.getTire_rating()+"','"+model.getEngine_rating()+"','"+model.getTransmission_rating()+"','"+model.getGlass_rating()+"','"+model.getInterior_rating()+"','"+model.getExhaust_rating()+"','"+model.getRental_return()+"','"+model.getOdometer_accurate()+"','"+model.getService_records()+"','"+ model.getLienholder() +"','"+model.getTitleholder()+"','"+model.getEquipment()+"','"+model.getVehiclenew()+"','"+model.getAccidents()+"','"+ model.getDamage()+"','"+model.getPaint()+"','"+model.getSalvage()+"','"+optionValue+"','"+model.getVin()+"','"+locationId+"','"+1+"')");
-				sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
+				//sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 			}
 		}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
 		
@@ -1350,7 +1370,7 @@ public class ClientService {
 			
 			jdbcTemplate.update("INSERT INTO trade_in(first_name,last_name,work_phone,phone,email,preferred_contact,trade_date,comments,year,make,model,exterior_colour,kilometres,engine,doors,transmission,drivetrain,body_rating,tire_rating,engine_rating,transmission_rating,glass_rating,interior_rating,exhaust_rating,lease_or_rental,operational_and_accurate,service_record,lienholder,holds_this_title,equipment,vehiclenew,accidents,damage,paint,salvage,option_value,vin,locations_id,premium_flag) VALUES('"+model.getFirst_name()+"','"+model.getLast_name()+"','"+model.getWork_phone()+"','"+model.getPhone()+"','"+model.getEmail()+"','"+model.getPreferred()+"','"+dateFormat.format(date)+"','"+model.getComments()+"','"+model.getYear()+"','"+model.getMake()+"','"+model.getModel()+"','"+model.getExterior_colour()+"','"+model.getKilometres()+"','"+model.getEngine()+"'" +
 					",'"+model.getDoors()+"','"+model.getTransmission()+"','"+model.getDrivetrain()+"','"+model.getBody_rating()+"','"+model.getTire_rating()+"','"+model.getEngine_rating()+"','"+model.getTransmission_rating()+"','"+model.getGlass_rating()+"','"+model.getInterior_rating()+"','"+model.getExhaust_rating()+"','"+model.getRental_return()+"','"+model.getOdometer_accurate()+"','"+model.getService_records()+"','"+ model.getLienholder() +"','"+model.getTitleholder()+"','"+model.getEquipment()+"','"+model.getVehiclenew()+"','"+model.getAccidents()+"','"+ model.getDamage()+"','"+model.getPaint()+"','"+model.getSalvage()+"','"+optionValue+"','"+model.getVin()+"','"+locationId+"','"+1+"')");
-			sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
+			//sendMailpremium(emailusername, emailpassword, locationId, jdbcTemplate);
 			
 		}		
 			
@@ -2008,7 +2028,17 @@ public class ClientService {
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
 					usersArray);
-			message.setSubject("Trade-In Appraisal");
+			
+			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
+				if(flag == 0){
+					message.setSubject("Trade-In Appraisal");
+				}else if(flag == 1){
+					message.setSubject("Premium Request has been submitted");
+				}
+			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
+				message.setSubject("Premium Request has been submitted");
+			}
+			
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
 			messageBodyPart = new MimeBodyPart();
