@@ -171,7 +171,8 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		
 });
 
-app.controller("HomeController", function($scope,$http, notificationService, vcRecaptchaService) {
+app.controller("HomeController", function($scope,$http, notificationService, vcRecaptchaService,$location) {
+	
 	var contextPath = $('#contextpath').val();
 	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {

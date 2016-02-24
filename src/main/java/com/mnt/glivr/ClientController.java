@@ -44,7 +44,7 @@ import com.mnt.views.VehicleVM;
 @PropertySource("classpath:conf/db.properties")
 public class ClientController {
 	
-	static long locationIdGol = 16L;
+	static long locationIdGol;
 	
 	@Value("${hostname}")
 	String hostUrl;
@@ -58,6 +58,7 @@ public class ClientController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request,Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
 		
 		logger.info("Welcome home! The client locale is {}.", locale);
 		List<SliderVM> sliderImages = clientService.getSliderImages(locationId);
@@ -93,7 +94,7 @@ public class ClientController {
 			locationId = clientService.getfindByLocationName(location);
 			
 		}else{
-			locationId = locationIdGol;
+			locationId = 16L;
 		}
 		//Long locationId = clientService.getfindByLocationName(location);
 		return locationId;
@@ -103,6 +104,8 @@ public class ClientController {
 	@RequestMapping(value = "/mobile/home", method = RequestMethod.GET)
 	public String mobileHome(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
@@ -126,6 +129,8 @@ public class ClientController {
 	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
 	public String inventory(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
@@ -140,6 +145,8 @@ public class ClientController {
 	@RequestMapping(value = "/mobile/inventory", method = RequestMethod.GET)
 	public String mobileInventory(HttpServletRequest request ,Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
@@ -173,6 +180,8 @@ public class ClientController {
 	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
 	public String aboutUs(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
@@ -192,6 +201,8 @@ public class ClientController {
 	@RequestMapping(value = "/contactUs", method = RequestMethod.GET)
 	public String contactUs(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
@@ -210,6 +221,8 @@ public class ClientController {
 	@RequestMapping(value = "/mobile/contactUs", method = RequestMethod.GET)
 	public String mobileAboutUs(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
@@ -228,6 +241,8 @@ public class ClientController {
 	@RequestMapping(value = "/warranty", method = RequestMethod.GET)
 	public String warranty(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
@@ -245,6 +260,7 @@ public class ClientController {
 	@RequestMapping(value = "/blog", method = RequestMethod.GET)
 	public String blog(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
@@ -263,8 +279,6 @@ public class ClientController {
 	@ResponseBody
 	public Map getVehicleInfo(HttpServletRequest request, Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
 		Long locationId = locationIdGol;
-		//System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRR");
-		//System.out.println(request.getParameter("locationId"));*/
 		Map vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet,locationId);
 		
 		
@@ -293,9 +307,9 @@ public class ClientController {
 	
 	@RequestMapping(value = "/vehicleDetails/{vin}", method = RequestMethod.GET)
 	public String viewVehicle(HttpServletRequest request, Locale locale, Model model,@PathVariable("vin") String vin) {
-		//Long locationId = findLocation(request);
+		Long locationId = findLocation(request);
+		locationIdGol = locationId;
 		
-		Long locationId = locationIdGol;
 		
 		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
 		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin, locationId);
@@ -317,6 +331,7 @@ public class ClientController {
 	@RequestMapping(value = "/mobile/viewDetails/{vin}", method = RequestMethod.GET)
 	public String viewMobileVehicle(HttpServletRequest request, Locale locale, Model model,@PathVariable("vin") String vin) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
 		VehicleVM vehicleVM = clientService.getVehicleDetails(vin);
 		List<VehicleVM> similarVehicleVm = clientService.getSimilarVehicleDetails(vin, locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
@@ -414,8 +429,9 @@ public class ClientController {
 	@RequestMapping(value="/findVehicles",method=RequestMethod.GET)
 	public String findVehicles(Locale locale, Model model,HttpServletRequest request) {
 		
-		//Long locationId = findLocation(request);
-		Long locationId = 16L;
+		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		//Long locationId = 16L;
 		
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
 		VehicleVM vehicleVM1 = clientService.getVehicleInfoNotNull(request);
@@ -441,6 +457,8 @@ public class ClientController {
 	public String findVehicle(Locale locale, Model model,HttpServletRequest request) {
 		
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
 		VehicleVM vehicleVM1 = clientService.getVehicleInfoNotNull(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
@@ -464,6 +482,8 @@ public class ClientController {
 	@RequestMapping(value="/mobile/findVehicle",method=RequestMethod.POST)
 	public String findVehiclemobile(Locale locale, Model model,HttpServletRequest request) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
 		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
@@ -508,6 +528,8 @@ public class ClientController {
 	@RequestMapping(value = "/mobile/newArrivals", method = RequestMethod.GET)
 	public String mobileNewArrivals(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
