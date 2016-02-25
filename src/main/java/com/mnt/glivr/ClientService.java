@@ -266,6 +266,7 @@ public class ClientService {
 		return featuredUrls;
 	}
 	
+
 	public Map getAllMakes(Long locationId) {
 		List<String> vehicleListMake = new ArrayList<String>();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where locations_id = '"+locationId+"'");
@@ -293,7 +294,11 @@ public class ClientService {
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from location where name = '"+locationName+"'");
 		Long id = 0L;
 		//for(Map map : rows) {
+		if(rows.size() != 0){
 			id = (Long) rows.get(0).get("id");
+		}else{
+			id = 16L;
+		}
 		//}
 			return id;
 	}
