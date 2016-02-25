@@ -835,17 +835,17 @@ public class ClientService {
 		
 		//List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from auth_user where id = '"+userId+"'");
 		
-		//List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where user_id = '"+userId+"'");
 		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where locations_id = '"+locationId+"'");
 		
 		String heading1 = "",heading2 = "";
-		String heading = (String) headingtext.get(0).get("heading");
-		if(heading != null) {
-	        int index= heading.lastIndexOf(" ");
-	        heading1 = heading.substring(0, index);
-	        heading2 = heading.substring(index+1);
+		if(headingtext.size() != 0){
+			String heading = (String) headingtext.get(0).get("heading");
+			if(heading != null) {
+		        int index= heading.lastIndexOf(" ");
+		        heading1 = heading.substring(0, index);
+		        heading2 = heading.substring(index+1);
+			}
 		}
-		
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -1024,11 +1024,13 @@ public class ClientService {
 		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where locations_id = '"+locationId+"'");
 		
 		String heading1 = "",heading2 = "";
+		if(headingtext.size() != 0){
 		String heading = (String) headingtext.get(0).get("heading");
-		if(heading != null) {
-	        int index= heading.lastIndexOf(" ");
-	        heading1 = heading.substring(0, index);
-	        heading2 = heading.substring(index+1);
+			if(heading != null) {
+		        int index= heading.lastIndexOf(" ");
+		        heading1 = heading.substring(0, index);
+		        heading2 = heading.substring(index+1);
+			}
 		}
 		
 		final String username = emailusername;
@@ -1228,11 +1230,13 @@ public class ClientService {
 		List<VehicleVM> similarVehicleVm = getSimilarVehicleDetails(model.getVin(), locationId);
 		
 		String heading1 = "",heading2 = "";
-		String heading = (String) headingtext.get(0).get("heading");
-		if(heading != null) {
-	        int index= heading.lastIndexOf(" ");
-	        heading1 = heading.substring(0, index);
-	        heading2 = heading.substring(index+1);
+		if(headingtext.size() != 0){
+			String heading = (String) headingtext.get(0).get("heading");
+			if(heading != null) {
+		        int index= heading.lastIndexOf(" ");
+		        heading1 = heading.substring(0, index);
+		        heading2 = heading.substring(index+1);
+			}
 		}
 		
 		final String username = emailusername;
@@ -1413,11 +1417,13 @@ public class ClientService {
 		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where locations_id = '"+locationId+"'");
 		
 		String heading1 = "",heading2 = "";
-		String heading = (String) headingtext.get(0).get("heading");
-		if(heading != null) {
-	        int index= heading.lastIndexOf(" ");
-	        heading1 = heading.substring(0, index);
-	        heading2 = heading.substring(index+1);
+		if(headingtext.size() != 0){
+			String heading = (String) headingtext.get(0).get("heading");
+			if(heading != null) {
+		        int index= heading.lastIndexOf(" ");
+		        heading1 = heading.substring(0, index);
+		        heading2 = heading.substring(index+1);
+			}
 		}
 		String filepath = null,findpath = null;
 
@@ -2533,11 +2539,13 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		List<Map<String, Object>> headingtext = jdbcTemplate.queryForList("select * from site_content where locations_id = '"+locationId+"'");
 		
 		String heading1 = "",heading2 = "";
-		String heading = (String) headingtext.get(0).get("heading");
-		if(heading != null) {
-	        int index= heading.lastIndexOf(" ");
-	        heading1 = heading.substring(0, index);
-	        heading2 = heading.substring(index+1);
+		if(headingtext.size() != 0){
+			String heading = (String) headingtext.get(0).get("heading");
+			if(heading != null) {
+		        int index= heading.lastIndexOf(" ");
+		        heading1 = heading.substring(0, index);
+		        heading2 = heading.substring(index+1);
+			}
 		}
 				
 		final String username = emailusername;
