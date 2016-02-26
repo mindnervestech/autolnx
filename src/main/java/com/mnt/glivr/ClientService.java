@@ -491,6 +491,7 @@ public class ClientService {
 			vm.extColor = (String) map.get("exterior_color");
 			vm.intColor = (String) map.get("interior_color");
 			vm.make = (String) map.get("make");
+			vm.typeofVehicle = (String) map.get("typeof_vehicle");
 			vm.title = (String) map.get("title");
 			vm.model = (String) map.get("model");
 			vm.mileage = (String) map.get("mileage");
@@ -542,6 +543,7 @@ public class ClientService {
 			vm.drivetrain = (String) map.get("drivetrain");
 			vm.cityMileage = (String) map.get("city_mileage");
 			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.typeofVehicle = (String) map.get("typeof_vehicle");
 			vm.engine = (String) map.get("engine");
 			vm.extColor = (String) map.get("exterior_color");
 			vm.intColor = (String) map.get("interior_color");

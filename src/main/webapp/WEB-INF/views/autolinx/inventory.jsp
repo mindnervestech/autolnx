@@ -352,7 +352,7 @@ $(document).ready(function()
                       <td class="option primary">Body Style: </td>
                       <td class="spec">{{vehicle.bodyStyle}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-show="vehicle.typeofVehicle == 'Used'">
                       <td class="option primary">Mileage: </td>
                       <td class="spec">{{vehicle.mileage}}</td>
                     </tr>
@@ -422,7 +422,7 @@ $(document).ready(function()
                   <td class="option primary">Body Style: </td>
                   <td class="spec">{{vehicle.bodyStyle}}</td>
                 </tr>
-                <tr>
+                <tr ng-show="vehicle.typeofVehicle == 'Used'">
                   <td class="option primary">Mileage: </td>
                   <td class="spec">{{vehicle.mileage}}</td>
                 </tr>

@@ -28,7 +28,7 @@ public class VehicleVM {
 	public String price;
 	public Integer onlyPrice;
 	public String stock;
-	
+	public String typeofVehicle;
 	
 	public String fuelType;
 	public String fuelTank;
