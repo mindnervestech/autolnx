@@ -1446,7 +1446,7 @@ public class ClientService {
             document.addAuthor("Celinio");
             document.addCreator("Celinio");
             document.addSubject("iText with Maven");
-                        document.addTitle("Fourth tutorial");
+                        document.addTitle("Trade-In Appraisal");
                         document.addKeywords("iText, Maven, Java");
              
             document.open();
