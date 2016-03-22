@@ -1597,7 +1597,7 @@ public class ClientService {
             			vin.setBorderColor(BaseColor.WHITE);
             			vehicleInformation.addCell(vin);
             			            			
-            			PdfPCell vinValue = new PdfPCell(new Paragraph(model.getVin(),font2));
+            			PdfPCell vinValue = new PdfPCell(new Paragraph(model.getVininfo(),font2));
             			vinValue.setBorderColor(BaseColor.WHITE);
             			vinValue.setBorderWidth(1f);
             			vehicleInformation.addCell(vinValue);
