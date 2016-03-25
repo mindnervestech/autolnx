@@ -285,6 +285,14 @@ $(document).ready(function()
               <option value="100000"> &lt; 100000</option>
             </select>
           </div>
+          <div class="my-dropdown mileage-dropdown">
+            <select name="vType" ng-model="vType" ng-change="selectvType()" class="css-dropdowns" tabindex="1" >
+              <option value="">Select</option>
+              <option value="New">New</option>
+              <option value="Used">Used</option>
+              
+            </select>
+          </div>
       	 <!--  <div class="my-dropdown prices-dropdown" style="width: 96px !important;">
             <div> <span><strong>Sort By Price:</strong></span></div>
          </div> 

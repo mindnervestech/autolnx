@@ -43,6 +43,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		console.log(year);
 		console.log(bodyStyle);
 		console.log(fuel);
+		console.log($scope.vType);
 		if(year == 0){
 			$scope.year = "";
 		}else{
@@ -79,11 +80,15 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	 $scope.noMore = false;
 	 var start = 0;
 	$scope.loadMore = function() {
-		console.log("sccuess");
+		
+		if($scope.vType == undefined){
+			$scope.vType = "";
+		}
+		console.log($scope.vType);
 		console.log($scope.locationId);
 		console.log($scope.alphbet);
 		if ($scope.noMore) return;
-		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
+		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.vType}})
 		.success(function(data) {
 			
 			if(data.vehicleList.length == 0) {
@@ -139,6 +144,12 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			$scope.noMore = false;
 			$scope.loadMore();
 		}
+		$scope.selectvType = function(){
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		}
 		
 		$scope.resetFilters = function(){
 			$scope.year = "";
@@ -147,6 +158,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			$scope.bodyStyle = "";
 			$scope.fuel = "";
 			$scope.mileage = "";
+			$scope.vType = "";
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -514,6 +526,7 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 	 $scope.noMore = false;
 	 var start = 0;
 	$scope.loadMore = function() {
+	
 		
 		if ($scope.noMore) return;
 		$http({method:'GET',url:contextPath+'/getMobileVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
