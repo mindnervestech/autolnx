@@ -596,7 +596,25 @@ $(document).ready(function()
 	                        <div class="table-responsive">
 	                            <table class="table">
 	                                <tbody>
-	                                	<tr><td>Year: </td><td>${vehicle.year}</td></tr><tr><td>Make: </td><td>${vehicle.make}</td></tr><tr><td>Model: </td><td>${vehicle.model}</td></tr><tr><td>Body Style: </td><td>${vehicle.bodyStyle}</td></tr><tr><td>Mileage: </td><td>${vehicle.mileage}</td></tr><tr><td>Doors: </td><td>${vehicle.doors}</td></tr><tr><td>Seats: </td><td>${vehicle.seats}</td></tr><tr><td>Drivetrain: </td><td>${vehicle.drivetrain}</td></tr><tr><td>Engine: </td><td>${vehicle.engine}</td></tr><tr><td>Transmission: </td><td>${vehicle.transmission}</td></tr><tr><td>Brakes: </td><td>${vehicle.brakes}</td></tr><tr><td>Horse Power: </td><td>${vehicle.horsePower}</td></tr><tr><td>Acceleration: </td><td>${vehicle.acceleration}</td></tr><tr><td>Exterior Color: </td><td>${vehicle.extColor}</td></tr><tr><td>Interior Color: </td><td>${vehicle.intColor}</td></tr><tr><td>Location:</td><td>${vehicle.location}</td></tr><tr><td>Price: </td><td>${vehicle.price}</td></tr><tr><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr><tr><td>VIN Number: </td><td>${vehicle.vin}</td></tr>	                                </tbody>
+	                                	<tr ng-if="${vehicle.year} != ''"><td>Year: </td><td>${vehicle.year}</td></tr>
+	                                	<tr ng-if="${vehicle.make} != ''"><td>Make: </td><td>${vehicle.make}</td></tr>
+	                                	<tr ng-if="${vehicle.model} != ''"><td>Model: </td><td>${vehicle.model}</td></tr>
+	                                	<tr ng-if="${vehicle.bodyStyle} != ''"><td>Body Style: </td><td>${vehicle.bodyStyle}</td></tr>
+	                                	<tr ng-if="${vehicle.mileage} != ''"><td>Mileage: </td><td>${vehicle.mileage}</td></tr>
+	                                	<tr ng-if="${vehicle.doors} != ''"><td>Doors: </td><td>${vehicle.doors}</td></tr>
+	                                	<tr ng-if="${vehicle.seats} != ''"><td>Seats: </td><td>${vehicle.seats}</td></tr>
+	                                	<tr ng-if="${vehicle.drivetrain} != ''"><td>Drivetrain: </td><td>${vehicle.drivetrain}</td></tr>
+	                                	<tr ng-if="${vehicle.engine} != ''"><td>Engine: </td><td>${vehicle.engine}</td></tr>
+	                                	<tr ng-if="${vehicle.transmission} != ''"><td>Transmission: </td><td>${vehicle.transmission}</td></tr>
+	                                	<tr ng-if="${vehicle.brakes} != ''"><td>Brakes: </td><td>${vehicle.brakes}</td></tr>
+	                                	<tr ng-if="${vehicle.horsePower} != ''"><td>Horse Power: </td><td>${vehicle.horsePower}</td></tr>
+	                                	<tr ng-if="${vehicle.acceleration} != ''"><td>Acceleration: </td><td>${vehicle.acceleration}</td></tr>
+	                                	<tr ng-if="${vehicle.extColor} != ''"><td>Exterior Color: </td><td>${vehicle.extColor}</td></tr>
+	                                	<tr ng-if="${vehicle.intColor} != ''"><td>Interior Color: </td><td>${vehicle.intColor}</td></tr>
+	                                	<tr ng-if="${vehicle.location} != ''"><td>Location:</td><td>${vehicle.location}</td></tr>
+	                                	<tr ng-if="${vehicle.price} != ''"><td>Price: </td><td>${vehicle.price}</td></tr>
+	                                	<tr ng-if="${vehicle.cityMileage} != ''"><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr>
+	                                	<tr ng-if="${vehicle.vin} != ''"><td>VIN Number: </td><td>${vehicle.vin}</td></tr>	                                </tbody>
 	                            </table>
 	                        </div>
 	                    </div>
