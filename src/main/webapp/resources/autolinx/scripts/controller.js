@@ -218,6 +218,10 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 
 app.controller("VehicleDetailsController", function($scope,$http,notificationService,$timeout, vcRecaptchaService) {
 	
+	$scope.initFun = function(vehical){
+		$scope.typeofV = vehical;
+	};
+	
 	var contextPath = $('#contextpath').val();
 	
 	

@@ -96,7 +96,7 @@ $(document).ready(function()
 
 <body ng-controller="ContactUsController">
 <!--Header Start-->
-<input type="hidden" id="vehicleLocation" value="${myprofile.fullAddress}">
+<input type="hidden" id="vehicleLocation" value="${myprofile.address}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner" no_resize="">
   <section class="toolbar">
     <div class="container">
@@ -111,7 +111,7 @@ $(document).ready(function()
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
             <li><a href="tel:18005670123"><i class="fa fa-phone"></i>${myphone}</a></li>
-            <li class="address"><a href="http://maps.google.com/?q=${myprofile.fullAddress }"><i class="fa fa-map-marker"></i>${myprofile.fullAddress} </a></li>
+            <li class="address"><a href="http://maps.google.com/?q=${myprofile.address }" target="_blank"><i class="fa fa-map-marker"></i>${myprofile.fullAddress} </a></li>
           </ul>
         </div>
       </div>

@@ -675,6 +675,7 @@ public class ClientService {
  		vehicleVM.onlyPrice = price;
  		vehicleVM.price = "$"+price.toString();
  		vehicleVM.stock = (String) row.get(0).get("stock");
+ 		vehicleVM.typeofVehicle = (String) row.get(0).get("typeof_vehicle");
  		
  		vehicleVM.fuelTank = (String) row.get(0).get("fuel_tank");
  		vehicleVM.headlights = (String) row.get(0).get("headlights");

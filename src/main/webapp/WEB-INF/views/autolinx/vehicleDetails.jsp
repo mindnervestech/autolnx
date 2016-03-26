@@ -182,7 +182,7 @@ $(document).ready(function()
 
 </head>
 
-<body ng-controller="VehicleDetailsController">
+<body ng-controller="VehicleDetailsController" ng-init="initFun('${vehicle.typeofVehicle}')">
 <!--Header Start-->
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
@@ -199,7 +199,7 @@ $(document).ready(function()
         <div class="col-lg-6">
           <ul class="right-none pull-right company_info">
             <li><a href="tel:18005670123"><i class="fa fa-phone"></i> ${myphone}</a></li>
-            <li class="address"><a href="http://maps.google.com/?q=${myprofile.fullAddress }"><i class="fa fa-map-marker"></i>${myprofile.fullAddress} </a></li>
+            <li class="address"><a href="http://maps.google.com/?q=${myprofile.address }" target="_blank"><i class="fa fa-map-marker"></i>${myprofile.fullAddress} </a></li>
           </ul>
         </div>
       </div>
@@ -591,8 +591,6 @@ $(document).ready(function()
 					    </c:otherwise>
 					</c:choose>
 					
-                        
-						
 	                        <div class="table-responsive">
 	                            <table class="table">
 	                                <tbody>
@@ -600,7 +598,7 @@ $(document).ready(function()
 	                                	<tr ng-if="${vehicle.make} != ''"><td>Make: </td><td>${vehicle.make}</td></tr>
 	                                	<tr ng-if="${vehicle.model} != ''"><td>Model: </td><td>${vehicle.model}</td></tr>
 	                                	<tr ng-if="${vehicle.bodyStyle} != ''"><td>Body Style: </td><td>${vehicle.bodyStyle}</td></tr>
-	                                	<tr ng-if="${vehicle.mileage} != ''"><td>Mileage: </td><td>${vehicle.mileage}</td></tr>
+	                                	<tr ng-if="${vehicle.mileage} != ''"><td ng-if="typeofV == 'Used'">Mileage: </td><td ng-if="typeofV == 'Used'">${vehicle.mileage}</td></tr>
 	                                	<tr ng-if="${vehicle.doors} != ''"><td>Doors: </td><td>${vehicle.doors}</td></tr>
 	                                	<tr ng-if="${vehicle.seats} != ''"><td>Seats: </td><td>${vehicle.seats}</td></tr>
 	                                	<tr ng-if="${vehicle.drivetrain} != ''"><td>Drivetrain: </td><td>${vehicle.drivetrain}</td></tr>
