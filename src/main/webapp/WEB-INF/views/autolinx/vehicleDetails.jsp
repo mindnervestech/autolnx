@@ -368,6 +368,7 @@ $(document).ready(function()
 	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
 	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" href="#${vehicle.vin}#emailtofriendshow" onclick="clicky.log('#${vehicle.vin}#emailtofriendshow','click'); return false;">Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
+	                	                	<li class="next1 gradient_button"><a href="/glivrImg/images/${vehicle.pdfPath}" target="_blank">View PDF</a></li>
 	                	                	
 	                	                
 	            </ul> 

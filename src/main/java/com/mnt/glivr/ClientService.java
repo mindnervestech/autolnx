@@ -714,7 +714,7 @@ public class ClientService {
  		vehicleVM.remoteTrunkRelease = (String) row.get(0).get("remote_trunk_release");
  		vehicleVM.steeringWheel = (String) row.get(0).get("steering_wheel");
  		vehicleVM.steeringWheelControls = (String) row.get(0).get("steering_wheel_controls");
- 		
+ 		vehicleVM.pdfPath = (String) row.get(0).get("pdf_brochure_path");
  		
  		Long vehicleId = (Long)row.get(0).get("id");
  		List<Map<String, Object>> prevRecord = jdbcTemplate.queryForList("select max(id) from vehicle where id < '"+vehicleId+"' ");
