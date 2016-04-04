@@ -494,5 +494,11 @@ public class VehicleVM {
 	public void setTypeofVehicle(String typeofVehicle) {
 		this.typeofVehicle = typeofVehicle;
 	}
+	public String getPdfPath() {
+		return pdfPath;
+	}
+	public void setPdfPath(String pdfPath) {
+		this.pdfPath = pdfPath;
+	}
 	
 }
