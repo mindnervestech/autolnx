@@ -67,6 +67,7 @@ public class VehicleVM {
 	public String remoteTrunkRelease;
 	public String steeringWheel;
 	public String steeringWheelControls;
+	public String pdfPath;
 	
 	
 	public String videoUrl;
