@@ -224,12 +224,14 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		console.log(virtualTour);
 		if(virtualTour !=''){
 			$scope.flag = "virtualTour";
-			$("#virtualTour").addClass('videoTxt');
-			$("#video").removeClass('videoTxt');
+			$("#virtualTour").addClass('videoTxtActive');
+			$("#video").removeClass('videoTxtActive');
+			$("#video").addClass('videoTxt');
 		}else if(video !=''){
 			$scope.flag = "video";
-			$("#video").addClass('videoTxt');
-			$("#virtualTour").removeClass('videoTxt');
+			$("#video").addClass('videoTxtActive');
+			$("#virtualTour").removeClass('videoTxtActive');
+			$("#virtualTour").addClass('videoTxt');
 		}
 		console.log($scope.flag);
 		console.log("{{{{{}}}}}}}}");
@@ -238,13 +240,15 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		console.log(fl);
 		if(fl == "video"){
 			$scope.flag = "video";
-			$("#video").addClass('videoTxt');
-			$("#virtualTour").removeClass('videoTxt');
+			$("#video").addClass('videoTxtActive');
+			$("#virtualTour").removeClass('videoTxtActive');
+			$("#virtualTour").addClass('videoTxt');
 		}
 		if(fl == "virtualTour"){
 			$scope.flag = "virtualTour";
-			$("#virtualTour").addClass('videoTxt');
-			$("#video").removeClass('videoTxt');
+			$("#virtualTour").addClass('videoTxtActive');
+			$("#video").removeClass('videoTxtActive');
+			$("#video").addClass('videoTxt');
 		}
 	}
 	

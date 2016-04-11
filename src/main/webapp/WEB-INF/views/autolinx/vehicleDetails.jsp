@@ -355,7 +355,11 @@ $(document).ready(function()
   
 </div>    -->
 	                	                
-	                	                
+	                	                	<c:choose>
+	                	                	<c:when test="${vehicle.pdfPath != null}">
+												<li class="next1 gradient_button"><a  target="_blank" data-toggle="modal" data-target="#pdfModal"  >PDF Brochure</a></li>
+											</c:when>
+	                	                	</c:choose>
 	                	                	<li class="request gradient_button"><a  data-toggle="modal" data-target="#myModal" href="#${vehicle.vin}#requestmoreinfohow" onclick="clicky.log('#${vehicle.vin}#requestmoreinfoshow','click'); return false;">Request More Info</a></li>
 	                	                
 	                	                	<li class="schedule gradient_button"><a  data-toggle="modal" data-target="#scheduleTest" href="#${vehicle.vin}#scheduletestshow" onclick="clicky.log('#${vehicle.vin}#scheduletestshow','click'); return false;">Schedule Test Drive</a></li>
@@ -365,7 +369,7 @@ $(document).ready(function()
 	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
 	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" href="#${vehicle.vin}#emailtofriendshow" onclick="clicky.log('#${vehicle.vin}#emailtofriendshow','click'); return false;">Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
-	                	                	<li class="next1 gradient_button"><a  target="_blank" data-toggle="modal" data-target="#pdfModal"  >View PDF</a></li>
+	                	                	
 	                	                	<%-- href="/glivrImg/images${vehicle.pdfPath}" --%>
 	                	                
 	            </ul> 
@@ -1598,8 +1602,11 @@ $(document).ready(function()
 
 <style>
 .videoTxt{
-	text-decoration: underline;
-    color: blue;
+    color: gray;
+    font-size: 16px;
+}
+.videoTxtActive{
+    color: black;
     font-size: 16px;
 }
       #map-canvas {
