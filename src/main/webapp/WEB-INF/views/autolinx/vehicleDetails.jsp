@@ -405,7 +405,7 @@ $(document).ready(function()
                             <div class="flexslider" id="home-slider-thumbs">
                                 <ul class="slides">
                                 <c:forEach var="row" items="${vehicle.images}">
-                                    <li data-thumb="/glivrImg/images/${row.thumbPath}"> <a href="#"><img alt="" src="/glivrImg/images/${row.path}" draggable="false"></a> </li>
+                                    <li data-thumb="/glivrImg/images${row.path}"> <a href="#"><img alt="" src="/glivrImg/images${row.path}" draggable="false"></a> </li>
                                  </c:forEach>   
                                     
                                 </ul>
