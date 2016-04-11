@@ -217,13 +217,36 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 });
 
 app.controller("VehicleDetailsController", function($scope,$http,notificationService,$timeout, vcRecaptchaService,$window) {
-	$scope.test = null;
-	$scope.initFun = function(vehical){
-		$scope.typeofV = vehical.typeofVehicle;
-		$scope.test = vehical;
-		console.log(vehical);
+	$scope.flag = null;
+	$scope.initFun = function(vehical,virtualTour,video){
+		$scope.typeofV = vehical;
+		console.log(video);
+		console.log(virtualTour);
+		if(virtualTour !=''){
+			$scope.flag = "virtualTour";
+			$("#virtualTour").addClass('videoTxt');
+			$("#video").removeClass('videoTxt');
+		}else if(video !=''){
+			$scope.flag = "video";
+			$("#video").addClass('videoTxt');
+			$("#virtualTour").removeClass('videoTxt');
+		}
+		console.log($scope.flag);
 		console.log("{{{{{}}}}}}}}");
 	};
+	$scope.setFlag = function(fl){
+		console.log(fl);
+		if(fl == "video"){
+			$scope.flag = "video";
+			$("#video").addClass('videoTxt');
+			$("#virtualTour").removeClass('videoTxt');
+		}
+		if(fl == "virtualTour"){
+			$scope.flag = "virtualTour";
+			$("#virtualTour").addClass('videoTxt');
+			$("#video").removeClass('videoTxt');
+		}
+	}
 	
 	var contextPath = $('#contextpath').val();
 	

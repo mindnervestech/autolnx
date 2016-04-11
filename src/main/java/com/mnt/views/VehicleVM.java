@@ -68,8 +68,34 @@ public class VehicleVM {
 	public String steeringWheel;
 	public String steeringWheelControls;
 	public String pdfPath;
-	
-	
+	public String flagD;
+	public String flagM;
+	public String getFlagD() {
+		return flagD;
+	}
+	public void setFlagD(String flagD) {
+		this.flagD = flagD;
+	}
+	public String getFlagM() {
+		return flagM;
+	}
+	public void setFlagM(String flagM) {
+		this.flagM = flagM;
+	}
+	public String getVirtualTour() {
+		return virtualTour;
+	}
+	public void setVirtualTour(String virtualTour) {
+		this.virtualTour = virtualTour;
+	}
+	public String getVirtualTourMo() {
+		return virtualTourMo;
+	}
+	public void setVirtualTourMo(String virtualTourMo) {
+		this.virtualTourMo = virtualTourMo;
+	}
+	public String virtualTour;
+	public String virtualTourMo;
 	public String videoUrl;
 	public String mobileUrl;
 	public String audioUrl;

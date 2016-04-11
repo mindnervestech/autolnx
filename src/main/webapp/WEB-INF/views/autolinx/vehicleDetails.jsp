@@ -182,7 +182,7 @@ $(document).ready(function()
 
 </head>
 
-<body ng-controller="VehicleDetailsController" ng-init="initFun('${vehicle.typeofVehicle}')">
+<body ng-controller="VehicleDetailsController" ng-init="initFun('${vehicle.typeofVehicle}','${vehicle.virtualTour}','${vehicle.videoUrl}')">
 <!--Header Start-->
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
@@ -304,30 +304,27 @@ $(document).ready(function()
                 </div>
             </div>
             <c:choose>
-				    <c:when test="${vehicle.videoUrl==''}">
-				       
-				    </c:when>    
-				    <c:otherwise>
+				    <c:when test="${vehicle.flagD!='0'}">
+				    	<div style="text-align:left;"><span class="videoTxt" id = "virtualTour"ng-click="setFlag('virtualTour')" ng-if="${vehicle.virtualTour!=''}">360</span> &nbsp; <span ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">|</span> &nbsp; <span id="video" ng-click="setFlag('video')" ng-if="${vehicle.videoUrl!=''}">Video</span></div>
+				    	<div style="text-align:right;">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
+				    </c:when>
+				    <%-- <c:when test="${vehicle.videoUrl==''}">
 				        <div style="text-align:right;">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
-				        
-				    </c:otherwise>
+				    </c:when> --%>
 				</c:choose>
             
 
-            <div class="content-nav margin-bottom-30">
+            <div class="content-nav margin-bottom-30" ng-if="flag != null">
                    <p>
-                   <c:choose>
-				    <c:when test="${vehicle.videoUrl==''}">
-				       
-				    </c:when>    
-				    <c:otherwise>
-				        <p>
+				       <p ng-if="flag=='video'">
                    		<iframe id="ab" width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
                    		</p>
 				        <br />
-				    </c:otherwise>
-				</c:choose>
-                   
+				    
+				       <p ng-if="flag=='virtualTour'">
+                   		<iframe id="ab" width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.virtualTour}"></iframe>
+                   		</p>
+				        <br />
                    </p>
 
 	            <ul class="mainBoxIn1">
@@ -1496,6 +1493,11 @@ $(document).ready(function()
 </html>
 
 <style>
+.videoTxt{
+	text-decoration: underline;
+    color: blue;
+    font-size: 16px;
+}
       #map-canvas {
         width: 765px;
         height: 284px;

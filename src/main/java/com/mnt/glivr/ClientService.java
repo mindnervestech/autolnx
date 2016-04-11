@@ -628,22 +628,49 @@ public class ClientService {
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin= '"+vin+"' and status ='Newly Arrived'");
 		VehicleVM vehicleVM = new VehicleVM();
 		List<Map<String, Object>> videoUrl = jdbcTemplate.queryForList("select desktop_url,mobile_url from virtual_tour where vin= '"+vin+"' ");
-		if(videoUrl.isEmpty()) {
+		List<Map<String, Object>> videoUrl1 = jdbcTemplate.queryForList("select desktop_url,mobile_url from video where vin= '"+vin+"' ");
+		
+		vehicleVM.flagD = "0";
+		vehicleVM.flagM = "0";
+		
+		if(videoUrl1.isEmpty()) {
 			vehicleVM.videoUrl = "";
 			vehicleVM.mobileUrl = "";
 		} else {
-			if(videoUrl.get(0).get("desktop_url") == null) {
+			if(videoUrl1.get(0).get("desktop_url") == null) {
 				vehicleVM.videoUrl = "";
 			} else {
-				vehicleVM.videoUrl = (String) videoUrl.get(0).get("desktop_url");
+				vehicleVM.videoUrl = (String) videoUrl1.get(0).get("desktop_url");
+				vehicleVM.flagD = "video";
 			}
-			if(videoUrl.get(0).get("mobile_url") == null) {
+			if(videoUrl1.get(0).get("mobile_url") == null) {
 				vehicleVM.mobileUrl = "";
 			} else {
-				vehicleVM.mobileUrl = (String) videoUrl.get(0).get("mobile_url");
+				vehicleVM.mobileUrl = (String) videoUrl1.get(0).get("mobile_url");
+				vehicleVM.flagM = "video";
 			}
 		}
 		
+		if(videoUrl.isEmpty()) {
+			vehicleVM.virtualTour = "";
+			vehicleVM.virtualTourMo = "";
+		} else {
+			if(videoUrl.get(0).get("desktop_url") == null) {
+				vehicleVM.virtualTour = "";
+			} else {
+				vehicleVM.virtualTour = (String) videoUrl.get(0).get("desktop_url");
+				vehicleVM.flagD = "virtual";
+			}
+			if(videoUrl.get(0).get("mobile_url") == null) {
+				vehicleVM.virtualTourMo = "";
+			} else {
+				vehicleVM.virtualTourMo = (String) videoUrl.get(0).get("mobile_url");
+				vehicleVM.flagM = "virtual";
+			}
+		}
+		System.out.println(vehicleVM.virtualTour);
+		System.out.println(vehicleVM.videoUrl);
+		System.out.println("??????????????????????");
 		List<Map<String, Object>> audioUrl = jdbcTemplate.queryForList("select path from vehicle_audio where vin= '"+vin+"' ");
 		if(audioUrl.isEmpty()) {
 			vehicleVM.audioUrl = "";
