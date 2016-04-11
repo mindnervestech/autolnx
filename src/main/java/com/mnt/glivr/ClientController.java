@@ -1,5 +1,6 @@
 package com.mnt.glivr;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -36,6 +37,7 @@ import com.mnt.views.SiteLogoVM;
 import com.mnt.views.SliderVM;
 import com.mnt.views.Trade_InVM;
 import com.mnt.views.VehicleVM;
+import com.mnt.views.pdfInfoVM;
 
 /**
  * Handles requests for the application home page.
@@ -48,6 +50,12 @@ public class ClientController {
 	
 	@Value("${hostname}")
 	String hostUrl;
+	@Value("${hostnameimg}")
+	String hostnameimg;
+	@Value("${pdfRootDir}")
+	String pdfRootDir;
+	
+	
 	private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 	
 	@Autowired
@@ -324,7 +332,11 @@ public class ClientController {
 		model.addAttribute("similarVehicle",similarVehicleVm);
 		model.addAttribute("vehicle",vehicleVM);
 		model.addAttribute("hostname", hostUrl);
+		model.addAttribute("pdfRootDir", pdfRootDir);
+		model.addAttribute("pdfRootPath", hostnameimg);
 		model.addAttribute("siteLogo",siteLogo);
+		System.out.println("?????????????????");
+		System.out.println(pdfRootDir);
 		return "autolinx/vehicleDetails";
 	}
 	
@@ -356,13 +368,23 @@ public class ClientController {
 		
 	}
    
-      
+   
+   @RequestMapping(value = "/pdfDataSave", method = RequestMethod.POST)
+   @ResponseBody
+	public void pdfDataSave(@RequestBody pdfInfoVM model){
+	 System.out.println("yyyyyyyyyy ");
+	   System.out.println(model.name);
+	   System.out.println(model.pdfPath);
+	    clientService.savePdafData(model);
+   } 
+   
    @RequestMapping(value = "/requestMore", method = RequestMethod.POST)
    @ResponseBody
 	public void requestMore(@RequestBody RequestMore model){
 	   Long locationId = locationIdGol;
 	    clientService.getRequestMore(model, hostUrl, locationId);
    } 
+   
    
    @RequestMapping(value = "/savePriceAlert", method = RequestMethod.POST)
    @ResponseBody

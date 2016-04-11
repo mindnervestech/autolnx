@@ -61,6 +61,7 @@ import com.mnt.views.SliderVM;
 import com.mnt.views.Trade_InVM;
 import com.mnt.views.VehicleImage;
 import com.mnt.views.VehicleVM;
+import com.mnt.views.pdfInfoVM;
 
 @Service
 public class ClientService {
@@ -774,6 +775,14 @@ public class ClientService {
 	public void saveCarModel(RequestMore model, Long locationId){
 		jdbcTemplate.update("INSERT INTO follow_brand(name,email,brand,locations_id) VALUES('"+model.getName()+"','"+model.getEmail()+"','"+model.getBrand()+"','"+locationId+"')");
 	}
+	
+	public void savePdafData(pdfInfoVM model){
+		
+		jdbcTemplate.update("INSERT INTO pdf_data(name,email) VALUES('"+model.getName()+"','"+model.getEmail()+"')");
+		
+	}
+	
+	
 	
 	public void getRequestMore(RequestMore model, String hostUrl, Long locationId){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

@@ -216,10 +216,13 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 	
 });
 
-app.controller("VehicleDetailsController", function($scope,$http,notificationService,$timeout, vcRecaptchaService) {
-	
+app.controller("VehicleDetailsController", function($scope,$http,notificationService,$timeout, vcRecaptchaService,$window) {
+	$scope.test = null;
 	$scope.initFun = function(vehical){
-		$scope.typeofV = vehical;
+		$scope.typeofV = vehical.typeofVehicle;
+		$scope.test = vehical;
+		console.log(vehical);
+		console.log("{{{{{}}}}}}}}");
 	};
 	
 	var contextPath = $('#contextpath').val();
@@ -249,6 +252,43 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 
         $scope.response = null;
      };
+     
+     
+     $scope.savePdfData = function(){
+    	 $scope.pdfPathOpen = null;
+    	 console.log("????????????");
+    	 $scope.pdf.pdfPath = $('#pdfPath').val();
+    	 $scope.pdfPathOpen = "/glivrImg/images/"+$('#pdfPath').val();
+ 		console.log($scope.pdf);
+ 		$http({
+ 			method : 'POST',
+ 			url : contextPath+'/pdfDataSave',
+ 			data : $scope.pdf
+ 		}).success(function(response) {
+ 			console.log("Success...............");
+ 			$('#pdfModal').modal('hide');
+ 			notificationService.success("Your request has been submitted");
+ 			console.log($scope.pdfPathOpen);
+			$('#pdfDownloalModal1').click();
+			
+ 		}).error(function(){
+ 			console.log("Error.................");
+ 		});
+ 	};
+     
+    /* 
+	$http({
+		method : 'POST',
+		url : contextPath+'/saveFollowBrand',
+		data : $scope.followBrand
+	}).success(function(response) {
+		console.log("Success...............");
+		notificationService.success("Your request has been submitted");
+		$('#carBrandModal').modal('hide');
+	}).error(function(){
+		console.log("Error.................");
+	});
+ 	*/
 
 	
 	$scope.requestMore = function(vin){

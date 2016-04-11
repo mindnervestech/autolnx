@@ -368,8 +368,8 @@ $(document).ready(function()
 	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
 	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" href="#${vehicle.vin}#emailtofriendshow" onclick="clicky.log('#${vehicle.vin}#emailtofriendshow','click'); return false;">Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
-	                	                	<li class="next1 gradient_button"><a href="/glivrImg/images${vehicle.pdfPath}" target="_blank">View PDF</a></li>
-	                	                	
+	                	                	<li class="next1 gradient_button"><a  target="_blank" data-toggle="modal" data-target="#pdfModal"  >View PDF</a></li>
+	                	                	<%-- href="/glivrImg/images${vehicle.pdfPath}" --%>
 	                	                
 	            </ul> 
 	        </div>
@@ -921,6 +921,80 @@ $(document).ready(function()
             ></div>
            <input type="button" ng-if="showButton == 0" disabled value="Submit">
             <input type="submit" ng-if="showButton == 1" value="Submit">
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  
+  <a id="pdfDownloalModal1" target="_blank" data-toggle="modal" data-target="#pdfDownloalModal"> </a>
+  
+  <div class="modal fade" id="pdfDownloalModal" role="dialog">
+    <div class="modal-dialog">
+      	<div class="modal-content" style="width: 514px;margin-left: 80px;">
+      		<div class="modal-header">
+          		<button id="pdfDwnPopclose" type="button" class="close" data-dismiss="modal">&times;</button>
+          		<h4 class="modal-title">Download PDF Brochure</h4>
+        	</div>
+        	<div class="modal-body">
+        		<div class="row">
+        	 		<div class="col-md-8">
+        	 			<label style="font-weight: initial;padding: 0px;">Please Download our Brochure</label>
+        	 		</div>
+        	</div>
+        	</div><div class="modal-footer">
+            <button><a id="openPdf1" hide="true" href="{{pdfPathOpen}}" target="_blank" style="color: white;"> Open PDF </a></button>
+        </div>
+      	</div>
+    </div>
+  </div>
+  
+      <div class="modal fade" id="pdfModal" role="dialog">
+    <div class="modal-dialog">
+     <form name="fome1" ng-submit="savePdfData()"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+        <div class="modal-header">
+          <button id="pdfPopclose" type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Download PDF Brochure</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+           <div class="row">
+        	 <div class="col-md-8">
+        	 	<label style="font-weight: initial;padding: 0px;">Please enter your information to download our Brochure</label>
+        	 </div>
+        	</div>
+        
+           <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
+        	 </div>
+        	  <%--  <input type="text" name="vin" ng-model="request.vin" value="${vehicle.vin}" style="display: none;"> --%>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="name" ng-model="pdf.name" style="width: 220px !important;" required>
+        	 </div>
+        	</div>
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="email" name="email" ng-model="pdf.email" style="width: 220px !important;">
+        	 </div>
+        	 </div>
+        	 
+        	 
+        	 <div>
+        	 <input type="hidden" id="pdfPath" value="${vehicle.pdfPath}" ng-model="pdf.pdfPath">
+        	 <input type="hidden" id="pdfRootPath" value="/glivrImg/images/" ng-model="pdf.pdfPath">
+        	 </div>
+        	 
+        	 
+        </div>
+       
+        <div class="modal-footer">
+            <input type="submit"  value="Submit" />
         </div>
       </div>
       </form>
