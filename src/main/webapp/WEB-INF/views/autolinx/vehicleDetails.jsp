@@ -116,7 +116,7 @@ $("#ab").click(function() {
   function initialize() {
       var mapCanvas = document.getElementById('map-canvas');
       var mapOptions = {
-        center: new google.maps.LatLng(44.5403, -78.5463),
+        center: new google.maps.LatLng(37.7870882, -122.39112790000001),
         zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
@@ -426,18 +426,45 @@ $(document).ready(function()
 	                                <div class="features-holder">
 <h4>Vehicle Overview</h4>
 <ul>
-<li><b>Drive Type:</b> ${vehicle.drivetrain}</li>
-<li><b>Fuel Type:</b> ${vehicle.fuelType}</li>
-<li><b>Fuel Tank:</b> ${vehicle.fuelTank}</li>
-<li><b>HeadLights:</b> ${vehicle.headlights}</li>
-<li><b>Mirrors:</b> ${vehicle.mirrors}</li>
-<li><b>Ground Clearance:</b> ${vehicle.groundClearance}</li>
-<li><b>Roof:</b> ${vehicle.roof}</li>
-<li><b>Height:</b> ${vehicle.height}</li>
-<li><b>Length:</b> ${vehicle.length}</li>
-<li><b>Width:</b> ${vehicle.width}</li>
-<li><b>Acceleration:</b> ${vehicle.acceleration}</li>
-<li><b>Seats:</b> ${vehicle.seats}</li>
+
+<c:choose>
+	<c:when test="${vehicle.drivetrain != null}">
+			<li><b>Drive Type:</b> ${vehicle.drivetrain}</li>								
+	</c:when>
+	<c:when test="${vehicle.fuelType != null}">
+			<li><b>Fuel Type:</b> ${vehicle.fuelType}</li>								
+	</c:when>
+	<c:when test="${vehicle.fuelTank != null}">
+			<li><b>Fuel Tank:</b> ${vehicle.fuelTank}</li>								
+	</c:when>
+	<c:when test="${vehicle.headlights != null}">
+			<li><b>HeadLights:</b> ${vehicle.headlights}</li>							
+	</c:when>
+	<c:when test="${vehicle.mirrors != null}">
+			<li><b>Mirrors:</b> ${vehicle.mirrors}</li>							
+	</c:when>
+	<c:when test="${vehicle.groundClearance != null}">
+			<li><b>Ground Clearance:</b> ${vehicle.groundClearance}</li>						
+	</c:when>
+	<c:when test="${vehicle.roof != null}">
+			<li><b>Roof:</b> ${vehicle.roof}</li>							
+	</c:when>
+	<c:when test="${vehicle.height != null}">
+			<li><b>Height:</b> ${vehicle.height}</li>						
+	</c:when>
+	<c:when test="${vehicle.length != null}">
+			<li><b>Length:</b> ${vehicle.length}</li>						
+	</c:when>
+	<c:when test="${vehicle.width != null}">
+			<li><b>Width:</b> ${vehicle.width}</li>					
+	</c:when>
+	<c:when test="${vehicle.acceleration!= null}">
+			<li><b>Acceleration:</b> ${vehicle.acceleration}</li>					
+	</c:when>
+	<c:when test="${vehicle.seats!= null}">
+			<li><b>Seats:</b> ${vehicle.seats}</li>					
+	</c:when>
+</c:choose>
 </ul>
 </div>
 
@@ -445,34 +472,84 @@ $(document).ready(function()
 <div class="features-holder">
 <h4>Engine, Transmission & Brakes</h4>
 <ul>
-<li><b>Engine Type:</b> ${vehicle.engineType}</li>
-<li><b>Cylinders:</b> ${vehicle.cylinders}</li>
-<li><b>Displacement:</b> ${vehicle.displacement}</li>
-<li><b>Cam Type:</b> ${vehicle.camType}</li>
-<li><b>Valves:</b> ${vehicle.valves}</li>
-<li><b>Fuel Type:</b> ${vehicle.fuelType}</li>
-<li><b>Fuel Quality:</b> ${vehicle.fuelQuality}</li>
-<li><b>Max. Horse Power:</b> ${vehicle.horsePower}</li>
-<li><b>Transmission:</b> ${vehicle.transmission}</li>
-<li><b>Gears:</b> ${vehicle.gears}</li>
-<li><b>Brakes:</b> ${vehicle.brakes}</li>
-<li><b>Front Brake Diameter:</b> ${vehicle.frontBrakeDiameter}</li>
-<li><b>Front Brake Type:</b> ${vehicle.frontBrakeType}</li>
-<li><b>Rear Brake Diameter:</b> ${vehicle.rearBrakeDiameter}</li>
-<li><b>Rear Brake Type:</b> ${vehicle.rearBrakeType}</li>
+<c:choose>
+	<c:when test="${vehicle.engineType != null}">
+			<li><b>Engine Type:</b> ${vehicle.engineType}</li>							
+	</c:when>
+	<c:when test="${vehicle.cylinders != null}">
+			<li><b>Cylinders:</b> ${vehicle.cylinders}</li>						
+	</c:when>
+	<c:when test="${vehicle.displacement!= null}">
+			<li><b>Displacement:</b> ${vehicle.displacement}</li>				
+	</c:when>
+	<c:when test="${vehicle.camType!= null}">
+			<li><b>Cam Type:</b> ${vehicle.camType}</li>			
+	</c:when>
+	<c:when test="${vehicle.seats!= null}">
+			<li><b>Valves:</b> ${vehicle.valves}</li>				
+	</c:when>
+	
+	<c:when test="${vehicle.fuelQuality!= null}">
+			<li><b>Fuel Quality:</b> ${vehicle.fuelQuality}</li>			
+	</c:when>
+	<c:when test="${vehicle.horsePower!= null}">
+			<li><b>Max. Horse Power:</b> ${vehicle.horsePower}</li>				
+	</c:when>
+	<c:when test="${vehicle.transmission!= null}">
+			<li><b>Transmission:</b> ${vehicle.transmission}</li>			
+	</c:when>
+	<c:when test="${vehicle.gears!= null}">
+			<li><b>Gears:</b> ${vehicle.gears}</li>			
+	</c:when>
+	<c:when test="${vehicle.brakes!= null}">
+			<li><b>Brakes:</b> ${vehicle.brakes}</li>		
+	</c:when>
+	<c:when test="${vehicle.frontBrakeDiameter!= null}">
+			<li><b>Front Brake Diameter:</b> ${vehicle.frontBrakeDiameter}</li>			
+	</c:when>
+	<c:when test="${vehicle.frontBrakeType!= null}">
+			<li><b>Front Brake Type:</b> ${vehicle.frontBrakeType}</li>		
+	</c:when>
+	<c:when test="${vehicle.rearBrakeDiameter!= null}">
+			<li><b>Rear Brake Diameter:</b> ${vehicle.rearBrakeDiameter}</li>
+	</c:when>
+	<c:when test="${vehicle.rearBrakeType!= null}">
+			<li><b>Rear Brake Type:</b> ${vehicle.rearBrakeType}</li>	
+	</c:when>
+	
+	
+</c:choose>
+
 </ul>
 </div>
 <div class="features-holder">
 <h4>Safety</h4>
 <ul>
-<li><b>Active Head Restraints:</b> ${vehicle.activeHeadRestraints}</li>
-<li><b>Body Side Reinforcement:</b> ${vehicle.bodySideReinforcements}</li>
-<li><b>Crumple Zones:</b> ${vehicle.crumpleZones}</li>
-<li><b>Impact Absorbing Bumpers:</b> ${vehicle.impactAbsorbingBumpers}</li>
-<li><b>Impact Sensors:</b> ${vehicle.impactSensors}</li>
-<li><b>Parking Sensors:</b> ${vehicle.parkingSensors}</li>
-<li><b>Seatbealts:</b> ${vehicle.seatbelts}</li>
-<li><b>Audi Side Assist:</b> ${vehicle.audiSideAssist}</li>
+<c:choose>
+	<c:when test="${vehicle.activeHeadRestraints != null}">
+			<li><b>Active Head Restraints:</b> ${vehicle.activeHeadRestraints}</li>						
+	</c:when>
+	<c:when test="${vehicle.bodySideReinforcements != null}">
+			<li><b>Body Side Reinforcement:</b> ${vehicle.bodySideReinforcements}</li>						
+	</c:when>
+	<c:when test="${vehicle.crumpleZones != null}">
+		<li><b>Crumple Zones:</b> ${vehicle.crumpleZones}</li>						
+	</c:when>
+	<c:when test="${vehicle.impactAbsorbingBumpers != null}">
+			<li><b>Impact Absorbing Bumpers:</b> ${vehicle.impactAbsorbingBumpers}</li>						
+	</c:when>
+	<c:when test="${vehicle.impactSensors != null}">
+			<li><b>Impact Sensors:</b> ${vehicle.impactSensors}</li>							
+	</c:when>
+	<c:when test="${vehicle.parkingSensors != null}">
+			<li><b>Parking Sensors:</b> ${vehicle.parkingSensors}</li>					
+	</c:when>
+	<c:when test="${vehicle.seatbelts != null}">
+			<li><b>Audi Side Assist:</b> ${vehicle.audiSideAssist}</li>					
+	</c:when>
+		
+</c:choose>
+
 </ul>
 </div>
 
@@ -480,15 +557,41 @@ $(document).ready(function()
 <div class="features-holder">
 <h4>Interior & Comfort</h4>
 <ul>
-<li><b>Interior Color:</b> ${vehicle.intColor}</li>
-<li><b>Comfort Features:</b> ${vehicle.comfortFeatures}</li>
-<li><b>Power Outlet(s):</b> ${vehicle.powerOutlets}</li>
-<li><b>Power Steering:</b> ${vehicle.powerSteering}</li>
-<li><b>Rear View Camera:</b> ${vehicle.rearViewCamera}</li>
-<li><b>Rear View Monitor:</b> ${vehicle.rearViewMonitor}</li>
-<li><b>Remote Trunk Release:</b> ${vehicle.remoteTrunkRelease}</li>
-<li><b>Steering Wheel:</b> ${vehicle.steeringWheel}</li>
-<li><b>Steering Wheel Mounted Controls:</b> ${vehicle.steeringWheelControls}</li>
+
+<c:choose>
+	
+	<c:when test="${vehicle.intColor != null}">
+		<li><b>Interior Color:</b> ${vehicle.intColor}</li>					
+	</c:when>
+	<c:when test="${vehicle.comfortFeatures != null}">
+		<li><b>Comfort Features:</b> ${vehicle.comfortFeatures}</li>					
+	</c:when>
+	<c:when test="${vehicle.powerOutlets != null}">
+		<li><b>Power Outlet(s):</b> ${vehicle.powerOutlets}</li>				
+	</c:when>
+	<c:when test="${vehicle.powerSteering != null}">
+		<li><b>Power Steering:</b> ${vehicle.powerSteering}</li>					
+	</c:when>
+	<c:when test="${vehicle.rearViewCamera != null}">
+		<li><b>Rear View Camera:</b> ${vehicle.rearViewCamera}</li>						
+	</c:when>
+	<c:when test="${vehicle.rearViewMonitor != null}">
+		<li><b>Rear View Monitor:</b> ${vehicle.rearViewMonitor}</li>					
+	</c:when>
+	<c:when test="${vehicle.remoteTrunkRelease != null}">
+		<li><b>Remote Trunk Release:</b> ${vehicle.remoteTrunkRelease}</li>				
+	</c:when>
+	<c:when test="${vehicle.steeringWheel != null}">
+		<li><b>Steering Wheel:</b> ${vehicle.steeringWheel}</li>				
+	</c:when>
+	<c:when test="${vehicle.steeringWheelControls != null}">
+		<li><b>Steering Wheel Mounted Controls:</b> ${vehicle.steeringWheelControls}</li>				
+	</c:when>
+
+		
+</c:choose>
+
+
 </ul>
 </div>
 
@@ -501,14 +604,15 @@ $(document).ready(function()
 	                        </div>
 	                        <div id="technical" class="tab-pane fade">
 	                        	
+	                        
 	                        </div>
 	                        <div id="location" class="tab-pane fade">
 	                        <div id="map-canvas"></div>
 	                        
-	                               <%-- <div data-parallax="false" style="height: 350px; id="map" 
+	                                <div data-parallax="false" style="height: 350px; id="map" 
 	                               position: relative; background-color: rgb(229, 227, 223); 
 	                               overflow: hidden;" data-scroll="false" data-zoom="11"
-	                               data-latitude="43.653226" data-longitude="-79.3831843" 
+	                               data-latitude="${myprofile.latitud}" data-longitude="${myprofile.longitude}" 
 	                               class="google_map_init">
 	                               <div style="position: absolute; left: 0px; top: 0px; overflow: hidden;
 	                                width: 100%; height: 100%; z-index: 0;" class="gm-style">
@@ -527,7 +631,7 @@ $(document).ready(function()
 	                                <div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;">
 	                                <div style="position: absolute; left: 0px; top: 0px; z-index: -1;">
 	                                <div style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;" aria-hidden="true"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -102px; top: -109px;"><canvas draggable="false" style="-moz-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;" height="256" width="256"></canvas></div></div></div></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;" aria-hidden="true"></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a style="position: static; overflow: visible; float: none; display: inline;" target="_blank" href="https://maps.google.com/maps?ll=43.653226,-79.383184&amp;z=11&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps"><div style="width: 62px; height: 26px; cursor: pointer;"><img style="position: absolute; left: 0px; top: 0px; width: 62px; height: 26px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/google_white2.png" draggable="false"></div></a></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 0px; bottom: 0px; width: 12px;"><div draggable="false" style="-moz-user-select: none;" class="gm-style-cc"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span style="display: none;"></span></div></div></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto,Arial,sans-serif; color: rgb(34, 34, 34); box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); z-index: 10000002; display: none; width: 0px; height: 0px; position: absolute; left: 5px; top: 5px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;"></div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false"></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto,Arial,sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);"></div></div><div class="gmnoprint gm-style-cc" style="z-index: 1000001; position: absolute; -moz-user-select: none; right: 0px; bottom: 0px;" draggable="false"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);" href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank">Terms of Use</a></div></div><div draggable="false" style="-moz-user-select: none; display: none; position: absolute; right: 0px; bottom: 0px;" class="gm-style-cc"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a target="_new" title="Report errors in the road map or imagery to Google" style="font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;" href="https://www.google.com/maps/@43.653226,-79.3831843,11z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3">Report a map error</a></div></div><div class="gmnoprint" style="margin: 5px; -moz-user-select: none; position: absolute; left: 0px; top: 0px;" draggable="false" controlwidth="32" controlheight="84"><div controlwidth="32" controlheight="40" style="cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; position: absolute; left: 0px; top: 0px;"><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px;" aria-label="Street View Pegman Control"><img style="position: absolute; left: -9px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;" aria-label="Pegman is disabled"><img style="position: absolute; left: -107px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;" aria-label="Pegman is on top of the Map"><img style="position: absolute; left: -58px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;" aria-label="Street View Pegman Control"><img style="position: absolute; left: -205px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false"></div></div><div class="gmnoprint" style="opacity: 0.6; display: none; position: absolute;" controlwidth="0" controlheight="0"><div style="width: 22px; height: 22px; overflow: hidden; position: absolute; cursor: pointer;" title="Rotate map 90 degrees"><img style="position: absolute; left: -38px; top: -360px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false"></div></div><div class="gmnoprint" controlwidth="20" controlheight="39" style="position: absolute; left: 6px; top: 45px;"><div style="width: 20px; height: 39px; overflow: hidden; position: absolute;"><img style="position: absolute; left: -39px; top: -401px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false"></div><div style="position: absolute; left: 0px; top: 2px; width: 20px; height: 17px; cursor: pointer;" title="Zoom in"></div><div style="position: absolute; left: 0px; top: 19px; width: 20px; height: 17px; cursor: pointer;" title="Zoom out"></div></div></div><div class="gmnoprint gm-style-mtc" style="margin: 5px; z-index: 0; position: absolute; cursor: pointer; text-align: left; width: 85px; right: 0px; top: 0px;"><div style="direction: ltr; overflow: hidden; text-align: left; position: relative; color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 1px 6px; border-radius: 2px; background-clip: padding-box; border: 1px solid rgba(0, 0, 0, 0.15); box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); font-weight: 500;" draggable="false" title="Change map style">Map<img src="https://maps.gstatic.com/mapfiles/arrow-down.png" draggable="false" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: -2px 0px 0px; position: absolute; right: 6px; top: 50%; width: 7px; height: 4px;"></div><div style="background-color: white; z-index: -1; padding-top: 2px; background-clip: padding-box; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); position: absolute; top: 100%; left: 0px; right: 0px; text-align: left; display: none;"><div style="color: black; font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px; font-weight: 500;" draggable="false" title="Show street map">Map</div><div style="color: black; font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px;" draggable="false" title="Show satellite imagery">Satellite</div><div style="margin: 1px 0px; border-top: 1px solid rgb(235, 235, 235);"></div><div style="color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap;" draggable="false" title="Show street map with terrain"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div><div style="margin: 1px 0px; border-top: 1px solid rgb(235, 235, 235); display: none;"></div><div style="color: rgb(184, 184, 184); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap; display: none;" draggable="false" title="Zoom in to show 45 degree view"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(241, 241, 241); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false"></div></span><label style="vertical-align: middle; cursor: pointer;">45°</label></div><div style="color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap; display: none;" draggable="false" title="Show imagery with street names"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div>
-	                                --%>
+	                                
 	                            	                        </div>
 	            
 	                    </div>
