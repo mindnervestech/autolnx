@@ -444,7 +444,17 @@ public class ClientService {
 			profileModel.twitter =(String) myprofileModel.get(0).get("twitter");
 			profileModel.googleplus =(String) myprofileModel.get(0).get("googleplus");
 			profileModel.locationId = (Long) myprofileModel.get(0).get("locations_id");
-			profileModel.fullAddress = profileModel.address+","+profileModel.city+","+profileModel.zip+","+profileModel.state+","+profileModel.country;
+			
+			if(myprofileModel.get(0).get("latlong") != null){
+				String abc = (String) myprofileModel.get(0).get("latlong");
+				 String[] parts = abc.split(",");
+			        String latitud = parts[0]; // 004
+			        String longitude = parts[1];
+				profileModel.latitud = latitud;
+				profileModel.longitude = longitude;
+				profileModel.fullAddress = profileModel.address+","+profileModel.city+","+profileModel.zip+","+profileModel.state+","+profileModel.country;
+			}
+			
 		}
 		return profileModel;
 	}

@@ -16,6 +16,8 @@ public class MyProfileVM {
 	public String instagram;
 	public String twitter;
 	public String googleplus;
+	public String latitud;
+	public String longitude;
 	public String fullAddress;
 	public Long locationId;
 	
@@ -114,6 +116,18 @@ public class MyProfileVM {
 	}
 	public void setLocationId(Long locationId) {
 		this.locationId = locationId;
+	}
+	public String getLatitud() {
+		return latitud;
+	}
+	public void setLatitud(String latitud) {
+		this.latitud = latitud;
+	}
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 	
 	
