@@ -305,7 +305,7 @@ $(document).ready(function()
             </div>
             <c:choose>
 				    <c:when test="${vehicle.flagD!='0'}">
-				    	<div style="text-align:left;"><span class="videoTxt" id = "virtualTour"ng-click="setFlag('virtualTour')" ng-if="${vehicle.virtualTour!=''}">360</span> &nbsp; <span ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">|</span> &nbsp; <span id="video" ng-click="setFlag('video')" ng-if="${vehicle.videoUrl!=''}">Video</span></div>
+				    	<div style="text-align:left;"><span class="videoTxt" id = "virtualTour"ng-click="setFlag('virtualTour')" ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">360</span> &nbsp; <span ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">|</span> &nbsp; <span id="video" ng-click="setFlag('video')" ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">Video</span></div>
 				    	<div style="text-align:right;">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
 				    </c:when>
 				    <%-- <c:when test="${vehicle.videoUrl==''}">
@@ -385,7 +385,7 @@ $(document).ready(function()
                         <section class="slider home-banner">
                             <div class="flexslider" id="home-slider-canvas">
                                 <ul class="slides">
-                                <c:forEach var="row" items="${vehicle.images}">
+                                <%-- <c:forEach var="row" items="${vehicle.images}">
                                 	<c:choose>
 										<c:when test="${row.isDefault == true}">
 											<li data-thumb="/glivrImg/images${row.path}"> 
@@ -396,7 +396,7 @@ $(document).ready(function()
 										
 										</c:otherwise>
 									</c:choose>
-                                 </c:forEach>
+                                 </c:forEach> --%>
                                     
                                     <c:forEach var="row" items="${vehicle.images}">
                                     <li data-thumb="/glivrImg/images${row.path}"> <img data-full-image="/glivrImg/images${row.path}" alt="" src="/glivrImg/images${row.path}" draggable="false"> </li>
@@ -409,7 +409,7 @@ $(document).ready(function()
                             <div class="flexslider" id="home-slider-thumbs">
                                 <ul class="slides">
                                 <c:forEach var="row" items="${vehicle.images}">
-                                    <li data-thumb="/glivrImg/images${row.path}"> <a href="#"><img alt="" src="/glivrImg/images${row.path}" draggable="false"></a> </li>
+                                    <li data-thumb="/glivrImg/images${row.thumbPath}"> <a href="#"><img alt="" src="/glivrImg/images${row.thumbPath}" draggable="false" style="height: 140px;width: 171px;"></a> </li>
                                  </c:forEach>   
                                     
                                 </ul>
