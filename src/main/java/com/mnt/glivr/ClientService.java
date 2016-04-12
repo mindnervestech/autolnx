@@ -2619,7 +2619,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("nananevase9766@gmail.com"));   
+					InternetAddress.parse("yogeshpatil424@gmail.com"));   
 			message.setSubject("Contact us");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
