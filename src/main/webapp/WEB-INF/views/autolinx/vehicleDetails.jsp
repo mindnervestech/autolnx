@@ -305,8 +305,8 @@ $(document).ready(function()
             </div>
             <c:choose>
 				    <c:when test="${vehicle.flagD!='0'}">
-				    	<div style="text-align:left;"><span class="videoTxt" id = "virtualTour"ng-click="setFlag('virtualTour')" ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">360</span> &nbsp; <span ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">|</span> &nbsp; <span id="video" ng-click="setFlag('video')" ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">Video</span></div>
-				    	<div style="text-align:right;">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
+				    	<div style="text-align:left;"><span class="videoTxtActive" id = "virtualTour"ng-click="setFlag('virtualTour')" ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">360</span> &nbsp; <span ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">|</span> &nbsp; <span id="video" ng-click="setFlag('video')" ng-if="${vehicle.videoUrl!=''} && ${vehicle.virtualTour!=''}">VIDEO</span></div>
+				    	<div style="text-align:right;" ng-if="flag=='virtualTour'">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
 				    </c:when>
 				    <%-- <c:when test="${vehicle.videoUrl==''}">
 				        <div style="text-align:right;">    Experience the tour in full screen by clicking the button in the top right. <img src="${pageContext.request.contextPath}/resources/autolinx/images/arrowpoint.png"> </div>
