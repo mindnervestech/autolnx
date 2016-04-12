@@ -2632,11 +2632,8 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 		
-			
-	        Template t = ve.getTemplate("contactUstemplate.vm"); 
+	        Template t = ve.getTemplate("Contactus_HTML.vm"); 
 	        VelocityContext context = new VelocityContext();
-	        
-	        
 	        context.put("name", request.getName());
 	        context.put("email", request.getEmail());
 	        context.put("msg", request.getMessage());
@@ -2646,9 +2643,6 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 	        context.put("heading2", heading2);
 	        context.put("urlLink", hostUrl);
 	        context.put("hostnameimg",  hostnameimg);
-	        
-	        
-	        
 	        StringWriter writer = new StringWriter();
 	        t.merge( context, writer );
 	        String content = writer.toString(); 
