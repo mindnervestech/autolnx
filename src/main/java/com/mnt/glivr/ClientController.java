@@ -91,6 +91,7 @@ public class ClientController {
 		model.addAttribute("sliderImages",sliderImages);
 		model.addAttribute("featuredImages",featuredImages);
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/index";
 	}
@@ -130,6 +131,7 @@ public class ClientController {
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake);
 		model.addAttribute("vehicleListModel", vehicleListModel);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/mobile/mobileIndex";
 	}
@@ -146,6 +148,7 @@ public class ClientController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/inventory";
 	}
@@ -170,6 +173,7 @@ public class ClientController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("brandList",brandList);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/mobile/mobileInventory";
 	}
@@ -202,6 +206,7 @@ public class ClientController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/about-us";
 	}
@@ -222,6 +227,7 @@ public class ClientController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/contactUs";
 	}
@@ -242,6 +248,7 @@ public class ClientController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/mobile/mobileAboutUs";
 	}
@@ -261,6 +268,7 @@ public class ClientController {
 		model.addAttribute("myphone",ph);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/warranty";
 	}
@@ -279,6 +287,7 @@ public class ClientController {
 		model.addAttribute("myphone",ph);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/blog";
 	}
@@ -335,7 +344,7 @@ public class ClientController {
 		model.addAttribute("pdfRootDir", pdfRootDir);
 		model.addAttribute("pdfRootPath", hostnameimg);
 		model.addAttribute("siteLogo",siteLogo);
-		System.out.println("?????????????????");
+		model.addAttribute("hostnameimg",hostnameimg);
 		System.out.println(pdfRootDir);
 		return "autolinx/vehicleDetails";
 	}
@@ -357,6 +366,8 @@ public class ClientController {
 		model.addAttribute("vehicle",vehicleVM);
 		model.addAttribute("hostname", hostUrl);
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
+		
 		return "autolinx/mobile/mobileViewDetails";
 	}
 	
@@ -501,6 +512,7 @@ public class ClientController {
 		model.addAttribute("vehicle1",vehicleVM1);
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("flag",1);
+		model.addAttribute("hostnameimg",hostnameimg);
 		return "autolinx/inventory";
 	}
 	
@@ -520,6 +532,8 @@ public class ClientController {
 		model.addAttribute("vehicleListModel", vehicleListModel );
 		model.addAttribute("vehicle",vehicleVM);
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
+		
 		return "autolinx/mobile/mobileInventory";
 	}
 	
@@ -566,6 +580,7 @@ public class ClientController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/mobile/mobileNewArrivals";
 	}
