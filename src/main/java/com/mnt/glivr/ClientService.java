@@ -839,7 +839,7 @@ public class ClientService {
 		
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(emailusername));
-		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("nananevase9766@gmail.com"));   
+		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("info@glider-autos.com"));   
 		message.setSubject("pdfDownload");
 		
 		
@@ -1229,7 +1229,7 @@ public class ClientService {
 		
 			String urlfind= "http://www.glider-autos.com/dealer/index.html#/scheduleTest";
 			
-	        Template t = ve.getTemplate("scheduleTestDriveTemplate.vm"); 
+	        Template t = ve.getTemplate("ScheduleTestDrive_HTML.vm"); 
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", model.getName());
 	        context.put("email", model.getEmail());
