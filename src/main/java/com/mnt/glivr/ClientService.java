@@ -817,6 +817,74 @@ public class ClientService {
 		
 		jdbcTemplate.update("INSERT INTO pdf_data(name,email) VALUES('"+model.getName()+"','"+model.getEmail()+"')");
 		
+		List<Map<String, Object>> oneRow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+model.getVin()+"' and status = 'Newly Arrived'");
+		Multipart multipart = new MimeMultipart();
+		BodyPart messageBodyPart = new MimeBodyPart();
+		messageBodyPart = new MimeBodyPart();
+		final String username = emailusername;
+		final String password = emailpassword;
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.starttls.enable", "true");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		
+		
+		try{
+		
+		Message message = new MimeMessage(session);
+		message.setFrom(new InternetAddress(emailusername));
+		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("nananevase9766@gmail.com"));   
+		message.setSubject("pdfDownload");
+		
+		
+		
+		VelocityEngine ve = new VelocityEngine();
+		ve.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,"org.apache.velocity.runtime.log.Log4JLogChute" );
+		ve.setProperty("runtime.log.logsystem.log4j.logger","clientService");
+		ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
+		ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+		ve.init();
+	
+		String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
+		
+
+        Template t = ve.getTemplate("FiledDownloaded_HTML.vm"); //com/mnt/views/template.vm
+        VelocityContext context = new VelocityContext();
+        context.put("name", model.getName());
+        context.put("email", model.getEmail());
+        context.put("phone", model.getPhone());
+        context.put("year", (String) oneRow.get(0).get("year"));
+        context.put("make", (String) oneRow.get(0).get("make"));
+        context.put("model", (String) oneRow.get(0).get("model"));
+        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
+        context.put("vin", (String) oneRow.get(0).get("vin"));
+        context.put("stock", (String) oneRow.get(0).get("stock"));
+        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+        context.put("urlfind", urlfind);
+        context.put("hostnameimg",  hostnameimg);
+        
+        StringWriter writer = new StringWriter();
+        t.merge( context, writer );
+        String content = writer.toString(); 
+		
+		messageBodyPart.setContent(content, "text/html");
+		multipart.addBodyPart(messageBodyPart);
+		message.setContent(multipart);
+		Transport.send(message);
+		System.out.println("Sent test message successfully....");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
+		
+		
 	}
 	
 	

@@ -1056,7 +1056,7 @@ $(document).ready(function()
   
       <div class="modal fade" id="pdfModal" role="dialog">
     <div class="modal-dialog">
-     <form name="fome1" ng-submit="savePdfData()"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
+     <form name="fome1" ng-submit="savePdfData('${vehicle.vin}')"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
       <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button id="pdfPopclose" type="button" class="close" data-dismiss="modal">&times;</button>

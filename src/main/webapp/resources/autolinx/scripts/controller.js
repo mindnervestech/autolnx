@@ -281,10 +281,15 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
      };
      
      
-     $scope.savePdfData = function(){
+     $scope.savePdfData = function(vin){
     	 $scope.pdfPathOpen = null;
     	 console.log("????????????");
     	 $scope.pdf.pdfPath = $('#pdfPath').val();
+    	 
+    	 console.log(vin);
+ 		$scope.pdf.vin = vin;
+ 		console.log($scope.pdf.vin);
+    	 
     	 $scope.pdfPathOpen = "/glivrImg/images/"+$('#pdfPath').val();
  		console.log($scope.pdf);
  		$http({
