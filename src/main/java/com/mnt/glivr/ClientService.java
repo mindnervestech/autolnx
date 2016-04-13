@@ -2187,7 +2187,7 @@ public class ClientService {
 			
 			String urlfind= "http://www.glider-autos.com/dealer/index.html#/tradeIn";
 			
-	        Template t = ve.getTemplate("trade_in_app.vm");
+	        Template t = ve.getTemplate("tRADEINAPPRAISAL_HTML.vm");
 	        VelocityContext context = new VelocityContext();
 	      	        
 	       // ---------Trad in info---------------
