@@ -473,6 +473,9 @@ public class ClientController {
 		model.addAttribute("vehicle1",vehicleVM1);
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("flag",0);
+		model.addAttribute("hostnameimg",hostnameimg);
+		
+		
 		return "autolinx/inventory";
 	}
 	@RequestMapping(value="/findVehicle",method=RequestMethod.POST)
