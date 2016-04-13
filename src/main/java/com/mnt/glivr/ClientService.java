@@ -969,7 +969,7 @@ public class ClientService {
 		
 			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
 			
-	        Template t = ve.getTemplate("template.vm"); //com/mnt/views/template.vm
+	        Template t = ve.getTemplate("requestMoreInfo_HTML.vm"); //com/mnt/views/template.vm
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", model.getName());
 	        context.put("email", model.getEmail());
