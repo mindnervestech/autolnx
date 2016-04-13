@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
+<link rel="shortcut icon" href="${hostnameimg}${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
 
@@ -73,7 +73,7 @@
           </ul>
 	</div>
     <div class="logo">
-    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="/glivrImg/images${siteLogo.logoPath}" alt="" style="height:100px;"></a>
+    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="${hostnameimg}${siteLogo.logoPath}" alt="" style="height:100px;"></a>
     </div>
 </header>
     <div class="topBanner">
@@ -97,7 +97,7 @@
 		       <!-- Slides -->
 		       <c:forEach var="row" items="${brandList}" varStatus="loop">
                  <div name="${row.name.substring(0,1).toUpperCase()}" index="${loop.index}" make="${row.make}"  class="swiper-slide">
-                 	<img src="/glivrImg/images/Logos/${row.name}" style="width:150px;max-height:150px;;vertical-align: middle;">
+                 	<img src="${hostnameimg}/Logos/${row.name}" style="width:150px;max-height:150px;;vertical-align: middle;">
                  </div>               	
 		   		</c:forEach>
 		   </div>
@@ -135,7 +135,7 @@
     	<div class="inventoryBox" ng-repeat="vehicle in vehicleList">        	
                 <div class="title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
                 <div class="imageBoxIn">
-                <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="/glivrImg/images{{vehicle.path}}" class="preview" alt="preview" style="width:210px;height:140px;"></a>              
+                <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="${hostnameimg}{{vehicle.path}}" class="preview" alt="preview" style="width:210px;height:140px;"></a>              
                 
                 </div>
                 <div class="leftBox">

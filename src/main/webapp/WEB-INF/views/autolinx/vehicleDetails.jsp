@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
+<link rel="shortcut icon" href="${hostnameimg}${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
@@ -213,7 +213,7 @@ $(document).ready(function()
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <a class="logo" href="${pageContext.request.contextPath}"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
+            <a class="logo" href="${pageContext.request.contextPath}"><img src="${hostnameimg}${siteLogo.logoPath}" style="height:100px;"></a> </div>
           
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -370,7 +370,7 @@ $(document).ready(function()
 	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo" href="#${vehicle.vin}#emailtofriendshow" onclick="clicky.log('#${vehicle.vin}#emailtofriendshow','click'); return false;">Email To Friend</a></li>
 	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/vehicleDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                	
-	                	                	<%-- href="/glivrImg/images${vehicle.pdfPath}" --%>
+	                	                	<%-- href="${hostnameimg}${vehicle.pdfPath}" --%>
 	                	                
 	            </ul> 
 	        </div>
@@ -388,8 +388,8 @@ $(document).ready(function()
                                 <%-- <c:forEach var="row" items="${vehicle.images}">
                                 	<c:choose>
 										<c:when test="${row.isDefault == true}">
-											<li data-thumb="/glivrImg/images${row.path}"> 
-                                    		<img data-full-image="/glivrImg/images${row.path}" alt="" src="/glivrImg/images${row.path}" draggable="false">
+											<li data-thumb="${hostnameimg}${row.path}"> 
+                                    		<img data-full-image="${hostnameimg}${row.path}" alt="" src="${hostnameimg}${row.path}" draggable="false">
                                      		</li>
 										</c:when>
 										<c:otherwise>
@@ -399,7 +399,7 @@ $(document).ready(function()
                                  </c:forEach> --%>
                                     
                                     <c:forEach var="row" items="${vehicle.images}">
-                                    <li data-thumb="/glivrImg/images${row.path}"> <img data-full-image="/glivrImg/images${row.path}" alt="" src="/glivrImg/images${row.path}" draggable="false"> </li>
+                                    <li data-thumb="${hostnameimg}${row.path}"> <img data-full-image="${hostnameimg}${row.path}" alt="" src="${hostnameimg}${row.path}" draggable="false"> </li>
                                      </c:forEach>
                                     
                                 </ul>
@@ -409,7 +409,7 @@ $(document).ready(function()
                             <div class="flexslider" id="home-slider-thumbs">
                                 <ul class="slides">
                                 <c:forEach var="row" items="${vehicle.images}">
-                                    <li data-thumb="/glivrImg/images${row.thumbPath}"> <a href="#"><img alt="" src="/glivrImg/images${row.thumbPath}" draggable="false" style="height: 140px;width: 171px;"></a> </li>
+                                    <li data-thumb="${hostnameimg}${row.thumbPath}"> <a href="#"><img alt="" src="${hostnameimg}${row.thumbPath}" draggable="false" style="height: 140px;width: 171px;"></a> </li>
                                  </c:forEach>   
                                     
                                 </ul>
@@ -686,8 +686,8 @@ $(document).ready(function()
 
                                 </li>
                                 <audio controls preload="none" class='audioDemo' style='display:none;'>
-					<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/mpeg">
-					<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/ogg">
+					<source src="${hostnameimg}${vehicle.audioUrl}" type="audio/mpeg">
+					<source src="${hostnameimg}${vehicle.audioUrl}" type="audio/ogg">
 		
 				</audio>
                             </ul>
@@ -813,7 +813,7 @@ $(document).ready(function()
                         <c:forEach var="option" items='${similarVehicle}'>
                         <div class="slide">
                                 <div class="car-block">
-                                    <div class="img-flex"> <a href="${pageContext.request.contextPath}/vehicleDetails/${option.vin}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="/glivrImg/images${option.path}" alt="" class="img-responsive"> </div>
+                                    <div class="img-flex"> <a href="${pageContext.request.contextPath}/vehicleDetails/${option.vin}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="${hostnameimg}${option.path}" alt="" class="img-responsive"> </div>
                                     <div class="car-block-bottom">
                                         <h6><strong>${option.year} ${option.make}</strong></h6>
                                         <h6>${option.mileage}</h6>
@@ -931,7 +931,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a> </div>
+        <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#"> <a class="logo-f" href="#"><img src="${hostnameimg}${siteLogo.logoPath}" style="height:100px;"></a> </div>
         <p>Powered by <a href="#">GLIDER-AUTOS</a></p>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
@@ -1092,7 +1092,7 @@ $(document).ready(function()
         	 
         	 <div>
         	 <input type="hidden" id="pdfPath" value="${vehicle.pdfPath}" ng-model="pdf.pdfPath">
-        	 <input type="hidden" id="pdfRootPath" value="/glivrImg/images/" ng-model="pdf.pdfPath">
+        	 <input type="hidden" id="pdfRootPath" value="${hostnameimg}/" ng-model="pdf.pdfPath">
         	 </div>
         	 
         	 

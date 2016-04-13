@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
+<link rel="shortcut icon" href="${hostnameimg}${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
 <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -74,7 +74,7 @@
           </ul>
 	</div>
     <div class="logo">
-    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="/glivrImg/images${siteLogo.logoPath}" style="height:100px;"></a>
+    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="${hostnameimg}${siteLogo.logoPath}" style="height:100px;"></a>
     </div>
 </header>
     <div class="topBanner">

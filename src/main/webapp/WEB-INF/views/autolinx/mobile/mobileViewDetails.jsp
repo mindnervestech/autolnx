@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="/glivrImg/images${siteLogo.faviconPath}">
+<link rel="shortcut icon" href="${hostnameimg}${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
@@ -93,7 +93,7 @@
           </ul>
 	</div>
     <div class="logo">
-    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="/glivrImg/images${siteLogo.logoPath}" alt="" style="height:100px;"></a>
+    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="${hostnameimg}${siteLogo.logoPath}" alt="" style="height:100px;"></a>
     </div>
 </header>
     <div class="topBanner">
@@ -129,8 +129,8 @@
                                     <c:forEach var="row" items="${vehicle.images}">
                                 	<c:choose>
 										<c:when test="${row.isDefault == true}">
-											<li data-thumb="/glivrImg/images${row.path}"> 
-                                    		<img data-full-image="/glivrImg/images${row.path}" alt="" src="/glivrImg/images${row.path}" draggable="false">
+											<li data-thumb="${hostnameimg}${row.path}"> 
+                                    		<img data-full-image="${hostnameimg}${row.path}" alt="" src="${hostnameimg}${row.path}" draggable="false">
                                      		</li>
 										</c:when>
 										<c:otherwise>
@@ -140,7 +140,7 @@
                                  </c:forEach>
                                     
                                     <c:forEach var="row" items="${vehicle.images}">
-                                    <li data-thumb="/glivrImg/images${row.path}"> <img data-full-image="/glivrImg/images${row.path}" alt="" src="/glivrImg/images${row.path}" draggable="false"> </li>
+                                    <li data-thumb="${hostnameimg}${row.path}"> <img data-full-image="${hostnameimg}${row.path}" alt="" src="${hostnameimg}${row.path}" draggable="false"> </li>
                                      </c:forEach> 
                                     
                                     
@@ -151,7 +151,7 @@
                             <div class="flexslider" id="home-slider-thumbs">
                                 <ul class="slides">
                                     <c:forEach var="row" items="${vehicle.images}">
-                                    <li data-thumb="/glivrImg/images/${row.thumbPath}"> <a href="#"><img alt="" src="/glivrImg/images/${row.path}" draggable="false"></a> </li>
+                                    <li data-thumb="${hostnameimg}/${row.thumbPath}"> <a href="#"><img alt="" src="${hostnameimg}/${row.path}" draggable="false"></a> </li>
                                  </c:forEach>   
                                     
                                 </ul>
@@ -207,8 +207,8 @@
                                     
                                 </li>
 						 <audio controls preload="none" class='audioDemo' style='display:none;'>
-							<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/mpeg">
-							<source src="/glivrImg/images${vehicle.audioUrl}" type="audio/ogg">
+							<source src="${hostnameimg}${vehicle.audioUrl}" type="audio/mpeg">
+							<source src="${hostnameimg}${vehicle.audioUrl}" type="audio/ogg">
 						</audio>
 				    </c:otherwise>
 				</c:choose>
