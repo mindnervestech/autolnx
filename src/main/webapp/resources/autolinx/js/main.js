@@ -375,7 +375,7 @@ jQuery(document).ready( function($){
 			directionNav:true,
 			animationLoop: false,
 			slideshow: false,
-			itemWidth: 171,
+			itemWidth: 210,
 			itemMargin: 5,
 			asNavFor: '#home-slider-canvas'
 		}); 
