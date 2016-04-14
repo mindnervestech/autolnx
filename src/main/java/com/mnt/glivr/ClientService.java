@@ -1404,11 +1404,12 @@ public class ClientService {
 			String urlfind= "http://www.glider-autos.com/dealer/index.html#/requestMoreInfo";
 			List<Map<String, Object>> userMail = jdbcTemplate.queryForList("select * from my_profile where locations_id = '"+locationId+"'");
 			
-	        Template t = ve.getTemplate("templateForFriend.vm");
+	        Template t = ve.getTemplate("eMAILTOAFRIEND_HTML.vm");
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", model.getName());
 	        context.put("fname", model.getFname());
 	        context.put("email", model.getEmail());
+	        context.put("trim", (String) oneRow.get(0).get("trim"));
 	        context.put("year", (String) oneRow.get(0).get("year"));
 	        context.put("make", (String) oneRow.get(0).get("make"));
 	        context.put("model", (String) oneRow.get(0).get("model"));
@@ -1416,7 +1417,20 @@ public class ClientService {
 	        context.put("vin", (String) oneRow.get(0).get("vin"));
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
 	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
-	        context.put("engine", (String) oneRow.get(0).get("engine"));
+	        
+	        if( (String) oneRow.get(0).get("engine") != null){
+	        	context.put("engine", (String) oneRow.get(0).get("engine"));
+	        }else{
+	        	context.put("engine", "");
+	        }
+	        
+	        context.put("city_mileage", (String) oneRow.get(0).get("city_mileage"));
+	        context.put("highway_mileage", (String) oneRow.get(0).get("highway_mileage"));
+	        if( (String)oneRow.get(0).get("transmission") != null){
+	        	context.put("transmission", (String) oneRow.get(0).get("transmission"));
+	        }else{
+	        context.put("transmission", "");
+	        }
 	        context.put("exterior_color", (String) oneRow.get(0).get("exterior_color"));
 	        context.put("interior_color", (String) oneRow.get(0).get("interior_color"));
 	        context.put("city_mileage", (String) oneRow.get(0).get("city_mileage"));
