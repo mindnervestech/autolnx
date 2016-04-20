@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="shortcut icon" href="${hostnameimg}${siteLogo.faviconPath}">
-<title>${siteLogo.tabText}</title>
+<title>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</title>
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
 
