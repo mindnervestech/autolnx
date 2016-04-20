@@ -1251,11 +1251,17 @@ public class ClientService {
 	        String part1 = parts[0]; // 004
 	        String part2 = parts[1];
 	        String typeOfVehicle="";
-	        if(!((String) oneRow.get(0).get("typeof_vehicle")).equals(null)){
-	        	 typeOfVehicle=(String) oneRow.get(0).get("typeof_vehicle");
+	        
+	        if(oneRow.get(0).get("mileage") != null){
+	        	
+	        	context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        	 
+	        }
+	        else{
+	        	context.put("mileage","");
 	        }
 	       
-	        System.out.println(">>>>"+typeOfVehicle);
+	        System.out.println(">>>>"+oneRow.get(0).get("mileage"));
 	        
 	        context.put("part1Date",  part1);
 	        context.put("part2Date",  part2);
@@ -1266,11 +1272,11 @@ public class ClientService {
 	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
 	        context.put("vin", (String) oneRow.get(0).get("vin"));
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
-	        if(typeOfVehicle != "New"){
+	       /* if(typeOfVehicle != "New"){
 	        	context.put("mileage", (String) oneRow.get(0).get("mileage"));
 	        }else{
 	        	context.put("mileage", "");
-	        }
+	        }*/
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("heading1", heading1);
