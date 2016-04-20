@@ -409,7 +409,7 @@ $(document).ready(function()
                             <div class="flexslider" id="home-slider-thumbs">
                                 <ul class="slides">
                                 <c:forEach var="row" items="${vehicle.images}">
-                                    <li data-thumb="${hostnameimg}${row.path}"> <a href="#"><img alt="" src="${hostnameimg}${row.path}" draggable="false" style="height: 140px;"></a> </li>
+                                    <li data-thumb="${hostnameimg}${row.path}"> <a href="#"><img alt="" src="${hostnameimg}${row.path}" draggable="false" style="height: 130px;"></a> </li>
                                  </c:forEach>   
                                     
                                 </ul>
