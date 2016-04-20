@@ -1193,6 +1193,7 @@ public class ClientService {
 				}else if(flag == 1){
 					usersArray = new InternetAddress[1];
 					List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
+					
 					usersArray[i] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 				}
 			}else if((Integer) premiumOne.get(0).get("premium_flag") == 1){
@@ -1205,7 +1206,9 @@ public class ClientService {
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
 					usersArray);
-			
+			message.addRecipients(Message.RecipientType.BCC,usersArray);
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(emailusername));
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
 					message.setSubject("Schedule Test Drive");
