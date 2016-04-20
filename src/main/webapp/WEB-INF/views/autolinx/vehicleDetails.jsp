@@ -428,172 +428,170 @@ $(document).ready(function()
 	                    <div class="tab-content margin-top-15 margin-bottom-20" id="myTabContent">
 	                        <div id="vehicle" class="tab-pane fade in active">                                    
 	                                <div class="features-holder">
-<h4>Vehicle Overview</h4>
+	   <c:if test="${vehicle.drivetrain != null || vehicle.fuelType != null || vehicle.fuelTank != null || vehicle.headlights != null || vehicle.groundClearance != null || vehicle.height != null || vehicle.length != null || vehicle.width != null || vehicle.acceleration!= null}">                             
+			<h4>Vehicle Overview</h4>
+</c:if>
 <ul>
 
-<c:choose>
-	<c:when test="${vehicle.drivetrain != null}">
+	<c:if test="${vehicle.drivetrain != null}">
 			<li><b>Drive Type:</b> ${vehicle.drivetrain}</li>								
-	</c:when>
-	<c:when test="${vehicle.fuelType != null}">
+	</c:if>
+	<c:if test="${vehicle.fuelType != null}">
 			<li><b>Fuel Type:</b> ${vehicle.fuelType}</li>								
-	</c:when>
-	<c:when test="${vehicle.fuelTank != null}">
+	</c:if>
+	<c:if test="${vehicle.fuelTank != null}">
 			<li><b>Fuel Tank:</b> ${vehicle.fuelTank}</li>								
-	</c:when>
-	<c:when test="${vehicle.headlights != null}">
+	</c:if>
+	<c:if test="${vehicle.headlights != null}">
 			<li><b>HeadLights:</b> ${vehicle.headlights}</li>							
-	</c:when>
-	<c:when test="${vehicle.mirrors != null}">
+	</c:if> 
+	<c:if test="${vehicle.mirrors != null}">
 			<li><b>Mirrors:</b> ${vehicle.mirrors}</li>							
-	</c:when>
-	<c:when test="${vehicle.groundClearance != null}">
+	</c:if>    
+	<c:if test="${vehicle.groundClearance != null}">
 			<li><b>Ground Clearance:</b> ${vehicle.groundClearance}</li>						
-	</c:when>
-	<c:when test="${vehicle.roof != null}">
+	</c:if>
+	<c:if test="${vehicle.roof != null}">
 			<li><b>Roof:</b> ${vehicle.roof}</li>							
-	</c:when>
-	<c:when test="${vehicle.height != null}">
+	</c:if>
+	<c:if test="${vehicle.height != null}">
 			<li><b>Height:</b> ${vehicle.height}</li>						
-	</c:when>
-	<c:when test="${vehicle.length != null}">
+	</c:if>
+	<c:if test="${vehicle.length != null}">
 			<li><b>Length:</b> ${vehicle.length}</li>						
-	</c:when>
-	<c:when test="${vehicle.width != null}">
+	</c:if>  
+	<c:if test="${vehicle.width != null}">
 			<li><b>Width:</b> ${vehicle.width}</li>					
-	</c:when>
-	<c:when test="${vehicle.acceleration!= null}">
+	</c:if>
+	<c:if test="${vehicle.acceleration!= null}">
 			<li><b>Acceleration:</b> ${vehicle.acceleration}</li>					
-	</c:when>
-	<c:when test="${vehicle.seats!= null}">
+	</c:if>
+	<c:if test="${vehicle.seats!= null}">
 			<li><b>Seats:</b> ${vehicle.seats}</li>					
-	</c:when>
-</c:choose>
+	</c:if>
 </ul>
 </div>
 
 
 <div class="features-holder">
-<h4>Engine, Transmission & Brakes</h4>
+<c:if test="${vehicle.engineType != null || vehicle.cylinders != null || vehicle.displacement!= null || vehicle.camType!= null || vehicle.valves!= null || vehicle.fuelQuality!= null || vehicle.horsePower!= null || vehicle.gears != null || vehicle.brakes != null}">
+	<h4>Engine, Transmission & Brakes</h4>
+</c:if>	
 <ul>
-<c:choose>
-	<c:when test="${vehicle.engineType != null}">
+	<c:if test="${vehicle.engineType != null}">
 			<li><b>Engine Type:</b> ${vehicle.engineType}</li>							
-	</c:when>
-	<c:when test="${vehicle.cylinders != null}">
+	</c:if>
+	<c:if test="${vehicle.cylinders != null}">
 			<li><b>Cylinders:</b> ${vehicle.cylinders}</li>						
-	</c:when>
-	<c:when test="${vehicle.displacement!= null}">
+	</c:if>
+	<c:if test="${vehicle.displacement!= null}">
 			<li><b>Displacement:</b> ${vehicle.displacement}</li>				
-	</c:when>
-	<c:when test="${vehicle.camType!= null}">
+	</c:if>
+	<c:if test="${vehicle.camType!= null}">
 			<li><b>Cam Type:</b> ${vehicle.camType}</li>			
-	</c:when>
-	<c:when test="${vehicle.seats!= null}">
+	</c:if>
+	<c:if test="${vehicle.valves!= null}">
 			<li><b>Valves:</b> ${vehicle.valves}</li>				
-	</c:when>
+	</c:if>
 	
-	<c:when test="${vehicle.fuelQuality!= null}">
+	<c:if test="${vehicle.fuelQuality!= null}">
 			<li><b>Fuel Quality:</b> ${vehicle.fuelQuality}</li>			
-	</c:when>
-	<c:when test="${vehicle.horsePower!= null}">
+	</c:if>
+	<c:if test="${vehicle.horsePower!= null}">
 			<li><b>Max. Horse Power:</b> ${vehicle.horsePower}</li>				
-	</c:when>
-	<c:when test="${vehicle.transmission!= null}">
+	</c:if>
+	<c:if test="${vehicle.transmission!= null}">
 			<li><b>Transmission:</b> ${vehicle.transmission}</li>			
-	</c:when>
-	<c:when test="${vehicle.gears!= null}">
+	</c:if> 
+	<c:if test="${vehicle.gears != null}">
 			<li><b>Gears:</b> ${vehicle.gears}</li>			
-	</c:when>
-	<c:when test="${vehicle.brakes!= null}">
+	</c:if>
+	
+	<c:if test="${vehicle.brakes != null}">
 			<li><b>Brakes:</b> ${vehicle.brakes}</li>		
-	</c:when>
-	<c:when test="${vehicle.frontBrakeDiameter!= null}">
+	</c:if>
+	<c:if test="${vehicle.frontBrakeDiameter != null}">
 			<li><b>Front Brake Diameter:</b> ${vehicle.frontBrakeDiameter}</li>			
-	</c:when>
-	<c:when test="${vehicle.frontBrakeType!= null}">
+	</c:if>
+	<c:if test="${vehicle.frontBrakeType != null}">
 			<li><b>Front Brake Type:</b> ${vehicle.frontBrakeType}</li>		
-	</c:when>
-	<c:when test="${vehicle.rearBrakeDiameter!= null}">
+	</c:if>
+	<c:if test="${vehicle.rearBrakeDiameter != null}">
 			<li><b>Rear Brake Diameter:</b> ${vehicle.rearBrakeDiameter}</li>
-	</c:when>
-	<c:when test="${vehicle.rearBrakeType!= null}">
+	</c:if>
+	<c:if test="${vehicle.rearBrakeType!= null}">
 			<li><b>Rear Brake Type:</b> ${vehicle.rearBrakeType}</li>	
-	</c:when>
+	</c:if>
 	
 	
-</c:choose>
 
 </ul>
 </div>
 <div class="features-holder">
-<h4>Safety</h4>
+<c:if test="${vehicle.activeHeadRestraints != null || vehicle.bodySideReinforcements != null || vehicle.crumpleZones != null || vehicle.impactAbsorbingBumpers != null ||vehicle.impactSensors != null || vehicle.parkingSensors != null || vehicle.seatbelts != null}">	
+	<h4>Safety</h4>
+</c:if>	
 <ul>
-<c:choose>
-	<c:when test="${vehicle.activeHeadRestraints != null}">
+	<c:if test="${vehicle.activeHeadRestraints != null}">
 			<li><b>Active Head Restraints:</b> ${vehicle.activeHeadRestraints}</li>						
-	</c:when>
-	<c:when test="${vehicle.bodySideReinforcements != null}">
+	</c:if>
+	<c:if test="${vehicle.bodySideReinforcements != null}">
 			<li><b>Body Side Reinforcement:</b> ${vehicle.bodySideReinforcements}</li>						
-	</c:when>
-	<c:when test="${vehicle.crumpleZones != null}">
+	</c:if>
+	<c:if test="${vehicle.crumpleZones != null}">
 		<li><b>Crumple Zones:</b> ${vehicle.crumpleZones}</li>						
-	</c:when>
-	<c:when test="${vehicle.impactAbsorbingBumpers != null}">
+	</c:if>
+	<c:if test="${vehicle.impactAbsorbingBumpers != null}">
 			<li><b>Impact Absorbing Bumpers:</b> ${vehicle.impactAbsorbingBumpers}</li>						
-	</c:when>
-	<c:when test="${vehicle.impactSensors != null}">
+	</c:if>
+	<c:if test="${vehicle.impactSensors != null}">
 			<li><b>Impact Sensors:</b> ${vehicle.impactSensors}</li>							
-	</c:when>
-	<c:when test="${vehicle.parkingSensors != null}">
+	</c:if>
+	<c:if test="${vehicle.parkingSensors != null}">
 			<li><b>Parking Sensors:</b> ${vehicle.parkingSensors}</li>					
-	</c:when>
-	<c:when test="${vehicle.seatbelts != null}">
+	</c:if>
+	<c:if test="${vehicle.seatbelts != null}">
 			<li><b>Audi Side Assist:</b> ${vehicle.audiSideAssist}</li>					
-	</c:when>
+	</c:if>
 		
-</c:choose>
 
 </ul>
 </div>
 
 
 <div class="features-holder">
-<h4>Interior & Comfort</h4>
+<c:if test="${vehicle.intColor != null || vehicle.comfortFeatures != null || vehicle.powerOutlets != null || vehicle.powerSteering != null || vehicle.rearViewCamera != null || vehicle.rearViewMonitor != null || vehicle.remoteTrunkRelease != null}">
+	<h4>Interior & Comfort</h4>
+</c:if>
 <ul>
 
-<c:choose>
-	
-	<c:when test="${vehicle.intColor != null}">
+	<c:if test="${vehicle.intColor != null}">
 		<li><b>Interior Color:</b> ${vehicle.intColor}</li>					
-	</c:when>
-	<c:when test="${vehicle.comfortFeatures != null}">
+	</c:if>
+	<c:if test="${vehicle.comfortFeatures != null}">
 		<li><b>Comfort Features:</b> ${vehicle.comfortFeatures}</li>					
-	</c:when>
-	<c:when test="${vehicle.powerOutlets != null}">
+	</c:if>
+	<c:if test="${vehicle.powerOutlets != null}">
 		<li><b>Power Outlet(s):</b> ${vehicle.powerOutlets}</li>				
-	</c:when>
-	<c:when test="${vehicle.powerSteering != null}">
+	</c:if>
+	<c:if test="${vehicle.powerSteering != null}">
 		<li><b>Power Steering:</b> ${vehicle.powerSteering}</li>					
-	</c:when>
-	<c:when test="${vehicle.rearViewCamera != null}">
+	</c:if>
+	<c:if test="${vehicle.rearViewCamera != null}">
 		<li><b>Rear View Camera:</b> ${vehicle.rearViewCamera}</li>						
-	</c:when>
-	<c:when test="${vehicle.rearViewMonitor != null}">
+	</c:if>
+	<c:if test="${vehicle.rearViewMonitor != null}">
 		<li><b>Rear View Monitor:</b> ${vehicle.rearViewMonitor}</li>					
-	</c:when>
-	<c:when test="${vehicle.remoteTrunkRelease != null}">
+	</c:if> 
+	<c:if test="${vehicle.remoteTrunkRelease != null}">
 		<li><b>Remote Trunk Release:</b> ${vehicle.remoteTrunkRelease}</li>				
-	</c:when>
-	<c:when test="${vehicle.steeringWheel != null}">
+	</c:if>
+	<c:if test="${vehicle.steeringWheel != null}">
 		<li><b>Steering Wheel:</b> ${vehicle.steeringWheel}</li>				
-	</c:when>
-	<c:when test="${vehicle.steeringWheelControls != null}">
+	</c:if>
+	<c:if test="${vehicle.steeringWheelControls != null}">
 		<li><b>Steering Wheel Mounted Controls:</b> ${vehicle.steeringWheelControls}</li>				
-	</c:when>
-
-		
-</c:choose>
+	</c:if>
 
 
 </ul>
@@ -618,7 +616,7 @@ $(document).ready(function()
 	                               overflow: hidden;" data-scroll="false" data-zoom="11"
 	                               data-latitude="${myprofile.latitud}" data-longitude="${myprofile.longitude}" 
 	                               class="google_map_init">
-	                               <%-- <div style="position: absolute; left: 0px; top: 0px; overflow: hidden;
+	                               <div style="position: absolute; left: 0px; top: 0px; overflow: hidden;
 	                                width: 100%; height: 100%; z-index: 0;" class="gm-style">
 	                                <div style="position: absolute; left: 0px; top: 0px; 
 	                                overflow: hidden; width: 100%; height: 100%; 
@@ -702,25 +700,61 @@ $(document).ready(function()
 	                        <div class="table-responsive">
 	                            <table class="table">
 	                                <tbody>
-	                                	<tr ng-if="${vehicle.year} != ''"><td>Year: </td><td>${vehicle.year}</td></tr>
-	                                	<tr ng-if="${vehicle.make} != ''"><td>Make: </td><td>${vehicle.make}</td></tr>
-	                                	<tr ng-if="${vehicle.model} != ''"><td>Model: </td><td>${vehicle.model}</td></tr>
-	                                	<tr ng-if="${vehicle.bodyStyle} != ''"><td>Body Style: </td><td>${vehicle.bodyStyle}</td></tr>
-	                                	<tr ng-if="${vehicle.mileage} != ''"><td ng-if="typeofV == 'Used'">Mileage: </td><td ng-if="typeofV == 'Used'">${vehicle.mileage}</td></tr>
-	                                	<tr ng-if="${vehicle.doors} != ''"><td>Doors: </td><td>${vehicle.doors}</td></tr>
-	                                	<tr ng-if="${vehicle.seats} != ''"><td>Seats: </td><td>${vehicle.seats}</td></tr>
-	                                	<tr ng-if="${vehicle.drivetrain} != ''"><td>Drivetrain: </td><td>${vehicle.drivetrain}</td></tr>
-	                                	<tr ng-if="${vehicle.engine} != ''"><td>Engine: </td><td>${vehicle.engine}</td></tr>
-	                                	<tr ng-if="${vehicle.transmission} != ''"><td>Transmission: </td><td>${vehicle.transmission}</td></tr>
-	                                	<tr ng-if="${vehicle.brakes} != ''"><td>Brakes: </td><td>${vehicle.brakes}</td></tr>
-	                                	<tr ng-if="${vehicle.horsePower} != ''"><td>Horse Power: </td><td>${vehicle.horsePower}</td></tr>
-	                                	<tr ng-if="${vehicle.acceleration} != ''"><td>Acceleration: </td><td>${vehicle.acceleration}</td></tr>
-	                                	<tr ng-if="${vehicle.extColor} != ''"><td>Exterior Color: </td><td>${vehicle.extColor}</td></tr>
-	                                	<tr ng-if="${vehicle.intColor} != ''"><td>Interior Color: </td><td>${vehicle.intColor}</td></tr>
-	                                	<tr ng-if="${vehicle.location} != ''"><td>Location:</td><td>${vehicle.location}</td></tr>
-	                                	<tr ng-if="${vehicle.price} != ''"><td>Price: </td><td>${vehicle.price}</td></tr>
-	                                	<tr ng-if="${vehicle.cityMileage} != ''"><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr>
-	                                	<tr ng-if="${vehicle.vin} != ''"><td>VIN Number: </td><td>${vehicle.vin}</td></tr>	                                </tbody>
+	                                <c:if test="${vehicle.year != null}">
+											<tr><td>Year: </td><td>${vehicle.year}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.model != null}">
+											<tr><td>Model: </td><td>${vehicle.model}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.bodyStyle != null}">
+											<tr><td>Body Style: </td><td>${vehicle.bodyStyle}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.mileage != null}">
+											<tr><td ng-if="typeofV == 'Used'">Mileage: </td><td ng-if="typeofV == 'Used'">${vehicle.mileage}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.doors != null}">
+											<tr><td>Doors: </td><td>${vehicle.doors}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.seats != null}">
+											<tr><td>Seats: </td><td>${vehicle.seats}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.drivetrain != null}">
+											<tr><td>Drivetrain: </td><td>${vehicle.drivetrain}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.engine != null}">
+											<tr><td>Engine: </td><td>${vehicle.engine}</td></tr>								
+									</c:if>
+	                                <c:if test="${vehicle.transmission != null}">
+											<tr><td>Transmission: </td><td>${vehicle.transmission}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.brakes != null}">
+											<tr><td>Brakes: </td><td>${vehicle.brakes}</td></tr>								
+									</c:if>
+									<c:if test="${vehicle.horsePower != null}">
+											<tr><td>Horse Power: </td><td>${vehicle.horsePower}</td></tr>								
+									</c:if>	
+									<c:if test="${vehicle.acceleration != null}">
+											<tr><td>Acceleration: </td><td>${vehicle.acceleration}</td></tr>								
+									</c:if>	
+									<c:if test="${vehicle.extColor != null}">
+											<tr><td>Exterior Color: </td><td>${vehicle.extColor}</td></tr>								
+									</c:if>	
+									<c:if test="${vehicle.intColor != null}">
+											<tr><td>Interior Color: </td><td>${vehicle.intColor}</td></tr>								
+									</c:if>	
+									<c:if test="${vehicle.location != null}">
+											<tr><td>Location:</td><td>${vehicle.location}</td></tr>								
+									</c:if>	
+									<c:if test="${vehicle.price != null}">
+											<tr><td>Price: </td><td>${vehicle.price}</td></tr>								
+									</c:if>	
+									<c:if test="${vehicle.cityMileage != null}">
+												<tr><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr>								
+									</c:if>	
+	                                <c:if test="${vehicle.vin != null}">
+												<tr><td>VIN Number: </td><td>${vehicle.vin}</td></tr>	                                </tbody>								
+									</c:if>	
+	                                	
 	                            </table>
 	                        </div>
 	                    </div>
