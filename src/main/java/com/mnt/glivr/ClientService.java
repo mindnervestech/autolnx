@@ -1272,11 +1272,9 @@ public class ClientService {
 	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
 	        context.put("vin", (String) oneRow.get(0).get("vin"));
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
-	       /* if(typeOfVehicle != "New"){
-	        	context.put("mileage", (String) oneRow.get(0).get("mileage"));
-	        }else{
-	        	context.put("mileage", "");
-	        }*/
+	       
+	        	context.put("typeofVehicle", (String) oneRow.get(0).get("typeof_vehicle"));
+	       
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("heading1", heading1);
