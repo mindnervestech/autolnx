@@ -1237,7 +1237,8 @@ public class ClientService {
 	        context.put("name", model.getName());
 	        context.put("email", model.getEmail());
 	        context.put("phone", model.getPhone());
-	        context.put("preferred",  model.getPreferred());
+	        
+	        context.put("preferred",  model.getPreferred().toString().toUpperCase());
 	        context.put("bestDay",  model.getBestDay());
 	        
 	        String dateString = model.getBestDay();
@@ -1249,6 +1250,12 @@ public class ClientService {
 	        String[] parts = df.format(date1).split("-");
 	        String part1 = parts[0]; // 004
 	        String part2 = parts[1];
+	        String typeOfVehicle="";
+	        if(!((String) oneRow.get(0).get("typeof_vehicle")).equals(null)){
+	        	 typeOfVehicle=(String) oneRow.get(0).get("typeof_vehicle");
+	        }
+	       
+	        System.out.println(">>>>"+typeOfVehicle);
 	        
 	        context.put("part1Date",  part1);
 	        context.put("part2Date",  part2);
@@ -1259,7 +1266,11 @@ public class ClientService {
 	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
 	        context.put("vin", (String) oneRow.get(0).get("vin"));
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
-	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        if(typeOfVehicle != "New"){
+	        	context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        }else{
+	        	context.put("mileage", "");
+	        }
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("heading1", heading1);
