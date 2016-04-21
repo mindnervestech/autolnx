@@ -113,41 +113,43 @@ $("#ab").click(function() {
     }
   }
   
-  function initialize() {
-      var mapCanvas = document.getElementById('map-canvas');
-      var mapOptions = {
-        center: new google.maps.LatLng(37.7870882, -122.39112790000001),
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
-      var map = new google.maps.Map(mapCanvas, mapOptions)
-      
-      var address = $('#vehicleLocation').val();
-      console.log(address);
-      geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ 'address': address }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-              });
-
-          }
-          else {
-              //alert("Geocode was not successful for the following reason: " + status);
-          }
-      });
-    }
-  
-    google.maps.event.addDomListener(window, 'load', initialize);
-  
 </script>
 
 
 <script type="text/javascript">
+function initialize() {
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: new google.maps.LatLng(37.7870882, -122.39112790000001),
+      zoom: 12,
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+    
+    var address = $('#vehicleLocation').val();
+    console.log(address);
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+    	
+    	console.log(results[0].geometry.location);
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+             new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            }); 
+
+        }
+        else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+  }
+	 
 $(document).ready(function() 
 {
+		//initialize();
+	  	google.maps.event.addDomListener(window, 'load', initialize); 
 		var isMobile = {
 			Android: function() {
 				return navigator.userAgent.match(/Android/i);
@@ -423,7 +425,7 @@ $(document).ready(function()
 	                    <ul class="nav nav-tabs" id="myTab">
 	                    	
 	                        <li class="active"><a data-toggle="tab" href="#vehicle">Features &amp; Options</a></li>	                        	                      
-	                        <li><a data-toggle="tab" href="#location" onclick="initialize()">Vehicle Location</a></li>
+	                        <li	><a data-toggle="tab" href="#location" >Vehicle Location</a></li><!-- onclick="initialize()" -->
 	                    </ul>
 	                    <div class="tab-content margin-top-15 margin-bottom-20" id="myTabContent">
 	                        <div id="vehicle" class="tab-pane fade in active">                                    
