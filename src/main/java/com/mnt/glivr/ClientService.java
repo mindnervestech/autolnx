@@ -980,12 +980,12 @@ public class ClientService {
 		});
 		try
 		{
-			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"'");
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and account != 'deactive'");
 			InternetAddress[] usersArray = null;
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
 			//i++;
-			
+			System.out.println(">>>"+ allUsers.size());
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
 					usersArray = new InternetAddress[allUsers.size()];
@@ -1043,7 +1043,7 @@ public class ClientService {
 	        context.put("name", model.getName());
 	        context.put("email", model.getEmail());
 	        context.put("phone", model.getPhone());
-	        context.put("preferred",  model.getPreferred());
+	        context.put("preferred",  model.getPreferred().toString().toUpperCase());
 	        context.put("year", (String) oneRow.get(0).get("year"));
 	        context.put("make", (String) oneRow.get(0).get("make"));
 	        context.put("model", (String) oneRow.get(0).get("model"));
@@ -1176,7 +1176,7 @@ public class ClientService {
 		try
 		{
 			
-			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"'");
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and account !='deactive'");
 			InternetAddress[] usersArray = null;
 			int i=0;
 			//usersArray[i] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
