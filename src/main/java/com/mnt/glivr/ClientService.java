@@ -2688,7 +2688,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		
 		SiteLogoVM logo = new SiteLogoVM();
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from site_logo where locations_id = '"+locationId+"'");
-		
+		List<Map<String, Object>> rows1=jdbcTemplate.queryForList("select t1.email from my_profile t1, auth_user t2 where t1.locations_id = t2.location_id and t1.locations_id = '"+locationId+"' and t2.role='Manager' ");
 		for(Map map : rows) {
 			logo.logoPath = (String) map.get("logo_image_path");
 			logo.faviconPath = (String) map.get("favicon_image_path");
@@ -2708,7 +2708,9 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		        heading2 = heading.substring(index+1);
 			}
 		}
-				
+		String email=(String) rows1.get(0).get("email")	;
+		System.out.println(">>>>>>>>>>>>>>");
+		System.out.println(email);
 		final String username = emailusername;
 		final String password = emailpassword;
 		Properties props = new Properties();
@@ -2725,7 +2727,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		{
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));
-			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("info@glider-autos.com"));   
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(email));   
 			message.setSubject("Contact us");
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPart = new MimeBodyPart();
@@ -2738,7 +2740,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
 		
-	        Template t = ve.getTemplate("Contactus_HTML.vm"); 
+	        Template t = ve.getTemplate("contactus_HTML.vm"); 
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", request.getName());
 	        context.put("email", request.getEmail());
