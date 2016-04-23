@@ -2165,7 +2165,7 @@ public class ClientService {
 		try
 		{
 			
-			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id ='"+locationId+"'");
+			List<Map<String, Object>> allUsers = jdbcTemplate.queryForList("select * from auth_user where location_id ='"+locationId+"'and acount !='deactive'");
 			InternetAddress[] usersArray = null;
 			int index=0;
 			//usersArray[index] = new InternetAddress((String) userMail.get(0).get("communicationemail"));
@@ -2199,10 +2199,10 @@ public class ClientService {
 			}
 			
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(emailusername));
+			message.setRecipients(Message.RecipientType.BCC,
 					usersArray);
-			
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
 					message.setSubject("Trade-In Appraisal");
@@ -2236,14 +2236,20 @@ public class ClientService {
 	        context.put("last_name", model.getLast_name());
 	        context.put("work_phone", model.getWork_phone());
 	        context.put("email", model.getEmail());
-	        
+	        context.put("typeofVehicle", (String) oneRow.get(0).get("typeof_vehicle"));
 	        context.put("year", (String) oneRow.get(0).get("year"));
 	        context.put("make", (String) oneRow.get(0).get("make"));
 	        context.put("model", (String) oneRow.get(0).get("model"));
 	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
 	        context.put("vin", (String) oneRow.get(0).get("vin"));
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
-	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        
+	        if(oneRow.get(0).get("mileage") != null){
+	        	 context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        }
+	        else{
+	        	context.put("mileage", "");
+	        }
 	        context.put("pdffilePath", findpath);
 	        
 	        
@@ -2739,7 +2745,6 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
-		
 	        Template t = ve.getTemplate("contactus_HTML.vm"); 
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", request.getName());
