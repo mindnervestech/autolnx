@@ -2745,7 +2745,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
 			ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 			ve.init();
-	        Template t = ve.getTemplate("contactus_HTML.vm"); 
+	        Template t = ve.getTemplate("Contactus_HTML.vm"); 
 	        VelocityContext context = new VelocityContext();
 	        context.put("name", request.getName());
 	        context.put("email", request.getEmail());
