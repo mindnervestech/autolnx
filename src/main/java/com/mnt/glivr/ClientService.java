@@ -485,11 +485,11 @@ public class ClientService {
 		List<Map<String, Object>> rows = null;
 		Integer count = 0;
 		if(!priceSort.equals("")){
-			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
-			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
+			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (public_status != 'draft') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '')and (public_status != 'draft') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
 		}else if(!alphbet.equals("")){
-			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
-			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
+			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (public_status != 'draft')and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '')and (public_status != 'draft') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
 		}
 		
 		for(Map map : rows) {
@@ -1012,8 +1012,9 @@ public class ClientService {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername)); 
 			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(emailusername));
+			message.setRecipients(Message.RecipientType.BCC,
 					usersArray);
-			
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
 					message.setSubject("Request More Info");
@@ -1049,7 +1050,13 @@ public class ClientService {
 	        context.put("price", "$" + (Integer) oneRow.get(0).get("price")); 
 	        context.put("vin", (String) oneRow.get(0).get("vin"));
 	        context.put("stock", (String) oneRow.get(0).get("stock"));
-	        context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        if(oneRow.get(0).get("mileage") != null){
+	        	context.put("mileage", (String) oneRow.get(0).get("mileage"));
+	        }
+	        else{
+	        	context.put("mileage", "");
+	        }
+	        context.put("typeofVehicle", (String) oneRow.get(0).get("typeof_vehicle"));
 	        context.put("sitelogo", logo);
 	        context.put("path", path);
 	        context.put("heading1", heading1);
