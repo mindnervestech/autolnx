@@ -1006,13 +1006,14 @@ public class ClientService {
 				List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
 				usersArray[i] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 			}
-			
-			
+			List<Map<String, Object>> rows1=jdbcTemplate.queryForList("select t1.email from my_profile t1, auth_user t2 where t1.locations_id = t2.location_id and t1.locations_id = '"+locationId+"' and t2.role='Manager' ");
+			String email=(String) rows1.get(0).get("email")	;
+			System.out.println(">>>>>>>>>>>>>>");
+			System.out.println(email);
 			
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername)); 
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(emailusername));
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(email));/*emailusername*/
 			message.setRecipients(Message.RecipientType.BCC,
 					usersArray);
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
@@ -1209,13 +1210,15 @@ public class ClientService {
 				usersArray[i] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 			}
 			
+			List<Map<String, Object>> rows1=jdbcTemplate.queryForList("select t1.email from my_profile t1, auth_user t2 where t1.locations_id = t2.location_id and t1.locations_id = '"+locationId+"' and t2.role='Manager' ");
+			String email=(String) rows1.get(0).get("email")	;
+			System.out.println(">>>>>>>>>>>>>>");
+			System.out.println(email);
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(emailusername));  
 			message.setRecipients(Message.RecipientType.TO,
-					usersArray);
+					InternetAddress.parse(email));
 			message.addRecipients(Message.RecipientType.BCC,usersArray);
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(emailusername));
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
 				if(flag == 0){
 					message.setSubject("Schedule Test Drive");
@@ -2197,10 +2200,13 @@ public class ClientService {
 				List<Map<String, Object>> managerId = jdbcTemplate.queryForList("select * from auth_user where location_id = '"+locationId+"' and role = '"+"Manager"+"'");
 				usersArray[index] = new InternetAddress((String) managerId.get(0).get("communicationemail"));
 			}
-			
+			List<Map<String, Object>> rows1=jdbcTemplate.queryForList("select t1.email from my_profile t1, auth_user t2 where t1.locations_id = t2.location_id and t1.locations_id = '"+locationId+"' and t2.role='Manager' ");
+			String email=(String) rows1.get(0).get("email")	;
+			System.out.println(">>>>>>>>>>>>>>");
+			System.out.println(email);
 			Message message = new MimeMessage(session);
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(emailusername));
+					InternetAddress.parse(email));
 			message.setRecipients(Message.RecipientType.BCC,
 					usersArray);
 			if((Integer) premiumOne.get(0).get("premium_flag") == 0){
@@ -2254,7 +2260,7 @@ public class ClientService {
 	        
 	        
 	        if(model.getPreferred() != null){
-	        	context.put("preferred", model.getPreferred());
+	        	context.put("preferred", model.getPreferred().toString().toUpperCase());
 	        }else{
 	        	context.put("preferred", "");
 	        }
