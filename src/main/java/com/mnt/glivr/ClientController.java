@@ -80,6 +80,7 @@ public class ClientController {
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
+		List<VehicleVM> vehicleList = clientService.getRecentVehicles(locationId);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
 		model.addAttribute("myprofile",profile);
@@ -91,6 +92,7 @@ public class ClientController {
 		model.addAttribute("sliderImages",sliderImages);
 		model.addAttribute("featuredImages",featuredImages);
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("recentVehicles",vehicleList);
 		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/index";
