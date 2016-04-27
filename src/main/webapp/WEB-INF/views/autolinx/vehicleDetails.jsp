@@ -1040,7 +1040,7 @@ $(document).ready(function()
                 on-expire="cbExpiration()"
             ></div>
            <input type="button" ng-if="showButton == 0" disabled value="Submit"> -->
-            <input type="submit" ng-if="showButton == 1" value="Submit">
+            <input type="submit" ng-if="showButton == 0" value="Submit">
         </div>
       </div>
       </form>
@@ -1197,7 +1197,7 @@ $(document).ready(function()
                 on-expire="cbExpiration()"
             ></div>
            <input type="button" ng-if="showButton == 0" disabled value="Submit"> -->
-            <input type="submit" ng-if="showButton == 1" value="Submit">
+            <input type="submit" ng-if="showButton == 0" value="Submit">
         </div>
       </div>
       </form>
@@ -1514,7 +1514,7 @@ $(document).ready(function()
                 on-expire="cbExpiration()"
             ></div>
            <input type="button" ng-if="showButton == 0" disabled value="Submit"> -->
-            <input type="submit" ng-if="showButton == 1" value="Submit">
+            <input type="submit" ng-if="showButton == 0" value="Submit">
         </div>
       </div>
       </form>
