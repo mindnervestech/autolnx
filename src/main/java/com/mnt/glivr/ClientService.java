@@ -594,11 +594,9 @@ public class ClientService {
 	public List<VehicleVM> getSimilarVehicleDetails(String vin, Long locationId) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"'");
+		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived'");
 		int i = 0;
  		for(Map map : row) {
- 			if(i == 3) {
- 				break;
- 			}
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
 			vm.drivetrain = (String) map.get("drivetrain");

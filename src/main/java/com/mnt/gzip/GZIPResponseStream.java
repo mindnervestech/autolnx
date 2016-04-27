@@ -66,7 +66,7 @@ public class GZIPResponseStream extends ServletOutputStream {
   }
 
   public void write(byte b[], int off, int len) throws IOException {
-    System.out.println("writing...");
+    //System.out.println("writing...");
     if (closed) {
       throw new IOException("Cannot write to a closed output stream");
     }

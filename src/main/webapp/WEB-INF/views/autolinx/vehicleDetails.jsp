@@ -738,7 +738,7 @@ $(document).ready(function()
 	                        </div>
 	                    </div>
 
-	                    	                    <div class="efficiency-rating text-center padding-vertical-15 margin-bottom-40">
+	                     <div class="efficiency-rating text-center padding-vertical-15 margin-bottom-40" ng-if="${vehicle.cityMileage != null} || ${vehicle.highwayMileage != null}">
 	                        <h3>Fuel Efficiency Rating</h3>
 	                        <ul>
 	                        		                            <li class="city_mpg"><small>City:</small> <strong>${vehicle.cityMileage}</strong></li>
