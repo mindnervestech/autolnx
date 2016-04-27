@@ -28,6 +28,7 @@ public class VehicleVM {
 	public String price;
 	public Integer onlyPrice;
 	public String stock;
+	public String label;
 	public String typeofVehicle;
 	
 	public String fuelType;
@@ -84,6 +85,12 @@ public class VehicleVM {
 	}
 	public String getVirtualTour() {
 		return virtualTour;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
 	}
 	public void setVirtualTour(String virtualTour) {
 		this.virtualTour = virtualTour;

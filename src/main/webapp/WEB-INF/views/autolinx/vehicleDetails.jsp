@@ -259,7 +259,8 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
      <!--  <h2 class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15">Make your dream car a <span style="color:#ff0000;">REALITY</span></h2> -->
-      <h2 class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;">SET</strong> YOUR OWN PRICE ALERT! </h2>
+      <h2 ng-if="${vehicle.label != null}" class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;"></strong>${vehicle.label}</h2>
+      <h2 ng-if="${vehicle.label == null}" class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;">FIND</strong> YOUR OWN WAY! </h2>
       <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 "> 
       	<a class="default-btn pull-right action_button lg-button mainBoxIn1" style="cursor:pointer;" data-toggle="modal" data-target="#priceAlertModal">Price Alert</a>
 	  		<div class="boxIn">
