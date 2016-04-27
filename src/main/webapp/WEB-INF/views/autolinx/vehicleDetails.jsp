@@ -1031,7 +1031,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <div
+           <!-- <div
                 vc-recaptcha
                 theme="'light'"
                 key="model.key"
@@ -1039,7 +1039,7 @@ $(document).ready(function()
                 on-success="setResponse(response)"
                 on-expire="cbExpiration()"
             ></div>
-           <input type="button" ng-if="showButton == 0" disabled value="Submit">
+           <input type="button" ng-if="showButton == 0" disabled value="Submit"> -->
             <input type="submit" ng-if="showButton == 1" value="Submit">
         </div>
       </div>
@@ -1188,7 +1188,7 @@ $(document).ready(function()
         </div>
        
         <div class="modal-footer">
-           <div
+           <!-- <div
                 vc-recaptcha
                 theme="'light'"
                 key="model.key"
@@ -1196,7 +1196,7 @@ $(document).ready(function()
                 on-success="setResponse(response)"
                 on-expire="cbExpiration()"
             ></div>
-           <input type="button" ng-if="showButton == 0" disabled value="Submit">
+           <input type="button" ng-if="showButton == 0" disabled value="Submit"> -->
             <input type="submit" ng-if="showButton == 1" value="Submit">
         </div>
       </div>
@@ -1505,7 +1505,7 @@ $(document).ready(function()
        
         <div class="modal-footer">
         
-        <div
+        <!-- <div
                 vc-recaptcha
                 theme="'light'"
                 key="model.key"
@@ -1513,7 +1513,7 @@ $(document).ready(function()
                 on-success="setResponse(response)"
                 on-expire="cbExpiration()"
             ></div>
-           <input type="button" ng-if="showButton == 0" disabled value="Submit">
+           <input type="button" ng-if="showButton == 0" disabled value="Submit"> -->
             <input type="submit" ng-if="showButton == 1" value="Submit">
         </div>
       </div>

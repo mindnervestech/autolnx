@@ -259,7 +259,8 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
             key: '6LfR5BUTAAAAAJKfvNn4v_VOk-tR0zsfVvTno8QA'
         };
 	
-	$scope.showButton = 0;
+	/*$scope.showButton = 0;*/
+	$scope.showButton = 1;
 	$scope.setResponse = function (response) {
         console.info('Response available');
 
