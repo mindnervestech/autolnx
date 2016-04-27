@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import javax.mail.BodyPart;
@@ -592,8 +593,121 @@ public class ClientService {
 	
 	
 	public List<VehicleVM> getSimilarVehicleDetails(String vin, Long locationId) {
+		
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
-		List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived'");
+		List<Map<String, Object>> vehiclerow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived'");
+		Map<String, VehicleVM> mapList = new HashMap<String, VehicleVM>();
+		
+		String bodyStyle = null;
+		String make = null;
+		String year = null;
+		if(vehiclerow.size() > 0){
+		bodyStyle = (String) vehiclerow.get(0).get("body_style");
+		make = (String) vehiclerow.get(0).get("make");
+		year = (String) vehiclerow.get(0).get("year");
+		}		
+		System.out.println(bodyStyle);
+		System.out.println(make);
+		System.out.println(year);
+		List<Map<String, Object>> bodyStyleList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and body_style='"+bodyStyle+"'");
+		List<Map<String, Object>> makeList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and make='"+make+"'");
+		List<Map<String, Object>> yearList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and year='"+year+"'");
+		for (Map map : yearList) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			vm.model = (String) map.get("model");
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			mapList.put(vm.vin, vm);
+		}
+		for (Map map : bodyStyleList) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			vm.model = (String) map.get("model");
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			mapList.put(vm.vin, vm);
+		}
+		for (Map map : makeList) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			vm.model = (String) map.get("model");
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			mapList.put(vm.vin, vm);
+		}
+		for(Entry<String, VehicleVM> vehicle: mapList.entrySet()){
+			vehicleList.add(vehicle.getValue());
+		}
+		System.out.println(vehicleList.size());
+		
+		/*List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived'");
 		int i = 0;
  		for(Map map : row) {
 			VehicleVM vm = new VehicleVM();
@@ -626,7 +740,7 @@ public class ClientService {
 			
 			vehicleList.add(vm);
 			i++;
-		}
+		}*/
  		
  		return vehicleList;
 		
