@@ -688,10 +688,26 @@ $(document).ready(function()
           </div>
           <div class="col-md-10 col-sm-8 padding-right-none sm-padding-left-none xs-padding-left-none">
             <div class="carasouel-slider3">
+            <c:forEach var="option" items='${recentVehicles}'>
+            <div class="slide">
+                    <div class="car-block">
+                        <div class="img-flex"> <a href="${pageContext.request.contextPath}/vehicleDetails/${option.vin}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="${hostnameimg}${option.path}" alt="" class="img-responsive"> </div>
+                        <div class="car-block-bottom">
+                            <h6><strong>${option.year} ${option.make}</strong></h6>
+                            <h6>${option.mileage}</h6>
+                            <h5>${option.price}</h5>
+                        </div>
+                    </div>
+                </div>
+                </c:forEach>
+            </div>
+          </div>
+          <%-- <div class="col-md-10 col-sm-8 padding-right-none sm-padding-left-none xs-padding-left-none">
+            <div class="carasouel-slider3">
             <div class="slide" ng-repeat="recent in recentVehicles" style="float: left; list-style: none; position: relative; margin-right: 30px; width: 170px;">
                 <div class="car-block">
                
-               <%--  href="${pageContext.request.contextPath}/warranty" --%>
+                href="${pageContext.request.contextPath}/warranty"
                  <!-- <img class="preview" src="${pageContext.request.contextPath}${hostnameimg}{{vehicle.path}}" alt="preview">    <img src="resources/autolinx/images/DSC_0002-167x119.jpg"-->
                   <div class="img-flex"><a href="${pageContext.request.contextPath}/vehicleDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="${hostnameimg}{{recent.path}}" alt="" class="img-responsive no_border" style="height:121px;"> </div>
                   <div class="car-block-bottom">
@@ -701,12 +717,8 @@ $(document).ready(function()
                   </div>
                 </div>
               </div>
-                                                    
-              
-              
-              
             </div>
-          </div>
+          </div> --%>
           <div class="bx-controls"></div>
         </div>
       </div>
