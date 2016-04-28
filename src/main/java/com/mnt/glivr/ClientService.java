@@ -817,14 +817,12 @@ public class ClientService {
  		vehicleVM.extColor = (String) row.get(0).get("exterior_color");
  		vehicleVM.intColor = (String) row.get(0).get("interior_color");
  		vehicleVM.vin = (String) row.get(0).get("vin");
- 		if((String) row.get(0).get("city_mileage") != null || (String) row.get(0).get("city_mileage") != ""){
- 			vehicleVM.cityMileage = (String) row.get(0).get("city_mileage");
- 		}else{
+ 		vehicleVM.cityMileage = (String) row.get(0).get("city_mileage");
+ 		vehicleVM.highwayMileage = (String) row.get(0).get("highway_mileage");
+ 		if(vehicleVM.cityMileage.length()== 0){
  			vehicleVM.cityMileage = null;
  		}
- 		if((String) row.get(0).get("highway_mileage") != null || (String) row.get(0).get("highway_mileage") != ""){
- 			vehicleVM.highwayMileage = (String) row.get(0).get("city_mileage");
- 		}else{
+ 		if(vehicleVM.highwayMileage.length()== 0){
  			vehicleVM.highwayMileage = null;
  		}
  		vehicleVM.location = (String) row.get(0).get("location");
