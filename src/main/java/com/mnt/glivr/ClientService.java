@@ -805,80 +805,316 @@ public class ClientService {
  			List<Map<String, Object>> locatiobRow = jdbcTemplate.queryForList("select * from location where id= '"+loc+"'");
  			vehicleVM.loc = (String) locatiobRow.get(0).get("name");
  			vehicleVM.locAddress = (String) locatiobRow.get(0).get("address");
- 			System.out.println((String) locatiobRow.get(0).get("name"));
- 			System.out.println((String) locatiobRow.get(0).get("address"));
  		}
  		vehicleVM.year = (String) row.get(0).get("year");
  		vehicleVM.make = (String) row.get(0).get("make");
  		vehicleVM.model = (String) row.get(0).get("model");
  		vehicleVM.trim = (String) row.get(0).get("trim");
+ 		if(vehicleVM.trim != null){
+ 			if(vehicleVM.trim.length()== 0)
+ 	 			vehicleVM.trim = null;
+ 		}
+ 		
  		vehicleVM.fuelType = (String) row.get(0).get("fuel");
+ 		if(vehicleVM.fuelType != null){
+ 			if(vehicleVM.fuelType.length()== 0)
+ 	 			vehicleVM.fuelType = null;
+ 		}
+ 		
  		vehicleVM.mileage = (String) row.get(0).get("mileage");
+ 		if(vehicleVM.mileage != null){
+ 			if(vehicleVM.mileage.length()== 0)
+ 	 			vehicleVM.mileage = null;
+ 		}
+ 		
  		vehicleVM.bodyStyle = (String) row.get(0).get("body_style");
+ 		if(vehicleVM.bodyStyle != null){
+ 			if(vehicleVM.bodyStyle.length()== 0)
+ 	 			vehicleVM.bodyStyle = null;
+ 		}
+ 		
  		vehicleVM.doors = (String) row.get(0).get("doors");
+ 		if(vehicleVM.doors != null){
+ 			if(vehicleVM.doors.length()== 0)
+ 	 			vehicleVM.doors = null;
+ 		}
+ 		
  		vehicleVM.seats = (String) row.get(0).get("standard_seating");
+ 		if(vehicleVM.seats != null){
+ 			if(vehicleVM.seats.length()== 0)
+ 	 			vehicleVM.seats = null;
+ 		}
+ 		
  		vehicleVM.drivetrain = (String) row.get(0).get("drivetrain");
+ 		if(vehicleVM.drivetrain != null){
+ 			if(vehicleVM.drivetrain.length()== 0)
+ 	 			vehicleVM.drivetrain = null;
+ 		}
+ 		
  		vehicleVM.engine = (String) row.get(0).get("engine");
+ 		if(vehicleVM.engine != null){
+ 			if(vehicleVM.engine.length()== 0)
+ 	 			vehicleVM.engine = null;
+ 		}
+ 		
  		vehicleVM.transmission = (String) row.get(0).get("transmission");
+ 		if(vehicleVM.transmission != null){
+ 			if(vehicleVM.transmission.length()== 0)
+ 	 			vehicleVM.transmission = null;
+ 		}
+ 		
  		vehicleVM.brakes = (String) row.get(0).get("brakes");
+ 		if(vehicleVM.brakes != null){
+ 			if(vehicleVM.brakes.length()== 0)
+ 	 			vehicleVM.brakes = null;
+ 		}
+ 		
  		vehicleVM.horsePower = (String) row.get(0).get("horse_power");
+ 		if(vehicleVM.horsePower != null){
+ 			if(vehicleVM.horsePower.length()== 0)
+ 	 			vehicleVM.horsePower = null;
+ 		}
+ 		
  		vehicleVM.acceleration = (String) row.get(0).get("acceleration");
+ 		if(vehicleVM.acceleration != null){
+ 			if(vehicleVM.acceleration.length()== 0)
+ 	 			vehicleVM.acceleration = null;
+ 		}
+ 		
  		vehicleVM.extColor = (String) row.get(0).get("exterior_color");
+ 		if(vehicleVM.extColor != null){
+ 			if(vehicleVM.extColor.length()== 0)
+ 	 			vehicleVM.extColor = null;
+ 		}
+ 		
  		vehicleVM.intColor = (String) row.get(0).get("interior_color");
+ 		if(vehicleVM.intColor != null){
+ 			if(vehicleVM.intColor.length()== 0)
+ 	 			vehicleVM.intColor = null;
+ 		}
+ 		
  		vehicleVM.vin = (String) row.get(0).get("vin");
  		vehicleVM.cityMileage = (String) row.get(0).get("city_mileage");
+ 		if(vehicleVM.cityMileage != null){
+ 			if(vehicleVM.cityMileage.length()== 0)
+ 	 			vehicleVM.cityMileage = null;
+ 		}
+ 		
  		vehicleVM.highwayMileage = (String) row.get(0).get("highway_mileage");
- 		if(vehicleVM.cityMileage.length()== 0){
- 			vehicleVM.cityMileage = null;
+ 		if(vehicleVM.highwayMileage != null){
+ 			if(vehicleVM.highwayMileage.length()== 0)
+ 	 			vehicleVM.highwayMileage = null;
  		}
- 		if(vehicleVM.highwayMileage.length()== 0){
- 			vehicleVM.highwayMileage = null;
- 		}
+ 		
  		vehicleVM.location = (String) row.get(0).get("location");
  		Integer price = (Integer) row.get(0).get("price");
  		vehicleVM.onlyPrice = price;
  		vehicleVM.price = "$"+price.toString();
  		vehicleVM.stock = (String) row.get(0).get("stock");
+ 		if(vehicleVM.stock != null){
+ 			if(vehicleVM.stock.length()== 0)
+ 	 			vehicleVM.stock = null;
+ 		}
  		vehicleVM.typeofVehicle = (String) row.get(0).get("typeof_vehicle");
+ 		if(vehicleVM.typeofVehicle != null){
+ 			if(vehicleVM.typeofVehicle.length()== 0)
+ 	 			vehicleVM.typeofVehicle = null;
+ 		}
  		vehicleVM.label = (String) row.get(0).get("label");
+ 		if(vehicleVM.label != null){
+ 			if(vehicleVM.label.length()== 0)
+ 	 			vehicleVM.label = null;
+ 		}
  		vehicleVM.fuelTank = (String) row.get(0).get("fuel_tank");
+ 		if(vehicleVM.fuelTank != null){
+ 			if(vehicleVM.fuelTank.length()== 0)
+ 	 			vehicleVM.fuelTank = null;
+ 		}
  		vehicleVM.headlights = (String) row.get(0).get("headlights");
+ 		if(vehicleVM.headlights != null){
+ 			if(vehicleVM.headlights.length()== 0)
+ 	 			vehicleVM.headlights = null;
+ 		}
  		vehicleVM.mirrors = (String) row.get(0).get("mirrors");
+ 		if(vehicleVM.mirrors != null){
+ 			if(vehicleVM.mirrors.length()== 0)
+ 	 			vehicleVM.mirrors = null;
+ 		}
  		vehicleVM.groundClearance = (String) row.get(0).get("ground_clearance");
+ 		if(vehicleVM.groundClearance != null){
+ 			if(vehicleVM.groundClearance.length()== 0)
+ 	 			vehicleVM.groundClearance = null;
+ 		}
  		vehicleVM.roof = (String) row.get(0).get("roof");
+ 		if(vehicleVM.roof != null){
+ 			if(vehicleVM.roof.length()== 0)
+ 	 			vehicleVM.roof = null;
+ 		}
  		vehicleVM.height = (String) row.get(0).get("height");
+ 		if(vehicleVM.height != null){
+ 			if(vehicleVM.height.length()== 0)
+ 	 			vehicleVM.height = null;
+ 		}
  		vehicleVM.length = (String) row.get(0).get("length");
+ 		if(vehicleVM.length != null){
+ 			if(vehicleVM.length.length()== 0)
+ 	 			vehicleVM.length = null;
+ 		}
  		vehicleVM.width = (String) row.get(0).get("width");
+ 		if(vehicleVM.width != null){
+ 			if(vehicleVM.width.length()== 0)
+ 	 			vehicleVM.width = null;
+ 		}
  		vehicleVM.engineType = (String) row.get(0).get("engine_type");
+ 		if(vehicleVM.engineType != null){
+ 			if(vehicleVM.engineType.length()== 0)
+ 	 			vehicleVM.engineType = null;
+ 		}
  		vehicleVM.cylinders = (String) row.get(0).get("cylinders");
+ 		if(vehicleVM.cylinders != null){
+ 			if(vehicleVM.cylinders.length()== 0)
+ 	 			vehicleVM.cylinders = null;
+ 		}
  		vehicleVM.displacement = (String) row.get(0).get("displacement");
+ 		if(vehicleVM.displacement != null){
+ 			if(vehicleVM.displacement.length()== 0)
+ 	 			vehicleVM.displacement = null;
+ 		}
  		vehicleVM.camType = (String) row.get(0).get("cam_type");
+ 		if(vehicleVM.camType != null){
+ 			if(vehicleVM.camType.length()== 0)
+ 	 			vehicleVM.camType = null;
+ 		}
  		vehicleVM.valves = (String) row.get(0).get("valves");
+ 		if(vehicleVM.valves != null){
+ 			if(vehicleVM.valves.length()== 0)
+ 	 			vehicleVM.valves = null;
+ 		}
  		vehicleVM.fuelQuality = (String) row.get(0).get("fuel_quality");
+ 		if(vehicleVM.fuelQuality != null){
+ 			if(vehicleVM.fuelQuality.length()== 0)
+ 	 			vehicleVM.fuelQuality = null;
+ 		}
  		vehicleVM.gears = (String) row.get(0).get("gears");
+ 		if(vehicleVM.gears != null){
+ 			if(vehicleVM.gears.length()== 0)
+ 	 			vehicleVM.gears = null;
+ 		}
  		vehicleVM.brakes = (String) row.get(0).get("brakes");
+ 		if(vehicleVM.brakes != null){
+ 			if(vehicleVM.brakes.length()== 0)
+ 	 			vehicleVM.brakes = null;
+ 		}
  		vehicleVM.frontBrakeDiameter = (String) row.get(0).get("front_brake_diameter");
+ 		if(vehicleVM.frontBrakeDiameter != null){
+ 			if(vehicleVM.frontBrakeDiameter.length()== 0)
+ 	 			vehicleVM.frontBrakeDiameter = null;
+ 		}
  		vehicleVM.frontBrakeType = (String) row.get(0).get("front_brake_type");
+ 		if(vehicleVM.frontBrakeType != null){
+ 			if(vehicleVM.frontBrakeType.length()== 0)
+ 	 			vehicleVM.frontBrakeType = null;
+ 		}
  		vehicleVM.rearBrakeDiameter = (String) row.get(0).get("rear_brake_diameter");
+ 		if(vehicleVM.rearBrakeDiameter != null){
+ 			if(vehicleVM.rearBrakeDiameter.length()== 0)
+ 	 			vehicleVM.rearBrakeDiameter = null;
+ 		}
  		vehicleVM.rearBrakeType = (String) row.get(0).get("rear_brake_type");
+ 		if(vehicleVM.rearBrakeType != null){
+ 			if(vehicleVM.rearBrakeType.length()== 0)
+ 	 			vehicleVM.rearBrakeType = null;
+ 		}
  		vehicleVM.activeHeadRestraints = (String) row.get(0).get("active_head_restrains");
+ 		if(vehicleVM.activeHeadRestraints != null){
+ 			if(vehicleVM.activeHeadRestraints.length()== 0)
+ 	 			vehicleVM.activeHeadRestraints = null;
+ 		}
  		vehicleVM.bodySideReinforcements = (String) row.get(0).get("body_side_reinforcements");
+ 		if(vehicleVM.bodySideReinforcements != null){
+ 			if(vehicleVM.bodySideReinforcements.length()== 0)
+ 	 			vehicleVM.bodySideReinforcements = null;
+ 		}
  		vehicleVM.crumpleZones = (String) row.get(0).get("crumple_zones");
+ 		if(vehicleVM.crumpleZones != null){
+ 			if(vehicleVM.crumpleZones.length()== 0)
+ 	 			vehicleVM.crumpleZones = null;
+ 		}
  		vehicleVM.impactAbsorbingBumpers = (String) row.get(0).get("impact_absorbing_bumpers");
+ 		if(vehicleVM.impactAbsorbingBumpers != null){
+ 			if(vehicleVM.impactAbsorbingBumpers.length()== 0)
+ 	 			vehicleVM.impactAbsorbingBumpers = null;
+ 		}
  		vehicleVM.impactSensors = (String) row.get(0).get("impact_sensor");
+ 		if(vehicleVM.impactSensors != null){
+ 			if(vehicleVM.impactSensors.length()== 0)
+ 	 			vehicleVM.impactSensors = null;
+ 		}
  		vehicleVM.parkingSensors = (String) row.get(0).get("parking_sensors");
+ 		if(vehicleVM.parkingSensors != null){
+ 			if(vehicleVM.parkingSensors.length()== 0)
+ 	 			vehicleVM.parkingSensors = null;
+ 		}
  		vehicleVM.seatbelts = (String) row.get(0).get("seatbelts");
+ 		if(vehicleVM.seatbelts != null){
+ 			if(vehicleVM.seatbelts.length()== 0)
+ 	 			vehicleVM.seatbelts = null;
+ 		}
  		vehicleVM.audiSideAssist = (String) row.get(0).get("audi_side_assist");
+ 		if(vehicleVM.audiSideAssist != null){
+ 			if(vehicleVM.audiSideAssist.length()== 0)
+ 	 			vehicleVM.audiSideAssist = null;
+ 		}
  		vehicleVM.intColor = (String) row.get(0).get("interior_color");
+ 		if(vehicleVM.intColor != null){
+ 			if(vehicleVM.intColor.length()== 0)
+ 	 			vehicleVM.intColor = null;
+ 		}
  		vehicleVM.comfortFeatures = (String) row.get(0).get("comfort_features");
+ 		if(vehicleVM.comfortFeatures != null){
+ 			if(vehicleVM.comfortFeatures.length()== 0)
+ 	 			vehicleVM.comfortFeatures = null;
+ 		}
  		vehicleVM.powerOutlets = (String) row.get(0).get("power_outlet");
+ 		if(vehicleVM.powerOutlets != null){
+ 			if(vehicleVM.powerOutlets.length()== 0)
+ 	 			vehicleVM.powerOutlets = null;
+ 		}
  		vehicleVM.powerSteering = (String) row.get(0).get("power_steering");
+ 		if(vehicleVM.powerSteering != null){
+ 			if(vehicleVM.powerSteering.length()== 0)
+ 	 			vehicleVM.powerSteering = null;
+ 		}
  		vehicleVM.rearViewCamera = (String) row.get(0).get("rear_view_camera");
+ 		if(vehicleVM.rearViewCamera != null){
+ 			if(vehicleVM.rearViewCamera.length()== 0)
+ 	 			vehicleVM.rearViewCamera = null;
+ 		}
  		vehicleVM.rearViewMonitor = (String) row.get(0).get("rear_view_monitor");
+ 		if(vehicleVM.rearViewMonitor != null){
+ 			if(vehicleVM.rearViewMonitor.length()== 0)
+ 	 			vehicleVM.rearViewMonitor = null;
+ 		}
  		vehicleVM.remoteTrunkRelease = (String) row.get(0).get("remote_trunk_release");
+ 		if(vehicleVM.remoteTrunkRelease != null){
+ 			if(vehicleVM.remoteTrunkRelease.length()== 0)
+ 	 			vehicleVM.remoteTrunkRelease = null;
+ 		}
  		vehicleVM.steeringWheel = (String) row.get(0).get("steering_wheel");
+ 		if(vehicleVM.steeringWheel != null){
+ 			if(vehicleVM.steeringWheel.length()== 0)
+ 	 			vehicleVM.steeringWheel = null;
+ 		}
  		vehicleVM.steeringWheelControls = (String) row.get(0).get("steering_wheel_controls");
+ 		if(vehicleVM.steeringWheelControls != null){
+ 			if(vehicleVM.steeringWheelControls.length()== 0)
+ 	 			vehicleVM.steeringWheelControls = null;
+ 		}
  		vehicleVM.pdfPath = (String) row.get(0).get("pdf_brochure_path");
+ 		if(vehicleVM.pdfPath != null){
+ 			if(vehicleVM.pdfPath.length()== 0)
+ 	 			vehicleVM.pdfPath = null;
+ 		}
  		
  		Long vehicleId = (Long)row.get(0).get("id");
  		List<Map<String, Object>> prevRecord = jdbcTemplate.queryForList("select max(id) from vehicle where id < '"+vehicleId+"' ");
