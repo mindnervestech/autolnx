@@ -356,23 +356,23 @@ $(document).ready(function()
                 <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;">
                 <table class="options-primary">
                   <tbody>
-                    <tr>
+                    <tr ng-if="vehicle.bodyStyle != null">
                       <td class="option primary">Body Style: </td>
                       <td class="spec">{{vehicle.bodyStyle}}</td>
                     </tr>
-                    <tr ng-show="vehicle.typeofVehicle == 'Used'">
+                    <tr ng-show="vehicle.typeofVehicle == 'Used' && vehicle.mileage != null">
                       <td class="option primary">Mileage: </td>
                       <td class="spec">{{vehicle.mileage}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="vehicle.transmission != null">
                       <td class="option primary">Transmission: </td>
                       <td class="spec">{{vehicle.transmission}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="vehicle.drivetrain != null">
                       <td class="option primary">Drivetrain: </td>
                       <td class="spec">{{vehicle.drivetrain}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="vehicle.engine != null">
                       <td class="option primary">Engine: </td>
                       <td class="spec">{{vehicle.engine}}</td>
                     </tr>

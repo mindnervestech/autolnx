@@ -484,7 +484,6 @@ public class ClientService {
 	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet, String vtype,Long locationId) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> rows = null;
-		System.out.println(">>>>>>>>>>>>>"+year);
 		Integer count = 0;
 		if(!priceSort.equals("")){
 			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (public_status = 'public') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
@@ -799,7 +798,14 @@ public class ClientService {
 		} else {
 			vehicleVM.audioUrl = (String) audioUrl.get(0).get("path");
 		}
- 		
+ 		Long loc = (Long)row.get(0).get("locations_id");
+ 		if(loc != null){
+ 			List<Map<String, Object>> locatiobRow = jdbcTemplate.queryForList("select * from location where id= '"+loc+"'");
+ 			vehicleVM.loc = (String) locatiobRow.get(0).get("name");
+ 			vehicleVM.locAddress = (String) locatiobRow.get(0).get("address");
+ 			System.out.println((String) locatiobRow.get(0).get("name"));
+ 			System.out.println((String) locatiobRow.get(0).get("address"));
+ 		}
  		vehicleVM.year = (String) row.get(0).get("year");
  		vehicleVM.make = (String) row.get(0).get("make");
  		vehicleVM.model = (String) row.get(0).get("model");
@@ -2607,7 +2613,6 @@ public class ClientService {
 	public VehicleVM getVehicleInfo(HttpServletRequest request){
 		
 		VehicleVM vm = new VehicleVM();
-		
 		vm.setModel(request.getParameter("model"));
 		vm.setMake(request.getParameter("make"));
 		vm.setYear(request.getParameter("year"));

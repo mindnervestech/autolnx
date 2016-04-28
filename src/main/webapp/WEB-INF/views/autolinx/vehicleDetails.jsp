@@ -242,7 +242,7 @@ $(document).ready(function()
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                 <h2>Vehicle Profile</h2>
-                <h4>See all the vehicle's details with 360º view, engine sound and history report</h4>
+                <h4>See all the vehicle's details with 360<sup>o</sup> view, engine sound and history report</h4>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 ">
                 <ul class="breadcrumb">
@@ -426,7 +426,7 @@ $(document).ready(function()
 	                    <ul class="nav nav-tabs" id="myTab">
 	                    	
 	                        <li class="active"><a data-toggle="tab" href="#vehicle">Features &amp; Options</a></li>	                        	                      
-	                        <li	><a data-toggle="tab" href="#location" >Vehicle Location</a></li><!-- onclick="initialize()" -->
+	                        <!--<li	><a data-toggle="tab" href="#location" >Vehicle Location</a></li> onclick="initialize()" -->
 	                    </ul>
 	                    <div class="tab-content margin-top-15 margin-bottom-20" id="myTabContent">
 	                        <div id="vehicle" class="tab-pane fade in active">                                    
@@ -611,12 +611,9 @@ $(document).ready(function()
 	                        	
 	                        
 	                        </div>
-	                        <div id="location" class="tab-pane fade">
-	                        <div id="map-canvas"></div>
-	                        
-	                             
-	                                 
-	                            	                        </div>
+	                        <!-- <div id="location" class="tab-pane fade">
+	                        	<div id="map-canvas"></div>
+	                        </div> -->
 	            
 	                    </div>
 	                </div>
@@ -722,8 +719,8 @@ $(document).ready(function()
 									<c:if test="${vehicle.intColor != null}">
 											<tr><td>Interior Color: </td><td>${vehicle.intColor}</td></tr>								
 									</c:if>	
-									<c:if test="${vehicle.location != null}">
-											<tr><td>Location:</td><td>${vehicle.location}</td></tr>								
+									<c:if test="${vehicle.locAddress != null}">
+											<tr><td>Location:</td><td><a style="color: black;font-weight: bold;" href="http://maps.google.com/?q=${vehicle.locAddress }" target="_blank">${vehicle.loc}</a></td></tr>	
 									</c:if>	
 									<c:if test="${vehicle.price != null}">
 											<tr><td>Price: </td><td>${vehicle.price}</td></tr>								

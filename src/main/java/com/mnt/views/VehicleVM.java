@@ -71,6 +71,20 @@ public class VehicleVM {
 	public String pdfPath;
 	public String flagD;
 	public String flagM;
+	public String loc;
+	public String locAddress;
+	public String getLoc() {
+		return loc;
+	}
+	public void setLoc(String loc) {
+		this.loc = loc;
+	}
+	public String getLocAddress() {
+		return locAddress;
+	}
+	public void setLocAddress(String locAddress) {
+		this.locAddress = locAddress;
+	}
 	public String getFlagD() {
 		return flagD;
 	}
