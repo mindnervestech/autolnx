@@ -595,7 +595,7 @@ public class ClientService {
 	public List<VehicleVM> getSimilarVehicleDetails(String vin, Long locationId) {
 		
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
-		List<Map<String, Object>> vehiclerow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived'");
+		List<Map<String, Object>> vehiclerow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public'");
 		Map<String, VehicleVM> mapList = new HashMap<String, VehicleVM>();
 		
 		String bodyStyle = null;
@@ -609,9 +609,9 @@ public class ClientService {
 		System.out.println(bodyStyle);
 		System.out.println(make);
 		System.out.println(year);
-		List<Map<String, Object>> bodyStyleList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and body_style='"+bodyStyle+"'");
-		List<Map<String, Object>> makeList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and make='"+make+"'");
-		List<Map<String, Object>> yearList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and year='"+year+"'");
+		List<Map<String, Object>> bodyStyleList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and body_style='"+bodyStyle+"'");
+		List<Map<String, Object>> makeList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and make='"+make+"'");
+		List<Map<String, Object>> yearList = jdbcTemplate.queryForList("select * from vehicle where vin != '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and year='"+year+"'");
 		for (Map map : yearList) {
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
@@ -2671,7 +2671,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		cal.add(Calendar.DATE, -30);
 		Date dateBefore30Days = cal.getTime();
 		
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and locations_id = '"+locationId+"' and status != 'Sold'  ORDER BY price asc");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and locations_id = '"+locationId+"' and status != 'Sold' and public_status='public'  ORDER BY price asc");
 		
 		for(Map map : rows) {
 			VehicleVM vm = new VehicleVM();
