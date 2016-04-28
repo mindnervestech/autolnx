@@ -497,6 +497,8 @@ public class ClientService {
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
 			vm.drivetrain = (String) map.get("drivetrain");
+			if(vm.drivetrain.length() == 0)
+				vm.drivetrain = null;
 			vm.cityMileage = (String) map.get("city_mileage");
 			vm.highwayMileage = (String) map.get("highway_mileage");
 			vm.engine = (String) map.get("engine");
