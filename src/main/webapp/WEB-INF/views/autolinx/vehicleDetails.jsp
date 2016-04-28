@@ -1614,6 +1614,10 @@ $(document).ready(function()
 </html>
 
 <style>
+.car-info .table>tbody>tr>td {
+	line-height: 18px;
+}
+
 .videoTxt{
     color: gray;
     font-size: 16px;
