@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -695,7 +697,7 @@ $(document).ready(function()
                         <div class="car-block-bottom">
                             <h6><strong>${option.year} ${option.make}</strong></h6>
                             <h6>${option.mileage}</h6>
-                            <h5>${option.price}</h5>
+                            <h5> <c:set var="string2" value="${fn:split(option.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/> </h5>
                         </div>
                     </div>
                 </div>

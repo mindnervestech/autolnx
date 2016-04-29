@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -302,7 +304,8 @@ $(document).ready(function()
                         
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 text-right">
-                        <h2>${vehicle.price}</h2>
+                        <h2> <c:set var="string2" value="${fn:split(vehicle.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/> </h2>
+                       
                         <em>Plus Taxes & Licensing</em> </div>
                 </div>
             </div>
@@ -723,7 +726,7 @@ $(document).ready(function()
 											<tr><td>Location:</td><td><a style="color: black;font-weight: bold;" href="http://maps.google.com/?q=${vehicle.locAddress }" target="_blank">${vehicle.loc}</a></td></tr>	
 									</c:if>	
 									<c:if test="${vehicle.price != null}">
-											<tr><td>Price: </td><td>${vehicle.price}</td></tr>								
+											<tr><td>Price: </td><td>  <c:set var="string2" value="${fn:split(vehicle.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/></td></tr>								
 									</c:if>	
 									<c:if test="${vehicle.cityMileage != null}">
 												<tr><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr>								
@@ -830,7 +833,7 @@ $(document).ready(function()
                                     <div class="car-block-bottom">
                                         <h6><strong>${option.year} ${option.make}</strong></h6>
                                         <h6>${option.mileage}</h6>
-                                        <h5>${option.price}</h5>
+                                        <h5> <c:set var="string2" value="${fn:split(option.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/> </h5>
                                     </div>
                                 </div>
                             </div>

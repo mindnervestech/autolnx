@@ -406,7 +406,7 @@ $(document).ready(function()
                 <div class="clearfix"></div>
                 </a>
                 <div class="price "> <b>Price:</b><br>
-                  <div class="figure">{{vehicle.price}}<br>
+                  <div class="figure"><span> $ {{(vehicle.price).replace("$","") | number}}</span><br>
                   </div>
                   <div class="tax">Plus Sales Tax</div>
                 </div>
@@ -476,7 +476,7 @@ $(document).ready(function()
             <div class="clearfix"></div>
             </a>
             <div class="price "> <b>Price:</b><br>
-              <div class="figure">{{vehicle.price}}<br>
+              <div class="figure"><span> $ {{(vehicle.price).replace("$","") | number }}</span><br>
               </div>
               <div class="tax">Plus Sales Tax</div>
             </div>
