@@ -580,71 +580,36 @@ $(document).ready(function()
               <div class="select-wrapper clearfix">
                 <div class="col-md-6">
                   <div class="my-dropdown make-dropdown">
-                      <select name="year" ng-model="year" class="css-dropdowns" tabindex="1" >
-                        <option value="">Year</option>
-                        <c:forEach var="option" items='${vehicleListYear}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach> 
-                      </select>
-                     </div>
+                    <select name="make" ng-model="makeType" class="custom" tabindex="1" ng-change="getModel(makeType)">
+                    	<option value="" selected>Makes</option>
+						<option ng-repeat="make in makeList" value="{{make}}">{{make}}</option>
+                    </select>
+                  </div>
                 </div> 
                 <div class="col-md-6">
                 <div class="my-dropdown">
-                      <select name="fuelType" ng-model="fuelType" class="css-dropdowns" tabindex="1" >
-                       <option value="">Fuel Type</option>
-            		   <option value="Eco-Friendly">Eco-Friendly</option>
-              		   <option value="Electric">Electric</option>
-              		   <option value="Flexible-Fuel">Flexible-Fuel</option>
-              		   <option value="Gas">Gas</option>
-              		   <option value="Hybrid">Hybrid</option>
-              		   <option value="premium unleaded (required)">premium unleaded (required)</option>
-                      </select>
+                		<select name="fuelType" ng-model="fuelType" class="custom" tabindex="1" ng-change="getBodyStyle(fuelType)">
+                    		<option value="" selected>Fuel Type</option>
+							<option ng-repeat="fuel in fuelList" value="{{fuel}}">{{fuel}}</option>
+                    	</select>
                      </div>
                      </div>
                 </div>
-              
-             <!--  <div class="select-wrapper clearfix">
-                <div class="col-md-6">
-                  <div class="my-dropdown body-styles-dropdownn">
-                    <select name="bodyStyle" ng-model="bodyStyle" class="css-dropdowns" tabindex="1" >
-           	            <option value="">All Body Styles</option>
-           			    <option value="2dr Hatchback">2dr Hatchback</option>
-         			    <option value="4dr Hatchback">4dr Hatchback</option>
-      			        <option value="Convertible">Convertible</option>
-      			        <option value="Coupe">Coupe</option>
-       				    <option value="Hatchback">Hatchback</option>
-    				    <option value="SUV">SUV</option>
-    			        <option value="Sedan">Sedan</option>
-     			        <option value="Sports Utility Vehicle">Sports Utility Vehicle</option>
-                    </select>
-                  </div>
-                </div>
-               
-              </div> -->
               <div class="select-wrapper clearfix">
                 <div class="col-md-6">
                   <div class="my-dropdown model-dropdown">
-                    <select name="model" ng-model="model" class="css-dropdowns" tabindex="1" >
-                    	   <option value="">Model</option>
-                        <c:forEach var="option" items='${vehicleListModel}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach> 
+                  	<select name="model" ng-model="modelType" class="custom" tabindex="1" ng-change="getYear(modelType)">
+                    	<option value="" selected>Model</option>
+						<option ng-repeat="model in modelList" value="{{model}}">{{model}}</option>
                     </select>
                   </div>
                 </div>
                  <div class="col-md-6">
                   <div class="my-dropdown body-styles-dropdownn">
-                    <select name="bodyStyle" ng-model="bodyStyle" class="css-dropdowns" tabindex="1" >
-           	            <option value="">Body Styles</option>
-           			    <option value="2dr Hatchback">2dr Hatchback</option>
-         			    <option value="4dr Hatchback">4dr Hatchback</option>
-      			        <option value="Convertible">Convertible</option>
-      			        <option value="Coupe">Coupe</option>
-       				    <option value="Hatchback">Hatchback</option>
-    				    <option value="SUV">SUV</option>
-    			        <option value="Sedan">Sedan</option>
-     			        <option value="Sports Utility Vehicle">Sports Utility Vehicle</option>
-                    </select>
+                  		<select name="bodyStyle" ng-model="bodyStyle" class="custom" tabindex="1">
+                    		<option value="" selected>Body Styles</option>
+							<option ng-repeat="bodyStyle in bodyList" value="{{bodyStyle}}">{{bodyStyle}}</option>
+                    	</select>
                   </div>
                 </div>
               
@@ -652,20 +617,12 @@ $(document).ready(function()
             <div class="select-wrapper clearfix">
                 <div class="col-md-6">
                   <div class="my-dropdown make-dropdown">
-                    <select name="make" ng-model="make" class="css-dropdowns" tabindex="1" >
-                    	<option value="">Makes</option>
-                        <c:forEach var="option" items='${vehicleListMake}'>
-											<option value='${option}'>${option}</option>
-						</c:forEach>
-                     
-                    </select>
-                  </div>
+                  		<select name="year" ng-model="year" class="custom" tabindex="1" ng-change="getFeulType(year)">
+                    		<option value="" selected>Year</option>
+							<option ng-repeat="year in yearList" value="{{year}}">{{year}}</option>
+                    	</select>
+                     </div>
                 </div>
-              <!--   <div class="col-md-6">
-                  <div class="my-dropdown">
-                    <input class="full-width" type="search" value="" placeholder="Refine with keywords">
-                  </div>
-                </div> -->
               </div>
               <div class="clear"></div>
               <div class="select-wrapper clearfix">
@@ -1089,7 +1046,12 @@ $(document).ready(function()
     .tp-banner ul li div.thirdSlider {
 	  background-color:#bcdf5e
 }
-
+.custom{
+	background: #F7F7F7;
+    border: 1px solid rgba(0, 0, 0, 0.0980392);
+    border-radius: 4px;
+    width: 100%;
+}
 </style>
 <script type="text/javascript">
 function initialize() {

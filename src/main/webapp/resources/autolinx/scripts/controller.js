@@ -103,8 +103,17 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		start = start + 16;
 	}
 	
+		$http({method:'GET',url:contextPath+'/getAllMakes'})
+		.success(function(data) {
+			$scope.makeList = data.make;
+			console.log(data.make);
+		});
 		$scope.selectYear = function(){
-		
+			$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,model:$scope.model,year:$scope.year}})
+			.success(function(data) {
+				$scope.fuelList = data;
+				console.log(data);
+			});
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -112,6 +121,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectMake = function(){
+			$http({method:'GET',url:contextPath+'/getAllModelByMake',params:{make:$scope.make}})
+			.success(function(data) {
+				$scope.modelList = data;
+				console.log(data);
+			});
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -119,6 +133,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectModel = function(){
+			$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,model:$scope.model}})
+			.success(function(data) {
+				$scope.yearList = data;
+				console.log(data);
+			});
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -133,6 +152,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectFuel = function(){
+			$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,model:$scope.model}})
+			.success(function(data) {
+				$scope.bodyList = data;
+				console.log(data);
+			});
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -186,10 +210,17 @@ app.controller("InventoryController", function($scope,$http, notificationService
 app.controller("HomeController", function($scope,$http, notificationService, vcRecaptchaService,$location) {
 	
 	var contextPath = $('#contextpath').val();
+	$scope.make = "";
+	$scope.model = "";
+	$scope.year = "";
+	$scope.fuelType = "";
+	$scope.bodyStyle = "";
 	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
 		$scope.allMakes = data;
-		
+		console.log("???????");
+		$scope.makeList = data.make;
+		console.log(data.make);
 	});
 	
 	$http({method:'GET',url:contextPath+'/getRecentVehicles'})
@@ -198,7 +229,46 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 		
 	});
 	$scope.followBrand = {};
-	
+	$scope.getModel = function(make){
+		console.log("????");
+		$scope.make = make;
+		console.log("getModel");
+		$http({method:'GET',url:contextPath+'/getAllModelByMake',params:{make:make}})
+		.success(function(data) {
+			$scope.modelList = data;
+			console.log(data);
+		});
+	};
+	$scope.getYear = function(model){
+		$scope.model = model;
+		console.log("????");
+		console.log("getYear");
+		$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,model:model}})
+		.success(function(data) {
+			$scope.yearList = data;
+			console.log(data);
+		});
+	};
+	$scope.getFeulType = function(year){
+		$scope.year = year;
+		console.log("getFuelType");
+		console.log("????");
+		$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,model:$scope.model,year:$scope.year}})
+		.success(function(data) {
+			$scope.fuelList = data;
+			console.log(data);
+		});
+	};
+	$scope.getBodyStyle = function(fuel){
+		console.log("????");
+		console.log("getBodyStyle");
+		$scope.fuelType = fuel;
+		$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,model:$scope.model,year:$scope.year,fuel:$scope.fuelType}})
+		.success(function(data) {
+			$scope.bodyList = data;
+			console.log(data);
+		});
+	};
 	$scope.saveFollowBrand = function() {
 		console.log($scope.followBrand);
 		$http({

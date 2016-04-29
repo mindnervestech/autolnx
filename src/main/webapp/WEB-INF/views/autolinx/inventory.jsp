@@ -219,59 +219,39 @@ $(document).ready(function()
       <div class="clearfix"></div>
       <form method="post" action="#" class="listing_sort">
         <div class="select-wrapper listing_select clearfix margin-top-none margin-bottom-15">
-          <div class="my-dropdown years-dropdown">
-         <select name="year" class="css-dropdowns" ng-model="year" ng-change="selectYear()" tabindex="1" >
-              <option value="">All Years</option>
-             <c:forEach var="option" items='${vehicleListYear}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach> 
-            </select>
-          </div>
-        
-          <div class="my-dropdown makers-dropdown">
-                    <select name="make" ng-model="make" ng-change="selectMake()" class="css-dropdowns" tabindex="1" >
-                    	<option value="">All Makes</option>
-                        <c:forEach var="option" items='${vehicleListMake}'>
-								<option value='${option}'>${option}</option>
-						</c:forEach>
-                     
+          <div class="my-dropdown makers-dropdown" style="width: 110px;">
+                    <select name="make" ng-model="make" class="custom" tabindex="1" ng-change="selectMake()">
+                    	<option value="" selected>All Makes</option>
+						<option ng-repeat="make in makeList" value="{{make}}">{{make}}</option>
                     </select>
                   </div>
       
-          <div class="my-dropdown models-dropdown">
-            <select name="model" class="css-dropdowns" ng-model="model" ng-change="selectModel()">
-               <option value="">All Model</option>
-                        <c:forEach var="option" items='${vehicleListModel}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach> 
+          <div class="my-dropdown models-dropdown" style="width: 110px;">
+            <select name="model" ng-model="model" class="custom" tabindex="1" ng-change="selectModel()">
+                	<option value="" selected>All Model</option>
+					<option ng-repeat="model in modelList" value="{{model}}">{{model}}</option>
             </select>
           </div>
-          <div class="my-dropdown fuel-dropdown">
-            <select name="fuel" ng-model="fuel" ng-change="selectFuel()"  class="css-dropdowns" tabindex="1" >
-              <option value="">All Fuel Type</option>
-              <option value="Eco-Friendly">Eco-Friendly</option>
-              <option value="Electric">Electric</option>
-              <option value="Flexible-Fuel">Flexible-Fuel</option>
-              <option value="Gas">Gas</option>
-              <option value="Hybrid">Hybrid</option>
-              <option value="premium unleaded (required)">premium unleaded (required)</option>
+           <div class="my-dropdown years-dropdown" style="width: 110px;">
+            <select name="year" ng-model="year" class="custom" tabindex="1" ng-change="selectYear()">
+                 <option value="" selected>All Year</option>
+				 <option ng-repeat="year in yearList" value="{{year}}">{{year}}</option>
+          	</select>
+          </div>
+          <div class="my-dropdown fuel-dropdown" style="width: 110px;">
+            <select name="fuel" ng-model="fuel" class="custom" tabindex="1" ng-change="selectFuel()">
+                 <option value="" selected>All Fuel</option>
+				 <option ng-repeat="fuel in fuelList" value="{{fuel}}">{{fuel}}</option>
             </select>
           </div>
-          <div class="my-dropdown body-styles-dropdown">
-            <select name="bodyStyle" ng-model="bodyStyle" ng-change="selectBodyStyle()" class="css-dropdowns" tabindex="1" >
-              <option value="">All Body Styles</option>
-              <option value="2dr Hatchback">2dr Hatchback</option>
-              <option value="4dr Hatchback">4dr Hatchback</option>
-              <option value="Convertible">Convertible</option>
-              <option value="Coupe">Coupe</option>
-              <option value="Hatchback">Hatchback</option>
-              <option value="SUV">SUV</option>
-              <option value="Sedan">Sedan</option>
-              <option value="Sports Utility Vehicle">Sports Utility Vehicle</option>
-            </select>
+          <div class="my-dropdown body-styles-dropdown" style="width: 110px;">
+            	<select name="bodyStyle" ng-model="bodyStyle" class="custom" tabindex="1" selectBodyStyle()>
+                		<option value="" selected>Body Styles</option>
+						<option ng-repeat="bodyStyle in bodyList" value="{{bodyStyle}}">{{bodyStyle}}</option>
+              	</select>
           </div>
-          <div class="my-dropdown mileage-dropdown">
-            <select name="mileage" ng-model="mileage" ng-change="selectMileage()" class="css-dropdowns" tabindex="1" >
+          <div class="my-dropdown mileage-dropdown" style="width: 110px;">
+            <select name="mileage" ng-model="mileage" ng-change="selectMileage()" class="custom" tabindex="1" >
               <option value="">All Mileage</option>
               <option value="10000">&lt; 10000</option>
               <option value="20000">&lt; 20000</option>
@@ -285,8 +265,8 @@ $(document).ready(function()
               <option value="100000"> &lt; 100000</option>
             </select>
           </div>
-          <div class="my-dropdown mileage-dropdown">
-            <select name="vType" ng-model="vType" ng-change="selectvType()" class="css-dropdowns" tabindex="1" >
+          <div class="my-dropdown mileage-dropdown" style="width: 110px;">
+            <select name="vType" ng-model="vType" ng-change="selectvType()" class="custom" tabindex="1" >
               <option value="">Select</option>
               <option value="New">New</option>
               <option value="Used">Used</option>
@@ -325,7 +305,7 @@ $(document).ready(function()
               <option>New Arrivals</option>
             </select>
           </div> -->
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 pull-right">
               <ul class="form-links top_buttons">
                 <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
               </ul>
@@ -635,6 +615,12 @@ $(document).ready(function()
 <style>
 	.car_listings .carfax {
   display: block !important;
+}
+.custom{
+	background: #F7F7F7;
+    border: 1px solid rgba(0, 0, 0, 0.0980392);
+    border-radius: 4px;
+    width: 100%;
 }
 </style>
 

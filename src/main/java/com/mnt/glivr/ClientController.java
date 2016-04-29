@@ -294,6 +294,35 @@ public class ClientController {
 		return "autolinx/blog";
 	}
 	
+	@RequestMapping(value = "/getAllModelByMake", method = RequestMethod.GET)
+	@ResponseBody
+	public List<String> getAllModelByMake(HttpServletRequest request, Locale locale, Model model,@RequestParam("make") String make) {
+		Long locationId = locationIdGol;
+		List<String> modelList = clientService.getAllModelByMake(make,locationId);
+		return modelList;
+	}
+	@RequestMapping(value = "/getAllYearByModel", method = RequestMethod.GET)
+	@ResponseBody
+	public List<String> getAllYearByModel(HttpServletRequest request, Locale locale, Model model,@RequestParam("model") String vmodel,@RequestParam("make") String make) {
+		Long locationId = locationIdGol;
+		List<String> modelList = clientService.getAllYearByModel(make,vmodel,locationId);
+		return modelList;
+	}
+	@RequestMapping(value = "/getAllFuelTypeYear", method = RequestMethod.GET)
+	@ResponseBody
+	public List<String> getAllFuelTypeYear(HttpServletRequest request, Locale locale, Model model,@RequestParam("year") String year,@RequestParam("model") String vmodel,@RequestParam("make") String make) {
+		Long locationId = locationIdGol;
+		List<String> modelList = clientService.getAllFuelTypeYear(make,vmodel,year,locationId);
+		return modelList;
+	}
+	@RequestMapping(value = "/getAllBodyStyleByFuelType", method = RequestMethod.GET)
+	@ResponseBody
+	public List<String> getAllBodyStyleByFuelType(HttpServletRequest request, Locale locale, Model model,@RequestParam("model") String vmodel,@RequestParam("make") String make) {
+		Long locationId = locationIdGol;
+		List<String> modelList = clientService.getAllBodyStyleByFuelType(make,vmodel,locationId);
+		return modelList;
+	}
+	
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getVehicleInfo(HttpServletRequest request, Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet,@RequestParam("vtype") String vtype) {
