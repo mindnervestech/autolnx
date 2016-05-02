@@ -2915,7 +2915,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		cal.add(Calendar.DATE, -30);
 		Date dateBefore30Days = cal.getTime();
 		
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and locations_id = '"+locationId+"' and status != 'Sold' and public_status='public'  ORDER BY price asc");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and locations_id = '"+locationId+"' and status != 'Sold' and public_status='public'  ORDER BY posted_date desc");
 		
 		for(Map map : rows) {
 			VehicleVM vm = new VehicleVM();
