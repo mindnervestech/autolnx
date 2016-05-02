@@ -291,6 +291,7 @@ $(document).ready(function()
               <option value="Truck">Truck</option>
               <option value="Motorcycle">Motorcycle</option>
               <option value="Boat">Boat</option>
+              <option value="Supercar">SuperCar</option>
             </select>
           </div>
       	 <!--  <div class="my-dropdown prices-dropdown" style="width: 96px !important;">

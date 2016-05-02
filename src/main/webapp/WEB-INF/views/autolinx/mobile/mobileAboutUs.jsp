@@ -87,111 +87,148 @@
     
 
 	<div class="aboutBox">
-    	<h3>OUR MISSION IS SIMPLE</h3>
-        <p><span class="firstcharacter">T</span>he Autolinx Inc. team has over 30 years of combined experience in the areas of automotive and online sales and strives to provide you with the greatest experience possible when purchasing your new pre-owned vehicle. Our experienced advisors are handpicked for their courtesy, knowledge and enthusiasm. They will make every effort to procure the best selection of quality, pre-owned vehicles on the market. Autolinx offers an upscale car buying experience, supported behind the scenes by some of the industry’s most innovative technology solutions to bring our customers the best quality vehicles at the most competitive prices.</p>     
-        
-        <p><img class="alignleft" src="${pageContext.request.contextPath}/resources/autolinx/images/DSC_0656.jpg" alt="automotive">Our Mission is to offer a unique and upscale vehicle buying experience to every customer, every time, by combining our collective passions for cars, technology and customer service<br><br> Visit our showroom today and drive away with your new pre-owned quality car. Contact us via phone or email to set up a time convenient for you, or simply drop by for a great cup of coffee.<br><br>
-
-Sincerely, The Autolinx Team</p>
-		
-        <p style="width:37%;">${myprofile.fullAddress }
-          
-         <br> ${myphone } 
-          <br>
-          <a class="linkIn" href="mailto:info@autolinxinc.com">${myprofile.email }</a><br>
+    	<h3>CONTACT INFORMATION</h3>
+        <div class="icon_address">
+                  <p><i class="fa fa-map-marker"></i><strong>   Address:</strong></p>
+                  <p style="width:37%;">${myprofile.fullAddress }
+         </div>     
+          <div class="icon_address" style="line-height: 30px;">
+         <br><i class="fa fa-phone"></i>&nbsp;&nbsp;Phone:&nbsp;&nbsp;${myphone } 
+          <br><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Email:&nbsp;&nbsp;<a class="linkIn" href="mailto:info@autolinxinc.com">${myprofile.email }</a>
+          <br><i class="fa fa-laptop"></i>&nbsp;&nbsp;Web:&nbsp;&nbsp; <a href="http://company.com"> ${myprofile.web}</a><br>
+        </div>
         </p>
         
-        <a style="text-decoration: none;" href="http://maps.google.com/?q=${myprofile.fullAddress }"><h3>Directions</h3></a>
-
-		
-        <h4>WHAT WE SPECIALIZE IN</h4>	
+        <h4>BUSINESS HOURS</h4>	
         
         <div class="progressbar">
-            <div class="bs-example">
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="100">Mercedes</div>
+            <div class="row">
+                <div class="col-sm-4">
+                  <div class="deparment">
+                    <table class="table table-bordered no-border font-12px hours_table ">
+                      <thead>
+                        <tr>
+                          <td colspan="2"><strong>Sales Department</strong></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mon:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Tue:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Wed:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Thu:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Fri:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sat:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sun:</td>
+                          <td>10:00am - 4:00pm</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="deparment">
+                    <table class="table table-bordered no-border font-12px hours_table ">
+                      <thead>
+                        <tr>
+                          <td colspan="2"><strong>Service Department</strong></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mon:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Tue:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Wed:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Thu:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Fri:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sat:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sun:</td>
+                          <td>10:00am - 4:00pm</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="deparment">
+                    <table class="table table-bordered no-border font-12px hours_table ">
+                      <thead>
+                        <tr>
+                          <td colspan="2"><strong>Parts Department</strong></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Mon:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Tue:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Wed:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Thu:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Fri:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sat:</td>
+                          <td>9:00am - 7:00pm</td>
+                        </tr>
+                        <tr>
+                          <td>Sun:</td>
+                          <td>10:00am - 4:00pm</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="90">BMW</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="80">Audi</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="70">Jaguar</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="60">Land Rover</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="50">Lamborghini</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="40">Ferrari</div>
-              </div>
-            </div>
           </div>
-		
-        <h4>TESTIMONIALS</h4>		
-		<div class="testimonial">
-            <ul class="testimonial_slider">
-                <li>
-                    <blockquote class="style1"><span>Let me try and list all the reasons I am giving a five star review to these guys. &nbsp;First of all they have a large selection of amazing cars and good prices. &nbsp;They also have a genuine desire to create a great buying experience. &nbsp;Their level of service and attention to the details of removing stress focusing on fun is obvious in the first 10 minutes you are there. &nbsp;They let me drive 5 cars which were all great and pricing seemed to be very approachable. &nbsp;There was no pressure at all. &nbsp;After the fifth drive Nick asked which car I liked. &nbsp;I selected the very low miles lexus. &nbsp;We sat down and had some lunch then Ed asked what I wanted. &nbsp;I had a trade and told him the deal I was looking for. &nbsp;I asked him if I had made it clear and he said yes. &nbsp;Two minutes later we show hands and I had the most awesome car at thousands less than the Lexus dealer had offered. &nbsp;I want to buy three more now. &nbsp;THESE GUYS ROCK.</span><strong>Charles H.</strong></blockquote>
-                </li>
-                <li>
-                    <blockquote class="style1"><span>I can’t say enough good things about this dealership. I’ve purchased two cars (BMW most recently) and have recommended many friends &ndash; all with great results. Ed and his team are straight shooters, very professional and knowledgable. They only have low mileage, gorgeous cars at very competitive prices &ndash; my biggest issue was which car to buy. If you’re looking for low mileage, honest cars at a great price, make sure to put Autolinx on your list of dealerships to visit.</span><strong>Marco M.</strong> </blockquote>
-                </li>
-                <li>
-                    <blockquote class="style1"><span>What can I say: one of the best used car dealership I have ever walked into. Professional service and they really understand cars. Very knowledgeable people. Keep more cars coming!</span><strong>VP.</strong> </blockquote>
-                </li>
-                
-                <li>
-                    <blockquote class="style1"><span>What can I say: one of the best used car dealership I have ever walked into. Professional service and they really understand cars. Very knowledgeable people. Keep more cars coming!</span><strong>VP.</strong> </blockquote>
-                </li>
-                
-            </ul>
-
-        </div>
-        
-        <div class="clearfix"></div>
-		
-        
-		 <h4>LATEST AUTOMOTIVE NEWS</h4>	
-         <div class="arrow1 pull-right blog_post_controls"></div>
-         <ul class="recent_blog_posts">
-                        <li>
-                            <div class="blog-list">
-                             
-                                    <h4>Ask Your Dealer -  Should I Buy or Finance My Used Luxury Car</h4>
-                                    <span>May 26, 2015 /</span> <span class="text-red">0 Comments</span>
-                                    <p>You have finally decided to buy that BMW, Lexus, Mercedes, you always dreamed about, however buying a luxury ca<a class="linkIn" href="#">[...]</a></p>
-                               
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <li>
-                            <div class="blog-list">
-                                
-                                    <h4>Autolinx Celebrity Profile - Paul Newman</h4>
-                                    <span>May 22, 2015  /</span> <span class="text-red">7 Comments</span>
-                                    <p>[caption id="attachment_5761" align="aligncenter" width="493"] Paul was just another guy swept up in the dirt, guts<a class="linkIn" href="#">[...]</a></p>
-                               
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <li>
-                            <div class="blog-list">
-                                
-                                    <h4>Ask Your Dealer -  Should I Buy or Finance My Used Luxury Car</h4>
-                                    <span>May 26, 2015 /</span> <span class="text-red">0 Comments</span>
-                                    <p>You have finally decided to buy that BMW, Lexus, Mercedes, you always dreamed about, however buying a luxury ca<a class="linkIn" href="#">[...]</a></p>
-                              
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                    </ul>
-         
-    	<div class="clearClass"></div>    
+		   
     </div>
 	
           <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
@@ -209,30 +246,6 @@ Sincerely, The Autolinx Team</p>
                   <input id="submit_btn" ng-show="showMsg == false" type="submit" value="Send Message"> 
                   <input id="submit_btn" ng-show="showMsg" disabled="disabled" type="submit" value="Send Message" style="background-color: burlywood;">   <!-- data-toggle="modal" data-target="#myModal" -->  
     </form>
-          
-	<h4>Subscribe to the official AutoLinx newsletter-Vehi-Linx</h4>
-    <form method="post">
-          <p>
-            <label>Email Address:</label>
-            <input type="email" class="inputInner" required placeholder="Your email address" name="EMAIL">
-          </p>
-          <p>
-            <label>First Name:</label>
-            <input type="text" class="inputInner" placeholder="Your first name" name="FNAME">
-          </p>
-          <p>
-            <label>Last Name:</label>
-            <input type="text" class="inputInner" placeholder="Your last name" name="LNAME">
-          </p>
-          <p>
-            <input type="submit" value="Sign up">
-          </p>
-          <input type="hidden" value="" name="_mc4wp_required_but_not_really" style="display: none;">
-          <input type="hidden" value="1433735908" name="_mc4wp_timestamp">
-          <input type="hidden" value="1" name="_mc4wp_form_submit">
-          <input type="hidden" value="1" name="_mc4wp_form_instance">
-          <input type="hidden" value="0c197cabe5" name="_mc4wp_form_nonce">
-        </form>
 </footer> 
 <div class="copyright-wrap">
 	<ul class="social">
