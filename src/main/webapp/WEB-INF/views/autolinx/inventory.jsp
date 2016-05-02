@@ -250,7 +250,7 @@ $(document).ready(function()
 						<option ng-repeat="bodyStyle in bodyList" value="{{bodyStyle}}">{{bodyStyle}}</option>
               	</select>
           </div>
-          <div class="my-dropdown mileage-dropdown" style="width: 110px;">
+          <div ng-if="flagForNew !=1" class="my-dropdown mileage-dropdown" style="width: 110px;">
             <select name="mileage" ng-model="mileage" ng-change="selectMileage()" class="custom" tabindex="1" >
               <option value="">All Mileage</option>
               <option value="10000">&lt; 10000</option>

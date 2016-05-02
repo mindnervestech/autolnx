@@ -84,6 +84,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		if($scope.vType == undefined){
 			$scope.vType = "";
 		}
+		$scope.flagForNew = 0;
+		if($scope.vType == 'New'){
+			$scope.flagForNew = 1;
+		}
+		console.log($scope.flagForNew);
 		console.log($scope.vType);
 		console.log($scope.locationId);
 		console.log($scope.alphbet);
