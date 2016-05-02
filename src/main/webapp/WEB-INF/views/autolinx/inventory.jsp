@@ -382,10 +382,11 @@ $(document).ready(function()
                     </tr>
                   </tbody>
                 </table>
-                <div class="view-details gradient_button"><i class="fa fa-plus-circle"></i> View Details </div>
+                <div class="view-details gradient_button" style="top: 110px" ><i class="fa fa-plus-circle"></i> View Details </div>
+                
                 <div class="clearfix"></div>
                 </a>
-                <div class="price "> <b>Price:</b><br>
+                <div class="price " style="top: 12px"> <b>Price:</b><br>
                   <div class="figure"><span> <span>$</span>{{(vehicle.price).replace("$","") | number}}</span><br>
                   </div>
                   <div class="tax">Plus Sales Tax</div>
