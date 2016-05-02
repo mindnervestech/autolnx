@@ -52,6 +52,8 @@
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
+<script src="http://www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded" async defer></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/angular-recaptcha.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/swiper.js"></script>
 <!-- Twitter Feed Scripts 
      Uncomment to activate
@@ -61,7 +63,7 @@
 
 </head>
 
-<body ng-controller="MobileInventoryController">
+<body ng-controller="MobileInventoryController" ng-init='initFunction()'>
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <div class="wrapperIn">
 <header>
