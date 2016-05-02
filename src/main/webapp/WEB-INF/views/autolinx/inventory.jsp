@@ -390,7 +390,7 @@ $(document).ready(function()
                   </div>
                   <div class="tax">Plus Sales Tax</div>
                 </div>
-                <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0"> <img class="carfax" alt="CarFax Report" src="resources/autolinx/images/Carfax-logo-1.png"></a> </div>
+                <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0"> <img style="left: 250px;" class="carfax" alt="CarFax Report" src="resources/autolinx/images/Carfax-logo-1.png"></a> </div>
             
               </div>
               </div>
