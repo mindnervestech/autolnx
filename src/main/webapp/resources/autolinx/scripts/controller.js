@@ -35,8 +35,8 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	$scope.fuel = "";
 	$scope.mileage = "";
 	$scope.VehiclesCount = "";
-	$scope.alphbet = "";
 	$scope.price = "lowToHigh";
+	$scope.vehicleType="";
 	
 	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId){
 		console.log(model);
@@ -94,7 +94,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		console.log($scope.locationId);
 		console.log($scope.alphbet);
 		if ($scope.noMore) return;
-		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.vType}})
+		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.vType,vehicleType:$scope.vehicleType}})
 		.success(function(data) {
 			
 			if(data.vehicleList.length == 0) {
@@ -158,11 +158,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectFuel = function(){
-			$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,model:$scope.model}})
+			/*$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,model:$scope.model}})
 			.success(function(data) {
 				$scope.bodyList = data;
 				console.log(data);
-			});
+			});*/
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -180,6 +180,15 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			$scope.noMore = false;
 			$scope.loadMore();
 		}
+		
+		$scope.selectVehicleType = function(){
+			console.log($scope.vehicleType);
+			console.log("?????");
+			$scope.vehicleList = [];
+			start = 0;
+			$scope.noMore = false;
+			$scope.loadMore();
+		};
 		
 		$scope.resetFilters = function(){
 			$scope.year = "";
@@ -657,7 +666,7 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 	$scope.fuel = "";
 	$scope.mileage = "";
 	$scope.VehiclesCount = "";
-	$scope.alphbet = "";
+	$scope.alphbet = "a_z";
 	$scope.price = "lowToHigh";
 	var contextPath = $('#contextpath').val();
 	$scope.initFunction = function(){

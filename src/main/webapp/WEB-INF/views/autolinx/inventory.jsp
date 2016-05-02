@@ -198,7 +198,7 @@ $(document).ready(function()
          </div> 
           <div class="my-dropdown prices-dropdown" style="width: 121px !important;margin-left: 12px;">
             <select name="alphbet" ng-model="alphbet" ng-change="selectAlphbet()" class="css-dropdowns" tabindex="1" >
-			  <option value="a_z">A-Z</option>
+			  <option value="a_z" selected>A-Z</option>
               <option value="z_a">Z-A</option>
             </select>
           </div>
@@ -220,7 +220,7 @@ $(document).ready(function()
       <form method="post" action="#" class="listing_sort">
         <div class="select-wrapper listing_select clearfix margin-top-none margin-bottom-15">
           <div class="my-dropdown makers-dropdown">
-                    <select name="make" ng-model="make" ng-change="selectMake()" class="css-dropdowns" tabindex="1" >
+                    <select name="make" ng-model="make" ng-change="selectMake()" class="custom" tabindex="1" >
                     	<option value="">All Makes</option>
                         <c:forEach var="option" items='${vehicleListMake}'>
 								<option value='${option}'>${option}</option>
@@ -230,7 +230,7 @@ $(document).ready(function()
                   </div>
       
           <div class="my-dropdown models-dropdown">
-            <select name="model" class="css-dropdowns" ng-model="model" ng-change="selectModel()">
+            <select name="model" class="custom" ng-model="model" ng-change="selectModel()">
                <option value="">All Model</option>
                         <c:forEach var="option" items='${vehicleListModel}'>
 							<option value='${option}'>${option}</option>
@@ -238,7 +238,7 @@ $(document).ready(function()
             </select>
           </div>
           <div class="my-dropdown years-dropdown">
-         <select name="year" class="css-dropdowns" ng-model="year" ng-change="selectYear()" tabindex="1" >
+         <select name="year" class="custom" ng-model="year" ng-change="selectYear()" tabindex="1" >
               <option value="">All Years</option>
              <c:forEach var="option" items='${vehicleListYear}'>
 							<option value='${option}'>${option}</option>
@@ -246,7 +246,7 @@ $(document).ready(function()
             </select>
           </div>
           <div class="my-dropdown fuel-dropdown">
-            <select name="fuel" ng-model="fuel" ng-change="selectFuel()"  class="css-dropdowns" tabindex="1" >
+            <select name="fuel" ng-model="fuel" ng-change="selectFuel()"  class="custom" tabindex="1" >
               <option value="">All Fuel Type</option>
               <c:forEach var="option" items='${vehicleListFuel}'>
 							<option value='${option}'>${option}</option>
@@ -254,15 +254,15 @@ $(document).ready(function()
             </select>
           </div>
           <div class="my-dropdown body-styles-dropdown">
-            <select name="bodyStyle" ng-model="bodyStyle" ng-change="selectBodyStyle()" class="css-dropdowns" tabindex="1" >
+            <select name="bodyStyle" ng-model="bodyStyle" ng-change="selectBodyStyle()" class="custom" tabindex="1" >
               <option value="">All Body Styles</option>
               <c:forEach var="option" items='${vehicleListBodyStyle}'>
 							<option value='${option}'>${option}</option>
 						</c:forEach>
             </select>
           </div>
-          <div ng-if="flagForNew !=1" class="my-dropdown mileage-dropdown">
-            <select name="mileage" ng-model="mileage" ng-change="selectMileage()" class="css-dropdowns" tabindex="1" >
+          <div ng-if="flagForNew != 1" class="my-dropdown mileage-dropdown">
+            <select name="mileage" ng-model="mileage" ng-change="selectMileage()" class="custom" tabindex="1" >
               <option value="">All Mileage</option>
               <option value="10000">&lt; 10000</option>
               <option value="20000">&lt; 20000</option>
@@ -277,11 +277,20 @@ $(document).ready(function()
             </select>
           </div>
           <div class="my-dropdown mileage-dropdown">
-            <select name="vType" ng-model="vType" ng-change="selectvType()" class="css-dropdowns" tabindex="1" >
+            <select name="vType" ng-model="vType" ng-change="selectvType()" class="custom" tabindex="1" >
               <option value="">Select</option>
               <option value="New">New</option>
               <option value="Used">Used</option>
               
+            </select>
+          </div>
+          <div class="my-dropdown mileage-dropdown">
+            <select name="vehicleType" ng-model="vehicleType" ng-change="selectVehicleType()" class="custom" tabindex="1" >
+              <option value="">All Vehicle Type</option>
+              <option value="Car">Car</option>
+              <option value="Truck">Truck</option>
+              <option value="Motorcycle">Motorcycle</option>
+              <option value="Boat">Boat</option>
             </select>
           </div>
       	 <!--  <div class="my-dropdown prices-dropdown" style="width: 96px !important;">
