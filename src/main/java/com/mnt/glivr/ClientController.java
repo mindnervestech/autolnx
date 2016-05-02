@@ -122,6 +122,7 @@ public class ClientController {
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
 		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
+		List<SliderVM> sliderImages = clientService.getSliderImages(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
@@ -129,6 +130,7 @@ public class ClientController {
 		
 		
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("sliderImages",sliderImages);
 		model.addAttribute("siteContent", siteContent);
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake);
