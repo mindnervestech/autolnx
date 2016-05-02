@@ -480,6 +480,32 @@ public class ClientService {
 		}
 		return vehicleListYear;
 	}
+	public List<String> getAllVehicleFuel(Long locationId) {
+		List<String> vehicleListFuel = new ArrayList<String>();
+		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where locations_id = '"+locationId+"'");
+		
+		for(Map map : rows1) {
+			if(map.get("fuel_type")!=null){
+				if(map.get("fuel_type").toString().length() > 0){
+					vehicleListFuel.add((String) map.get("fuel_type"));
+				}
+			}
+		}
+		return vehicleListFuel;
+	}
+	public List<String> getAllVehicleBodyStyle(Long locationId) {
+		List<String> vehicleListBodyStyle = new ArrayList<String>();
+		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT body_style FROM vehicle where locations_id = '"+locationId+"'");
+		
+		for(Map map : rows1) {
+			if(map.get("body_style")!=null){
+				if(map.get("body_style").toString().length() > 0){
+					vehicleListBodyStyle.add((String) map.get("body_style"));
+				}
+			}
+		}
+		return vehicleListBodyStyle;
+	}
 	
 	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet, String vtype,Long locationId) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();

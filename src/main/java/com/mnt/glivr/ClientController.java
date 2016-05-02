@@ -502,6 +502,8 @@ public class ClientController {
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
 		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
+		List<String> vehicleListFuel = clientService.getAllVehicleFuel(locationId);
+		List<String> vehicleListBodyStyle = clientService.getAllVehicleBodyStyle(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		model.addAttribute("myprofile",profile);
@@ -511,6 +513,8 @@ public class ClientController {
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
+		model.addAttribute("vehicleListFuel", vehicleListFuel);
+		model.addAttribute("vehicleListBodyStyle", vehicleListBodyStyle);
 		model.addAttribute("vehicle",vehicleVM);
 		model.addAttribute("vehicle1",vehicleVM1);
 		model.addAttribute("siteLogo",siteLogo);

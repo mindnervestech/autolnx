@@ -545,11 +545,11 @@ $(document).ready(function()
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-none xs-padding-top-30 scroll_effect bounceInLeft" data-wow-delay=".2s"> <span class="align-center"><i class="fa fa-6x fa-road"></i></span>
                   <h3>Proven Technology</h3>
-                  <p>From amazing hybrid, to luxurious sedan, all terrain SUV’s, and blazing fast sports cars, our cars go the distance.</p>
+                  <p>From amazing hybrid, to luxurious sedan, all terrain SUV's, and blazing fast sports cars, our cars go the distance.</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-none xs-padding-top-30 scroll_effect bounceInRight" data-wow-delay=".2s"> <span class="align-center"><i class="fa fa-6x fa-flag-checkered"></i></span>
                   <h3>Winning Culture</h3>
-                  <p>The Autolinx Inc. team has over 30 years of combined experience in the areas of automotive and online sales and strives to provide you with the greatest experience possible when purchasing your new pre-owned vehicle.</p>
+                  <p>The our team has over 30 years of combined experience in the areas of automotive and online sales and strives to provide you with the greatest experience possible when purchasing your new pre-owned vehicle.</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-none xs-padding-top-30 padding-right-none scroll_effect bounceInRight"> <span class="align-center"><i class="fa fa-6x fa-dashboard"></i></span>
                   <h3>Top Performance</h3>

@@ -219,15 +219,6 @@ $(document).ready(function()
       <div class="clearfix"></div>
       <form method="post" action="#" class="listing_sort">
         <div class="select-wrapper listing_select clearfix margin-top-none margin-bottom-15">
-          <div class="my-dropdown years-dropdown">
-         <select name="year" class="css-dropdowns" ng-model="year" ng-change="selectYear()" tabindex="1" >
-              <option value="">All Years</option>
-             <c:forEach var="option" items='${vehicleListYear}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach> 
-            </select>
-          </div>
-        
           <div class="my-dropdown makers-dropdown">
                     <select name="make" ng-model="make" ng-change="selectMake()" class="css-dropdowns" tabindex="1" >
                     	<option value="">All Makes</option>
@@ -246,28 +237,28 @@ $(document).ready(function()
 						</c:forEach> 
             </select>
           </div>
+          <div class="my-dropdown years-dropdown">
+         <select name="year" class="css-dropdowns" ng-model="year" ng-change="selectYear()" tabindex="1" >
+              <option value="">All Years</option>
+             <c:forEach var="option" items='${vehicleListYear}'>
+							<option value='${option}'>${option}</option>
+						</c:forEach> 
+            </select>
+          </div>
           <div class="my-dropdown fuel-dropdown">
             <select name="fuel" ng-model="fuel" ng-change="selectFuel()"  class="css-dropdowns" tabindex="1" >
               <option value="">All Fuel Type</option>
-              <option value="Eco-Friendly">Eco-Friendly</option>
-              <option value="Electric">Electric</option>
-              <option value="Flexible-Fuel">Flexible-Fuel</option>
-              <option value="Gas">Gas</option>
-              <option value="Hybrid">Hybrid</option>
-              <option value="premium unleaded (required)">premium unleaded (required)</option>
+              <c:forEach var="option" items='${vehicleListFuel}'>
+							<option value='${option}'>${option}</option>
+						</c:forEach>
             </select>
           </div>
           <div class="my-dropdown body-styles-dropdown">
             <select name="bodyStyle" ng-model="bodyStyle" ng-change="selectBodyStyle()" class="css-dropdowns" tabindex="1" >
               <option value="">All Body Styles</option>
-              <option value="2dr Hatchback">2dr Hatchback</option>
-              <option value="4dr Hatchback">4dr Hatchback</option>
-              <option value="Convertible">Convertible</option>
-              <option value="Coupe">Coupe</option>
-              <option value="Hatchback">Hatchback</option>
-              <option value="SUV">SUV</option>
-              <option value="Sedan">Sedan</option>
-              <option value="Sports Utility Vehicle">Sports Utility Vehicle</option>
+              <c:forEach var="option" items='${vehicleListBodyStyle}'>
+							<option value='${option}'>${option}</option>
+						</c:forEach>
             </select>
           </div>
           <div ng-if="flagForNew !=1" class="my-dropdown mileage-dropdown">

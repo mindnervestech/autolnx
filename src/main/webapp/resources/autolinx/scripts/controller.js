@@ -2,6 +2,7 @@
 app.controller("InventoryController", function($scope,$http, notificationService, vcRecaptchaService) {
 	$scope.listView = true;
 	$scope.gridView = false;
+	$scope.alphbet = "a_z";
 	var contextPath = $('#contextpath').val();
 	$scope.showListView = function() {
 		$scope.listView = true;
@@ -114,11 +115,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			console.log(data.make);
 		});
 		$scope.selectYear = function(){
-			$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,model:$scope.model,year:$scope.year}})
+			/*$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,model:$scope.model,year:$scope.year}})
 			.success(function(data) {
 				$scope.fuelList = data;
 				console.log(data);
-			});
+			});*/
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -126,11 +127,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectMake = function(){
-			$http({method:'GET',url:contextPath+'/getAllModelByMake',params:{make:$scope.make}})
+			/*$http({method:'GET',url:contextPath+'/getAllModelByMake',params:{make:$scope.make}})
 			.success(function(data) {
 				$scope.modelList = data;
 				console.log(data);
-			});
+			});*/
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -138,11 +139,11 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectModel = function(){
-			$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,model:$scope.model}})
+			/*$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,model:$scope.model}})
 			.success(function(data) {
 				$scope.yearList = data;
 				console.log(data);
-			});
+			});*/
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
