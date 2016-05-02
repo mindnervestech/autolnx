@@ -3174,26 +3174,26 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		}
 		return vehicleListModel;
 	}
-	public List<String> getAllYearByModel(String make,String model, Long locationId) {
+	public List<String> getAllYearByModel(String make, Long locationId) {
 		List<String> vehicleListYear = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where make='"+make+"' and model='"+model+"' and status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where make='"+make+"' and status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
 		for(Map map : rows) {
 			vehicleListYear.add((String) map.get("year"));
 		}
 		return vehicleListYear;
 	}
-	public List<String> getAllFuelTypeYear(String make,String model,String year, Long locationId) {
+	public List<String> getAllFuelTypeYear(String make, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where make='"+make+"' and model='"+model+"' and year='"+year+"' and status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where make='"+make+"' and status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
 		for(Map map : rows) {
 			vehicleListFuel.add((String) map.get("fuel_type"));
 		}
 		return vehicleListFuel;
 	}
 
-	public List<String> getAllBodyStyleByFuelType(String make, String vmodel, Long locationId) {
+	public List<String> getAllBodyStyleByFuelType(String make, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT body_style FROM vehicle where make='"+make+"' and model='"+vmodel+"' and status='Newly Arrived' and public_status='public'  and locations_id = '"+locationId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT body_style FROM vehicle where make='"+make+"' and status='Newly Arrived' and public_status='public'  and locations_id = '"+locationId+"'");
 		for(Map map : rows) {
 			vehicleListFuel.add((String) map.get("body_style"));
 		}

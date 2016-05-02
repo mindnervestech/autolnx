@@ -588,7 +588,7 @@ $(document).ready(function()
                 </div> 
                 <div class="col-md-6">
                 <div class="my-dropdown">
-                		<select name="fuelType" ng-model="fuelType" class="custom" tabindex="1" ng-change="getBodyStyle(fuelType)">
+                		<select id="fuelType" name="fuelType" ng-model="fuelType" class="customDis" tabindex="1" ng-change="getBodyStyle(fuelType)" disabled="true">
                     		<option value="" selected>Fuel Type</option>
 							<option ng-repeat="fuel in fuelList" value="{{fuel}}">{{fuel}}</option>
                     	</select>
@@ -598,7 +598,7 @@ $(document).ready(function()
               <div class="select-wrapper clearfix">
                 <div class="col-md-6">
                   <div class="my-dropdown model-dropdown">
-                  	<select name="model" ng-model="modelType" class="custom" tabindex="1" ng-change="getYear(modelType)">
+                  	<select id="modelType" name="model" ng-model="modelType" class="customDis" tabindex="1" ng-change="getYear(modelType)" disabled="true">
                     	<option value="" selected>Model</option>
 						<option ng-repeat="model in modelList" value="{{model}}">{{model}}</option>
                     </select>
@@ -606,7 +606,7 @@ $(document).ready(function()
                 </div>
                  <div class="col-md-6">
                   <div class="my-dropdown body-styles-dropdownn">
-                  		<select name="bodyStyle" ng-model="bodyStyle" class="custom" tabindex="1">
+                  		<select id="bodyStyle" name="bodyStyle" ng-model="bodyStyle" class="customDis" tabindex="1"  disabled="true">
                     		<option value="" selected>Body Styles</option>
 							<option ng-repeat="bodyStyle in bodyList" value="{{bodyStyle}}">{{bodyStyle}}</option>
                     	</select>
@@ -617,7 +617,7 @@ $(document).ready(function()
             <div class="select-wrapper clearfix">
                 <div class="col-md-6">
                   <div class="my-dropdown make-dropdown">
-                  		<select name="year" ng-model="year" class="custom" tabindex="1" ng-change="getFeulType(year)">
+                  		<select id="year" name="year" ng-model="year" class="customDis" tabindex="1" ng-change="getFeulType(year)" disabled="true">
                     		<option value="" selected>Year</option>
 							<option ng-repeat="year in yearList" value="{{year}}">{{year}}</option>
                     	</select>
@@ -1051,6 +1051,14 @@ $(document).ready(function()
     border: 1px solid rgba(0, 0, 0, 0.0980392);
     border-radius: 4px;
     width: 100%;
+    cursor: pointer;
+}
+.customDis{
+	background: #F7F7F7;
+    border: 1px solid rgba(0, 0, 0, 0.0980392);
+    border-radius: 4px;
+    width: 100%;
+    cursor: no-drop;
 }
 </style>
 <script type="text/javascript">

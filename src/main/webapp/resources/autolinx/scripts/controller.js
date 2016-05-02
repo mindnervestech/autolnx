@@ -220,6 +220,12 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 	$scope.year = "";
 	$scope.fuelType = "";
 	$scope.bodyStyle = "";
+	
+	$('#modelType').prop("disabled", true);
+	$('#year').prop("disabled", true);
+	$('#fuelType').prop("disabled", true);
+	$('#bodyStyle').prop("disabled", true); 
+	
 	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
 		$scope.allMakes = data;
@@ -231,13 +237,25 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 	$http({method:'GET',url:contextPath+'/getRecentVehicles'})
 	.success(function(data) {
 		$scope.recentVehicles = data;
-		
 	});
 	$scope.followBrand = {};
 	$scope.getModel = function(make){
 		console.log("????");
 		$scope.make = make;
 		console.log("getModel");
+		$('#modelType').prop("disabled", false);
+		$('#modelType').removeClass("customDis");
+		$('#modelType').addClass("custom");
+		$('#year').prop("disabled", false);
+		$('#year').removeClass("customDis");
+		$('#year').addClass("custom");
+		$('#fuelType').prop("disabled", false);
+		$('#fuelType').removeClass("customDis");
+		$('#fuelType').addClass("custom");
+		$('#bodyStyle').prop("disabled", false);
+		$('#bodyStyle').removeClass("customDis");
+		$('#bodyStyle').addClass("custom");
+		
 		$http({method:'GET',url:contextPath+'/getAllModelByMake',params:{make:make}})
 		.success(function(data) {
 			$scope.modelList = data;
@@ -248,7 +266,7 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 		$scope.model = model;
 		console.log("????");
 		console.log("getYear");
-		$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,model:model}})
+		$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make}})
 		.success(function(data) {
 			$scope.yearList = data;
 			console.log(data);
@@ -258,7 +276,7 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 		$scope.year = year;
 		console.log("getFuelType");
 		console.log("????");
-		$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,model:$scope.model,year:$scope.year}})
+		$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make}})
 		.success(function(data) {
 			$scope.fuelList = data;
 			console.log(data);
@@ -268,7 +286,7 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 		console.log("????");
 		console.log("getBodyStyle");
 		$scope.fuelType = fuel;
-		$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,model:$scope.model,year:$scope.year,fuel:$scope.fuelType}})
+		$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make}})
 		.success(function(data) {
 			$scope.bodyList = data;
 			console.log(data);
