@@ -3029,10 +3029,10 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		Date dateBefore30Days = cal.getTime();
 		Integer count = 0;
 		if(!year.equals("")) {
-			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and locations_id = '"+locationId+"' and status != 'Sold' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')  ORDER BY price asc limit "+start+",16 ");
+			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and locations_id = '"+locationId+"' and status != 'Sold' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')  ORDER BY posted_date asc limit "+start+",16 ");
 			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and locations_id = '"+locationId+"' and status != 'Sold' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')");
 		} else {
-			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and status != 'Sold' and (year = '"+year+"' or '"+year+"' = '') and public_status='public' and make LIKE '"+alphabet+"%' ORDER BY price asc limit "+start+",16 ");
+			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and status != 'Sold' and (year = '"+year+"' or '"+year+"' = '') and public_status='public' and make LIKE '"+alphabet+"%' ORDER BY posted_date asc limit "+start+",16 ");
 			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and status != 'Sold' and public_status='public' and make LIKE '"+alphabet+"%'");
 		}
 		for(Map map : rows) {

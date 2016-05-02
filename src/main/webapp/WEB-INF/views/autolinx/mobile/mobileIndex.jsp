@@ -86,11 +86,11 @@
           </ul>
 	</div>
     <div class="logo">
-    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="${hostnameimg}${siteLogo.logoPath}" alt="" style="height:100px;"></a>
+    	<a href="${pageContext.request.contextPath}/mobile/home"><img src="${hostnameimg}${siteLogo.logoPath}" alt="" style="height:60px;"></a>
     </div>
 </header>
     <div class="message-wrap">
-    	<h2>
+    	<h2 style="text-align: center;">
         	<strong>${siteContent.heading1}</strong> ${siteContent.heading2} 
         </h2>
         <a class="default-btn pull-right action_button lg-button mainBoxIn1" style="cursor:pointer;" data-toggle="modal" data-target="#carBrandModal">Follow car brand</a>
