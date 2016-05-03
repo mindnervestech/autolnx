@@ -398,7 +398,7 @@
     <div class="message-shadow"></div>
      <!-- <div class="row">
         	 <div class="col-md-6"> -->
-    <div class="boxIn">
+    <div class="boxIn" style="z-index: 20">
     	<div class="boxInLeft setImgs setheight" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg');">
         	<%-- <img src="${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg" alt=""> --%>
             <p class="boxInText">
