@@ -363,7 +363,7 @@
 								fullScreenState = false;
 								slideDownEl.css('opacity', '0');
 							} else {
-								el.height(curHeigth);
+// 								el.height(curHeigth);
 								fullScreenState = true;
 								slideDownEl.css('opacity', '1');
 							}
