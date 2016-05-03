@@ -98,7 +98,7 @@
     <section class="banner-wrap">
 	<a href="#" class="scroll-slider-down"></a>
     <div class="banner">
-        <div class="tp-banner-container">
+        <div class="tp-banner-container" style="height: 375px !important">
             <div class="tp-banner" >
                 <ul>
                 
@@ -356,9 +356,9 @@
 							imageHeight = jQuery('.tp-banner-container li img').height();
 							if (curWidth < fullScreenRes) {
 								if (imageHeight > 540) {
-									el.height('540');
+// 									el.height('540');
 								} else {
-									el.height(imageHeight);
+// 									el.height(imageHeight);
 								}
 								fullScreenState = false;
 								slideDownEl.css('opacity', '0');
