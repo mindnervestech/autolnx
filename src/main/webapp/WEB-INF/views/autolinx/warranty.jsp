@@ -115,7 +115,13 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right" style="margin-top: 14px;">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
+              <%-- <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li> --%>
+              <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="${pageContext.request.contextPath}/findVehicles/New">New</a></li>
+                      <li><a href="${pageContext.request.contextPath}/findVehicles/Used">Used</a></li>
+                  </ul>
+              </li>
               <li class="active"><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>

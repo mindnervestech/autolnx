@@ -14,7 +14,7 @@
 <link rel="shortcut icon" href="${hostnameimg}${siteLogo.faviconPath}">
 <title>${siteLogo.tabText}</title>
 <!-- Bootstrap core CSS -->
-<link href="resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -24,38 +24,38 @@
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yellowtail%7COpen%20Sans%3A400%2C300%2C600%2C700%2C800" media="screen" />
 <!-- Custom styles for this template -->
-<link href="resources/autolinx/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
-<link rel="stylesheet" href="resources/autolinx/css/flexslider.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="resources/autolinx/css/jquery.bxslider.css" type="text/css" media="screen" />
-<link href="resources/autolinx/css/jquery.fancybox.css" rel="stylesheet">
-<link href="resources/autolinx/css/jquery.selectbox.css" rel="stylesheet">
-<link href="resources/autolinx/css/style.css" rel="stylesheet">
-<link href="resources/autolinx/css/listing_style.css" rel="stylesheet">
-<link href="resources/autolinx/css/mobile.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="resources/autolinx/css/settings.css" media="screen" />
-<link href="resources/autolinx/css/animate.min.css" rel="stylesheet">
-<link href="resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="resources/autolinx/js/jquery.min.js"></script>
-<script src="resources/autolinx/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="resources/autolinx/js/wow.min.js"></script>
-<script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
-<script type="text/javascript" src="resources/autolinx/js/ng-infinite-scroll.js"></script>
-<script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
-<script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/autolinx/css/flexslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/autolinx/css/jquery.bxslider.css" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/jquery.fancybox.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/jquery.selectbox.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/listing_style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/mobile.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/autolinx/css/settings.css" media="screen" />
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/animate.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/wow.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/angular.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/app.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/scripts/controller.js"></script>
 
 
-<link type="text/css" rel="stylesheet" href="resources/autolinx/css/pnotify_css/pnotify.buttons.css"> 
-<link type="text/css" rel="stylesheet" href="resources/autolinx/css/pnotify_css/pnotify.core.css"> 
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/autolinx/css/pnotify_css/pnotify.buttons.css"> 
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/autolinx/css/pnotify_css/pnotify.core.css"> 
 
 
-<script src="resources/autolinx/js/pnotify/pnotify.core.js" type="text/javascript"></script>	
-<script src="resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
-<script src="resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
-<script src="resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.core.js" type="text/javascript"></script>	
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
 <script src="http://www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded" async defer></script>
-<script type="text/javascript" src="resources/autolinx/js/angular-recaptcha.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/angular-recaptcha.js"></script>
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 
@@ -96,7 +96,7 @@ $(document).ready(function()
 
 </head>
  
-<body ng-controller="InventoryController" ng-init='initFunction(${vehicle1.year},"${vehicle1.make}","${vehicle1.model}","${vehicle1.bodyStyle}","${vehicle1.fuelType}","${myprofile.locationId}")'>
+<body ng-controller="InventoryController" ng-init='initFunction(${vehicle1.year},"${vehicle1.make}","${vehicle1.model}","${vehicle1.bodyStyle}","${vehicle1.fuelType}","${myprofile.locationId}","${type}")'>
 <!--Header Start-->
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
@@ -133,7 +133,13 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right" style="margin-top: 14px;">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <li class="active"><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
+              <%-- <li class="active"><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li> --%>
+              <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="${pageContext.request.contextPath}/findVehicles/New">New</a></li>
+                      <li><a href="${pageContext.request.contextPath}/findVehicles/Used">Used</a></li>
+                  </ul>
+              </li>
               <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
@@ -261,7 +267,7 @@ $(document).ready(function()
 						</c:forEach>
             </select>
           </div>
-          <div ng-if="flagForNew != 1" class="my-dropdown mileage-dropdown">
+          <div ng-if="type == 'Used'" class="my-dropdown mileage-dropdown">
             <select name="mileage" ng-model="mileage" ng-change="selectMileage()" class="custom" tabindex="1" >
               <option value="">All Mileage</option>
               <option value="10000">&lt; 10000</option>
@@ -274,14 +280,6 @@ $(document).ready(function()
               <option value="80000">&lt; 80000</option>
               <option value="90000">&lt; 90000</option>
               <option value="100000"> &lt; 100000</option>
-            </select>
-          </div>
-          <div class="my-dropdown mileage-dropdown">
-            <select name="vType" ng-model="vType" ng-change="selectvType()" class="custom" tabindex="1" >
-              <option value="">Select</option>
-              <option value="New">New</option>
-              <option value="Used">Used</option>
-              
             </select>
           </div>
           <div class="my-dropdown mileage-dropdown">
@@ -412,7 +410,7 @@ $(document).ready(function()
                   </div>
                   <div class="tax">Plus Sales Tax</div>
                 </div>
-                <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0"> <img style="left: 250px;top:120px;" class="carfax" alt="CarFax Report" src="resources/autolinx/images/Carfax-logo-1.png"></a> </div>
+                <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0"> <img style="left: 250px;top:120px;" class="carfax" alt="CarFax Report" src="${pageContext.request.contextPath}/resources/autolinx/images/Carfax-logo-1.png"></a> </div>
             
               </div>
               </div>
@@ -482,7 +480,7 @@ $(document).ready(function()
               </div>
               <div class="tax">Plus Sales Tax</div>
             </div>
-            <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=WBSDX9C56BE783980&amp;partner=AAG_0"> <img class="carfax" alt="CarFax Report" src="resources/autolinx/images/Carfax-logo-1.png"> </a> </div>
+            <a target="_blank" href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=WBSDX9C56BE783980&amp;partner=AAG_0"> <img class="carfax" alt="CarFax Report" src="${pageContext.request.contextPath}/resources/autolinx/images/Carfax-logo-1.png"> </a> </div>
         </div>
 
         <div class="clearfix"></div>
@@ -624,14 +622,14 @@ $(document).ready(function()
   </div>
 </section>
 <div class="back_to_top"> <img src="http://demo.themesuite.com/automotive/images/arrow-up.png" alt="scroll up" /> </div>
-<!-- Bootstrap core JavaScript --> <script src="resources/autolinx/js/retina.js"></script> 
-<script src="resources/autolinx/js/main.js"></script> 
-<script type="text/javascript" src="resources/autolinx/js/jquery.fancybox.js"></script> 
-<script src="resources/autolinx/js/modernizr.custom.js"></script> <script defer src="resources/autolinx/js/jquery.flexslider.js"></script> 
-<script src="resources/autolinx/js/jquery.bxslider.js" type="text/javascript"></script> 
-<script src="resources/autolinx/js/jquery.selectbox-0.2.js" type="text/javascript"></script> 
-<script type="text/javascript" src="resources/autolinx/js/jquery.mousewheel.js"></script> 
-<script type="text/javascript" src="resources/autolinx/js/jquery.easing.js"></script>
+<!-- Bootstrap core JavaScript --> <script src="${pageContext.request.contextPath}/resources/autolinx/js/retina.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/main.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.fancybox.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/modernizr.custom.js"></script> <script defer src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.flexslider.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.bxslider.js" type="text/javascript"></script> 
+<script src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.selectbox-0.2.js" type="text/javascript"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.mousewheel.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.easing.js"></script>
 </body>
 </html>
 <style>

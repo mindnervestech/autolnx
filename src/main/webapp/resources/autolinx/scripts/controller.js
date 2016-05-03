@@ -38,13 +38,15 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	$scope.price = "lowToHigh";
 	$scope.vehicleType="";
 	
-	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId){
+	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId,type){
 		console.log(model);
 		console.log(make);
 		console.log(year);
 		console.log(bodyStyle);
 		console.log(fuel);
 		console.log($scope.vType);
+		console.log(type);
+		$scope.type = type;
 		if(year == 0){
 			$scope.year = "";
 		}else{
@@ -223,7 +225,8 @@ app.controller("InventoryController", function($scope,$http, notificationService
 });
 
 app.controller("HomeController", function($scope,$http, notificationService, vcRecaptchaService,$location) {
-	
+	$scope.newType = "New";
+	$scope.usedType = "Used";
 	var contextPath = $('#contextpath').val();
 	$scope.make = "";
 	$scope.model = "";
@@ -625,7 +628,6 @@ app.controller("MobileVehicleDetailsController", function($scope,$http,notificat
 app.controller("MobileHomeController", function($scope,$http, notificationService) {
 	
 	var contextPath = $('#contextpath').val();
-	
 	$http({method:'GET',url:contextPath+'/getAllMakes'})
 	.success(function(data) {
 		console.log(data);

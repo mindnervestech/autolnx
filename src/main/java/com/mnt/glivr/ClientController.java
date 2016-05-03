@@ -491,6 +491,42 @@ public class ClientController {
 	    clientService.getTradeInApp(model, hostUrl, locationId);
    } 
    
+   @RequestMapping(value="/findVehicles/{type}",method=RequestMethod.GET)
+	public String findVehiclesType(Locale locale, Model model,HttpServletRequest request, @PathVariable("type") String type) {
+		System.out.println(type);
+		Long locationId = findLocation(request);
+		locationIdGol = locationId;
+		//Long locationId = 16L;
+		
+		VehicleVM vehicleVM = clientService.getVehicleInfo(request);
+		VehicleVM vehicleVM1 = clientService.getVehicleInfoNotNull(request);
+		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
+		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
+		List<String> vehicleListFuel = clientService.getAllVehicleFuel(locationId);
+		List<String> vehicleListBodyStyle = clientService.getAllVehicleBodyStyle(locationId);
+		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
+		MyProfileVM profile = clientService.getProfileModel(locationId);
+		model.addAttribute("myprofile",profile);
+		String ph =clientService.getPhoneno(locationId);
+		model.addAttribute("myphone",ph);
+		model.addAttribute("type", type);
+		model.addAttribute("vehicleListYear", vehicleListYear);
+		model.addAttribute("vehicleListMake", vehicleListMake );
+		model.addAttribute("vehicleListModel", vehicleListModel );
+		model.addAttribute("vehicleListFuel", vehicleListFuel);
+		model.addAttribute("vehicleListBodyStyle", vehicleListBodyStyle);
+		model.addAttribute("vehicle",vehicleVM);
+		model.addAttribute("vehicle1",vehicleVM1);
+		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("flag",0);
+		model.addAttribute("hostnameimg",hostnameimg);
+		
+		
+		return "autolinx/inventory";
+	}
+   
+   
 	
 	@RequestMapping(value="/findVehicles",method=RequestMethod.GET)
 	public String findVehicles(Locale locale, Model model,HttpServletRequest request) {
