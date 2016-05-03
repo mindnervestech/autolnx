@@ -106,7 +106,7 @@
                    <%--  <c:forEach var="row" items="${sliderImages}"> --%>
                    <c:choose>
 				    <c:when test="${sliderImages.size()>=1}">
-				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
+				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"  style="height: 500px"> 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
                         <img src="${hostnameimg}${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;;"> 
