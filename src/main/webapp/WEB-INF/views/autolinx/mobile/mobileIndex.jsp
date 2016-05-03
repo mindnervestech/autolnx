@@ -329,7 +329,7 @@
 						{
 							delay:8000,
 							startwidth:1170,
-							startheight:561, //665 & ori 645 & fw 800
+							startheight:500, //startheight561 to 500  665 & ori 645 & fw 800
 							hideThumbs:10,
 							fullWidth:"off",
 							fullScreen:'off',
