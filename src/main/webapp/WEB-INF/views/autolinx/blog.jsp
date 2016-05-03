@@ -153,7 +153,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>AutoLinx Blog</h2>
+        <h2>Our Blog</h2>
         <h4>Latest Industry News</h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 ">
@@ -178,7 +178,7 @@ $(document).ready(function()
           </div>
           <ul class="margin-top-10 margin-bottom-15">
             <li class="fa fa-calendar"><a href="#">{{blog.postedDate}}</a></li>
-            <li class="fa fa-folder-open"> <a href="http://www.autolinxinc.com/category/uncategorized/">Uncategorized</a> </li>
+            <!-- <li class="fa fa-folder-open"> <a href="http://www.autolinxinc.com/category/uncategorized/">Uncategorized</a> </li> -->
             <li class="fa fa-user"><span class="theme_font">Posted by</span> <a rel="author" title="Posts by Glider LLC" href="http://www.autolinxinc.com/author/glider/">{{blog.postedBy}}</a></li>
             <li class="fa fa-comments"><a title="Comment on Ask Your Dealer &ndash;  Should I Buy or Finance My Used Luxury Car" href="http://www.autolinxinc.com/ask-your-dealer-should-i-buy-or-finance-my-used-luxury-car/#respond">No comments yet</a></li>
           </ul>
@@ -188,8 +188,8 @@ $(document).ready(function()
             <pre style="margin-top:3%;font-size: 14px;font-family: 'Open Sans', sans-serif, Arial;">{{blog.description}}</pre>
             <div class="clearfix"></div>
             <div class="blog-end margin-top-20">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 read-more"><a href="">Read More...</a></div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right post-tags"><span class="fa fa-tags tags"> </span></div>
+              <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 read-more"><a href="">Read More...</a></div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right post-tags"><span class="fa fa-tags tags"> </span></div> -->
               <div class="clearfix"></div>
             </div>
           </div>

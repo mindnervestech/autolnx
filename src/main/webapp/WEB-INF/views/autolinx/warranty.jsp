@@ -180,11 +180,11 @@ $(document).ready(function()
                 <li>EcoMind</li>
               </ul>
             </div>
-            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
-              <form method="post" action="warranty-detail.html">
+            <div class="price-footer padding-top-20 padding-bottom-15">
+              <!-- <form method="post" action="warranty-detail.html">
                 <input type="submit" value="More Details" class="lg-button">
-              </form>
-            </div> -->
+              </form> -->
+            </div>
           </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -215,11 +215,11 @@ $(document).ready(function()
                 <li>EcoMind</li>
               </ul>
             </div>
-            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
-              <form method="post" action="#">
+            <div class="price-footer padding-top-20 padding-bottom-15">
+              <!-- <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
-              </form>
-            </div> -->
+              </form> -->
+            </div>
           </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -252,11 +252,11 @@ $(document).ready(function()
                 <li>Vehicles equipped with a snowplow</li>
               </ul>
             </div>
-            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
-              <form method="post" action="#">
+            <div class="price-footer padding-top-20 padding-bottom-15">
+              <!-- <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
-              </form>
-            </div> -->
+              </form> -->
+            </div>
           </div>
         </div>
       </div>
@@ -294,11 +294,11 @@ $(document).ready(function()
                 <li>Vehicles equipped with a snowplow</li>
               </ul>
             </div>
-            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
-              <form method="post" action="#">
+            <div class="price-footer padding-top-20 padding-bottom-15">
+              <!-- <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
-              </form>
-            </div> -->
+              </form> -->
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -335,11 +335,11 @@ $(document).ready(function()
                 <li>Vehicles equipped with a snowplow</li>
               </ul>
             </div>
-            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
-              <form method="post" action="#">
+            <div class="price-footer padding-top-20 padding-bottom-15">
+              <!-- <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
-              </form>
-            </div> -->
+              </form> -->
+            </div>
           </div>
         </div>
       </div>
