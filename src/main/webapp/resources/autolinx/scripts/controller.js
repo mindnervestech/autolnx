@@ -271,36 +271,39 @@ app.controller("HomeController", function($scope,$http, notificationService, vcR
 			$scope.modelList = data;
 			console.log(data);
 		});
-	};
-	$scope.getYear = function(model){
-		$scope.model = model;
-		console.log("????");
-		console.log("getYear");
 		$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make}})
 		.success(function(data) {
 			$scope.yearList = data;
 			console.log(data);
 		});
-	};
-	$scope.getFeulType = function(year){
-		$scope.year = year;
-		console.log("getFuelType");
-		console.log("????");
 		$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make}})
 		.success(function(data) {
 			$scope.fuelList = data;
 			console.log(data);
 		});
-	};
-	$scope.getBodyStyle = function(fuel){
-		console.log("????");
-		console.log("getBodyStyle");
-		$scope.fuelType = fuel;
 		$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make}})
 		.success(function(data) {
 			$scope.bodyList = data;
 			console.log(data);
 		});
+	};
+	$scope.getYear = function(model){
+		$scope.model = model;
+		console.log("????");
+		console.log("getYear");
+		
+	};
+	$scope.getFeulType = function(year){
+		$scope.year = year;
+		console.log("getFuelType");
+		console.log("????");
+		
+	};
+	$scope.getBodyStyle = function(fuel){
+		console.log("????");
+		console.log("getBodyStyle");
+		$scope.fuelType = fuel;
+		
 	};
 	$scope.saveFollowBrand = function() {
 		console.log($scope.followBrand);

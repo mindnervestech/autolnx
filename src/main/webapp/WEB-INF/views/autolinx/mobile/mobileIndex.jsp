@@ -109,7 +109,7 @@
 				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
-                        <img src="${hostnameimg}${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:100%;"> 
+                        <img src="${hostnameimg}${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -179,7 +179,7 @@
 					    <c:when test="${sliderImages.size()>=2}">
 					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[1].link}">
-                        <img src="${hostnameimg}${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
+                        <img src="${hostnameimg}${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center invest start"
@@ -260,7 +260,7 @@
 					    <c:when test="${sliderImages.size()>=3}">
 					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[2].link}">
-                        <img src="${hostnameimg}${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:auto;"> 
+                        <img src="${hostnameimg}${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500Px;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption customin customout start green"

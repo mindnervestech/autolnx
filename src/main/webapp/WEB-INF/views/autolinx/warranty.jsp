@@ -180,11 +180,11 @@ $(document).ready(function()
                 <li>EcoMind</li>
               </ul>
             </div>
-            <div class="price-footer padding-top-20 padding-bottom-15">
+            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
               <form method="post" action="warranty-detail.html">
                 <input type="submit" value="More Details" class="lg-button">
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -215,11 +215,11 @@ $(document).ready(function()
                 <li>EcoMind</li>
               </ul>
             </div>
-            <div class="price-footer padding-top-20 padding-bottom-15">
+            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
               <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -252,11 +252,11 @@ $(document).ready(function()
                 <li>Vehicles equipped with a snowplow</li>
               </ul>
             </div>
-            <div class="price-footer padding-top-20 padding-bottom-15">
+            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
               <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -294,11 +294,11 @@ $(document).ready(function()
                 <li>Vehicles equipped with a snowplow</li>
               </ul>
             </div>
-            <div class="price-footer padding-top-20 padding-bottom-15">
+            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
               <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -307,7 +307,7 @@ $(document).ready(function()
               <h4>Coverage</h4>
             </div>
             <div class="main_pricing">
-              <div class="inside"><span class="amt annual">5 Star +</span> <span class="slash"><img class="no_border" alt="" src="http://www.autolinxinc.com/wp-content/plugins/automotive/images/slash.png"></span> <span class="sub">mo</span></div>
+              <div class="inside"><span class="amt annual">5 Star +</span></div>
             </div>
             <div class="category_pricing">
               <ul>
@@ -335,11 +335,11 @@ $(document).ready(function()
                 <li>Vehicles equipped with a snowplow</li>
               </ul>
             </div>
-            <div class="price-footer padding-top-20 padding-bottom-15">
+            <!-- <div class="price-footer padding-top-20 padding-bottom-15">
               <form method="post" action="#">
                 <input type="submit" value="More Details" class="lg-button">
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

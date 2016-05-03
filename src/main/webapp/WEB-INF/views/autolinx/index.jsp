@@ -549,7 +549,7 @@ $(document).ready(function()
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-none xs-padding-top-30 scroll_effect bounceInRight" data-wow-delay=".2s"> <span class="align-center"><i class="fa fa-6x fa-flag-checkered"></i></span>
                   <h3>Winning Culture</h3>
-                  <p>The our team has over 30 years of combined experience in the areas of automotive and online sales and strives to provide you with the greatest experience possible when purchasing your new pre-owned vehicle.</p>
+                  <p>Our team has over 30 years of combined experience in the areas of automotive and online sales and strives to provide you with the greatest experience possible when purchasing your new pre-owned vehicle.</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-none xs-padding-top-30 padding-right-none scroll_effect bounceInRight"> <span class="align-center"><i class="fa fa-6x fa-dashboard"></i></span>
                   <h3>Top Performance</h3>
@@ -868,7 +868,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padding-left-none md-padding-left-none sm-padding-left-15 xs-padding-left-15">
-        <h4>Subscribe to the official AutoLinx newsletter – Vehi-Linx</h4>
+        <h4>Subscribe to the official  Newsletter and Inventory Updates</h4>
         <form method="post">
           <p>
             <label>Email Address:</label>
@@ -881,6 +881,14 @@ $(document).ready(function()
           <p>
             <label>Last Name:</label>
             <input type="text" placeholder="Your last name" name="LNAME">
+          </p>
+          <p>
+            <label>Newsletter:</label>
+            <input type="checkbox" name="newsletter" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
+          </p>
+          <p>
+            <label>Inventory:</label>
+            <input type="checkbox" name="inventory" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
           </p>
           <p>
             <input type="submit" value="Sign up">
