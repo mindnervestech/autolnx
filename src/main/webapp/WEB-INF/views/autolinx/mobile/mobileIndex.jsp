@@ -98,7 +98,7 @@
     <section class="banner-wrap">
 	<a href="#" class="scroll-slider-down"></a>
     <div class="banner">
-        <div class="tp-banner-container" style="height: 375px !important">
+        <div class="tp-banner-container" style="height: 500px !important">
             <div class="tp-banner" >
                 <ul>
                 
