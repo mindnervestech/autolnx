@@ -269,10 +269,9 @@ public class ClientService {
 	}
 	
 
-	public Map getAllMakes(Long locationId) {
+	public Map getAllMakes(String make,String year,String fuel,String bodyStyle, Long locationId) {
 		List<String> vehicleListMake = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
-			
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 		
 			vehicleListMake.add((String) map.get("make"));
@@ -513,19 +512,19 @@ public class ClientService {
 		Integer count = 0;
 		if(vehicleType.equals("")){
 			if(!priceSort.equals("")){
-				rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
-				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '')and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+				rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '')and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 			}else if(!alphbet.equals("")){
-				rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
-				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '')and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
+				rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
+				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '')and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
 			}
 		}else{
 			if(!priceSort.equals("")){
-				rows = jdbcTemplate.queryForList("select * from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
-				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold'");
+				rows = jdbcTemplate.queryForList("select * from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold'");
 			}else if(!alphbet.equals("")){
-				rows = jdbcTemplate.queryForList("select * from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
-				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold'");
+				rows = jdbcTemplate.queryForList("select * from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'a_z' WHEN '"+alphbet+"' THEN make END ASC, CASE 'z_a' WHEN '"+alphbet+"' THEN make END DESC limit "+start+",16 ");
+				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold'");
 			}
 		}
 		
@@ -3210,9 +3209,9 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		}
 		return vehicleListModel;
 	}
-	public List<String> getAllYearByModel(String make, Long locationId) {
+	public List<String> getAllYearByModel(String make,String year,String fuel,String bodyStyle, Long locationId) {
 		List<String> vehicleListYear = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where make='"+make+"' and status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("year") != null){
 				if(map.get("year").toString().length() > 0)
@@ -3221,9 +3220,10 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		}
 		return vehicleListYear;
 	}
-	public List<String> getAllFuelTypeYear(String make, Long locationId) {
+	public List<String> getAllFuelTypeYear(String make,String year,String fuel,String bodyStyle, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where make='"+make+"' and status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
+		System.out.println(year);
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("fuel_type") != null){
 				if(map.get("fuel_type").toString().length() > 0)
@@ -3233,9 +3233,9 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		return vehicleListFuel;
 	}
 
-	public List<String> getAllBodyStyleByFuelType(String make, Long locationId) {
+	public List<String> getAllBodyStyleByFuelType(String make,String year,String fuel,String bodyStyle, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT body_style FROM vehicle where make='"+make+"' and status='Newly Arrived' and public_status='public'  and locations_id = '"+locationId+"'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT body_style FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("body_style") != null){
 				if(map.get("body_style").toString().length() > 0)

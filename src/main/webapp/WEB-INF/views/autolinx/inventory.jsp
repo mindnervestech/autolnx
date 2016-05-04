@@ -227,44 +227,33 @@ $(document).ready(function()
         <div class="select-wrapper listing_select clearfix margin-top-none margin-bottom-15">
           <div class="my-dropdown makers-dropdown">
                     <select name="make" ng-model="make" ng-change="selectMake()" class="custom" tabindex="1" >
-                    	<option value="">All Makes</option>
-                        <c:forEach var="option" items='${vehicleListMake}'>
-								<option value='${option}'>${option}</option>
-						</c:forEach>
-                     
+                    	<option value="" selected>All Makes</option>
+						<option ng-repeat="make in makeList" value="{{make}}">{{make}}</option>
                     </select>
                   </div>
       
           <div class="my-dropdown models-dropdown">
             <select name="model" class="custom" ng-model="model" ng-change="selectModel()">
-               <option value="">All Model</option>
-                        <c:forEach var="option" items='${vehicleListModel}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach> 
+               <option value="" selected>All Model</option>
+						<option ng-repeat="model in modelList" value="{{model}}">{{model}}</option>
             </select>
           </div>
           <div class="my-dropdown years-dropdown">
          <select name="year" class="custom" ng-model="year" ng-change="selectYear()" tabindex="1" >
-              <option value="">All Years</option>
-             <c:forEach var="option" items='${vehicleListYear}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach> 
+              <option value="" selected>Year</option>
+							<option ng-repeat="year in yearList" value="{{year}}">{{year}}</option>
             </select>
           </div>
           <div class="my-dropdown fuel-dropdown">
             <select name="fuel" ng-model="fuel" ng-change="selectFuel()"  class="custom" tabindex="1" >
-              <option value="">All Fuel Type</option>
-              <c:forEach var="option" items='${vehicleListFuel}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach>
+              <option value="" selected>Fuel Type</option>
+							<option ng-repeat="fuel in fuelList" value="{{fuel}}">{{fuel}}</option>
             </select>
           </div>
           <div class="my-dropdown body-styles-dropdown">
             <select name="bodyStyle" ng-model="bodyStyle" ng-change="selectBodyStyle()" class="custom" tabindex="1" >
-              <option value="">All Body Styles</option>
-              <c:forEach var="option" items='${vehicleListBodyStyle}'>
-							<option value='${option}'>${option}</option>
-						</c:forEach>
+              <option value="" selected>All Body Styles</option>
+							<option ng-repeat="bodyStyle in bodyList" value="{{bodyStyle}}">{{bodyStyle}}</option>
             </select>
           </div>
           <div ng-if="type == 'Used'" class="my-dropdown mileage-dropdown">
