@@ -293,7 +293,7 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padding-left-none md-padding-left-none sm-padding-left-15 xs-padding-left-15">
-        <h4>Subscribe to the official AutoLinx newsletter - Vehi-Linx</h4>
+        <h4>Subscribe to the official  Newsletter and Inventory Updates</h4>
         <form method="post">
           <p>
             <label>Email Address:</label>
@@ -306,6 +306,14 @@ $(document).ready(function()
           <p>
             <label>Last Name:</label>
             <input type="text" placeholder="Your last name" name="LNAME">
+          </p>
+          <p>
+            <label>Newsletter:</label>
+            <input type="checkbox" name="newsletter" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
+          </p>
+          <p>
+            <label>Inventory:</label>
+            <input type="checkbox" name="inventory" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
           </p>
           <p>
             <input type="submit" value="Sign up">

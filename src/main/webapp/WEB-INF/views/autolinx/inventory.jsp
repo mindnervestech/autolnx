@@ -350,7 +350,7 @@ $(document).ready(function()
         <div class="inventory-wide-sidebar-left">
           <div class="inventory-wide-sidebar-left col-md-12  car_listings">
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
-              <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="vehicleDetails/{{vehicle.vin}}" class="inventory">
+              <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="${pageContext.request.contextPath}/vehicleDetails/{{vehicle.vin}}" class="inventory">
                 <div class="title">{{vehicle.title}}</div>
                 <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;">
                 <table class="options-primary">
