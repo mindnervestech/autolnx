@@ -101,7 +101,7 @@
     <div class="topBanner">
     	<img src="${pageContext.request.contextPath}/resources/autolinx/images/dynamic-header-2.jpg" alt="">
         <h1 class="topBannerText">Vehicle Profile<br>
-        	<span>See all the vehicle's details with 360º view, engine sound and history report</span>
+        	<span>See all the vehicle's details with 360<sup>o</sup> view, engine sound and history report</span>
         </h1>
     </div>
     
@@ -110,10 +110,10 @@
     	<div class="headingRow">
         	<ul>
             	<li>
-                	<h2>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
+                	<h2 style="letter-spacing: -0.5px;line-height: 25px;">${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
                 </li>
                 <li>
-                	<h2>${vehicle.price}</h2>
+                	<h2 style="letter-spacing: -0.5px;line-height: 25px;">${vehicle.price}</h2>
                     <em>Plus Taxes &amp; Licensing</em>
                 </li>
             </ul>
@@ -165,20 +165,21 @@
         <div class="content-nav margin-bottom-30">
                    
 
-	            <ul class="mainBoxIn1">
-	            	
-	                                
+	            <ul class="mainBoxIn1" style="padding: 0;margin: 0;float: none;margin-left: 0%; margin-right: 0%;">
+	            	              
 	                	<li class="prev1 gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.prevVehicle}">Prev Vehicle</a></li>
 	                	                
-	                	                	<li class="request gradient_button"><a  data-toggle="modal" data-target="#myModal" >Request More Info</a></li>
-	                	                
+	                	                	<li class="request gradient_button" style="float: right;"><a  data-toggle="modal" data-target="#myModal" >Request More Info</a></li>
+	                	                	 <br><br>
 	                	                	<li class="schedule gradient_button"><a  data-toggle="modal" data-target="#scheduleTest">Schedule Test Drive</a></li>
 	                	                
-	                	                	<li class="pdf gradient_button"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
-	                	                	
+	                	                	<li class="pdf gradient_button" style="float: right;"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
+	                	                	<br><br>
 	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo">Email To Friend</a></li>
 	                	                	
-	                	                	<li class="next1 gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
+	                	                	<li class="schedule gradient_button" style="margin-left: 5%;" ng-if="${vehicle.pdfPath != null}"><a target="_blank" data-toggle="modal" data-target="#pdfModal"  >PDF Brochure</a></li>
+	                	                	
+	                	                	<li class="next1 gradient_button" style="float: right;"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                
 	            </ul> 
 	        </div>
@@ -222,49 +223,51 @@
         <div class="table-responsive">
             <table class="table">
                 <tbody>
-                    <tr>
+                    <tr ng-if="${vehicle.year != null}">
                     	<td>Year: </td><td>	${vehicle.year}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.make != null}">
                     	<td>Make: </td><td>	${vehicle.make}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.model != null}">
                     	<td>Model: </td><td>${vehicle.model}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.bodyStyle != null}">
                     	<td>Body Style: </td><td>${vehicle.bodyStyle}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.mileage != null}">
                     	<td>Mileage: </td><td>${vehicle.mileage}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.transmission != null}">
                     	<td>Transmission: </td><td>${vehicle.transmission}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.bodyStyle != null}">
                     	<td>Condition: </td><td>${vehicle.bodyStyle}</td>
                     </tr>
-                     <tr>
-                    	<td>Location: </td><td>${vehicle.location}</td>
+                     <tr ng-if="${vehicle.extColor != null}">
+                    	<td>Location: </td><td><a style="color: black;font-weight: bold;" href="">${vehicle.loc}</a>
+                    	</td>
+                    	
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.extColor != null}">
                     	<td>Price: </td><td>${vehicle.price}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.drivetrain != null}">
                     	<td>Drivetrain: </td><td>${vehicle.drivetrain}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.engine != null}">
                     	<td>Engine: </td><td>${vehicle.engine}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.extColor != null}">
                     	<td>Exterior Color: </td><td>${vehicle.extColor}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.intColor != null}">
                     	<td>Interior Color: </td><td>${vehicle.intColor}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="${vehicle.cityMileage != null} || ${vehicle.highwayMileage != null}">
                     	<td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td>
                    	</tr>
-                    <tr>
+                    <tr ng-if="${vehicle.vin != null}">
                     	<td>VIN Number: </td><td>${vehicle.vin}</td>
                     </tr>	                                
                    </tbody>
@@ -272,7 +275,7 @@
         </div>
 		</div>
         
-        <div class="efficiency-rating">
+        <div class="efficiency-rating" ng-if="${vehicle.cityMileage != null} || ${vehicle.highwayMileage != null}">
             <h3>Fuel Efficiency Rating</h3>
             <ul>
                	<li class="city_mpg"><small>City:</small> <strong>${vehicle.cityMileage}</strong></li>
@@ -284,10 +287,10 @@
         
         
         <div class="message-wrap">
-        	<h2>SET YOUR OWN PRICE <strong style="color:#ff0000;">ALERT!</strong> </h2>
-            <div class="buttonInner">
+        	<h2 style="text-align: center;">SET YOUR OWN PRICE <strong style="color:#ff0000;">ALERT!</strong> </h2>
+            <!-- <div class="buttonInner">
             	<a style="cursor: pointer;" data-toggle="modal" data-target="#priceAlertModal">Follow this car</a>
-            </div>
+            </div> -->
         </div>
         
         <div class="clearClass"></div>
@@ -295,7 +298,7 @@
     </div>
 
 <footer class="footer1">
-	<h4>Subscribe to the official AutoLinx newsletter - Vehi-Linx</h4>
+	<h4>Price Alert</h4>
     <form method="post">
           <p>
             <label>Email Address:</label>
