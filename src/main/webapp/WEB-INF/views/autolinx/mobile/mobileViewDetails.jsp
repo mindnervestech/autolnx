@@ -131,6 +131,26 @@
                         <section class="slider home-banner">
                             <div class="flexslider" id="home-slider-canvas">
                                 <ul class="slides">
+                                    <c:forEach var="row" items="${vehicle.images}">
+                                    <li data-thumb="${hostnameimg}${row.path}"> <img data-full-image="${hostnameimg}${row.path}" alt="" src="${hostnameimg}${row.path}" draggable="false"> </li>
+                                     </c:forEach>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="home-slider-thumbs">
+                            <div class="flexslider" id="home-slider-thumbs">
+                                <ul class="slides">
+                                <c:forEach var="row" items="${vehicle.images}">
+                                    <li data-thumb="${hostnameimg}${row.path}"> <a href="#"><img alt="" src="${hostnameimg}${row.path}" draggable="false" style="height: 130px;"></a> </li>
+                                 </c:forEach>   
+                                </ul>
+                            </div>
+                        </section>
+         </div>
+        <%-- <div class="listing-slider">
+                        <section class="slider home-banner">
+                            <div class="flexslider" id="home-slider-canvas">
+                                <ul class="slides">
                                    
                                     <c:forEach var="row" items="${vehicle.images}">
                                 	<c:choose>
@@ -163,7 +183,7 @@
                                 </ul>
                             </div>
                         </section>
-                    </div>
+                    </div> --%>
         <!--CLOSE OF SLIDER--> 
         
         <div class="content-nav margin-bottom-30">
