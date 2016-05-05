@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -113,7 +115,9 @@
                 	<h2 style="letter-spacing: -0.5px;line-height: 25px;">${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
                 </li>
                 <li>
-                	<h2 style="letter-spacing: -0.5px;line-height: 25px;">${vehicle.price}</h2>
+                	<h2 style="letter-spacing: -0.5px;line-height: 25px;">
+                	<c:set var="string2" value="${fn:split(vehicle.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/>
+                	</h2>
                     <em>Plus Taxes &amp; Licensing</em>
                 </li>
             </ul>
@@ -177,7 +181,7 @@
 	                	                	<br><br>
 	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo">Email To Friend</a></li>
 	                	                	
-	                	                	<li class="schedule gradient_button" style="margin-left: 5%;" ng-if="${vehicle.pdfPath != null}"><a target="_blank" data-toggle="modal" data-target="#pdfModal"  >PDF Brochure</a></li>
+	                	                	<li class="schedule gradient_button" ng-if="${vehicle.pdfPath != null}"><a target="_blank" data-toggle="modal" data-target="#pdfModal"  >PDF Brochure</a></li>
 	                	                	
 	                	                	<li class="next1 gradient_button" style="float: right;"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                
@@ -241,16 +245,18 @@
                     <tr ng-if="${vehicle.transmission != null}">
                     	<td>Transmission: </td><td>${vehicle.transmission}</td>
                     </tr>
-                    <tr ng-if="${vehicle.bodyStyle != null}">
+                    <%-- <tr ng-if="${vehicle.bodyStyle != null}">
                     	<td>Condition: </td><td>${vehicle.bodyStyle}</td>
-                    </tr>
+                    </tr> --%>
                      <tr ng-if="${vehicle.extColor != null}">
                     	<td>Location: </td><td><a style="color: black;font-weight: bold;" href="">${vehicle.loc}</a>
                     	</td>
                     	
                     </tr>
-                    <tr ng-if="${vehicle.extColor != null}">
-                    	<td>Price: </td><td>${vehicle.price}</td>
+                    <tr ng-if="${vehicle.price != null}">
+                    	<td>Price: </td><td>
+                    	<c:set var="string2" value="${fn:split(vehicle.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/>
+                    	</td>
                     </tr>
                     <tr ng-if="${vehicle.drivetrain != null}">
                     	<td>Drivetrain: </td><td>${vehicle.drivetrain}</td>
@@ -566,6 +572,60 @@
       </form>
     </div>
   </div>
+
+
+<div class="modal fade" id="pdfModal" role="dialog">
+    <div class="modal-dialog">
+     <form name="fome1" ng-submit="savePdfData('${vehicle.vin}')"  method="post"> <%--  action="${pageContext.request.contextPath}/requestMore" --%>
+      <div class="modal-content" style="width: 514px;margin-left: 80px;">
+        <div class="modal-header">
+          <button id="pdfPopclose" type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Download PDF Brochure</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+           <div class="row">
+        	 <div class="col-md-8">
+        	 	<label style="font-weight: initial;padding: 0px;">Please enter your information to download our Brochure</label>
+        	 </div>
+        	</div>
+        
+           <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Name:</label>
+        	 </div>
+        	  <%--  <input type="text" name="vin" ng-model="request.vin" value="${vehicle.vin}" style="display: none;"> --%>
+        	 <div class="col-md-6">
+        	 	<input type="text" name="name" ng-model="pdf.name" style="width: 220px !important;" required>
+        	 </div>
+        	</div>
+        	  <div class="row">
+        	 <div class="col-md-6">
+        	 	<label style="font-weight: initial;padding: 0px;">Email:</label>
+        	 </div>
+        	 <div class="col-md-6">
+        	 	<input type="email" name="email" ng-model="pdf.email" style="width: 220px !important;">
+        	 </div>
+        	 </div>
+        	 
+        	 
+        	 <div>
+        	 <input type="hidden" id="pdfPath" value="${vehicle.pdfPath}" ng-model="pdf.pdfPath">
+        	 <input type="hidden" id="pdfRootPath" value="${hostnameimg}/" ng-model="pdf.pdfPath">
+        	 </div>
+        	 
+        	 
+        </div>
+       
+        <div class="modal-footer">
+            <input type="submit"  value="Submit" />
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+
 
 </body>
 </html>

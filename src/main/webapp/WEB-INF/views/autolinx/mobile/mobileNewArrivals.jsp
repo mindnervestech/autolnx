@@ -202,7 +202,7 @@
     </div>
 
 <footer>
-	<h4>Subscribe to the official AutoLinx newsletter - Vehi-Linx</h4>
+	<h4>Price Alert</h4>
     <form method="post">
           <p>
             <label>Email Address:</label>
