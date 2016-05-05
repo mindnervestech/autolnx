@@ -269,9 +269,10 @@ public class ClientService {
 	}
 	
 
-	public Map getAllMakes(String make,String year,String fuel,String bodyStyle, Long locationId) {
+	public Map getAllMakes(String make,String year,String fuel,String bodyStyle, String category,Long locationId) {
 		List<String> vehicleListMake = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		System.out.println("in make...");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 		
 			vehicleListMake.add((String) map.get("make"));
@@ -279,6 +280,29 @@ public class ClientService {
 		
 		List<String> vehicleListModel = new ArrayList<String>();
 		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT model FROM vehicle where status='Newly Arrived' and public_status='public' and locations_id = '"+locationId+"'");
+		
+		for(Map map : rows1) {
+			vehicleListModel.add((String) map.get("model"));
+		}
+		
+		Map<String, Object> mapAll = new HashMap<String, Object>();
+		mapAll.put("make", vehicleListMake);
+		mapAll.put("model", vehicleListModel);
+		
+		return mapAll;
+	}
+	
+	public Map getAllMakes(Long locationId) {
+		List<String> vehicleListMake = new ArrayList<String>();
+		System.out.println("in make...");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT make FROM vehicle where locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		for(Map map : rows) {
+		
+			vehicleListMake.add((String) map.get("make"));
+		}
+		
+		List<String> vehicleListModel = new ArrayList<String>();
+		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT model FROM vehicle where locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		
 		for(Map map : rows1) {
 			vehicleListModel.add((String) map.get("model"));
@@ -3209,9 +3233,9 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		}
 		return vehicleListModel;
 	}
-	public List<String> getAllYearByModel(String make,String year,String fuel,String bodyStyle, Long locationId) {
+	public List<String> getAllYearByModel(String make,String year,String fuel,String bodyStyle,String category, Long locationId) {
 		List<String> vehicleListYear = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("year") != null){
 				if(map.get("year").toString().length() > 0)
@@ -3220,10 +3244,10 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		}
 		return vehicleListYear;
 	}
-	public List<String> getAllFuelTypeYear(String make,String year,String fuel,String bodyStyle, Long locationId) {
+	public List<String> getAllFuelTypeYear(String make,String year,String fuel,String bodyStyle,String category, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
 		System.out.println(year);
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("fuel_type") != null){
 				if(map.get("fuel_type").toString().length() > 0)
@@ -3233,9 +3257,9 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		return vehicleListFuel;
 	}
 
-	public List<String> getAllBodyStyleByFuelType(String make,String year,String fuel,String bodyStyle, Long locationId) {
+	public List<String> getAllBodyStyleByFuelType(String make,String year,String fuel,String bodyStyle,String category, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT body_style FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '')  and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT body_style FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("body_style") != null){
 				if(map.get("body_style").toString().length() > 0)
@@ -3244,6 +3268,16 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		}
 		return vehicleListFuel;
 	}
-	
+	public List<String> getAllCategory(String make,String year,String fuel,String bodyStyle,String category, Long locationId) {
+		List<String> vehicleListFuel = new ArrayList<String>();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT category FROM vehicle where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		for(Map map : rows) {
+			if((String) map.get("category") != null){
+				if(map.get("category").toString().length() > 0)
+					vehicleListFuel.add((String) map.get("category"));
+			}
+		}
+		return vehicleListFuel;
+	}
 	
 }
