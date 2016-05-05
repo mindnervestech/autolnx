@@ -3,7 +3,7 @@
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en">
+<html lang="en" ng-app="gliderApp">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
@@ -38,7 +38,21 @@
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/wow.min.js"></script>
+<script type="text/javascript" src="resources/autolinx/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/autolinx/js/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/app.js"></script>
+<script type="text/javascript" src="resources/autolinx/scripts/controller.js"></script>
 
+
+<link type="text/css" rel="stylesheet" href="resources/autolinx/css/pnotify_css/pnotify.buttons.css"> 
+<link type="text/css" rel="stylesheet" href="resources/autolinx/css/pnotify_css/pnotify.core.css"> 
+
+
+<script src="resources/autolinx/js/pnotify/pnotify.core.js" type="text/javascript"></script>	
+<script src="resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
+<script src="resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
+<script src="resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
+<script type="text/javascript" src="resources/autolinx/js/angular-recaptcha.js"></script>
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 
@@ -79,7 +93,7 @@ $(document).ready(function()
 
 </head>
 
-<body>
+<body ng-controller="WarrantyController">
 <!--Header Start-->
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
   <section class="toolbar">
@@ -115,8 +129,9 @@ $(document).ready(function()
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right" style="margin-top: 14px;">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
-              <%-- <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li> --%>
-              <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
+              <li ng-if="${newCount != 0 && usedCount == 0}"><a href="${pageContext.request.contextPath}/findVehicles/New"">Inventory</a></li>
+              <li ng-if="${newCount == 0 && usedCount != 0}"><a href="${pageContext.request.contextPath}/findVehicles/Used">Inventory</a></li>
+              <li class="dropdown" ng-if="${newCount != 0 && usedCount != 0}"><a href="" class="dropdown-toggle" data-toggle="dropdown">Inventory <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                       <li><a href="${pageContext.request.contextPath}/findVehicles/New">New</a></li>
                       <li><a href="${pageContext.request.contextPath}/findVehicles/Used">Used</a></li>

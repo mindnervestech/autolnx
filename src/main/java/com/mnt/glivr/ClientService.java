@@ -530,6 +530,15 @@ public class ClientService {
 		return vehicleListBodyStyle;
 	}
 	
+	public Integer getVehicleInfoNewUsed(String alphbet, String type, Long locationId) {
+		Integer count = 0;
+		System.out.println(type);
+		System.out.println(alphbet);
+		count =jdbcTemplate.queryForInt("select count(*) from vehicle where typeof_vehicle = '"+type+"' and locations_id = '"+locationId+"' and public_status='public' and status='Newly Arrived'");
+		return count;
+	}
+	
+	
 	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet, String vtype, String vehicleType,Long locationId) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> rows = null;

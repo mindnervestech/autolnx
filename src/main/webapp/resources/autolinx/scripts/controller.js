@@ -1,3 +1,12 @@
+app.controller("aboutUsController", function($scope,$http, notificationService, vcRecaptchaService) {
+	$scope.initFunction = function(){
+		
+	};
+	console.log("In about");
+});
+app.controller("WarrantyController", function($scope,$http, notificationService, vcRecaptchaService) {
+	
+});
 
 app.controller("InventoryController", function($scope,$http, notificationService, vcRecaptchaService) {
 	$scope.listView = true;
@@ -9,14 +18,14 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		$scope.gridView = false;
 		$('#listView').addClass('active');
 		$('#gridView').removeClass('active');
-	}
+	};
 	
 	$scope.showGridView = function() {
 		$scope.listView = false;
 		$scope.gridView = true;
 		$('#gridView').addClass('active');
 		$('#listView').removeClass('active');
-	}
+	};
 	
 	
 	$http({method:'GET',url:contextPath+'/getAllMake'})
@@ -1043,6 +1052,8 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 });
 
 app.controller("BlogController", function($scope,$http,notificationService) {
+	console.log("in Blog");
+	
 	var contextPath = $('#contextpath').val();
 	$scope.noMore = false;
 	 var start = 0;

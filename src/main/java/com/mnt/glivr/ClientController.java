@@ -82,6 +82,10 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		List<VehicleVM> vehicleList = clientService.getRecentVehicles(locationId);
 		String ph =clientService.getPhoneno(locationId);
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		model.addAttribute("myphone",ph);
 		model.addAttribute("myprofile",profile);
 		model.addAttribute("siteContent", siteContent);
@@ -149,7 +153,10 @@ public class ClientController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		String formattedDate = dateFormat.format(date);
-		
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
@@ -206,7 +213,10 @@ public class ClientController {
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
-		
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
@@ -228,7 +238,10 @@ public class ClientController {
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
-		
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
@@ -273,7 +286,10 @@ public class ClientController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
-		
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		return "autolinx/warranty";
 	}
 	
@@ -292,7 +308,10 @@ public class ClientController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
-		
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		return "autolinx/blog";
 	}
 	
@@ -336,11 +355,16 @@ public class ClientController {
 	public Map getVehicleInfo(HttpServletRequest request, Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet,@RequestParam("vtype") String vtype,@RequestParam("vehicleType") String vehicleType) {
 		Long locationId = locationIdGol;
 		Map vehicleList = clientService.getVehicles(start, year, make, models, bodyStyle, fuel, mileage, price, alphbet, vtype,vehicleType,locationId);
-		
-		
 		return vehicleList;
 	}
 	
+	@RequestMapping(value = "/getVehicleInfoNewUsed", method = RequestMethod.GET)
+	@ResponseBody
+	public Integer getVehicleInfoNewUsed(HttpServletRequest request, Locale locale, Model model,@RequestParam("alphbet") String alphbet,@RequestParam("type") String type) {
+		Long locationId = locationIdGol;
+		Integer count = clientService.getVehicleInfoNewUsed(alphbet,type,locationId);
+		return count;
+	}
 	@RequestMapping(value = "/getMobileVehicleInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map getMobileVehicleInfo(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("make") String make,@RequestParam("model") String models,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("fuel") String fuel,@RequestParam("mileage") String mileage,@RequestParam("price") String price,@RequestParam("alphbet") String alphbet) {
@@ -391,6 +415,10 @@ public class ClientController {
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
 		System.out.println(pdfRootDir);
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		return "autolinx/vehicleDetails";
 	}
 	
@@ -533,7 +561,10 @@ public class ClientController {
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("flag",0);
 		model.addAttribute("hostnameimg",hostnameimg);
-		
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		
 		return "autolinx/inventory";
 	}
@@ -570,7 +601,10 @@ public class ClientController {
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("flag",0);
 		model.addAttribute("hostnameimg",hostnameimg);
-		
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		
 		return "autolinx/inventory";
 	}
@@ -598,6 +632,10 @@ public class ClientController {
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("flag",1);
 		model.addAttribute("hostnameimg",hostnameimg);
+		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
+		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		model.addAttribute("newCount",newCount);
+		model.addAttribute("usedCount",usedCount);
 		return "autolinx/inventory";
 	}
 	
