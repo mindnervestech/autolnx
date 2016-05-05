@@ -933,7 +933,7 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 		    	   $('#'+$scope.searchChar).addClass('active');
 		    	   $scope.setAlphabet($scope.searchChar,$('.swiper-slide-active').attr('index'));
 		       }
-		 }) 
+		 });
 	
 	 $scope.noMore = false;
 	 var start = 0;
@@ -971,20 +971,23 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 			start = 0;
 			$scope.noMore = false;
 			$scope.loadMore();
-		}		
+		};	
 		
 		
-		$scope.setAlphabet = function(alphabate,index) {
-			$('.alfaList ul li a.active').removeClass('active');
-	    	$('#'+alphabate).addClass('active');
-	    	mySwiper.slideTo(index, 1000, false);
-			$scope.alphbet = $('.swiper-slide-active').attr('make');
-			$scope.price = "";
-			//$scope.year = "";
-			$scope.vehicleList = [];
-			start = 0;
-			$scope.noMore = false;
-			$scope.loadMore();
+		$scope.setAlphabet = function(alphabate,index,flag) {
+			console.log(flag);
+			if(flag){
+				$('.alfaList ul li a.active').removeClass('active');
+				$('#'+alphabate).addClass('active');
+				mySwiper.slideTo(index, 1000, false);
+				$scope.alphbet = $('.swiper-slide-active').attr('make');
+				$scope.price = "";
+				//$scope.year = "";
+				$scope.vehicleList = [];
+				start = 0;
+				$scope.noMore = false;
+				$scope.loadMore();				
+			}
 		}
 	
 });
@@ -1052,8 +1055,6 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 });
 
 app.controller("BlogController", function($scope,$http,notificationService) {
-	console.log("in Blog");
-	
 	var contextPath = $('#contextpath').val();
 	$scope.noMore = false;
 	 var start = 0;

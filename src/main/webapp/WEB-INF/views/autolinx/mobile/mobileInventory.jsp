@@ -122,10 +122,10 @@
         
         <div class="clearClass"></div>
         <div class="alfaList">
-            <ul>
+            <ul style="text-align: center;">
             	<li ng-repeat="obj in characters">
-            	<a id="{{obj.name}}" ng-click="setAlphabet(obj.name,obj.index)" 
-            	style="cursor: pointer;font-size: 18px;">{{obj.name}}</a>
+            	<a id="{{obj.name}}" ng-class="obj.isAvailable? 'activeLetter':'inactiveLetter'" ng-click="setAlphabet(obj.name,obj.index,obj.isAvailable)" 
+            	style="cursor: pointer;font-size: 18px;">{{obj.name.toUpperCase()}}</a>
             	</li>
             </ul>
         </div>
@@ -140,44 +140,46 @@
                 <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="${hostnameimg}{{vehicle.path}}" class="preview" alt="preview" style="width:210px;height:140px;"></a>              
                 
                 </div>
-                <div class="leftBox">
-                	<table class="options-primary">
+                <div class="leftBox" style="width: 100%;">
+                	<table class="options-primary" style="width: 100%;">
                   <tbody>
-                    <tr>
+                    <tr ng-if="vehicle.bodyStyle != null && vehicle.bodyStyle != ''">
                       <td class="primary">Body Style: </td>
                       <td class="spec">{{vehicle.bodyStyle}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="vehicle.mileage != null && vehicle.mileage != ''">
                       <td class="option primary">Mileage: </td>
                       <td class="spec">{{vehicle.mileage}}</td>
                     </tr>
-                    <tr>
-                      <td class="option primary">Transmission: </td>
-                      <td class="spec">{{vehicle.transmission}}</td>
+                    <tr ng-if="vehicle.transmission != null && vehicle.transmission != ''">
+                      <td class="option primary" style="vertical-align: top;">Transmission: </td>
+                      <td class="spec" style="white-space: inherit; width: 115px;">{{vehicle.transmission}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="vehicle.drivetrain != null && vehicle.drivetrain != ''">
                       <td class="option primary">Drivetrain: </td>
                       <td class="spec">{{vehicle.drivetrain}}</td>
                     </tr>
-                    <tr>
-                      <td class="option primary">Engine: </td>
-                      <td class="spec">{{vehicle.engine}}</td>
+                    <tr ng-if="vehicle.engine != null && vehicle.engine != ''">
+                      <td class="option primary" style="vertical-align: top;">Engine: </td>
+                      <td class="spec" style="white-space: inherit;width: 115px;">{{vehicle.engine}}</td>
                     </tr>
-                    <tr>
-                      <td class="option primary">Price: </td>
-                      <td class="spec1">{{vehicle.price}}</td>
+                    <tr style="text-align: center;" ng-if="vehicle.price != null && vehicle.price != ''">
+<!--                       <td class="option primary">Price: </td> -->
+                      <td class="spec1" colspan="2">$ {{(vehicle.price).replace("$","") | number}}</td>
                     </tr>
-                     <tr>
-                      <td class="option primary"> </td>
-                      <td class="spec">Plus Sales Tax</td>
+                     <tr style="text-align: center;" ng-if="vehicle.price != null && vehicle.price != ''">
+<!--                       <td class="option primary"> </td> -->
+                      <td class="spec" colspan="2">Plus Sales Tax</td>
                     </tr>
                     	
                   </tbody>
                   
                 </table>
+                <div style="text-align: center;">
                 	<a href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0" target="_blank"> <img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/carfax2.png" alt="CarFax Report"> </a>
+                </div>
                     
-                	<div class="gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><i class="fa fa-plus-circle"></i> View Details</a></div>
+<%--                 	<div class="gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><i class="fa fa-plus-circle"></i> View Details</a></div> --%>
                 </div>
         </div>
         
@@ -277,6 +279,13 @@
     left: 5%;
     padding: 0px;
     top: 0%;
+}
+
+.activeLetter{
+	color: #8e8e8e !important;
+}
+.inactiveLetter{
+	color: #d3d3d3 !important;
 }
 
 </style>

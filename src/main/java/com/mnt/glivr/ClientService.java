@@ -7,6 +7,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -366,20 +369,57 @@ public class ClientService {
 		for(Map map : rows) {
 			CharacterVM vm = new CharacterVM();
 			vm.name = (String)map.get("left(make,1)");
+			int counter =jdbcTemplate.queryForInt("select count(*) from vehicle where locations_id = '"+locationId+"' and public_status='public' and status = 'Newly Arrived' and make LIKE '"+vm.name+"%'");
+			System.out.println("counter = "+counter);
+			if(counter > 0){
+				vm.isAvailable = true;
+			}else{
+				vm.isAvailable = false;
+			}
+			List<Map<String, Object>> existOrNot = jdbcTemplate.queryForList("select distinct left(make,1) from vehicle where locations_id = '"+locationId+"' order by make");
 			brandList.add(vm);
 		}
-		
+		char[] characterList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+		List<CharacterVM> tempbrandList = new ArrayList<CharacterVM>();
+		for (int i = 0; i < characterList.length; i++) {
+			boolean flag = false;
+			for (CharacterVM vm : brandList) {
+				System.out.println(""+characterList[i]+" "+vm.name);
+				if((""+characterList[i]).equalsIgnoreCase(vm.name)){
+					flag = true;
+					break;
+				}else{
+					flag = false;
+				}
+			}
+			if(flag == false){
+				System.out.println("--Added");
+				CharacterVM newvm = new CharacterVM();
+				newvm.name = ""+characterList[i];
+				newvm.isAvailable = false;
+				tempbrandList.add(newvm);
+			}else{
+				System.out.println("--Not Added");
+			}
+		}
 		for(int i=0;i<brandList.size();i++) {
 			int count = 0;
 			for(Map map: rowsIndex) {
-				String make = (String)map.get("make");
-				if(brandList.get(i).name.equals(make.substring(0, 1))) {
+				String make1 = (String)map.get("make");
+				if(brandList.get(i).name.equals(make1.substring(0, 1))) {
 					brandList.get(i).index = count;
 					break;
 				}
 				count++;
 			}
 		}
+		brandList.addAll(tempbrandList);
+		Collections.sort(brandList, new Comparator<CharacterVM>() {
+			@Override
+			public int compare(CharacterVM o1, CharacterVM o2) {
+				return o1.name.compareToIgnoreCase(o2.name);
+			}
+		});
 		
 		return brandList;
 	}
