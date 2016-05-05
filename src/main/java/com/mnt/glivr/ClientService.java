@@ -536,7 +536,7 @@ public class ClientService {
 	
 	public List<String> getAllVehicleYear(Long locationId) {
 		List<String> vehicleListYear = new ArrayList<String>();
-		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where locations_id = '"+locationId+"'");
+		List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT DISTINCT year FROM vehicle where public_status='public' and status='Newly Arrived' and locations_id = '"+locationId+"'");
 		
 		for(Map map : rows1) {
 			vehicleListYear.add((String) map.get("year"));

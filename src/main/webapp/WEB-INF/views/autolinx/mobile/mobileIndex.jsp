@@ -93,7 +93,10 @@
     	<h2 style="text-align: center;">
         	<strong>${siteContent.heading1}</strong> ${siteContent.heading2} 
         </h2>
-        <a class="default-btn pull-left action_button lg-button mainBoxIn1" style="cursor:pointer; margin-left: 40%; margin-top: 10px;" data-toggle="modal" data-target="#carBrandModal">Follow car brand</a>
+        <div>&nbsp;</div>
+        <div style="text-align: center;">
+	        <a class="default-btn action_button lg-button" style="cursor:pointer; " data-toggle="modal" data-target="#carBrandModal">Follow car brand</a>    
+        </div>
     </div>
     <section class="banner-wrap">
 	<a href="#" class="scroll-slider-down"></a>
@@ -354,6 +357,7 @@
 							curWidth = jQuery(window).width();
 							curHeigth = jQuery(window).height() - offset.height();
 							imageHeight = jQuery('.tp-banner-container li img').height();
+							jQuery('.tp-banner-container li').height('');
 							if (curWidth < fullScreenRes) {
 								if (imageHeight > 540) {
 									el.height('540');
@@ -433,10 +437,19 @@
         </p>
         <div class="arrow3 clearfix margin-top-15 xs-margin-bottom-25" id="slideControls3"><span class="prev-btn"></span><span class="next-btn"></span></div>
     </div>
-	
+	<div class="col-md-10 col-sm-8 padding-right-none sm-padding-left-none xs-padding-left-none">
     <div class="carasouel-slider3">
-               <div class="slide" ng-repeat="recent in recentVehicles" style="float: left; list-style: none; position: relative; margin-right: 30px; width: 170px;">
-                <div class="car-block">
+                <div class="slide" ng-repeat="recent in recentVehicles" style="float: left; list-style: none; position: relative; margin-right: 30px; width: 170px;">
+                    <div class="car-block">
+                        <div class="img-flex"> <a href="viewDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="${hostnameimg}{{recent.path}}" alt="" class="img-responsive"> </div>
+                        <div class="car-block-bottom">
+                            <h6><strong>{{recent.year}} {{recent.make}} {{recent.model}}</strong></h6>
+                            <h6></h6>
+                            <h5> {{recent.price | number}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <%-- <div class="car-block">
                 
                  <!-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview">    <img src="resources/autolinx/images/DSC_0002-167x119.jpg"-->
                   <div class="img-flex"><a href="viewDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a>  <img src="${hostnameimg}{{recent.path}}" alt="" class="img-responsive no_border" style="height:121px;"> </div>
@@ -445,11 +458,10 @@
                     <h6></h6>
                        <h5>{{recent.price}}</h5>
                   </div>
-                </div>
-              </div>
+                </div> --%>
               
             </div>
-    
+    </div>
     <div class="searchBox">
     	<h4 class="welcome-wrap"><strong>SEARCH</strong> OUR INVENTORY</h4>
         <div class="search-form">
