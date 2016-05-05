@@ -340,7 +340,7 @@ public class ClientService {
 	}
 	
 	public List<BrandVM> getCarBrands(Long locationId) {
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select distinct lower(left(make,3)),make from vehicle where locations_id = '"+locationId+"' order by make");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select distinct lower(left(make,3)),make from vehicle where public_status='public' and status != 'Sold' and locations_id = '"+locationId+"' order by make");
 		List<BrandVM> brandList = new ArrayList<BrandVM>();
 		String name = "";
 		for(Map map : rows) {
@@ -359,8 +359,8 @@ public class ClientService {
 	}
 	
 	public List<CharacterVM> getCharacters(Long locationId) {
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select distinct left(make,1) from vehicle where locations_id = '"+locationId+"' order by make");
-		List<Map<String, Object>> rowsIndex = jdbcTemplate.queryForList("select distinct make from vehicle where locations_id = '"+locationId+"' order by make");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select distinct left(make,1) from vehicle where public_status='public' and status != 'Sold' and locations_id = '"+locationId+"' order by make");
+		List<Map<String, Object>> rowsIndex = jdbcTemplate.queryForList("select distinct make from vehicle where public_status='public' and status != 'Sold' and locations_id = '"+locationId+"' order by make");
 		List<CharacterVM> brandList = new ArrayList<CharacterVM>();
 		
 		for(Map map : rows) {
