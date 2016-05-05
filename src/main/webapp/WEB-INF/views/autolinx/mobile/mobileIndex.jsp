@@ -98,7 +98,7 @@
     <section class="banner-wrap">
 	<a href="#" class="scroll-slider-down"></a>
     <div class="banner">
-        <div class="tp-banner-container" style="height: 500px !important">
+        <div class="tp-banner-container">
             <div class="tp-banner" >
                 <ul>
                 
@@ -106,10 +106,10 @@
                    <%--  <c:forEach var="row" items="${sliderImages}"> --%>
                    <c:choose>
 				    <c:when test="${sliderImages.size()>=1}">
-				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" > 
+				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" style="height: 500px;"> 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
-                        <img src="${hostnameimg}${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;"> 
+                        <img src="${hostnameimg}${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -177,7 +177,7 @@
                     
                     <c:choose>
 					    <c:when test="${sliderImages.size()>=2}">
-					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" style="height: 500px;"> 
                         <a href="${sliderImages[1].link}">
                         <img src="${hostnameimg}${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;"> 
                         </a>
@@ -258,7 +258,7 @@
                     
                     <c:choose>
 					    <c:when test="${sliderImages.size()>=3}">
-					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+					       <li style="height: 500px;" data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[2].link}">
                         <img src="${hostnameimg}${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500Px;"> 
                         </a>
@@ -329,7 +329,7 @@
 						{
 							delay:8000,
 							startwidth:1170,
-							startheight:500, //startheight561 to 500  665 & ori 645 & fw 800
+							startheight:561, //665 & ori 645 & fw 800
 							hideThumbs:10,
 							fullWidth:"off",
 							fullScreen:'off',
@@ -356,14 +356,14 @@
 							imageHeight = jQuery('.tp-banner-container li img').height();
 							if (curWidth < fullScreenRes) {
 								if (imageHeight > 540) {
-// 									el.height('540');
+									el.height('540');
 								} else {
-// 									el.height(imageHeight);
+									el.height(imageHeight);
 								}
 								fullScreenState = false;
 								slideDownEl.css('opacity', '0');
 							} else {
-// 								el.height(curHeigth);
+								el.height(curHeigth);
 								fullScreenState = true;
 								slideDownEl.css('opacity', '1');
 							}
@@ -398,7 +398,7 @@
     <div class="message-shadow"></div>
      <!-- <div class="row">
         	 <div class="col-md-6"> -->
-    <div class="boxIn" style="z-index: 200 !important;">
+    <div class="boxIn">
     	<div class="boxInLeft setImgs setheight" style="background-image: url('${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg');">
         	<%-- <img src="${pageContext.request.contextPath}/resources/autolinx/images/inventory_mobile.jpg" alt=""> --%>
             <p class="boxInText">
