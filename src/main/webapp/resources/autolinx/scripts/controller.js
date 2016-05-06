@@ -901,9 +901,35 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 	$scope.VehiclesCount = "";
 	$scope.alphbet = "a_z";
 	$scope.price = "lowToHigh";
+	$scope.imageClick = function(make){
+		$scope.vehicleList = [];
+		$scope.make = make;
+		$scope.model = "";
+		$scope.bodyStyle = "";
+		$scope.fuel = "";
+		$scope.mileage = "";
+		$scope.year = "";
+		$scope.VehiclesCount = "";
+		$scope.alphbet = "a_z";
+		$scope.price = "lowToHigh";
+		start = 0;
+		$scope.noMore = false;
+		$scope.loadMore();
+	};
+	
+	
 	var contextPath = $('#contextpath').val();
 	$scope.initFunction = function(){
-		
+		$scope.vehicleList = [];
+		$scope.year = "";
+		$scope.make = "";
+		$scope.model = "";
+		$scope.bodyStyle = "";
+		$scope.fuel = "";
+		$scope.mileage = "";
+		$scope.VehiclesCount = "";
+		$scope.alphbet = "a_z";
+		$scope.price = "lowToHigh";
 		$scope.loadMore();
 	}
 	
@@ -957,9 +983,15 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 	}
 	
 		$scope.selectYear = function(){
-		
 			$scope.vehicleList = [];
-			$scope.price = "";
+			$scope.make = "";
+			$scope.model = "";
+			$scope.bodyStyle = "";
+			$scope.fuel = "";
+			$scope.mileage = "";
+			$scope.VehiclesCount = "";
+			$scope.alphbet = "a_z";
+			$scope.price = "lowToHigh";
 			start = 0;
 			$scope.noMore = false;
 			$scope.loadMore();
@@ -972,7 +1004,6 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 			$scope.noMore = false;
 			$scope.loadMore();
 		};	
-		
 		
 		$scope.setAlphabet = function(alphabate,index,flag) {
 			console.log(flag);
@@ -993,6 +1024,20 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 });
 
 app.controller("MobileNewArrivalController", function($scope,$http,notificationService) {
+	$scope.make="";
+	$scope.imageClick = function(make){
+		$scope.noMore = false;
+		start = 0;
+		console.log("Success...");
+		$scope.vehicleList = [];
+		$scope.year = "";
+		$scope.VehiclesCount = "";
+		$scope.alphbet = "";
+		console.log(make);
+		$scope.make = make;
+		$scope.loadMoreByMake();
+		
+	}
 	
 	$scope.vehicleList = [];
 	$scope.year = "";
@@ -1000,12 +1045,52 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 	$scope.alphbet = "";
 	var contextPath = $('#contextpath').val();
 	$scope.initFunction = function(){
-		
+		$http.get(contextPath+'/getCarBrands')
+		.success(function(data) {
+			$scope.characters = data.alphabates;
+		});
 		$scope.loadMore();
 	}
-	
+	var mySwiper = new Swiper ('.swiper-container', {
+		 effect: 'coverflow',
+		       grabCursor: true,
+		       centeredSlides: true,
+		       slidesPerView: 'auto',
+		       coverflow: {
+		           rotate: 50,
+		           stretch: 0,
+		           depth: 100,
+		           modifier: 1,
+		           slideShadows : true
+		       },
+		       
+		       onTouchEnd: function(swiper, event) {
+		    	   $scope.searchChar = $('.swiper-slide-active').attr('name');
+		    	   $('.alfaList ul li a.active').removeClass('active');
+		    	   $('#'+$scope.searchChar).addClass('active');
+		    	   $scope.setAlphabet($scope.searchChar,$('.swiper-slide-active').attr('index'));
+		       }
+		 });
 	 $scope.noMore = false;
 	 var start = 0;
+	 $scope.loadMoreByMake = function() {
+			console.log($scope.make);
+			if ($scope.noMore) return;
+			$http({method:'GET',url:contextPath+'/mobile/getMobileRecentVehiclesByMake',params:{start:start,year:$scope.year,alphabet:$scope.alphbet,make:$scope.make}})
+			.success(function(data) {
+				console.log(data);
+				if(data.vehicleList.length == 0) {
+					$scope.noMore = true;
+				}
+				$scope.VehiclesCount = data.count;
+				for (var i = 0; i < data.vehicleList.length; i++) {
+					$scope.vehicleList.push(data.vehicleList[i]);
+				}
+			});
+			
+			start = start + 16;
+		}
+	 
 	$scope.loadMore = function() {
 		
 		if ($scope.noMore) return;
@@ -1041,8 +1126,23 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 			$scope.loadMore();
 		}		
 		
+		$scope.setAlphabet = function(alphabate,index,flag) {
+			console.log(flag);
+			if(flag){
+				$('.alfaList ul li a.active').removeClass('active');
+				$('#'+alphabate).addClass('active');
+				mySwiper.slideTo(index, 1000, false);
+				$scope.alphbet = $('.swiper-slide-active').attr('make');
+				$scope.price = "";
+				//$scope.year = "";
+				$scope.vehicleList = [];
+				start = 0;
+				$scope.noMore = false;
+				$scope.loadMore();				
+			}
+		}
 		
-		$scope.setAlphabet = function(alphabate) {
+		/*$scope.setAlphabet = function(alphabate) {
 			console.log(alphabate);
 			$scope.alphbet = alphabate;
 			$scope.year = "";
@@ -1050,7 +1150,7 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 			start = 0;
 			$scope.noMore = false;
 			$scope.loadMore();
-		}
+		}*/
 	
 });
 

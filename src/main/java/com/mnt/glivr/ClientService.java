@@ -3328,5 +3328,68 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		}
 		return vehicleListFuel;
 	}
+
+	public Map getRecentMobileVehiclesByMake(Integer start, String year,
+			String alphabet, String make, Long locationId) {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		List<Map<String, Object>> rows = null;
+		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, -30);
+		Date dateBefore30Days = cal.getTime();
+		Integer count = 0;
+		System.out.println(year);
+		System.out.println(make);
+		System.out.println(start);
+		System.out.println(alphabet);
+		if(!year.equals("")) {
+			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and make ='"+make+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')  ORDER BY posted_date desc limit "+start+",16 ");
+			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and make ='"+make+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')");
+		} else {
+			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"'and make ='"+make+"'  and status = 'Newly Arrived' and (year = '"+year+"' or '"+year+"' = '') and public_status='public' and make LIKE '"+alphabet+"%' ORDER BY posted_date desc limit "+start+",16 ");
+			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and make ='"+make+"' and status = 'Newly Arrived' and public_status='public' and make LIKE '"+alphabet+"%'");
+		}
+		for(Map map : rows) {
+			VehicleVM vm = new VehicleVM();
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.model = (String) map.get("model");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+			
+			vehicleList.add(vm);
+		}
+		
+	
+		Map<String, Object> mapData = new HashMap<String, Object>();
+		mapData.put("vehicleList", vehicleList);
+		mapData.put("count", count);
+		
+		return mapData;
+	}
 	
 }

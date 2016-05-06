@@ -683,7 +683,14 @@ public class ClientController {
 	public Map getMobileRecentVehicles(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("alphabet") String alphabet) {
 		Long locationId = locationIdGol;
 		Map vehicleList = clientService.getRecentMobileVehicles(start,year,alphabet,locationId);
-		
+		return vehicleList;
+	}
+	
+	@RequestMapping(value = "/mobile/getMobileRecentVehiclesByMake", method = RequestMethod.GET)
+	@ResponseBody
+	public Map getMobileRecentVehiclesByMake(Locale locale, Model model,@RequestParam("start") Integer start,@RequestParam("year") String year,@RequestParam("alphabet") String alphabet,@RequestParam("make") String make) {
+		Long locationId = locationIdGol;
+		Map vehicleList = clientService.getRecentMobileVehiclesByMake(start,year,alphabet,make,locationId);
 		return vehicleList;
 	}
 	
@@ -697,12 +704,15 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		String formattedDate = dateFormat.format(date);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
+		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
+		List<BrandVM> brandList = clientService.getCarBrands(locationId);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
-		
+		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("brandList",brandList);
 		model.addAttribute("hostnameimg",hostnameimg);
 		
 		return "autolinx/mobile/mobileNewArrivals";

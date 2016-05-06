@@ -557,7 +557,7 @@
                 </div> -->
               </div>
               <div class="clear"></div>
-              <div class="col-md-6" style="margin-left:26%;">
+              <div class="col-md-6" style="margin-left:15%;">
                 <div class="form-element">
                   <input type="submit" value="Find My New Vehicle" class="find_new_vehicle pull-right md-button">
                 </div>
@@ -649,19 +649,27 @@
 
 
 <footer>
-	<h4>Subscribe to the official AutoLinx newsletter - Vehi-Linx</h4>
-    <form method="post">
+	<h4>Subscribe to the official  Newsletter and Inventory Updates</h4>
+        <form method="post">
           <p>
             <label>Email Address:</label>
-            <input type="email" class="inputInner" required placeholder="Your email address" name="EMAIL">
+            <input type="email" required placeholder="Your email address" name="EMAIL">
           </p>
           <p>
             <label>First Name:</label>
-            <input type="text" class="inputInner" placeholder="Your first name" name="FNAME">
+            <input type="text" placeholder="Your first name" name="FNAME">
           </p>
           <p>
             <label>Last Name:</label>
-            <input type="text" class="inputInner" placeholder="Your last name" name="LNAME">
+            <input type="text" placeholder="Your last name" name="LNAME">
+          </p>
+          <p>
+            <label>Newsletter:</label>
+            <input type="checkbox" name="newsletter" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
+          </p>
+          <p>
+            <label>Inventory:</label>
+            <input type="checkbox" name="inventory" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
           </p>
           <p>
             <input type="submit" value="Sign up">

@@ -191,18 +191,15 @@
 
 	            <ul class="mainBoxIn1" style="padding: 0;margin: 0;float: none;margin-left: 0%; margin-right: 0%;">
 	            	              
-	                	<li class="prev1 gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.prevVehicle}">Prev Vehicle</a></li>
-	                	                
+	                						
+	                	                	<li class="schedule gradient_button"><a  data-toggle="modal" data-target="#scheduleTest">Schedule Test Drive</a></li>
 	                	                	<li class="request gradient_button" style="float: right;"><a  data-toggle="modal" data-target="#myModal" >Request More Info</a></li>
 	                	                	 <br><br>
-	                	                	<li class="schedule gradient_button"><a  data-toggle="modal" data-target="#scheduleTest">Schedule Test Drive</a></li>
-	                	                
+	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo">Email To Friend</a></li>
 	                	                	<li class="pdf gradient_button" style="float: right;"><a class="generate_pdf" onclick = "window.open('http://www.carfax.com/VehicleHistory/p/Report.cfx?vin=${vehicle.vin}&amp;partner=AAG_0')">Carfax Report</a></li>
 	                	                	<br><br>
-	                	                	<li class="schedule gradient_button"><a data-toggle="modal" data-target="#otherInfo">Email To Friend</a></li>
-	                	                	
-	                	                	<li class="schedule gradient_button" ng-if="${vehicle.pdfPath != null}"><a target="_blank" data-toggle="modal" data-target="#pdfModal"  >PDF Brochure</a></li>
-	                	                	
+	                	                	<li class="prev1 gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.prevVehicle}">Prev Vehicle</a></li>
+	                	                	<li class="schedule gradient_button"><a target="_blank" data-toggle="modal" data-target="#pdfModal"  >PDF Brochure</a></li>
 	                	                	<li class="next1 gradient_button" style="float: right;"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                
 	            </ul> 

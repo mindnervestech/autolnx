@@ -99,7 +99,7 @@
 		       <!-- Slides -->
 		       <c:forEach var="row" items="${brandList}" varStatus="loop">
                  <div name="${row.name.substring(0,1).toUpperCase()}" index="${loop.index}" make="${row.make}"  class="swiper-slide">
-                 	<img src="${hostnameimg}/Logos/${row.name}" style="width:150px;max-height:150px;;vertical-align: middle;">
+                 	<img src="${hostnameimg}/Logos/${row.name}" style="width:150px;max-height:150px;;vertical-align: middle;" ng-click="imageClick('${row.make}')">
                  </div>               	
 		   		</c:forEach>
 		   </div>
@@ -140,8 +140,8 @@
                 <a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><img src="${hostnameimg}{{vehicle.path}}" class="preview" alt="preview" style="width:210px;height:140px;"></a>              
                 
                 </div>
-                <div class="leftBox" style="width: 100%;">
-                	<table class="options-primary" style="width: 100%;">
+                <div class="leftBox">
+                	<table class="options-primary">
                   <tbody>
                     <tr ng-if="vehicle.bodyStyle != null && vehicle.bodyStyle != ''">
                       <td class="primary">Body Style: </td>
@@ -163,21 +163,25 @@
                       <td class="option primary" style="vertical-align: top;">Engine: </td>
                       <td class="spec" style="white-space: inherit;width: 115px;">{{vehicle.engine}}</td>
                     </tr>
-                    <tr style="text-align: center;" ng-if="vehicle.price != null && vehicle.price != ''">
-<!--                       <td class="option primary">Price: </td> -->
-                      <td class="spec1" colspan="2">$ {{(vehicle.price).replace("$","") | number}}</td>
+                    <tr></tr>
+                    <tr ng-if="vehicle.price != null && vehicle.price != ''">
+                      <td class="option primary"> </td> 
+                      <td class="spec1" colspan="2" style="padding-top: 15px;">$ {{(vehicle.price).replace("$","") | number}}</td>
                     </tr>
-                     <tr style="text-align: center;" ng-if="vehicle.price != null && vehicle.price != ''">
-<!--                       <td class="option primary"> </td> -->
+                     <tr ng-if="vehicle.price != null && vehicle.price != ''">
+                      <td class="option primary"> </td>
                       <td class="spec" colspan="2">Plus Sales Tax</td>
                     </tr>
-                    	
+                    <tr>
+                      <td class="option primary"> </td> 
+                      <td class="spec1" colspan="2" style="padding-top: 15px;"><a href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0" target="_blank"> <img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/carfax2.png" alt="CarFax Report"> </a></td>
+                    </tr>	
                   </tbody>
                   
                 </table>
-                <div style="text-align: center;">
+                <%-- <div style="text-align: center;">
                 	<a href="http://www.carfax.com/VehicleHistory/p/Report.cfx?vin={{vehicle.vin}}&amp;partner=AAG_0" target="_blank"> <img src="${pageContext.request.contextPath}/resources/autolinx/images/mobile/carfax2.png" alt="CarFax Report"> </a>
-                </div>
+                </div> --%>
                     
 <%--                 	<div class="gradient_button"><a href="${pageContext.request.contextPath}/mobile/viewDetails/{{vehicle.vin}}"><i class="fa fa-plus-circle"></i> View Details</a></div> --%>
                 </div>
