@@ -109,10 +109,10 @@
                    <%--  <c:forEach var="row" items="${sliderImages}"> --%>
                    <c:choose>
 				    <c:when test="${sliderImages.size()>=1}">
-				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" style="height: 500px;"> 
+				       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <!-- MAIN IMAGE --> 
                         <a href="${sliderImages[0].link}">
-                        <img src="${hostnameimg}${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;;"> 
+                        <img src="${hostnameimg}${sliderImages[0].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center domainate customin customout start"
@@ -180,9 +180,9 @@
                     
                     <c:choose>
 					    <c:when test="${sliderImages.size()>=2}">
-					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300" style="height: 500px;"> 
+					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[1].link}">
-                        <img src="${hostnameimg}${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500px;"> 
+                        <img src="${hostnameimg}${sliderImages[1].url}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption mediumlarge_light_white_center invest start"
@@ -261,9 +261,9 @@
                     
                     <c:choose>
 					    <c:when test="${sliderImages.size()>=3}">
-					       <li style="height: 500px;" data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
+					       <li data-transition="fade" data-delay="4000" data-slotamount="10" data-speed="100" data-masterspeed="300"> 
                         <a href="${sliderImages[2].link}">
-                        <img src="${hostnameimg}${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;height:500Px;"> 
+                        <img src="${hostnameimg}${sliderImages[2].url}"   alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" style="width:100%;"> 
                         </a>
                         <!-- LAYERS -->
                         <div class="tp-caption customin customout start green"
@@ -463,7 +463,7 @@
             </div>
     </div>
     <div class="searchBox">
-    	<h4 class="welcome-wrap"><strong>SEARCH</strong> OUR INVENTORY</h4>
+    	<h4 class="welcome-wrap" style="text-align: center;"><strong>SEARCH</strong> OUR INVENTORY</h4>
         <div class="search-form">
             <form method="post" modelAttribute="userform" action="${pageContext.request.contextPath}/mobile/findVehicle">
               <div class="select-wrapper clearfix">
@@ -557,9 +557,9 @@
                 </div> -->
               </div>
               <div class="clear"></div>
-              <div class="col-md-6" style="margin-left:15%;">
-                <div class="form-element">
-                  <input type="submit" value="Find My New Vehicle" class="find_new_vehicle pull-right md-button">
+              <div class="">
+                <div style="text-align: center;">
+                  <input type="submit" value="Find My New Vehicle" class="find_new_vehicle md-button">
                 </div>
               </div>
             </form>
@@ -569,7 +569,8 @@
    	
         <div class="tableBox">
         	<h5>What are our Hours of Operation?</h5>
-        	<table class="table table-bordered no-border font-13px">
+        	<div style="margin-left: 20%">
+        	<table class="table table-bordered no-border font-13px" style="float: none; !important">
                                         <thead>
                                             <tr>
                                                 <td colspan="2"><strong>Sales Department</strong></td>
@@ -607,7 +608,7 @@
                                         </tbody>
                                     </table>
                                     
-            <table class="table table-bordered no-border font-13px margin-bottom-none">
+            <table class="table table-bordered no-border font-13px margin-bottom-none" style="float: none; !important">
                                         <thead>
                                             <tr>
                                                 <td colspan="2"><strong>Service Department</strong></td>
@@ -644,31 +645,31 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    
+                                    </div>
         </div>
 
 
 <footer>
-	<h4>Subscribe to the official  Newsletter and Inventory Updates</h4>
-        <form method="post">
+	<h4>Subscribe to the Official Newsletter And Inventory Updates</h4>
+    <form method="post">
           <p>
             <label>Email Address:</label>
-            <input type="email" required placeholder="Your email address" name="EMAIL">
+            <input type="email" class="inputInner" required placeholder="Your email address" name="EMAIL">
           </p>
           <p>
             <label>First Name:</label>
-            <input type="text" placeholder="Your first name" name="FNAME">
+            <input type="text" class="inputInner" placeholder="Your first name" name="FNAME">
           </p>
           <p>
             <label>Last Name:</label>
-            <input type="text" placeholder="Your last name" name="LNAME">
+            <input type="text" class="inputInner" placeholder="Your last name" name="LNAME">
           </p>
           <p>
-            <label>Newsletter:</label>
+            <label style="width: 85px;">Newsletter:</label>
             <input type="checkbox" name="newsletter" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
           </p>
           <p>
-            <label>Inventory:</label>
+            <label style="width: 85px;">Inventory:</label>
             <input type="checkbox" name="inventory" style="width: 15px;height: 15px;margin-left: 5px;position: inherit;">
           </p>
           <p>
