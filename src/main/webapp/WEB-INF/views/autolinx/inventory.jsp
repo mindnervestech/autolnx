@@ -339,8 +339,45 @@ $(document).ready(function()
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="${pageContext.request.contextPath}/vehicleDetails/{{vehicle.vin}}" class="inventory">
                 <div class="title">{{vehicle.title}}</div>
-                <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;">
-                <table class="options-primary">
+                
+                	<%-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;"></img>
+                	<span class="item-new"></span> --%>
+                	<div >
+    			<span class="ng-scope" ng-if="vehicle.comingSoonFlag == 1" style="
+			   	 content: &quot;Newly Arrived&quot;;
+			   	 position: absolute;
+			   	 z-index: 1;
+			   	 text-transform: uppercase;
+			   	 font-family: &quot;Open Sans&quot;, sans-serif;
+			   	 font-size: 1em;
+			   	 font-weight: 400;
+			   	 color: #fff;
+			   	 width: 11%;
+			   	 display: block;
+			   	 background: #428bca;
+			   	 left: -2%;
+			   	 top: 106px;
+			   	 -webkit-transform: rotate(45deg);
+			   	 -moz-transform: rotate(-45deg);
+			   	 -o-transform: rotate(-45deg);
+			   	 writing-mode: lr-tb;
+			   	 -ms-transform: rotate(-45deg);
+			   	 text-align: center;
+			   	 line-height: 1em;
+			   	 /* overflow: hidden; */
+			   	 ">Coming<br>Soon
+			   		</span> 
+			   		<img class="preview" src="${hostnameimg}{{vehicle.path}}" />
+			   		</div>
+			 <%-- <div class="content-grid">
+				<div class="items clearfix">
+					  <span class="item-inner item-new">
+							 <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;">
+						</span>
+				</div>
+			</div> --%>
+			   		 
+               	               <table class="options-primary">
                   <tbody>
                     <tr ng-if="vehicle.bodyStyle != null">
                       <td class="option primary">Body Style: </td>
@@ -637,6 +674,128 @@ $(document).ready(function()
     border-radius: 4px;
     width: 100%;
 }
+
+
+
+.item-new {
+	 content: "newww";
+			   	 position: absolute;
+			   	 z-index: 1;
+			   	 text-transform: uppercase;
+			   	 font-family: &quot;Open Sans&quot;, sans-serif;
+			   	 font-size: 1em;
+			   	 font-weight: 400;
+			   	 color: #fff;
+			   	 width: 11%;
+			   	 display: block;
+			   	 background: #428bca;
+			   	 left: -2%;
+			   	 top: 106px;
+			   	 -webkit-transform: rotate(45deg);
+			   	 -moz-transform: rotate(-45deg);
+			   	 -o-transform: rotate(-45deg);
+			   	 writing-mode: lr-tb;
+			   	 -ms-transform: rotate(-45deg);
+			   	 text-align: center;
+			   	 line-height: 1em;
+
+}
+
+.content-grid {
+    width: 70%;
+    position: absolute;
+    top: 90px;
+    right: 1.5em
+}
+.content-grid .items {
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start
+}
+.content-grid .item {
+    position: relative;
+    display: block;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    height: auto;
+    -webkit-flex: 0 1 24.9%;
+    -ms-flex: 0 1 24.9%;
+    flex: 0 1 24.9%;
+    overflow: hidden
+}
+.content-grid .item:hover .caption {
+    display: block
+}
+.content-grid .item-inner {
+    position: relative;
+    display: block;
+    margin: 5px
+}
+.content-grid img {
+    width: 100%;
+    height: auto
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: " ";
+    display: table
+}
+
+.clearfix:after {
+    clear: both
+}
+
+.news-grid .item .item-inner a {
+    display: inline-block;
+    height: 262px
+}
+
+news-grid .item-inner a {
+        border: none!important
+    }
+    .news-grid .item-inner a:before {
+        content: none!important
+    }
+
+.extras-item.item-new:before {
+    text-align: center;
+    pointer-events: none
+}
+
+.extras-item {
+    overflow: hidden;
+    position: relative
+}
+.extras-item.item-new:before {
+        content: "New";
+        position: absolute;
+        z-index: 1;
+        text-align: center;
+        pointer-events: none;
+        text-transform: uppercase;
+        font-family: "Open Sans", sans-serif;
+        font-size: .8em;
+        font-weight: 600;
+        color: #fff
+    }
+
+
+
+
 </style>
 
  <a title="Real Time Web Analytics" href="http://clicky.com/100875513"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>

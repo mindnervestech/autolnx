@@ -623,7 +623,7 @@ public class ClientService {
 			vm.transmission = (String) map.get("transmission");
 			vm.vin = (String) map.get("vin");
 			vm.year = (String) map.get("year");
-			
+			vm.comingSoonFlag=(Integer) map.get("coming_soon_flag");
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
 			if(vehiclePath.isEmpty()) {
 				vm.path = "/no-image.jpg";
@@ -1032,6 +1032,18 @@ public class ClientService {
  		if(vehicleVM.label != null){
  			if(vehicleVM.label.length()== 0)
  	 			vehicleVM.label = null;
+ 		}
+ 		if((Integer)row.get(0).get("coming_soon_flag") != null){
+ 		vehicleVM.comingSoonFlag=(Integer)row.get(0).get("coming_soon_flag");
+ 		
+ 		if(vehicleVM.comingSoonFlag.equals(1)&& !vehicleVM.comingSoonFlag.equals(null) ){
+ 			Date comingSoonDate=(Date)row.get(0).get("coming_soon_date");
+ 			System.out.println(">>>>date");
+ 			System.out.println(comingSoonDate);
+ 			DateFormat dateFormat1 = new SimpleDateFormat("MM-dd-yyyy");
+ 			vehicleVM.comingSoonDate = dateFormat1.format(comingSoonDate);
+ 			System.out.println(vehicleVM.comingSoonDate);
+ 		}
  		}
  		vehicleVM.fuelTank = (String) row.get(0).get("fuel_tank");
  		if(vehicleVM.fuelTank != null){
