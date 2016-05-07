@@ -3296,7 +3296,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 	public List<String> getAllFuelTypeYear(String vtype, String make,String year,String fuel,String bodyStyle,String category, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
 		System.out.println(year);
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT fuel_type FROM vehicle where (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("fuel_type") != null){
 				if(map.get("fuel_type").toString().length() > 0)
@@ -3319,7 +3319,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 	}
 	public List<String> getAllCategory(String vtype, String make,String year,String fuel,String bodyStyle,String category, Long locationId) {
 		List<String> vehicleListFuel = new ArrayList<String>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT category FROM vehicle where (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and where (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT DISTINCT category FROM vehicle where (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (category = '"+category+"' or '"+category+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold'");
 		for(Map map : rows) {
 			if((String) map.get("category") != null){
 				if(map.get("category").toString().length() > 0)
