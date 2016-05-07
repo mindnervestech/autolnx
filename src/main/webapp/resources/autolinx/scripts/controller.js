@@ -8,7 +8,7 @@ app.controller("WarrantyController", function($scope,$http, notificationService,
 	
 });
 
-app.controller("InventoryController", function($scope,$http, notificationService, vcRecaptchaService) {
+app.controller("InventoryController", function($scope,$http, notificationService, vcRecaptchaService,$location) {
 	$scope.listView = true;
 	$scope.gridView = false;
 	$scope.alphbet = "a_z";
@@ -19,7 +19,6 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		$('#listView').addClass('active');
 		$('#gridView').removeClass('active');
 	};
-	
 	$scope.showGridView = function() {
 		$scope.listView = false;
 		$scope.gridView = true;
@@ -48,45 +47,97 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	$scope.vehicleType="";
 	
 	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId,type){
-		console.log(model);
-		console.log(make);
-		console.log(year);
-		console.log(bodyStyle);
-		console.log(fuel);
-		console.log($scope.vType);
-		console.log(type);
-		$scope.type = type;
-		if(year == 0){
-			$scope.year = "";
-		}else{
-			$scope.year = year;
+		var url1 = window.location.href;
+		console.log(url1);
+		var params1;
+		if(window.location.href.split("?").length > 1){
+			params1 = window.location.href.split("?")[1].split("&");
 		}
-		
-		if(make == 0){
-			$scope.make = "";
+		console.log(params1);
+		console.log(params1.length);
+		if(params1.length > 0){
+			var p=params1[0].split('=');
+			$scope.start = p[1];
+			
+			p=params1[1].split('=');
+			$scope.year = p[1];
+			
+			p=params1[2].split('=');
+			$scope.make = p[1];
+			
+			p=params1[3].split('=');
+			$scope.model = p[1];
+			
+			p=params1[4].split('=');
+			$scope.bodyStyle = p[1];
+			
+			p=params1[5].split('=');
+			$scope.fuel = p[1];
+			
+			p=params1[6].split('=');
+			$scope.mileage = p[1];
+			
+			p=params1[7].split('=');
+			$scope.price = p[1];
+			
+			p=params1[8].split('=');
+			$scope.alphbet = p[1];
+			
+			p=params1[9].split('=');
+			$scope.vtype = p[1];
+			
+			p=params1[10].split('=');
+			$scope.vehicleType = p[1];
 		}else{
-			$scope.make = make;
+			console.log(model);
+			console.log(make);
+			console.log(year);
+			console.log(bodyStyle);
+			console.log(fuel);
+			console.log($scope.vType);
+			var url = $location.absUrl();
+			console.log(url);
+			console.log(type);
+			$scope.type = type;
+			if(year == 0){
+				$scope.year = "";
+			}else{
+				$scope.year = year;
+			}
+			
+			if(make == 0){
+				$scope.make = "";
+			}else{
+				$scope.make = make;
+			}
+			
+			if(model == 0){
+				$scope.model = "";
+			}else{
+				$scope.model = model;
+			}
+			
+			if(bodyStyle == 0){
+				$scope.bodyStyle = "";
+			}else{
+				$scope.bodyStyle = bodyStyle;
+			}
+			
+			if(fuel == 0){
+				$scope.fuel = "";
+			}else{
+				$scope.fuel = fuel;
+			}
+			$scope.locationId = locationId;
+			$scope.loadMore();
 		}
-		
-		if(model == 0){
-			$scope.model = "";
-		}else{
-			$scope.model = model;
-		}
-		
-		if(bodyStyle == 0){
-			$scope.bodyStyle = "";
-		}else{
-			$scope.bodyStyle = bodyStyle;
-		}
-		
-		if(fuel == 0){
-			$scope.fuel = "";
-		}else{
-			$scope.fuel = fuel;
-		}
-		$scope.locationId = locationId;
-		$scope.loadMore();
+		/*for (var i = 0; i < params1.length; i++) {
+		    var p=params1[i].split('=');
+		    console.log(p);
+		    console.log(p[0]);
+		    $scope.p[0]= p[1];
+		    console.log($scope.p[0]);
+		  }*/
 	};
 	
 	 $scope.noMore = false;
@@ -107,8 +158,15 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		console.log($scope.vehicleType);
 		console.log($scope.fuel);
 		if ($scope.noMore) return;
+		var url = window.location.href;
+		console.log(url);
+		var params = {start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.type,vehicleType:$scope.vehicleType};
+		var new_url = url + '?' + jQuery.param(params);
+		console.log(new_url);
+		
 		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.type,vehicleType:$scope.vehicleType}})
 		.success(function(data) {
+			//window.location.replace(new_url);
 			console.log(data)
 			if(data.vehicleList.length == 0) {
 				$scope.noMore = true;
@@ -117,6 +175,8 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			for (var i = 0; i < data.vehicleList.length; i++) {
 				$scope.vehicleList.push(data.vehicleList[i]);
 			}
+
+			window.location.hash = '?' + jQuery.param(params);
 		});
 		
 		start = start + 16;

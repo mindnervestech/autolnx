@@ -276,7 +276,7 @@ $(document).ready(function()
           <div class="my-dropdown mileage-dropdown">
             <select name="vehicleType" ng-model="vehicleType" ng-change="selectVehicleType()" class="custom" tabindex="1" >
               <option value="" selected>All Vehicle Type</option>
-							<option ng-repeat="vehicleType in vehicleTypeList" value="vehicleType">{{vehicleType}}</option>
+							<option ng-repeat="vehicleType in vehicleTypeList" value="{{vehicleType}}">{{vehicleType}}</option>
             </select>
           </div>
       	 <!--  <div class="my-dropdown prices-dropdown" style="width: 96px !important;">
