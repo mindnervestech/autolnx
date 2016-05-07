@@ -3345,11 +3345,11 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		System.out.println(start);
 		System.out.println(alphabet);
 		if(!year.equals("")) {
-			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and make ='"+make+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')  ORDER BY posted_date desc limit "+start+",16 ");
-			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and make ='"+make+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')");
+			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and (make = '"+make+"' or '"+make+"' = '') and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')  ORDER BY posted_date desc limit "+start+",16 ");
+			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' (make = '"+make+"' or '"+make+"' = '') and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public' and (year = '"+year+"' or '"+year+"' = '')");
 		} else {
-			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"'and make ='"+make+"'  and status = 'Newly Arrived' and (year = '"+year+"' or '"+year+"' = '') and public_status='public' and make LIKE '"+alphabet+"%' ORDER BY posted_date desc limit "+start+",16 ");
-			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and make ='"+make+"' and status = 'Newly Arrived' and public_status='public' and make LIKE '"+alphabet+"%'");
+			rows = jdbcTemplate.queryForList("select * from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"'and (make = '"+make+"' or '"+make+"' = '')  and status = 'Newly Arrived' and (year = '"+year+"' or '"+year+"' = '') and public_status='public' and make LIKE '"+alphabet+"%' ORDER BY posted_date desc limit "+start+",16 ");
+			count = jdbcTemplate.queryForInt("select count(*) from vehicle where posted_date > '"+dateFormat.format(dateBefore30Days)+"' and (make = '"+make+"' or '"+make+"' = '') and status = 'Newly Arrived' and public_status='public' and make LIKE '"+alphabet+"%'");
 		}
 		for(Map map : rows) {
 			VehicleVM vm = new VehicleVM();

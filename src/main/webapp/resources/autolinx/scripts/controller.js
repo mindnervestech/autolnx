@@ -829,8 +829,6 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 	 $scope.noMore = false;
 	 var start = 0;
 	$scope.loadMore = function() {
-	
-		
 		if ($scope.noMore) return;
 		$http({method:'GET',url:contextPath+'/getMobileVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet}})
 		.success(function(data) {
@@ -900,8 +898,7 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 		$scope.alphbet = "";
 		console.log(make);
 		$scope.make = make;
-		$scope.loadMoreByMake();
-		
+		$scope.loadMore();
 	}
 	
 	$scope.vehicleList = [];
@@ -938,7 +935,7 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 		 });
 	 $scope.noMore = false;
 	 var start = 0;
-	 $scope.loadMoreByMake = function() {
+	 $scope.loadMore = function() {
 			console.log($scope.make);
 			if ($scope.noMore) return;
 			$http({method:'GET',url:contextPath+'/mobile/getMobileRecentVehiclesByMake',params:{start:start,year:$scope.year,alphabet:$scope.alphbet,make:$scope.make}})
@@ -956,7 +953,7 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 			start = start + 16;
 		}
 	 
-	$scope.loadMore = function() {
+	/*$scope.loadMore = function() {
 		
 		if ($scope.noMore) return;
 		$http({method:'GET',url:contextPath+'/mobile/getMobileRecentVehicles',params:{start:start,year:$scope.year,alphabet:$scope.alphbet}})
@@ -972,7 +969,7 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 		});
 		
 		start = start + 16;
-	}
+	}*/
 	
 		$scope.selectYear = function(){
 		
