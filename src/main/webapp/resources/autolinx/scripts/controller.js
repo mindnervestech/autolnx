@@ -45,143 +45,54 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	$scope.VehiclesCount = "";
 	$scope.price = "lowToHigh";
 	$scope.vehicleType="";
-	
+	var start = 0;
 	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId,type){
-		/*var url1 = window.location.href;
-		console.log(url1);
-		var params1;
-		if(window.location.href.split("?").length > 1){
-			params1 = window.location.href.split("?")[1].split("&");
+		
+		$.urlParam = function(name){
+			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if(results != null){
+				return results[1] || "";
+			}
+			else{
+				return "";
+			}
 		}
-		console.log(params1);
-		console.log(params1.length);
-		if(params1.length > 0){
-			var p=params1[0].split('=');
-			$scope.start = p[1];
-			
-			p=params1[1].split('=');
-			$scope.year = p[1];
-			
-			p=params1[2].split('=');
-			$scope.make = p[1];
-			
-			p=params1[3].split('=');
-			$scope.model = p[1];
-			
-			p=params1[4].split('=');
-			$scope.bodyStyle = p[1];
-			
-			p=params1[5].split('=');
-			$scope.fuel = p[1];
-			
-			p=params1[6].split('=');
-			$scope.mileage = p[1];
-			
-			p=params1[7].split('=');
-			$scope.price = p[1];
-			
-			p=params1[8].split('=');
-			$scope.alphbet = p[1];
-			
-			p=params1[9].split('=');
-			$scope.vtype = p[1];
-			
-			p=params1[10].split('=');
-			$scope.vehicleType = p[1];
-		}else{*/
-			console.log(model);
-			console.log(make);
-			console.log(year);
-			console.log(bodyStyle);
-			console.log(fuel);
-			console.log($scope.vType);
-			var url = $location.absUrl();
-			console.log(url);
-			console.log(type);
+		console.log("????????");
+		console.log(type);
+		console.log(locationId);
+		$scope.start = $.urlParam('start').replace("%20"," ");
+		$scope.make = $.urlParam('make').replace("%20"," ");
+		$scope.year = $.urlParam('year').replace("%20"," ");
+		$scope.model = $.urlParam('model').replace("%20"," ");
+		$scope.bodyStyle = $.urlParam('bodyStyle').replace("%20"," ");
+		$scope.fuel = $.urlParam('fuel').replace("%20"," ");
+		$scope.mileage = $.urlParam('mileage').replace("%20"," ");
+		$scope.alphbet = $.urlParam('alphbet').replace("%20"," ");
+		$scope.price = $.urlParam('price').replace("%20"," ");
+		$scope.vehicleType = $.urlParam('vehicleType').replace("%20"," ");
+		$scope.type = $.urlParam('vtype').replace("%20"," ");
+		
+		if($scope.price == ""){
+			$scope.price = "lowToHigh";
+		}
+		if($scope.type == ""){
 			$scope.type = type;
-			if(year == 0){
-				$scope.year = "";
-			}else{
-				$scope.year = year;
-			}
-			
-			if(make == 0){
-				$scope.make = "";
-			}else{
-				$scope.make = make;
-			}
-			
-			if(model == 0){
-				$scope.model = "";
-			}else{
-				$scope.model = model;
-			}
-			
-			if(bodyStyle == 0){
-				$scope.bodyStyle = "";
-			}else{
-				$scope.bodyStyle = bodyStyle;
-			}
-			
-			if(fuel == 0){
-				$scope.fuel = "";
-			}else{
-				$scope.fuel = fuel;
-			}
+		}
+		if($scope.alphbet == ""){
+			$scope.alphbet = "a_z";
+		}
+		if($scope.start == ""){
+			start = 0;
+		}else{
+			//start = parseInt($scope.start);
+			$scope.start = parseInt($scope.start);
+		}
 			$scope.locationId = locationId;
 			$scope.loadMore();
-		
-		/*for (var i = 0; i < params1.length; i++) {
-		    var p=params1[i].split('=');
-		    console.log(p);
-		    console.log(p[0]);
-		    $scope.p[0]= p[1];
-		    console.log($scope.p[0]);
-		  }*/
+			$scope.loadDetails();
 	};
 	
-	 $scope.noMore = false;
-	 var start = 0;
-	$scope.loadMore = function() {
-		
-		if($scope.vType == undefined){
-			$scope.vType = "";
-		}
-		$scope.flagForNew = 0;
-		if($scope.vType == 'New'){
-			$scope.flagForNew = 1;
-		}
-		console.log($scope.flagForNew);
-		console.log($scope.vType);
-		console.log($scope.locationId);
-		console.log($scope.alphbet);
-		console.log($scope.vehicleType);
-		console.log($scope.fuel);
-		if ($scope.noMore) return;
-		var url = window.location.href;
-		console.log(url);
-		var params = {start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.type,vehicleType:$scope.vehicleType};
-		var new_url = url + '?' + jQuery.param(params);
-		console.log(new_url);
-		
-		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.type,vehicleType:$scope.vehicleType}})
-		.success(function(data) {
-			//window.location.replace(new_url);
-			console.log(data)
-			if(data.vehicleList.length == 0) {
-				$scope.noMore = true;
-			}
-			$scope.VehiclesCount = data.count;
-			for (var i = 0; i < data.vehicleList.length; i++) {
-				$scope.vehicleList.push(data.vehicleList[i]);
-			}
-
-			window.location.hash = '?' + jQuery.param(params);
-		});
-		
-		start = start + 16;
-	}
-	
+	$scope.loadDetails = function(){
 		$http({method:'GET',url:contextPath+'/getAllMakes',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
 		.success(function(data) {
 			$scope.makeList = data.make;
@@ -207,37 +118,44 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			$scope.bodyList = data;
 			console.log(data);
 		});
+	}
+	
+	
+	 $scope.noMore = false;
+	 var start = 0;
+	$scope.loadMore = function() {
+		
+		if($scope.vType == undefined){
+			$scope.vType = "";
+		}
+		$scope.flagForNew = 0;
+		if($scope.vType == 'New'){
+			$scope.flagForNew = 1;
+		}
+		
+		if ($scope.noMore) return;
+		var url = window.location.href;
+		var params = {start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.type,vehicleType:$scope.vehicleType};
+		var new_url = url + '?' + jQuery.param(params);
+		$http({method:'GET',url:contextPath+'/getVehicleInfo',params:{start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.type,vehicleType:$scope.vehicleType}})
+		.success(function(data) {
+			//window.location.replace(new_url);
+			console.log(data)
+			if(data.vehicleList.length == 0) {
+				$scope.noMore = true;
+			}
+			$scope.VehiclesCount = data.count;
+			for (var i = 0; i < data.vehicleList.length; i++) {
+				$scope.vehicleList.push(data.vehicleList[i]);
+			}
+			window.location.hash = '?' + jQuery.param(params);
+		});
+		
+		start = start + 16;
+	}
+		
 		$scope.selectYear = function(){
-			/*$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,model:$scope.model,year:$scope.year}})
-			.success(function(data) {
-				$scope.fuelList = data;
-				console.log(data);
-			});*/
-			$http({method:'GET',url:contextPath+'/getAllMakes',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.makeList = data.make;
-				console.log(data.make);
-			});
-			$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.yearList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.fuelList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.bodyList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllCategory',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.vehicleTypeList = data;
-				console.log(data);
-			});
+			$scope.loadDetails();
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -245,41 +163,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectMake = function(){
-			/*$http({method:'GET',url:contextPath+'/getAllModelByMake',params:{make:$scope.make}})
-			.success(function(data) {
-				$scope.modelList = data;
-				console.log(data);
-			});*/
-			$http({method:'GET',url:contextPath+'/getAllModelByMake',params:{make:$scope.make}})
-			.success(function(data) {
-				$scope.modelList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllMakes',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.makeList = data.make;
-				console.log(data.make);
-			});
-			$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.yearList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllCategory',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.vehicleTypeList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.fuelList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.bodyList = data;
-				console.log(data);
-			});
+			$scope.loadDetails();
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -299,31 +183,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectBodyStyle = function(){
-			$http({method:'GET',url:contextPath+'/getAllMakes',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.makeList = data.make;
-				console.log(data.make);
-			});
-			$http({method:'GET',url:contextPath+'/getAllCategory',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.vehicleTypeList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.yearList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.fuelList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.bodyList = data;
-				console.log(data);
-			});
+			$scope.loadDetails();
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -331,72 +191,14 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectFuel = function(){
-			/*$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,model:$scope.model}})
-			.success(function(data) {
-				$scope.bodyList = data;
-				console.log(data);
-			});*/
-			$http({method:'GET',url:contextPath+'/getAllCategory',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.vehicleTypeList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllMakes',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.makeList = data.make;
-				console.log(data.make);
-			});
-			$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.yearList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.fuelList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.bodyList = data;
-				console.log(data);
-			});
+			$scope.loadDetails();
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
 			$scope.loadMore();
 		}
 		$scope.selectVehicleType = function(){
-			/*$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,model:$scope.model}})
-			.success(function(data) {
-				$scope.bodyList = data;
-				console.log(data);
-			});*/
-			$http({method:'GET',url:contextPath+'/getAllCategory',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.vehicleTypeList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllMakes',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.makeList = data.make;
-				console.log(data.make);
-			});
-			$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.yearList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.fuelList = data;
-				console.log(data);
-			});
-			$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
-			.success(function(data) {
-				$scope.bodyList = data;
-				console.log(data);
-			});
+			$scope.loadDetails();
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -405,12 +207,14 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		
 		
 		$scope.selectMileage = function(){
+			$scope.loadDetails();
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
 			$scope.loadMore();
 		}
 		$scope.selectvType = function(){
+			$scope.loadDetails();
 			$scope.vehicleList = [];
 			start = 0;
 			$scope.noMore = false;
@@ -418,6 +222,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		}
 		
 		$scope.selectVehicleType = function(){
+			$scope.loadDetails();
 			console.log($scope.vehicleType);
 			console.log("?????");
 			$scope.vehicleList = [];
