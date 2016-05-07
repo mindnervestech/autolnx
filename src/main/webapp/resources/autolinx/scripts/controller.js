@@ -93,27 +93,27 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	};
 	
 	$scope.loadDetails = function(){
-		$http({method:'GET',url:contextPath+'/getAllMakes',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
+		$http({method:'GET',url:contextPath+'/getAllMakes',params:{vtype:$scope.type,make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
 		.success(function(data) {
 			$scope.makeList = data.make;
 			console.log(data.make);
 		});
-		$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
+		$http({method:'GET',url:contextPath+'/getAllYearByModel',params:{vtype:$scope.type,make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
 		.success(function(data) {
 			$scope.yearList = data;
 			console.log(data);
 		});
-		$http({method:'GET',url:contextPath+'/getAllCategory',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
+		$http({method:'GET',url:contextPath+'/getAllCategory',params:{vtype:$scope.type,make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
 		.success(function(data) {
 			$scope.vehicleTypeList = data;
 			console.log(data);
 		});
-		$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
+		$http({method:'GET',url:contextPath+'/getAllFuelTypeYear',params:{vtype:$scope.type,make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
 		.success(function(data) {
 			$scope.fuelList = data;
 			console.log(data);
 		});
-		$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
+		$http({method:'GET',url:contextPath+'/getAllBodyStyleByFuelType',params:{vtype:$scope.type,make:$scope.make,year:$scope.year,fuel:$scope.fuel,bodyStyle:$scope.bodyStyle,category:$scope.vehicleType}})
 		.success(function(data) {
 			$scope.bodyList = data;
 			console.log(data);

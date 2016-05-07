@@ -324,30 +324,30 @@ public class ClientController {
 	}
 	@RequestMapping(value = "/getAllYearByModel", method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> getAllYearByModel(HttpServletRequest request, Locale locale, Model model,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
+	public List<String> getAllYearByModel(HttpServletRequest request, Locale locale, Model model,@RequestParam("vtype") String vtype,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
 		Long locationId = locationIdGol;
-		List<String> modelList = clientService.getAllYearByModel(make,year,fuel,bodyStyle,category,locationId);
+		List<String> modelList = clientService.getAllYearByModel(vtype,make,year,fuel,bodyStyle,category,locationId);
 		return modelList;
 	}
 	@RequestMapping(value = "/getAllFuelTypeYear", method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> getAllFuelTypeYear(HttpServletRequest request, Locale locale, Model model,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
+	public List<String> getAllFuelTypeYear(HttpServletRequest request, Locale locale, Model model,@RequestParam("vtype") String vtype,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
 		Long locationId = locationIdGol;
-		List<String> modelList = clientService.getAllFuelTypeYear(make,year,fuel,bodyStyle,category,locationId);
+		List<String> modelList = clientService.getAllFuelTypeYear(vtype,make,year,fuel,bodyStyle,category,locationId);
 		return modelList;
 	}
 	@RequestMapping(value = "/getAllBodyStyleByFuelType", method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> getAllBodyStyleByFuelType(HttpServletRequest request, Locale locale, Model model,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
+	public List<String> getAllBodyStyleByFuelType(HttpServletRequest request, Locale locale, Model model,@RequestParam("vtype") String vtype,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
 		Long locationId = locationIdGol;
-		List<String> modelList = clientService.getAllBodyStyleByFuelType(make,year,fuel,bodyStyle,category,locationId);
+		List<String> modelList = clientService.getAllBodyStyleByFuelType(vtype,make,year,fuel,bodyStyle,category,locationId);
 		return modelList;
 	}
 	@RequestMapping(value = "/getAllCategory", method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> getAllCategory(HttpServletRequest request, Locale locale, Model model,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
+	public List<String> getAllCategory(HttpServletRequest request, Locale locale, Model model,@RequestParam("vtype") String vtype,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
 		Long locationId = locationIdGol;
-		List<String> modelList = clientService.getAllCategory(make,year,fuel,bodyStyle,category,locationId);
+		List<String> modelList = clientService.getAllCategory(vtype,make,year,fuel,bodyStyle,category,locationId);
 		return modelList;
 	}
 	@RequestMapping(value = "/getVehicleInfo", method = RequestMethod.GET)
@@ -377,9 +377,9 @@ public class ClientController {
 	
 	@RequestMapping(value = "/getAllMakes", method = RequestMethod.GET)
 	@ResponseBody
-	public Map getAllMakes(Locale locale, Model model,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
+	public Map getAllMakes(Locale locale, Model model,@RequestParam("vtype") String vtype,@RequestParam("make") String make,@RequestParam("year") String year,@RequestParam("fuel") String fuel,@RequestParam("bodyStyle") String bodyStyle,@RequestParam("category") String category) {
 		Long locationId = locationIdGol;
-		Map vehicleList = clientService.getAllMakes(make,year,fuel,bodyStyle,category,locationId);
+		Map vehicleList = clientService.getAllMakes(vtype,make,year,fuel,bodyStyle,category,locationId);
 		return vehicleList;
 	}
 	
