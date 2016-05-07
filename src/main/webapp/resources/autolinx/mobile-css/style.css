@@ -1371,3 +1371,144 @@ footer label {
 	color:#999;
 	padding:0 20px;
 }
+
+.tp-banner ul li div.domainate {
+	font-size: 72px;
+	font-weight: 800;
+	font-family: "Open Sans";
+	letter-spacing: -6px;
+}
+
+.tp-banner ul li div.internet {
+	font-size: 55px;
+	font-weight: normal;
+	font-family: "Open Sans";
+	color: #acd6f0;
+	padding-bottom: 55px !important;
+	width: 296px;
+}
+
+.tp-banner ul li div.attract {
+	font-family: "Open Sans";
+	font-weight: 400;
+	font-size: 30px;
+	color: #FFF;
+	border-top: 2px solid #acd6f0;
+	padding-top: 16px;
+	letter-spacing: -2px;
+}
+
+.tp-banner ul li div.qualified {
+	font-family: "Open Sans";
+	font-weight: 400;
+	font-size: 30px;
+	color: #FFF;
+	border-bottom: 2px solid #acd6f0;
+	padding-bottom: 16px;
+	letter-spacing: -2px;
+}
+
+.tp-banner ul li div.more {
+	font-weight: 500;
+	font-size: 70px;
+	color: #acd6f0;
+	font-family: 'Yellowtail', cursive;
+	padding: 0 5px;
+}
+
+.tp-banner ul li div.invest {
+	font-size: 48px;
+	color: #6a4123;
+	background-color: #ffeab3;
+	padding: 5px;
+	letter-spacing: -3px;
+}
+
+.tp-banner ul li div.move {
+	font-size: 46px;
+	font-weight: 800;
+	font-family: "Open Sans";
+	letter-spacing: -6px;
+}
+
+.tp-banner ul li div.light_brown {
+	font-size: 46px;
+	font-weight: 800;
+	font-family: "Open Sans";
+	letter-spacing: -6px;
+	color: #ffeab3;
+}
+
+.tp-banner ul li div.dark_brown {
+	font-size: 46px;
+	font-weight: 800;
+	font-family: "Open Sans";
+	letter-spacing: -6px;
+	color: #6a4123;
+}
+
+.tp-banner ul li div.faster {
+	font-size: 65px;
+	font-weight: 300;
+	font-family: "Open Sans";
+	letter-spacing: -2px;
+	color: #6a4123;
+	font-style: italic;
+	padding-right: 10px;
+}
+
+.tp-banner ul li div.brown_line img {
+	width: 488px;
+	height: 3px;
+}
+
+.tp-banner ul li div.big_white {
+	font-size: 72px;
+	font-weight: 800;
+	letter-spacing: -6px;
+	color: #FFF;
+}
+
+.tp-banner ul li div.thin_red {
+	font-size: 75px;
+	font-weight: 200;
+	letter-spacing: -6px;
+	color: #c7081b;
+}
+
+.tp-banner ul li div.thin_white {
+	font-size: 72px;
+	font-weight: 200;
+	letter-spacing: -6px;
+	color: #FFF;
+}
+
+.tp-banner ul li div.thinner_white {
+	font-size: 65px;
+	font-weight: 200;
+	letter-spacing: -5px;
+	color: #FFF;
+}
+
+.tp-banner ul li div.thin_dark_blue {
+	font-size: 75px;
+	font-weight: 200;
+	letter-spacing: -6px;
+	color: #042b5a;
+}
+
+.tp-banner ul li div.cursive {
+	font-size: 122px;
+	letter-spacing: -6px;
+	color: #cbe2d2;
+	font-family: "Yellowtail", cursive;
+	padding-right: 20px;
+}
+
+.tp-banner ul li div.green {
+	color: #b7cd56;
+	font-size: 48px;
+	letter-spacing: -4px;
+}
+
+
