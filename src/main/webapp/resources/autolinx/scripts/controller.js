@@ -47,7 +47,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	$scope.vehicleType="";
 	
 	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId,type){
-		var url1 = window.location.href;
+		/*var url1 = window.location.href;
 		console.log(url1);
 		var params1;
 		if(window.location.href.split("?").length > 1){
@@ -88,7 +88,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			
 			p=params1[10].split('=');
 			$scope.vehicleType = p[1];
-		}else{
+		}else{*/
 			console.log(model);
 			console.log(make);
 			console.log(year);
@@ -130,7 +130,7 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			}
 			$scope.locationId = locationId;
 			$scope.loadMore();
-		}
+		
 		/*for (var i = 0; i < params1.length; i++) {
 		    var p=params1[i].split('=');
 		    console.log(p);
