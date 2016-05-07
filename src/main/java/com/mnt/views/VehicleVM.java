@@ -1,5 +1,6 @@
 package com.mnt.views;
 
+import java.sql.Date;
 import java.util.List;
 
 public class VehicleVM {
@@ -26,6 +27,7 @@ public class VehicleVM {
 	public String highwayMileage;
 	public String location;
 	public String price;
+	public Integer comingSoonFlag;
 	public Integer onlyPrice;
 	public String stock;
 	public String label;
@@ -66,6 +68,19 @@ public class VehicleVM {
 	public String rearViewCamera;
 	public String rearViewMonitor;
 	public String remoteTrunkRelease;
+	public String comingSoonDate;
+	public String getComingSoonDate() {
+		return comingSoonDate;
+	}
+	public void setComingSoonDate(String comingSoonDate) {
+		this.comingSoonDate = comingSoonDate;
+	}
+	public Integer getComingSoonFlag() {
+		return comingSoonFlag;
+	}
+	public void setComingSoonFlag(Integer comingSoonFlag) {
+		this.comingSoonFlag = comingSoonFlag;
+	}
 	public String steeringWheel;
 	public String steeringWheelControls;
 	public String pdfPath;
