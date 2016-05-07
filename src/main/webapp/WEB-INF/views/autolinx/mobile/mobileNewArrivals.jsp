@@ -125,7 +125,7 @@
             <ul style="text-align: center;">
             	<li ng-repeat="obj in characters">
             	<a id="{{obj.name}}" ng-class="obj.isAvailable? 'activeLetter':'inactiveLetter'" ng-click="setAlphabet(obj.name,obj.index,obj.isAvailable)" 
-            	style="cursor: pointer;font-size: 18px;">{{obj.name.toUpperCase()}}</a>
+            	style="cursor: pointer;">{{obj.name.toUpperCase()}}</a>
             	</li>
             </ul>
         </div>
