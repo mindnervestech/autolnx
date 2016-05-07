@@ -1288,7 +1288,12 @@ public class ClientService {
 	public void saveAlertEmail(RequestMore model, Long locationId){
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				Date date = new Date();
-		jdbcTemplate.update("INSERT INTO price_alert(email,vin,locations_id,curr_date) VALUES('"+model.getEmail()+"','"+model.getVin()+"','"+locationId+"','"+dateFormat.format(date)+"')");
+				if(model.getName() != null){
+					jdbcTemplate.update("INSERT INTO price_alert(email,name,vin,locations_id,curr_date) VALUES('"+model.getEmail()+"','"+model.getName()+"','"+model.getVin()+"','"+locationId+"','"+dateFormat.format(date)+"')");
+				}else{
+					jdbcTemplate.update("INSERT INTO price_alert(email,vin,locations_id,curr_date) VALUES('"+model.getEmail()+"','"+model.getVin()+"','"+locationId+"','"+dateFormat.format(date)+"')");
+				}
+		
 	}
 	
 	public void saveCarModel(RequestMore model, Long locationId){
