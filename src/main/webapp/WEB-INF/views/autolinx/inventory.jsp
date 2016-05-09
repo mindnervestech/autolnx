@@ -139,6 +139,8 @@ $(document).ready(function()
                   <ul class="dropdown-menu">
                       <li><a href="${pageContext.request.contextPath}/findVehicles/New">New</a></li>
                       <li><a href="${pageContext.request.contextPath}/findVehicles/Used">Used</a></li>
+                      <li ng-if="${comingSoonCount != 0}"><a href="${pageContext.request.contextPath}/findVehicles/comingSoon" >ComingSoon</a></li>
+                      
                   </ul>
               </li>
               

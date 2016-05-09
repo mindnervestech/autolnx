@@ -84,6 +84,8 @@ public class ClientController {
 		String ph =clientService.getPhoneno(locationId);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		model.addAttribute("myphone",ph);
@@ -155,6 +157,8 @@ public class ClientController {
 		String formattedDate = dateFormat.format(date);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		model.addAttribute("serverTime", formattedDate );
@@ -217,7 +221,8 @@ public class ClientController {
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
-		
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
@@ -240,6 +245,8 @@ public class ClientController {
 		model.addAttribute("myphone",ph);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		model.addAttribute("serverTime", formattedDate );
@@ -288,6 +295,8 @@ public class ClientController {
 		model.addAttribute("hostnameimg",hostnameimg);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		return "autolinx/warranty";
@@ -310,6 +319,8 @@ public class ClientController {
 		model.addAttribute("hostnameimg",hostnameimg);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		return "autolinx/blog";
@@ -417,6 +428,8 @@ public class ClientController {
 		System.out.println(pdfRootDir);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		return "autolinx/vehicleDetails";
@@ -563,9 +576,10 @@ public class ClientController {
 		model.addAttribute("hostnameimg",hostnameimg);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
-		
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		return "autolinx/inventory";
 	}
    
@@ -603,6 +617,8 @@ public class ClientController {
 		model.addAttribute("hostnameimg",hostnameimg);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		
@@ -634,6 +650,8 @@ public class ClientController {
 		model.addAttribute("hostnameimg",hostnameimg);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
+		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		return "autolinx/inventory";

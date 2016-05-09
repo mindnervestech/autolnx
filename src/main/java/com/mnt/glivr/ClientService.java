@@ -577,12 +577,27 @@ public class ClientService {
 		count =jdbcTemplate.queryForInt("select count(*) from vehicle where typeof_vehicle = '"+type+"' and locations_id = '"+locationId+"' and public_status='public' and status='Newly Arrived'");
 		return count;
 	}
+	public Integer getVehicleInfoNewUsed(String alphbet,Long locationId) {
+		Integer count = 0;
+		System.out.println(alphbet);
+		count =jdbcTemplate.queryForInt("select count(*) from vehicle where locations_id = '"+locationId+"' and public_status='public' and status='Newly Arrived' and coming_soon_flag=1 ");
+		System.out.println("ccccccomingsooncount"+count);
+		return count;
+	}
 	
 	
 	public Map getVehicles(int start, String year, String make, String models, String bodyStyle, String fuel, String mileage, String priceSort, String alphbet, String vtype, String vehicleType,Long locationId) {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> rows = null;
 		Integer count = 0;
+		
+		System.out.println(vtype);
+		if(vtype.equalsIgnoreCase("comingSoon")){
+		
+			rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (coming_soon_flag = '1') and (public_status = 'public') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
+			count =jdbcTemplate.queryForInt("select count(*) from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (coming_soon_flag ='1')and (public_status = 'public') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and status != 'Sold'");
+		}
+		else{
 		if(vehicleType.equals("")){
 			if(!priceSort.equals("")){
 				rows = jdbcTemplate.queryForList("select * from vehicle where (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and locations_id = '"+locationId+"' and public_status='public' and status != 'Sold' ORDER BY CASE 'lowToHigh' WHEN '"+priceSort+"' THEN price END ASC, CASE 'highToLow' WHEN '"+priceSort+"' THEN price END DESC limit "+start+",16 ");
@@ -600,7 +615,7 @@ public class ClientService {
 				count =jdbcTemplate.queryForInt("select count(*) from vehicle where (category = '"+vehicleType+"' or '"+vehicleType+"' = '') and (year = '"+year+"' or '"+year+"' = '') and (mileage < '"+mileage+"' or '"+mileage+"' = '') and (typeof_vehicle = '"+vtype+"' or '"+vtype+"' = '') and (make = '"+make+"' or '"+make+"' = '') and (model = '"+models+"' or '"+models+"' = '') and (fuel_type = '"+fuel+"' or '"+fuel+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and (body_style = '"+bodyStyle+"' or '"+bodyStyle+"' = '') and public_status='public' and locations_id = '"+locationId+"' and status != 'Sold'");
 			}
 		}
-		
+		}
 		for(Map map : rows) {
 			VehicleVM vm = new VehicleVM();
 			vm.bodyStyle = (String) map.get("body_style");
