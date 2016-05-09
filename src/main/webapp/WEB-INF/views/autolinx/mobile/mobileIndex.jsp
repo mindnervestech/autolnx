@@ -767,14 +767,19 @@
 		height: 200px;
 		width: 50%;
 	}
-
-	@media (max-width: 450px) {
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape){
+ 	 .tp-banner ul li div.thirdSlider {
+	  top:340px !important;
+	}
+}
+   
+	 @media only screen and (max-device-width:480px) {
     .setheight {
         height: 160px;
     }
-        .tp-banner ul li div.thirdSlider {
-	  background-color:#bcdf5e;
-	  top:180px !important;
+    .tp-banner ul li div.thirdSlider {
+	  top:190px !important;
+	}
 }
 </style>
  <a title="Real Time Web Analytics" href="http://clicky.com/100875513"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
