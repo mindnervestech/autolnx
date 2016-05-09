@@ -35,6 +35,7 @@ import com.mnt.views.ScheduleTestVM;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.SiteLogoVM;
 import com.mnt.views.SliderVM;
+import com.mnt.views.TestimonialsVM;
 import com.mnt.views.Trade_InVM;
 import com.mnt.views.VehicleVM;
 import com.mnt.views.pdfInfoVM;
@@ -78,6 +79,7 @@ public class ClientController {
 		List<String> vehicleListMake = clientService.getAllVehicleMakes(locationId);
 		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
+		List<TestimonialsVM> testmonial = clientService.getAllTestimoniale(locationId);
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		List<VehicleVM> vehicleList = clientService.getRecentVehicles(locationId);
@@ -100,6 +102,7 @@ public class ClientController {
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("recentVehicles",vehicleList);
 		model.addAttribute("hostnameimg",hostnameimg);
+		model.addAttribute("testimonial",testmonial);
 		
 		return "autolinx/index";
 	}

@@ -62,6 +62,7 @@ import com.mnt.views.ScheduleTestVM;
 import com.mnt.views.SiteContentVM;
 import com.mnt.views.SiteLogoVM;
 import com.mnt.views.SliderVM;
+import com.mnt.views.TestimonialsVM;
 import com.mnt.views.Trade_InVM;
 import com.mnt.views.VehicleImage;
 import com.mnt.views.VehicleVM;
@@ -533,6 +534,20 @@ public class ClientService {
 		}
 		return vehicleListModel;
 	}
+	  
+	  public List<TestimonialsVM> getAllTestimoniale(Long locationId) {
+			List<TestimonialsVM> testiMonialList = new ArrayList<TestimonialsVM>();
+			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM site_testimonials where locations_id = '"+locationId+"'");
+			
+			for(Map map : rows1) {
+				TestimonialsVM tVm = new TestimonialsVM();
+				tVm.testimonials = (String)map.get("testimonial");
+				tVm.signature  = (String)map.get("signature");
+				testiMonialList.add(tVm);
+			}
+			
+			return testiMonialList;
+		}
 	
 	public List<String> getAllVehicleYear(Long locationId) {
 		List<String> vehicleListYear = new ArrayList<String>();

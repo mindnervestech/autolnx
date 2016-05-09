@@ -118,7 +118,9 @@ jQuery(document).ready( function($){
 			autoHover: true,
 			speed: 500,
 			pager: false,
-			controls: false
+			controls: false,
+			moveSlideQty: 1,
+			useCSS: false
 		});
 	}
 	

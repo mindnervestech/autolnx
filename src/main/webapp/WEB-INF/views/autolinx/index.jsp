@@ -811,9 +811,18 @@ $(document).ready(function()
           <div class="testimonial">
             <div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;">
               <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 109px;">
-                <ul class="testimonial_slider" style="width: 515%; position: relative; transition-duration: 0s; transform: translate3d(-1121px, 0px, 0px);">
-                  <li style="float: left; list-style: outside none none; position: relative; width: 1118px; margin-right: 3px;" class="bx-clone">
-                    <blockquote class="style1"><span>I just bought a Jaguar from Autolinx. The experience was fantastic! &nbsp;I worked with Nick and Ed. Courteous and professional. &nbsp;They offered a very fair price. &nbsp;The car was detailed; the paperwork swift. Soup to nuts, 2 hours. &nbsp;They did not have one of the key fobs on the day of the sale, so Nick delivered it to me the next day. &nbsp;Next used car I buy will be from Autolinx!</span><strong>R M.</strong> </blockquote>
+                <ul class="testimonial_slider">
+                
+                   <c:forEach var="option" items='${testimonial}' varStatus="i">
+                   <li>
+                    <blockquote class="style1"><span>${option.testimonials}</span><strong>${option.signature}</strong> </blockquote>
+                  </li>
+         
+                </c:forEach> 
+                
+                
+                 <!--  <li style="float: left; list-style: outside none none; position: relative; width: 1118px; margin-right: 3px;" class="bx-clone">
+                    <blockquote class="style1"><span>11111111111 experience was fantastic! &nbsp;I worked with Nick and Ed. Courteous and professional. &nbsp;They offered a very fair price. &nbsp;The car was detailed; the paperwork swift. Soup to nuts, 2 hours. &nbsp;They did not have one of the key fobs on the day of the sale, so Nick delivered it to me the next day. &nbsp;Next used car I buy will be from Autolinx!</span><strong>R M.</strong> </blockquote>
                   </li>
                   <li style="float: left; list-style: outside none none; position: relative; width: 1118px; margin-right: 3px;">
                     <blockquote class="style1"><span>
@@ -840,7 +849,7 @@ $(document).ready(function()
                       </div>
                       <p><strong>G N.</strong> </p>
                       </span></blockquote>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>
