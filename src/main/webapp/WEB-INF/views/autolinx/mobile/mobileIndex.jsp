@@ -193,7 +193,8 @@
 						data-speed="1000"
 						data-start="500"
 						data-easing="Back.easeInQuart"
-						data-endspeed="300">${sliderImages[1].slider21} ${sliderImages[1].slider22} ${sliderImages[1].slider23} ${sliderImages[1].slider24} ${sliderImages[1].slider25} ${sliderImages[1].slider26} ${sliderImages[1].slider27} ${sliderImages[1].slider28} </div>
+						data-endspeed="300">${sliderImages[1].slider21} ${sliderImages[1].slider22} ${sliderImages[1].slider23} ${sliderImages[1].slider24} ${sliderImages[1].slider25} ${sliderImages[1].slider26} ${sliderImages[1].slider27} ${sliderImages[1].slider28} 
+						</div>
                         
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption move mediumlarge_light_white_center fade"
@@ -771,7 +772,10 @@
     .setheight {
         height: 160px;
     }
-
+        .tp-banner ul li div.thirdSlider {
+	  background-color:#bcdf5e;
+	  top:180px !important;
+}
 </style>
  <a title="Real Time Web Analytics" href="http://clicky.com/100875513"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
 <script type="text/javascript">

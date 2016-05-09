@@ -206,7 +206,7 @@
 	                	                			<li class="next1 gradient_button" style="float: right;"><a href="${pageContext.request.contextPath}/mobile/viewDetails/${vehicle.nextVehicle}">Next Vehicle</a></li>
 	                	                		</div>
 	                	                		<div style="width: 20%;float: right;">
-	                	                				<li class="schedule gradient_button"><a target="_blank" data-toggle="modal" data-target="#pdfModal"  >PDF Brochure</a></li>
+	                	                				<li class="schedule gradient_button"><a target="_blank" data-toggle="modal" data-target="#pdfModal">Brochure</a></li>
 	                	                		</div>
 	                	                		
 	                	                	</div>

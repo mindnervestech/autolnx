@@ -870,6 +870,7 @@ app.controller("MobileInventoryController", function($scope,$http, notificationS
 		
 		$scope.setAlphabet = function(alphabate,index,flag) {
 			console.log(flag);
+			$scope.imageClick($('.swiper-slide-active').attr('make'));
 			if(flag){
 				$('.alfaList ul li a.active').removeClass('active');
 				$('#'+alphabate).addClass('active');
@@ -990,6 +991,7 @@ app.controller("MobileNewArrivalController", function($scope,$http,notificationS
 		
 		$scope.setAlphabet = function(alphabate,index,flag) {
 			console.log(flag);
+			$scope.imageClick($('.swiper-slide-active').attr('make'));
 			if(flag){
 				$('.alfaList ul li a.active').removeClass('active');
 				$('#'+alphabate).addClass('active');
