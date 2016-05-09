@@ -1608,7 +1608,9 @@ $(document).ready(function()
       <div class="modal-content" style="width: 514px;margin-left: 80px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Price alert email</h4>
+          <h4 ng-if="${vehicle.comingSoonFlag != 1}" class="modal-title">Price alert email</h4>
+          <h4 ng-if="${vehicle.comingSoonFlag == 1}" class="modal-title">Price alert email</h4>
+          
         </div>
       
         <div class="modal-body">
