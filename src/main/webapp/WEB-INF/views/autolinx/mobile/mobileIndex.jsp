@@ -769,7 +769,13 @@
 	}
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape){
  	 .tp-banner ul li div.thirdSlider {
-	  top:340px !important;
+	  top:78% !important;
+	}
+	.tp-banner ul li div.big_white {
+		top:65% !important;
+	}
+	.tp-banner ul li div.green {
+		top:60% !important;
 	}
 }
    
@@ -778,7 +784,13 @@
         height: 160px;
     }
     .tp-banner ul li div.thirdSlider {
-	  top:190px !important;
+	  top:80% !important;
+	}
+	.tp-banner ul li div.big_white {
+		top:65% !important;
+	}
+	.tp-banner ul li div.green {
+		top:60% !important;
 	}
 }
 </style>
