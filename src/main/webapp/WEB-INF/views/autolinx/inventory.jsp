@@ -449,6 +449,30 @@ $(document).ready(function()
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="vehicle in vehicleList">
           <div class="inventory clearfix margin-bottom-20 styled_input "> <a href="vehicleDetails/{{vehicle.vin}}" class="inventory">
             <div class="title">{{vehicle.title}}</div>
+            <span class="ng-scope" ng-if="vehicle.comingSoonFlag == 1" style="
+			   	 content: &quot;Newly Arrived&quot;;
+			   	 position: absolute;
+			   	 z-index: 1;
+			   	 text-transform: uppercase;
+			   	 font-family: &quot;Open Sans&quot;, sans-serif;
+			   	 font-size: 1em;
+			   	 font-weight: 400;
+			   	 color: #fff;
+			   	 width: 33%;
+			   	 display: block;
+			   	 background: #428bca;
+			   	 left: 6%;
+			   	 top: 166px;
+			   	 -webkit-transform: rotate(45deg);
+			   	 -moz-transform: rotate(-45deg);
+			   	 -o-transform: rotate(-45deg);
+			   	 writing-mode: lr-tb;
+			   	 -ms-transform: rotate(-45deg);
+			   	 text-align: center;
+			   	 line-height: 1em;
+			   	 /* overflow: hidden; */
+			   	 ">Coming<br>Soon
+			   		</span>
             <img alt="preview" class="preview" src="${hostnameimg}{{vehicle.path}}">
             <table class="options-primary">
               <tbody>
