@@ -540,10 +540,13 @@ public class ClientService {
 			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM site_testimonials where locations_id = '"+locationId+"'");
 			
 			for(Map map : rows1) {
-				TestimonialsVM tVm = new TestimonialsVM();
-				tVm.testimonials = (String)map.get("testimonial");
-				tVm.signature  = (String)map.get("signature");
-				testiMonialList.add(tVm);
+					if(map.get("testimonial") != ""){
+						TestimonialsVM tVm = new TestimonialsVM();
+						tVm.testimonials = (String)map.get("testimonial");
+						tVm.signature  = (String)map.get("signature");
+						testiMonialList.add(tVm);
+					}
+				
 			}
 			
 			return testiMonialList;

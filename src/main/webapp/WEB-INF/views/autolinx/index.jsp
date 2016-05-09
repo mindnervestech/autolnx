@@ -804,6 +804,7 @@ $(document).ready(function()
         <a href="#"><span class="align-center"><i class="fa fa-map-marker fa-7x"></i></span></a> </div>
     </div>
   </div>
+   <c:if test="${testimonial.size()>=1}">
   <div class="vc_row wpb_row vc_row-fluid">
     <div class="vc_col-sm-12 wpb_column vc_column_container ">
       <div class="wpb_wrapper">
@@ -811,6 +812,8 @@ $(document).ready(function()
           <div class="testimonial">
             <div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;">
               <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 109px;">
+                
+                
                 <ul class="testimonial_slider">
                 
                    <c:forEach var="option" items='${testimonial}' varStatus="i">
@@ -851,6 +854,7 @@ $(document).ready(function()
                       </span></blockquote>
                   </li> -->
                 </ul>
+                
               </div>
             </div>
           </div>
@@ -860,6 +864,7 @@ $(document).ready(function()
       </div>
     </div>
   </div>
+  </c:if>
 </section>
 <!--welcome-wrap ends-->
 
