@@ -720,6 +720,25 @@ app.controller("MobileVehicleDetailsController", function($scope,$http,notificat
 
 app.controller("MobileHomeController", function($scope,$http, notificationService) {
 	
+	$scope.minLen = 0;
+	$scope.maxLen = 2;
+	
+	$scope.maxClick = function(){
+		var len = $scope.maxLen + 1;
+		if(len < $scope.recentVehicles.length){
+			$scope.maxLen = len;
+			$scope.minLen = $scope.minLen + 1;
+		}
+	};
+	
+	$scope.minClick = function(){
+		var len = $scope.minLen - 1;
+		if(len >= 0 ){
+			$scope.minLen = len;
+			$scope.maxLen = $scope.maxLen - 1;
+		}
+	};
+	
 	var contextPath = $('#contextpath').val();
 	$http({method:'GET',url:contextPath+'/getAllMake'})
 	.success(function(data) {

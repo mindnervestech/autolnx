@@ -436,12 +436,12 @@
         <p>
         	Browse through the vast selection of vehicles that have recently been added to our inventory.
         </p>
-        <div class="arrow3 clearfix margin-top-15 xs-margin-bottom-25" id="slideControls3"><span class="prev-btn"></span><span class="next-btn"></span></div>
+        <div class="arrow3 clearfix margin-top-15 xs-margin-bottom-25" id="slideControls3"><span class="prev-btn" ng-click="minClick()"></span><span class="next-btn" ng-click="maxClick()"></span></div>
     </div>
 	<div class="col-md-10 col-sm-8 padding-right-none sm-padding-left-none xs-padding-left-none">
     <div class="carasouel-slider3">
                 <div class="slide" ng-repeat="recent in recentVehicles" style="float: left; list-style: none; position: relative; margin-right: 30px; width: 170px;">
-                    <div class="car-block">
+                    <div class="car-block"  ng-if="$index <= maxLen && $index >= minLen">
                         <div class="img-flex"> <a href="viewDetails/{{recent.vin}}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="${hostnameimg}{{recent.path}}" alt="" class="img-responsive"> </div>
                         <div class="car-block-bottom">
                             <h6><strong>{{recent.year}} {{recent.make}} {{recent.model}}</strong></h6>
