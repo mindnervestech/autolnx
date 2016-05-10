@@ -498,7 +498,7 @@ public class ClientService {
 		List<Map<String, Object>> vehicalModel = jdbcTemplate.queryForList("select make,count(*) as count from vehicle WHERE locations_id = '"+locationId+"' and status = 'Newly Arrived' GROUP BY make ORDER BY COUNT(*) DESC");
 		//List<Map<String, Object>> vehicalModel = jdbcTemplate.queryForList("select * from vehicle where locations_id = '"+locationId+"' and status= 'Newly Arrived'");
 			for(Map map : vehicalModel) {
-				if(i < 8){
+				if(i < 7){
 					CountVM cVm = new CountVM();
 					cVm.carName = (String) map.get("make");
 					cVm.count = (Long) map.get("count");
