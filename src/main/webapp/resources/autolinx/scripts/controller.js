@@ -622,18 +622,25 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.priceAlert = {};
 	$scope.savePriceAlert = function(vin){
 		$scope.priceAlert.vin = vin;
+		$('#priceAlertModal').modal('toggle');
+		$("#confirpopUp").modal("show");
+	
+	};
+	
+	$scope.savePriceAlertConfir = function(){
+		console.log($scope.priceAlert);
 		$http({
 			method : 'POST',
 			url : contextPath+'/savePriceAlert',
 			data : $scope.priceAlert
 		}).success(function(response) {
 			console.log("Success...............");
-			$('#priceAlertModal').modal('hide');
+			$('#confirpopUp').modal('hide');
 			notificationService.success("Your request has been submitted");
 		}).error(function(){
 			console.log("Error.................");
 		});
-	};
+	}
 	
 	$scope.callVirtualTourArea = function(){
 		console.log("mmmmmmmmmmmmmmmmm");

@@ -192,7 +192,8 @@ $(document).ready(function()
      
           ${myphone}
           <br>
-          <a href="#">${myprofile.email}</a><br>
+          
+          <a href="http://maps.google.com/?q=${myprofile.address}" target="_blank">${myprofile.email}</a><br>
         </p>
         <h3>Directions</h3>
       </div>
