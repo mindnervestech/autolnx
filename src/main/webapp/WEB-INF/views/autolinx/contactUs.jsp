@@ -255,7 +255,7 @@ $(document).ready(function()
                 </div>
                 
               
-                <div class="col-sm-4" ng-if="${saleList1[0].sunCheckValue} !=1" >
+                <div class="col-sm-4" ng-if="${saleList1[0].sunCheckValue} ==1" >
                   <div class="deparment">
                     <table class="table table-bordered no-border font-12px hours_table ">
                       <thead>
@@ -304,7 +304,7 @@ $(document).ready(function()
                   </div>
                 </div>
               
-                <div class="col-sm-4 padding-right-none" ng-if="${saleList2[0].sunCheckValue} !=1">
+                <div class="col-sm-4 padding-right-none" ng-if="${saleList2[0].sunCheckValue} ==1">
                   <div class="deparment" >
                     <table class="table table-bordered no-border font-12px hours_table ">
                       <thead>
