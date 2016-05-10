@@ -3230,8 +3230,12 @@ public List<HoursOperationVM> getHoursForService(){
 		String day=(String)map.get("day");
 		if(day != null){
 			if(day.equalsIgnoreCase("Sunday")){
+				if(map.get("open_time") != null){
 				vm.sunOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
 				vm.sunCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
 				vm.sunFlag=(Integer)map.get("day_flag");
 				
 				System.out.println(">>>>");
@@ -3242,37 +3246,61 @@ public List<HoursOperationVM> getHoursForService(){
 			}
 			
 			if(day.equalsIgnoreCase("Saturday")){
+				if(map.get("open_time") != null){
 				vm.satOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
 				vm.satCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
 				vm.satFlag=(Integer)map.get("day_flag");
 			}
 			if(day.equalsIgnoreCase("Monday")){
+				if(map.get("open_time") != null){
 				vm.monOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
 				vm.monCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
 				vm.monFlag=(Integer)map.get("day_flag");
 				
 			}
 			if(day.equalsIgnoreCase("Tuesday")){
+				if(map.get("open_time") != null){
 				vm.tueOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
 				vm.tueCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
 				vm.tueFlag=(Integer)map.get("day_flag");
 				
 			}
 			if(day.equalsIgnoreCase("Wednesday")){
+				if(map.get("open_time") != null){
 				vm.wedOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
 				vm.wedCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
 				vm.wedFlag=(Integer)map.get("day_flag");
 				
 			}
 			if(day.equalsIgnoreCase("Thursday")){
+				if(map.get("open_time") != null){
 				vm.thuOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
 				vm.thuCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
 				vm.thuFlag=(Integer)map.get("day_flag");
 				
 			}
-			if(day.equalsIgnoreCase("Saturday")){
+			if(day.equalsIgnoreCase("Friday")){
+				if(map.get("open_time") != null){
 				vm.friOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
 				vm.friCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
 				vm.friFlag=(Integer)map.get("day_flag");
 				
 			}
