@@ -56,6 +56,7 @@ import com.mnt.views.CharacterVM;
 import com.mnt.views.ContactVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
+import com.mnt.views.HoursOperationVM;
 import com.mnt.views.MyProfileVM;
 import com.mnt.views.RequestMore;
 import com.mnt.views.ScheduleTestVM;
@@ -3111,6 +3112,146 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		return vehicleList;
 		
 	}
+	
+public List<HoursOperationVM> getHoursForSales(){
+		
+		DateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+		Date date = new Date();
+		List<HoursOperationVM> list = new ArrayList<HoursOperationVM>();
+		
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from hours_of_operation where type_of_operation = 'sales'");
+		HoursOperationVM vm = new HoursOperationVM();
+		for(Map map : rows) {
+			String day=(String)map.get("day");
+			if(day != null){
+				if(day.equalsIgnoreCase("Sunday")){
+					vm.sunOpenTime=dateFormat.format((Date)map.get("open_time"));
+					vm.sunCloseTime=dateFormat.format((Date)map.get("close_time"));
+					vm.sunFlag=(Integer)map.get("day_flag");
+					
+					System.out.println(">>>>");
+					System.out.println(vm.sunOpenTime);
+					System.out.println(vm.sunCloseTime);
+					System.out.println(vm.sunFlag);
+					
+				}
+				
+				if(day.equalsIgnoreCase("Saturday")){
+					vm.satOpenTime=dateFormat.format((Date)map.get("open_time"));
+					vm.satCloseTime=dateFormat.format((Date)map.get("close_time"));
+					vm.satFlag=(Integer)map.get("day_flag");
+				}
+				if(day.equalsIgnoreCase("Monday")){
+					vm.monOpenTime=dateFormat.format((Date)map.get("open_time"));
+					vm.monCloseTime=dateFormat.format((Date)map.get("close_time"));
+					vm.monFlag=(Integer)map.get("day_flag");
+					
+				}
+				if(day.equalsIgnoreCase("Tuesday")){
+					vm.tueOpenTime=dateFormat.format((Date)map.get("open_time"));
+					vm.tueCloseTime=dateFormat.format((Date)map.get("close_time"));
+					vm.tueFlag=(Integer)map.get("day_flag");
+					
+				}
+				if(day.equalsIgnoreCase("Wednesday")){
+					vm.wedOpenTime=dateFormat.format((Date)map.get("open_time"));
+					vm.wedCloseTime=dateFormat.format((Date)map.get("close_time"));
+					vm.wedFlag=(Integer)map.get("day_flag");
+					
+				}
+				if(day.equalsIgnoreCase("Thursday")){
+					vm.thuOpenTime=dateFormat.format((Date)map.get("open_time"));
+					vm.thuCloseTime=dateFormat.format((Date)map.get("close_time"));
+					vm.thuFlag=(Integer)map.get("day_flag");
+					
+				}
+				if(day.equalsIgnoreCase("Saturday")){
+					vm.friOpenTime=dateFormat.format((Date)map.get("open_time"));
+					vm.friCloseTime=dateFormat.format((Date)map.get("close_time"));
+					vm.friFlag=(Integer)map.get("day_flag");
+					
+				}
+				
+			}
+		}
+		list.add(vm);
+		
+		return list;
+		
+	}
+	
+	
+public List<HoursOperationVM> getHoursForService(){
+	
+	DateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+	Date date = new Date();
+	List<HoursOperationVM> list = new ArrayList<HoursOperationVM>();
+	
+	List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from hours_of_operation where type_of_operation = 'service'");
+	HoursOperationVM vm = new HoursOperationVM();
+	for(Map map : rows) {
+		
+		String day=(String)map.get("day");
+		if(day != null){
+			if(day.equalsIgnoreCase("Sunday")){
+				vm.sunOpenTime=dateFormat.format((Date)map.get("open_time"));
+				vm.sunCloseTime=dateFormat.format((Date)map.get("close_time"));
+				vm.sunFlag=(Integer)map.get("day_flag");
+				
+				System.out.println(">>>>");
+				System.out.println(vm.satOpenTime);
+				System.out.println(vm.satCloseTime);
+				System.out.println(vm.sunFlag);
+				
+			}
+			
+			if(day.equalsIgnoreCase("Saturday")){
+				vm.satOpenTime=dateFormat.format((Date)map.get("open_time"));
+				vm.satCloseTime=dateFormat.format((Date)map.get("close_time"));
+				vm.satFlag=(Integer)map.get("day_flag");
+			}
+			if(day.equalsIgnoreCase("Monday")){
+				vm.monOpenTime=dateFormat.format((Date)map.get("open_time"));
+				vm.monCloseTime=dateFormat.format((Date)map.get("close_time"));
+				vm.monFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Tuesday")){
+				vm.tueOpenTime=dateFormat.format((Date)map.get("open_time"));
+				vm.tueCloseTime=dateFormat.format((Date)map.get("close_time"));
+				vm.tueFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Wednesday")){
+				vm.wedOpenTime=dateFormat.format((Date)map.get("open_time"));
+				vm.wedCloseTime=dateFormat.format((Date)map.get("close_time"));
+				vm.wedFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Thursday")){
+				vm.thuOpenTime=dateFormat.format((Date)map.get("open_time"));
+				vm.thuCloseTime=dateFormat.format((Date)map.get("close_time"));
+				vm.thuFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Saturday")){
+				vm.friOpenTime=dateFormat.format((Date)map.get("open_time"));
+				vm.friCloseTime=dateFormat.format((Date)map.get("close_time"));
+				vm.friFlag=(Integer)map.get("day_flag");
+				
+			}
+			
+		}
+	}
+	list.add(vm);
+	return list;
+	
+}
+
+
+
+
+
 	
 	public Map getBlogsOfUser(Integer start,Long locationId) {
 		Map<String, Object> mapData = new HashMap<String, Object>();

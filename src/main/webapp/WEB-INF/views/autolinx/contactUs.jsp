@@ -137,6 +137,7 @@ $(document).ready(function()
                   <ul class="dropdown-menu">
                       <li><a href="${pageContext.request.contextPath}/findVehicles/New">New</a></li>
                       <li><a href="${pageContext.request.contextPath}/findVehicles/Used">Used</a></li>
+                       <li ng-if="${comingSoonCount != 0}"><a href="${pageContext.request.contextPath}/findVehicles/comingSoon" >Coming Soon</a></li>
                   </ul>
               </li>
               <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
@@ -213,34 +214,41 @@ $(document).ready(function()
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Mon:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Tue:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Wed:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Thu:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Fri:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Sat:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Sun:</td>
-                          <td>10:00am - 4:00pm</td>
-                        </tr>
+                         <tr>
+                  <td>Mon:</td>
+                  <td ng-if="${saleList[0].monFlag} ==1">Closed</td>
+                  <td ng-if="${saleList[0].monFlag} !=1"> ${saleList[0].monOpenTime} - ${saleList[0].monCloseTime} </td>
+                </tr>
+                <tr>
+                  <td>Tue:</td>
+                  <td ng-if="${saleList[0].tueFlag} ==1">Closed</td>
+                  <td ng-if="${saleList[0].tueFlag} !=1">${saleList[0].tueOpenTime} - ${saleList[0].tueCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Wed:</td>
+                  <td ng-if="${saleList[0].wedFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList[0].wedFlag} !=1">${saleList[0].wedOpenTime} - ${saleList[0].wedCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Thu:</td>
+                  <td ng-if="${saleList[0].thuFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList[0].thuFlag} !=1">${saleList[0].thuOpenTime} - ${saleList[0].thuCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Fri:</td>
+                  <td ng-if="${saleList[0].friFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList[0].friFlag}!=1">${saleList[0].friOpenTime} - ${saleList[0].friCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sat:</td>
+                  <td ng-if="${saleList[0].satFlag}==1">Closed</td>
+                  <td  ng-if="${saleList[0].satFlag}!=1"  >${saleList[0].satOpenTime} - ${saleList[0].satCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sun:</td>
+                  <td ng-if="${saleList[0].sunFlag}==1">Closed</td>
+                  <td ng-if="${saleList[0].sunFlag}!=1">${saleList[0].sunOpenTime} - ${saleList[0].sunCloseTime}</td>
+                </tr>
                       </tbody>
                     </table>
                   </div>
@@ -254,34 +262,41 @@ $(document).ready(function()
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Mon:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Tue:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Wed:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Thu:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Fri:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Sat:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Sun:</td>
-                          <td>10:00am - 4:00pm</td>
-                        </tr>
+                         <tr>
+                  <td>Mon:</td>
+                  <td ng-if="${saleList1[0].monFlag} ==1">Closed</td>
+                  <td ng-if="${saleList1[0].monFlag} !=1"> ${saleList1[0].monOpenTime} - ${saleList1[0].monCloseTime} </td>
+                </tr>
+                <tr>
+                  <td>Tue:</td>
+                  <td ng-if="${saleList1[0].tueFlag} ==1">Closed</td>
+                  <td ng-if="${saleList1[0].tueFlag} !=1">${saleList1[0].tueOpenTime} - ${saleList1[0].tueCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Wed:</td>
+                  <td ng-if="${saleList1[0].wedFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList1[0].wedFlag} !=1">${saleList1[0].wedOpenTime} - ${saleList1[0].wedCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Thu:</td>
+                  <td ng-if="${saleList1[0].thuFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList1[0].thuFlag} !=1">${saleList1[0].thuOpenTime} - ${saleList1[0].thuCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Fri:</td>
+                  <td ng-if="${saleList1[0].friFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList1[0].friFlag}!=1">${saleList1[0].friOpenTime} - ${saleList1[0].friCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sat:</td>
+                  <td ng-if="${saleList1[0].satFlag}==1">Closed</td>
+                  <td  ng-if="${saleList1[0].satFlag}!=1"  >${saleList1[0].satOpenTime} - ${saleList1[0].satCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sun:</td>
+                  <td ng-if="${saleList1[0].sunFlag}==1">Closed</td>
+                  <td ng-if="${saleList1[0].sunFlag}!=1">${saleList1[0].sunOpenTime} - ${saleList1[0].sunCloseTime}</td>
+                </tr>
                       </tbody>
                     </table>
                   </div>
