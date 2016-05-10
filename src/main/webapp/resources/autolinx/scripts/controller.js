@@ -1,7 +1,33 @@
 app.controller("aboutUsController", function($scope,$http, notificationService, vcRecaptchaService) {
-	$scope.initFunction = function(){
+	
+	$scope.noMore = false;
+	 var start = 0;
+	 $scope.blogList = [];
+	 $scope.blogsCount = "";
+	$scope.init = function() {
+		$scope.loadMore();
+	}
+	
+	$scope.loadMore = function() {
 		
-	};
+		
+		if ($scope.noMore) return;
+		$http({method:'GET',url:'/glivr/getAllBlogs',params:{start:start}})
+		.success(function(data) {
+			console.log(data);
+			if(data.blogList.length == 0) {
+				$scope.noMore = true;
+			}
+			$scope.blogsCount = data.count;
+			for (var i = 0; i < data.blogList.length; i++) {
+				$scope.blogList.push(data.blogList[i]);
+			}
+			console.log("klklklkl");
+			console.log($scope.blogList);
+		});
+		
+		start = start + 3;
+	}
 	console.log("In about");
 });
 app.controller("WarrantyController", function($scope,$http, notificationService, vcRecaptchaService) {

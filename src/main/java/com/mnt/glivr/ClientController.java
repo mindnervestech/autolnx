@@ -24,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mnt.views.AboutUsVM;
 import com.mnt.views.BrandVM;
 import com.mnt.views.CharacterVM;
 import com.mnt.views.ContactVM;
+import com.mnt.views.CountVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
 import com.mnt.views.HoursOperationVM;
@@ -222,6 +224,14 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		String formattedDate = dateFormat.format(date);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
+		AboutUsVM aUsVM = clientService.getAboutUsData(locationId);
+		List<CountVM> countCar = clientService.getcarCount(locationId);
+		
+		
+		int start = 0;
+		Map blogList = clientService.getBlogsOfUser1(start, locationId);
+		List<TestimonialsVM> testmonial = clientService.getAllTestimoniale(locationId);
+		
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
@@ -234,6 +244,11 @@ public class ClientController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
+		model.addAttribute("aboutUsVM",aUsVM);
+		model.addAttribute("testimonial",testmonial);
+		model.addAttribute("blogLists",blogList);
+		model.addAttribute("countCar",countCar);
+		
 		
 		return "autolinx/about-us";
 	}

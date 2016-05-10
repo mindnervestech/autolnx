@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -93,7 +96,7 @@ $(document).ready(function()
 
 </head>
 
-<body ng-controller="aboutUsController" ng-init='initFunction()'>
+<body ng-controller="aboutUsController" ng-init='init()'>
 <!--Header Start-->
 <input type="hidden" id="vehicleLocation" value="${myprofile.address}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner" no_resize="">
@@ -179,13 +182,12 @@ $(document).ready(function()
   <div class="container">
     <div class="inner-page about-us row">
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-left-none padding-bottom-40 xs-padding-left-none xs-padding-right-none">
-        <h3 class="margin-bottom-25">OUR MISSION IS SIMPLE</h3>
-        <p><span class="firstcharacter">T</span>he Autolinx Inc. team has over 30 years of combined experience in the areas of automotive and online sales and strives to provide you with the greatest experience possible when purchasing your new pre-owned vehicle. Our experienced advisors are handpicked for their courtesy, knowledge and enthusiasm. They will make every effort to procure the best selection of quality, pre-owned vehicles on the market. Autolinx offers an upscale car buying experience, supported behind the scenes by some of the industry’s most innovative technology solutions to bring our customers the best quality vehicles at the most competitive prices.</p>
-        <p><img class="alignleft margin-top-10 margin-bottom-20 margin-right-25 margin-left-none" src="resources/autolinx/images/DSC_0656.jpg" alt="automotive">Our Mission is to offer a unique and upscale vehicle buying experience to every customer, every time, by combining our collective passions for cars, technology and customer service</p>
-        <p>Visit our showroom today and drive away with your new pre-owned quality car. Contact us via phone or email to set up a time convenient for you, or simply drop by for a great cup of coffee.
+        <h3 class="margin-bottom-25">${aboutUsVM.mainTitle}</h3>
+        <p><span class="firstcharacter">T</span>${aboutUsVM.text}</p>
+        <p><img class="alignleft margin-top-10 margin-bottom-20 margin-right-25 margin-left-none" src="${hostnameimg}${aboutUsVM.imageUrl}" alt="automotive">${aboutUsVM.text1}</p>
         <p>
-        <p >Sincerely, 
-          The Autolinx Team</p>
+      <!--   <p >Sincerely, 
+          The Autolinx Team</p> -->
         <p style="width:39%"><br>${myprofile.fullAddress}<br>
      
           ${myphone}
@@ -194,77 +196,78 @@ $(document).ready(function()
         </p>
         <h3>Directions</h3>
       </div>
+      <%--  --%>
       <div class="col-lg-4 col-md-4 col-sm-4 padding-right-none padding-bottom-40 xs-padding-left-none xs-padding-right-none">
         <div class="right-container">
           <h3 class="margin-bottom-25">WHAT WE SPECIALIZE IN</h3>
           <div class="progressbar">
             <div class="bs-example">
+            
+             <c:forEach var="optionCar" items='${countCar}'> 
               <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="100">Mercedes</div>
+                <div class="progress-bar progress-bar-danger" data-width="${optionCar.count}">${optionCar.carName}</div>
+              </div>
+              </c:forEach> 
+             <!--  <div class="progress margin-bottom-15">
+                <div class="progress-bar progress-bar-danger" data-width="9">BMW</div>
               </div>
               <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="90">BMW</div>
+                <div class="progress-bar progress-bar-danger" data-width="8">Audi</div>
               </div>
               <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="80">Audi</div>
+                <div class="progress-bar progress-bar-danger" data-width="7">Jaguar</div>
               </div>
               <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="70">Jaguar</div>
+                <div class="progress-bar progress-bar-danger" data-width="6">Land Rover</div>
               </div>
               <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="60">Land Rover</div>
-              </div>
-              <div class="progress margin-bottom-15">
-                <div class="progress-bar progress-bar-danger" data-width="50">Lamborghini</div>
+                <div class="progress-bar progress-bar-danger" data-width="5">Lamborghini</div>
               </div>
               <div class="progress margin-bottom-15">
                 <div class="progress-bar progress-bar-danger" data-width="40">Ferrari</div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
       <div class="clearfix"></div>
 	  <div class="margin-top-30 xs-margin-top-none padding-bottom-40">
-          
+	    <c:if test="${testimonial.size()>=1}">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 xs-padding-bottom-40 xs-padding-left-none xs-padding-right-none sm-padding-bottom-40 testimonials scroll_effect fadeInUp padding-left-none" data-wow-delay=".2s">
                     <h3 class="margin-bottom-25">TESTIMONIALS</h3>
                     <div class="testimonial">
                         <ul class="testimonial_slider">
-                            <li>
-                                <blockquote class="style1"><span>Let me try and list all the reasons I am giving a five star review to these guys. &nbsp;First of all they have a large selection of amazing cars and good prices. &nbsp;They also have a genuine desire to create a great buying experience. &nbsp;Their level of service and attention to the details of removing stress focusing on fun is obvious in the first 10 minutes you are there. &nbsp;They let me drive 5 cars which were all great and pricing seemed to be very approachable. &nbsp;There was no pressure at all. &nbsp;After the fifth drive Nick asked which car I liked. &nbsp;I selected the very low miles lexus. &nbsp;We sat down and had some lunch then Ed asked what I wanted. &nbsp;I had a trade and told him the deal I was looking for. &nbsp;I asked him if I had made it clear and he said yes. &nbsp;Two minutes later we show hands and I had the most awesome car at thousands less than the Lexus dealer had offered. &nbsp;I want to buy three more now. &nbsp;THESE GUYS ROCK.</span><strong>Charles H.</strong></blockquote>
-                            </li>
-                            <li>
-                                <blockquote class="style1"><span>I can’t say enough good things about this dealership. I’ve purchased two cars (BMW most recently) and have recommended many friends &ndash; all with great results. Ed and his team are straight shooters, very professional and knowledgable. They only have low mileage, gorgeous cars at very competitive prices &ndash; my biggest issue was which car to buy. If you’re looking for low mileage, honest cars at a great price, make sure to put Autolinx on your list of dealerships to visit.</span><strong>Marco M.</strong> </blockquote>
-                            </li>
-                            <li>
-                                <blockquote class="style1"><span>What can I say: one of the best used car dealership I have ever walked into. Professional service and they really understand cars. Very knowledgeable people. Keep more cars coming!</span><strong>VP.</strong> </blockquote>
-                            </li>
-							
-							<li>
-                                <blockquote class="style1"><span>What can I say: one of the best used car dealership I have ever walked into. Professional service and they really understand cars. Very knowledgeable people. Keep more cars coming!</span><strong>VP.</strong> </blockquote>
-                            </li>
+                         	  <c:forEach var="option" items='${testimonial}'> 
+                            	 <li>
+                              	  <blockquote class="style1"><span>${option.testimonials}</span><strong>${option.signature}</strong></blockquote>
+                            	</li>
+                         	   </c:forEach> 
 							
                         </ul>
 
                     </div>
                     <div class="clearfix"></div>
                 </div>
+               </c:if>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 latest-news margin-padding-none xs-padding-bottom-40 xs-padding-left-none xs-padding-right-none sm-margin-bottom-none scroll_effect fadeInUp" data-wow-delay=".4s">
                     <h3 class="margin-bottom-25">LATEST AUTOMOTIVE NEWS</h3>
                     <div class="arrow1 pull-right blog_post_controls"></div>
                     <ul class="recent_blog_posts">
+                    	 <c:forEach var="option" items='${blogLists.blogList}'> 
                         <li>
+                         
                             <div class="blog-list">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-info padding-bottom-15 padding-horizontal-5">
-                                    <h4>Ask Your Dealer -  Should I Buy or Finance My Used Luxury Car</h4>
-                                    <span>May 26, 2015 /</span> <span class="text-red">0 Comments</span>
-                                    <p>You have finally decided to buy that BMW, Lexus, Mercedes, you always dreamed about, however buying a luxury ca<a href="#">[...]</a></p>
+                                    <h4>${option.title}</h4>
+                                    <span>${option.postedDate}</span> 
+                                    <p id='longText'>${option.description}<a href="${pageContext.request.contextPath}/blog">[...]</a></p>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
+                           
                         </li>
-                        <li>
+                          </c:forEach>
+                       <!--   <li>
                             <div class="blog-list">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-info padding-bottom-15 padding-horizontal-5">
                                     <h4>Autolinx Celebrity Profile - Paul Newman</h4>
@@ -283,11 +286,12 @@ $(document).ready(function()
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                        </li>
+                        </li>  -->
                     </ul>
                 </div>
                 <div class="clearfix"></div>
             </div>
+            
     </div>
 	
 	
@@ -436,6 +440,9 @@ $(document).ready(function()
 </html>
 
 <script type="text/javascript">
+
+
+
 function initialize() {
     var mapCanvas = document.getElementById('map-canvas');
     var mapOptions = {

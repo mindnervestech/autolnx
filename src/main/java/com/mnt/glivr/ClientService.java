@@ -50,10 +50,12 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.mnt.views.AboutUsVM;
 import com.mnt.views.BlogVM;
 import com.mnt.views.BrandVM;
 import com.mnt.views.CharacterVM;
 import com.mnt.views.ContactVM;
+import com.mnt.views.CountVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
 import com.mnt.views.HoursOperationVM;
@@ -487,6 +489,40 @@ public class ClientService {
 		}
 		return sContentVM;
 		
+	}
+	
+	
+	public List<CountVM> getcarCount(Long locationId){
+		List<CountVM> countList = new ArrayList<CountVM>();
+		int i = 0;
+		List<Map<String, Object>> vehicalModel = jdbcTemplate.queryForList("select make,count(*) as count from vehicle WHERE locations_id = '"+locationId+"' and status = 'Newly Arrived' GROUP BY make ORDER BY COUNT(*) DESC");
+		//List<Map<String, Object>> vehicalModel = jdbcTemplate.queryForList("select * from vehicle where locations_id = '"+locationId+"' and status= 'Newly Arrived'");
+			for(Map map : vehicalModel) {
+				if(i < 10){
+					CountVM cVm = new CountVM();
+					cVm.carName = (String) map.get("make");
+					cVm.count = (Long) map.get("count");
+					countList.add(cVm);
+					i++;
+				}
+				
+			}
+		return countList;
+		
+	}
+	
+	public AboutUsVM getAboutUsData(Long locationId){
+		AboutUsVM aboutUsVM=new AboutUsVM();
+		
+		List<Map<String, Object>> aboutUsModel = jdbcTemplate.queryForList("select * from site_about_us where locations_id = '"+locationId+"'");
+		if(aboutUsModel != null){
+			aboutUsVM.mainTitle =(String) aboutUsModel.get(0).get("main_title");
+			aboutUsVM.text =(String) aboutUsModel.get(0).get("text");
+			aboutUsVM.text1 =(String) aboutUsModel.get(0).get("text1");
+			aboutUsVM.imageUrl = (String) aboutUsModel.get(0).get("them_imageurl");
+			
+		}	
+		return aboutUsVM;
 	}
 	
 	public MyProfileVM getProfileModel(Long locationId){
@@ -3266,6 +3302,34 @@ public List<HoursOperationVM> getHoursForService(){
 			BlogVM vm = new BlogVM();
 			vm.title = (String) map.get("title");
 			vm.description = (String) map.get("description");
+			vm.imageUrl = (String) map.get("image_url");
+			vm.videoUrl = (String) map.get("video_url");
+			vm.postedBy = (String) map.get("posted_by");
+			Date date = (Date) map.get("posted_date");
+			vm.postedDate = dateFormat.format(date);
+			blogVMList.add(vm);
+		}	
+		
+		mapData.put("blogList", blogVMList);
+		mapData.put("count", count);
+		
+		return mapData;
+	}
+	
+	public Map getBlogsOfUser1(Integer start,Long locationId) {
+		Map<String, Object> mapData = new HashMap<String, Object>();
+		DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+		List<BlogVM> blogVMList = new ArrayList<BlogVM>();
+		Integer count = 0;
+		List<Map<String, Object>> rows = null;
+		rows = jdbcTemplate.queryForList("select * from blog where locations_id = '"+locationId+"' ORDER BY posted_date desc limit "+start+",3");
+		count = jdbcTemplate.queryForInt("select count(*) from blog where locations_id = '"+locationId+"'");
+		
+		for(Map map : rows) {
+			BlogVM vm = new BlogVM();
+			vm.title = (String) map.get("title");
+			String abcd = (String) map.get("description");
+			vm.description = abcd.substring(0, 130);
 			vm.imageUrl = (String) map.get("image_url");
 			vm.videoUrl = (String) map.get("video_url");
 			vm.postedBy = (String) map.get("posted_by");
