@@ -3215,7 +3215,105 @@ public List<HoursOperationVM> getHoursForSales(){
 		return list;
 		
 	}
+
+
+
+public List<HoursOperationVM> getHoursForParts(){
 	
+	DateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+	Date date = new Date();
+	List<HoursOperationVM> list = new ArrayList<HoursOperationVM>();
+	
+	List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from hours_of_operation where type_of_operation = 'parts'");
+	HoursOperationVM vm = new HoursOperationVM();
+	for(Map map : rows) {
+		
+		String day=(String)map.get("day");
+		if(day != null){
+			if(day.equalsIgnoreCase("Sunday")){
+				if(map.get("open_time") != null){
+				vm.sunOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
+				vm.sunCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
+				vm.sunFlag=(Integer)map.get("day_flag");
+				vm.sunCheckValue=(Long)map.get("check_value");
+				System.out.println(">>>>");
+				System.out.println(vm.satOpenTime);
+				System.out.println(vm.satCloseTime);
+				System.out.println(vm.sunFlag);
+				System.out.println(">>>>>>>>>>>>>"+vm.sunCheckValue);
+				
+			}
+			
+			if(day.equalsIgnoreCase("Saturday")){
+				if(map.get("open_time") != null){
+				vm.satOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
+				vm.satCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
+				vm.checkValue=(Long)map.get("check_value");
+				vm.satFlag=(Integer)map.get("day_flag");
+			}
+			if(day.equalsIgnoreCase("Monday")){
+				if(map.get("open_time") != null){
+				vm.monOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
+				vm.monCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
+				vm.monFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Tuesday")){
+				if(map.get("open_time") != null){
+				vm.tueOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
+				vm.tueCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
+				vm.tueFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Wednesday")){
+				if(map.get("open_time") != null){
+				vm.wedOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
+				vm.wedCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
+				vm.wedFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Thursday")){
+				if(map.get("open_time") != null){
+				vm.thuOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
+				vm.thuCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
+				vm.thuFlag=(Integer)map.get("day_flag");
+				
+			}
+			if(day.equalsIgnoreCase("Friday")){
+				if(map.get("open_time") != null){
+				vm.friOpenTime=dateFormat.format((Date)map.get("open_time"));
+				}
+				if(map.get("close_time") != null){
+				vm.friCloseTime=dateFormat.format((Date)map.get("close_time"));
+				}
+				vm.friFlag=(Integer)map.get("day_flag");
+				
+			}
+			
+		}
+	}
+	list.add(vm);
+	return list;
+	
+}
 	
 public List<HoursOperationVM> getHoursForService(){
 	
@@ -3237,11 +3335,12 @@ public List<HoursOperationVM> getHoursForService(){
 				vm.sunCloseTime=dateFormat.format((Date)map.get("close_time"));
 				}
 				vm.sunFlag=(Integer)map.get("day_flag");
-				
+				vm.sunCheckValue=(Long)map.get("check_value");
 				System.out.println(">>>>");
 				System.out.println(vm.satOpenTime);
 				System.out.println(vm.satCloseTime);
 				System.out.println(vm.sunFlag);
+				System.out.println(">>>>>>>>>>>>>"+vm.sunCheckValue);
 				
 			}
 			
@@ -3252,6 +3351,7 @@ public List<HoursOperationVM> getHoursForService(){
 				if(map.get("close_time") != null){
 				vm.satCloseTime=dateFormat.format((Date)map.get("close_time"));
 				}
+				vm.checkValue=(Long)map.get("check_value");
 				vm.satFlag=(Integer)map.get("day_flag");
 			}
 			if(day.equalsIgnoreCase("Monday")){

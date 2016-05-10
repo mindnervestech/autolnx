@@ -253,7 +253,9 @@ $(document).ready(function()
                     </table>
                   </div>
                 </div>
-                <div class="col-sm-4">
+                
+              
+                <div class="col-sm-4" ng-if="${saleList1[0].sunCheckValue} !=1" >
                   <div class="deparment">
                     <table class="table table-bordered no-border font-12px hours_table ">
                       <thead>
@@ -301,8 +303,9 @@ $(document).ready(function()
                     </table>
                   </div>
                 </div>
-                <div class="col-sm-4 padding-right-none">
-                  <div class="deparment">
+              
+                <div class="col-sm-4 padding-right-none" ng-if="${saleList2[0].sunCheckValue} !=1">
+                  <div class="deparment" >
                     <table class="table table-bordered no-border font-12px hours_table ">
                       <thead>
                         <tr>
@@ -310,34 +313,41 @@ $(document).ready(function()
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Mon:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Tue:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Wed:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Thu:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Fri:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Sat:</td>
-                          <td>9:00am - 7:00pm</td>
-                        </tr>
-                        <tr>
-                          <td>Sun:</td>
-                          <td>10:00am - 4:00pm</td>
-                        </tr>
+                          <tr>
+                  <td>Mon:</td>
+                  <td ng-if="${saleList2[0].monFlag} ==1">Closed</td>
+                  <td ng-if="${saleList2[0].monFlag} !=1"> ${saleList1[0].monOpenTime} - ${saleList1[0].monCloseTime} </td>
+                </tr>
+                <tr>
+                  <td>Tue:</td>
+                  <td ng-if="${saleList2[0].tueFlag} ==1">Closed</td>
+                  <td ng-if="${saleList2[0].tueFlag} !=1">${saleList2[0].tueOpenTime} - ${saleList2[0].tueCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Wed:</td>
+                  <td ng-if="${saleList2[0].wedFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList2[0].wedFlag} !=1">${saleList2[0].wedOpenTime} - ${saleList2[0].wedCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Thu:</td>
+                  <td ng-if="${saleList2[0].thuFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList2[0].thuFlag} !=1">${saleList2[0].thuOpenTime} - ${saleList2[0].thuCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Fri:</td>
+                  <td ng-if="${saleList2[0].friFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList2[0].friFlag}!=1">${saleList2[0].friOpenTime} - ${saleList2[0].friCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sat:</td>
+                  <td ng-if="${saleList2[0].satFlag}==1">Closed</td>
+                  <td  ng-if="${saleList2[0].satFlag}!=1"  >${saleList2[0].satOpenTime} - ${saleList2[0].satCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sun:</td>
+                  <td ng-if="${saleList2[0].sunFlag}==1">Closed</td>
+                  <td ng-if="${saleList2[0].sunFlag}!=1">${saleList2[0].sunOpenTime} - ${saleList2[0].sunCloseTime}</td>
+                </tr>
                       </tbody>
                     </table>
                   </div>

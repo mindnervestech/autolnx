@@ -268,6 +268,8 @@ public class ClientController {
 		model.addAttribute("myphone",ph);
 		List<HoursOperationVM> saleList = clientService.getHoursForSales();
 		List<HoursOperationVM> serviceList = clientService.getHoursForService();
+		List<HoursOperationVM> partList = clientService.getHoursForParts();
+		model.addAttribute("saleList2",partList);
 		model.addAttribute("saleList",saleList);
 		model.addAttribute("saleList1",serviceList);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);

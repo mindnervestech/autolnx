@@ -8,9 +8,28 @@ public class HoursOperationVM {
 	public String monOpenTime;
 	public String monCloseTime;
 	public String tueCloseTime;
+	public Long checkValue;
+	public Long sunCheckValue;
+	public Long getSunCheckValue() {
+		return sunCheckValue;
+	}
+
+	public void setSunCheckValue(Long sunCheckValue) {
+		this.sunCheckValue = sunCheckValue;
+	}
+
 	public String getFriCloseTime() {
 		return friCloseTime;
 	}
+	
+	public Long getCheckValue() {
+		return checkValue;
+	}
+
+	public void setCheckValue(Long checkValue) {
+		this.checkValue = checkValue;
+	}
+
 	public void setFriCloseTime(String friCloseTime) {
 		this.friCloseTime = friCloseTime;
 	}
