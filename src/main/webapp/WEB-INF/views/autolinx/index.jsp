@@ -758,7 +758,7 @@ $(document).ready(function()
               </tbody>
             </table>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s"  ng-if="${saleList1[0].sunCheckValue} !=1">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s"  ng-if="${saleList1[0].sunCheckValue} == 1">
             <table class="table table-bordered no-border font-13px margin-bottom-none">
               <thead>
                 <tr>
