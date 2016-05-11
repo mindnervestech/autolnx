@@ -205,7 +205,7 @@ $(document).ready(function()
             <div class="information_hour information_head margin-top-30 xs-padding-bottom-40">
               <h3 class="margin-bottom-25 margin-top-none">BUSINESS HOURS</h3>
               <div class="row">
-                <div class="col-sm-4 padding-left-none">
+                <div  ng-class="${saleList1[0].sunCheckValue} !=1 && ${saleList2[0].sunCheckValue} !=1  ?'txtMargin col-sm-4 padding-left-none':'col-sm-4 padding-left-none' ">    <%-- ng-if="${saleList1[0].sunCheckValue} !=1 && ${saleList2[0].sunCheckValue} !=1" --%>
                   <div class="deparment">
                     <table class="table table-bordered no-border font-12px hours_table ">
                       <thead>
@@ -676,3 +676,13 @@ clicky_site_ids.push(100875513);
 })();
 </script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
+
+
+ <style>
+      .txtMargin{
+         margin-left: 15%;
+	
+      }
+      .none{
+      }
+       </style>   
