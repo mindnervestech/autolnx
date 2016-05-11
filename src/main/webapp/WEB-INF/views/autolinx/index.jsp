@@ -712,7 +712,7 @@ $(document).ready(function()
       <div class="small-block clearfix">
         <h4 class="margin-bottom-25 margin-top-none">What are our Hours of Operation?</h4>
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s">
+          <div  data-wow-delay=".4s"   ng-class="${saleList1[0].sunCheckValue} !=1 ?'txtMargin col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp':'col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp' ">
             <table class="table table-bordered no-border font-13px margin-bottom-none">
               <thead>
                 <tr>
@@ -1154,3 +1154,13 @@ clicky_site_ids.push(100875513);
 })();
 </script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
+
+
+<style>
+      .txtMargin{
+         margin-left: 30%;
+	
+      }
+      .none{
+      }
+       </style>   
