@@ -340,7 +340,7 @@ $(document).ready(function()
           <div class="inventory-wide-sidebar-left col-md-12  car_listings">
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="${pageContext.request.contextPath}/vehicleDetails/{{vehicle.vin}}" class="inventory">
-                <div class="title">{{vehicle.title}}</div>
+                <div class="title" ng-class="vehicle.price == '$0' ?'titleCenter':''">{{vehicle.title}}</div>
                 
                 	<%-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;"></img>
                 	<span class="item-new"></span> --%>
@@ -431,7 +431,7 @@ $(document).ready(function()
                 
                 <div class="clearfix"></div>
                 </a>
-                <div class="price " style="top: 12px"> <b>Price:</b><br>
+                <div class="price " style="top: 12px"  ng-if="vehicle.price !=  '$0'"> <b>Price:</b><br>
                   <div class="figure"><span> <span>$</span>{{(vehicle.price).replace("$","") | number}}</span><br>
                   </div>
                   <div class="tax">Plus Sales Tax</div>
@@ -694,6 +694,10 @@ $(document).ready(function()
 	.car_listings .carfax {
   display: block !important;
 }
+.titleCenter{
+	text-align: center;
+}
+
 .custom{
 	background: #F7F7F7;
     border: 1px solid rgba(0, 0, 0, 0.0980392);
