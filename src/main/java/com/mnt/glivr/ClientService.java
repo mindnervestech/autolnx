@@ -495,13 +495,21 @@ public class ClientService {
 	public List<CountVM> getcarCount(Long locationId){
 		List<CountVM> countList = new ArrayList<CountVM>();
 		int i = 0;
+		Long value  = 0l;
+		Float ab = (float) 0;
 		List<Map<String, Object>> vehicalModel = jdbcTemplate.queryForList("select make,count(*) as count from vehicle WHERE locations_id = '"+locationId+"' and status = 'Newly Arrived' GROUP BY make ORDER BY COUNT(*) DESC");
 		//List<Map<String, Object>> vehicalModel = jdbcTemplate.queryForList("select * from vehicle where locations_id = '"+locationId+"' and status= 'Newly Arrived'");
 			for(Map map : vehicalModel) {
 				if(i < 7){
+					if(i == 0){
+						value = (Long) map.get("count");
+					}
 					CountVM cVm = new CountVM();
 					cVm.carName = (String) map.get("make");
-					cVm.count = (Long) map.get("count");
+					Long vl = (Long) map.get("count");
+					Float xx =  (vl.floatValue() / value.floatValue());
+					Float countValue = xx * 100;	
+					cVm.count = countValue.longValue();
 					countList.add(cVm);
 					i++;
 				}

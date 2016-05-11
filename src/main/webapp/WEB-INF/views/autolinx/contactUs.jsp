@@ -160,7 +160,7 @@ $(document).ready(function()
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
         <h2>Contact Us</h2>
-        <h4>We are located in the heart of the Bay Area, just off 80 HWY</h4>
+       <!--  <h4>We are located in the heart of the Bay Area, just off 80 HWY</h4> -->
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 ">
         <ul class="breadcrumb">
