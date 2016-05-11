@@ -1366,10 +1366,11 @@ public class ClientService {
 	public void saveAlertEmail(RequestMore model, Long locationId){
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				Date date = new Date();
+				int i = 1;
 				if(model.getName() != null){
-					jdbcTemplate.update("INSERT INTO price_alert(email,name,vin,locations_id,curr_date) VALUES('"+model.getEmail()+"','"+model.getName()+"','"+model.getVin()+"','"+locationId+"','"+dateFormat.format(date)+"')");
+					jdbcTemplate.update("INSERT INTO price_alert(email,name,vin,locations_id,curr_date,popup_flag) VALUES('"+model.getEmail()+"','"+model.getName()+"','"+model.getVin()+"','"+locationId+"','"+dateFormat.format(date)+"','"+i+"')");
 				}else{
-					jdbcTemplate.update("INSERT INTO price_alert(email,vin,locations_id,curr_date) VALUES('"+model.getEmail()+"','"+model.getVin()+"','"+locationId+"','"+dateFormat.format(date)+"')");
+					jdbcTemplate.update("INSERT INTO price_alert(email,vin,locations_id,curr_date) VALUES('"+model.getEmail()+"','"+model.getVin()+"','"+locationId+"','"+dateFormat.format(date)+"','"+i+"')");
 				}
 		
 	}
