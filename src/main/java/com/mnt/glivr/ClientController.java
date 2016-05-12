@@ -89,8 +89,11 @@ public class ClientController {
 		String ph =clientService.getPhoneno(locationId);
 		List<HoursOperationVM> saleList = clientService.getHoursForSales();
 		List<HoursOperationVM> serviceList = clientService.getHoursForService();
+		List<HoursOperationVM> partList = clientService.getHoursForParts();
+		model.addAttribute("saleList2",partList);
 		model.addAttribute("saleList",saleList);
 		model.addAttribute("saleList1",serviceList);
+		System.out.println("inside index serviceList");
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
 		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);

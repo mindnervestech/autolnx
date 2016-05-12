@@ -3160,7 +3160,7 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 	
 public List<HoursOperationVM> getHoursForSales(){
 		
-		DateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+		DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
 		Date date = new Date();
 		List<HoursOperationVM> list = new ArrayList<HoursOperationVM>();
 		
@@ -3229,7 +3229,7 @@ public List<HoursOperationVM> getHoursForSales(){
 
 public List<HoursOperationVM> getHoursForParts(){
 	
-	DateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+	DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
 	Date date = new Date();
 	List<HoursOperationVM> list = new ArrayList<HoursOperationVM>();
 	
@@ -3326,7 +3326,7 @@ public List<HoursOperationVM> getHoursForParts(){
 	
 public List<HoursOperationVM> getHoursForService(){
 	
-	DateFormat dateFormat = new SimpleDateFormat("hh:mm:a");
+	DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
 	Date date = new Date();
 	List<HoursOperationVM> list = new ArrayList<HoursOperationVM>();
 	
@@ -3349,7 +3349,7 @@ public List<HoursOperationVM> getHoursForService(){
 				System.out.println(vm.satOpenTime);
 				System.out.println(vm.satCloseTime);
 				System.out.println(vm.sunFlag);
-				System.out.println(">>>>>>>>>>>>>"+vm.sunCheckValue);
+				System.out.println(">>>>>>>>>>>>> sunCheckValue"+vm.sunCheckValue);
 				
 			}
 			

@@ -698,21 +698,23 @@ $(document).ready(function()
     <div id="map-canvas" style="width:100%; height:390px;"></div>
   </div>
   <div class="car-rate-block clearfix margin-top-30 padding-bottom-40">
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-left-none scroll_effect bounceInLeft">
+    <div  class="col-lg-3 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-left-none scroll_effect bounceInLeft">
+    <div class="col-lg-6 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-left-none scroll_effect bounceInLeft">
       <div class="small-block clearfix">
         <h4 class="margin-bottom-25 margin-top-none">Financing.</h4>
         <a href="#"><span class="align-center"><i class="fa fa-tag fa-7x"></i></span></a> </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInLeft" data-wow-delay=".2s">
+    <div class="col-lg-6 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInLeft" data-wow-delay=".2s">
       <div class="small-block clearfix">
         <h4 class="margin-bottom-25 margin-top-none">Warranty.</h4>
         <a href="#"><span class="align-center"><i class="fa fa-cogs fa-7x"></i></span></a> </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding-left-none padding-right-none hours_operation">
+    </div>
+    <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 padding-left-none padding-right-none hours_operation">
       <div class="small-block clearfix">
         <h4 class="margin-bottom-25 margin-top-none">What are our Hours of Operation?</h4>
         <div class="row">
-          <div  data-wow-delay=".4s"   ng-class="${saleList1[0].sunCheckValue} !=1 ?'txtMargin col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp':'col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp' ">
+          <div  data-wow-delay=".4s"   ng-class="${saleList1[0].sunCheckValue} !=1 && ${saleList2[0].sunCheckValue} !=1 ?'txtMargin col-lg-4 col-md-4 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp':'col-lg-4 col-md-4 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp' ">
             <table class="table table-bordered no-border font-13px margin-bottom-none">
               <thead>
                 <tr>
@@ -758,7 +760,7 @@ $(document).ready(function()
               </tbody>
             </table>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s"  ng-if="${saleList1[0].sunCheckValue} == 1">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s"  ng-if="${saleList1[0].sunCheckValue} == 1">
             <table class="table table-bordered no-border font-13px margin-bottom-none">
               <thead>
                 <tr>
@@ -804,18 +806,74 @@ $(document).ready(function()
               </tbody>
             </table>
           </div>
+          
+                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s" ng-if="${saleList2[0].sunCheckValue} ==1">
+                  <div class="deparment" >
+                    <table class="table table-bordered no-border font-12px hours_table ">
+                      <thead>
+                        <tr>
+                          <td colspan="2"><strong>Parts Department</strong></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                  <td>Mon:</td>
+                  <td ng-if="${saleList2[0].monFlag} ==1">Closed</td>
+                  <td ng-if="${saleList2[0].monFlag} !=1"> ${saleList1[0].monOpenTime} - ${saleList1[0].monCloseTime} </td>
+                </tr>
+                <tr>
+                  <td>Tue:</td>
+                  <td ng-if="${saleList2[0].tueFlag} ==1">Closed</td>
+                  <td ng-if="${saleList2[0].tueFlag} !=1">${saleList2[0].tueOpenTime} - ${saleList2[0].tueCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Wed:</td>
+                  <td ng-if="${saleList2[0].wedFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList2[0].wedFlag} !=1">${saleList2[0].wedOpenTime} - ${saleList2[0].wedCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Thu:</td>
+                  <td ng-if="${saleList2[0].thuFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList2[0].thuFlag} !=1">${saleList2[0].thuOpenTime} - ${saleList2[0].thuCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Fri:</td>
+                  <td ng-if="${saleList2[0].friFlag} ==1">Closed</td>
+                  <td  ng-if="${saleList2[0].friFlag}!=1">${saleList2[0].friOpenTime} - ${saleList2[0].friCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sat:</td>
+                  <td ng-if="${saleList2[0].satFlag}==1">Closed</td>
+                  <td  ng-if="${saleList2[0].satFlag}!=1"  >${saleList2[0].satOpenTime} - ${saleList2[0].satCloseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sun:</td>
+                  <td ng-if="${saleList2[0].sunFlag}==1">Closed</td>
+                  <td ng-if="${saleList2[0].sunFlag}!=1">${saleList2[0].sunOpenTime} - ${saleList2[0].sunCloseTime}</td>
+                </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+          
+          
+          
+          
+          
         </div>
       </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInRight" data-wow-delay=".2s">
+    <div class="col-lg-3 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInRight" data-wow-delay=".2s" >
+    <div class="col-lg-6 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInRight" data-wow-delay=".2s">
       <div class="small-block clearfix">
         <h4 class="margin-bottom-25 margin-top-none">About Us.</h4>
         <a href="#"><span class="align-center"><i class="fa fa-users fa-7x"></i></span></a> </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-right-none scroll_effect bounceInRight">
+    <div class="col-lg-6 col-md-2 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-right-none scroll_effect bounceInRight">
       <div class="small-block clearfix">
         <h4 class="margin-bottom-25 margin-top-none">Find Us.</h4>
         <a href="#"><span class="align-center"><i class="fa fa-map-marker fa-7x"></i></span></a> </div>
+    </div>
     </div>
   </div>
    <c:if test="${testimonial.size()>=1}">
@@ -1158,7 +1216,7 @@ clicky_site_ids.push(100875513);
 
 <style>
       .txtMargin{
-         margin-left: 30%;
+         margin-left: 35%;
 	
       }
       .none{
