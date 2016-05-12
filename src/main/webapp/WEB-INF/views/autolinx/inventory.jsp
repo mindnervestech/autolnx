@@ -357,8 +357,8 @@ $(document).ready(function()
 			   	 width: 11%;
 			   	 display: block;
 			   	 background: #428bca;
-			   	 left: -2%;
-			   	 top: 106px;
+			   	 left: -3%;
+			   	 top: 76%;
 			   	 -webkit-transform: rotate(45deg);
 			   	 -moz-transform: rotate(-45deg);
 			   	 -o-transform: rotate(-45deg);
