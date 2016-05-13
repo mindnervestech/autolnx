@@ -310,7 +310,17 @@ $(document).ready(function()
 <section class="content">
     <div class="container">
         <div class="inner-page inventory-listing">
-            <div class="inventory-heading margin-bottom-10 clearfix">
+        <!-- ng-class="vehicle.price == '0' ?'titleCenter':''" -->
+            <div class="inventory-heading margin-bottom-10 clearfix" ng-if="${vehicle.price == '$0'}" style="text-align: center;">
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                        <h2>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+             <div class="inventory-heading margin-bottom-10 clearfix" ng-if="${vehicle.price != '$0'}">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                         <h2>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
@@ -739,7 +749,9 @@ $(document).ready(function()
 											<tr><td>Location:</td><td><a style="color: black;font-weight: bold;" href="http://maps.google.com/?q=${vehicle.locAddress }" target="_blank">${vehicle.loc}</a></td></tr>	
 									</c:if>	
 									<c:if test="${vehicle.price != null}">
-											<tr><td>Price: </td><td>  <c:set var="string2" value="${fn:split(vehicle.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/></td></tr>								
+										<c:if test="${vehicle.price != '$0'}">
+    										<tr><td>Price: </td><td>  <c:set var="string2" value="${fn:split(vehicle.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/></td></tr>								
+									</c:if>
 									</c:if>	
 									<c:if test="${vehicle.cityMileage != null}">
 												<tr><td>MPG: </td><td> ${vehicle.cityMileage} City / ${vehicle.highwayMileage} Highway</td></tr>								
@@ -1678,6 +1690,9 @@ $(document).ready(function()
 <style>
 .car-info .table>tbody>tr>td {
 	line-height: 18px;
+}
+.titleCenter{
+	text-align: center;
 }
 
 .videoTxt{
