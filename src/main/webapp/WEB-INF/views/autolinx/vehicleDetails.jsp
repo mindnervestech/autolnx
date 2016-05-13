@@ -271,16 +271,8 @@ $(document).ready(function()
      <!--  <h2 class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15">Make your dream car a <span style="color:#ff0000;">REALITY</span></h2> -->
      
     <!-- style="color:#C7081B;font-weight: 700;" -->
-      <h2 ng-if="${vehicle.comingSoonFlag == 1}" class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="font-size: 30px;
-    font-weight: 300;
-    color: #000;
-    font-family: 'Open Sans', sans-serif, Arial;
-    letter-spacing: -2px;
-    margin: 0;
-    text-align: left !important;
-    padding-left: 0;
-    line-height: 30px;
-    " >SOMETHING GREAT IS COMING ON ${vehicle.comingSoonDate} </strong> </h2>
+      <h2 ng-if="${vehicle.comingSoonFlag == 1}" class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15">SOMETHING GREAT IS COMING ON <strong style="color: #ff0000;
+  " >${vehicle.comingSoonDate} </strong> </h2>
       <h2 ng-if="${vehicle.label != null} && ${vehicle.comingSoonFlag != 1}" class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;"></strong>${vehicle.label}</h2>
       <h2 ng-if="${vehicle.label == null} && ${vehicle.comingSoonFlag != 1}" class="col-lg-9 col-md-8 col-sm-12 col-xs-12 xs-padding-left-15"><strong style="color:#ff0000;">FIND</strong> YOUR OWN WAY! </h2>
       <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 "> 
