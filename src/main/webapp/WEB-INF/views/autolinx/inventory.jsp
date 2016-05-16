@@ -340,7 +340,8 @@ $(document).ready(function()
           <div class="inventory-wide-sidebar-left col-md-12  car_listings">
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="${pageContext.request.contextPath}/vehicleDetails/{{vehicle.vin}}" class="inventory">
-                <div class="title" ng-class="vehicle.price == '$0' ?'titleCenter':''">{{vehicle.title}}</div>
+              	<!-- ng-class="vehicle.price == '$0' ?'titleCenter':''" -->
+                <div class="title">{{vehicle.title}}</div>
                 
                 	<%-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;"></img>
                 	<span class="item-new"></span> --%>
@@ -427,7 +428,7 @@ $(document).ready(function()
                     </tr>
                   </tbody>
                 </table>
-                <div class="view-details gradient_button" style="top: 110px" ><i class="fa fa-plus-circle"></i> View Details </div>
+                <div class="view-details gradient_button" style="top: 110px" ng-if="vehicle.price != '$0'"><i class="fa fa-plus-circle"></i> View Details </div>
                 
                 <div class="clearfix"></div>
                 </a>
