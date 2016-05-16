@@ -1204,10 +1204,16 @@ $(document).ready(function()
         	 <div class="col-md-6">
         	 	<label style="font-weight: initial;padding: 0px;">Best Day:</label>
         	 </div>
-        	 <div class="col-md-6">
+        	 <div class="col-md-6" ng-if="${vehicle.comingSoonFlag != 1}">
         	 	<input name="bestDay"
 										class="input-filter form-control meal-font-text-size"
 										data-provide="datepicker" ng-model="schedule.bestDay" data-date-autoclose="true" data-date-format="dd-mm-yyyy" style="width: 220px !important;" required>
+        	 	
+        	 </div>
+        	 <div class="col-md-6" ng-if="${vehicle.comingSoonFlag == 1}">
+        	 	<input name="bestDay"
+										class="input-filter form-control meal-font-text-size" 
+										data-provide="datepicker" ng-model="schedule.bestDay" data-date-autoclose="true" data-date-start-date="${vehicle.comingSoonDate1}" data-date-format="dd-mm-yyyy" style="width: 220px !important;" required>
         	 	
         	 </div>
         	 </div>

@@ -69,6 +69,7 @@ public class VehicleVM {
 	public String rearViewMonitor;
 	public String remoteTrunkRelease;
 	public String comingSoonDate;
+	public String comingSoonDate1;
 	public String getComingSoonDate() {
 		return comingSoonDate;
 	}
@@ -93,6 +94,13 @@ public class VehicleVM {
 	}
 	public void setLoc(String loc) {
 		this.loc = loc;
+	}
+	
+	public String getComingSoonDate1() {
+		return comingSoonDate1;
+	}
+	public void setComingSoonDate1(String comingSoonDate1) {
+		this.comingSoonDate1 = comingSoonDate1;
 	}
 	public String getLocAddress() {
 		return locAddress;

@@ -51,7 +51,6 @@ import com.mnt.views.pdfInfoVM;
 public class ClientController {
 	
 	static long locationIdGol;
-	
 	@Value("${hostname}")
 	String hostUrl;
 	@Value("${hostnameimg}")

@@ -1119,7 +1119,9 @@ public class ClientService {
  			System.out.println(">>>>date");
  			System.out.println(comingSoonDate);
  			DateFormat dateFormat1 = new SimpleDateFormat("MM-dd-yyyy");
+ 			DateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
  			vehicleVM.comingSoonDate = dateFormat1.format(comingSoonDate);
+ 			vehicleVM.comingSoonDate1 = dateFormat2.format(comingSoonDate);
  			System.out.println(vehicleVM.comingSoonDate);
  		}
  		}
