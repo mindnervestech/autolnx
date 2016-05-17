@@ -311,7 +311,7 @@ $(document).ready(function()
     <div class="container">
         <div class="inner-page inventory-listing">
         <!-- ng-class="vehicle.price == '0' ?'titleCenter':''" -->
-            <div class="inventory-heading margin-bottom-10 clearfix" ng-if="${vehicle.price == '$0'}" style="text-align: center;">
+            <div class="inventory-heading margin-bottom-10 clearfix" ng-if="${vehicle.price == '$0'}" style="text-align: center;margin-left: 100px;">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                         <h2>${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim}</h2>
