@@ -370,7 +370,7 @@ $(document).ready(function()
 			   	 /* overflow: hidden; */
 			   	 ">Coming<br>Soon
 			   		</span> 
-			   		<img class="preview" src="${hostnameimg}{{vehicle.path}}" />
+			   		<img class="preview" src="${hostnameimg}{{vehicle.path}}" style="height: 130px !important;"/>
 			   		</div>
 			 <%-- <div class="content-grid">
 				<div class="items clearfix">
