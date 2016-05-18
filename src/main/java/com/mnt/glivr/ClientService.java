@@ -785,7 +785,7 @@ public class ClientService {
 		List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
 		List<Map<String, Object>> vehiclerow = jdbcTemplate.queryForList("select * from vehicle where vin = '"+vin+"' and locations_id = '"+locationId+"' and status = 'Newly Arrived' and public_status='public'");
 		Map<String, VehicleVM> mapList = new HashMap<String, VehicleVM>();
-		
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		String bodyStyle = null;
 		String make = null;
 		String year = null;
@@ -818,6 +818,9 @@ public class ClientService {
 			vm.vin = (String) map.get("vin");
 			vm.year = (String) map.get("year");
 			vm.model = (String) map.get("model");
+			if(map.get("coming_soon_date") != null){
+				vm.comingSoonDate = dateFormat.format(map.get("coming_soon_date"));
+			}
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
 			if(vehiclePath.isEmpty()) {
 				vm.path = "/no-image.jpg";
@@ -3141,6 +3144,9 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 			vm.transmission = (String) map.get("transmission");
 			vm.vin = (String) map.get("vin");
 			vm.year = (String) map.get("year");
+			if(map.get("coming_soon_date") != null){
+				vm.comingSoonDate = dateFormat.format(map.get("coming_soon_date"));
+			}
 			
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
 			if(vehiclePath.isEmpty()) {
