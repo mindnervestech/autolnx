@@ -37,7 +37,7 @@ app.controller("WarrantyController", function($scope,$http, notificationService,
 app.controller("InventoryController", function($scope,$http, notificationService, vcRecaptchaService,$location) {
 	$scope.listView = true;
 	$scope.gridView = false;
-	$scope.alphbet = "a_z";
+	//$scope.alphbet = "a_z";
 	var contextPath = $('#contextpath').val();
 	$scope.showListView = function() {
 		$scope.listView = true;
@@ -72,8 +72,18 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	$scope.price = "lowToHigh";
 	$scope.vehicleType="";
 	var start = 0;
-	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId,type){
-		
+	$scope.initFunction = function(year,make,model,bodyStyle,fuel,locationId,type,view,sortBy,sortType){
+		if(view == "oneLine"){
+			$scope.listView = true;
+			$scope.gridView = false;
+			$('#listView').addClass('active');
+			$('#gridView').removeClass('active');
+		}else{
+			$scope.listView = false;
+			$scope.gridView = true;
+			$('#listView').removeClass('active');
+			$('#gridView').addClass('active');
+		}
 		$.urlParam = function(name){
 			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 			if(results != null){
@@ -98,9 +108,63 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		$scope.vehicleType = $.urlParam('vehicleType').replace("%20"," ");
 		$scope.type = $.urlParam('vtype').replace("%20"," ");
 		
+		
 		if($scope.price == ""){
 			$scope.price = "lowToHigh";
 		}
+		
+		
+		
+		if(sortBy == "Alphabetical"){
+			if(sortType == "A To Z"){
+			
+				$scope.alphbet = "a_z";
+				$scope.price = "";
+				$scope.start = 0;
+				start = 0;
+			}else if(sortType == "Z TO A"){
+			
+				$scope.alphbet = "z_a";
+				$scope.price = "";
+				$scope.start = 0;
+				start = 0;
+			}
+			
+		}
+		if(sortBy == "price"){
+			if(sortType == "Low To High"){
+				console.log("111111eeee1111");
+				console.log(sortBy);
+				$scope.alphbet = "";
+				$scope.price = "lowToHigh";
+				$scope.start = 0;
+				start = 0;
+			}else if(sortType == "High To Low"){
+				console.log("222rrr2222222");
+				$scope.alphbet = "";
+				$scope.price = "highToLow";
+				$scope.start = 0;
+				start = 0;
+			}
+		}
+	/*	if(sortBy == "Time"){
+			if(sortType == "Newest To Oldest"){
+				console.log("1111111111111111111");
+				console.log(sortBy);
+				$scope.alphbet = "a_z";
+				$scope.price = "";
+				$scope.start = 0;
+				start = 0;
+			}else if(sortType == "Oldest To Newest"){
+				console.log("22222222222222222");
+				$scope.alphbet = "z_a";
+				$scope.price = "";
+				$scope.start = 0;
+				start = 0;
+			}
+		}*/
+		
+		
 		if($scope.type == ""){
 			$scope.type = type;
 		}
@@ -158,6 +222,9 @@ app.controller("InventoryController", function($scope,$http, notificationService
 		if($scope.vType == 'New'){
 			$scope.flagForNew = 1;
 		}
+		
+		
+	
 		
 		if ($scope.noMore) return;
 		var url = window.location.href;

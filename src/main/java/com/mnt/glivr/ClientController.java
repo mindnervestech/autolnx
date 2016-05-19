@@ -1,6 +1,5 @@
 package com.mnt.glivr;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,6 +31,7 @@ import com.mnt.views.CountVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
 import com.mnt.views.HoursOperationVM;
+import com.mnt.views.InventoryDataVM;
 import com.mnt.views.MyProfileVM;
 import com.mnt.views.RequestMore;
 import com.mnt.views.ScheduleTestVM;
@@ -170,12 +170,15 @@ public class ClientController {
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
 		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		
 		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
+		InventoryDataVM inDataVM = clientService.getVehicleInventory(locationId,"New");
+		model.addAttribute("inventoryData",inDataVM);
 		
 		return "autolinx/inventory";
 	}
@@ -591,6 +594,8 @@ public class ClientController {
 		List<String> vehicleListBodyStyle = clientService.getAllVehicleBodyStyle(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
+		InventoryDataVM inDataVM = clientService.getVehicleInventory(locationId,type);
+		model.addAttribute("inventoryData",inDataVM);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);

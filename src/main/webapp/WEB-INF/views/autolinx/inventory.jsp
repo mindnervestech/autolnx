@@ -7,6 +7,9 @@
 <html lang="en" ng-app="gliderApp">
 <!--<![endif]-->
 <head>
+
+<!--  -->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="description" content="">
@@ -96,7 +99,7 @@ $(document).ready(function()
 
 </head>
  
-<body ng-controller="InventoryController" ng-init='initFunction(${vehicle1.year},"${vehicle1.make}","${vehicle1.model}","${vehicle1.bodyStyle}","${vehicle1.fuelType}","${myprofile.locationId}","${type}")'>
+<body ng-controller="InventoryController" ng-init='initFunction(${vehicle1.year},"${vehicle1.make}","${vehicle1.model}","${vehicle1.bodyStyle}","${vehicle1.fuelType}","${myprofile.locationId}","${type}","${inventoryData.defaultView}","${inventoryData.sortBy}","${inventoryData.sortType}")'>
 <!--Header Start-->
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
@@ -156,16 +159,19 @@ $(document).ready(function()
       </nav>
     </div>
   </div>
+ 
 </header>
 <!--Header End-->
 
 <div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+
+<%-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" style="height: 130px !important;"/> --%>
+<section id="secondary-banner" class="dynamic-image-1-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>Inventory</h2>
-        <h4>Unlimited Listings, Any Vehicle Type</h4>
+        <h2>${inventoryData.mainTitle}</h2>
+        <h4>${inventoryData.subTitle}</h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <ul class="breadcrumb">
@@ -692,6 +698,11 @@ $(document).ready(function()
 </body>
 </html>
 <style>
+
+.dynamic-image-1-1 {
+  		background: url(${hostnameimg}${inventoryData.imageUrl}) top center no-repeat;
+  	}
+
 	.car_listings .carfax {
   display: block !important;
 }

@@ -59,6 +59,7 @@ import com.mnt.views.CountVM;
 import com.mnt.views.FeaturedVM;
 import com.mnt.views.FriendVM;
 import com.mnt.views.HoursOperationVM;
+import com.mnt.views.InventoryDataVM;
 import com.mnt.views.MyProfileVM;
 import com.mnt.views.RequestMore;
 import com.mnt.views.ScheduleTestVM;
@@ -640,6 +641,26 @@ public class ClientService {
 		count =jdbcTemplate.queryForInt("select count(*) from vehicle where typeof_vehicle = '"+type+"' and locations_id = '"+locationId+"' and public_status='public' and status='Newly Arrived'");
 		return count;
 	}
+	
+	public InventoryDataVM getVehicleInventory(Long locationId,String type) {
+		InventoryDataVM vm = new InventoryDataVM();
+		List<Map<String, Object>> invList = jdbcTemplate.queryForList("select * from site_inventory where locations_id = '"+locationId+"' and v_type = '"+type+"'");
+		for (Map map : invList) {
+			
+			vm.mainTitle = (String) map.get("main_title");
+			vm.imageName = (String) map.get("image_name");
+			vm.subTitle = (String) map.get("sub_title");
+			vm.defaultView = (String) map.get("default_view");
+			vm.sortBy = (String) map.get("sort_by");
+			vm.sortType = (String) map.get("sort_type");
+			vm.vType = (String) map.get("v_type");
+			vm.imageUrl = (String) map.get("image_url");
+			vm.thumbPath = (String) map.get("thumb_path");
+			
+		}	
+		return vm;
+	}
+	
 	public Integer getVehicleInfoNewUsed(String alphbet,Long locationId) {
 		Integer count = 0;
 		System.out.println(alphbet);
