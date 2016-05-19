@@ -62,6 +62,14 @@
 <script type="text/javascript" src="resources/autolinx/js/twitter/jquery.tweet.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/twitter/twitter_feed.js"></script> -->
 
+
+<style>
+.dynamic-image-1-1 {
+ 	background: url(${hostnameimg}${getAboutUsHeader.path}) top center no-repeat;
+ 	}
+
+</style>
+
 <script type="text/javascript">
 $(document).ready(function() 
 {
@@ -159,12 +167,12 @@ $(document).ready(function()
 <!--Header End-->
 
 <div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-3"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-1-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>About Us</h2>
-        <h4>Located on Sonoma Boulevard in Vallejo, CA - in the heart of beautiful and historic Solano County.</h4>
+        <h2> ${headerTitle} </h2>
+        <h4> ${subtitle} </h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <ul class="breadcrumb">

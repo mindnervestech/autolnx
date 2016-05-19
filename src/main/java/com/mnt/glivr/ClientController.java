@@ -1,5 +1,6 @@
 package com.mnt.glivr;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -236,8 +237,13 @@ public class ClientController {
 		int start = 0;
 		Map blogList = clientService.getBlogsOfUser1(start, locationId);
 		List<TestimonialsVM> testmonial = clientService.getAllTestimoniale(locationId);
-		
+		AboutUsVM getAboutUsHeader=clientService.getAboutUsHeader(locationId);
+		model.addAttribute("getAboutUsHeader",getAboutUsHeader);
+		String headerTitle=getAboutUsHeader.headerTitle;
+		String subtitle=getAboutUsHeader.subtitle;
 		model.addAttribute("myprofile",profile);
+		model.addAttribute("subtitle",subtitle);
+		model.addAttribute("headerTitle",headerTitle);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
