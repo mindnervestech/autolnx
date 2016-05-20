@@ -65,7 +65,7 @@
 
 <style>
 .dynamic-image-1-1 {
- 	background: url(${hostnameimg}${getAboutUsHeader.path}) top center no-repeat;
+ 	background: url(${hostnameimg}${getAboutUsHeader.path}) top center;
  	}
 
 </style>
