@@ -662,7 +662,7 @@ $(document).ready(function()
                         <div class="img-flex"> <a href="${pageContext.request.contextPath}/vehicleDetails/${option.vin}"><span class="align-center"><i class="fa fa-3x fa-plus-square-o"></i></span></a> <img src="${hostnameimg}${option.path}" alt="" class="img-responsive"> </div>
                         <div class="car-block-bottom">
                             <h6><strong>${option.year} ${option.make}</strong></h6>
-                            <h6 ng-if="${option.mileage != null}"><strong>Milage:</strong>${option.mileage}</h6>
+                            <h6 ng-if="${option.mileage != null}"><strong>Mileage: &nbsp;&nbsp;</strong>${option.mileage}</h6>
                             <h5 ng-if="${option.price!= '$0'}"> <c:set var="string2" value="${fn:split(option.price, '$')}"/> <c:set var="string3" value="${fn:join(string2, '')}" />  $<fmt:formatNumber value="${string3}" type="number"/> </h5>
                             <h5 ng-if="${option.price == '$0'}"> ${option.comingSoonDate} </h5>
                         </div>
