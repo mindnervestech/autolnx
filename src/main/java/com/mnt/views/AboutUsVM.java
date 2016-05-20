@@ -7,7 +7,7 @@ public class AboutUsVM {
 	public String text1;
 	public String imageUrl;
 	public String headerTitle;
-	public String subtitle;
+	public String subTitle;
 	public String imageurl;
 	public String path;
 	public String imgName;
@@ -25,11 +25,11 @@ public class AboutUsVM {
 	public void setHeaderTitle(String headerTitle) {
 		this.headerTitle = headerTitle;
 	}
-	public String getSubtitle() {
-		return subtitle;
+	public String getSubTitle() {
+		return subTitle;
 	}
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
+	public void setSubTitle(String subtitle) {
+		this.subTitle = subtitle;
 	}
 	public String getImageurl() {
 		return imageurl;

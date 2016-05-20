@@ -606,12 +606,43 @@ public class ClientService {
 			for(Map map : rows1) {
 						
 						tVm.headerTitle = (String)map.get("header_title");
-						tVm.subtitle  = (String)map.get("subtitle");
+						tVm.subTitle  = (String)map.get("subtitle");
 						tVm.path=(String)map.get("path");
 			}
 			}
 			return tVm;
 		}
+	  
+	  public AboutUsVM getContactUsHeader(Long locationId) {
+			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM contact_header where locations_id = '"+locationId+"'");
+			AboutUsVM tVm = new AboutUsVM();
+			if(rows1 != null){
+			for(Map map : rows1) {
+						
+						tVm.headerTitle = (String)map.get("main_title");
+						tVm.subTitle  = (String)map.get("subtitle");
+						tVm.path=(String)map.get("path");
+			}
+			}
+			return tVm;
+		}
+	  
+	  public AboutUsVM getBlogHeader(Long locationId) {
+			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM blog where locations_id = '"+locationId+"'");
+			AboutUsVM tVm = new AboutUsVM();
+			if(rows1 != null){
+			for(Map map : rows1) {
+						
+						tVm.headerTitle = (String)map.get("main_title");
+						tVm.subTitle  = (String)map.get("subtitle");
+						tVm.path=(String)map.get("path");
+			}
+			}
+			return tVm;
+		}
+	  
+	  
+	  
 	  
 	
 	public List<String> getAllVehicleYear(Long locationId) {

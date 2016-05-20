@@ -155,11 +155,11 @@ $(document).ready(function()
   </div>
 </header>
 <!--Header End-->
-<section id="secondary-banner" class="dynamic-image-5"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-1-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>Contact Us</h2>
+        <h2>${contactHeader.headerTitle}</h2>
        <!--  <h4>We are located in the heart of the Bay Area, just off 80 HWY</h4> -->
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 ">
@@ -685,4 +685,8 @@ clicky_site_ids.push(100875513);
       }
       .none{
       }
+      
+.dynamic-image-1-1 {
+ 	background: url(${hostnameimg}${contactHeader.path}) top center;
+ 	}
        </style>   

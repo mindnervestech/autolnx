@@ -240,7 +240,7 @@ public class ClientController {
 		AboutUsVM getAboutUsHeader=clientService.getAboutUsHeader(locationId);
 		model.addAttribute("getAboutUsHeader",getAboutUsHeader);
 		String headerTitle=getAboutUsHeader.headerTitle;
-		String subtitle=getAboutUsHeader.subtitle;
+		String subtitle=getAboutUsHeader.subTitle;
 		model.addAttribute("myprofile",profile);
 		model.addAttribute("subtitle",subtitle);
 		model.addAttribute("headerTitle",headerTitle);
@@ -277,6 +277,8 @@ public class ClientController {
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
+		AboutUsVM contactHeader=clientService.getContactUsHeader(locationId);
+		model.addAttribute("contactHeader",contactHeader);
 		List<HoursOperationVM> saleList = clientService.getHoursForSales();
 		List<HoursOperationVM> serviceList = clientService.getHoursForService();
 		List<HoursOperationVM> partList = clientService.getHoursForParts();
@@ -357,6 +359,9 @@ public class ClientController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
+		AboutUsVM blogHeader=clientService.getBlogHeader(locationId);
+		model.addAttribute("blogHeader",blogHeader);
+		System.out.println(">>>>"+blogHeader.headerTitle);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
 		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);

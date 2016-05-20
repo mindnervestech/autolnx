@@ -59,7 +59,11 @@
 
 <script type="text/javascript" src="resources/autolinx/js/twitter/jquery.tweet.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/twitter/twitter_feed.js"></script> -->
-
+ <style>
+.dynamic-image-1-1 {
+ 	background: url(${hostnameimg}${blogHeader.path}) top center;
+ 	}
+       </style>   
 
 <script type="text/javascript">
 $(document).ready(function() 
@@ -157,12 +161,12 @@ $(document).ready(function()
 </header>
 <!--Header End-->
 <div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-4"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-1-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>Our Blog</h2>
-        <h4>Latest Industry News</h4>
+        <h2> ${blogHeader.headerTitle} </h2>
+        <h4> ${blogHeader.subTitle} </h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 ">
         <ul class="breadcrumb">
