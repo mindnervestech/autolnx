@@ -170,8 +170,8 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>${inventoryData.mainTitle}</h2>
-        <h4>${inventoryData.subTitle}</h4>
+        <h2>${compareHeader.headerTitle}</h2>
+        <h4>${compareHeader.subTitle}</h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <ul class="breadcrumb">
@@ -461,7 +461,7 @@ $(document).ready(function()
 <style>
 
 .dynamic-image-1-1 {
-  		background: url(${hostnameimg}${inventoryData.imageUrl}) top center no-repeat;
+  		background: url(${hostnameimg}${compareHeader.path}) top center;
   	}
 
 	.car_listings .carfax {
