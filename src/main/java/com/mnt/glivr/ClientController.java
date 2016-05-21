@@ -518,6 +518,9 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		AboutUsVM vehHeader=clientService.getvehicleHeader(locationId);
+		
+		model.addAttribute("vehHeader",vehHeader);
 		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);

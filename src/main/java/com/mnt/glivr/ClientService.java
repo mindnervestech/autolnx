@@ -641,7 +641,23 @@ public class ClientService {
 			return tVm;
 		}
 	  
-	  
+	  public AboutUsVM getvehicleHeader(Long locationId) {
+			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM vehicle_header where locations_id = '"+locationId+"'");
+			AboutUsVM tVm = new AboutUsVM();
+			if(rows1 != null){
+			for(Map map : rows1) {
+						tVm.thumb_path = (String)map.get("thumb_path");
+						tVm.headerTitle = (String)map.get("main_title");
+						tVm.subTitle  = (String)map.get("subtitle");
+						tVm.path=(String)map.get("path");
+						tVm.cover_image_name = (String)map.get("cover_image_name");
+						tVm.make_flag  = (Integer)map.get("make_flag");
+						tVm.finance_flag=(Integer)map.get("finance_flag");
+						tVm.social_flag=(Integer)map.get("social_flag");
+			}
+			}
+			return tVm;
+		}
 	  
 	  public AboutUsVM getBlogHeader(Long locationId) {
 			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM blog where locations_id = '"+locationId+"'");

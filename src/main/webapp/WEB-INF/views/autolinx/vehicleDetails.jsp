@@ -247,13 +247,17 @@ $(document).ready(function()
 </header>
 <!--Header End-->
 <div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-8"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" ng-class="${vehHeader.make_flag == 1}?'dynamic-image-1-1':'dynamic-image-8'"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12" ng-if="${vehHeader.make_flag == 1}">
+                <h2> ${vehHeader.headerTitle} </h2>
+        		<h4> ${vehHeader.subTitle} </h4>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12" ng-if="${vehHeader.make_flag == 0}">
                 <h2>Vehicle Profile</h2>
                 <h4>See all the vehicle's details with 360<sup>o</sup> view, engine sound and history report</h4>
-            </div>
+            </div> 
             <div class="col-lg-4 col-md-4 col-sm-6 ">
                 <ul class="breadcrumb">
                     <li><a href="${pageContext.request.contextPath}">Home</a></li>
@@ -774,7 +778,7 @@ $(document).ready(function()
 	                        <p>Actual rating will vary with options, driving conditions, driving habits and vehicle condition.</p>
 	                    </div>
 	                    
-												<div class="mainBoxIn1">
+												<div class="mainBoxIn1" ng-if="${vehHeader.social_flag == 1}" >
 	                    	                    <ul data-title="${vehicle.year} ${vehicle.make} ${vehicle.model}" data-url="${hostname}/${vehicle.vin}" class="social-likes pull-right listing_share social-likes_visible social-likes_ready ">  
 	                        <li title="Share link on Facebook" class="facebook"></li>
 	                        <li title="Share link on Google+" class="plusone"></li>
@@ -783,7 +787,7 @@ $(document).ready(function()
 	                    </ul>
 	                    </div>	                    
 	                    <div class="clearfix"></div>
-	                    <div class="widget loan_calculator margin-top-40 mainBoxIn1"><div class="financing_calculator"><h3 class="side-widget-title margin-bottom-25">Financing Calculator</h3>                <div class="table-responsive">
+	                    <div class="widget loan_calculator margin-top-40 mainBoxIn1" ng-if="${vehHeader.finance_flag == 1}" ><div class="financing_calculator"><h3 class="side-widget-title margin-bottom-25">Financing Calculator</h3>                <div class="table-responsive">
                     <table class="table no-border no-margin">
                         <tbody>
                             <tr>
@@ -1695,6 +1699,12 @@ $(document).ready(function()
 </html>
 
 <style>
+
+
+.dynamic-image-1-1 {
+ 	background: url(${hostnameimg}${vehHeader.path}) top center;
+ 	}
+ 
 .car-info .table>tbody>tr>td {
 	line-height: 18px;
 }

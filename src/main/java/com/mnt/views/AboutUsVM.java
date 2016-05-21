@@ -19,7 +19,11 @@ public class AboutUsVM {
 	public Integer compareFlag;
 	public Integer hideMenu;
 	
-	
+	public String thumb_path;
+	public String cover_image_name;
+	public Integer make_flag;
+	public Integer finance_flag;
+	public Integer social_flag;
 	
 	
 	public String getHeaderTitle() {
@@ -118,6 +122,36 @@ public class AboutUsVM {
 	}
 	public void setCompareFlag(Integer compareFlag) {
 		this.compareFlag = compareFlag;
+	}
+	public String getThumb_path() {
+		return thumb_path;
+	}
+	public void setThumb_path(String thumb_path) {
+		this.thumb_path = thumb_path;
+	}
+	public String getCover_image_name() {
+		return cover_image_name;
+	}
+	public void setCover_image_name(String cover_image_name) {
+		this.cover_image_name = cover_image_name;
+	}
+	public Integer getMake_flag() {
+		return make_flag;
+	}
+	public void setMake_flag(Integer make_flag) {
+		this.make_flag = make_flag;
+	}
+	public Integer getFinance_flag() {
+		return finance_flag;
+	}
+	public void setFinance_flag(Integer finance_flag) {
+		this.finance_flag = finance_flag;
+	}
+	public Integer getSocial_flag() {
+		return social_flag;
+	}
+	public void setSocial_flag(Integer social_flag) {
+		this.social_flag = social_flag;
 	}
 	
 	
