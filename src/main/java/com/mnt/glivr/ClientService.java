@@ -3182,6 +3182,67 @@ public VehicleVM getVehicleInfoNotNull(HttpServletRequest request){
 		
 	}
 	
+
+
+public List<VehicleVM> getVehiclesComparison(List<String> vinList, Long locationId){
+	
+	List<VehicleVM> vehicleList = new ArrayList<VehicleVM>();
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	Date date = new Date();
+	
+	
+	for(String vin:vinList){
+		
+		/*Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, -30);
+		Date dateBefore30Days = cal.getTime();*/
+		
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from vehicle where locations_id = '"+locationId+"' and vin = '"+vin+"' and status != 'Sold' and public_status='public'");
+		VehicleVM vm = new VehicleVM();
+		for(Map map : rows) {
+			
+			vm.bodyStyle = (String) map.get("body_style");
+			vm.drivetrain = (String) map.get("drivetrain");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.engine = (String) map.get("engine");
+			vm.extColor = (String) map.get("exterior_color");
+			vm.intColor = (String) map.get("interior_color");
+			vm.make = (String) map.get("make");
+			vm.model = (String) map.get("model");
+			vm.mileage = (String) map.get("mileage");
+			Integer price = (Integer) map.get("price");
+			vm.price = "$"+price.toString();
+			vm.stock = (String) map.get("stock");
+			vm.transmission = (String) map.get("transmission");
+			vm.vin = (String) map.get("vin");
+			vm.year = (String) map.get("year");
+			if(map.get("coming_soon_date") != null){
+				vm.comingSoonDate = dateFormat.format(map.get("coming_soon_date"));
+			}
+			
+			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
+			if(vehiclePath.isEmpty()) {
+				vm.path = "/no-image.jpg";
+			} else {
+				if(vehiclePath.get(0).get("path").toString() == "") {
+					vm.path = "/no-image.jpg";
+				} else {
+					vm.path = (String) vehiclePath.get(0).get("path");
+				}
+			}
+		}
+		
+		vehicleList.add(vm);
+	}
+	
+	
+	return vehicleList;
+	
+}
+
+
 	public List<VehicleVM> getRecentVehicles(Long locationId){
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

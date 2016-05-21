@@ -321,6 +321,8 @@ $(document).ready(function()
           </div> -->
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
               <ul class="form-links top_buttons">
+              <!-- ng-click="Compare()" -->
+              <li><a href="{{url}}" class="gradient_button"  >Compare 2 Vehicles</a></li>
                 <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
               </ul>
             </div>
@@ -347,8 +349,10 @@ $(document).ready(function()
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="${pageContext.request.contextPath}/vehicleDetails/{{vehicle.vin}}" class="inventory">
               	<!-- ng-class="vehicle.price == '$0' ?'titleCenter':''" -->
-                <div class="title">{{vehicle.title}}</div>
                 
+                <input type="checkbox" name="a" class="checkbox compare_vehicle input-checkbox" ng-click="selectVehicle(vehicle,select)" ng-model="select" style="left: 96em !important;" id="vehicle_1" />
+                <div class="title">{{vehicle.title}} </div>
+                 
                 	<%-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;"></img>
                 	<span class="item-new"></span> --%>
                 	<div >

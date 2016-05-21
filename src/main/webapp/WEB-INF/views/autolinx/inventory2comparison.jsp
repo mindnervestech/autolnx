@@ -206,7 +206,7 @@ $(document).ready(function()
                                     <tbody>
                                         <tr>
                                             <td>Body Style:</td>
-                                            <td>Coupe</td>
+                                            <td>${vehicles[0].price}</td>
                                         </tr>
                                         <tr>
                                             <td>Engine:</td>

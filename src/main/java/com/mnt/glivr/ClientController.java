@@ -2,6 +2,7 @@ package com.mnt.glivr;
 
 import java.io.File;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -131,6 +132,7 @@ public class ClientController {
 		
 	}
 	
+	
 	@RequestMapping(value = "/mobile/home", method = RequestMethod.GET)
 	public String mobileHome(HttpServletRequest request, Locale locale, Model model) {
 		Long locationId = findLocation(request);
@@ -158,6 +160,50 @@ public class ClientController {
 		
 		return "autolinx/mobile/mobileIndex";
 	}
+	
+	@RequestMapping(value = "/compare2", method = RequestMethod.GET)
+	public String compare2(HttpServletRequest request,Locale locale, Model model) {
+		Long locationId = findLocation(request);
+		List<String> vinList = new ArrayList<String>();
+		
+		if(request.getParameter("1") != null){
+			vinList.add(request.getParameter("1"));
+		}
+		if(request.getParameter("2") != null){
+			vinList.add(request.getParameter("2"));
+		}
+		if(request.getParameter("3") != null){
+			vinList.add(request.getParameter("3"));
+		}
+		if(request.getParameter("4") != null){
+			vinList.add(request.getParameter("4"));
+		}
+		int i=0;
+		for(String vin:vinList){
+			i++;
+		}
+		
+		MyProfileVM profile = clientService.getProfileModel(locationId);
+		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
+		List<VehicleVM> vehicleList = clientService.getVehiclesComparison(vinList, locationId);
+		
+		model.addAttribute("vehicles",vehicleList);
+		model.addAttribute("siteLogo",siteLogo);
+		model.addAttribute("myprofile",profile);
+		model.addAttribute("hostnameimg",hostnameimg);
+		
+		if(i >= 4){
+			return "autolinx/inventory4comparison";
+		}else if(i >= 3){
+			return "autolinx/inventory3comparison";
+		}else if(i >= 2){
+			return "autolinx/inventory2comparison";
+		}
+		return null;
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
 	public String inventory(HttpServletRequest request, Locale locale, Model model) {

@@ -354,6 +354,43 @@ app.controller("InventoryController", function($scope,$http, notificationService
 			$scope.price = "";
 			$scope.loadMore();
 		}
+		//var contextPath = $('#contextpath').val();
+		$scope.selectedVehicle = [];
+		$scope.url = contextPath+"/compare2/";
+		$scope.selectVehicle = function(vehicle,select){
+			$scope.url = contextPath+"/compare2/";
+			console.log(vehicle);
+			console.log(select);
+			if(select == true){
+				$scope.selectedVehicle.push(vehicle.vin);
+			}else{
+				$scope.deleteSelectedVehicle(vehicle.vin);
+			}
+			angular.forEach($scope.selectedVehicle, function(obj, index){
+				if(index == 0){
+					$scope.url = $scope.url+"?"+(index+1)+"="+obj;
+				}else{
+					$scope.url = $scope.url+"&"+(index+1)+"="+obj;
+				}
+				
+			});
+			console.log($scope.url);
+		};
+		
+		$scope.deleteSelectedVehicle = function(item){
+			angular.forEach($scope.selectedVehicle, function(obj, index){
+				 if (item == obj) {
+					 $scope.selectedVehicle.splice(index, 1);
+			       	return;
+			    }
+			  });
+		}
+		
+		$scope.Compare = function(){
+			console.log("jjjj");
+			$location.path('/compare2');
+		}
+		//$location.path('/myprofile');
 		
 });
 
