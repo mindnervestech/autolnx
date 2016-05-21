@@ -656,6 +656,21 @@ public class ClientService {
 			}
 			return tVm;
 		}
+		
+		 public AboutUsVM getCompareHeader(Long locationId) {
+			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM site_comparison where locations_id = '"+locationId+"'");
+			AboutUsVM tVm = new AboutUsVM();
+			if(rows1 != null){
+			for(Map map : rows1) {
+				
+						tVm.compareFlag = (Integer)map.get("compare_flag");
+						tVm.headerTitle = (String)map.get("main_title");
+						tVm.subTitle  = (String)map.get("sub_title");
+						tVm.path=(String)map.get("path");
+			}
+			}
+			return tVm;
+		}
 	  
 	  
 	  
@@ -785,6 +800,7 @@ public class ClientService {
 			vm.transmission = (String) map.get("transmission");
 			vm.vin = (String) map.get("vin");
 			vm.year = (String) map.get("year");
+			vm.isSelected = false;
 			vm.comingSoonFlag=(Integer) map.get("coming_soon_flag");
 			List<Map<String, Object>> vehiclePath = jdbcTemplate.queryForList("select path from vehicle_image where vin = '"+vm.vin+"' and default_image = true");
 			if(vehiclePath.isEmpty()) {
@@ -3234,6 +3250,11 @@ public List<VehicleVM> getVehiclesComparison(List<String> vinList, Long location
 			vm.transmission = (String) map.get("transmission");
 			vm.vin = (String) map.get("vin");
 			vm.year = (String) map.get("year");
+			vm.doors = (String) map.get("doors");
+			vm.stock =  (String) map.get("stock");
+			vm.cityMileage = (String) map.get("city_mileage");
+			vm.highwayMileage = (String) map.get("highway_mileage");
+			vm.fuelType =  (String) map.get("fuel_type");
 			if(map.get("coming_soon_date") != null){
 				vm.comingSoonDate = dateFormat.format(map.get("coming_soon_date"));
 			}

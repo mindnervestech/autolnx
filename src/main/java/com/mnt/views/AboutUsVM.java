@@ -16,6 +16,8 @@ public class AboutUsVM {
 	public String link;
 	public Integer row;
 	public Integer col;
+	public Integer compareFlag;
+	
 	
 	
 	
@@ -102,6 +104,12 @@ public class AboutUsVM {
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+	public Integer getCompareFlag() {
+		return compareFlag;
+	}
+	public void setCompareFlag(Integer compareFlag) {
+		this.compareFlag = compareFlag;
 	}
 	
 	

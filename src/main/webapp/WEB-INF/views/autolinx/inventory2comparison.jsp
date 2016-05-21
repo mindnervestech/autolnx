@@ -99,7 +99,7 @@ $(document).ready(function()
 
 </head>
  
-<body ng-controller="InventoryController" ng-init='initFunction(${vehicle1.year},"${vehicle1.make}","${vehicle1.model}","${vehicle1.bodyStyle}","${vehicle1.fuelType}","${myprofile.locationId}","${type}","${inventoryData.defaultView}","${inventoryData.sortBy}","${inventoryData.sortType}")'>
+<body ng-controller="comparisonController">
 <!--Header Start-->
 <input type="hidden" id="contextpath" value="${pageContext.request.contextPath}">
 <header class="clearfix affix-topno_resize no_header_resize_mobile header-inner"  no_resize="">
@@ -170,8 +170,8 @@ $(document).ready(function()
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>${inventoryData.mainTitle}</h2>
-        <h4>${inventoryData.subTitle}</h4>
+        <h2>${compareHeader.headerTitle}</h2>
+        <h4>${compareHeader.subTitle}</h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <ul class="breadcrumb">
@@ -193,72 +193,76 @@ $(document).ready(function()
     <div class="container">
         <div class="inner-page inventory-2">
             <div class="row">
+            <c:if test="${vehicles.size() == 2 }">
+           
+             <c:forEach var="option" items='${vehicles}'>
+            
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="porche margin-bottom-25">
                         <div class="porche-header padding-top-15 padding-bottom-10"> 
-                            <span>2014 Porsche 911 Carrera 4</span> 
-                            <strong>$99,995</strong> 
+                            <span>${option.year} ${option.make} ${option.model}</span> 
+                            <strong>${option.price}</strong> 
                         </div>
-                        <div class="porche-img padding-bottom-15"> <img src="http://demo.themesuite.com/automotive/images/car-brown.jpg" alt=""></div>
+                        <div class="porche-img padding-bottom-15"> <img src="${hostnameimg}${option.path}" alt=""></div>
                         <div class="car-detail clearfix">
                             <div class="table-responsive">
                                 <table class="table">
                                     <tbody>
                                         <tr>
                                             <td>Body Style:</td>
-                                            <td>${vehicles[0].price}</td>
+                                            <td>${option.bodyStyle}</td>
                                         </tr>
                                         <tr>
                                             <td>Engine:</td>
-                                            <td>3.4L Horizontally Opposed 6</td>
+                                            <td>${option.engine}</td>
                                         </tr>
                                         <tr>
                                             <td>TRANSMISSION:</td>
-                                            <td>7-Speed Manual</td>
+                                            <td>${option.transmission}</td>
                                         </tr>
                                         <tr>
                                             <td>DRIVETRAIN:</td>
-                                            <td>All Wheel Drive</td>
+                                            <td>${option.drivetrain}</td>
                                         </tr>
                                         <tr>
                                             <td>EXTERIOR:</td>
-                                            <td>Cognac Metallic</td>
+                                            <td>${option.extColor}</td>
                                         </tr>
                                         <tr>
                                             <td>INTERIOR:</td>
-                                            <td>Luxor Beige</td>
+                                            <td>${option.intColor}</td>
                                         </tr>
                                         <tr>
                                             <td>MILES:</td>
-                                            <td>12</td>
+                                            <td>${option.mileage}</td>
                                         </tr>
                                         <tr>
                                             <td>DOORS:</td>
-                                            <td>2</td>
+                                            <td>${option.doors}</td>
                                         </tr>
                                         <tr>
                                             <td>PASSENGERS:</td>
-                                            <td>2</td>
+                                            <td>${option.bodyStyle}</td>
                                         </tr>
                                         <tr>
                                             <td>STOCK #:</td>
-                                            <td>16809</td>
+                                            <td>${option.stock}</td>
                                         </tr>
                                         <tr>
                                             <td>VIN #:</td>
-                                            <td>WP0AB2E81EK194156</td>
+                                            <td>${option.vin}</td>
                                         </tr>
                                         <tr>
                                             <td>FUEL MILEAGE:</td>
-                                            <td>19 MPG City / 27 MPG Hwy</td>
+                                            <td>${option.cityMileage}/${option.highwayMileage}</td>
                                         </tr>
                                         <tr>
                                             <td>FUEL TYPE:</td>
-                                            <td>Gasoline</td>
+                                            <td>${option.fuelType}</td>
                                         </tr>
                                         <tr>
                                             <td>CONDITION:</td>
-                                            <td>Brand New</td>
+                                            <td>${option.make}</td>
                                         </tr>
                                         <tr>
                                             <td>OWNERS:</td>
@@ -311,7 +315,232 @@ $(document).ready(function()
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+              </c:forEach>  
+              </c:if> 
+              
+          <c:if test="${vehicles.size() == 3 }">
+             <c:forEach var="option" items='${vehicles}'>
+             	<div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="porche margin-bottom-25">
+                        <div class="porche-header padding-top-15 padding-bottom-10"> <span>${option.year} ${option.make} ${option.model}</span> <strong>${option.price}</strong> </div>
+                        <div class="porche-img padding-bottom-15"> <img src="${hostnameimg}${option.path}" alt=""></div>
+                        <div class="car-detail clearfix">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Body Style:</td>
+                                            <td>${option.bodyStyle}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Engine:</td>
+                                            <td>${option.engine}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TRANSMISSION:</td>
+                                            <td>${option.transmission}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DRIVETRAIN:</td>
+                                            <td>${option.drivetrain}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>EXTERIOR:</td>
+                                            <td>${option.extColor}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>INTERIOR:</td>
+                                            <td>${option.intColor}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MILES:</td>
+                                            <td>${option.mileage}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DOORS:</td>
+                                            <td>${option.doors}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PASSENGERS:</td>
+                                            <td>${option.bodyStyle}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>STOCK #:</td>
+                                            <td>${option.stock}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VIN #:</td>
+                                            <td>${option.vin}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FUEL MILEAGE:</td>
+                                            <td>${option.cityMileage}/${option.highwayMileage}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FUEL TYPE:</td>
+                                            <td>${option.fuelType}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CONDITION:</td>
+                                            <td>${option.make}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>OWNERS:</td>
+                                            <td>N/A</td>
+                                        </tr>
+                                        <tr>
+                                            <td>WARRANTY:</td>
+                                            <td>3 Years Limited</td>
+                                        </tr>
+                                        <tr>
+                                            <td>OPTIONS:</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="option-tick-list padding-horizontal-10  clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <ul>
+                                        <li>Adjustable Pedals</li>
+                                        <li>Air Conditioning</li>
+                                        <li>All-Wheel Drive</li>
+                                        <li>Alloy Wheels</li>
+                                        <li>Bucket Seats</li>
+                                        <li>Cruise Control</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <ul>
+                                        <li>Heated Seats</li>
+                                        <li>Leather Interior</li>
+                                        <li>Navigation</li>
+                                        <li>Power Door Locks</li>
+                                        <li>Rear View Camera</li>
+                                        <li>Tilt Steering</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="porche-footer margin-top-25 padding-top-20 padding-bottom-15">
+                                <form method="post" action="inventory-listing.html">
+                                    <input type="submit" value="View Listing">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </c:forEach>  
+          </c:if> 
+          <c:if test="${vehicles.size() == 4}">
+             <c:forEach var="option" items='${vehicles}'>
+             	<div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="porche margin-bottom-25 clearfix">
+                        <div class="porche-header padding-top-15 padding-bottom-10"> <span>${option.year} ${option.make} ${option.model}</span> <strong>${option.price}</strong> </div>
+                        <div class="porche-img padding-bottom-15"> <img src="${hostnameimg}${option.path}" alt=""></div>
+                        <div class="car-detail clearfix">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Body Style:</td>
+                                            <td>${option.bodyStyle}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Engine:</td>
+                                            <td>${option.engine}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TRANSMISSION:</td>
+                                            <td>${option.transmission}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DRIVETRAIN:</td>
+                                            <td>${option.drivetrain}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>EXTERIOR:</td>
+                                            <td>${option.extColor}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>INTERIOR:</td>
+                                            <td>${option.intColor}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MILES:</td>
+                                            <td>${option.mileage}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DOORS:</td>
+                                            <td>${option.doors}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PASSENGERS:</td>
+                                            <td>${option.bodyStyle}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>STOCK #:</td>
+                                            <td>${option.stock}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VIN #:</td>
+                                            <td>${option.vin}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FUEL MILEAGE:</td>
+                                            <td>${option.cityMileage}/${option.highwayMileage}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FUEL TYPE:</td>
+                                            <td>${option.fuelType}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CONDITION:</td>
+                                            <td>${option.make}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>OWNERS:</td>
+                                            <td>N/A</td>
+                                        </tr>
+                                        <tr>
+                                            <td>WARRANTY:</td>
+                                            <td>3 Years Limited</td>
+                                        </tr>
+                                        <tr>
+                                            <td>OPTIONS:</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="option-tick-list padding-horizontal-10 clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <ul>
+                                        <li>Adjustable Pedals</li>
+                                        <li>Air Conditioning</li>
+                                        <li>All-Wheel Drive</li>
+                                        <li>Alloy Wheels</li>
+                                        <li>Bucket Seats</li>
+                                        <li>Cruise Control</li>
+                                        <li>Heated Seats</li>
+                                        <li>Leather Interior</li>
+                                        <li>Navigation</li>
+                                        <li>Power Door Locks</li>
+                                        <li>Rear View Camera</li>
+                                        <li>Tilt Steering</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="porche-footer margin-top-25 padding-top-20 padding-bottom-15">
+                                <form method="post" action="inventory-listing.html">
+                                    <input type="submit" value="View Listing">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </c:forEach>  
+          </c:if> 
+                <!-- <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="porche margin-bottom-25">
                         <div class="porche-header padding-top-15 padding-bottom-10"> 
                             <span>2014 Porsche Cayenne S</span> 
@@ -428,7 +657,7 @@ $(document).ready(function()
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -584,8 +813,9 @@ $(document).ready(function()
 <style>
 
 .dynamic-image-1-1 {
-  		background: url(${hostnameimg}${inventoryData.imageUrl}) top center no-repeat;
+  		background: url(${hostnameimg}${compareHeader.path}) top center;
   	}
+
 
 	.car_listings .carfax {
   display: block !important;

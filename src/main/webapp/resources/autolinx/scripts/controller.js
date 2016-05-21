@@ -22,15 +22,18 @@ app.controller("aboutUsController", function($scope,$http, notificationService, 
 			for (var i = 0; i < data.blogList.length; i++) {
 				$scope.blogList.push(data.blogList[i]);
 			}
-			console.log("klklklkl");
-			console.log($scope.blogList);
 		});
 		
 		start = start + 3;
 	}
 	console.log("In about");
 });
+
 app.controller("WarrantyController", function($scope,$http, notificationService, vcRecaptchaService) {
+	
+});
+
+app.controller("comparisonController", function($scope,$http, notificationService, vcRecaptchaService) {
 	
 });
 
@@ -227,6 +230,9 @@ app.controller("InventoryController", function($scope,$http, notificationService
 	
 		
 		if ($scope.noMore) return;
+		
+		
+		
 		var url = window.location.href;
 		var params = {start:start,year:$scope.year,make:$scope.make,model:$scope.model,bodyStyle:$scope.bodyStyle,fuel:$scope.fuel,mileage:$scope.mileage,price:$scope.price,alphbet:$scope.alphbet,vtype:$scope.type,vehicleType:$scope.vehicleType};
 		var new_url = url + '?' + jQuery.param(params);

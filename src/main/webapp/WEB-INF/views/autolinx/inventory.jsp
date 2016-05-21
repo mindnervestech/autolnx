@@ -322,8 +322,8 @@ $(document).ready(function()
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
               <ul class="form-links top_buttons">
               <!-- ng-click="Compare()" -->
-              <li><a href="{{url}}" class="gradient_button"  >Compare 2 Vehicles</a></li>
                 <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
+                <li ng-if="${compareHeader.compareFlag == 1}"><a href="{{url}}" class="gradient_button"  >Compare {{selectedVehicle.length}} Vehicles</a></li>
               </ul>
             </div>
         </div>
@@ -349,8 +349,8 @@ $(document).ready(function()
             <div class="sidebar" infinite-scroll='loadMore()' infinite-scroll-distance='16'>
               <div class="inventory clearfix margin-bottom-20 styled_input " ng-repeat="vehicle in vehicleList"> <a href="${pageContext.request.contextPath}/vehicleDetails/{{vehicle.vin}}" class="inventory">
               	<!-- ng-class="vehicle.price == '$0' ?'titleCenter':''" -->
-                
-                <input type="checkbox" name="a" class="checkbox compare_vehicle input-checkbox" ng-click="selectVehicle(vehicle,select)" ng-model="select" style="left: 96em !important;" id="vehicle_1" />
+                <!-- class="checkbox compare_vehicle input-checkbox" -->
+                <input ng-if="${compareHeader.compareFlag == 1}" ng-disabled="selectedVehicle.length >= 4 && vehicle.isSelected == false" type="checkbox" name="a"  ng-click="selectVehicle(vehicle,vehicle.isSelected)" ng-model="vehicle.isSelected" style="left: 96em !important;" id="vehicle_1" />
                 <div class="title">{{vehicle.title}} </div>
                  
                 	<%-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" alt="preview" style="width:210px;height:140px;"></img>
@@ -704,7 +704,7 @@ $(document).ready(function()
 <style>
 
 .dynamic-image-1-1 {
-  		background: url(${hostnameimg}${inventoryData.imageUrl}) top center no-repeat;
+  		background: url(${hostnameimg}${inventoryData.imageUrl}) top center;
   	}
 
 	.car_listings .carfax {

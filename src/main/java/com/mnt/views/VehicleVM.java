@@ -70,6 +70,8 @@ public class VehicleVM {
 	public String remoteTrunkRelease;
 	public String comingSoonDate;
 	public String comingSoonDate1;
+	public Boolean isSelected;
+	
 	public String getComingSoonDate() {
 		return comingSoonDate;
 	}
@@ -107,6 +109,14 @@ public class VehicleVM {
 	}
 	public void setLocAddress(String locAddress) {
 		this.locAddress = locAddress;
+	}
+	
+	
+	public Boolean getIsSelected() {
+		return isSelected;
+	}
+	public void setIsSelected(Boolean isSelected) {
+		this.isSelected = isSelected;
 	}
 	public String getFlagD() {
 		return flagD;

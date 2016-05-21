@@ -186,11 +186,14 @@ public class ClientController {
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		List<VehicleVM> vehicleList = clientService.getVehiclesComparison(vinList, locationId);
+		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		
 		
 		model.addAttribute("vehicles",vehicleList);
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("myprofile",profile);
 		model.addAttribute("hostnameimg",hostnameimg);
+		model.addAttribute("compareHeader",compareHeader);
 		
 		if(i >= 4){
 			return "autolinx/inventory4comparison";
@@ -654,6 +657,8 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		InventoryDataVM inDataVM = clientService.getVehicleInventory(locationId,type);
+		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		model.addAttribute("compareHeader",compareHeader);
 		model.addAttribute("inventoryData",inDataVM);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
@@ -699,6 +704,8 @@ public class ClientController {
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
+		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		model.addAttribute("compareHeader",compareHeader);
 		
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
@@ -732,6 +739,8 @@ public class ClientController {
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
+		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		model.addAttribute("compareHeader",compareHeader);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
@@ -762,6 +771,8 @@ public class ClientController {
 		List<String> vehicleListModel = clientService.getAllVehicleModel(locationId);
 		List<String> vehicleListYear = clientService.getAllVehicleYear(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
+		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		model.addAttribute("compareHeader",compareHeader);
 		
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
