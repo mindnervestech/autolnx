@@ -147,7 +147,7 @@ $(document).ready(function()
                   </ul>
               </li>
               
-              <li><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
+              <li ng-if="${warHeader.hideMenu == 0}"><a href="${pageContext.request.contextPath}/warranty">Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs">About Us</a></li>
               <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
               <li><a href="${pageContext.request.contextPath}/contactUs">Contact Us</a></li>
@@ -776,7 +776,7 @@ $(document).ready(function()
             <ul class="f-nav">
               <li><a href="${pageContext.request.contextPath}">Home</a></li>
               <li><a href="${pageContext.request.contextPath}/findVehicles">Inventory</a></li>
-              <li><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
+              <li ng-if="${warHeader.hideMenu == 0}"><a href="${pageContext.request.contextPath}/warranty"> Warranty</a></li>
               <li><a href="${pageContext.request.contextPath}/aboutUs"> About Us</a></li>
               <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
               <li><a href="${pageContext.request.contextPath}/contactUs">Contact</a></li>

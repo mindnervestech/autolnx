@@ -17,6 +17,7 @@ public class AboutUsVM {
 	public Integer row;
 	public Integer col;
 	public Integer compareFlag;
+	public Integer hideMenu;
 	
 	
 	
@@ -50,6 +51,13 @@ public class AboutUsVM {
 	}
 	public void setImgName(String imgName) {
 		this.imgName = imgName;
+	}
+	
+	public Integer getHideMenu() {
+		return hideMenu;
+	}
+	public void setHideMenu(Integer hideMenu) {
+		this.hideMenu = hideMenu;
 	}
 	public String getThumbPath() {
 		return thumbPath;

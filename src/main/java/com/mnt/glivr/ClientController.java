@@ -88,6 +88,8 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		List<VehicleVM> vehicleList = clientService.getRecentVehicles(locationId);
 		String ph =clientService.getPhoneno(locationId);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		List<HoursOperationVM> saleList = clientService.getHoursForSales();
 		List<HoursOperationVM> serviceList = clientService.getHoursForService();
 		List<HoursOperationVM> partList = clientService.getHoursForParts();
@@ -187,8 +189,8 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		List<VehicleVM> vehicleList = clientService.getVehiclesComparison(vinList, locationId);
 		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
-		
-		
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("vehicles",vehicleList);
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("myprofile",profile);
@@ -288,6 +290,8 @@ public class ClientController {
 		List<TestimonialsVM> testmonial = clientService.getAllTestimoniale(locationId);
 		AboutUsVM getAboutUsHeader=clientService.getAboutUsHeader(locationId);
 		model.addAttribute("getAboutUsHeader",getAboutUsHeader);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		String headerTitle=getAboutUsHeader.headerTitle;
 		String subtitle=getAboutUsHeader.subTitle;
 		model.addAttribute("myprofile",profile);
@@ -331,6 +335,8 @@ public class ClientController {
 		List<HoursOperationVM> saleList = clientService.getHoursForSales();
 		List<HoursOperationVM> serviceList = clientService.getHoursForService();
 		List<HoursOperationVM> partList = clientService.getHoursForParts();
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("saleList2",partList);
 		model.addAttribute("saleList",saleList);
 		model.addAttribute("saleList1",serviceList);
@@ -411,6 +417,8 @@ public class ClientController {
 		model.addAttribute("siteLogo",siteLogo);
 		model.addAttribute("hostnameimg",hostnameimg);
 		AboutUsVM blogHeader=clientService.getBlogHeader(locationId);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("blogHeader",blogHeader);
 		System.out.println(">>>>"+blogHeader.headerTitle);
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
@@ -509,6 +517,8 @@ public class ClientController {
 		SiteContentVM siteContent = clientService.getSitContent(locationId);
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
@@ -658,6 +668,8 @@ public class ClientController {
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		InventoryDataVM inDataVM = clientService.getVehicleInventory(locationId,type);
 		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("compareHeader",compareHeader);
 		model.addAttribute("inventoryData",inDataVM);
 		model.addAttribute("myprofile",profile);
@@ -705,8 +717,9 @@ public class ClientController {
 		String ph =clientService.getPhoneno(locationId);
 		model.addAttribute("myphone",ph);
 		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("compareHeader",compareHeader);
-		
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );
@@ -740,6 +753,8 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		MyProfileVM profile = clientService.getProfileModel(locationId);
 		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("compareHeader",compareHeader);
 		model.addAttribute("myprofile",profile);
 		String ph =clientService.getPhoneno(locationId);
@@ -773,7 +788,8 @@ public class ClientController {
 		SiteLogoVM siteLogo = clientService.getLogoData(locationId);
 		AboutUsVM compareHeader = clientService.getCompareHeader(locationId);
 		model.addAttribute("compareHeader",compareHeader);
-		
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("vehicleListYear", vehicleListYear);
 		model.addAttribute("vehicleListMake", vehicleListMake );
 		model.addAttribute("vehicleListModel", vehicleListModel );

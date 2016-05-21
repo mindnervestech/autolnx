@@ -632,7 +632,7 @@ public class ClientService {
 			AboutUsVM tVm = new AboutUsVM();
 			if(rows1 != null){
 			for(Map map : rows1) {
-						
+						tVm.hideMenu = (Integer)map.get("hide_menu");
 						tVm.headerTitle = (String)map.get("main_title");
 						tVm.subTitle  = (String)map.get("subtitle");
 						tVm.path=(String)map.get("path");
