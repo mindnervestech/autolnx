@@ -59,6 +59,13 @@
 <script type="text/javascript" src="resources/autolinx/js/twitter/jquery.tweet.js"></script>
 <script type="text/javascript" src="resources/autolinx/js/twitter/twitter_feed.js"></script> -->
 
+ <style>
+.dynamic-image-1-1 {
+ 	background: url(${hostnameimg}${warHeader.path}) top center;
+ 	}
+       </style>  
+
+
 <script type="text/javascript">
 $(document).ready(function() 
 {
@@ -155,12 +162,12 @@ $(document).ready(function()
 <!--Header End-->
 
 <div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-13"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-1-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-        <h2>Vehicle Service Contracts</h2>
-        <h4>We go the Extra Mile so You can Enjoy the Drive</h4>
+        <h2> ${warHeader.headerTitle} </h2>
+        <h4> ${warHeader.subTitle} </h4>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 ">
         <ul class="breadcrumb">

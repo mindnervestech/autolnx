@@ -384,6 +384,8 @@ public class ClientController {
 		Integer newCount = clientService.getVehicleInfoNewUsed("a_z","New",locationId);
 		Integer usedCount = clientService.getVehicleInfoNewUsed("a_z","Used",locationId);
 		Integer comingSoonCount = clientService.getVehicleInfoNewUsed("a_z",locationId);
+		AboutUsVM warHeader=clientService.getWarrantyHeader(locationId);
+		model.addAttribute("warHeader",warHeader);
 		model.addAttribute("comingSoonCount",comingSoonCount);
 		model.addAttribute("newCount",newCount);
 		model.addAttribute("usedCount",usedCount);

@@ -627,6 +627,22 @@ public class ClientService {
 			return tVm;
 		}
 	  
+	  public AboutUsVM getWarrantyHeader(Long locationId) {
+			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM warranty where locations_id = '"+locationId+"'");
+			AboutUsVM tVm = new AboutUsVM();
+			if(rows1 != null){
+			for(Map map : rows1) {
+						
+						tVm.headerTitle = (String)map.get("main_title");
+						tVm.subTitle  = (String)map.get("subtitle");
+						tVm.path=(String)map.get("path");
+			}
+			}
+			return tVm;
+		}
+	  
+	  
+	  
 	  public AboutUsVM getBlogHeader(Long locationId) {
 			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM blog where locations_id = '"+locationId+"'");
 			AboutUsVM tVm = new AboutUsVM();
