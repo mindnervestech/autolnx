@@ -3747,6 +3747,14 @@ public List<HoursOperationVM> getHoursForService(){
 	
 	public String contactUs(ContactVM request, String hostUrl, Long locationId){
 
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat timeDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		
+		Date date = new Date();
+		
+		jdbcTemplate.update("INSERT INTO request_more_info(name,email,phone,request_date,request_time,locations_id,online_or_offline_leads,is_contactus_type) VALUES('"+request.name+"','"+request.email+"','"+request.number+"','"+dateFormat.format(date)+"','"+timeDate.format(date)+"','"+locationId+"','"+1+"','"+"contactUs"+"')");
+		
 		jdbcTemplate.update("INSERT INTO contact_us(name, email,msg,number,locations_id) VALUES('"+request.name+"','"+request.email+"','"+request.message+"','"+request.number+"','"+locationId+"')");
 		
 		SiteLogoVM logo = new SiteLogoVM();
