@@ -221,8 +221,8 @@ $(document).ready(function()
                                         </tr>
                                         <tr ng-if="${vehicles[0].drivetrain != null} || ${vehicles[1].drivetrain != null} || ${vehicles[2].drivetrain != null} || ${vehicles[3].drivetrain != null}">
                                             <td>DRIVETRAIN:</td>
-                                            <td ng-if="${option.drivetrain != null}">${option.drivetrain}</td>
-                                             <td ng-if="${option.drivetrain == null}">N/A</td>
+                                           <td ng-if="${option.drivetrain != ''} && ${option.drivetrain != null}">${option.drivetrain}</td>
+                                             <td ng-if="${option.drivetrain == ''} || ${option.drivetrain == null}">N/A</td>
                                         </tr>
                                         <tr ng-if="${vehicles[0].extColor != ''} || ${vehicles[1].extColor != ''} || ${vehicles[2].extColor != ''} || ${vehicles[3].extColor != ''}">
                                             <td>EXTERIOR:</td>
