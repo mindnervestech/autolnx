@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
@@ -197,84 +198,98 @@ $(document).ready(function()
              <c:forEach var="option" items='${vehicles}'>
              	<div class="col-lg-3 col-md-3 col-sm-6">
                     <div class="porche margin-bottom-25 clearfix">
-                        <div class="porche-header padding-top-15 padding-bottom-10"> <span>${option.year} ${option.make} ${option.model}</span> <strong>${option.price}</strong> </div>
+                        <div class="porche-header padding-top-15 padding-bottom-10"> <span>${option.year} ${option.make} ${option.model}</span> <strong>$<fmt:formatNumber type="number" maxFractionDigits="3" value="${option.price}" /></strong> </div>
                         <div class="porche-img padding-bottom-15"> <img src="${hostnameimg}${option.path}" alt=""></div>
                         <div class="car-detail clearfix">
                             <div class="table-responsive">
                                 <table class="table">
-                                    <tbody>
-                                        <tr>
+                                      <tbody>
+                                        <tr ng-if="${vehicles[0].bodyStyle != null} || ${vehicles[1].bodyStyle != null} || ${vehicles[2].bodyStyle != null}  || ${vehicles[3].bodyStyle != null}">
                                             <td>Body Style:</td>
-                                            <td>${option.bodyStyle}</td>
+                                            <td ng-if="${option.bodyStyle != null}">${option.bodyStyle}</td>
+                                             <td ng-if="${option.bodyStyle == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].engine != null} || ${vehicles[1].engine != null} || ${vehicles[2].engine != null} || ${vehicles[3].engine != null}">
                                             <td>Engine:</td>
-                                            <td>${option.engine}</td>
+                                            <td ng-if="${option.engine != null}">${option.engine}</td>
+                                             <td ng-if="${option.engine == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].transmission != null} || ${vehicles[1].transmission != null} || ${vehicles[2].transmission != null} || ${vehicles[3].transmission != null}">
                                             <td>TRANSMISSION:</td>
-                                            <td>${option.transmission}</td>
+                                            <td ng-if="${option.transmission != null}">${option.transmission}</td>
+                                            <td ng-if="${option.transmission == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].drivetrain != null} || ${vehicles[1].drivetrain != null} || ${vehicles[2].drivetrain != null} || ${vehicles[3].drivetrain != null}">
                                             <td>DRIVETRAIN:</td>
-                                            <td>${option.drivetrain}</td>
+                                            <td ng-if="${option.drivetrain != null}">${option.drivetrain}</td>
+                                             <td ng-if="${option.drivetrain == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].extColor != ''} || ${vehicles[1].extColor != ''} || ${vehicles[2].extColor != ''} || ${vehicles[3].extColor != ''}">
                                             <td>EXTERIOR:</td>
-                                            <td>${option.extColor}</td>
+                                            <td ng-if="${option.extColor != ''}">${option.extColor}</td>
+                                             <td ng-if="${option.extColor == ''}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].intColor != null} || ${vehicles[1].intColor != null} || ${vehicles[2].intColor != null} || ${vehicles[3].intColor != null}">
                                             <td>INTERIOR:</td>
-                                            <td>${option.intColor}</td>
+                                            <td ng-if="${option.intColor != null}">${option.intColor}</td>
+                                             <td ng-if="${option.intColor == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].mileage != null} || ${vehicles[1].mileage != null} || ${vehicles[2].mileage != null} || ${vehicles[3].mileage != null}">
                                             <td>MILES:</td>
-                                            <td>${option.mileage}</td>
+                                            <td ng-if="${option.mileage != null}">${option.mileage}</td>
+                                             <td ng-if="${option.mileage == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].doors != null} || ${vehicles[1].doors != null} || ${vehicles[2].doors != null} || ${vehicles[3].doors != null}">
                                             <td>DOORS:</td>
-                                            <td>${option.doors}</td>
+                                            <td ng-if="${option.doors != null}">${option.doors}</td>
+                                             <td ng-if="${option.doors == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <%-- <tr ng-if="${vehicles[0].bodyStyle != null} || ${vehicles[1].bodyStyle != null} || ${vehicles[2].bodyStyle != null}">
                                             <td>PASSENGERS:</td>
-                                            <td>${option.bodyStyle}</td>
-                                        </tr>
-                                        <tr>
+                                            <td ng-if="${option.bodyStyle != null}">${option.bodyStyle}</td>
+                                             <td ng-if="${option.bodyStyle == null}">N/A</td>
+                                        </tr> --%>
+                                        <tr ng-if="${vehicles[0].stock != null} || ${vehicles[1].stock != null} || ${vehicles[2].stock != null} || ${vehicles[3].stock != null}">
                                             <td>STOCK #:</td>
-                                            <td>${option.stock}</td>
+                                            <td ng-if="${option.stock != null}">${option.stock}</td>
+                                             <td ng-if="${option.stock == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].vin != null} || ${vehicles[1].vin != null} || ${vehicles[2].vin != null} || ${vehicles[3].vin != null}">
                                             <td>VIN #:</td>
-                                            <td>${option.vin}</td>
+                                            <td ng-if="${option.vin != null}">${option.vin}</td>
+                                             <td ng-if="${option.vin == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].cityMileage != null} || ${vehicles[1].cityMileage != null} || ${vehicles[2].cityMileage != null} || ${vehicles[3].cityMileage != null}">
                                             <td>FUEL MILEAGE:</td>
-                                            <td>${option.cityMileage}/${option.highwayMileage}</td>
+                                            <td ng-if="${option.cityMileage != null}">${option.cityMileage}/${option.highwayMileage}</td>
+                                             <td ng-if="${option.cityMileage == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].fuelType != null} || ${vehicles[1].fuelType != null} || ${vehicles[2].fuelType != null} || ${vehicles[3].fuelType != null}">
                                             <td>FUEL TYPE:</td>
-                                            <td>${option.fuelType}</td>
+                                            <td ng-if="${option.fuelType != null}">${option.fuelType}</td>
+                                             <td ng-if="${option.fuelType == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <tr ng-if="${vehicles[0].make != null} || ${vehicles[1].make != null} || ${vehicles[2].make != null} || ${vehicles[3].make != null}">
                                             <td>CONDITION:</td>
-                                            <td>${option.make}</td>
+                                            <td ng-if="${option.make != null}">${option.make}</td>
+                                             <td ng-if="${option.make == null}">N/A</td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>OWNERS:</td>
                                             <td>N/A</td>
                                         </tr>
                                         <tr>
                                             <td>WARRANTY:</td>
                                             <td>3 Years Limited</td>
-                                        </tr>
-                                        <tr>
+                                        </tr> -->
+                                       <!--  <tr>
                                             <td>OPTIONS:</td>
                                             <td></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="option-tick-list padding-horizontal-10 clearfix">
+                            <!-- <div class="option-tick-list padding-horizontal-10 clearfix">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <ul>
                                         <li>Adjustable Pedals</li>
@@ -291,7 +306,7 @@ $(document).ready(function()
                                         <li>Tilt Steering</li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="porche-footer margin-top-25 padding-top-20 padding-bottom-15">
                                 <form method="post" action="inventory-listing.html">
                                     <input type="submit" value="View Listing">

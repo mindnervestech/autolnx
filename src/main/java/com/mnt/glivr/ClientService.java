@@ -3261,7 +3261,7 @@ public List<VehicleVM> getVehiclesComparison(List<String> vinList, Long location
 			vm.model = (String) map.get("model");
 			vm.mileage = (String) map.get("mileage");
 			Integer price = (Integer) map.get("price");
-			vm.price = "$"+price.toString();
+			vm.price = price.toString();
 			vm.stock = (String) map.get("stock");
 			vm.transmission = (String) map.get("transmission");
 			vm.vin = (String) map.get("vin");
