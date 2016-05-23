@@ -323,7 +323,8 @@ $(document).ready(function()
               <ul class="form-links top_buttons">
               <!-- ng-click="Compare()" -->
                 <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
-                <li ng-if="${compareHeader.compareFlag == 1}" ng-disabled="selectedVehicle.length >= 2><a href="{{url}}" class="gradient_button"  >Compare {{selectedVehicle.length}} Vehicles</a></li>
+                <li ng-show="selectedVehicle.length < 2" ng-if="${compareHeader.compareFlag == 1}"><a href="${pageContext.request.contextPath}/findVehicles/" class="gradient_button">Compare {{selectedVehicle.length}} Vehicles</a></li>
+                <li ng-show="selectedVehicle.length >= 2" ng-if="${compareHeader.compareFlag == 1}"><a href="{{url}}" class="gradient_button">Compare {{selectedVehicle.length}} Vehicles</a></li>
               </ul>
             </div>
         </div>
