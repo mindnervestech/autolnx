@@ -323,7 +323,7 @@ $(document).ready(function()
               <ul class="form-links top_buttons">
               <!-- ng-click="Compare()" -->
                 <li><a href="#" ng-click="resetFilters()" class="gradient_button">Reset Filters</a></li>
-                <li ng-if="${compareHeader.compareFlag == 1}"><a href="{{url}}" class="gradient_button"  >Compare {{selectedVehicle.length}} Vehicles</a></li>
+                <li ng-if="${compareHeader.compareFlag == 1}" ng-disabled="selectedVehicle.length >= 2><a href="{{url}}" class="gradient_button"  >Compare {{selectedVehicle.length}} Vehicles</a></li>
               </ul>
             </div>
         </div>
@@ -458,7 +458,8 @@ $(document).ready(function()
       
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="vehicle in vehicleList">
-          <div class="inventory clearfix margin-bottom-20 styled_input "> <a href="vehicleDetails/{{vehicle.vin}}" class="inventory">
+          <div class="inventory clearfix margin-bottom-20 styled_input "> <a href="${pageContext.request.contextPath}/vehicleDetails/{{vehicle.vin}}" class="inventory">
+          <input ng-if="${compareHeader.compareFlag == 1}" ng-disabled="selectedVehicle.length >= 4 && vehicle.isSelected == false" type="checkbox" name="a"  ng-click="selectVehicle(vehicle,vehicle.isSelected)" ng-model="vehicle.isSelected" style="left: 247px !important;" id="vehicle_1" />
             <div class="title">{{vehicle.title}}</div>
             <span class="ng-scope" ng-if="vehicle.comingSoonFlag == 1" style="
 			   	 content: &quot;Newly Arrived&quot;;
@@ -536,7 +537,7 @@ $(document).ready(function()
             <div class="view-details gradient_button"><i class="fa fa-plus-circle"></i> View Details </div>
             <div class="clearfix"></div>
             </a>
-            <div class="price "> <b>Price:</b><br>
+            <div class="price" ng-if="vehicle.price !=  '$0'"> <b>Price:</b><br>
               <div class="figure"><span> $ {{(vehicle.price).replace("$","") | number }}</span><br>
               </div>
               <div class="tax">Plus Sales Tax</div>
