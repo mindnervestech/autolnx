@@ -11,6 +11,7 @@ public class MyProfileVM {
 	public String phone;
 	public String email;
 	public String web;
+	public String yelp;
 	public String facebook;
 	public String pinterest;
 	public String instagram;
@@ -35,6 +36,13 @@ public class MyProfileVM {
 	}
 	public String getPhone() {
 		return phone;
+	}
+	
+	public String getYelp() {
+		return yelp;
+	}
+	public void setYelp(String yelp) {
+		this.yelp = yelp;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;

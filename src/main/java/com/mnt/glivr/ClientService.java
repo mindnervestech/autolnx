@@ -555,7 +555,7 @@ public class ClientService {
 			profileModel.twitter =(String) myprofileModel.get(0).get("twitter");
 			profileModel.googleplus =(String) myprofileModel.get(0).get("googleplus");
 			profileModel.locationId = (Long) myprofileModel.get(0).get("locations_id");
-			
+			profileModel.yelp=(String) myprofileModel.get(0).get("yelp");
 			if(myprofileModel.get(0).get("latlong") != null){
 				String abc = (String) myprofileModel.get(0).get("latlong");
 				 String[] parts = abc.split(",");

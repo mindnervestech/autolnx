@@ -478,13 +478,13 @@ $(document).ready(function()
       </div>
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
         <ul class="social clearfix">
-          <li><a target="_blank" href="${myprofile.facebook}" class="facebook"></a></li>
-          <li><a target="_blank" href="${myprofile.googleplus}" class="google"></a> </li>
-          <li><a target="_blank" href="${myprofile.twitter}" class="twitter"></a></li>
-          <li><a target="_blank" href="http://www.yelp.com/biz/autolinx-luxury-pre-owned-vallejo" class="yelp"></a></li>
-          <li><a target="_blank" href="${myprofile.instagram}" class="instagram"></a></li>
-          <li><a target="_blank" href="${myprofile.pinterest}" class="pinterest"></a></li>
-        </ul>
+         <li  ><a target="_blank" ng-if="${myprofile.facebook != null} && ${myprofile.facebook != ''}"  href="${myprofile.facebook}" class="facebook"></a></li>
+          <li><a target="_blank" ng-if="${myprofile.googleplus != null} && ${myprofile.googleplus != ''}"  href="${myprofile.googleplus}" class="google"></a> </li>
+          <li><a target="_blank" ng-if="${myprofile.twitter != ''} && ${myprofile.twitter != null} "  href="${myprofile.twitter}" class="twitter"></a></li>
+          <li><a target="_blank" ng-if="${myprofile.yelp != ''} && ${myprofile.yelp != null} "   href="${myprofile.yelp}"  class="yelp"></a></li>
+          <li><a target="_blank"ng-if="${myprofile.instagram != null} &&  ${myprofile.instagram != ''}"  href="${myprofile.instagram}" class="instagram"></a></li>
+          <li><a target="_blank" ng-if="${myprofile.pinterest != null} && ${myprofile.pinterest != null}" href="${myprofile.pinterest}" class="pinterest"></a></li>
+      </ul>
         <div class="clear"></div>
         <ul class="f-nav">
           <li><a href="${pageContext.request.contextPath}">Home</a></li>
