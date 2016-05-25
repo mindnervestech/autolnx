@@ -1061,7 +1061,7 @@ $(document).ready(function()
           <li><a target="_blank" ng-if="${myprofile.twitter != ''} && ${myprofile.twitter != null} "  href="${myprofile.twitter}" class="twitter"></a></li>
           <li><a target="_blank" ng-if="${myprofile.yelp != ''} && ${myprofile.yelp != null} "   href="${myprofile.yelp}"  class="yelp"></a></li>
           <li><a target="_blank"ng-if="${myprofile.instagram != null} &&  ${myprofile.instagram != ''}"  href="${myprofile.instagram}" class="instagram"></a></li>
-          <li><a target="_blank" ng-if="${myprofile.pinterest != null} && ${myprofile.pinterest != null}" href="${myprofile.pinterest}" class="pinterest"></a></li>
+          <li><a target="_blank" ng-if="${myprofile.pinterest != null} && ${myprofile.pinterest != ''}" href="${myprofile.pinterest}" class="pinterest"></a></li>
        </ul>
         <div class="clear"></div>
         <ul class="f-nav">
