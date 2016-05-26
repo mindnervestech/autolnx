@@ -641,11 +641,18 @@ public class ClientService {
 			return tVm;
 		}
 	  
-	  public AboutUsVM getvehicleHeader(Long locationId) {
+	  public AboutUsVM getvehicleHeader(Long locationId,String vin) {
+		  
+		  	List<Map<String, Object>> row = jdbcTemplate.queryForList("select * from vehicle where vin= '"+vin+"' and status ='Newly Arrived'");
+		   int flag = 0;
+		  	String makeType=(String) row.get(0).get("make");
+		  	
 			List<Map<String, Object>> rows1 = jdbcTemplate.queryForList("SELECT * FROM vehicle_header where locations_id = '"+locationId+"'");
 			AboutUsVM tVm = new AboutUsVM();
 			if(rows1 != null){
-			for(Map map : rows1) {
+			  for(Map map : rows1) {
+				  if(makeType.equals((String)map.get("make_value"))){
+						
 						tVm.thumb_path = (String)map.get("thumb_path");
 						tVm.headerTitle = (String)map.get("main_title");
 						tVm.subTitle  = (String)map.get("subtitle");
@@ -654,7 +661,22 @@ public class ClientService {
 						tVm.make_flag  = (Integer)map.get("make_flag");
 						tVm.finance_flag=(Integer)map.get("finance_flag");
 						tVm.social_flag=(Integer)map.get("social_flag");
-			}
+						
+						flag = 1;
+					}else if(flag == 0){
+						
+						tVm.thumb_path = (String)map.get("thumb_path");
+						tVm.headerTitle = (String)map.get("main_title");
+						tVm.subTitle  = (String)map.get("subtitle");
+						tVm.path=(String)map.get("path");
+						tVm.cover_image_name = (String)map.get("cover_image_name");
+						tVm.make_flag  = (Integer)map.get("make_flag");
+						tVm.finance_flag=(Integer)map.get("finance_flag");
+						tVm.social_flag=(Integer)map.get("social_flag");
+					}
+						
+				}
+						
 			}
 			return tVm;
 		}
