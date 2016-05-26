@@ -61,7 +61,7 @@
 
  <style>
 .dynamic-image-1-1 {
- 	background: url(${hostnameimg}${warHeader.path}) top center;
+ 	background: url(${hostnameimg}${warHeader.path}) no-repeat center;
  	}
        </style>  
 
@@ -162,7 +162,7 @@ $(document).ready(function()
 <!--Header End-->
 
 <div class="clearfix"></div>
-<section id="secondary-banner" class="dynamic-image-1-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-1-1"style="background-size: 100%" ><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">

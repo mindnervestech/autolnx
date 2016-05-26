@@ -166,7 +166,7 @@ $(document).ready(function()
 <div class="clearfix"></div>
 
 <%-- <img class="preview" src="${hostnameimg}{{vehicle.path}}" style="height: 130px !important;"/> --%>
-<section id="secondary-banner" class="dynamic-image-1-1"><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
+<section id="secondary-banner" class="dynamic-image-1-1"style="background-size: 100%" ><!--for other images just change the class name of this section block like, class="dynamic-image-2" and add css for the changed class-->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
@@ -706,7 +706,7 @@ $(document).ready(function()
 <style>
 
 .dynamic-image-1-1 {
-  		background: url(${hostnameimg}${inventoryData.imageUrl}) top center;
+  		background: url(${hostnameimg}${inventoryData.imageUrl}) no-repeat center;
   	}
 
 	.car_listings .carfax {
