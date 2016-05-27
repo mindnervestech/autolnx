@@ -663,8 +663,8 @@ public class ClientService {
 						tVm.social_flag=(Integer)map.get("social_flag");
 						
 						flag = 1;
-					}else if(flag == 0){
-						
+					}else if(flag == 0  && map.get("make_value").equals("all") ){
+						System.out.println("inside all");
 						tVm.thumb_path = (String)map.get("thumb_path");
 						tVm.headerTitle = (String)map.get("main_title");
 						tVm.subTitle  = (String)map.get("subtitle");
