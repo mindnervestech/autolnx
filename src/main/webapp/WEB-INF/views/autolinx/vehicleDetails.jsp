@@ -42,7 +42,9 @@
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/datepicker.css" rel="stylesheet">
 
-<script src="https://static.getclicky.com/inc/javascript/video/html.js"></script>
+
+<script src='https://static.getclicky.com/inc/javascript/video/youtube.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js'></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap.min.js"></script>
@@ -1739,6 +1741,14 @@ $(document).ready(function()
     </style>
     
   <a title="Real Time Web Analytics" href="http://clicky.com/100875513"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+  
+ <div id=""></div>
+
+<script type="text/javascript">
+swfobject.embedSWF("http://www.youtube.com/v/?enablejsapi=1&playerapiid={div-id}", 
+	"myvideo", "425", "356", "8", null, null, { allowScriptAccess: "always" });
+</script> 
+  
 <script type="text/javascript">
 console.log("find Clicky.....!!!!!");
 var clicky_site_ids = clicky_site_ids || [];
