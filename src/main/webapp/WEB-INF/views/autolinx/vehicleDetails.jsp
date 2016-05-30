@@ -42,7 +42,7 @@
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/datepicker.css" rel="stylesheet">
 
-
+<script src="https://static.getclicky.com/inc/javascript/video/html.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/bootstrap.min.js"></script>
