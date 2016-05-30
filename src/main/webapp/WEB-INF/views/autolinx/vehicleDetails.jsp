@@ -1747,7 +1747,7 @@ $(document).ready(function()
  <div id=""></div>
 
 <script type="text/javascript">
-swfobject.embedSWF("http://www.youtube.com/v/UrBFUdu9dw0?enablejsapi=1&playerapiid={div-id}", 
+swfobject.embedSWF("http://www.youtube.com/v/7-F_0HHGMIk?enablejsapi=1&playerapiid={div-id}", 
 	"myvideo", "425", "356", "8", null, null, { allowScriptAccess: "always" });
 </script> 
   
