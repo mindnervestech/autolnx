@@ -352,7 +352,9 @@ $(document).ready(function()
             <div class="content-nav margin-bottom-30" ng-if="flag != null">
                    <p>
 				       <p ng-if="flag=='video'">
+				       <div id="editVideo">
                    		<iframe id="ab" width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
+                   		</div>
                    		</p>
 				        <br />
 				    
@@ -1745,7 +1747,7 @@ $(document).ready(function()
  <div id=""></div>
 
 <script type="text/javascript">
-swfobject.embedSWF("http://www.youtube.com/v/?enablejsapi=1&playerapiid={div-id}", 
+swfobject.embedSWF("http://www.youtube.com/v/UrBFUdu9dw0?enablejsapi=1&playerapiid={div-id}", 
 	"myvideo", "425", "356", "8", null, null, { allowScriptAccess: "always" });
 </script> 
   
