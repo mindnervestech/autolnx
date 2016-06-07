@@ -42,8 +42,8 @@
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/datepicker.css" rel="stylesheet">
 
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-<script src='https://static.getclicky.com/inc/javascript/video/youtube.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+<script src='//static.getclicky.com/inc/javascript/video/youtube.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js'></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
