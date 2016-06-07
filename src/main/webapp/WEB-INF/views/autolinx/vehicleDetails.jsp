@@ -42,8 +42,7 @@
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/ts.css" type="text/css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/autolinx/css/datepicker.css" rel="stylesheet">
 
-<script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-<script src='//static.getclicky.com/inc/javascript/video/youtube.js'></script>
+
 <script src='https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js'></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/autolinx/js/jquery.min.js"></script>
@@ -1764,7 +1763,15 @@ clicky_site_ids.push(100875513);
 })();
 
 </script>
+
+<script type="text/javascript">
+swfobject.embedSWF("http://www.youtube.com/v/RdGVz104b3E?enablejsapi=1&playerapiid=ab", 
+	"ab", "425", "356", "8", null, null, { allowScriptAccess: "always" });
+</script>
+
  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100875513ns.gif" /></p></noscript>
+<script src='https://static.getclicky.com/inc/javascript/video/youtube.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js'></script>
 <a href="#${vehicle.vin}#emailtofriend" id="callemail" onclick="clicky.log('#${vehicle.vin}#emailtofriend','click'); return false;"></a>
 <a href="#${vehicle.vin}#requestmoreinfo" id="callRequest" onclick="clicky.log('#${vehicle.vin}#requestmoreinfo','click'); return false;"></a>
 <a href="#${vehicle.vin}#scheduletest" id="callSchedule" onclick="clicky.log('#${vehicle.vin}#scheduletest','click'); return false;"></a>
