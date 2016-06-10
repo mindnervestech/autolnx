@@ -66,7 +66,8 @@
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.buttons.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/pnotify.confirm.js" type="text/javascript"></script> 
 <script src="${pageContext.request.contextPath}/resources/autolinx/js/pnotify/angular-pnotify.js" type="text/javascript"></script>
-
+<script src="http://static.getclicky.com/inc/javascript/video/html.js"></script>
+<script src='//static.getclicky.com/inc/javascript/video/youtube.js'></script>
 <!-- Twitter Feed Scripts 
      Uncomment to activate
 
