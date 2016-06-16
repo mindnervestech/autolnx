@@ -10,7 +10,15 @@ public class RequestMore {
 	public String phone;
 	public String vin;
 	public String brand;
+	public String sessionId;
 	
+	
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	public Long getId() {
 		return id;
 	}

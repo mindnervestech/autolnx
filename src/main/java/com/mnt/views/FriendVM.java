@@ -9,7 +9,17 @@ public class FriendVM {
 	public String fname;
 	public String femail;
 	public String vin;
+	public String sessionId;
 	
+	
+	
+	public String getSessionId() {
+		return sessionId;
+	}
+	
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	public Long getId() {
 		return id;
 	}

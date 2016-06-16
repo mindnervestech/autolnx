@@ -42,9 +42,17 @@ public class Trade_InVM {
 	public String damage;
 	public String paint;
 	public String salvage;
+	public String sessionId;
 	public List<String> options;
 	
 	
+	
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	public Long getId() {
 		return id;
 	}

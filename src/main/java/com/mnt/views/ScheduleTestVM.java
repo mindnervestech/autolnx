@@ -11,6 +11,16 @@ public class ScheduleTestVM {
 	public String vin;
 	public String bestDay;
 	public String bestTime;
+	public String sessionId;
+	
+	
+	
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	
 	public Long getId() {
 		return id;

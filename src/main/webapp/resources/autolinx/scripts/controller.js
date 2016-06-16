@@ -632,13 +632,27 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		console.log("Error.................");
 	});
  	*/
-
+ 	$scope.getCookies = function(){
+ 		  var pairs = document.cookie.split(";");
+ 		  console.log(pairs);
+ 		  var cookies = {};
+ 		  for (var i=0; i<pairs.length; i++){
+ 		    var pair = pairs[i].split("=");
+ 		    cookies[pair[0]] = unescape(pair[1]);
+ 		  }
+ 		  return cookies;
+ 		}
+ 	
+ 	
 	
 	$scope.requestMore = function(vin){
 		
 		$("#callRequest").click();
 		console.log(vin);
+		var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);
 		$scope.request.vin = vin;
+		$scope.request.sessionId=myCookies._jsuid;
 		console.log($scope.request);
 		$http({
 			method : 'POST',
@@ -674,7 +688,10 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.scheduleTest = function(vin){
 		$("#callSchedule").click();
 		console.log(vin);
+		var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);
 		$scope.schedule.vin = vin;
+		$scope.schedule.sessionId = myCookies._jsuid;
 		console.log($scope.schedule);
 		$http({
 			method : 'POST',
@@ -694,6 +711,9 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.otherInfo = function(vin){
 				
 		console.log(vin);
+		var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);
+		$scope.friend.sessionId = myCookies._jsuid;
 		$("#callemail").click();
 		$scope.friend.vin = vin;
 		console.log($scope.friend);
@@ -714,6 +734,9 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.tradeInApp = function(vin){
 		$("#callTrade").click();
 		console.log(vin);
+		var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);
+		$scope.tradeIn.sessionId = myCookies._jsuid;
 		$scope.tradeIn.vin = vin;
 		console.log($scope.tradeIn);
 		$http({
@@ -1212,10 +1235,23 @@ app.controller("BlogController", function($scope,$http,notificationService) {
 
 app.controller("ContactUsController", function($scope,$http) {
 	
+	$scope.getCookies = function(){
+		  var pairs = document.cookie.split(";");
+		  console.log(pairs);
+		  var cookies = {};
+		  for (var i=0; i<pairs.length; i++){
+		    var pair = pairs[i].split("=");
+		    cookies[pair[0]] = unescape(pair[1]);
+		  }
+		  return cookies;
+		}
+	
 	$scope.contact = {};
 	var contextPath = $('#contextpath').val();
 	$scope.saveContact = function() {
-		
+		var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);
+		$scope.contact.sessionId = myCookies._jsuid;
 		$http.post(contextPath+'/saveContact',$scope.contact)
 		.success(function(data) {
 			console.log('success');
