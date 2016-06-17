@@ -534,8 +534,12 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		console.log(video);
 		console.log(virtualTour);
 		//$scope.num = (Math.ceil(Math.random() * 9));
-		var element =test;
-		console.log(">>>>>>>>"+element);
+		/*var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);*/
+	//	var d = new Date();
+	  //	var test = d.getMilliseconds();
+		$scope.sessionId =test;
+		console.log(">>>>>>>>"+$scope.sessionId);
 		if(virtualTour !=''){
 			$scope.flag = "virtualTour";
 			$("#virtualTour").addClass('videoTxtActive');
@@ -651,11 +655,12 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.requestMore = function(vin){
 		
 		$("#callRequest").click();
-		console.log(vin);
-		var myCookies = $scope.getCookies();
-		console.log(myCookies._jsuid);
+	//	console.log(vin);
+		/*//var myCookies = $scope.getCookies();
+		console.log($scope.sessionId);*/
 		$scope.request.vin = vin;
-		$scope.request.sessionId=myCookies._jsuid;
+		$scope.request.sessionId=$scope.sessionId;
+		console.log($scope.request.sessionId);
 		console.log($scope.request);
 		$http({
 			method : 'POST',
@@ -690,12 +695,12 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	
 	$scope.scheduleTest = function(vin){
 		$("#callSchedule").click();
-		console.log(vin);
-		var myCookies = $scope.getCookies();
-		console.log(myCookies._jsuid);
+		/*console.log($scope.sessionId);
+		//var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);*/
 		$scope.schedule.vin = vin;
-		$scope.schedule.sessionId = myCookies._jsuid;
-		console.log($scope.schedule);
+		$scope.schedule.sessionId =$scope.sessionId;
+		console.log($scope.sessionId);
 		$http({
 			method : 'POST',
 			url : contextPath+'/scheduleTest',
@@ -714,11 +719,12 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.otherInfo = function(vin){
 				
 		console.log(vin);
-		var myCookies = $scope.getCookies();
-		console.log(myCookies._jsuid);
-		$scope.friend.sessionId = myCookies._jsuid;
+	//	var myCookies = $scope.getCookies();
+		/*console.log(myCookies._jsuid);*/
+		$scope.friend.sessionId = $scope.sessionId;
 		$("#callemail").click();
 		$scope.friend.vin = vin;
+		console.log($scope.friend.sessionId);
 		console.log($scope.friend);
 		$http({
 			method : 'POST',
@@ -737,11 +743,12 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 	$scope.tradeInApp = function(vin){
 		$("#callTrade").click();
 		console.log(vin);
-		var myCookies = $scope.getCookies();
-		console.log(myCookies._jsuid);
-		$scope.tradeIn.sessionId = myCookies._jsuid;
+		/*var myCookies = $scope.getCookies();
+		console.log(myCookies._jsuid);*/
+		$scope.tradeIn.sessionId = $scope.sessionId;
 		$scope.tradeIn.vin = vin;
 		console.log($scope.tradeIn);
+		console.log($scope.tradeIn.sessionId);
 		$http({
 			method : 'POST',
 			url : contextPath+'/tradeInApp',

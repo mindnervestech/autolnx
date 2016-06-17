@@ -1779,8 +1779,20 @@ clicky_site_ids.push(100875513);
 
 <script type="text/javascript">
   //$scope.randomNum
-  	var test =	Math.floor((Math.random()*5859)+1);
+  	/* var pairs = document.cookie.split(";");
+  	 console.log(pairs);
+	  var cookies = {};
+	  for (var i=0; i<pairs.length; i++){
+	    var pair = pairs[i].split("=");
+	    cookies[pair[0]] = unescape(pair[1]);
+	  }
+	  var myCookies = cookies;	
+  	var	test=myCookies._jsuid */
+  	var d = new Date();
+  	var test = d.getMilliseconds();
   console.dir("****");
+  console.dir(test);		
+  
   console.dir(test);
   var clicky_custom = {
     href: '/some/page?some=query',
