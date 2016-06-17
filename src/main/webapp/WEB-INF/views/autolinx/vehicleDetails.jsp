@@ -1767,6 +1767,29 @@ clicky_site_ids.push(100875513);
 </script>
 
 <script type="text/javascript">
+  var clicky_custom = {};
+  clicky_custom.href = '/some/page?some=query';
+  clicky_custom.title = 'Some page';
+  clicky_custom.session = {
+    username: 'bobjones',
+    email: 'bob@jones.com'
+  };
+  clicky_custom.timer = 200;
+</script>
+
+<script type="text/javascript">
+  var clicky_custom = {
+    href: '/some/page?some=query',
+    title: 'Some page',
+    session: {
+      username: 'bobjones',
+      email: 'bob@jones.com'
+    },
+    timer: 200
+  };
+</script>
+
+<script type="text/javascript">
 swfobject.embedSWF("http://www.youtube.com/v/RdGVz104b3E?enablejsapi=1&playerapiid=ab", 
 	"ab", "425", "356", "8", null, null, { allowScriptAccess: "always" });
 </script>
