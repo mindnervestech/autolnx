@@ -1772,7 +1772,7 @@ clicky_site_ids.push(100875513);
   clicky_custom.title = 'Some page';
   clicky_custom.session = {
     username: 'bobjones',
-    email: 'bob@jones.com'
+    session_id: '5678'
   };
   clicky_custom.timer = 200;
 </script>
@@ -1782,8 +1782,7 @@ clicky_site_ids.push(100875513);
     href: '/some/page?some=query',
     title: 'Some page',
     session: {
-      username: 'bobjones',
-      email: 'bob@jones.com'
+      session_Id: '1234',
     },
     timer: 200
   };
