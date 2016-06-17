@@ -533,6 +533,9 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 		$scope.typeofV = vehical;
 		console.log(video);
 		console.log(virtualTour);
+		//$scope.num = (Math.ceil(Math.random() * 9));
+		var element =test;
+		console.log(">>>>>>>>"+element);
 		if(virtualTour !=''){
 			$scope.flag = "virtualTour";
 			$("#virtualTour").addClass('videoTxtActive');

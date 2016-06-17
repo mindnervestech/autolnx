@@ -1778,11 +1778,15 @@ clicky_site_ids.push(100875513);
 </script>
 
 <script type="text/javascript">
+  //$scope.randomNum
+  	var test =	Math.floor((Math.random()*5859)+1);
+  console.dir("****");
+  console.dir(test);
   var clicky_custom = {
     href: '/some/page?some=query',
     title: 'Some page',
     session: {
-      session_Id: '1234',
+      session_Id: test,
     },
     timer: 200
   };
