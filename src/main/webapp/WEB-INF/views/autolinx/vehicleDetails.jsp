@@ -353,14 +353,12 @@ $(document).ready(function()
             <div class="content-nav margin-bottom-30" ng-if="flag != null">
                    <p>
 				       <p ng-if="flag=='video'">
-				       <div id="editVideo">
-                   		<iframe id="ab" width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
-                   		</div>
+                   		<iframe  width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.videoUrl}"></iframe>
                    		</p>
 				        <br />
 				    
 				       <p ng-if="flag=='virtualTour'">
-                   		<iframe id="ab" width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.virtualTour}"></iframe>
+                   		<iframe width="1400" height="500" frameborder="0" allowfullscreen="allowfullscreen" scrolling="no" marginheight="0" marginwidth="0" src="${vehicle.virtualTour}"></iframe>
                    		</p>
 				        <br />
                    </p>
