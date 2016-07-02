@@ -1764,7 +1764,7 @@ clicky_site_ids.push(100875513);
 
 </script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   var clicky_custom = {};
   clicky_custom.href = '/some/page?some=query';
   clicky_custom.title = 'Some page';
@@ -1773,7 +1773,7 @@ clicky_site_ids.push(100875513);
     session_id: '5678'
   };
   clicky_custom.timer = 200;
-</script>
+</script> -->
 
 <script type="text/javascript">
   //$scope.randomNum
@@ -1793,8 +1793,8 @@ clicky_site_ids.push(100875513);
   
   console.dir(test);
   var clicky_custom = {
-    href: '/some/page?some=query',
-    title: 'Some page',
+    /* href: '/some/page?some=query',
+    title: 'Some page', */
     session: {
       session_Id: test,
     },
