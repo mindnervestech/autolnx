@@ -681,6 +681,33 @@
   		  		
     </style>
     
+    <script type="text/javascript">
+  //$scope.randomNum
+  	/* var pairs = document.cookie.split(";");
+  	 console.log(pairs);
+	  var cookies = {};
+	  for (var i=0; i<pairs.length; i++){
+	    var pair = pairs[i].split("=");
+	    cookies[pair[0]] = unescape(pair[1]);
+	  }
+	  var myCookies = cookies;	
+  	var	test=myCookies._jsuid */
+  	var d = new Date();
+  	var test = d.getMilliseconds();
+  console.dir("****");
+  console.dir(test);		
+  
+  console.dir(test);
+  var clicky_custom = {
+    /* href: '/some/page?some=query',
+    title: 'Some page', */
+    session: {
+      session_Id: test,
+    },
+    timer: 200
+  };
+</script>
+    
      <a title="Real Time Web Analytics" href="http://clicky.com/100875513"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
 <script type="text/javascript">
 var clicky_site_ids = clicky_site_ids || [];

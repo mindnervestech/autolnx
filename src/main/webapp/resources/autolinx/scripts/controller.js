@@ -792,13 +792,16 @@ app.controller("VehicleDetailsController", function($scope,$http,notificationSer
 });
 
 app.controller("MobileVehicleDetailsController", function($scope,$http,notificationService) {
-	
+
+	$scope.sessionId =test;
+	console.log(">>>>>>>>"+$scope.sessionId);
 	var contextPath = $('#contextpath').val();
 	
 	$scope.requestMore = function(vin){
 		
 		$("#callRequest").click();
 		console.log(vin);
+		$scope.request.sessionId=$scope.sessionId;
 		$scope.request.vin = vin;
 		console.log($scope.request);
 		$http({
@@ -844,6 +847,7 @@ app.controller("MobileVehicleDetailsController", function($scope,$http,notificat
 	$scope.scheduleTest = function(vin){
 		console.log(vin);
 		$scope.schedule.vin = vin;
+		$scope.schedule.sessionId=$scope.sessionId;
 		console.log($scope.schedule);
 		$http({
 			method : 'POST',
@@ -862,6 +866,7 @@ app.controller("MobileVehicleDetailsController", function($scope,$http,notificat
 	$scope.otherInfo = function(vin){
 		console.log(vin);
 		$scope.friend.vin = vin;
+		$scope.friend.sessionId=$scope.sessionId;
 		console.log($scope.friend);
 		$http({
 			method : 'POST',
